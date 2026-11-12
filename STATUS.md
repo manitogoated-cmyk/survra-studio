@@ -1,6 +1,6 @@
 # Survra production dashboard
 
-Updated 2026-11-12 07:38 UTC by the publish workflow. Daily target: 3 long-form + 3 Shorts. Review mode: **ON**. Paused: **no**.
+Updated 2026-11-12 17:38 UTC by the publish workflow. Daily target: 3 long-form + 3 Shorts. Review mode: **ON**. Paused: **no**.
 
 A stage shows `done` only when its output file exists; QC shows `done` only after the automated gate passed on the rendered video.
 
