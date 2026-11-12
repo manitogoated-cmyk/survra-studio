@@ -49,3 +49,6 @@ QC gate (must pass, never loosen it): first shot 1.2 s or less with an impact so
 - Delete `build/3d/<shot>_*.jpg` to re-render only the shots you changed.
 
 When QC passes (or the contact sheet is reviewed and the cloud render will do the QC): set status `ready`, commit only source files and push to `main`. The publish workflow renders, checks and uploads.
+
+## What to make next
+`plan/slate.json` is the case slate: take the first case whose status is `idea`, fact-check it with at least two web sources, re-score it against the story gate, and skip it (status `rejected` with the reason) if the facts or the score do not hold. Read `plan/learnings.json` and `ANALYTICS.md` first when they exist and apply what the numbers say. Set the case's status to `authored` when its episode is pushed.
