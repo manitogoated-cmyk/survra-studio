@@ -19,8 +19,8 @@ publish/              YouTube uploader, publisher, config.json (pause/review swi
 ## Secrets
 Stored only as GitHub encrypted secrets: `YT_CLIENT_ID`, `YT_CLIENT_SECRET`, `YT_REFRESH_TOKEN`.
 Never commit them. Locally they live in the untracked `secrets/` folder.
-While the Google OAuth app is in "Testing", the refresh token lasts 7 days; the workflow opens
-an issue when it expires.
+The Google OAuth app is "In production" (unverified, owner-only), so the refresh token does not
+expire weekly. If it is ever revoked, the workflow opens an issue asking for re-authorization.
 
 ## Run locally
 ```
