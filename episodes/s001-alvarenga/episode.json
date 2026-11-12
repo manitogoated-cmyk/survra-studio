@@ -1,11 +1,20 @@
 {
   "id": "s001-alvarenga",
   "format": "short",
-  "status": "ready",
+  "status": "draft",
   "synthetic": false,
   "title": "He Drifted 438 Days Across the Pacific… and Lived #shorts",
   "description": "In 2012 a fisherman left the Mexican coast for a 30-hour trip. He came ashore 438 days and about 6,700 miles later, in the Marshall Islands. This is José Salvador Alvarenga's story, animated.",
-  "tags": ["survival story", "true story", "animated story", "lost at sea", "Jose Salvador Alvarenga", "438 days", "Pacific Ocean", "survra"],
+  "tags": [
+    "survival story",
+    "true story",
+    "animated story",
+    "lost at sea",
+    "Jose Salvador Alvarenga",
+    "438 days",
+    "Pacific Ocean",
+    "survra"
+  ],
   "sources": [
     "https://en.wikipedia.org/wiki/Jos%C3%A9_Salvador_Alvarenga",
     "https://www.factinate.com/people/jose-salvador-alvarenga-survived-ocean",
