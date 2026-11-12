@@ -1,0 +1,1122 @@
+{
+ "id": "short-001-alvarenga",
+ "shots": [
+  {
+   "n": 1,
+   "segment": "hook",
+   "weight": 0.9,
+   "kind": "eyes_open",
+   "action": "Extreme close-up: his eyes snap open, wet with sea spray",
+   "camera": "ECU, fast push-in",
+   "cam": [
+    [
+     1.15,
+     540,
+     900,
+     0
+    ],
+    [
+     1.45,
+     540,
+     860,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "impact",
+     0.15
+    ],
+    [
+     "gasp",
+     0.18
+    ]
+   ],
+   "hud_day": null,
+   "prm": {}
+  },
+  {
+   "n": 2,
+   "segment": "hook",
+   "weight": 1.2,
+   "kind": "overhead_ocean",
+   "action": "Overhead: one tiny boat alone on an endless ocean",
+   "camera": "Overhead, snap zoom out",
+   "cam": [
+    [
+     3.0,
+     540,
+     1000,
+     0
+    ],
+    [
+     1.0,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "zoom",
+   "sfx": [
+    [
+     "whoosh",
+     0.0
+    ],
+    [
+     "boom",
+     0.1
+    ]
+   ],
+   "hud_day": null,
+   "prm": {}
+  },
+  {
+   "n": 3,
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "map_route",
+   "action": "The drift line races across the Pacific",
+   "camera": "Graphic, push-in",
+   "cam": [
+    [
+     1.0,
+     540,
+     1080,
+     0
+    ],
+    [
+     1.2,
+     540,
+     1080,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "whoosh",
+     0.0
+    ],
+    [
+     "riser",
+     0.2
+    ]
+   ],
+   "hud_day": null,
+   "prm": {
+    "p0": 0.0,
+    "p1": 1.0
+   }
+  },
+  {
+   "n": 4,
+   "segment": "hook",
+   "weight": 1.3,
+   "kind": "beach_crawl",
+   "action": "He crawls out of the surf and punches the air",
+   "camera": "Low angle tracking",
+   "cam": [
+    [
+     1.3,
+     420,
+     1250,
+     0
+    ],
+    [
+     1.1,
+     560,
+     1200,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "wave",
+     0.0
+    ],
+    [
+     "hit",
+     0.75
+    ]
+   ],
+   "hud_day": null,
+   "prm": {}
+  },
+  {
+   "n": 5,
+   "segment": "depart",
+   "weight": 1.2,
+   "kind": "harbour",
+   "action": "Sunny Mexican harbour; the boat pulls away, gulls overhead",
+   "camera": "Wide tracking shot",
+   "cam": [
+    [
+     1.0,
+     600,
+     960,
+     0
+    ],
+    [
+     1.15,
+     380,
+     1000,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "gulls",
+     0.0
+    ],
+    [
+     "whoosh",
+     0.0
+    ]
+   ],
+   "hud_day": 1,
+   "prm": {}
+  },
+  {
+   "n": 6,
+   "segment": "depart",
+   "weight": 1.2,
+   "kind": "pull_cord",
+   "action": "Jos\u00e9 yanks the starter cord twice; the engine roars to life",
+   "camera": "Medium side shot, punch-in on start",
+   "cam": [
+    [
+     1.1,
+     540,
+     1050,
+     0
+    ],
+    [
+     1.3,
+     560,
+     1000,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "cord",
+     0.0
+    ],
+    [
+     "cord",
+     0.45
+    ],
+    [
+     "engine_start",
+     0.7
+    ]
+   ],
+   "hud_day": 1,
+   "prm": {}
+  },
+  {
+   "n": 7,
+   "segment": "depart",
+   "weight": 1.1,
+   "kind": "boat_speed",
+   "action": "The boat rockets past the camera, spray flying",
+   "camera": "Low angle, whip pan",
+   "cam": [
+    [
+     1.2,
+     540,
+     1150,
+     0
+    ],
+    [
+     1.0,
+     540,
+     1100,
+     -4
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.3
+    ],
+    [
+     "splash",
+     0.5
+    ]
+   ],
+   "hud_day": 1,
+   "prm": {}
+  },
+  {
+   "n": 8,
+   "segment": "depart",
+   "weight": 1.3,
+   "kind": "stopwatch",
+   "action": "A stopwatch spins: a 30-hour trip",
+   "camera": "Graphic punch-in",
+   "cam": [
+    [
+     1.3,
+     540,
+     800,
+     0
+    ],
+    [
+     1.0,
+     540,
+     800,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "zoom",
+   "sfx": [
+    [
+     "tick",
+     0.0
+    ],
+    [
+     "boom",
+     0.55
+    ]
+   ],
+   "hud_day": null,
+   "prm": {}
+  },
+  {
+   "n": 9,
+   "segment": "storm",
+   "weight": 0.8,
+   "kind": "storm_sky",
+   "action": "Black clouds roll in; lightning cracks",
+   "camera": "Low angle up at the sky",
+   "cam": [
+    [
+     1.1,
+     540,
+     700,
+     -6
+    ],
+    [
+     1.2,
+     540,
+     700,
+     6
+    ]
+   ],
+   "shake": 8,
+   "transition": "flash",
+   "sfx": [
+    [
+     "thunder",
+     0.3
+    ]
+   ],
+   "hud_day": 2,
+   "prm": {}
+  },
+  {
+   "n": 10,
+   "segment": "storm",
+   "weight": 1.0,
+   "kind": "engine_die",
+   "action": "The engine shakes, sparks and dies; ENGINE DEAD",
+   "camera": "Close-up on the motor",
+   "cam": [
+    [
+     1.0,
+     540,
+     900,
+     0
+    ],
+    [
+     1.25,
+     540,
+     820,
+     0
+    ]
+   ],
+   "shake": 10,
+   "transition": "cut",
+   "sfx": [
+    [
+     "sputter",
+     0.0
+    ],
+    [
+     "clunk",
+     0.8
+    ]
+   ],
+   "hud_day": 2,
+   "prm": {}
+  },
+  {
+   "n": 11,
+   "segment": "storm",
+   "weight": 0.9,
+   "kind": "face_fear",
+   "action": "Jos\u00e9 in the rain, eyes darting back toward shore",
+   "camera": "ECU, Dutch tilt",
+   "cam": [
+    [
+     1.1,
+     540,
+     950,
+     -5
+    ],
+    [
+     1.3,
+     560,
+     920,
+     4
+    ]
+   ],
+   "shake": 6,
+   "transition": "cut",
+   "sfx": [
+    [
+     "rain",
+     0.0
+    ],
+    [
+     "thunder",
+     0.6
+    ]
+   ],
+   "hud_day": null,
+   "prm": {}
+  },
+  {
+   "n": 12,
+   "segment": "storm",
+   "weight": 1.2,
+   "kind": "big_wave",
+   "action": "A huge wave lifts the boat; both men brace",
+   "camera": "Wide, heavy shake",
+   "cam": [
+    [
+     1.15,
+     540,
+     1000,
+     -8
+    ],
+    [
+     1.0,
+     540,
+     900,
+     8
+    ]
+   ],
+   "shake": 16,
+   "transition": "whip",
+   "sfx": [
+    [
+     "crash",
+     0.4
+    ]
+   ],
+   "hud_day": 2,
+   "prm": {}
+  },
+  {
+   "n": 13,
+   "segment": "food",
+   "weight": 0.8,
+   "kind": "grab_fish",
+   "action": "A fish leaps; Jos\u00e9 snatches it bare-handed",
+   "camera": "Close-up at the water surface",
+   "cam": [
+    [
+     1.1,
+     600,
+     1000,
+     0
+    ],
+    [
+     1.3,
+     560,
+     950,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "splash",
+     0.0
+    ],
+    [
+     "grab",
+     0.45
+    ]
+   ],
+   "hud_day": 40,
+   "prm": {}
+  },
+  {
+   "n": 14,
+   "segment": "food",
+   "weight": 0.8,
+   "kind": "underwater_turtle",
+   "action": "Below the hull a turtle swims up toward the boat",
+   "camera": "Underwater, looking up",
+   "cam": [
+    [
+     1.2,
+     540,
+     1100,
+     0
+    ],
+    [
+     1.0,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "zoom",
+   "sfx": [
+    [
+     "bubbles",
+     0.0
+    ]
+   ],
+   "hud_day": 40,
+   "prm": {}
+  },
+  {
+   "n": 15,
+   "segment": "food",
+   "weight": 0.8,
+   "kind": "bird_land",
+   "action": "A seabird lands on the rail; his hand shoots out",
+   "camera": "Medium, snap zoom on grab",
+   "cam": [
+    [
+     1.0,
+     540,
+     1050,
+     0
+    ],
+    [
+     1.35,
+     700,
+     1050,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "caw",
+     0.1
+    ],
+    [
+     "flap",
+     0.4
+    ],
+    [
+     "grab",
+     0.8
+    ]
+   ],
+   "hud_day": 40,
+   "prm": {}
+  },
+  {
+   "n": 16,
+   "segment": "food",
+   "weight": 0.8,
+   "kind": "rain_drink",
+   "action": "Face to the sky, he drinks the rain; the bucket fills",
+   "camera": "Medium low angle",
+   "cam": [
+    [
+     1.2,
+     600,
+     1150,
+     0
+    ],
+    [
+     1.0,
+     600,
+     1100,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "rain",
+     0.0
+    ]
+   ],
+   "hud_day": 40,
+   "prm": {}
+  },
+  {
+   "n": 17,
+   "segment": "loss",
+   "weight": 0.8,
+   "kind": "calendar_flip",
+   "action": "Calendar pages tear away: MONTH 4",
+   "camera": "Graphic, push-in",
+   "cam": [
+    [
+     1.0,
+     540,
+     800,
+     0
+    ],
+    [
+     1.2,
+     540,
+     800,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "flip",
+     0.0
+    ],
+    [
+     "flip",
+     0.25
+    ],
+    [
+     "flip",
+     0.5
+    ],
+    [
+     "boom",
+     0.8
+    ]
+   ],
+   "hud_day": null,
+   "prm": {}
+  },
+  {
+   "n": 18,
+   "segment": "loss",
+   "weight": 1.1,
+   "kind": "refuse_food",
+   "action": "Jos\u00e9 offers a fish; Ezequiel turns his head away",
+   "camera": "Two-shot, slow push",
+   "cam": [
+    [
+     1.0,
+     540,
+     1150,
+     0
+    ],
+    [
+     1.2,
+     600,
+     1130,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "heartbeat",
+     0.2
+    ]
+   ],
+   "hud_day": 120,
+   "prm": {}
+  },
+  {
+   "n": 19,
+   "segment": "loss",
+   "weight": 1.1,
+   "kind": "alone_night",
+   "action": "Night. One man left in the boat under the moon",
+   "camera": "Wide, pull back",
+   "cam": [
+    [
+     2.0,
+     540,
+     1080,
+     0
+    ],
+    [
+     1.0,
+     540,
+     1000,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "heartbeat",
+     0.0
+    ],
+    [
+     "low",
+     0.0
+    ]
+   ],
+   "hud_day": 120,
+   "prm": {}
+  },
+  {
+   "n": 20,
+   "segment": "loss",
+   "weight": 1.0,
+   "kind": "face_grief",
+   "action": "Close on Jos\u00e9; a tear runs down",
+   "camera": "ECU, slow push-in",
+   "cam": [
+    [
+     1.05,
+     540,
+     960,
+     0
+    ],
+    [
+     1.25,
+     540,
+     920,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "heartbeat",
+     0.1
+    ]
+   ],
+   "hud_day": null,
+   "prm": {}
+  },
+  {
+   "n": 21,
+   "segment": "alone",
+   "weight": 1.0,
+   "kind": "ship_pov",
+   "action": "POV: his arms wave at a ship on the horizon",
+   "camera": "POV from the boat",
+   "cam": [
+    [
+     1.0,
+     540,
+     1000,
+     0
+    ],
+    [
+     1.15,
+     640,
+     950,
+     0
+    ]
+   ],
+   "shake": 4,
+   "transition": "whip",
+   "sfx": [
+    [
+     "horn",
+     0.1
+    ],
+    [
+     "shout",
+     0.3
+    ]
+   ],
+   "hud_day": 300,
+   "prm": {}
+  },
+  {
+   "n": 22,
+   "segment": "alone",
+   "weight": 0.8,
+   "kind": "ship_gone",
+   "action": "The ship sails on; his arms drop",
+   "camera": "Wide side shot",
+   "cam": [
+    [
+     1.1,
+     500,
+     1000,
+     0
+    ],
+    [
+     1.0,
+     540,
+     1000,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "horn_far",
+     0.0
+    ]
+   ],
+   "hud_day": 300,
+   "prm": {}
+  },
+  {
+   "n": 23,
+   "segment": "alone",
+   "weight": 1.0,
+   "kind": "tally",
+   "action": "A knife scratches tally marks on the hull, faster and faster",
+   "camera": "Extreme close-up, tracking the knife",
+   "cam": [
+    [
+     1.2,
+     400,
+     500,
+     0
+    ],
+    [
+     1.0,
+     540,
+     700,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.05
+    ],
+    [
+     "scratch",
+     0.3
+    ],
+    [
+     "scratch",
+     0.55
+    ],
+    [
+     "scratch",
+     0.8
+    ]
+   ],
+   "hud_day": null,
+   "prm": {
+    "n0": 5,
+    "n1": 60
+   }
+  },
+  {
+   "n": 24,
+   "segment": "alone",
+   "weight": 1.0,
+   "kind": "moon_montage",
+   "action": "Moon phases race by; days and nights flicker",
+   "camera": "Wide time-lapse",
+   "cam": [
+    [
+     1.0,
+     540,
+     900,
+     0
+    ],
+    [
+     1.15,
+     540,
+     850,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "zoom",
+   "sfx": [
+    [
+     "tick",
+     0.0
+    ],
+    [
+     "riser",
+     0.5
+    ]
+   ],
+   "hud_day": 400,
+   "prm": {}
+  },
+  {
+   "n": 25,
+   "segment": "land",
+   "weight": 0.9,
+   "kind": "day438",
+   "action": "Day 438. He lifts his head toward the sunrise",
+   "camera": "Medium, push-in",
+   "cam": [
+    [
+     1.0,
+     540,
+     1050,
+     0
+    ],
+    [
+     1.35,
+     500,
+     980,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "boom",
+     0.0
+    ]
+   ],
+   "hud_day": 438,
+   "prm": {}
+  },
+  {
+   "n": 26,
+   "segment": "land",
+   "weight": 0.8,
+   "kind": "birds_flyby",
+   "action": "Birds sweep right past the camera",
+   "camera": "Wide, birds fill frame",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.1,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "caw",
+     0.1
+    ],
+    [
+     "flap",
+     0.3
+    ]
+   ],
+   "hud_day": 438,
+   "prm": {}
+  },
+  {
+   "n": 27,
+   "segment": "land",
+   "weight": 0.8,
+   "kind": "coconut",
+   "action": "A coconut bobs into frame: land is close",
+   "camera": "Close-up at waterline",
+   "cam": [
+    [
+     1.1,
+     540,
+     800,
+     0
+    ],
+    [
+     1.3,
+     540,
+     780,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "bloop",
+     0.4
+    ]
+   ],
+   "hud_day": 438,
+   "prm": {}
+  },
+  {
+   "n": 28,
+   "segment": "land",
+   "weight": 1.2,
+   "kind": "island_reveal",
+   "action": "Over his shoulder, an island rises; he punches the air",
+   "camera": "Over-the-shoulder, crane up",
+   "cam": [
+    [
+     1.3,
+     540,
+     1300,
+     0
+    ],
+    [
+     1.0,
+     540,
+     1000,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "riser",
+     0.0
+    ],
+    [
+     "hit",
+     0.7
+    ]
+   ],
+   "hud_day": 438,
+   "prm": {}
+  },
+  {
+   "n": 29,
+   "segment": "land",
+   "weight": 1.1,
+   "kind": "swim",
+   "action": "He dives in and swims for the shore",
+   "camera": "Half-underwater side tracking",
+   "cam": [
+    [
+     1.1,
+     400,
+     1100,
+     0
+    ],
+    [
+     1.1,
+     700,
+     1100,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "splash",
+     0.25
+    ],
+    [
+     "swim",
+     0.4
+    ],
+    [
+     "swim",
+     0.7
+    ]
+   ],
+   "hud_day": 438,
+   "prm": {}
+  },
+  {
+   "n": 30,
+   "segment": "land",
+   "weight": 1.3,
+   "kind": "map_route",
+   "action": "The route completes: 6,700 miles",
+   "camera": "Graphic, push-in",
+   "cam": [
+    [
+     1.0,
+     540,
+     1080,
+     0
+    ],
+    [
+     1.2,
+     540,
+     1080,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "zoom",
+   "sfx": [
+    [
+     "whoosh",
+     0.0
+    ],
+    [
+     "boom",
+     0.6
+    ]
+   ],
+   "hud_day": null,
+   "prm": {
+    "p0": 0.85,
+    "p1": 1.0
+   }
+  },
+  {
+   "n": 31,
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "beach_end",
+   "action": "Overhead: he lies on the sand as the surf washes in",
+   "camera": "Overhead, slow pull-up",
+   "cam": [
+    [
+     1.4,
+     560,
+     960,
+     0
+    ],
+    [
+     1.0,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "wave",
+     0.0
+    ],
+    [
+     "hit",
+     0.05
+    ]
+   ],
+   "hud_day": null,
+   "prm": {}
+  }
+ ]
+}

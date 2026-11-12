@@ -1,0 +1,8 @@
+models/
+**/build/
+*.mp4
+*.wav
+*.png
+__pycache__/
+.env
+secrets/
