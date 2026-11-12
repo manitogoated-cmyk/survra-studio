@@ -354,6 +354,6 @@ def run(ep_dir, mode='all', w=432, h=768, samples=8, part=None):
 
 if __name__ == '__main__':
     import faulthandler
-    faulthandler.dump_traceback_later(150, repeat=True)      # a stuck render shows where it is stuck
+    faulthandler.dump_traceback_later(900, repeat=True)      # a stuck render shows where it is stuck
     a = sys.argv
     run(a[1], a[2] if len(a) > 2 else 'all', part=(int(a[3]), int(a[4])) if len(a) > 4 else None)
