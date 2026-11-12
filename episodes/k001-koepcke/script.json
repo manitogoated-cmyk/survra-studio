@@ -1,0 +1,18 @@
+{
+  "id": "k001-koepcke",
+  "voice": "af_heart",
+  "speed": 1.14,
+  "gap": 0.12, "lead": 0.1, "tail": 0.9,
+  "segments": [
+    {"scene": "hook",   "mood": "hook",    "text": "This girl fell two miles out of the sky. And walked out of the jungle."},
+    {"scene": "gate",   "mood": "tense",   "text": "Christmas Eve, {1971|nineteen seventy-one}. Let's go."},
+    {"scene": "storm",  "mood": "action",  "text": "Flight {508|five oh eight} flies into a thunderstorm over Peru. Lightning hits. The plane breaks apart."},
+    {"scene": "fall",   "mood": "action",  "text": "{17-year-old|Seventeen year old} Juliane falls about {3,000|three thousand} meters, still strapped to her row of seats."},
+    {"scene": "wake",   "mood": "sad",     "text": "She wakes up alone on the forest floor. Broken collarbone. One eye swollen."},
+    {"scene": "advice", "mood": "wonder",  "text": "Then she remembers her father. A small stream leads to a bigger one, and bigger rivers lead to people."},
+    {"scene": "walk",   "mood": "tense",   "text": "So she follows the water. Wading, swimming, living on a bag of sweets from the wreck."},
+    {"scene": "hut",    "mood": "tense",   "text": "Day ten. A hut. Inside, fuel. She pours it on her infected wound."},
+    {"scene": "rescue", "mood": "triumph", "text": "The next day, workers find her. Of {92|ninety-two} people on board, she's the only survivor."},
+    {"scene": "end",    "mood": "end",     "text": "She grew up to run a research station in that same rainforest. That's the story. Stay curious."}
+  ]
+}

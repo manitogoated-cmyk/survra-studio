@@ -1,0 +1,1098 @@
+{
+ "id": "k001-koepcke",
+ "shots": [
+  {
+   "n": 1,
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "freefall_hook",
+   "action": "Juliane strapped in a spinning row of seats, falling through cloud",
+   "camera": "Tight, tumbling",
+   "cam": [
+    [
+     1.35,
+     540,
+     960,
+     -6
+    ],
+    [
+     1.15,
+     540,
+     960,
+     6
+    ]
+   ],
+   "shake": 10,
+   "transition": "cut",
+   "sfx": [
+    [
+     "boom",
+     0.03
+    ],
+    [
+     "wind",
+     0.0
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "canopy_rush",
+   "action": "The canopy rushes up at us, leaves exploding",
+   "camera": "POV dive",
+   "cam": [
+    [
+     1.0,
+     540,
+     900,
+     0
+    ],
+    [
+     1.4,
+     540,
+     1000,
+     0
+    ]
+   ],
+   "shake": 12,
+   "transition": "zoom",
+   "sfx": [
+    [
+     "crash",
+     0.8
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 2
+  },
+  {
+   "n": 3,
+   "segment": "hook",
+   "weight": 1.2,
+   "kind": "canopy_reveal",
+   "action": "Kesta on a giant branch above the canopy points down at a tiny figure by a silver stream",
+   "camera": "Wide crane down",
+   "cam": [
+    [
+     1.0,
+     540,
+     900,
+     0
+    ],
+    [
+     1.25,
+     480,
+     1250,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "wind",
+     0.0
+    ],
+    [
+     "birdcall",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 4,
+   "segment": "gate",
+   "weight": 1.0,
+   "kind": "flare_fire",
+   "action": "Night by the lighthouse: Kesta aims her flare skyward and fires",
+   "camera": "Low angle push-in",
+   "cam": [
+    [
+     1.0,
+     540,
+     1150,
+     0
+    ],
+    [
+     1.3,
+     560,
+     1050,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "flare",
+     0.75
+    ]
+   ],
+   "hud": "24 DEC 1971",
+   "prm": {}
+  },
+  {
+   "n": 5,
+   "segment": "gate",
+   "weight": 1.0,
+   "kind": "sky_kesta",
+   "action": "Flare-gate bursts open: Kesta stands on a storm cloud as the airliner roars past",
+   "camera": "Wide, tracking the plane",
+   "cam": [
+    [
+     1.05,
+     540,
+     1000,
+     0
+    ],
+    [
+     1.0,
+     560,
+     960,
+     0
+    ]
+   ],
+   "shake": 4,
+   "transition": "flare",
+   "sfx": [
+    [
+     "thunder",
+     0.55
+    ],
+    [
+     "engine_start",
+     0.1
+    ]
+   ],
+   "hud": "24 DEC 1971",
+   "prm": {}
+  },
+  {
+   "n": 6,
+   "segment": "storm",
+   "weight": 1.0,
+   "kind": "plane_storm",
+   "action": "The four-prop airliner pushes into a towering black cloud",
+   "camera": "Wide, slow push",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.2,
+     600,
+     1000,
+     0
+    ]
+   ],
+   "shake": 6,
+   "transition": "cut",
+   "sfx": [
+    [
+     "rain",
+     0.0
+    ],
+    [
+     "thunder",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 7,
+   "segment": "storm",
+   "weight": 1.0,
+   "kind": "strike",
+   "action": "Lightning slams into the wing; the frame flashes white",
+   "camera": "Medium, violent shake",
+   "cam": [
+    [
+     1.2,
+     540,
+     1000,
+     0
+    ],
+    [
+     1.1,
+     540,
+     980,
+     0
+    ]
+   ],
+   "shake": 14,
+   "transition": "cut",
+   "sfx": [
+    [
+     "thunder",
+     0.25
+    ],
+    [
+     "crash",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 8,
+   "segment": "storm",
+   "weight": 1.0,
+   "kind": "breakup",
+   "action": "The fuselage tears in two; debris spins outward",
+   "camera": "Wide, pull back",
+   "cam": [
+    [
+     1.4,
+     540,
+     1000,
+     0
+    ],
+    [
+     1.0,
+     540,
+     1080,
+     0
+    ]
+   ],
+   "shake": 18,
+   "transition": "flash",
+   "sfx": [
+    [
+     "crash",
+     0.05
+    ],
+    [
+     "whoosh",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 9,
+   "segment": "fall",
+   "weight": 1.0,
+   "kind": "seatrow_fall",
+   "action": "Juliane, still belted to her row of seats, spins through the clouds",
+   "camera": "Medium, rotating",
+   "cam": [
+    [
+     1.1,
+     540,
+     1000,
+     -8
+    ],
+    [
+     1.3,
+     540,
+     1000,
+     8
+    ]
+   ],
+   "shake": 6,
+   "transition": "whip",
+   "sfx": [
+    [
+     "wind",
+     0.0
+    ],
+    [
+     "whoosh",
+     0.5
+    ]
+   ],
+   "hud": "3,000 m",
+   "prm": {}
+  },
+  {
+   "n": 10,
+   "segment": "fall",
+   "weight": 1.0,
+   "kind": "kesta_falling",
+   "action": "Kesta free-falls alongside, goggles down, pointing at the seats",
+   "camera": "Two-shot, drifting",
+   "cam": [
+    [
+     1.0,
+     540,
+     1000,
+     0
+    ],
+    [
+     1.15,
+     560,
+     960,
+     0
+    ]
+   ],
+   "shake": 4,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.0
+    ]
+   ],
+   "hud": "3,000 m",
+   "prm": {}
+  },
+  {
+   "n": 11,
+   "segment": "fall",
+   "weight": 1.0,
+   "kind": "canopy_rush",
+   "action": "POV: the rainforest canopy rushes up and explodes in leaves",
+   "camera": "POV dive",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.3,
+     540,
+     1000,
+     0
+    ]
+   ],
+   "shake": 12,
+   "transition": "zoom",
+   "sfx": [
+    [
+     "riser",
+     0.0
+    ],
+    [
+     "crash",
+     0.85
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 12,
+   "segment": "wake",
+   "weight": 1.0,
+   "kind": "forest_wake",
+   "action": "Forest floor: she lies beside the wrecked seats, eyes opening",
+   "camera": "Wide, slow push",
+   "cam": [
+    [
+     1.0,
+     540,
+     1400,
+     0
+    ],
+    [
+     1.25,
+     600,
+     1480,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "jungle",
+     0.0
+    ],
+    [
+     "birdcall",
+     0.6
+    ]
+   ],
+   "hud": "DAY 1",
+   "prm": {}
+  },
+  {
+   "n": 13,
+   "segment": "wake",
+   "weight": 1.0,
+   "kind": "kesta_inspect",
+   "action": "Kesta crouches beside her; journal pops: broken collarbone, swollen eye",
+   "camera": "Medium, journal pop",
+   "cam": [
+    [
+     1.0,
+     540,
+     1050,
+     0
+    ],
+    [
+     1.08,
+     540,
+     1000,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "pop",
+     0.3
+    ]
+   ],
+   "hud": "DAY 1",
+   "prm": {}
+  },
+  {
+   "n": 14,
+   "segment": "wake",
+   "weight": 1.0,
+   "kind": "eye_close",
+   "action": "Close on Juliane: wincing, alone",
+   "camera": "ECU, push-in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.2,
+     540,
+     900,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "heartbeat",
+     0.1
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 15,
+   "segment": "advice",
+   "weight": 1.0,
+   "kind": "father_memory",
+   "action": "A warm memory bubble: her father points downstream; Kesta watches, amazed",
+   "camera": "Medium, bubble opens",
+   "cam": [
+    [
+     1.0,
+     540,
+     1050,
+     0
+    ],
+    [
+     1.12,
+     560,
+     950,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "zoom",
+   "sfx": [
+    [
+     "riser",
+     0.0
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 16,
+   "segment": "advice",
+   "weight": 1.0,
+   "kind": "stream_map",
+   "action": "Kesta's journal draws it: small stream, bigger stream, river, people",
+   "camera": "Insert, push-in",
+   "cam": [
+    [
+     1.0,
+     540,
+     900,
+     0
+    ],
+    [
+     1.12,
+     560,
+     950,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "pop",
+     0.2
+    ],
+    [
+     "pop",
+     0.5
+    ],
+    [
+     "pop",
+     0.8
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 17,
+   "segment": "advice",
+   "weight": 1.0,
+   "kind": "kesta_stream",
+   "action": "Kesta points down a real stream: this way",
+   "camera": "Low angle, push",
+   "cam": [
+    [
+     1.0,
+     540,
+     1400,
+     0
+    ],
+    [
+     1.2,
+     400,
+     1450,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "stream",
+     0.0
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 18,
+   "segment": "walk",
+   "weight": 1.0,
+   "kind": "wade",
+   "action": "Juliane wades knee-deep downstream; jungle slides by",
+   "camera": "Side tracking",
+   "cam": [
+    [
+     1.0,
+     540,
+     1500,
+     0
+    ],
+    [
+     1.15,
+     540,
+     1550,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "stream",
+     0.0
+    ],
+    [
+     "splash",
+     0.4
+    ]
+   ],
+   "hud": "DAY 3",
+   "prm": {}
+  },
+  {
+   "n": 19,
+   "segment": "walk",
+   "weight": 1.0,
+   "kind": "swim",
+   "action": "She swims a brown river while Kesta keeps pace on a log",
+   "camera": "Wide, water level",
+   "cam": [
+    [
+     1.0,
+     540,
+     1350,
+     0
+    ],
+    [
+     1.1,
+     520,
+     1380,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "swim",
+     0.2
+    ],
+    [
+     "swim",
+     0.6
+    ]
+   ],
+   "hud": "DAY 5",
+   "prm": {}
+  },
+  {
+   "n": 20,
+   "segment": "walk",
+   "weight": 0.8,
+   "kind": "sweets",
+   "action": "Insert: a paper bag of sweets in her hands",
+   "camera": "Insert, slow spin",
+   "cam": [
+    [
+     1.0,
+     540,
+     1000,
+     0
+    ],
+    [
+     1.15,
+     540,
+     1000,
+     3
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.3
+    ]
+   ],
+   "hud": "DAY 6",
+   "prm": {}
+  },
+  {
+   "n": 21,
+   "segment": "walk",
+   "weight": 1.0,
+   "kind": "kesta_bank",
+   "action": "Kesta walks the bank beside her, talking",
+   "camera": "Side tracking",
+   "cam": [
+    [
+     1.0,
+     540,
+     1500,
+     0
+    ],
+    [
+     1.1,
+     520,
+     1520,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "stream",
+     0.0
+    ]
+   ],
+   "hud": "DAY 8",
+   "prm": {}
+  },
+  {
+   "n": 22,
+   "segment": "walk",
+   "weight": 1.0,
+   "kind": "night",
+   "action": "Night rain, fireflies: Juliane curled against a tree; Kesta sits quiet",
+   "camera": "Wide, still with drift",
+   "cam": [
+    [
+     1.05,
+     540,
+     1350,
+     0
+    ],
+    [
+     1.15,
+     560,
+     1380,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "rain",
+     0.0
+    ]
+   ],
+   "hud": "DAY 9",
+   "prm": {}
+  },
+  {
+   "n": 23,
+   "segment": "hut",
+   "weight": 1.0,
+   "kind": "boat_found",
+   "action": "A canoe tied at the bank; a stilt hut behind it",
+   "camera": "Wide reveal",
+   "cam": [
+    [
+     1.3,
+     500,
+     1450,
+     0
+    ],
+    [
+     1.0,
+     540,
+     1250,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "creak",
+     0.3
+    ]
+   ],
+   "hud": "DAY 10",
+   "prm": {}
+  },
+  {
+   "n": 24,
+   "segment": "hut",
+   "weight": 1.0,
+   "kind": "kesta_hut",
+   "action": "Kesta gasps, then points at the hut",
+   "camera": "Medium, punch-in",
+   "cam": [
+    [
+     1.0,
+     540,
+     1350,
+     0
+    ],
+    [
+     1.2,
+     420,
+     1300,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "hit",
+     0.35
+    ]
+   ],
+   "hud": "DAY 10",
+   "prm": {}
+  },
+  {
+   "n": 25,
+   "segment": "hut",
+   "weight": 1.0,
+   "kind": "fuel",
+   "action": "Inside: a fuel can tips; she pours it on her wound",
+   "camera": "Medium, Dutch tilt",
+   "cam": [
+    [
+     1.0,
+     540,
+     1050,
+     -4
+    ],
+    [
+     1.15,
+     560,
+     1000,
+     3
+    ]
+   ],
+   "shake": 3,
+   "transition": "cut",
+   "sfx": [
+    [
+     "splash",
+     0.55
+    ],
+    [
+     "buzz",
+     0.0
+    ]
+   ],
+   "hud": "DAY 10",
+   "prm": {}
+  },
+  {
+   "n": 26,
+   "segment": "rescue",
+   "weight": 1.0,
+   "kind": "workers",
+   "action": "Two workers walk up and freeze, then reach out",
+   "camera": "Wide, punch-in on reaction",
+   "cam": [
+    [
+     1.0,
+     540,
+     1350,
+     0
+    ],
+    [
+     1.2,
+     700,
+     1300,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "gasp",
+     0.6
+    ]
+   ],
+   "hud": "DAY 11",
+   "prm": {}
+  },
+  {
+   "n": 27,
+   "segment": "rescue",
+   "weight": 1.0,
+   "kind": "boat_ride",
+   "action": "Sunset: the canoe carries her downriver to help",
+   "camera": "Wide tracking",
+   "cam": [
+    [
+     1.0,
+     540,
+     1300,
+     0
+    ],
+    [
+     1.15,
+     540,
+     1350,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "swim",
+     0.2
+    ],
+    [
+     "riser",
+     0.5
+    ]
+   ],
+   "hud": "DAY 11",
+   "prm": {}
+  },
+  {
+   "n": 28,
+   "segment": "rescue",
+   "weight": 1.0,
+   "kind": "ninety_two",
+   "action": "Journal: 92 dots fade until one is left glowing",
+   "camera": "Insert, slow push",
+   "cam": [
+    [
+     1.0,
+     540,
+     900,
+     0
+    ],
+    [
+     1.1,
+     540,
+     900,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.2
+    ],
+    [
+     "impact_num",
+     0.6
+    ]
+   ],
+   "hud": "1 OF 92",
+   "prm": {}
+  },
+  {
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "station",
+   "action": "Today: a research station in the same rainforest; Kesta walks in",
+   "camera": "Wide tracking",
+   "cam": [
+    [
+     1.0,
+     540,
+     1300,
+     0
+    ],
+    [
+     1.1,
+     420,
+     1380,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "birdcall",
+     0.2
+    ],
+    [
+     "jungle",
+     0.0
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 29
+  },
+  {
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "kesta_closeup",
+   "action": "Kesta close-up, smiling to camera",
+   "camera": "CU, gentle push",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     520,
+     940,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "pop",
+     0.1
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 30
+  },
+  {
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "station",
+   "action": "Kesta waves goodbye in front of the station",
+   "camera": "Medium, push-in",
+   "cam": [
+    [
+     1.2,
+     360,
+     1300,
+     0
+    ],
+    [
+     1.4,
+     330,
+     1260,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "birdcall",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 31
+  },
+  {
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "signoff",
+   "action": "Kesta fires the flare; SURVRA lights up the night",
+   "camera": "Low angle push",
+   "cam": [
+    [
+     1.0,
+     540,
+     1100,
+     0
+    ],
+    [
+     1.2,
+     540,
+     1000,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "flare",
+     0.65
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "brand": true,
+   "n": 32
+  }
+ ]
+}
