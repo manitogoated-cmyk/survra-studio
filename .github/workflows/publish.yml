@@ -95,27 +95,27 @@ jobs:
       - id: has
         env:
           EP: ${{ matrix.id }}
-        run: if [ -f "episodes/$EP/world3d.py" ]; then echo "3d=1" >> "$GITHUB_OUTPUT"; fi
-      - if: steps.has.outputs.3d == '1'
+        run: if [ -f "episodes/$EP/world3d.py" ]; then echo "is3d=1" >> "$GITHUB_OUTPUT"; fi
+      - if: steps.has.outputs.is3d == '1'
         run: sudo apt-get update -q && sudo apt-get install -y -q fonts-inter libegl1 libgl1 libfontconfig1 libxi6 libxxf86vm1 libxfixes3 libxrender1 libxkbcommon0 libsm6 libice6
-      - if: steps.has.outputs.3d == '1'
+      - if: steps.has.outputs.is3d == '1'
         uses: actions/setup-python@v5
         with:
           python-version: "3.13"
           cache: pip
-      - if: steps.has.outputs.3d == '1'
+      - if: steps.has.outputs.is3d == '1'
         run: pip install -r requirements.txt bpy==5.3.0
-      - if: steps.has.outputs.3d == '1'
+      - if: steps.has.outputs.is3d == '1'
         uses: actions/download-artifact@v4
         with:
           name: voice-${{ matrix.id }}
           path: episodes/${{ matrix.id }}/build
-      - if: steps.has.outputs.3d == '1'
+      - if: steps.has.outputs.is3d == '1'
         env:
           EP: ${{ matrix.id }}
           PART: ${{ matrix.part }}
         run: python3 engine4/kit3d.py "episodes/$EP" all "$PART" 6 2>&1 | grep -E "^3d |Error|Traceback|line " || true
-      - if: steps.has.outputs.3d == '1'
+      - if: steps.has.outputs.is3d == '1'
         uses: actions/upload-artifact@v4
         with:
           name: frames-${{ matrix.id }}-${{ matrix.part }}
