@@ -23,6 +23,8 @@ permissions:
 
 jobs:
   publish:
+    # Public repo: only the owner's copy may run (forks never get secrets anyway).
+    if: github.repository == 'manitogoated-cmyk/survra-studio'
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
