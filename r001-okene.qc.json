@@ -1,0 +1,32 @@
+{
+ "pass": true,
+ "fails": [],
+ "warnings": [],
+ "notes": [
+  "37 shots, mean 1.33s, longest 1.86s",
+  "motion: mean frame change 7.01, 81 hard cuts detected",
+  "audio: -15.3 LUFS, peak -1.8 dBFS, voice 11.3 dB over bed",
+  "host: acts in 14/37 shots (38%)",
+  "originality: closest match to any earlier episode 0.64 (shot 15 vs k001-koepcke)"
+ ],
+ "rules": {
+  "first_shot_max": 1.2,
+  "hook_impact_by": 1.0,
+  "shot_max": 2.0,
+  "shot_mean_max": 1.6,
+  "kind_max_uses": 2,
+  "static_window": 1.5,
+  "static_motion_min": 1.2,
+  "cut_diff": 28.0,
+  "first_second_motion_min": 2.0,
+  "repeat_corr": 0.97,
+  "repeat_pairs_max": 1,
+  "lufs": -14.0,
+  "lufs_tol": 1.5,
+  "tp_max": -1.0,
+  "voice_over_bed_db": 6.0,
+  "dead_air_s": 0.8,
+  "dead_air_db": -45.0
+ },
+ "format": "short"
+}
