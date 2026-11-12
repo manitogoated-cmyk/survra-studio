@@ -157,7 +157,7 @@ def banner(guides=False):
     end_x = xs[-1] + f.measureText(word[-1])
     streak = P(C(FLARE), 'stroke', 5, alpha=0.9); streak.setShader(skia.GradientShader.MakeLinear([(x0, 0), (end_x, 0)], [C(FLARE), C(EMBER, 0)]))
     cv.drawLine(x0, ty + 34, end_x, ty + 34, streak)
-    tag = 'INCREDIBLE TRUE STORIES  ·  ANIMATED'
+    tag = 'ANIMATED STORIES'
     f2 = skia.Font(TF_BOLD, 42); f2.setScaleX(1.0)
     tx = x0 + 6; cv.drawString(tag, tx, ty + 98, f2, P(C(AMBER)))
     grain(cv, BW, BH, 26000, 3, 0.05)
