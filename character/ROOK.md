@@ -24,8 +24,8 @@
 5. Sheds a feather when scared.
 6. Laughs with a short caw.
 
-## 2D style and silhouette
-Strictly 2D vector cut-out. Angular shapes, thin dark outline, flat colour with one shadow tone, light from the left. Silhouette: wide-brim hat, beak, long coat. About five heads tall.
+## 3D style and silhouette
+Since 2026-11-12 Rook is a 3D character (owner's decision: "make it 3d", free tools only). Faceted low-poly model built in Blender from code (`engine4/kit3d.py`, `rook_head` + `Rig(coat=True)`), flat shading, noir lighting with a warm key and an orange rim. Silhouette: wide-brim hat, beak, long belted coat, thin bird legs. The 2D model sheet stays as the design reference for proportions, palette and expressions.
 
 ## Face, eyes, brows
 Dark feathered head, amber almond eyes with small pupils, feather brows that tilt for emotion, steel-grey beak. Feather tufts at the back of the head in side view.
@@ -44,7 +44,7 @@ Dark feathered head, amber almond eyes with small pupils, feather brows that til
 | Outline | #1B1730 |
 
 ## Model sheet
-`character/rook_model_sheet.png`, generated from the rig in `concepts/v2.py` so it cannot drift: front, three-quarter, side and back views; 12 expressions; 5 beak shapes for lip sync (plus side view); poses for point, run, shrug, think, arms crossed, jump and hat pop; silhouette and profile-icon tests.
+`character/rook_model_sheet.png` (2D design reference, generated from `concepts/v2.py`): front, three-quarter, side and back views; 12 expressions; 5 beak shapes for lip sync (plus side view); poses for point, run, shrug, think, arms crossed, jump and hat pop; silhouette and profile-icon tests.
 
 ## Voice direction
 Low, dry, unhurried noir narrator who speeds up when the story does. Synthetic voice (Kokoro-82M, Apache-2.0); the exact voice is chosen by ear from two or three auditions in the showcase Short and then never changed. No imitation of any real person.
@@ -53,4 +53,4 @@ Low, dry, unhurried noir narrator who speeds up when the story does. Synthetic v
 Original character design. Font: Inter (OFL). Voice model: Kokoro-82M (Apache-2.0).
 
 ## Continuity rules
-Preserve the approved design unless the owner approves a change. Keep Rook strictly 2D. He takes part in every story: walks in, investigates, points, reacts. Every story gets a new world around him.
+Preserve the approved design unless the owner approves a change. Rook is rendered in 3D from the one rig in `engine4/kit3d.py` so he cannot drift. He takes part in every story: walks in, investigates, points, reacts. Every story gets a new world around him.
