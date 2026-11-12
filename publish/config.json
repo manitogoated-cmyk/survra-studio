@@ -1,6 +1,6 @@
 {
  "paused": false,
- "review_mode": true,
+ "review_mode": false,
  "timezone": "America/New_York",
  "short_slots_local": [
   "12:15",

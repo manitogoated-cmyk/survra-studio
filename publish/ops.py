@@ -1,6 +1,7 @@
 """Channel operations that need the YouTube API (run on GitHub Actions, where the secrets live).
 
   python3 publish/ops.py brand       upload brand/rook_banner_2560x1440.jpg + brand/rook_watermark_150.png to the Survra channel
+  python3 publish/ops.py release     make approved episodes that were uploaded privately for review public
   python3 publish/ops.py analytics   write ANALYTICS.md + plan/learnings.json from real channel numbers (weekly)
 """
 import datetime as dt
@@ -85,8 +86,39 @@ def analytics():
     return 0
 
 
+def release():
+    """Makes approved episodes that were uploaded privately for review public now. Never touches anything else."""
+    yt = YouTube()
+    channel(yt)
+    lp = os.path.join(ROOT, "publish", "ledger.json")
+    ledger = json.load(open(lp))
+    bad = 0
+    for ep, row in ledger.items():
+        ej = os.path.join(ROOT, "episodes", ep, "episode.json")
+        if not os.path.exists(ej) or json.load(open(ej)).get("status") != "approved":
+            continue
+        if row.get("privacy") == "public" or not row.get("video_id"):
+            continue
+        try:
+            st = yt.set_privacy(row["video_id"], "public")
+        except AuthExpired:
+            raise
+        except Exception as ex:
+            print(ep, "release failed:", str(ex)[:400]); row["release_error"] = str(ex)[:300]; bad += 1
+            continue
+        row.update(privacy=st.get("privacyStatus"), review=False, upload_status=st.get("uploadStatus"),
+                   released_at=dt.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"))
+        row.pop("release_error", None)
+        print(ep, row["url"], "->", st.get("privacyStatus"), "| uploadStatus", st.get("uploadStatus"),
+              "| rejection", st.get("rejectionReason"), "| failure", st.get("failureReason"))
+        if st.get("privacyStatus") != "public":
+            bad += 1
+    json.dump(ledger, open(lp, "w"), indent=2, sort_keys=True)
+    return 1 if bad else 0
+
+
 if __name__ == "__main__":
     try:
-        sys.exit(dict(brand=brand, analytics=analytics)[sys.argv[1]]())
+        sys.exit(dict(brand=brand, analytics=analytics, release=release)[sys.argv[1]]())
     except AuthExpired as ex:
         print("AUTH EXPIRED:", ex); sys.exit(2)

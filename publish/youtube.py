@@ -166,6 +166,19 @@ class YouTube:
             raise RuntimeError(f"thumbnail -> {r.status_code}: {r.text[:300]}")
         return r.json()
 
+    def set_privacy(self, vid, privacy, publish_at=None):
+        """Changes an uploaded video's visibility (or schedules it) and returns the status YouTube reports afterwards."""
+        cur = self.video_status(vid)
+        if not cur:
+            raise RuntimeError(f"video {vid} not found on this channel")
+        st = cur["status"]
+        body = dict(privacyStatus=privacy, selfDeclaredMadeForKids=st.get("selfDeclaredMadeForKids", False),
+                    embeddable=st.get("embeddable", True), license=st.get("license", "youtube"))
+        if publish_at:
+            body["privacyStatus"], body["publishAt"] = "private", publish_at
+        self._req("PUT", f"{API}/videos", params=dict(part="status"), json=dict(id=vid, status=body))
+        return self.video_status(vid)["status"]
+
     # ---- channel branding -----------------------------------------------------
     def set_banner(self, path):
         """Uploads a channel banner (2560x1440, <= 6 MB) and applies it, keeping every other branding setting."""
