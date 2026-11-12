@@ -11,7 +11,7 @@ No outcome here is guaranteed: nobody can promise views, virality or income. Thi
 
 ## Capacity (free tiers only)
 - Rendering: GitHub Actions on a public repository, no minutes charge. One Short uses 6 frame jobs of 8 to 15 minutes; 20 jobs can run at once, so three Shorts fit in one run.
-- YouTube Data API: the default daily quota covers roughly six uploads a day; `videos.insert` has its own 100-a-day limit.
+- YouTube Data API: uploads have their own limit of 100 a day, far above this plan; the other calls (thumbnail, playlist, status) are a small part of the default daily quota.
 - Authoring: one scheduled Claude session per night (the "Survra daily case" scheduled task).
 
 ## Monetization milestones (YouTube Partner Program)
