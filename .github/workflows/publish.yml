@@ -37,7 +37,7 @@ jobs:
 
       - name: System packages
         if: steps.pause.outputs.paused != 'true'
-        run: sudo apt-get update -q && sudo apt-get install -y -q ffmpeg fonts-inter
+        run: sudo apt-get update -q && sudo apt-get install -y -q ffmpeg fonts-inter libegl1 libgl1 libfontconfig1
 
       - uses: actions/setup-python@v5
         if: steps.pause.outputs.paused != 'true'
