@@ -133,7 +133,10 @@ def eye(cv, x, y, rx, ry, E, st, side):
         lt = max(lt, st.get('min_lid', 0))
     lb = E.get('lb', 0)
     lx, ly = E.get('look', (0, 0))
-    path = ovalpath(x, y, rx, ry)
+    if st.get('almond'):
+        path = smooth([(x + side * a * rx, y + b * ry) for a, b in [(-1, 0.3), (-0.45, -0.75), (0.5, -0.95), (1, -0.5), (0.6, 0.75), (-0.4, 0.9)]])
+    else:
+        path = ovalpath(x, y, rx, ry)
     cv.save()
     cv.clipPath(path, True)
     if dot:
@@ -164,6 +167,8 @@ def eye(cv, x, y, rx, ry, E, st, side):
 
 
 def mouth(cv, x, y, w, kind, st):
+    if kind == 'none':
+        return
     line = st.get('line', INK)
     ow = st['fow']
     inside = st.get('mouth_in', 0xFF7A1F2B)
@@ -229,6 +234,8 @@ def face(cv, x, y, E, st, fx=0.0, near=(1.0, 1.0)):
         for s_ in (-1, 1):
             oval(cv, x + s_ * (dx + rx * 0.3), y + ry + 1.2, rx * 0.7, ry * 0.28, 0x66FF5C7A, ow=0)
     for s_, k in ((-1, near[0]), (1, near[1])):
+        if k < 0.05:
+            continue
         eye(cv, x + s_ * dx * (0.5 + 0.5 * k), y, rx * k, ry, E, st, s_)
         if st.get('brow', True):
             bx = x + s_ * dx * (0.5 + 0.5 * k)

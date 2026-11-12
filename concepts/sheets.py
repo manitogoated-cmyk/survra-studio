@@ -2,9 +2,13 @@
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import skia
-from concepts.chars import CHARS, INFO, EX, FX, INK, draw, P
+import importlib
+from concepts.chars import EX, FX, INK, P
+M = importlib.import_module(os.environ.get('CONCEPTS', 'concepts.chars'))
+CHARS, INFO, draw = M.CHARS, M.INFO, M.draw
+SC = getattr(M, 'SCALES', dict(turn=4.85, pose=2.7, line=5.0, sil=4.6, tag='')) 
 
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'out')
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'out' + SC['tag'])
 BG = 0xFFFBF6EC
 SAMP = skia.SamplingOptions(skia.FilterMode.kLinear, skia.MipmapMode.kLinear)
 
@@ -32,7 +36,7 @@ def sheet(name):
     surf = skia.Surface(W, H); cv = surf.getCanvas(); cv.clear(BG)
     cv.drawRect(skia.Rect.MakeWH(W, 112), P(INK))
     text(cv, info['name'], 50, 84, 78, 0xFFFFB000, 900)
-    text(cv, info['tag'], 60 + len(info['name']) * 58, 78, 36, 0xFFFFFFFF, 500)
+    text(cv, info['tag'], 90 + len(info['name']) * 60, 78, 36, 0xFFFFFFFF, 500)
     for i, c in enumerate(info['palette']):
         cv.drawRoundRect(skia.Rect.MakeXYWH(W - 470 + i * 84, 24, 68, 64), 12, 12, P(c))
         cv.drawRoundRect(skia.Rect.MakeXYWH(W - 470 + i * 84, 24, 68, 64), 12, 12, P(0xFFFFFFFF, 3))
@@ -40,11 +44,11 @@ def sheet(name):
     for i, v in enumerate(('front', 'side', 'back')):
         x = 250 + i * 420
         cv.drawOval(skia.Rect.MakeXYWH(x - 120, 716, 240, 26), P(0x1F000000))
-        draw(name, cv, x, 730, 4.85, v, 'happy' if v != 'side' else 'curious')
+        draw(name, cv, x, 730, SC['turn'], v, 'happy' if v != 'side' else 'curious')
         text(cv, v.upper(), x, 780, 24, center=True)
     text(cv, 'SILHOUETTE TEST', 1420, 160, 24, 0xFF8A8296)
-    silhouette(cv, name, 1560, 730, 4.6)
-    silhouette(cv, name, 1790, 730, 2.3, 'side')
+    silhouette(cv, name, 1560, 730, SC['sil'])
+    silhouette(cv, name, 1800, 730, SC['sil'] / 2, 'side')
     text(cv, 'PROFILE-ICON TEST', 1960, 160, 24, 0xFF8A8296)
     im = icon(name)
     for sz, x, y in ((240, 1960, 190), (96, 2240, 190), (48, 2240, 320), (32, 2240, 392)):
@@ -58,7 +62,7 @@ def sheet(name):
     cv.drawImageRect(im, skia.Rect.MakeXYWH(1976, 619, 48, 48), SAMP)
     text(cv, 'Survra', 2040, 638, 22, INK, 700); text(cv, 'subscribed', 2040, 666, 19, 0xFF777777, 500)
     text(cv, 'EXPRESSIONS', 50, 846, 24, 0xFF8A8296)
-    hx, hy, hh = info['head']; s = 168 / hh
+    hx, hy, hh = info['head']; s = 168 / info.get('face', hh)
     for i, e in enumerate(EX):
         x0 = 44 + i * 194
         box = skia.Rect.MakeXYWH(x0, 866, 182, 214)
@@ -67,25 +71,26 @@ def sheet(name):
         cv.restore(); cv.drawRoundRect(box, 18, 18, P(0x22000000, 2))
         text(cv, e, x0 + 91, 1108, 22, center=True, w=700)
     text(cv, 'POSES & MOVEMENT', 50, 1176, 24, 0xFF8A8296)
-    pe = {'cheer': 'laugh', 'point': 'curious', 'run': 'scared', 'shrug': 'deadpan', 'think': 'thinking', 'rocket': 'awe', 'puddle': 'scared', 'ball': 'scared'}
+    pe = {'cheer': 'laugh', 'point': 'curious', 'run': 'scared', 'shrug': 'deadpan', 'think': 'thinking', 'rocket': 'awe', 'puddle': 'scared', 'ball': 'scared', 'cross': 'smirk', 'hype': 'laugh'}
     for i, pz in enumerate(info['special']):
         x = 260 + i * 460
         cv.drawOval(skia.Rect.MakeXYWH(x - 90, 1496, 180, 20), P(0x1F000000))
-        draw(name, cv, x, 1506, 2.7, 'front', pe[pz], pz)
+        draw(name, cv, x, 1506, SC['pose'], 'front', pe[pz], pz)
         text(cv, pz, x + 150, 1500, 22, 0xFF8A8296, 700, center=True)
     os.makedirs(OUT, exist_ok=True); p = os.path.join(OUT, f'{name}_sheet.png'); surf.makeImageSnapshot().save(p, skia.kPNG); return p
 
 def lineup():
     W, H = 2400, 1150
     surf = skia.Surface(W, H); cv = surf.getCanvas(); cv.clear(BG)
-    text(cv, 'SURVRA HOST: FIVE CONCEPTS', 50, 70, 46, INK, 900)
+    text(cv, 'SURVRA HOST: ROUND 2' if SC['tag'] else 'SURVRA HOST: FIVE CONCEPTS', 50, 70, 46, INK, 900)
     for i, n in enumerate(CHARS):
         x = 250 + i * 475
         cv.drawOval(skia.Rect.MakeXYWH(x - 120, 646, 240, 26), P(0x1F000000))
-        draw(n, cv, x, 660, 5.0, 'front', ['happy', 'smirk', 'deadpan', 'awe', 'curious'][i])
+        ex_, pz_ = getattr(M, 'LINEUP', [('happy', 'stand'), ('smirk', 'stand'), ('deadpan', 'stand'), ('awe', 'stand'), ('curious', 'stand')])[i]
+        draw(n, cv, x, 660, SC['line'], 'front', ex_, pz_)
         text(cv, INFO[n]['name'], x, 740, 44, INK, 900, center=True)
         text(cv, INFO[n]['tag'], x, 778, 20, 0xFF6A6478, 600, center=True)
-        silhouette(cv, n, x - 90, 1090, 2.4)
+        silhouette(cv, n, x - 90, 1090, SC['line'] * 0.48)
         im = icon(n)
         cv.drawImageRect(im, skia.Rect.MakeXYWH(x + 10, 880, 120, 120), SAMP)
         cv.drawImageRect(im, skia.Rect.MakeXYWH(x + 150, 950, 48, 48), SAMP)
