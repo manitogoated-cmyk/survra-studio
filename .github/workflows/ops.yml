@@ -1,0 +1,42 @@
+name: Survra channel ops
+
+on:
+  schedule:
+    - cron: "41 11 * * 1"        # weekly analytics report, Mondays 11:41 UTC
+  workflow_dispatch:
+    inputs:
+      task:
+        description: "analytics or brand"
+        type: choice
+        options: [analytics, brand]
+        default: analytics
+
+concurrency:
+  group: survra-ops
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  ops:
+    if: github.repository == 'manitogoated-cmyk/survra-studio'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install requests
+      - env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          TASK: ${{ inputs.task || 'analytics' }}
+        run: python3 publish/ops.py "$TASK"
+      - name: Save the report
+        run: |
+          git config user.name "survra-bot"; git config user.email "survra-bot@users.noreply.github.com"
+          git add ANALYTICS.md plan/learnings.json 2>/dev/null || true
+          git diff --cached --quiet || (git commit -m "analytics: weekly report" && git pull --rebase -q && git push)

@@ -166,6 +166,52 @@ class YouTube:
             raise RuntimeError(f"thumbnail -> {r.status_code}: {r.text[:300]}")
         return r.json()
 
+    # ---- channel branding -----------------------------------------------------
+    def set_banner(self, path):
+        """Uploads a channel banner (2560x1440, <= 6 MB) and applies it, keeping every other branding setting."""
+        with open(path, "rb") as f:
+            r = self.s.post("https://www.googleapis.com/upload/youtube/v3/channelBanners/insert", params=dict(uploadType="media"),
+                            headers=self._h({"Content-Type": "image/jpeg" if path.lower().endswith((".jpg", ".jpeg")) else "image/png"}),
+                            data=f.read(), timeout=180)
+        if r.status_code >= 400:
+            raise RuntimeError(f"banner upload -> {r.status_code}: {r.text[:300]}")
+        url = r.json()["url"]
+        ch = self._req("GET", f"{API}/channels", params=dict(part="brandingSettings", mine="true"))["items"][0]
+        bs = ch.get("brandingSettings", {})
+        bs.setdefault("image", {})["bannerExternalUrl"] = url
+        return self._req("PUT", f"{API}/channels", params=dict(part="brandingSettings"), json=dict(id=ch["id"], brandingSettings=bs))
+
+    def set_watermark(self, path, channel_id):
+        """Video watermark (150x150 PNG) shown for the whole video."""
+        import json as _j
+        meta = dict(timing=dict(type="offsetFromStart", offsetMs=0), position=dict(type="corner", cornerPosition="bottomRight"))
+        with open(path, "rb") as f:
+            img = f.read()
+        b = "survra-wm"
+        body = (f"--{b}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n{_j.dumps(meta)}\r\n--{b}\r\nContent-Type: image/png\r\n\r\n").encode() + img + f"\r\n--{b}--\r\n".encode()
+        r = self.s.post("https://www.googleapis.com/upload/youtube/v3/watermarks/set", params=dict(channelId=channel_id, uploadType="multipart"),
+                        headers=self._h({"Content-Type": f"multipart/related; boundary={b}"}), data=body, timeout=120)
+        if r.status_code >= 400:
+            raise RuntimeError(f"watermark -> {r.status_code}: {r.text[:300]}")
+        return True
+
+    # ---- analytics ------------------------------------------------------------
+    def video_stats(self, ids):
+        out = {}
+        for i in range(0, len(ids), 50):
+            j = self._req("GET", f"{API}/videos", params=dict(part="statistics,status,contentDetails", id=",".join(ids[i:i + 50])))
+            for it in j.get("items", []):
+                out[it["id"]] = dict(privacy=it["status"]["privacyStatus"], **{k: int(v) for k, v in it.get("statistics", {}).items()})
+        return out
+
+    def analytics(self, start, end):
+        """Per-video retention and reach from the YouTube Analytics API (needs that API enabled in the Cloud project)."""
+        j = self._req("GET", "https://youtubeanalytics.googleapis.com/v2/reports", tries=2, params=dict(
+            ids="channel==MINE", startDate=start, endDate=end, dimensions="video", sort="-views", maxResults=100,
+            metrics="views,estimatedMinutesWatched,averageViewDuration,averageViewPercentage,subscribersGained,likes,comments,shares"))
+        cols = [c["name"] for c in j.get("columnHeaders", [])]
+        return {r[0]: dict(zip(cols[1:], r[1:])) for r in j.get("rows", [])}
+
     # ---- packaging ----------------------------------------------------------
     def upload_captions(self, vid, srt_path, lang="en", name="English"):
         """Uploads an SRT track. Needs the youtube.force-ssl scope; callers treat failure as non-fatal
