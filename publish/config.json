@@ -1,0 +1,10 @@
+{
+  "paused": false,
+  "review_mode": true,
+  "timezone": "America/New_York",
+  "short_slots_local": ["11:30", "16:30", "20:30"],
+  "long_slots_local": {"Tue": "15:00", "Sat": "12:00"},
+  "max_uploads_per_run": 4,
+  "category_id": 1,
+  "channel_id": "UC3Muz7ZHeeYDYTRt9riw6CA"
+}

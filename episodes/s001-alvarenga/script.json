@@ -1,0 +1,57 @@
+{
+  "id": "short-001-alvarenga",
+  "title": "He Drifted 438 Days Across the Pacific",
+  "voice": "am_michael",
+  "speed": 1.18,
+  "sources": [
+    "https://en.wikipedia.org/wiki/Jos%C3%A9_Salvador_Alvarenga",
+    "https://www.factinate.com/people/jose-salvador-alvarenga-survived-ocean",
+    "https://blog.geogarage.com/2015/11/lost-at-sea-man-who-vanished-for-14.html",
+    "https://www.rd.com/?p=198521"
+  ],
+  "segments": [
+    {
+      "scene": "hook",
+      "day": 438,
+      "text": "This man drifted {438|four hundred thirty-eight} days across the Pacific. And he lived."
+    },
+    {
+      "scene": "depart",
+      "day": 1,
+      "text": "November {2012|twenty twelve}. José heads out to fish off Mexico. A {30-hour|thirty-hour} trip."
+    },
+    {
+      "scene": "storm",
+      "day": 2,
+      "text": "Day two. A storm kills the engine. The current drags them out to sea."
+    },
+    {
+      "scene": "food",
+      "day": 40,
+      "text": "They eat raw fish. Turtles. Seabirds. They drink the rain."
+    },
+    {
+      "scene": "loss",
+      "day": 120,
+      "text": "{Month 4.|Month four.} His crewmate, Ezequiel, stops eating. Now José is alone."
+    },
+    {
+      "scene": "alone",
+      "day": 300,
+      "text": "Ships pass by. None of them stop. He counts the days by the moon."
+    },
+    {
+      "scene": "land",
+      "day": 438,
+      "text": "Day {438|four hundred thirty-eight}. Birds. Coconuts. Land. {6,700|Six thousand seven hundred} miles from home."
+    },
+    {
+      "scene": "end",
+      "day": 438,
+      "text": "Would you have made it?"
+    }
+  ],
+  "gap": 0.1,
+  "lead": 0.12,
+  "tail": 0.9
+}
