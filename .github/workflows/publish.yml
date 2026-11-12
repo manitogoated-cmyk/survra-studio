@@ -125,7 +125,9 @@ jobs:
         if: steps.up.outputs.code == '2'
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh issue create --title "Survra: YouTube authorization expired" --body "The upload token for the Survra channel expired or was revoked. Nothing was uploaded. Ask Claude to re-authorize the Survra account and update the YT_REFRESH_TOKEN secret."
+        run: |
+          gh issue create --title "Survra: YouTube authorization expired" \
+            --body "The upload token for the Survra channel expired or was revoked. Nothing was uploaded. Ask Claude to re-authorize the Survra account and update the YT_REFRESH_TOKEN secret."
       - name: Fail the run on errors
         if: (steps.up.outputs.code != '0' && steps.up.outputs.code != '') || needs.render.result == 'failure'
         run: exit 1
