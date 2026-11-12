@@ -36,7 +36,7 @@ def fsh(cv, path, fill, shade, ow=OW, k=0.32):
 def humanoid(cv, v, pose, C, head, back_fn=None, torso_fn=None, coat=None, over_fn=None):
     p = POSES[pose]
     side, back = v == 'side', v == 'back'
-    w = 0.62 if side else 1.0
+    w = 0.62 if side else (0.86 if v == 'tq' else 1.0)
     cv.translate(0, p['lift'])
     cv.rotate(p['tilt'])
     sh = [(-13.5 * w, -77), (13.5 * w, -77)]
@@ -249,6 +249,9 @@ def mort(cv, v, en, pose):
 
 
 # =================================================================== 3. ROOK - the crow in the long coat
+BEAK_OPEN = [None]   # lip-sync override: beak opening in units
+
+
 def rook(cv, v, en, pose):
     FEA, FEA2, BEAK, BEAK2, HAT, ORANGE = 0xFF2A2742, 0xFF1C1A2E, 0xFF7A8096, 0xFF565B6E, 0xFF34303B, 0xFFFF7A1A
     C = dict(pants=0xFF2B2834, pants_sh=0xFF1F1D27, boot=0xFF191720, boot_sh=0xFF100F16, top=0xFF566178, top_sh=0xFF404A5E,
@@ -257,7 +260,7 @@ def rook(cv, v, en, pose):
     E = EX[en]
 
     def tail(cv, v, p):
-        if back or side:
+        if back:
             for k in (-1, 0, 1):
                 bx = (-9 if side else 0) + k * 3.2
                 fs(cv, poly([(bx - 2, -30), (bx + 2, -30), (bx + 1.6 + k, -13), (bx - 1.6 + k, -13)]), FEA2, OW)
@@ -282,6 +285,9 @@ def rook(cv, v, en, pose):
                 fs(cv, poly([(-8, -96 + k * 3.4), (-13.5, -94 + k * 3.6), (-8, -92.4 + k * 3.4)]), FEA2, OW)
         fsh(cv, hd, FEA, FEA2)
         opn = {'laugh': 3.0, 'gasp': 3.4, 'grin': 1.4, 'o': 1.6, 'teeth': 1.0}.get(E['m'], 0)
+        if BEAK_OPEN[0] is not None:
+            opn = BEAK_OPEN[0]
+        tq = v == 'tq'
         if side:
             if opn:
                 fs(cv, poly([(7, -87.5), (19, -86.5 + opn * 0.7), (7.5, -84.5 + opn * 0.4)]), 0xFF8E2A3A, OW)
@@ -290,13 +296,23 @@ def rook(cv, v, en, pose):
             face(cv, 3.4, -93.6, dict(E, m='none', ps=E.get('ps', 1) * 0.75), st, near=(0, 1))
         elif not back:
             st = dict(dx=4.6, rx=3.0, ry=2.7, white=0xFFFFB000, pupil=INK, lid=FEA, fow=0.7, my=40, mw=1, browc=0xFF6E69A0, almond=True, min_lid=0.12)
-            face(cv, 0, -93.4, dict(E, m='none', ps=E.get('ps', 1) * 0.75), st)
-            if opn:
-                fs(cv, poly([(-2, -85), (2, -85), (0, -80.5 + opn)]), 0xFF8E2A3A, OW)
-            fsh(cv, poly([(-3.4, -91.4), (3.4, -91.4), (1.3, -83.2), (0, -81.2), (-1.3, -83.2)]), BEAK, BEAK2, k=0.45)
+            face(cv, 2.0 if tq else 0, -93.4, dict(E, m='none', ps=E.get('ps', 1) * 0.75), st, near=(0.78, 1.0) if tq else (1, 1))
+            if tq:
+                if opn:
+                    fs(cv, poly([(2.4, -86.4), (8.4, -84.6 + opn * 0.5), (7.2, -80.6 + opn), (3.2, -83.2)]), 0xFF8E2A3A, OW)
+                fsh(cv, poly([(-0.6, -91.6), (5.6, -91.2), (9.4, -84.6), (8.0, -82.6), (2.6, -85.4)]), BEAK, BEAK2, k=0.4)
+            else:
+                if opn:
+                    fs(cv, poly([(-2, -85), (2, -85), (0, -80.5 + opn)]), 0xFF8E2A3A, OW)
+                fsh(cv, poly([(-3.4, -91.4), (3.4, -91.4), (1.3, -83.2), (0, -81.2), (-1.3, -83.2)]), BEAK, BEAK2, k=0.45)
+        hat = {'shocked': (-4.2, -9), 'scared': (-3.2, 7), 'awe': (-3.0, -5), 'deadpan': (0.9, 0), 'smirk': (0.6, 4), 'angry': (0.9, 0), 'laugh': (-1.2, -6)}.get(en, (0, 0))
+        cv.save()
+        cv.translate(0, hat[0])
+        cv.rotate(hat[1], 0, -99)
         fsh(cv, poly([(-18, -99.6), (18, -99.6), (15, -97.2), (-15, -97.2)]), HAT, 0xFF24212A)
         fsh(cv, poly([(-9, -99.6), (-7.6, -109), (-2, -110.4), (7.6, -109), (9, -99.6)]), HAT, 0xFF24212A)
         fs(cv, poly([(-8.9, -102.4), (8.9, -102.4), (9, -99.8), (-9, -99.8)]), ORANGE, 0.5)
+        cv.restore()
     humanoid(cv, v, pose, C, head, tail, torso, coat=-25)
 
 
