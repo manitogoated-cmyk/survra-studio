@@ -91,7 +91,7 @@ def next_slot(cfg, ledger, fmt, now_=None):
 def description(e):
     d = e.get("description", "").strip()
     if e.get("sources"): d += "\n\nSources:\n" + "\n".join("- " + s for s in e["sources"])
-    d += "\n\nOriginal 2D animation by Survra. Narration is a synthetic voice; the story is researched from the sources above."
+    d += "\n\nOriginal 3D animation by Survra. Narration is a synthetic voice; the story is researched from the sources above."
     if e.get("hashtags"): d += "\n\n" + " ".join(e["hashtags"][:5])
     return d
 

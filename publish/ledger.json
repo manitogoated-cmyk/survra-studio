@@ -1,7 +1,8 @@
 {
-  "r001-okene": {
+  "r001-okene-2d": {
     "captions": "failed: captions -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"I",
     "format": "short",
+    "note": "2D version, superseded by the 3D remake; left private",
     "playlist": "Rook's Case Files (Shorts)",
     "privacy": "private",
     "publish_at": null,

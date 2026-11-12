@@ -1,7 +1,7 @@
-"""Quality gate for Kesta episodes. Wraps the pacing/motion/audio gate (engine2/qc.py) and adds:
+"""Quality gate for Survra episodes. Wraps the pacing/motion/audio gate (engine2/qc.py) and adds:
 
   * Format rules: Shorts 9:16 <= 60 s with fast pacing; long-form 16:9 with long-form pacing.
-  * Host rule: Kesta must physically appear and act in at least 35% of shots (not a corner talking head).
+  * Host rule: Rook must physically appear and act in at least 35% of shots (not a corner talking head).
   * Originality rule: every shot's frame fingerprint is compared against ALL previous episodes;
     near-identical shots (correlation >= 0.93) fail, so no scene or footage is ever recycled.
     Shots flagged "brand": true in the storyboard (e.g. the sign-off) are exempt.
@@ -61,7 +61,10 @@ def run(ep_dir, video):
         fails.append(f"Short runs {E['duration']:.1f}s (max 60s for our Shorts format)")
     # host presence: Kesta must act in the scene
     scenes = load_scenes(ep_dir)
-    host = [s for s in E['shots'] if any(k in inspect.getsource(scenes.SHOTS[s['kind']]) for k in ('c.host(', 'c.kesta(', 'rook_bowl('))]
+    from engine3.render3 import manifest3d
+    h3 = set(manifest3d(build)['host'])
+    host = [s for s in E['shots'] if s['kind'] in h3 or (s['kind'] in scenes.SHOTS and any(
+        k in inspect.getsource(scenes.SHOTS[s['kind']]) for k in ('c.host(', 'c.kesta(', 'rook_bowl(')))]
     share = len(host) / len(E['shots'])
     notes.append(f'host: acts in {len(host)}/{len(E["shots"])} shots ({share:.0%})')
     if share < 0.35:

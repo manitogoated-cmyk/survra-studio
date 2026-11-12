@@ -726,7 +726,8 @@
    ],
    "hud": null,
    "prm": {
-    "expr": "deadpan"
+    "expr": "deadpan",
+    "sea": 1
    }
   },
   {

@@ -1,11 +1,13 @@
-"""Episode renderer: storyboard + per-episode scenes.py + Kesta acting/lip-sync -> video.
+"""Episode renderer: storyboard + the episode's 3D frames (engine4/kit3d.py, world3d.py) + 2D inserts/overlays
+(scenes.py) + captions, HUD, transitions -> video.
 
 episodes/<id>/
   episode.json     format short|long, ...
   script.json      narration (Kesta's lines) with segment 'scene' and 'mood'
   storyboard.json  shots: {n, segment, weight, kind, action, camera, cam:[[z,fx,fy,rot],[..]], shake,
                            transition: cut|whip|zoom|flash|flare, sfx:[[name,frac]], hud, prm}
-  scenes.py        THIS story's world: SHOTS = {kind: f(cv, ctx)} drawn in world coordinates (W x H)
+  world3d.py       THIS story's 3D world: SHOTS3D = {kind: f(S, k, t, lt)}; frames land in build/3d/<n>_<frame>.jpg
+  scenes.py        flat inserts SHOTS = {kind: f(cv, ctx)} and OVER = {kind: f(cv, ctx)} overlays for 3D shots
 """
 import importlib.util
 import json
@@ -170,6 +172,55 @@ def camera(cv, sh, t, impacts, W, H):
     return lt
 
 
+_F3 = {}
+
+
+def manifest3d(build):
+    p = os.path.join(build, '3d', 'manifest.json')
+    return json.load(open(p)) if os.path.exists(p) else dict(fps=15, kinds=[], host=[])
+
+
+def frame3d(build, sh, t, fps3):
+    """The rendered 3D frame for time t of this shot (held on twos); nearest existing one while a render is partial."""
+    i0, i1 = int(math.floor(sh['a'] * fps3)), int(math.ceil(sh['b'] * fps3))
+    i = max(i0, min(i1 - 1, int(t * fps3 + 1e-6)))
+    for j in sorted(range(i0, i1), key=lambda x: abs(x - i)):
+        p = os.path.join(build, '3d', f"{sh['n']:02d}_{j:05d}.jpg")
+        if _F3.get('p') == p:
+            return _F3['img']
+        if os.path.exists(p):
+            _F3['p'], _F3['img'] = p, skia.Image.open(p)
+            return _F3['img']
+    return None
+
+
+def camera3d(cv, sh, t, impacts, W, H):
+    """3D shots move their own camera; the 2D layer only adds cut punch-ins, whips and impact shake."""
+    lt = t - sh['a']
+    tr = sh['transition']
+    z = 1.0
+    if tr == 'cut':
+        z *= 1 + 0.06 * (1 - ease_out(lt / 0.18))
+    if tr in ('zoom', 'flare'):
+        z *= 1 + 0.5 * (1 - ease_out(lt / 0.25))
+    amp = sh.get('shake', 0) * 0.7
+    for it in impacts:
+        if 0 <= t - it < 0.3:
+            amp = max(amp, 18 * (1 - (t - it) / 0.3))
+    z *= 1 + amp * 2.4 / W
+    sx, sy = amp * math.sin(t * 93), amp * math.cos(t * 71)
+    slide = W * 0.9 * (1 - ease_out(lt / 0.14)) if tr == 'whip' and lt < 0.14 else 0.0
+    cv.translate(W / 2 + sx + slide, H / 2 + sy)
+    cv.scale(z, z)
+    cv.translate(-W / 2, -H / 2)
+    return lt
+
+
+def vignette(cv, W, H):
+    sh = skia.GradientShader.MakeRadial((W / 2, H * 0.45), max(W, H) * 0.75, [0x00000000, 0x00000000, 0x70000000], [0.0, 0.55, 1.0])
+    cv.drawRect(skia.Rect(0, 0, W, H), skia.Paint(Shader=sh))
+
+
 def overlays(cv, sh, t, W, H):
     lt = t - sh['a']
     tr = sh['transition']
@@ -258,9 +309,11 @@ def render(ep_dir, out_path, only=None, fmt=None, clean=False):
     board = json.load(open(os.path.join(ep_dir, 'storyboard.json')))
     scenes = load_scenes(ep_dir)
     shots, words, impacts, cues, win, moods = edl(tl, board)
-    missing = sorted({sh['kind'] for sh in shots} - set(scenes.SHOTS))
+    m3 = manifest3d(build)
+    k3, over = set(m3['kinds']), getattr(scenes, 'OVER', {})
+    missing = sorted({sh['kind'] for sh in shots} - set(scenes.SHOTS) - k3)
     if missing:
-        raise SystemExit(f'storyboard uses shots not defined in scenes.py: {missing}')
+        raise SystemExit(f'storyboard uses shots defined neither in world3d.py (rendered) nor scenes.py: {missing}')
     json.dump({'shots': [{k: sh.get(k) for k in ('n', 'kind', 'segment', 'a', 'b', 'transition', 'action', 'camera')} for sh in shots],
                'cues': cues, 'impacts': impacts, 'windows': win, 'moods': moods, 'duration': tl['duration'],
                'format': fmt, 'episode': ep['id']}, open(os.path.join(build, 'edl.json'), 'w'), indent=1)
@@ -285,11 +338,22 @@ def render(ep_dir, out_path, only=None, fmt=None, clean=False):
         sh = shots[max(i for i, s in enumerate(shots) if s['a'] <= t or i == 0)]
         cv.clear(0xFF000000)
         base = cv.save()
-        lt = camera(cv, sh, t, impacts, W, H)
+        is3d = sh['kind'] in k3
+        lt = (camera3d if is3d else camera)(cv, sh, t, impacts, W, H)
         ctx.t, ctx.lt, ctx.d = t, lt, sh['b'] - sh['a']
         ctx.k = max(0.0, min(1.0, lt / ctx.d))
         ctx.prm, ctx.sh = sh.get('prm', {}), sh
-        scenes.SHOTS[sh['kind']](cv, ctx)
+        if is3d:
+            img = frame3d(build, sh, t, m3['fps'])
+            if img is None and only is None:
+                raise SystemExit(f"3D frames missing for shot {sh['n']} ({sh['kind']}): run engine4/kit3d.py first")
+            if img is not None:
+                cv.drawImageRect(img, skia.Rect(0, 0, W, H), skia.SamplingOptions(skia.CubicResampler.Mitchell()))
+            vignette(cv, W, H)
+            if sh['kind'] in over:
+                over[sh['kind']](cv, ctx)
+        else:
+            scenes.SHOTS[sh['kind']](cv, ctx)
         cv.restoreToCount(base)
         assert cv.getSaveCount() == base, 'canvas state leaked'
         if clean:
