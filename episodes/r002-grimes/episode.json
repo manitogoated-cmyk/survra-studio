@@ -1,0 +1,57 @@
+{
+ "id": "r002-grimes",
+ "format": "short",
+ "status": "approved",
+ "synthetic": false,
+ "host": "rook",
+ "case": 2,
+ "title": "He Fell Off a Cruise Ship… and Treaded Water All Night #shorts",
+ "description": "Case 002. November 2022: James Michael Grimes, 28, vanished from the Carnival Valor on the way to Mexico. He woke up alone in the Gulf of Mexico with no memory of falling, treaded water for up to 20 hours, and was spotted by a passing cargo ship's crew before a Coast Guard helicopter pulled him out. Rook didn't believe it either.",
+ "tags": [
+  "James Michael Grimes",
+  "Carnival Valor",
+  "man overboard",
+  "true story",
+  "survival story",
+  "animated story",
+  "Coast Guard rescue",
+  "Gulf of Mexico",
+  "Rook",
+  "Survra"
+ ],
+ "hashtags": [
+  "#shorts",
+  "#truestory",
+  "#survival"
+ ],
+ "playlist": "Rook's Case Files (Shorts)",
+ "story_score": {
+  "curiosity": 9,
+  "stakes": 9,
+  "freshness": 7,
+  "story": 8,
+  "visual": 8,
+  "audience_fit": 9,
+  "payoff": 8,
+  "packaging": 9,
+  "research": 8,
+  "repeatability": 9,
+  "total": 84
+ },
+ "title_options": [
+  "He Fell Off a Cruise Ship… and Treaded Water All Night #shorts",
+  "He Woke Up in the Ocean. The Ship Was Gone #shorts",
+  "He Won the Air Guitar Contest. Then He Vanished Overboard #shorts",
+  "Up to 20 Hours Alone in the Gulf of Mexico #shorts",
+  "He Waved His Socks at a Cargo Ship. It Worked #shorts"
+ ],
+ "source_notes": "Time in the water: Global News says '15 to 20 hours' in the body and 20 in the headline; Old Salt Blog and The Daily Beast say about 20; the script says 'up to twenty hours'. He was last seen around 11 PM on 23 Nov 2022 (Thanksgiving eve) leaving for the restroom after winning an air guitar contest, and has no memory of going overboard, so the fall itself is not shown. The animal: he said he saw a fin and something with a flat mouth bumped his leg, and that he did not think it was a shark; the script says only 'something with a fin'. The stick ('looked like bamboo', chewed for a taste other than salt water), the socks, the passing ship at sunset and the rescue swimmer's estimate ('30 seconds to a minute left', Richard Hoefle, USCG) are from his ABC interview and the Coast Guard as reported by Global News; the script rounds the estimate to 'maybe a minute'. The ship that spotted him was the bulk carrier Crinis (Coast Guard statement quoted by Old Salt Blog); Grimes called it a tanker. 'Nobody spots socks' is Rook's opinion, not a reported fact. The fall date is given as 23 Nov; reports of the rescue day vary between 24 Nov and 'the day before Thanksgiving', so no rescue date is stated.",
+ "sources": [
+  "https://globalnews.ca/news/9326855/james-michael-grimes-cruise-ship-overboard",
+  "https://oldsaltblog.com/against-all-odds-cruise-passenger-survives-20-hours-in-the-gulf-of-mexico-after-going-overboard-from-carnival-valor/",
+  "https://www.thedailybeast.com/cruise-passenger-james-michael-grimes-who-survived-20-hours-overboard-cant-remember-falling"
+ ],
+ "quality_gate": {
+  "method": "contact sheet reviewed in four rounds (3D stills plus composited stills with captions, HUD and overlays); low-resolution full-length rehearsal passed the automated gate locally (pacing, motion, loudness, true peak, host presence 42%, originality 0.81 max); audio was measured, not listened to; the full-resolution render and final gate run in the cloud"
+ }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "r002-grimes", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9,
+  "segments": [
+    {"scene": "hook",   "mood": "hook",    "text": "A man wakes up in the ocean. At night. No ship. No idea how he got there."},
+    {"scene": "doubt",  "mood": "calm",    "text": "No chance. Nobody falls off a cruise ship and just wakes up. Let's go look."},
+    {"scene": "party",  "mood": "action",  "text": "November {2022|twenty twenty two}. The Carnival Valor, bound for Mexico. James Grimes, {28|twenty eight}, wins the air guitar contest."},
+    {"scene": "gone",   "mood": "tense",   "text": "Around eleven, he heads for the restroom. He never comes back. And he remembers none of it."},
+    {"scene": "water",  "mood": "sad",     "text": "He comes to in the Gulf of Mexico. No life jacket. So he treads water. All night."},
+    {"scene": "fin",    "mood": "tense",   "text": "Something with a fin bumps his leg. He chews a floating stick, just to taste something that isn't salt."},
+    {"scene": "lights", "mood": "wonder",  "text": "Next evening, lights. A ship. He swims for it, waving his socks. Socks. Nobody spots socks."},
+    {"scene": "rescue", "mood": "triumph", "text": "The crew spots him. A Coast Guard helicopter lowers a swimmer, who says James had maybe a minute left."},
+    {"scene": "end",    "mood": "end",     "text": "Up to {20|twenty} hours, treading water. I was wrong. Case closed."}
+  ]
+}
