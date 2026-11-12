@@ -294,10 +294,12 @@ def run(ep_dir, mode='all', w=432, h=768, samples=8, part=None):
     shots = R3.edl(tl, board)[0]
     audio, sr = sf.read(os.path.join(build, 'voice.wav'))
     lips = LipSync(tl, audio.astype(np.float32), sr)
+    print('3d scene: building', flush=True)
     bpy.ops.wm.read_factory_settings(use_empty=True)
     _M.clear()
     S = Wm.build()
     setup(samples if mode == 'all' else 4)
+    print('3d scene: built, rendering with', bpy.context.scene.render.engine, 'threads', bpy.context.scene.render.threads, flush=True)
     sc = bpy.context.scene
     out = os.path.join(build, '3d' if mode != 'sheet' else '3d_sheet')
     os.makedirs(out, exist_ok=True)
@@ -351,5 +353,7 @@ def run(ep_dir, mode='all', w=432, h=768, samples=8, part=None):
 
 
 if __name__ == '__main__':
+    import faulthandler
+    faulthandler.dump_traceback_later(150, repeat=True)      # a stuck render shows where it is stuck
     a = sys.argv
     run(a[1], a[2] if len(a) > 2 else 'all', part=(int(a[3]), int(a[4])) if len(a) > 4 else None)
