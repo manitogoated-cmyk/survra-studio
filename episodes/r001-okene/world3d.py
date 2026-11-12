@@ -11,8 +11,8 @@ from engine4.kit3d import P, add, blend, empty, lerp, light, walk
 PI = math.pi
 ORG = dict(office=(0, 0, 0), corr=(300, 0, 0), cabin=(600, 0, 0), deep=(900, 0, 0), sea=(0, 400, 0), deck=(300, 400, 0))
 FAR = (0, 0, -500)
-HOST = {'rook_office', 'rook_cu', 'door_go', 'rook_buoy', 'sinking', 'pocket_wide', 'rook_shrug', 'rook_feathers', 'rook_fair',
-        'sunrise', 'signoff'}
+HOST = {'rook_office', 'rook_cu', 'door_go', 'rook_buoy', 'capsize', 'sinking', 'pocket_wide', 'rook_shrug', 'rook_feathers', 'rook_fair',
+        'bell_up', 'sunrise', 'signoff'}
 ROOK = dict(top='566178', belt='3E4658', lap='6B7690', pants='2A2742', hand='2F2B4D', boot='8A90A6')
 OKENE = dict(top='D9D4C8', pants='232936', hand='7A4A2E', boot='7A4A2E', fore='7A4A2E')
 DIVER = dict(top='20242B', pants='17191F', hand='F2B531', boot='F2B531')
@@ -566,7 +566,13 @@ def capsize(S, k, t, lt):
     S['tug'].location = (0, lerp(0, -3, e), 0.6 - 1.2 * e)
     S['tug'].rotation_euler = (lerp(0.2, -2.95, e), 0.1 * math.sin(t * 5), 0.25)
     burst(S, A(0, -4, 1), min(1, lt / 1.1), 34, 16, size=9, up=1.3)
-    cam(S, A(10, -40, 6), A(0, -1, 3), 34, 0.1 - 0.16 * k)
+    bz = wave_h(5.5, -29, t, 1.5) * 0.7
+    S['buoy'].location = (5.5, -29, bz)
+    S['buoy'].rotation_euler = (0.12 * math.sin(t * 2.3), 0.1 * math.sin(t * 1.9), 0)
+    S['rook'].place(A(5.3, -29.2, bz + 0.66), PI - 0.35, 0.12 * math.sin(t * 2.3))
+    S['rook'].apply(P('up', aL=(2.4, 0.7, 0.5), aR=(2.4, 0.7, 0.5), lL=(0.2, 0.3), lR=(-0.2, 0.2), head=(-0.2, 0.3), lean=-0.15))
+    S['face']['rook'] = 'shocked'
+    cam(S, A(10, -40, 6), A(1.5, -6, 3), 34, 0.1 - 0.16 * k)
 
 
 def bathroom(S, k, t, lt):
@@ -713,7 +719,7 @@ def light_back(S, k, t, lt):
     kick = math.sin(t * 8)
     S['diver'].place(A(0.55, y, 1.95), 0.08, PI / 2, 0.06 * math.sin(t * 2.6))
     S['diver'].apply(P('swim', lL=(0.4 * kick, 0.3 + 0.2 * kick), lR=(-0.4 * kick, 0.3 - 0.2 * kick), head=(-1.05, 0)))
-    cam(S, A(-1.2, y - lerp(5.6, 4.4, k), 0.6), A(0.3, y - 1.5, 1.9), 28, -0.06)
+    cam(S, A(-1.2, y - lerp(5.6, 4.4, k), 0.6), A(0.55, y - 1.5, 1.9), 28, -0.06)
     S['pov'].data.energy = 800
     bubbles(S, A(0.55, y, 2.3), t, 12, 0.35, 0.9, 1.4)
 
@@ -761,8 +767,9 @@ def bell_up(S, k, t, lt):
     z = lerp(5, 17, ease(k))
     S['bell'].location = (0, 0, z)
     S['bell'].rotation_euler = (0, 0, 0.3 + 0.2 * k)
-    bubbles(S, A(0, 0, z - 1.5), t, 26, 1.3, 7, 4, size=2.2)
-    cam(S, A(2.6, -8.5, z - lerp(4.5, 3.0, k)), A(0, 0, z + 0.8), 30)
+    bubbles(S, A(0, 0, z - 1.5), t, 22, 1.3, 7, 4, size=2.2)
+    bowl_rook(S, A(2.7, -1.2, z - 2.9), -0.55, P('point', aR=(2.6, 0.4, 0.15), aL=(0.3, 0.5, 0.6), head=(-0.45, -0.4)), 'warm', t)
+    cam(S, A(2.6, -8.5, z - lerp(4.5, 3.0, k)), A(0.6, 0, z + 0.3), 30)
 
 
 def sunrise(S, k, t, lt):
@@ -805,7 +812,7 @@ def photo_tug(S, k, t, lt):
     sky(S, '9AB8D0', 1.6)
     S['seakey'].data.energy = 30000
     S['tug'].location, S['tug'].rotation_euler = (0, 0, 1.2), (PI - 0.1, 0.05, 0.4)
-    cam(S, A(8, -30, 7), A(0, 0, 1.5), 60)
+    cam(S, A(7, -19, 7), A(0, 0, 0.6), 42)
 
 
 def photo_okene(S, k, t, lt):
