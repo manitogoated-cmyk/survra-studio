@@ -1,0 +1,14 @@
+{
+  "id": "r001-okene", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9,
+  "segments": [
+    {"scene": "hook",   "mood": "hook",    "text": "A diver is collecting bodies from a sunken ship. Then one of the hands grabs him."},
+    {"scene": "doubt",  "mood": "calm",    "text": "No chance. That ship had been on the sea floor for three days. Let's go look."},
+    {"scene": "sink",   "mood": "action",  "text": "May {2013|twenty thirteen}, off Nigeria. Just before five A M, a wave flips a tugboat. Twelve men on board."},
+    {"scene": "trap",   "mood": "action",  "text": "The cook, Harrison Okene, is in the bathroom. Seconds later he's upside down, {30|thirty} meters under, in total darkness."},
+    {"scene": "pocket", "mood": "sad",     "text": "He finds one pocket of air. Cold water to his chest. One bottle of Coke. That's everything."},
+    {"scene": "wait",   "mood": "tense",   "text": "A day passes. Then another. The air is running out. I'd have lost my mind. And my feathers."},
+    {"scene": "light",  "mood": "wonder",  "text": "Then, a light. Divers. He bangs on the wall. And the light swims away."},
+    {"scene": "grab",   "mood": "triumph", "text": "It comes back. So Harrison reaches into the water, and grabs the diver's hand. The diver screams. Fair."},
+    {"scene": "end",    "mood": "end",     "text": "Sixty hours down there. The only survivor. I was wrong. Case closed."}
+  ]
+}

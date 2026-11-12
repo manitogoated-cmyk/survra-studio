@@ -1,0 +1,1300 @@
+{
+ "id": "r001-okene",
+ "shots": [
+  {
+   "n": 1,
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "dive_search",
+   "action": "A diver swims a flooded corridor, lamp cutting the dark",
+   "camera": "Side tracking",
+   "cam": [
+    [
+     1.15,
+     500,
+     980,
+     0
+    ],
+    [
+     1.0,
+     560,
+     980,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "boom",
+     0.03
+    ],
+    [
+     "bubbles",
+     0.1
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 2,
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "hand_float",
+   "action": "The lamp finds a pale hand drifting out of a doorway",
+   "camera": "POV push-in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.3,
+     700,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.0
+    ],
+    [
+     "heartbeat",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 3,
+   "segment": "hook",
+   "weight": 1.1,
+   "kind": "hand_grab",
+   "action": "The hand clamps onto the diver's wrist",
+   "camera": "ECU, impact shake",
+   "cam": [
+    [
+     1.3,
+     480,
+     1000,
+     -4
+    ],
+    [
+     1.1,
+     520,
+     980,
+     3
+    ]
+   ],
+   "shake": 20,
+   "transition": "flash",
+   "sfx": [
+    [
+     "hit",
+     0.05
+    ],
+    [
+     "grab",
+     0.1
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 4,
+   "segment": "hook",
+   "weight": 0.9,
+   "kind": "diver_shock",
+   "action": "Diver's helmet close-up, eyes huge, bubbles exploding",
+   "camera": "ECU shake",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.15,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 12,
+   "transition": "cut",
+   "sfx": [
+    [
+     "gasp",
+     0.0
+    ],
+    [
+     "bubbles",
+     0.1
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 5,
+   "segment": "doubt",
+   "weight": 1.2,
+   "kind": "rook_office",
+   "action": "Rook in his office, arms crossed: no chance",
+   "camera": "Medium, slow push",
+   "cam": [
+    [
+     1.0,
+     540,
+     1150,
+     0
+    ],
+    [
+     1.18,
+     620,
+     1050,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "rain",
+     0.0
+    ]
+   ],
+   "hud": "CASE 001",
+   "prm": {}
+  },
+  {
+   "n": 6,
+   "segment": "doubt",
+   "weight": 1.0,
+   "kind": "board_ship",
+   "action": "Case board: photo of the upturned tug, note 3 DAYS, Rook taps it",
+   "camera": "Insert, push",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.12,
+     560,
+     1000,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "pop",
+     0.1
+    ],
+    [
+     "impact_num",
+     0.5
+    ]
+   ],
+   "hud": "CASE 001",
+   "prm": {}
+  },
+  {
+   "n": 7,
+   "segment": "doubt",
+   "weight": 0.9,
+   "kind": "rook_cu",
+   "action": "Close on Rook, brim low, smirking",
+   "camera": "CU",
+   "cam": [
+    [
+     1.0,
+     540,
+     900,
+     0
+    ],
+    [
+     1.1,
+     560,
+     880,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.2
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "expr": "smirk"
+   }
+  },
+  {
+   "n": 8,
+   "segment": "doubt",
+   "weight": 1.0,
+   "kind": "door_go",
+   "action": "He walks out the glowing door",
+   "camera": "Wide tracking",
+   "cam": [
+    [
+     1.0,
+     540,
+     1150,
+     0
+    ],
+    [
+     1.15,
+     700,
+     1150,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "creak",
+     0.3
+    ],
+    [
+     "whoosh",
+     0.7
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 9,
+   "segment": "sink",
+   "weight": 1.3,
+   "kind": "tug_storm",
+   "action": "Night storm: the tug works beside an oil platform",
+   "camera": "Wide, rocking",
+   "cam": [
+    [
+     1.0,
+     540,
+     1000,
+     -2
+    ],
+    [
+     1.12,
+     520,
+     1080,
+     2
+    ]
+   ],
+   "shake": 5,
+   "transition": "flash",
+   "sfx": [
+    [
+     "thunder",
+     0.1
+    ],
+    [
+     "rain",
+     0.0
+    ]
+   ],
+   "hud": "26 MAY 2013",
+   "prm": {}
+  },
+  {
+   "n": 10,
+   "segment": "sink",
+   "weight": 1.1,
+   "kind": "rook_buoy",
+   "action": "Rook rides a buoy in the rain, pointing at the tug",
+   "camera": "Medium, bobbing",
+   "cam": [
+    [
+     1.1,
+     420,
+     1100,
+     0
+    ],
+    [
+     1.0,
+     540,
+     1100,
+     0
+    ]
+   ],
+   "shake": 4,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wave",
+     0.0
+    ]
+   ],
+   "hud": "4:50 AM",
+   "prm": {}
+  },
+  {
+   "n": 11,
+   "segment": "sink",
+   "weight": 1.2,
+   "kind": "big_wave",
+   "action": "A wall of water rises over the tug",
+   "camera": "Low angle, tilt up",
+   "cam": [
+    [
+     1.0,
+     540,
+     1200,
+     0
+    ],
+    [
+     1.1,
+     600,
+     900,
+     -5
+    ]
+   ],
+   "shake": 10,
+   "transition": "cut",
+   "sfx": [
+    [
+     "riser",
+     0.0
+    ],
+    [
+     "wave",
+     0.5
+    ]
+   ],
+   "hud": "4:50 AM",
+   "prm": {}
+  },
+  {
+   "n": 12,
+   "segment": "sink",
+   "weight": 1.2,
+   "kind": "capsize",
+   "action": "The tug rolls over in an explosion of spray",
+   "camera": "Wide, heavy shake",
+   "cam": [
+    [
+     1.15,
+     540,
+     1150,
+     6
+    ],
+    [
+     1.0,
+     540,
+     1150,
+     -4
+    ]
+   ],
+   "shake": 22,
+   "transition": "flash",
+   "sfx": [
+    [
+     "crash",
+     0.05
+    ],
+    [
+     "splash",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 13,
+   "segment": "trap",
+   "weight": 1.1,
+   "kind": "bathroom",
+   "action": "Harrison in the bathroom; the room starts to tilt",
+   "camera": "Medium, Dutch tilt",
+   "cam": [
+    [
+     1.0,
+     540,
+     1050,
+     0
+    ],
+    [
+     1.12,
+     500,
+     1000,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "creak",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 14,
+   "segment": "trap",
+   "weight": 1.1,
+   "kind": "flip",
+   "action": "The room spins upside down; water bursts in",
+   "camera": "Rolling shot",
+   "cam": [
+    [
+     1.1,
+     540,
+     960,
+     0
+    ],
+    [
+     1.0,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 16,
+   "transition": "cut",
+   "sfx": [
+    [
+     "crash",
+     0.1
+    ],
+    [
+     "splash",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 15,
+   "segment": "trap",
+   "weight": 1.0,
+   "kind": "sinking",
+   "action": "Upside down, it sinks past 10, 20, 30 metres",
+   "camera": "Tracking down",
+   "cam": [
+    [
+     1.0,
+     540,
+     700,
+     0
+    ],
+    [
+     1.0,
+     540,
+     1200,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "bubbles",
+     0.0
+    ],
+    [
+     "low",
+     0.2
+    ]
+   ],
+   "hud": "30 m",
+   "prm": {}
+  },
+  {
+   "n": 16,
+   "segment": "trap",
+   "weight": 1.0,
+   "kind": "pocket_wide",
+   "action": "Cutaway: the hull on the sea floor, one small room with air; Rook floats outside",
+   "camera": "Wide cutaway",
+   "cam": [
+    [
+     1.25,
+     545,
+     1050,
+     0
+    ],
+    [
+     1.0,
+     540,
+     1150,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "zoom",
+   "sfx": [
+    [
+     "boom",
+     0.0
+    ]
+   ],
+   "hud": "30 m",
+   "prm": {}
+  },
+  {
+   "n": 17,
+   "segment": "trap",
+   "weight": 0.65,
+   "kind": "blackout",
+   "action": "Total darkness: two eyes blink. Then two amber ones",
+   "camera": "Black frame",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.1,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "heartbeat",
+     0.0
+    ],
+    [
+     "pop",
+     0.55
+    ]
+   ],
+   "hud": "30 m",
+   "prm": {}
+  },
+  {
+   "n": 18,
+   "segment": "pocket",
+   "weight": 1.2,
+   "kind": "chest_water",
+   "action": "Harrison chest-deep, hugging himself, light fading",
+   "camera": "Medium, slow push",
+   "cam": [
+    [
+     1.0,
+     540,
+     1000,
+     0
+    ],
+    [
+     1.3,
+     480,
+     900,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "swim",
+     0.2
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 19,
+   "segment": "pocket",
+   "weight": 1.0,
+   "kind": "rook_shrug",
+   "action": "Rook in a glass diving bowl, hat and all, shrugs",
+   "camera": "Medium",
+   "cam": [
+    [
+     1.0,
+     500,
+     1100,
+     0
+    ],
+    [
+     1.1,
+     460,
+     1050,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "bubbles",
+     0.0
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 20,
+   "segment": "pocket",
+   "weight": 1.0,
+   "kind": "coke",
+   "action": "One bottle. x1",
+   "camera": "Insert, punch-in",
+   "cam": [
+    [
+     1.2,
+     540,
+     1000,
+     0
+    ],
+    [
+     1.0,
+     560,
+     950,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "pop",
+     0.1
+    ],
+    [
+     "hit",
+     0.15
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 21,
+   "segment": "pocket",
+   "weight": 1.0,
+   "kind": "rook_cu",
+   "action": "Close on Rook, flat: that's everything",
+   "camera": "CU",
+   "cam": [
+    [
+     1.05,
+     540,
+     900,
+     0
+    ],
+    [
+     1.12,
+     520,
+     900,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.0
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "expr": "deadpan"
+   }
+  },
+  {
+   "n": 22,
+   "segment": "wait",
+   "weight": 1.1,
+   "kind": "day_stamp",
+   "action": "Harrison huddled on a floating mattress; DAY 1, DAY 2 slam in",
+   "camera": "Wide, stamps",
+   "cam": [
+    [
+     1.0,
+     540,
+     900,
+     0
+    ],
+    [
+     1.1,
+     540,
+     950,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "hit",
+     0.02
+    ],
+    [
+     "hit",
+     0.52
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 23,
+   "segment": "wait",
+   "weight": 0.9,
+   "kind": "air_gauge",
+   "action": "An air gauge needle falls into the red",
+   "camera": "Graphic",
+   "cam": [
+    [
+     1.0,
+     540,
+     1050,
+     0
+    ],
+    [
+     1.15,
+     540,
+     1050,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.0
+    ],
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "segment": "wait",
+   "weight": 0.8,
+   "kind": "blackout",
+   "action": "Darkness again: his eyes, and Rook's, wide",
+   "camera": "Black frame",
+   "cam": [
+    [
+     1.1,
+     540,
+     960,
+     0
+    ],
+    [
+     1.0,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "heartbeat",
+     0.0
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 24
+  },
+  {
+   "n": 25,
+   "segment": "wait",
+   "weight": 1.1,
+   "kind": "rook_feathers",
+   "action": "Rook shaking in his bowl, feathers drifting off",
+   "camera": "Medium, jitter",
+   "cam": [
+    [
+     1.0,
+     540,
+     1000,
+     0
+    ],
+    [
+     1.12,
+     540,
+     950,
+     0
+    ]
+   ],
+   "shake": 4,
+   "transition": "whip",
+   "sfx": [
+    [
+     "flap",
+     0.3
+    ],
+    [
+     "bubbles",
+     0.0
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 26,
+   "segment": "light",
+   "weight": 1.0,
+   "kind": "light_beam",
+   "action": "A beam of light sweeps into the black cabin",
+   "camera": "Wide",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.1,
+     600,
+     1000,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "riser",
+     0.0
+    ]
+   ],
+   "hud": "DAY 3",
+   "prm": {}
+  },
+  {
+   "n": 27,
+   "segment": "light",
+   "weight": 1.0,
+   "kind": "bang_wall",
+   "action": "He hammers on the steel wall",
+   "camera": "Side, impact shake",
+   "cam": [
+    [
+     1.1,
+     640,
+     1000,
+     0
+    ],
+    [
+     1.0,
+     600,
+     1000,
+     0
+    ]
+   ],
+   "shake": 10,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.05
+    ],
+    [
+     "clunk",
+     0.36
+    ],
+    [
+     "clunk",
+     0.68
+    ]
+   ],
+   "hud": "DAY 3",
+   "prm": {}
+  },
+  {
+   "n": 28,
+   "segment": "light",
+   "weight": 1.1,
+   "kind": "light_leaves",
+   "action": "The light shrinks away down the corridor; his hand reaches after it",
+   "camera": "POV",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.2,
+     540,
+     900,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.1
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 29,
+   "segment": "grab",
+   "weight": 1.0,
+   "kind": "light_back",
+   "action": "The diver swims back in under the surface",
+   "camera": "Underwater tracking",
+   "cam": [
+    [
+     1.0,
+     540,
+     1100,
+     0
+    ],
+    [
+     1.1,
+     560,
+     1050,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "bubbles",
+     0.0
+    ],
+    [
+     "riser",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 30,
+   "segment": "grab",
+   "weight": 1.1,
+   "kind": "reach",
+   "action": "A hand comes down through the surface toward the glove",
+   "camera": "ECU",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.2,
+     540,
+     1050,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "heartbeat",
+     0.0
+    ],
+    [
+     "heartbeat",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 31,
+   "segment": "grab",
+   "weight": 1.0,
+   "kind": "the_grab",
+   "action": "He grabs the diver's hand",
+   "camera": "ECU impact",
+   "cam": [
+    [
+     1.3,
+     540,
+     1050,
+     5
+    ],
+    [
+     1.05,
+     540,
+     1050,
+     -3
+    ]
+   ],
+   "shake": 20,
+   "transition": "flash",
+   "sfx": [
+    [
+     "grab",
+     0.03
+    ],
+    [
+     "hit",
+     0.05
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 32,
+   "segment": "grab",
+   "weight": 0.9,
+   "kind": "diver_shock",
+   "action": "The diver screams into his helmet",
+   "camera": "ECU shake",
+   "cam": [
+    [
+     1.1,
+     540,
+     960,
+     0
+    ],
+    [
+     1.0,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 14,
+   "transition": "cut",
+   "sfx": [
+    [
+     "gasp",
+     0.0
+    ],
+    [
+     "shout",
+     0.2
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "flip": 1
+   }
+  },
+  {
+   "n": 33,
+   "segment": "grab",
+   "weight": 1.0,
+   "kind": "rook_fair",
+   "action": "Rook laughs as the diver shoots upward. Fair",
+   "camera": "Two-shot",
+   "cam": [
+    [
+     1.0,
+     480,
+     1100,
+     0
+    ],
+    [
+     1.1,
+     420,
+     1050,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "caw",
+     0.1
+    ],
+    [
+     "bubbles",
+     0.0
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 34,
+   "segment": "end",
+   "weight": 1.2,
+   "kind": "bell_up",
+   "action": "The diving bell rises toward the light",
+   "camera": "Tracking up",
+   "cam": [
+    [
+     1.0,
+     540,
+     1300,
+     0
+    ],
+    [
+     1.0,
+     540,
+     800,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "riser",
+     0.0
+    ]
+   ],
+   "hud": "60 HOURS",
+   "prm": {}
+  },
+  {
+   "n": 35,
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "sunrise",
+   "action": "Sunrise on deck: Harrison in a blanket, Rook tips his hat",
+   "camera": "Wide",
+   "cam": [
+    [
+     1.0,
+     540,
+     1300,
+     0
+    ],
+    [
+     1.12,
+     560,
+     1350,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "gulls",
+     0.1
+    ]
+   ],
+   "hud": "60 HOURS",
+   "prm": {}
+  },
+  {
+   "n": 36,
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "board_true",
+   "action": "Case board: his photo stamped TRUE",
+   "camera": "Insert",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.1,
+     540,
+     1000,
+     0
+    ]
+   ],
+   "shake": 6,
+   "transition": "cut",
+   "sfx": [
+    [
+     "hit",
+     0.26
+    ],
+    [
+     "impact_num",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 37,
+   "segment": "end",
+   "weight": 1.3,
+   "kind": "signoff",
+   "action": "Rook tips his hat, flips a bottle cap: case closed",
+   "camera": "Low angle push",
+   "cam": [
+    [
+     1.0,
+     540,
+     1150,
+     0
+    ],
+    [
+     1.15,
+     540,
+     1050,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "boom",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "brand": true
+  }
+ ]
+}

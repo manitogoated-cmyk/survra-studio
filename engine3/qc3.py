@@ -61,11 +61,11 @@ def run(ep_dir, video):
         fails.append(f"Short runs {E['duration']:.1f}s (max 60s for our Shorts format)")
     # host presence: Kesta must act in the scene
     scenes = load_scenes(ep_dir)
-    host = [s for s in E['shots'] if 'c.kesta(' in inspect.getsource(scenes.SHOTS[s['kind']])]
+    host = [s for s in E['shots'] if any(k in inspect.getsource(scenes.SHOTS[s['kind']]) for k in ('c.host(', 'c.kesta(', 'rook_bowl('))]
     share = len(host) / len(E['shots'])
-    notes.append(f'host: Kesta acts in {len(host)}/{len(E["shots"])} shots ({share:.0%})')
+    notes.append(f'host: acts in {len(host)}/{len(E["shots"])} shots ({share:.0%})')
     if share < 0.35:
-        fails.append(f'Host missing: Kesta appears in only {share:.0%} of shots (min 35%)')
+        fails.append(f'Host missing: the host appears in only {share:.0%} of shots (min 35%)')
     # originality vs every previous episode
     w, h = (54, 96) if fmt == 'short' else (96, 54)
     fp = fingerprints(video, E, w, h)

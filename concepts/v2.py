@@ -34,7 +34,7 @@ def fsh(cv, path, fill, shade, ow=OW, k=0.32):
 
 
 def humanoid(cv, v, pose, C, head, back_fn=None, torso_fn=None, coat=None, over_fn=None):
-    p = POSES[pose]
+    p = pose if isinstance(pose, dict) else POSES[pose]
     side, back = v == 'side', v == 'back'
     w = 0.62 if side else (0.86 if v == 'tq' else 1.0)
     cv.translate(0, p['lift'])
@@ -62,7 +62,15 @@ def humanoid(cv, v, pose, C, head, back_fn=None, torso_fn=None, coat=None, over_
     def leg(i, far=False):
         Hp, F = hips[i], feet[i]
         ank = (F[0], F[1] - 4.5)
-        knee = ((Hp[0] + ank[0]) / 2 + (2.2 if side else 0.6 * (-1 if i == 0 else 1)) + (F[0] - Hp[0]) * 0.15, (Hp[1] + ank[1]) / 2)
+        dx_, dy_ = ank[0] - Hp[0], ank[1] - Hp[1]
+        d_ = max(1e-3, math.hypot(dx_, dy_))
+        L_ = 22.9
+        hgt = math.sqrt(max(0.0, L_ * L_ - min(d_, 2 * L_) ** 2 / 4))
+        dirn = 1 if (side or v == 'tq') else (-1 if i == 0 else 1)
+        nx_, ny_ = -dy_ / d_, dx_ / d_
+        if nx_ * dirn < 0:
+            nx_, ny_ = -nx_, -ny_
+        knee = ((Hp[0] + ank[0]) / 2 + nx_ * hgt, (Hp[1] + ank[1]) / 2 + ny_ * hgt)
         hose(cv, [Hp, knee, ank], 7.2, C['pants_sh'] if far else C['pants'], OW, straight=True)
         d = 1 if side else (-1 if i == 0 else 1)
         if back:
@@ -425,7 +433,7 @@ def draw(name, cv, x, y, s, view='front', expr='happy', pose='stand'):
     cv.save()
     cv.translate(x, y)
     cv.scale(s, s)
-    CHARS[name](cv, view, expr, pose if pose in POSES else 'stand')
+    CHARS[name](cv, view, expr, pose if isinstance(pose, dict) or pose in POSES else 'stand')
     cv.restore()
 
 LINEUP = [('smirk', 'cross'), ('happy', 'shrug'), ('deadpan', 'think'), ('smirk', 'point'), ('happy', 'cross')]

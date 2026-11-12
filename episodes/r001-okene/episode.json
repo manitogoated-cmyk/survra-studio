@@ -1,0 +1,63 @@
+{
+  "id": "r001-okene",
+  "format": "short",
+  "status": "ready",
+  "synthetic": false,
+  "host": "rook",
+  "case": 1,
+  "title": "A Hand Grabbed the Diver… 3 Days After the Ship Sank #shorts",
+  "description": "Case 001. May 2013: the tugboat Jascon-4 capsized off Nigeria and sank 30 metres. Divers sent to recover bodies found the ship's cook, Harrison Okene, alive in an air pocket after about 60 hours. Rook didn't believe it either.",
+  "tags": [
+    "Harrison Okene",
+    "Jascon-4",
+    "true story",
+    "survival story",
+    "animated story",
+    "air pocket",
+    "shipwreck survivor",
+    "Rook",
+    "Survra"
+  ],
+  "hashtags": [
+    "#shorts",
+    "#truestory",
+    "#survival"
+  ],
+  "playlist": "Rook's Case Files (Shorts)",
+  "story_score": {
+    "curiosity": 10,
+    "stakes": 10,
+    "freshness": 7,
+    "story": 8,
+    "visual": 8,
+    "audience_fit": 8,
+    "payoff": 9,
+    "packaging": 9,
+    "research": 8,
+    "repeatability": 9,
+    "total": 86
+  },
+  "source_notes": "Sources differ on details: AP reports one bottle of Coke, ABC reports six sodas; time underwater is given as 60 to 62 hours (one report says 72). Script uses 'one bottle of Coke' (AP/BBC) and 'sixty hours'.",
+  "sources": [
+    "https://globalnews.ca/news/1006413/watch-amazing-video-of-nigerian-man-being-rescued-from-sunken-tugboat-after-2-days-underwater/",
+    "https://www.inquirer.com/philly/news/nation_world/20131212_Nigerian_survivor_almost_missed_rescue_diver.html",
+    "https://abcnews.go.com/blogs/headlines/2013/12/cook-survives-3-days-in-air-pocket-of-sunken-ship-off-nigerian-coast",
+    "https://www.foxnews.com/world/nigerian-cook-trapped-for-nearly-3-days-in-sunken-ship-tells-incredible-story-of-survival"
+  ],
+  "quality_gate": {
+    "method": "automated gate (pacing, motion, repetition, loudness, host presence, originality) plus still-frame review; audio was measured, not listened to",
+    "hook": 4,
+    "curiosity_clarity": 4,
+    "emotion": 4,
+    "escalation_pacing": 4,
+    "originality": 4,
+    "factual": 4,
+    "animation_2d": 3,
+    "host_acting": 3,
+    "visual_variety": 4,
+    "sound_narration": 3,
+    "captions": 4,
+    "payoff": 4,
+    "title_thumbnail": 4
+  }
+}

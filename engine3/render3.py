@@ -112,6 +112,20 @@ class Ctx:
         K.draw_kesta(self_cv(self), x, y, s, p, self.t, facing=facing, expr=expr, viseme=vis, look=look,
                      goggles=goggles, wind=wind, speed=speed, alpha=alpha, k_open=kopen, prop_glow=prop_glow)
 
+    def host(self, x, y, h, pose='stand', view='tq', facing=1, expr='happy', talk=True):
+        """Rook. h = height in pixels (feet to hat). Lip sync and talk gestures are automatic."""
+        from engine3 import host as Hm
+        p = Hm.pose(pose) if isinstance(pose, str) else dict(pose)
+        beak = None
+        if talk:
+            vis, k = self.lips.at(self.t)
+            beak = Hm.VIS.get(vis, 1.5) * min(1.2, k)
+            if vis != 'rest' and abs(p['hr'][0] - 4) < 7 and abs(p['hr'][1] - 29) < 7 and abs(p['hl'][1] - 29) < 7:
+                g = Hm.GEST[(max(0, self.word_index()) // 4) % len(Hm.GEST)]
+                p = Hm.blend(p, g, 0.6 + 0.2 * math.sin(self.t * 5))
+        p['lift'] = p['lift'] + math.sin(self.t * 2.3) * 0.5
+        Hm.draw_rook(self_cv(self), x, y, h, p, view, facing, expr, beak, self.t)
+
     def person(self, L, x, y, s, pose, facing=1, expr='neutral', look=(0.0, 0.0), alpha=1.0, prop=None, speaking=False, wet=0.0):
         vis = 'rest'
         if speaking:
