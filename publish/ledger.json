@@ -1,4 +1,17 @@
 {
+  "r001-okene": {
+    "captions": "failed: captions -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"I",
+    "format": "short",
+    "playlist": "Rook's Case Files (Shorts)",
+    "privacy": "private",
+    "publish_at": null,
+    "review": true,
+    "sha256": "b446f7fd156ff02c80127168bba288c218528a7bfd4318cac3757361fb57b84f",
+    "title": "A Hand Grabbed the Diver\u2026 3 Days After the Ship Sank #shorts",
+    "uploaded_at": "2026-11-12T05:30:51Z",
+    "url": "https://youtu.be/z52b0vJIFXc",
+    "video_id": "z52b0vJIFXc"
+  },
   "s001-alvarenga": {
     "privacy": "private",
     "publish_at": null,
