@@ -114,7 +114,9 @@ jobs:
         env:
           EP: ${{ matrix.id }}
           PART: ${{ matrix.part }}
-        run: python3 engine4/kit3d.py "episodes/$EP" all "$PART" 6 2>&1 | grep --line-buffered -E "^3d |Error|Traceback|line " || true
+        run: |
+          nproc; free -g | head -2
+          python3 -u engine4/kit3d.py "episodes/$EP" all "$PART" 6 2>&1 | grep --line-buffered -v -E "^Fra:|Fontconfig" | cut -c1-200
       - if: steps.has.outputs.is3d == '1'
         uses: actions/upload-artifact@v4
         with:

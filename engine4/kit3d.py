@@ -344,7 +344,7 @@ def run(ep_dir, mode='all', w=432, h=768, samples=8, part=None):
         bpy.ops.render.render(write_still=True)
         os.replace(path + '.tmp.jpg', path)
         done += 1
-        if done % 20 == 0:
+        if done % 20 == 0 or done <= 3:
             el = time.time() - t0
             print(f'3d {done}/{len(todo)} {el / done:.1f}s/frame eta {(len(todo) - done) * el / done / 60:.1f} min', flush=True)
     print('3d done', done, 'frames', round(time.time() - t0), 's', flush=True)
