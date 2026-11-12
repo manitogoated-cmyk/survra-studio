@@ -169,6 +169,20 @@ jobs:
           if [ -f "episodes/$EP/build/3d/manifest.json" ]; then export PRERENDERED=1; fi
           ls "episodes/$EP/build/3d" 2>/dev/null | wc -l
           python3 publish/publisher.py render --only "$EP"
+      - name: Review copy (small) on the renders-<episode> branch
+        if: always()
+        env:
+          EP: ${{ matrix.id }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [ -f "episodes/$EP/$EP.mp4" ] || exit 0
+          mkdir -p /tmp/rv
+          ffmpeg -y -loglevel error -i "episodes/$EP/$EP.mp4" -vf "scale='if(gt(iw,ih),960,540)':-2" -c:v libx264 -crf 27 -preset veryfast -c:a aac -b:a 96k "/tmp/rv/$EP.mp4"
+          cp "episodes/$EP/build/qc.json" "/tmp/rv/$EP.qc.json" 2>/dev/null || true
+          cp "episodes/$EP/build/thumbnail.jpg" "/tmp/rv/$EP.thumb.jpg" 2>/dev/null || true
+          cd /tmp/rv && git init -q -b "renders-$EP" && git config user.name "survra-bot" && git config user.email "survra-bot@users.noreply.github.com"
+          git add -A && git commit -qm "review copy of $EP (run ${{ github.run_number }})"
+          git push -qf "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" "renders-$EP" || true
       - name: Keep the result (video, QC report, captions, thumbnail)
         if: always()
         uses: actions/upload-artifact@v4
