@@ -2,7 +2,7 @@ name: Survra daily publish
 
 on:
   schedule:
-    - cron: "17 9 * * *"        # daily 09:17 UTC; videos are scheduled into slots, not posted at this time
+    - cron: "17 */3 * * *"      # every 3 hours; videos are scheduled into slots, not posted at this time
   workflow_dispatch:
     inputs:
       only:

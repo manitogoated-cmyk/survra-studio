@@ -49,18 +49,22 @@ def test_slots():
     tz = publisher.ZoneInfo(cfg['timezone'])
     now = dt.datetime(2026, 11, 11, 22, 0, tzinfo=tz)
     a = publisher.next_slot(cfg, {}, 'short', now)
-    assert a == '2026-11-12T17:15:00Z', a          # 12:15 EST
+    assert a == '2026-11-12T14:15:00Z', a          # 09:15 EST next morning
     b = publisher.next_slot(cfg, {'x': {'publish_at': a}}, 'short', now)
-    assert b == '2026-11-12T23:30:00Z', b          # 18:30 EST
+    assert b == '2026-11-12T17:15:00Z', b          # 12:15 EST
     l = publisher.next_slot(cfg, {}, 'long', now)
     assert l == '2026-11-12T15:00:00Z', l          # 10:00 EST
-    # six uploads in a day never share a time
+    # a slot later the same day is used when it is more than 30 minutes away
+    assert publisher.next_slot(cfg, {}, 'short', dt.datetime(2026, 11, 11, 17, 0, tzinfo=tz)) == '2026-11-11T23:30:00Z'
+    assert publisher.next_slot(cfg, {}, 'short', dt.datetime(2026, 11, 11, 18, 10, tzinfo=tz)) == '2026-11-12T02:00:00Z'
+    # seven uploads in a day never share a time
     led = {}
-    for i in range(3):
+    for i in range(4):
         led['s%d' % i] = {'publish_at': publisher.next_slot(cfg, led, 'short', now)}
+    for i in range(3):
         led['l%d' % i] = {'publish_at': publisher.next_slot(cfg, led, 'long', now)}
     times = [v['publish_at'] for v in led.values()]
-    assert len(set(times)) == 6 and all(t.startswith(('2026-11-12', '2026-11-13T0')) for t in times), times
+    assert len(set(times)) == 7 and all(t.startswith(('2026-11-12', '2026-11-13T0')) for t in times), times
 
 
 def test_plan_skips_uploaded():

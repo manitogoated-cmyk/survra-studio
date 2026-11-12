@@ -79,12 +79,13 @@ def render(e):
 def next_slot(cfg, ledger, fmt, now_=None):
     tz = ZoneInfo(cfg["timezone"]); now_ = now_ or dt.datetime.now(tz)
     taken = {v.get("publish_at") for v in ledger.values()}
-    for d in range(1, 90):
+    for d in range(0, 90):                      # today's remaining slots count too (at least 30 minutes ahead)
         day = (now_ + dt.timedelta(days=d)).date()
         for t in cfg["short_slots_local" if fmt == "short" else "long_slots_local"]:
             hh, mm = map(int, t.split(":"))
-            iso = dt.datetime(day.year, day.month, day.day, hh, mm, tzinfo=tz).astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-            if iso not in taken: return iso
+            when = dt.datetime(day.year, day.month, day.day, hh, mm, tzinfo=tz)
+            iso = when.astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+            if iso not in taken and when > now_ + dt.timedelta(minutes=30): return iso
     raise RuntimeError("no free slot in the next 90 days")
 
 

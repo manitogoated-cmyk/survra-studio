@@ -3,6 +3,7 @@
  "review_mode": false,
  "timezone": "America/New_York",
  "short_slots_local": [
+  "09:15",
   "12:15",
   "18:30",
   "21:00"
@@ -12,12 +13,12 @@
   "14:00",
   "16:30"
  ],
- "max_uploads_per_run": 6,
+ "max_uploads_per_run": 8,
  "max_parallel_renders": 6,
  "category_id": 1,
  "channel_id": "UC3Muz7ZHeeYDYTRt9riw6CA",
  "daily_target": {
-  "short": 3,
+  "short": 4,
   "long": 3
  }
 }
