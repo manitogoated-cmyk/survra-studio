@@ -48,14 +48,20 @@ class YouTube:
     def token(self):
         if self._tok and time.time() < self._exp - 60:
             return self._tok
-        r = self.s.post(TOKEN_URL, data=dict(
-            client_id=os.environ["YT_CLIENT_ID"],
-            client_secret=os.environ["YT_CLIENT_SECRET"],
-            refresh_token=os.environ["YT_REFRESH_TOKEN"],
-            grant_type="refresh_token"), timeout=30)
-        if r.status_code == 400 and r.json().get("error") == "invalid_grant":
-            raise AuthExpired("Refresh token expired or revoked - re-authorize the Survra account.")
-        r.raise_for_status()
+        cid, sec, rt = (os.environ.get(k, "").strip().strip('"').strip("'")
+                        for k in ("YT_CLIENT_ID", "YT_CLIENT_SECRET", "YT_REFRESH_TOKEN"))
+        r = self.s.post(TOKEN_URL, data=dict(client_id=cid, client_secret=sec, refresh_token=rt,
+                                             grant_type="refresh_token"), timeout=30)
+        if r.status_code >= 400:
+            err = (r.json() if r.content else {}).get("error")
+            if err == "invalid_grant":
+                raise AuthExpired("Refresh token expired or revoked - re-authorize the Survra account.")
+            # Safe diagnostics: shapes only, never values.
+            raise RuntimeError(
+                f"token endpoint {r.status_code} {err}: client_id looks "
+                f"{'ok' if cid.endswith('.apps.googleusercontent.com') and cid[:1].isdigit() else 'WRONG'} (len {len(cid)}), "
+                f"client_secret looks {'ok' if sec.startswith('GOCSPX-') and len(sec) == 35 else 'WRONG'} (len {len(sec)}), "
+                f"refresh_token looks {'ok' if rt.startswith('1//') else 'WRONG'} (len {len(rt)})")
         j = r.json()
         self._tok, self._exp = j["access_token"], time.time() + j.get("expires_in", 3600)
         return self._tok
