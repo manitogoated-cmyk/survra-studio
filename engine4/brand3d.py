@@ -100,7 +100,7 @@ def compose(bust, body):
     x0 = 560 + bw + 30
     cv.drawTextBlob(skia.TextBlob('SURVRA', skia.Font(tf, 190)), x0, 700, P(0xFFFFB000))
     cv.drawTextBlob(skia.TextBlob('TRUE STORIES. ONE SCEPTICAL CROW.', skia.Font(tf, 50)), x0 + 6, 780, P(0xFFFFFFFF))
-    cv.drawTextBlob(skia.TextBlob("ROOK'S CASE FILES  •  NEW CASES DAILY", skia.Font(tf, 36)), x0 + 6, 842, P(0xFFFF7A1A))
+    cv.drawTextBlob(skia.TextBlob("ROOK'S CASE FILES  •  ANIMATED TRUE STORIES", skia.Font(tf, 36)), x0 + 6, 842, P(0xFFFF7A1A))
     s.makeImageSnapshot().save(os.path.join(OUT, 'rook_banner_2560x1440.jpg'), skia.kJPEG, 92)
     print('brand art written to', OUT)
 
