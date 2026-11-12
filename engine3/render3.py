@@ -235,7 +235,7 @@ def progress(cv, t, total, W, H):
     cv.drawRect(skia.Rect(0, H - 12, W * t / total, H), K.P(0xFFFFB000))
 
 
-def render(ep_dir, out_path, only=None, fmt=None):
+def render(ep_dir, out_path, only=None, fmt=None, clean=False):
     build = os.path.join(ep_dir, 'build')
     ep = json.load(open(os.path.join(ep_dir, 'episode.json')))
     fmt = fmt or ep.get('format', 'short')
@@ -278,6 +278,9 @@ def render(ep_dir, out_path, only=None, fmt=None):
         scenes.SHOTS[sh['kind']](cv, ctx)
         cv.restoreToCount(base)
         assert cv.getSaveCount() == base, 'canvas state leaked'
+        if clean:
+            stills.append((t, surf.makeImageSnapshot()))
+            continue
         overlays(cv, sh, t, W, H)
         h = sh.get('hud')
         if h != last_hud:

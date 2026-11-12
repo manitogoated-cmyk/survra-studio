@@ -2,11 +2,11 @@ name: Survra daily publish
 
 on:
   schedule:
-    - cron: "17 9 * * *"        # daily 09:17 UTC; videos are scheduled into slots, not posted now
+    - cron: "17 9 * * *"        # daily 09:17 UTC; videos are scheduled into slots, not posted at this time
   workflow_dispatch:
     inputs:
       only:
-        description: "Episode id to process (blank = all ready episodes)"
+        description: "Episode id to process (blank = every ready episode)"
         required: false
       dry_run:
         description: "Render + QC only, never upload"
@@ -14,103 +14,118 @@ on:
         default: false
 
 concurrency:
-  group: survra-publish          # never two uploaders at once (duplicate protection)
+  group: survra-publish          # never two pipelines at once (duplicate protection)
   cancel-in-progress: false
 
 permissions:
-  contents: write                # commit publish/ledger.json back
-  issues: write                  # open an issue when re-authorization is needed
+  contents: write
+  issues: write
 
 jobs:
-  publish:
+  plan:
     # Public repo: only the owner's copy may run (forks never get secrets anyway).
     if: github.repository == 'manitogoated-cmyk/survra-studio'
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    outputs:
+      ids: ${{ steps.p.outputs.ids }}
     steps:
       - uses: actions/checkout@v4
-
-      - name: Pause switch
-        id: pause
+      - id: p
+        env:
+          ONLY: ${{ inputs.only }}
         run: |
-          if python3 -c "import json,sys; sys.exit(0 if json.load(open('publish/config.json')).get('paused') else 1)"; then
-            echo "paused=true" >> "$GITHUB_OUTPUT"; echo "Publishing is PAUSED (publish/config.json)."
-          fi
+          if [ -n "$ONLY" ]; then ids=$(python3 publish/publisher.py plan --only "$ONLY"); else ids=$(python3 publish/publisher.py plan); fi
+          echo "ids=$ids" >> "$GITHUB_OUTPUT"; echo "queue: $ids"
 
-      - name: System packages
-        if: steps.pause.outputs.paused != 'true'
-        run: sudo apt-get update -q && sudo apt-get install -y -q ffmpeg fonts-inter libegl1 libgl1 libfontconfig1
-
+  render:
+    needs: plan
+    if: needs.plan.outputs.ids != '[]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false           # one bad episode never blocks the others
+      max-parallel: 6
+      matrix:
+        id: ${{ fromJson(needs.plan.outputs.ids) }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update -q && sudo apt-get install -y -q ffmpeg fonts-inter libegl1 libgl1 libfontconfig1
       - uses: actions/setup-python@v5
-        if: steps.pause.outputs.paused != 'true'
         with:
           python-version: "3.12"
           cache: pip
-
-      - name: Python packages
-        if: steps.pause.outputs.paused != 'true'
-        run: pip install -r requirements.txt
-
-      - name: Voice model cache
-        if: steps.pause.outputs.paused != 'true'
-        uses: actions/cache@v4
+      - run: pip install -r requirements.txt
+      - uses: actions/cache@v4
         with:
           path: models
-          key: kokoro-v1.0
-
-      - name: Download voice model (Apache-2.0)
-        if: steps.pause.outputs.paused != 'true'
+          key: kokoro-v1.1-timed
+      - name: Download voice model (Kokoro-82M, Apache-2.0)
         run: |
           mkdir -p models
-          base=https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0
-          [ -f models/kokoro-v1.0.onnx ] || curl -fsSL -o models/kokoro-v1.0.onnx $base/kokoro-v1.0.onnx
-          [ -f models/voices-v1.0.bin ]  || curl -fsSL -o models/voices-v1.0.bin  $base/voices-v1.0.bin
+          [ -f models/kokoro-v1.0.timed.onnx ] || curl -fsSL -o models/kokoro-v1.0.timed.onnx https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.1/kokoro-v1.0.onnx
+          [ -f models/voices-v1.0.bin ] || curl -fsSL -o models/voices-v1.0.bin https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/voices-v1.0.bin
+          ln -sf kokoro-v1.0.timed.onnx models/kokoro-v1.0.onnx
+      - name: Voice, animation, sound, QC gate, packaging
+        env:
+          EP: ${{ matrix.id }}
+        run: python3 publish/publisher.py render --only "$EP"
+      - name: Keep the result (video, QC report, captions, thumbnail)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: episode-${{ matrix.id }}
+          path: |
+            episodes/${{ matrix.id }}/*.mp4
+            episodes/${{ matrix.id }}/build/qc.json
+            episodes/${{ matrix.id }}/build/captions.srt
+            episodes/${{ matrix.id }}/build/thumbnail.jpg
+            qc/fingerprints/${{ matrix.id }}.npz
+          retention-days: 14
+          if-no-files-found: ignore
 
-      - name: Render, QC and upload
-        id: run
-        if: steps.pause.outputs.paused != 'true'
+  publish:
+    needs: [plan, render]
+    if: always() && needs.plan.result == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: episode-*
+          path: _art
+      - name: Put rendered files back in place
+        run: |
+          shopt -s nullglob
+          for d in _art/episode-*; do id=${d#_art/episode-}; cp -r "$d"/. . 2>/dev/null || true; echo "restored $id"; done
+          find episodes -name '*.mp4' | head -20
+      - name: Upload to YouTube
+        id: up
+        if: needs.plan.outputs.ids != '[]' && inputs.dry_run != true
         env:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          ONLY: ${{ inputs.only }}
         run: |
           set +e
-          args=""
-          [ -n "${{ inputs.only }}" ] && args="$args --only ${{ inputs.only }}"
-          [ "${{ inputs.dry_run }}" = "true" ] && args="$args --dry-run"
-          python3 publish/publisher.py $args 2>&1 | tee publish.log
-          code=${PIPESTATUS[0]}
-          echo "code=$code" >> "$GITHUB_OUTPUT"
-          exit 0
-
-      - name: Keep rendered videos for review (14 days)
-        if: always() && steps.pause.outputs.paused != 'true'
-        uses: actions/upload-artifact@v4
-        with:
-          name: renders-${{ github.run_number }}
-          path: |
-            episodes/*/*.mp4
-            episodes/*/build/qc.json
-            publish.log
-          retention-days: 14
-          if-no-files-found: ignore
-
-      - name: Commit ledger
-        if: always() && steps.pause.outputs.paused != 'true'
+          if [ -n "$ONLY" ]; then python3 publish/publisher.py upload --only "$ONLY"; else python3 publish/publisher.py upload; fi
+          echo "code=$?" >> "$GITHUB_OUTPUT"; exit 0
+      - name: Update ledger, originality fingerprints and dashboard
         run: |
-          git config user.name "survra-bot"
-          git config user.email "survra-bot@users.noreply.github.com"
-          git add publish/ledger.json 2>/dev/null || true
-          git diff --cached --quiet || (git commit -m "ledger: uploads from run ${{ github.run_number }}" && git push)
-
+          python3 publish/publisher.py status
+          git config user.name "survra-bot"; git config user.email "survra-bot@users.noreply.github.com"
+          git add publish/ledger.json STATUS.md qc/fingerprints 2>/dev/null || true
+          git diff --cached --quiet || (git commit -m "pipeline: run ${{ github.run_number }}" && git pull --rebase -q && git push)
       - name: Ask for re-authorization
-        if: steps.run.outputs.code == '2'
+        if: steps.up.outputs.code == '2'
         env:
           GH_TOKEN: ${{ github.token }}
-        run: |
-          gh issue create --title "Survra: YouTube authorization expired" \
-            --body "The upload token for the Survra channel expired or was revoked. Nothing was uploaded. Ask Claude to re-authorize the Survra account and update the YT_REFRESH_TOKEN secret."
-
+        run: gh issue create --title "Survra: YouTube authorization expired" --body "The upload token for the Survra channel expired or was revoked. Nothing was uploaded. Ask Claude to re-authorize the Survra account and update the YT_REFRESH_TOKEN secret."
       - name: Fail the run on errors
-        if: steps.run.outputs.code != '0' && steps.run.outputs.code != ''
+        if: (steps.up.outputs.code != '0' && steps.up.outputs.code != '') || needs.render.result == 'failure'
         run: exit 1

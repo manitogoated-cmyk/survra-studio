@@ -2,9 +2,11 @@
   "paused": false,
   "review_mode": true,
   "timezone": "America/New_York",
-  "short_slots_local": ["11:30", "16:30", "20:30"],
-  "long_slots_local": {"Tue": "15:00", "Sat": "12:00"},
-  "max_uploads_per_run": 4,
+  "short_slots_local": ["12:15", "18:30", "21:00"],
+  "long_slots_local": ["10:00", "14:00", "16:30"],
+  "max_uploads_per_run": 6,
+  "max_parallel_renders": 6,
   "category_id": 1,
-  "channel_id": "UC3Muz7ZHeeYDYTRt9riw6CA"
+  "channel_id": "UC3Muz7ZHeeYDYTRt9riw6CA",
+  "daily_target": {"short": 3, "long": 3}
 }

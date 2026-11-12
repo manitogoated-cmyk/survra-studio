@@ -1,33 +1,15 @@
-"""Survra publisher: render -> QC gate -> upload -> ledger.
+"""Survra production queue: plan -> render (parallel) -> upload (serial) -> status dashboard.
 
-Episode folders live in episodes/<id>/ and contain:
-  episode.json   metadata + workflow status
-  script.json    narration (engine/voice.py format)
-  storyboard.json shot list (engine2/render.py format)
+  python3 publish/publisher.py plan                 # JSON list of episode ids that need rendering
+  python3 publish/publisher.py render --only <id>   # voice + animation + sound + QC gate + packaging
+  python3 publish/publisher.py upload               # upload everything rendered and QC-passed
+  python3 publish/publisher.py status               # rewrite STATUS.md (the production dashboard)
 
-episode.json fields
-  id, format ("short"|"long"), title, description, tags[], sources[]
-  status: "draft"     - being written, never rendered
-          "ready"     - script+storyboard done; CI renders and QCs it
-          "approved"  - human/automated review passed; may be scheduled public
-  synthetic: bool     - realistic altered/synthetic media? (stylised cartoons = false)
-
-Safety rails
-  * publish/config.json "paused": true  -> nothing is uploaded.
-  * "review_mode": true -> every upload is PRIVATE with no publish date, so the
-    owner can review the batch in YouTube Studio before anything goes public.
-  * Ledger (publish/ledger.json) keyed by episode id AND file sha256 blocks
-    duplicate uploads, even across reruns.
-  * QC FAIL -> never uploaded.
+Episode status in episode.json: draft -> ready (render it) -> approved (may be scheduled public).
+Safety rails: config "paused"; "review_mode" (uploads stay PRIVATE, unscheduled); QC FAIL never uploads;
+ledger by episode id + file hash blocks duplicates; token must belong to the Survra channel.
 """
-import argparse
-import datetime as dt
-import glob
-import hashlib
-import json
-import os
-import subprocess
-import sys
+import argparse, datetime as dt, glob, hashlib, json, os, subprocess, sys
 from zoneinfo import ZoneInfo
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -36,156 +18,168 @@ from publish.youtube import YouTube, AuthExpired  # noqa: E402
 
 CFG = os.path.join(ROOT, "publish", "config.json")
 LEDGER = os.path.join(ROOT, "publish", "ledger.json")
-DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+STATUS = os.path.join(ROOT, "STATUS.md")
 
+
+def now():
+    return dt.datetime.now(dt.timezone.utc)
 
 def log(*a):
-    print(dt.datetime.now(dt.timezone.utc).strftime("%H:%M:%S"), *a, flush=True)
-
+    print(now().strftime("%H:%M:%S"), *a, flush=True)
 
 def load(p, default):
     return json.load(open(p)) if os.path.exists(p) else default
 
-
 def save(p, obj):
-    tmp = p + ".tmp"
-    json.dump(obj, open(tmp, "w"), indent=2, sort_keys=True)
-    os.replace(tmp, p)
-
+    tmp = p + ".tmp"; json.dump(obj, open(tmp, "w"), indent=2, sort_keys=True); os.replace(tmp, p)
 
 def sha256(path):
     h = hashlib.sha256()
     with open(path, "rb") as f:
-        for b in iter(lambda: f.read(1 << 20), b""):
-            h.update(b)
+        for b in iter(lambda: f.read(1 << 20), b""): h.update(b)
     return h.hexdigest()
-
 
 def episodes():
     for p in sorted(glob.glob(os.path.join(ROOT, "episodes", "*", "episode.json"))):
-        e = json.load(open(p))
-        e["_dir"] = os.path.dirname(p)
-        yield e
+        e = json.load(open(p)); e["_dir"] = os.path.dirname(p); yield e
+
+def hosted(e):
+    return os.path.exists(os.path.join(e["_dir"], "scenes.py"))
+
+def mp4(e):
+    return os.path.join(e["_dir"], e["id"] + ".mp4")
+
+def qc(e):
+    return load(os.path.join(e["_dir"], "build", "qc.json"), {})
+
+
+def plan(cfg, ledger):
+    todo = [e["id"] for e in episodes() if e.get("status") in ("ready", "approved") and e["id"] not in ledger]
+    return todo[: cfg.get("max_uploads_per_run", 6)]
 
 
 def render(e):
-    out = os.path.join(e["_dir"], e["id"] + ".mp4")
-    if e.get("format", "short") != "short":
-        raise NotImplementedError("long-form renderer not wired yet")
-    r = subprocess.run(["bash", os.path.join(ROOT, "engine2", "make_short.sh"), e["_dir"], e["id"]],
-                       capture_output=True, text=True)
-    print(r.stdout[-3000:], r.stderr[-2000:])
-    qc = load(os.path.join(e["_dir"], "build", "qc.json"), {})
-    return out, r.returncode == 0 and qc.get("pass") is True, qc
+    script = os.path.join(ROOT, "engine3", "make_episode.sh") if hosted(e) else os.path.join(ROOT, "engine2", "make_short.sh")
+    args = ["bash", script, e["_dir"]] + ([] if hosted(e) else [e["id"]])
+    for attempt in (1, 2):                      # retry once: render failures are usually transient
+        r = subprocess.run(args, capture_output=True, text=True)
+        print(r.stdout[-2500:], r.stderr[-1500:])
+        if qc(e).get("pass") is True and r.returncode == 0:
+            break
+        if qc(e).get("fails"):                  # a real quality failure: do not retry, report it
+            break
+        log(f"  render attempt {attempt} failed without a QC verdict; retrying")
+    ok = r.returncode == 0 and qc(e).get("pass") is True
+    if ok and hosted(e):
+        from engine3 import package
+        package.srt(e["_dir"]); package.thumbnail(e["_dir"])
+    return ok
 
 
-def next_slot(cfg, ledger, fmt, now=None):
-    """Earliest free local slot from tomorrow onward, returned as RFC3339 UTC."""
-    tz = ZoneInfo(cfg["timezone"])
-    now = now or dt.datetime.now(tz)
+def next_slot(cfg, ledger, fmt, now_=None):
+    tz = ZoneInfo(cfg["timezone"]); now_ = now_ or dt.datetime.now(tz)
     taken = {v.get("publish_at") for v in ledger.values()}
-    for d in range(1, 60):
-        day = (now + dt.timedelta(days=d)).date()
-        if fmt == "short":
-            times = cfg["short_slots_local"]
-        else:
-            t = cfg["long_slots_local"].get(DAYS[day.weekday()])
-            times = [t] if t else []
-        for t in times:
+    for d in range(1, 90):
+        day = (now_ + dt.timedelta(days=d)).date()
+        for t in cfg["short_slots_local" if fmt == "short" else "long_slots_local"]:
             hh, mm = map(int, t.split(":"))
-            local = dt.datetime(day.year, day.month, day.day, hh, mm, tzinfo=tz)
-            iso = local.astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-            if iso not in taken:
-                return iso
-    raise RuntimeError("no free slot in the next 60 days")
+            iso = dt.datetime(day.year, day.month, day.day, hh, mm, tzinfo=tz).astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+            if iso not in taken: return iso
+    raise RuntimeError("no free slot in the next 90 days")
 
 
 def description(e):
+    if hosted(e):
+        from engine3 import package
+        return package.description(e)
     d = e.get("description", "").strip()
-    src = e.get("sources") or []
-    if src:
-        d += "\n\nSources:\n" + "\n".join("- " + s for s in src)
-    d += "\n\nAnimated by Survra. Narration is AI-generated; story researched from the sources above."
-    return d
+    if e.get("sources"): d += "\n\nSources:\n" + "\n".join("- " + s for s in e["sources"])
+    return d + "\n\nAnimated by Survra. Narration is AI-generated; story researched from the sources above."
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--only", help="episode id to process")
-    ap.add_argument("--dry-run", action="store_true", help="render + QC, never upload")
-    ap.add_argument("--skip-render", action="store_true", help="use an existing mp4")
-    args = ap.parse_args()
-
-    cfg, ledger = load(CFG, {}), load(LEDGER, {})
-    if cfg.get("paused"):
-        log("PAUSED via publish/config.json - nothing to do")
-        return 0
-    yt = None if args.dry_run else YouTube()
-    if yt:
-        ch = yt.my_channel()
-        if ch["id"] != cfg["channel_id"]:
-            log("REFUSING: token belongs to", ch["snippet"]["title"], "not the Survra channel")
-            return 3
-        log("channel OK:", ch["snippet"]["title"])
-
+def upload(cfg, ledger, only=None):
+    yt = YouTube(); ch = yt.my_channel()
+    if ch["id"] != cfg["channel_id"]:
+        log("REFUSING: token belongs to", ch["snippet"]["title"], "not the Survra channel"); return 3
+    log("channel OK:", ch["snippet"]["title"])
     done, failures = 0, []
     hashes = {v.get("sha256") for v in ledger.values()}
     for e in episodes():
-        if args.only and e["id"] != args.only:
-            continue
-        if e["id"] in ledger or e.get("status") not in ("ready", "approved"):
-            continue
-        if done >= cfg.get("max_uploads_per_run", 4):
-            break
-        log("episode", e["id"])
-        mp4 = os.path.join(e["_dir"], e["id"] + ".mp4")
-        if args.skip_render and os.path.exists(mp4):
-            qc = load(os.path.join(e["_dir"], "build", "qc.json"), {"pass": None}); ok = qc.get("pass") is True
-        else:
-            mp4, ok, qc = render(e)
-        if not ok:
-            log("  QC FAIL - not uploading:", json.dumps(qc.get("fails", qc))[:500])
-            failures.append(e["id"])
-            continue
-        h = sha256(mp4)
-        if h in hashes:
-            log("  duplicate file already uploaded - skipping")
-            continue
-        if args.dry_run:
-            log("  dry run: QC PASS, would upload", mp4)
-            continue
+        if (only and e["id"] != only) or e["id"] in ledger or e.get("status") not in ("ready", "approved"): continue
+        if done >= cfg.get("max_uploads_per_run", 6): break
+        if not os.path.exists(mp4(e)) or qc(e).get("pass") is not True:
+            log("skip", e["id"], "- not rendered or QC not passed:", json.dumps(qc(e).get("fails", "no render"))[:300])
+            failures.append(e["id"]); continue
+        h = sha256(mp4(e))
+        if h in hashes: log("skip", e["id"], "- identical file already uploaded"); continue
         review = cfg.get("review_mode", True) or e.get("status") != "approved"
-        meta = dict(title=e["title"], description=description(e), tags=e.get("tags", []),
-                    category=cfg.get("category_id", 1), synthetic=e.get("synthetic", False))
-        if review:
-            meta["privacy"] = "private"
-        else:
-            meta["publish_at"] = next_slot(cfg, ledger, e.get("format", "short"))
+        fmt = e.get("format", "short")
+        meta = dict(title=e["title"], description=description(e), tags=e.get("tags", []), category=cfg.get("category_id", 1),
+                    synthetic=e.get("synthetic", False))
+        if review: meta["privacy"] = "private"
+        else: meta["publish_at"] = next_slot(cfg, ledger, fmt)
         try:
-            res = yt.upload(mp4, meta, log=log)
+            res = yt.upload(mp4(e), meta, log=log)
         except AuthExpired as ex:
-            log("AUTH EXPIRED:", ex)
-            return 2
-        except Exception as ex:  # keep going with other episodes
-            log("  upload failed:", ex)
-            failures.append(e["id"])
-            continue
-        vid = res["id"]
-        ledger[e["id"]] = dict(video_id=vid, sha256=h, uploaded_at=dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-                               publish_at=meta.get("publish_at"), privacy=res["status"]["privacyStatus"],
-                               review=review, title=e["title"])
-        save(LEDGER, ledger)
-        hashes.add(h)
-        done += 1
-        log(f"  uploaded https://youtu.be/{vid} privacy={res['status']['privacyStatus']} publishAt={meta.get('publish_at')}")
-        thumb = os.path.join(e["_dir"], "thumbnail.png")
-        if os.path.exists(thumb):
-            try:
-                yt.set_thumbnail(vid, thumb)
-            except Exception as ex:
-                log("  thumbnail failed (channel may need phone verification):", ex)
-    log(f"done: {done} uploaded, {len(failures)} failed {failures}")
+            log("AUTH EXPIRED:", ex); return 2
+        except Exception as ex:
+            log("  upload failed:", ex); failures.append(e["id"]); continue
+        vid = res["id"]; extras = {}
+        build = os.path.join(e["_dir"], "build")
+        for name, path, fn in (("thumbnail", os.path.join(build, "thumbnail.jpg"), lambda p: yt.set_thumbnail(vid, p)),
+                               ("captions", os.path.join(build, "captions.srt"), lambda p: yt.upload_captions(vid, p))):
+            if name == "thumbnail" and fmt == "short": continue     # Shorts covers cannot be set through the API
+            if os.path.exists(path):
+                try: fn(path); extras[name] = "ok"
+                except Exception as ex: extras[name] = "failed: " + str(ex)[:160]; log(f"  {name} failed:", ex)
+        if e.get("playlist"):
+            try: yt.add_to_playlist(yt.ensure_playlist(e["playlist"]), vid); extras["playlist"] = e["playlist"]
+            except Exception as ex: extras["playlist"] = "failed: " + str(ex)[:160]; log("  playlist failed:", ex)
+        ledger[e["id"]] = dict(video_id=vid, url=f"https://youtu.be/{vid}", sha256=h, uploaded_at=now().strftime("%Y-%m-%dT%H:%M:%SZ"),
+                               publish_at=meta.get("publish_at"), privacy=res["status"]["privacyStatus"], review=review,
+                               title=e["title"], format=fmt, **extras)
+        save(LEDGER, ledger); hashes.add(h); done += 1
+        log(f"  uploaded https://youtu.be/{vid} privacy={res['status']['privacyStatus']} publishAt={meta.get('publish_at')} {extras}")
+    log(f"done: {done} uploaded, {len(failures)} not uploaded {failures}")
     return 1 if failures else 0
+
+
+def status(cfg, ledger):
+    """Production dashboard. A stage is only ticked when its real output exists and was verified."""
+    rows = []
+    for e in episodes():
+        d = e["_dir"]; has = lambda *p: os.path.exists(os.path.join(d, *p))
+        q = qc(e); L = ledger.get(e["id"], {})
+        tick = lambda ok, bad=False: "FAIL" if bad else ("done" if ok else "-")
+        pub = "-"
+        if L: pub = "private (review)" if L.get("review") else ("scheduled " + (L.get("publish_at") or "")) if L.get("publish_at") else L.get("privacy", "-")
+        rows.append([e["id"], e.get("format", "short"), e.get("status", "draft"), tick(bool(e.get("sources"))), tick(has("script.json")),
+                     tick(has("storyboard.json")), tick(has("scenes.py") or not hosted(e)), tick(has("build", "voice.wav") or bool(L)),
+                     tick(os.path.exists(mp4(e)) or bool(L)), tick(has("build", "thumbnail.jpg") or L.get("thumbnail") == "ok") if e.get("format") == "long" else "n/a",
+                     tick(q.get("pass") is True or bool(L), q.get("pass") is False), tick(bool(L)), pub, L.get("url") or ("https://youtu.be/" + L["video_id"] if L.get("video_id") else "-")])
+    head = ["Episode", "Format", "Status", "Research", "Script", "Storyboard", "Animation", "Voice", "Edit", "Thumbnail", "QC", "Upload", "Publication", "URL"]
+    t = cfg.get("daily_target", {})
+    out = ["# Survra production dashboard", "", f"Updated {now().strftime('%Y-%m-%d %H:%M UTC')} by the publish workflow. "
+           f"Daily target: {t.get('long', 0)} long-form + {t.get('short', 0)} Shorts. Review mode: **{'ON' if cfg.get('review_mode') else 'off'}**. "
+           f"Paused: **{'yes' if cfg.get('paused') else 'no'}**.", "",
+           "A stage shows `done` only when its output file exists; QC shows `done` only after the automated gate passed on the rendered video.", "",
+           "| " + " | ".join(head) + " |", "|" + "---|" * len(head)]
+    out += ["| " + " | ".join(str(c) for c in r) + " |" for r in rows]
+    open(STATUS, "w").write("\n".join(out) + "\n")
+    return 0
+
+
+def main():
+    ap = argparse.ArgumentParser(); ap.add_argument("cmd", choices=["plan", "render", "upload", "status"]); ap.add_argument("--only")
+    a = ap.parse_args(); cfg, ledger = load(CFG, {}), load(LEDGER, {})
+    if a.cmd == "plan":
+        print(json.dumps([] if cfg.get("paused") else ([a.only] if a.only else plan(cfg, ledger)))); return 0
+    if a.cmd == "status": return status(cfg, ledger)
+    if cfg.get("paused"): log("PAUSED via publish/config.json"); return 0
+    if a.cmd == "render":
+        e = next(x for x in episodes() if x["id"] == a.only); ok = render(e)
+        log("render", e["id"], "QC PASS" if ok else "QC FAIL / render error"); return 0 if ok else 1
+    return upload(cfg, ledger, a.only)
 
 
 if __name__ == "__main__":

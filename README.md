@@ -4,7 +4,9 @@ Animated true-story Shorts for the Survra YouTube channel (@survra).
 
 ```
 episodes/<id>/        episode.json + script.json + storyboard.json  (one folder per video)
-engine/, engine2/     voice (Kokoro, Apache-2.0), storyboard renderer, sound design, QC gate
+character/           Kesta's character bible (the host: never changes)
+engine3/             Kesta rig + lip sync, world toolkit, cast, renderer, score, QC (pacing, host, originality)
+engine/, engine2/    first-generation engine (pilot Short) and shared sound library
 publish/              YouTube uploader, publisher, config.json (pause/review switches), ledger.json
 .github/workflows/    daily render -> QC -> upload job
 ```
@@ -25,6 +27,7 @@ expire weekly. If it is ever revoked, the workflow opens an issue asking for re-
 ## Run locally
 ```
 pip install -r requirements.txt   # plus ffmpeg and the Inter font
-python3 publish/publisher.py --dry-run          # render + QC every ready episode
+./engine3/make_episode.sh episodes/<id>          # voice + animation + sound + QC for one episode
+python3 publish/publisher.py status              # rebuild STATUS.md (production dashboard)
 python3 -m pytest -q tests
 ```

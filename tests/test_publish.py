@@ -49,8 +49,21 @@ def test_slots():
     tz = publisher.ZoneInfo(cfg['timezone'])
     now = dt.datetime(2026, 11, 11, 22, 0, tzinfo=tz)
     a = publisher.next_slot(cfg, {}, 'short', now)
-    assert a == '2026-11-12T16:30:00Z', a
+    assert a == '2026-11-12T17:15:00Z', a          # 12:15 EST
     b = publisher.next_slot(cfg, {'x': {'publish_at': a}}, 'short', now)
-    assert b == '2026-11-12T21:30:00Z', b
+    assert b == '2026-11-12T23:30:00Z', b          # 18:30 EST
     l = publisher.next_slot(cfg, {}, 'long', now)
-    assert l == '2026-11-14T17:00:00Z', l  # Sat 12:00 EST
+    assert l == '2026-11-12T15:00:00Z', l          # 10:00 EST
+    # six uploads in a day never share a time
+    led = {}
+    for i in range(3):
+        led['s%d' % i] = {'publish_at': publisher.next_slot(cfg, led, 'short', now)}
+        led['l%d' % i] = {'publish_at': publisher.next_slot(cfg, led, 'long', now)}
+    times = [v['publish_at'] for v in led.values()]
+    assert len(set(times)) == 6 and all(t.startswith(('2026-11-12', '2026-11-13T0')) for t in times), times
+
+
+def test_plan_skips_uploaded():
+    cfg = json.load(open(publisher.CFG))
+    ids = [e['id'] for e in publisher.episodes() if e.get('status') in ('ready', 'approved')]
+    assert publisher.plan(cfg, {i: {} for i in ids}) == []

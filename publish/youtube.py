@@ -157,10 +157,46 @@ class YouTube:
         raise RuntimeError("upload ended without a response")
 
     def set_thumbnail(self, vid, png_path):
+        ctype = "image/jpeg" if png_path.lower().endswith((".jpg", ".jpeg")) else "image/png"
         with open(png_path, "rb") as f:
             r = self.s.post("https://www.googleapis.com/upload/youtube/v3/thumbnails/set",
-                            params=dict(videoId=vid), headers=self._h({"Content-Type": "image/png"}),
+                            params=dict(videoId=vid), headers=self._h({"Content-Type": ctype}),
                             data=f.read(), timeout=120)
         if r.status_code >= 400:
             raise RuntimeError(f"thumbnail -> {r.status_code}: {r.text[:300]}")
         return r.json()
+
+    # ---- packaging ----------------------------------------------------------
+    def upload_captions(self, vid, srt_path, lang="en", name="English"):
+        """Uploads an SRT track. Needs the youtube.force-ssl scope; callers treat failure as non-fatal
+        because captions are also burned into the picture."""
+        boundary = "survra-captions-boundary"
+        meta = json.dumps(dict(snippet=dict(videoId=vid, language=lang, name=name, isDraft=False)))
+        body = (f"--{boundary}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n{meta}\r\n"
+                f"--{boundary}\r\nContent-Type: application/octet-stream\r\n\r\n").encode() + open(srt_path, "rb").read() + f"\r\n--{boundary}--".encode()
+        r = self.s.post("https://www.googleapis.com/upload/youtube/v3/captions", params=dict(part="snippet", uploadType="multipart"),
+                        headers=self._h({"Content-Type": f"multipart/related; boundary={boundary}"}), data=body, timeout=120)
+        if r.status_code >= 400:
+            raise RuntimeError(f"captions -> {r.status_code}: {r.text[:300]}")
+        return r.json()
+
+    def ensure_playlist(self, title, description=""):
+        page = None
+        while True:
+            params = dict(part="snippet", mine="true", maxResults=50)
+            if page:
+                params["pageToken"] = page
+            j = self._req("GET", f"{API}/playlists", params=params)
+            for it in j.get("items", []):
+                if it["snippet"]["title"] == title:
+                    return it["id"]
+            page = j.get("nextPageToken")
+            if not page:
+                break
+        j = self._req("POST", f"{API}/playlists", params=dict(part="snippet,status"),
+                      json=dict(snippet=dict(title=title, description=description), status=dict(privacyStatus="public")))
+        return j["id"]
+
+    def add_to_playlist(self, playlist_id, vid):
+        return self._req("POST", f"{API}/playlistItems", params=dict(part="snippet"),
+                         json=dict(snippet=dict(playlistId=playlist_id, resourceId=dict(kind="youtube#video", videoId=vid))))
