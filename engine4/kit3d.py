@@ -13,6 +13,7 @@ import bpy
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 FPS3 = 15
+LONG_LENS = 0.72        # 16:9 episodes: widen every shot's lens so portrait-style staging still fits
 _M = {}
 
 
@@ -275,6 +276,19 @@ def setup(samples=8):
     sc.view_settings.view_transform = 'Standard'
 
 
+def variant(S, alt):
+    """prm "alt": [yaw_degrees, distance_multiplier, height_add, lens_multiplier] re-frames a shot around its own
+    look-at point, so a shot type can be reused from a clearly different angle (needs S['camrig'] and S['camtgt'])."""
+    if not alt or 'camrig' not in S or 'camtgt' not in S:
+        return
+    yaw, mul, dz, lm = (list(alt) + [0, 1, 0, 1][len(alt):])[:4]
+    c, tg = S['camrig'].location, S['camtgt'].location
+    dx, dy = c[0] - tg[0], c[1] - tg[1]
+    a = math.radians(yaw)
+    S['camrig'].location = (tg[0] + (dx * math.cos(a) - dy * math.sin(a)) * mul, tg[1] + (dx * math.sin(a) + dy * math.cos(a)) * mul, c[2] + dz)
+    bpy.context.scene.camera.data.lens *= lm
+
+
 def run(ep_dir, mode='all', w=432, h=768, samples=8, part=None):
     """mode: all | sheet (one low-res still per shot) | stills. part=(i, n) renders every n-th frame (parallel jobs)."""
     from engine3 import render3 as R3
@@ -289,7 +303,8 @@ def run(ep_dir, mode='all', w=432, h=768, samples=8, part=None):
     tl = json.load(open(os.path.join(build, 'timeline.json')))
     board = json.load(open(os.path.join(ep_dir, 'storyboard.json')))
     ep = json.load(open(os.path.join(ep_dir, 'episode.json')))
-    if ep.get('format', 'short') == 'long':
+    long_ = ep.get('format', 'short') == 'long'
+    if long_:
         w, h = h, w
     shots = R3.edl(tl, board)[0]
     audio, sr = sf.read(os.path.join(build, 'voice.wav'))
@@ -315,7 +330,13 @@ def run(ep_dir, mode='all', w=432, h=768, samples=8, part=None):
         fn(S, 0.5, 1.0, 0.5)
         Wm.finish(S, 1.0)
         sc.render.filepath = path
+        keep = (sc.render.resolution_x, sc.render.resolution_y, sc.cycles.samples)
+        if name == 'thumb':                      # the long-form thumbnail picture: 1280x720, clean
+            sc.render.resolution_x, sc.render.resolution_y, sc.cycles.samples = 1280, 720, 32
+        elif long_:
+            sc.camera.data.lens *= LONG_LENS
         bpy.ops.render.render(write_still=True)
+        sc.render.resolution_x, sc.render.resolution_y, sc.cycles.samples = keep
     if mode == 'stills':
         return
     todo = []
@@ -342,6 +363,9 @@ def run(ep_dir, mode='all', w=432, h=768, samples=8, part=None):
         Wm.reset(S)
         Wm.SHOTS3D[sh['kind']](S, max(0.0, min(1.0, lt / d)), t, lt)
         Wm.finish(S, t)
+        variant(S, S['prm'].get('alt'))
+        if long_:
+            sc.camera.data.lens *= LONG_LENS
         sc.render.filepath = path + '.tmp.jpg'
         bpy.ops.render.render(write_still=True)
         os.replace(path + '.tmp.jpg', path)

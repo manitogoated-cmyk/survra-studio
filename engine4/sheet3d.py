@@ -6,7 +6,8 @@ part = sys.argv[3] if len(sys.argv) > 3 else None
 fs = sorted(glob.glob(os.path.join(d, '[0-9]*.jpg')))
 if part:
     a, b = map(int, part.split('-')); fs = fs[a:b]
-cols = 6; tw = 300; th = int(tw * 16 / 9)
+im0 = skia.Image.open(fs[0]); wide = im0.width() > im0.height()
+cols = 5 if wide else 6; tw = 384 if wide else 300; th = int(tw * im0.height() / im0.width())
 rows = (len(fs) + cols - 1) // cols
 surf = skia.Surface(cols * tw, rows * (th + 26)); cv = surf.getCanvas(); cv.clear(0xFF202020)
 f = skia.Font(skia.Typeface('Inter'), 17)

@@ -1,0 +1,120 @@
+{
+ "id": "r001-okene-long",
+ "voice": "am_fenrir",
+ "speed": 1.12,
+ "gap": 0.16,
+ "lead": 0.1,
+ "tail": 1.0,
+ "segments": [
+  {
+   "scene": "hook",
+   "mood": "hook",
+   "text": "Thirty meters down, a diver is pulling bodies out of a sunken tugboat. He reaches for a hand. And the hand grabs him back."
+  },
+  {
+   "scene": "doubt",
+   "mood": "calm",
+   "text": "No chance. That boat had been on the sea floor for three days. Nobody lasts three days down there. Let's go look."
+  },
+  {
+   "scene": "setup",
+   "mood": "calm",
+   "text": "May twenty-sixth, {2013|twenty thirteen}. Twenty miles off Nigeria, a tugboat called Jascon Four is holding an oil tanker steady at a platform. Twelve men on board. The sea is rough."
+  },
+  {
+   "scene": "crew",
+   "mood": "tense",
+   "text": "It's before five in the morning. Most of the crew are asleep, doors locked. Out here, you lock your door because of pirates."
+  },
+  {
+   "scene": "cook",
+   "mood": "calm",
+   "text": "The cook, Harrison Okene, twenty-nine, is already up. He's in the bathroom."
+  },
+  {
+   "scene": "sink",
+   "mood": "action",
+   "text": "Then a swell hits, and the whole boat rolls over. Water punches through the corridors. Minutes later she's upside down on the sea floor."
+  },
+  {
+   "scene": "dark",
+   "mood": "tense",
+   "text": "Harrison is thrown around in total darkness. He feels his way along walls that used to be ceilings, and finds one small space the water hasn't taken. A pocket of air, about four feet high."
+  },
+  {
+   "scene": "crewfate",
+   "mood": "sad",
+   "text": "The eleven others never got out. The locked doors that kept pirates out kept them in. I don't have a joke for that."
+  },
+  {
+   "scene": "supplies",
+   "mood": "calm",
+   "text": "So what does he have? One bottle of Coke. A life vest with two tiny flashlights. That's the whole inventory."
+  },
+  {
+   "scene": "cold",
+   "mood": "tense",
+   "text": "The water is cold enough to kill him in hours. So he drags a mattress over and builds a little platform, just above the surface."
+  },
+  {
+   "scene": "air",
+   "mood": "tense",
+   "text": "Next problem. Every breath out is carbon dioxide, and the pocket is sealed. A physicist later did the math: that much air buys you about sixty hours."
+  },
+  {
+   "scene": "noises",
+   "mood": "tense",
+   "text": "Then come the noises. Something big, moving through the wreck. He picks up a plank and waits. I'd have lost my mind. And my feathers."
+  },
+  {
+   "scene": "pray",
+   "mood": "sad",
+   "text": "He prays. He thinks about his family. One day goes. Then another. He has no idea how many."
+  },
+  {
+   "scene": "divers",
+   "mood": "wonder",
+   "text": "On the third day, he hears an engine. An anchor dropping. Divers, sent down to collect the dead."
+  },
+  {
+   "scene": "bang",
+   "mood": "action",
+   "text": "Harrison grabs a hammer and pounds on the wall. And the sounds outside fade away. They're leaving."
+  },
+  {
+   "scene": "light",
+   "mood": "wonder",
+   "text": "Then a light slides across the water. A diver is in the corridor, right below him."
+  },
+  {
+   "scene": "grab",
+   "mood": "triumph",
+   "text": "So he does the only thing he can. He reaches down into the black water, and takes the diver's hand. The diver screams. Fair."
+  },
+  {
+   "scene": "alive",
+   "mood": "triumph",
+   "text": "Then, on the radio, a voice shouts: he's alive!"
+  },
+  {
+   "scene": "rescue",
+   "mood": "calm",
+   "text": "But they can't just swim him up. After sixty hours at that depth, the surface would kill him. So they warm him with hot water, give him a breathing mask, and bring him up under pressure."
+  },
+  {
+   "scene": "chamber",
+   "mood": "calm",
+   "text": "Then more than two days in a decompression chamber, letting the pressure off slowly."
+  },
+  {
+   "scene": "stars",
+   "mood": "wonder",
+   "text": "When he finally steps outside, he sees the stars. He thinks he's been gone one day."
+  },
+  {
+   "scene": "end",
+   "mood": "end",
+   "text": "About sixty hours at the bottom of the Atlantic. The only survivor. I said no chance. I was wrong. Case closed."
+  }
+ ]
+}

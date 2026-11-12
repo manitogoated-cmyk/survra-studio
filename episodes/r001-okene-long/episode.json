@@ -1,0 +1,69 @@
+{
+ "id": "r001-okene-long",
+ "format": "long",
+ "status": "ready",
+ "synthetic": false,
+ "host": "rook",
+ "case": 1,
+ "title": "He Survived 3 Days at the Bottom of the Atlantic. Then a Diver Reached for a \"Body\"",
+ "description": "Case 001, the full case file. On 26 May 2013 the tugboat Jascon-4 capsized off Nigeria and sank about 30 metres. The cook, Harrison Okene, found a pocket of air and stayed alive in the dark for about 60 hours, until divers sent to recover bodies found a hand that grabbed back. Rook, Survra's sceptical crow detective, checks the story from the locked cabin doors to the decompression chamber.",
+ "tags": [
+  "Harrison Okene",
+  "Jascon-4",
+  "true story",
+  "survival story",
+  "animated story",
+  "3D animation",
+  "air pocket",
+  "shipwreck survivor",
+  "Rook",
+  "Survra",
+  "full case"
+ ],
+ "hashtags": [
+  "#truestory",
+  "#survival",
+  "#animation"
+ ],
+ "playlist": "Rook's Case Files (Full Cases)",
+ "story_score": {
+  "curiosity": 10,
+  "stakes": 10,
+  "freshness": 7,
+  "story": 8,
+  "visual": 8,
+  "audience_fit": 8,
+  "payoff": 9,
+  "packaging": 9,
+  "research": 8,
+  "repeatability": 9,
+  "total": 86
+ },
+ "source_notes": "Sources differ on details: AP reports one bottle of Coke, ABC reports six sodas; time underwater is given as 60 to 62 hours (one report says 72). Script uses 'one bottle of Coke' (AP/BBC) and 'sixty hours'. Long version adds: locked cabins as an anti-piracy routine, the mattress platform, the life vest with two flashlights, the plank, the hammer, hot water and breathing mask, more than two days of decompression and the stars (Fox/Reuters/The Nation, NBC/LiveScience, AP via Gulf News). Time underwater is reported as about 60 hours by most outlets and 72 by some; the script says 'about sixty'.",
+ "sources": [
+  "https://globalnews.ca/news/1006413/watch-amazing-video-of-nigerian-man-being-rescued-from-sunken-tugboat-after-2-days-underwater/",
+  "https://www.inquirer.com/philly/news/nation_world/20131212_Nigerian_survivor_almost_missed_rescue_diver.html",
+  "https://abcnews.go.com/blogs/headlines/2013/12/cook-survives-3-days-in-air-pocket-of-sunken-ship-off-nigerian-coast",
+  "https://www.foxnews.com/world/nigerian-cook-trapped-for-nearly-3-days-in-sunken-ship-tells-incredible-story-of-survival",
+  "https://www.nbcnews.com/id/wbna53739456",
+  "https://www.livescience.com/41688-how-to-survive-underwater-for-3-days.html",
+  "https://gulfnews.com/amp/story/world%2Foceania%2Fnigerian-cook-survives-3-days-in-sunken-tugboat-1.1263289"
+ ],
+ "quality_gate": {
+  "method": "automated gate (pacing, motion, repetition, loudness, host presence, originality) plus still-frame review; audio was measured, not listened to",
+  "hook": 4,
+  "curiosity_clarity": 4,
+  "emotion": 4,
+  "escalation_pacing": 4,
+  "originality": 4,
+  "factual": 4,
+  "animation_2d": 3,
+  "host_acting": 3,
+  "visual_variety": 4,
+  "sound_narration": 3,
+  "captions": 4,
+  "payoff": 4,
+  "title_thumbnail": 4
+ },
+ "case_of": "r001-okene"
+}

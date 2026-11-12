@@ -1,0 +1,2505 @@
+{
+ "id": "r001-okene-long",
+ "shots": [
+  {
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "dive_search",
+   "action": "A diver swims a flooded corridor",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "boom",
+     0.03
+    ],
+    [
+     "bubbles",
+     0.2
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 1
+  },
+  {
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "hand_float",
+   "action": "His lamp finds a hand drifting from a doorway",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.0
+    ],
+    [
+     "heartbeat",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 2
+  },
+  {
+   "segment": "hook",
+   "weight": 0.9,
+   "kind": "hand_grab",
+   "action": "The hand clamps onto his wrist",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 16,
+   "transition": "flash",
+   "sfx": [
+    [
+     "hit",
+     0.05
+    ],
+    [
+     "grab",
+     0.1
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 3
+  },
+  {
+   "segment": "hook",
+   "weight": 0.8,
+   "kind": "diver_shock",
+   "action": "Helmet close-up, eyes huge",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 10,
+   "transition": "cut",
+   "sfx": [
+    [
+     "gasp",
+     0.0
+    ],
+    [
+     "bubbles",
+     0.1
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 4
+  },
+  {
+   "segment": "doubt",
+   "weight": 1.2,
+   "kind": "rook_office",
+   "action": "Rook in his office: no chance",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "rain",
+     0.0
+    ]
+   ],
+   "hud": "CASE 001",
+   "prm": {},
+   "n": 5
+  },
+  {
+   "segment": "doubt",
+   "weight": 1.0,
+   "kind": "board_ship",
+   "action": "Case board: the upturned tug, 3 DAYS",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "pop",
+     0.1
+    ]
+   ],
+   "hud": "CASE 001",
+   "prm": {},
+   "n": 6
+  },
+  {
+   "segment": "doubt",
+   "weight": 0.9,
+   "kind": "rook_cu",
+   "action": "Rook close-up, smirk",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [],
+   "hud": "CASE 001",
+   "prm": {
+    "expr": "smirk"
+   },
+   "n": 7
+  },
+  {
+   "segment": "doubt",
+   "weight": 0.9,
+   "kind": "door_go",
+   "action": "Rook heads for the glowing door",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "creak",
+     0.2
+    ],
+    [
+     "whoosh",
+     0.7
+    ]
+   ],
+   "hud": "CASE 001",
+   "prm": {},
+   "n": 8
+  },
+  {
+   "segment": "setup",
+   "weight": 1.3,
+   "kind": "platform_work",
+   "action": "Night sea: tug, tanker and platform",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "wave",
+     0.0
+    ]
+   ],
+   "hud": "26 MAY 2013",
+   "prm": {},
+   "n": 9
+  },
+  {
+   "segment": "setup",
+   "weight": 1.0,
+   "kind": "tug_storm",
+   "action": "The tug rides heavy swell",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "thunder",
+     0.1
+    ],
+    [
+     "wave",
+     0.4
+    ]
+   ],
+   "hud": "26 MAY 2013",
+   "prm": {},
+   "n": 10
+  },
+  {
+   "segment": "setup",
+   "weight": 1.0,
+   "kind": "rook_buoy",
+   "action": "Rook on a buoy points at the tug",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "creak",
+     0.3
+    ]
+   ],
+   "hud": "26 MAY 2013",
+   "prm": {},
+   "n": 11
+  },
+  {
+   "segment": "setup",
+   "weight": 0.9,
+   "kind": "platform_work",
+   "action": "Wider: the tanker at the platform",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wave",
+     0.2
+    ]
+   ],
+   "hud": "26 MAY 2013",
+   "prm": {
+    "alt": [
+     -32,
+     0.85,
+     2.0
+    ]
+   },
+   "n": 12
+  },
+  {
+   "segment": "crew",
+   "weight": 1.2,
+   "kind": "locked_doors",
+   "action": "A quiet corridor, every cabin door locked",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "tick",
+     0.1
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": "4:50 AM",
+   "prm": {},
+   "n": 13
+  },
+  {
+   "segment": "crew",
+   "weight": 1.2,
+   "kind": "rook_corridor",
+   "action": "Rook walks the corridor, glancing at the locks",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.5
+    ]
+   ],
+   "hud": "4:50 AM",
+   "prm": {},
+   "n": 14
+  },
+  {
+   "segment": "crew",
+   "weight": 0.8,
+   "kind": "locked_doors",
+   "action": "Close on a lock light",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.2
+    ]
+   ],
+   "hud": "4:50 AM",
+   "prm": {
+    "alt": [
+     16,
+     0.6,
+     0.2
+    ]
+   },
+   "n": 15
+  },
+  {
+   "segment": "cook",
+   "weight": 1.2,
+   "kind": "bathroom",
+   "action": "Harrison in the bathroom as the floor starts to tilt",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "creak",
+     0.6
+    ]
+   ],
+   "hud": "4:50 AM",
+   "prm": {},
+   "n": 16
+  },
+  {
+   "segment": "cook",
+   "weight": 1.0,
+   "kind": "rook_window",
+   "action": "Rook at the blinds turns round",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "rain",
+     0.0
+    ]
+   ],
+   "hud": "4:50 AM",
+   "prm": {},
+   "n": 17
+  },
+  {
+   "segment": "sink",
+   "weight": 1.0,
+   "kind": "big_wave",
+   "action": "A wall of water rises behind the tug",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "riser",
+     0.0
+    ],
+    [
+     "wave",
+     0.5
+    ]
+   ],
+   "hud": "4:50 AM",
+   "prm": {},
+   "n": 18
+  },
+  {
+   "segment": "sink",
+   "weight": 1.0,
+   "kind": "capsize",
+   "action": "The tug rolls over; Rook watches from the buoy",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 14,
+   "transition": "flash",
+   "sfx": [
+    [
+     "crash",
+     0.1
+    ],
+    [
+     "splash",
+     0.4
+    ]
+   ],
+   "hud": "4:50 AM",
+   "prm": {},
+   "n": 19
+  },
+  {
+   "segment": "sink",
+   "weight": 1.0,
+   "kind": "flip",
+   "action": "The bathroom turns upside down, water bursts in",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 16,
+   "transition": "cut",
+   "sfx": [
+    [
+     "crash",
+     0.0
+    ],
+    [
+     "splash",
+     0.3
+    ]
+   ],
+   "hud": "4:50 AM",
+   "prm": {},
+   "n": 20
+  },
+  {
+   "segment": "sink",
+   "weight": 1.2,
+   "kind": "sinking",
+   "action": "The upturned hull sinks; depth marks tick by",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.0
+    ],
+    [
+     "bubbles",
+     0.3
+    ]
+   ],
+   "hud": "30 m",
+   "prm": {},
+   "n": 21
+  },
+  {
+   "segment": "dark",
+   "weight": 0.7,
+   "kind": "blackout",
+   "action": "Black. One pair of eyes",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "heartbeat",
+     0.1
+    ]
+   ],
+   "hud": "30 m",
+   "prm": {},
+   "n": 22
+  },
+  {
+   "segment": "dark",
+   "weight": 1.2,
+   "kind": "feel_walls",
+   "action": "Harrison feels along the wall in rising water",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "splash",
+     0.3
+    ],
+    [
+     "heartbeat",
+     0.6
+    ]
+   ],
+   "hud": "30 m",
+   "prm": {},
+   "n": 23
+  },
+  {
+   "segment": "dark",
+   "weight": 1.2,
+   "kind": "pocket_wide",
+   "action": "The wreck on the sea floor, one lit room",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.0
+    ]
+   ],
+   "hud": "30 m",
+   "prm": {},
+   "n": 24
+  },
+  {
+   "segment": "dark",
+   "weight": 1.0,
+   "kind": "chest_water",
+   "action": "Chest-deep in the air pocket",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "bubbles",
+     0.4
+    ]
+   ],
+   "hud": "30 m",
+   "prm": {},
+   "n": 25
+  },
+  {
+   "segment": "dark",
+   "weight": 0.8,
+   "kind": "rook_cu",
+   "action": "Rook, deadpan, in his diving helmet",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [],
+   "hud": "30 m",
+   "prm": {
+    "expr": "deadpan",
+    "sea": 1
+   },
+   "n": 26
+  },
+  {
+   "segment": "crewfate",
+   "weight": 1.2,
+   "kind": "pocket_wide",
+   "action": "The silent hull from the other side",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.0
+    ]
+   ],
+   "hud": "30 m",
+   "prm": {
+    "alt": [
+     38,
+     1.1,
+     1.0
+    ]
+   },
+   "n": 27
+  },
+  {
+   "segment": "crewfate",
+   "weight": 1.2,
+   "kind": "rook_window",
+   "action": "Rook at the window, no joke",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "rain",
+     0.0
+    ]
+   ],
+   "hud": "30 m",
+   "prm": {
+    "expr": "sad",
+    "alt": [
+     -28,
+     0.9,
+     0.2
+    ]
+   },
+   "n": 28
+  },
+  {
+   "segment": "supplies",
+   "weight": 1.2,
+   "kind": "rook_pocket",
+   "action": "Rook in the pocket counts the inventory",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "pop",
+     0.3
+    ],
+    [
+     "pop",
+     0.7
+    ]
+   ],
+   "hud": "30 m",
+   "prm": {},
+   "n": 29
+  },
+  {
+   "segment": "supplies",
+   "weight": 0.9,
+   "kind": "coke",
+   "action": "One bottle of Coke",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "pop",
+     0.3
+    ],
+    [
+     "impact_num",
+     0.35
+    ]
+   ],
+   "hud": "30 m",
+   "prm": {},
+   "n": 30
+  },
+  {
+   "segment": "supplies",
+   "weight": 1.0,
+   "kind": "flashlights",
+   "action": "A life vest with two small lights",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.4
+    ]
+   ],
+   "hud": "30 m",
+   "prm": {},
+   "n": 31
+  },
+  {
+   "segment": "supplies",
+   "weight": 0.9,
+   "kind": "rook_pocket",
+   "action": "Rook shrugs at the pile",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "pop",
+     0.2
+    ]
+   ],
+   "hud": "30 m",
+   "prm": {
+    "alt": [
+     -28,
+     0.85,
+     0.2
+    ]
+   },
+   "n": 32
+  },
+  {
+   "segment": "cold",
+   "weight": 0.9,
+   "kind": "chest_water",
+   "action": "Shivering in the water",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "heartbeat",
+     0.2
+    ]
+   ],
+   "hud": "DAY 1",
+   "prm": {
+    "alt": [
+     26,
+     0.85,
+     0.3
+    ]
+   },
+   "n": 33
+  },
+  {
+   "segment": "cold",
+   "weight": 1.3,
+   "kind": "mattress_build",
+   "action": "He hauls a mattress under himself",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "splash",
+     0.2
+    ],
+    [
+     "clunk",
+     0.7
+    ]
+   ],
+   "hud": "DAY 1",
+   "prm": {},
+   "n": 34
+  },
+  {
+   "segment": "cold",
+   "weight": 0.9,
+   "kind": "rook_shrug",
+   "action": "Rook outside the hull, impressed shrug",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "bubbles",
+     0.2
+    ]
+   ],
+   "hud": "DAY 1",
+   "prm": {},
+   "n": 35
+  },
+  {
+   "segment": "air",
+   "weight": 1.1,
+   "kind": "air_gauge",
+   "action": "Air gauge falling, CO2 rising",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.1
+    ],
+    [
+     "tick",
+     0.5
+    ],
+    [
+     "riser",
+     0.6
+    ]
+   ],
+   "hud": "DAY 1",
+   "prm": {},
+   "n": 36
+  },
+  {
+   "segment": "air",
+   "weight": 1.1,
+   "kind": "rook_board",
+   "action": "Rook taps the case board",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "pop",
+     0.4
+    ]
+   ],
+   "hud": "DAY 1",
+   "prm": {},
+   "n": 37
+  },
+  {
+   "segment": "air",
+   "weight": 1.0,
+   "kind": "day_stamp",
+   "action": "Harrison on the mattress; DAY 1 becomes DAY 2",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "hit",
+     0.02
+    ],
+    [
+     "hit",
+     0.52
+    ]
+   ],
+   "hud": "DAY 2",
+   "prm": {
+    "days": [
+     1,
+     2
+    ]
+   },
+   "n": 38
+  },
+  {
+   "segment": "noises",
+   "weight": 1.2,
+   "kind": "shadow_pass",
+   "action": "Something big glides down the dark corridor",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.0
+    ],
+    [
+     "swim",
+     0.4
+    ]
+   ],
+   "hud": "DAY 2",
+   "prm": {},
+   "n": 39
+  },
+  {
+   "segment": "noises",
+   "weight": 1.1,
+   "kind": "plank_wait",
+   "action": "Harrison grips a plank, watching the door",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "heartbeat",
+     0.1
+    ],
+    [
+     "heartbeat",
+     0.6
+    ]
+   ],
+   "hud": "DAY 2",
+   "prm": {},
+   "n": 40
+  },
+  {
+   "segment": "noises",
+   "weight": 1.0,
+   "kind": "rook_feathers",
+   "action": "Rook shakes; feathers drift off",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "flap",
+     0.2
+    ]
+   ],
+   "hud": "DAY 2",
+   "prm": {},
+   "n": 41
+  },
+  {
+   "segment": "pray",
+   "weight": 1.3,
+   "kind": "pray",
+   "action": "He prays on the mattress",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.0
+    ]
+   ],
+   "hud": "DAY 2",
+   "prm": {},
+   "n": 42
+  },
+  {
+   "segment": "pray",
+   "weight": 1.0,
+   "kind": "day_stamp",
+   "action": "DAY 2 becomes DAY 3",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "hit",
+     0.02
+    ],
+    [
+     "hit",
+     0.52
+    ]
+   ],
+   "hud": "DAY 3",
+   "prm": {
+    "days": [
+     2,
+     3
+    ],
+    "alt": [
+     30,
+     1.0,
+     0.4
+    ]
+   },
+   "n": 43
+  },
+  {
+   "segment": "pray",
+   "weight": 0.8,
+   "kind": "rook_cu",
+   "action": "Rook, quiet",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [],
+   "hud": "DAY 3",
+   "prm": {
+    "expr": "sad",
+    "sea": 1,
+    "alt": [
+     -24,
+     1.05,
+     0.0
+    ]
+   },
+   "n": 44
+  },
+  {
+   "segment": "divers",
+   "weight": 1.3,
+   "kind": "divers_down",
+   "action": "A boat above; a diver follows the chain down",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "swim",
+     0.2
+    ],
+    [
+     "bubbles",
+     0.5
+    ]
+   ],
+   "hud": "DAY 3",
+   "prm": {},
+   "n": 45
+  },
+  {
+   "segment": "divers",
+   "weight": 1.1,
+   "kind": "light_beam",
+   "action": "A beam sweeps into the black cabin",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "riser",
+     0.1
+    ]
+   ],
+   "hud": "DAY 3",
+   "prm": {},
+   "n": 46
+  },
+  {
+   "segment": "divers",
+   "weight": 0.8,
+   "kind": "divers_down",
+   "action": "The diver nears the wreck",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "bubbles",
+     0.2
+    ]
+   ],
+   "hud": "DAY 3",
+   "prm": {
+    "alt": [
+     30,
+     0.7,
+     -2.0
+    ]
+   },
+   "n": 47
+  },
+  {
+   "segment": "bang",
+   "weight": 1.0,
+   "kind": "hammer",
+   "action": "A hammer pounds the steel wall",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 10,
+   "transition": "flash",
+   "sfx": [
+    [
+     "hit",
+     0.1
+    ],
+    [
+     "hit",
+     0.5
+    ],
+    [
+     "hit",
+     0.9
+    ]
+   ],
+   "hud": "DAY 3",
+   "prm": {},
+   "n": 48
+  },
+  {
+   "segment": "bang",
+   "weight": 1.0,
+   "kind": "bang_wall",
+   "action": "He hammers with both fists",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 8,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.15
+    ],
+    [
+     "clunk",
+     0.55
+    ]
+   ],
+   "hud": "DAY 3",
+   "prm": {},
+   "n": 49
+  },
+  {
+   "segment": "bang",
+   "weight": 1.2,
+   "kind": "light_leaves",
+   "action": "The light shrinks away down the corridor",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.2
+    ]
+   ],
+   "hud": "DAY 3",
+   "prm": {},
+   "n": 50
+  },
+  {
+   "segment": "light",
+   "weight": 1.1,
+   "kind": "light_back",
+   "action": "The diver swims back overhead",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "riser",
+     0.0
+    ],
+    [
+     "swim",
+     0.3
+    ]
+   ],
+   "hud": "DAY 3",
+   "prm": {},
+   "n": 51
+  },
+  {
+   "segment": "light",
+   "weight": 1.0,
+   "kind": "light_beam",
+   "action": "Light slides across the water",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ]
+   ],
+   "hud": "DAY 3",
+   "prm": {
+    "alt": [
+     -30,
+     0.9,
+     0.3
+    ]
+   },
+   "n": 52
+  },
+  {
+   "segment": "grab",
+   "weight": 1.2,
+   "kind": "reach",
+   "action": "His hand comes down through the surface",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "heartbeat",
+     0.1
+    ],
+    [
+     "heartbeat",
+     0.6
+    ]
+   ],
+   "hud": "DAY 3",
+   "prm": {},
+   "n": 53
+  },
+  {
+   "segment": "grab",
+   "weight": 0.9,
+   "kind": "the_grab",
+   "action": "Hand takes glove",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 18,
+   "transition": "flash",
+   "sfx": [
+    [
+     "hit",
+     0.05
+    ],
+    [
+     "grab",
+     0.1
+    ]
+   ],
+   "hud": "DAY 3",
+   "prm": {},
+   "n": 54
+  },
+  {
+   "segment": "grab",
+   "weight": 0.8,
+   "kind": "diver_shock",
+   "action": "The diver screams",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 10,
+   "transition": "cut",
+   "sfx": [
+    [
+     "shout",
+     0.05
+    ],
+    [
+     "bubbles",
+     0.2
+    ]
+   ],
+   "hud": "DAY 3",
+   "prm": {
+    "flip": 1
+   },
+   "n": 55
+  },
+  {
+   "segment": "grab",
+   "weight": 1.0,
+   "kind": "rook_fair",
+   "action": "Rook laughs as the diver shoots upward",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "caw",
+     0.2
+    ]
+   ],
+   "hud": "DAY 3",
+   "prm": {},
+   "n": 56
+  },
+  {
+   "segment": "alive",
+   "weight": 1.0,
+   "kind": "radio",
+   "action": "Surface radio: HE'S ALIVE!",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "shout",
+     0.1
+    ],
+    [
+     "pop",
+     0.4
+    ]
+   ],
+   "hud": "DAY 3",
+   "prm": {},
+   "n": 57
+  },
+  {
+   "segment": "alive",
+   "weight": 0.8,
+   "kind": "hand_grab",
+   "action": "The grip holds",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "grab",
+     0.1
+    ]
+   ],
+   "hud": "DAY 3",
+   "prm": {},
+   "n": 58
+  },
+  {
+   "segment": "rescue",
+   "weight": 1.0,
+   "kind": "rook_desk",
+   "action": "Rook at his desk with the file",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "rain",
+     0.0
+    ]
+   ],
+   "hud": "60 HOURS",
+   "prm": {
+    "expr": "calm"
+   },
+   "n": 59
+  },
+  {
+   "segment": "rescue",
+   "weight": 1.3,
+   "kind": "helmet_on",
+   "action": "The diver lowers a helmet onto Harrison",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.55
+    ],
+    [
+     "bubbles",
+     0.7
+    ]
+   ],
+   "hud": "60 HOURS",
+   "prm": {},
+   "n": 60
+  },
+  {
+   "segment": "rescue",
+   "weight": 1.2,
+   "kind": "walk_out",
+   "action": "The diver leads him out through the corridor",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "swim",
+     0.1
+    ],
+    [
+     "bubbles",
+     0.5
+    ]
+   ],
+   "hud": "60 HOURS",
+   "prm": {},
+   "n": 61
+  },
+  {
+   "segment": "rescue",
+   "weight": 1.2,
+   "kind": "bell_up",
+   "action": "The bell rises toward the light; Rook rides along",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "riser",
+     0.0
+    ],
+    [
+     "bubbles",
+     0.3
+    ]
+   ],
+   "hud": "60 HOURS",
+   "prm": {},
+   "n": 62
+  },
+  {
+   "segment": "chamber",
+   "weight": 1.2,
+   "kind": "chamber",
+   "action": "Decompression chamber: Harrison under a blanket, Rook waiting",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "tick",
+     0.2
+    ],
+    [
+     "tick",
+     0.7
+    ]
+   ],
+   "hud": "60 HOURS",
+   "prm": {},
+   "n": 63
+  },
+  {
+   "segment": "chamber",
+   "weight": 0.8,
+   "kind": "rook_cu",
+   "action": "Rook checks the gauge, patient",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [],
+   "hud": "60 HOURS",
+   "prm": {
+    "expr": "warm",
+    "alt": [
+     30,
+     1.0,
+     0.0
+    ]
+   },
+   "n": 64
+  },
+  {
+   "segment": "chamber",
+   "weight": 0.9,
+   "kind": "chamber",
+   "action": "Harrison looks up",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ]
+   ],
+   "hud": "60 HOURS",
+   "prm": {
+    "alt": [
+     -34,
+     0.85,
+     0.3
+    ]
+   },
+   "n": 65
+  },
+  {
+   "segment": "stars",
+   "weight": 1.3,
+   "kind": "stars",
+   "action": "On deck at night, both look up at the stars",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "wave",
+     0.1
+    ]
+   ],
+   "hud": "60 HOURS",
+   "prm": {},
+   "n": 66
+  },
+  {
+   "segment": "stars",
+   "weight": 1.0,
+   "kind": "sunrise",
+   "action": "Sunrise on deck",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "gulls",
+     0.2
+    ]
+   ],
+   "hud": "60 HOURS",
+   "prm": {},
+   "n": 67
+  },
+  {
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "board_true",
+   "action": "Case board: TRUE stamp",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "hit",
+     0.3
+    ],
+    [
+     "pop",
+     0.6
+    ]
+   ],
+   "hud": "CASE 001",
+   "prm": {},
+   "n": 68
+  },
+  {
+   "segment": "end",
+   "weight": 0.9,
+   "kind": "rook_board",
+   "action": "Rook pins the card",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "pop",
+     0.4
+    ]
+   ],
+   "hud": "CASE 001",
+   "prm": {
+    "expr": "warm",
+    "alt": [
+     20,
+     0.9,
+     0.2
+    ]
+   },
+   "n": 69
+  },
+  {
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "sunrise",
+   "action": "Harrison and Rook; Rook tips his hat",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "gulls",
+     0.1
+    ]
+   ],
+   "hud": "CASE 001",
+   "prm": {
+    "alt": [
+     -24,
+     0.9,
+     0.3
+    ]
+   },
+   "n": 70
+  },
+  {
+   "segment": "end",
+   "weight": 1.2,
+   "kind": "signoff",
+   "action": "Rook signs off",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "caw",
+     0.3
+    ]
+   ],
+   "hud": "CASE 001",
+   "prm": {},
+   "n": 71,
+   "brand": true
+  }
+ ]
+}
