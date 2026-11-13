@@ -63,8 +63,8 @@
    "world": "DC-9 cabin, snowy Czech hillside",
    "est_score": 83,
    "long_form_candidate": false,
-   "status": "in progress",
-   "facts": "verify with 2+ sources at authoring; skip if they do not hold"
+   "status": "authored",
+   "facts": "verified (see episodes/r005-vulovic/episode.json)"
   },
   {
    "case": 6,

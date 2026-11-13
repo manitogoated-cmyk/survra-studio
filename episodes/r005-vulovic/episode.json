@@ -1,0 +1,60 @@
+{
+ "id": "r005-vulovic",
+ "format": "short",
+ "status": "approved",
+ "synthetic": false,
+ "host": "rook",
+ "case": 5,
+ "title": "She Fell 10 km Without a Parachute. And Walked Again #shorts",
+ "description": "Case 005. 26 January 1972: JAT Flight 367, a DC-9 flying from Stockholm to Belgrade, broke apart over Srbská Kamenice in Czechoslovakia. Investigators attributed the explosion to a bomb in the baggage compartment; no one was ever arrested. Flight attendant Vesna Vulović, 22, was the only survivor of the 28 people on board. She was found in the wreckage on a snowy, wooded hillside by villager Bruno Honke, a former wartime medic, and was walking again within ten months. Guinness World Records lists her fall of 10,160 metres as the highest survived without a parachute. In 2009 two journalists argued the plane had come apart much lower; the Czech aviation authority dismissed the claim and the record still stands. Rook didn't believe it either.\n\nIn memory of the 27 passengers and crew who died.\n\nAnimated reconstruction of a true story.",
+ "tags": [
+  "Vesna Vulović",
+  "Vesna Vulovic",
+  "JAT Flight 367",
+  "highest fall survived",
+  "fell without a parachute",
+  "flight attendant",
+  "1972",
+  "true story",
+  "survival story",
+  "animated story",
+  "Rook",
+  "Survra"
+ ],
+ "hashtags": [
+  "#shorts",
+  "#truestory",
+  "#survival"
+ ],
+ "playlist": "Rook's Case Files (Shorts)",
+ "story_score": {
+  "curiosity": 9,
+  "stakes": 10,
+  "freshness": 6,
+  "story": 8,
+  "visual": 9,
+  "audience_fit": 9,
+  "payoff": 8,
+  "packaging": 9,
+  "research": 8,
+  "repeatability": 8,
+  "total": 84
+ },
+ "title_options": [
+  "She Fell 10 km Without a Parachute. And Walked Again #shorts",
+  "The Flight Attendant Who Fell 10,160 Metres and Lived #shorts",
+  "She Wasn't Even Meant to Be on the Plane That Broke Apart #shorts",
+  "A Food Trolley Pinned Her in the Wreck. It May Have Saved Her #shorts",
+  "The Highest Fall Anyone Has Survived #shorts"
+ ],
+ "source_notes": "Date, flight and aircraft: 26 January 1972, JAT Flight 367, a McDonnell Douglas DC-9 flying Stockholm to Belgrade with stops in Copenhagen and Zagreb; Vulović and her crew boarded in Copenhagen (Guinness World Records, Wikipedia, The War Zone). Cause: investigators attributed the explosion to a briefcase bomb in the baggage compartment (Guinness, Wikipedia; The War Zone says 'luggage hold'); Croatian nationalists were blamed and no one was ever arrested (all three). The script says only 'a bomb in the baggage hold' and names no group; the place (the aircraft broke up over Srbská Kamenice, Czechoslovakia) is given in the on-screen labels. Deaths: Wikipedia says she was 'the only survivor of the 28 passengers and crew', The War Zone 'all 27 other passengers and crew'; the script says twenty-seven people were killed. Height: 10,160 m / 33,330 ft (Wikipedia, The War Zone), 33,333 ft (Guinness); the script rounds to 'ten kilometres' and 'ten thousand metres' and the graphics show 10,160 m. Mix-up: the airline 'confused her for another flight attendant also named Vesna' (Wikipedia; Guinness and The War Zone agree). Trolley: 'pinned down by a food cart' (Guinness), 'trapped by a food trolley in the DC-9's fuselage' (Wikipedia). Sources disagree on whether she was in the tail or the middle of the aircraft (she herself said the middle), so the script says 'inside the wreckage' and the animation shows a length of fuselage with no tail. Landing: the fuselage 'landed at an angle in a heavily wooded and snow-covered mountainside' (Wikipedia; Guinness: thick snow 'at a favourable angle'). Rescue: villager Bruno Honke 'heard her screaming amid the wreckage'; he had been a medic in the Second World War and kept her alive until rescuers arrived (Wikipedia, Guinness). The War Zone calls the rescuer an unnamed woodsman who heard her cries in the dark. Injuries: fractured skull, two broken legs, three broken vertebrae (Guinness); Wikipedia adds broken ribs and pelvis; the script says 'broken skull, broken legs, broken spine'. Recovery: able to walk again 'after ten months' (Guinness), 'within ten months' (Wikipedia); she was temporarily paralysed from the waist down and limped for the rest of her life. Coma length is given as three, ten or 27 days depending on the source, so the script does not mention it. Dispute: in 2009 two Prague-based journalists claimed the aircraft was shot down by mistake at about 800 m; the Czech Civil Aviation Authority dismissed this, the journalists called their own evidence circumstantial, and Guinness World Records continues to list the record (Wikipedia, Guinness). The script says 'some reporters later doubted the height. The record still stands.' Her age (22) follows from the birth date 3 January 1950 on Wikipedia; Guinness says 23; the age is only in the description. Dramatised, not reported: the crew roster graphic (the other attendant is shown only as 'Vesna' with her surname blacked out, because this run did not verify it, and the sliding flight tag is an illustration of the mix-up), the dial altimeter, the exact look of the aircraft, cabin, stairs, hillside, village and hospital ward, the lantern, Vulović pushing the trolley at the moment of the explosion (she had no memory of the flight), the X-ray graphic, the newspaper, and everything Rook does. No dialogue is attributed to anyone. The victims are not shown after the explosion.",
+ "sources": [
+  "https://www.guinnessworldrecords.com/news/2022/4/how-vesna-vulovic-survived-the-highest-fall-ever-with-no-parachute-697786.html",
+  "https://en.wikipedia.org/wiki/Vesna_Vulovi%C4%87",
+  "https://www.twz.com/44038/an-air-stewardess-fell-33000-feet-and-lived-to-tell-the-tale-60-years-ago-today",
+  "https://www.damninteresting.com/vesnas-fall/"
+ ],
+ "quality_gate": {
+  "method": "3D contact sheet reviewed in three rounds, composited stills (captions, HUD, overlays, inserts) in two, then two full-length low-resolution rehearsals (216x384, 4 samples) reviewed at two frames per shot; the final rehearsal passed the automated gate locally: 37 shots, mean 1.23 s, longest 1.71 s, loudness -15.1 LUFS, host in 16/37 shots (43%), closest match to an earlier episode 0.75; every caption pair was measured to fit the frame width; audio was measured, not listened to (the pronunciation of 'Vulović' is spelled 'Voolovitch' for the voice and was not checked by ear); the full-resolution render and final gate run in the cloud"
+ }
+}
