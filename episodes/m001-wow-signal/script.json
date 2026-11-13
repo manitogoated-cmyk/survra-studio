@@ -1,0 +1,55 @@
+{
+ "id": "m001-wow-signal",
+ "voice": "am_fenrir",
+ "speed": 1.12,
+ "gap": 0.14,
+ "lead": 0.1,
+ "tail": 0.9,
+ "segments": [
+  {
+   "scene": "hook",
+   "mood": "hook",
+   "text": "In {1977|nineteen seventy-seven}, a telescope in Ohio heard something from space for seventy-two seconds. It has never been heard again."
+  },
+  {
+   "scene": "doubt",
+   "mood": "calm",
+   "text": "A message from aliens? No chance. Let's go look."
+  },
+  {
+   "scene": "scope",
+   "mood": "action",
+   "text": "The Big Ear telescope listens to the sky all night, and a computer prints what it hears."
+  },
+  {
+   "scene": "wow",
+   "mood": "wonder",
+   "text": "Days later, volunteer Jerry Ehman reads the printout. He circles six characters and writes one word. Wow."
+  },
+  {
+   "scene": "clue",
+   "mood": "tense",
+   "text": "Look closer. The signal sits right by the frequency of hydrogen. Exactly where searchers expected a call."
+  },
+  {
+   "scene": "gone",
+   "mood": "sad",
+   "text": "They point the telescope back, again and again. Nothing. It never repeats."
+  },
+  {
+   "scene": "twist",
+   "mood": "wonder",
+   "text": "In {2024|twenty twenty-four}, scientists propose a suspect. A hydrogen cloud that flared when a dead star's blast hit it."
+  },
+  {
+   "scene": "question",
+   "mood": "tense",
+   "text": "So which is it? A glowing cloud of gas, or somebody saying hello?"
+  },
+  {
+   "scene": "end",
+   "mood": "end",
+   "text": "Even they won't rule anything out. Your theory goes in the comments. This case stays open."
+  }
+ ]
+}

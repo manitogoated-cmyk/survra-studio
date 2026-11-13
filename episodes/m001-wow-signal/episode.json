@@ -1,0 +1,76 @@
+{
+ "id": "m001-wow-signal",
+ "format": "short",
+ "status": "approved",
+ "series": "Open Case",
+ "synthetic": false,
+ "host": "rook",
+ "case": "Open Case 001",
+ "truth_label": "documented, unresolved",
+ "title": "A Telescope Heard Something for 72 Seconds. It Never Came Back #shorts",
+ "description": "Open Case 001. 15 August 1977, Ohio: the Big Ear radio telescope picked up a strong narrowband signal near the hydrogen line, the frequency many searchers expected an intelligent signal to use. It lasted the full 72 seconds the telescope could watch that patch of sky. Days later volunteer astronomer Jerry Ehman circled the printout, 6EQUJ5, and wrote \"Wow!\" beside it. The code is a record of the signal's strength, not a message. Repeated searches, by Ehman and others, never found it again.\n\nIn 2024 a team led by Abel Méndez proposed a natural explanation: a cold hydrogen cloud briefly brightened by a flare from a magnetar or similar source. It is a hypothesis, not a settled answer, and the team says doubt remains.\n\nWhat do you think it was? The best theories in the comments can become a follow-up case.\n\nAnimated reconstruction of a documented, unsolved mystery. Sources:\nhttps://en.wikipedia.org/wiki/Wow!_signal\nhttps://www.skyatnightmagazine.com/space-science/wow-signal\nhttps://explorersweb.com/exploration-mysteries-wow-signal/\nhttps://www.nationalgeographic.com/science/article/wow-radio-signal-aliens-mystery\nhttps://arxiv.org/abs/2408.08513",
+ "tags": [
+  "Wow signal",
+  "6EQUJ5",
+  "Big Ear",
+  "Jerry Ehman",
+  "unsolved mysteries",
+  "unexplained",
+  "SETI",
+  "space mystery",
+  "animated story",
+  "Rook",
+  "Survra"
+ ],
+ "hashtags": [
+  "#shorts",
+  "#unsolvedmysteries",
+  "#space"
+ ],
+ "playlist": "Rook's Open Cases (Shorts)",
+ "story_score": {
+  "curiosity": 10,
+  "stakes": 7,
+  "freshness": 6,
+  "story": 8,
+  "visual": 9,
+  "audience_fit": 9,
+  "payoff": 7,
+  "packaging": 9,
+  "research": 9,
+  "repeatability": 9,
+  "total": 83
+ },
+ "reddit_hunter_score": {
+  "immediate_curiosity": 19,
+  "suspense_mystery": 14,
+  "emotional_impact": 8,
+  "unexpected_developments": 11,
+  "animation_potential": 9,
+  "viewer_interaction": 10,
+  "originality": 5,
+  "research_reliability": 5,
+  "total": 81
+ },
+ "reddit_note": "Open Case format test. The Wow! signal is a long-running r/UnresolvedMysteries discussion topic; no Reddit post is adapted or quoted, so no author permission is needed. Story facts come only from the sources listed.",
+ "viewer_question": "A glowing cloud of gas, or somebody saying hello?",
+ "title_options": [
+  "A Telescope Heard Something for 72 Seconds. It Never Came Back #shorts",
+  "He Circled 6 Characters and Wrote One Word: Wow #shorts",
+  "The Signal From Space Nobody Could Find Again #shorts",
+  "72 Seconds From Space, Then Silence. What Was It? #shorts",
+  "Aliens or a Gas Cloud? The Wow! Signal Is Still Open #shorts"
+ ],
+ "source_notes": "Date and telescope: 15 August 1977, Ohio State University's Big Ear radio telescope (Wikipedia, Explorersweb, Sky at Night). Duration: the full 72-second window in which Big Ear could see that point of sky as the Earth turned (Wikipedia, Sky at Night). Discovery: volunteer astronomer Jerry Ehman reviewed the printout days later (Sky at Night: three days later; Explorersweb: Ehman only saw the data afterward), circled 6EQUJ5 and wrote 'Wow!' beside it. 6EQUJ5 records signal intensity over time, not a message (Wikipedia, Phys.org, Sky at Night). Frequency: a narrowband signal near 1420 MHz, the neutral hydrogen line (Wikipedia, Phys.org via Universe Today); the script's 'exactly where searchers expected a call' reflects that SETI searches of the time targeted this line, which Wikipedia describes as bearing the expected hallmarks of extraterrestrial origin. Never repeated: Ehman and others searched again and found nothing (Wikipedia; Sky at Night lists the META array and the Very Large Array). 2024 hypothesis: Abel Méndez and colleagues (arXiv 2408.08513) propose a cold hydrogen cloud brightened by a strong transient source such as a magnetar flare or soft gamma repeater; a magnetar is a type of neutron star, which the script calls 'a dead star'. Archival Arecibo data showed similar but much weaker signals (National Geographic, arXiv). Méndez told National Geographic his team is not ruling out an artificial signal, which the script renders as 'Even they won't rule anything out.' Dramatised, not reported: the exact look of the computer room, printer and desk, Ehman's appearance and reaction, the follow-up printouts, and everything Rook does. No dialogue is attributed to anyone.",
+ "sources": [
+  "https://en.wikipedia.org/wiki/Wow!_signal",
+  "https://www.skyatnightmagazine.com/space-science/wow-signal",
+  "https://explorersweb.com/exploration-mysteries-wow-signal/",
+  "https://phys.org/news/2024-08-wow-deciphered-hydrogen.html",
+  "https://www.nationalgeographic.com/science/article/wow-radio-signal-aliens-mystery",
+  "https://arxiv.org/abs/2408.08513"
+ ],
+ "quality_gate": {
+  "method": "3D contact sheet reviewed in two rounds and composited stills (captions, HUD, stamps, inserts) in two; a full-length low-resolution rehearsal (216x384, 4 samples) passed the automated gate locally after two static shots were given more movement: 32 shots, mean 1.53 s, longest 1.75 s, loudness -15.3 LUFS, host in 13/32 shots (41%), closest match to an earlier episode 0.62; audio was measured, not listened to; the full-resolution render and final gate run in the cloud"
+ }
+}

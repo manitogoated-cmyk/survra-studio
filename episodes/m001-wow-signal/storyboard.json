@@ -1,0 +1,1120 @@
+{
+ "id": "m001-wow-signal",
+ "shots": [
+  {
+   "n": 1,
+   "segment": "hook",
+   "weight": 0.7,
+   "kind": "beam_hit",
+   "action": "An orange radio ring races out of deep space straight at the lens and hits",
+   "camera": "Head-on, shaking",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 6,
+   "transition": "cut",
+   "sfx": [
+    [
+     "boom",
+     0.02
+    ],
+    [
+     "whoosh",
+     0.0
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 2,
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "ear_night",
+   "action": "The Big Ear at night: a flat steel wall, a curved wall, a field of aluminium under the stars",
+   "camera": "Low wide, push-in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.0
+    ],
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": "OHIO, 1977",
+   "prm": {}
+  },
+  {
+   "n": 3,
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "printout",
+   "action": "The 1977 printout scrolls up; a red ring closes around the column 6EQUJ5",
+   "camera": "Flat insert",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "zoom",
+   "sfx": [
+    [
+     "scratch",
+     0.3
+    ],
+    [
+     "hit",
+     0.7
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 4,
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "ear_sweep",
+   "action": "Crane up the face of the flat reflector as it tilts",
+   "camera": "Crane up",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "riser",
+     0.0
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 5,
+   "segment": "hook",
+   "weight": 1.05,
+   "kind": "ear_dark",
+   "action": "The horn hut's lights die one by one; the field goes dark",
+   "camera": "Pull back",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.0
+    ],
+    [
+     "heartbeat",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 6,
+   "segment": "doubt",
+   "weight": 1.0,
+   "kind": "rook_plane",
+   "action": "Rook on the aluminium plane, arms crossed, shaking his head",
+   "camera": "Slow push-in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "clunk",
+     0.1
+    ]
+   ],
+   "hud": "OPEN CASE 001",
+   "prm": {}
+  },
+  {
+   "n": 7,
+   "segment": "doubt",
+   "weight": 1.0,
+   "kind": "rook_walk",
+   "action": "Collar up, he walks off toward the giant reflector",
+   "camera": "Behind him, low",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "flap",
+     0.1
+    ],
+    [
+     "clunk",
+     0.55
+    ]
+   ],
+   "hud": "OPEN CASE 001",
+   "prm": {}
+  },
+  {
+   "n": 8,
+   "segment": "scope",
+   "weight": 1.0,
+   "kind": "ear_aerial",
+   "action": "From high above: the whole telescope, the size of a car park",
+   "camera": "Aerial",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "whoosh",
+     0.05
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 9,
+   "segment": "scope",
+   "weight": 1.0,
+   "kind": "horn_cu",
+   "action": "The feed horns in the hut's orange glow, beacon blinking",
+   "camera": "Close push-in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.2
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 10,
+   "segment": "scope",
+   "weight": 1.05,
+   "kind": "printer",
+   "action": "The line printer spits fanfold paper; Rook pulls a sheet and reads",
+   "camera": "Medium, push",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.1
+    ],
+    [
+     "scratch",
+     0.5
+    ]
+   ],
+   "hud": "1977",
+   "prm": {}
+  },
+  {
+   "n": 11,
+   "segment": "wow",
+   "weight": 1.0,
+   "kind": "ehman_desk",
+   "action": "Jerry Ehman at his desk under the lamp, a stack of printouts",
+   "camera": "Push-in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "flip",
+     0.2
+    ]
+   ],
+   "hud": "JERRY EHMAN",
+   "prm": {}
+  },
+  {
+   "n": 12,
+   "segment": "wow",
+   "weight": 1.0,
+   "kind": "rook_peek",
+   "action": "Rook leans in over Ehman's shoulder",
+   "camera": "Over the shoulder",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "flip",
+     0.3
+    ]
+   ],
+   "hud": "JERRY EHMAN",
+   "prm": {}
+  },
+  {
+   "n": 13,
+   "segment": "wow",
+   "weight": 1.1,
+   "kind": "wow_write",
+   "action": "Close: the red pen writes Wow! beside the circled code",
+   "camera": "Flat insert",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "zoom",
+   "sfx": [
+    [
+     "scratch",
+     0.2
+    ],
+    [
+     "scratch",
+     0.5
+    ],
+    [
+     "hit",
+     0.8
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 14,
+   "segment": "wow",
+   "weight": 1.0,
+   "kind": "ehman_shock",
+   "action": "Ehman jerks back in his chair, pen in the air",
+   "camera": "Low",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 3,
+   "transition": "cut",
+   "sfx": [
+    [
+     "gasp",
+     0.1
+    ],
+    [
+     "boom",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 15,
+   "segment": "clue",
+   "weight": 1.0,
+   "kind": "rook_lean",
+   "action": "Rook leans into the lens, one finger up: look closer",
+   "camera": "Close, push-in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "bloop",
+     0.2
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 16,
+   "segment": "clue",
+   "weight": 1.05,
+   "kind": "line_chart",
+   "action": "Noise across every channel, one spike right by the hydrogen line",
+   "camera": "Flat insert",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "riser",
+     0.0
+    ],
+    [
+     "hit",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 17,
+   "segment": "clue",
+   "weight": 1.0,
+   "kind": "rook_chart",
+   "action": "At the wall chart, Rook jabs the tall orange bar; his hat jumps",
+   "camera": "Medium",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "shout",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 18,
+   "segment": "clue",
+   "weight": 1.0,
+   "kind": "horn_cu",
+   "action": "The horns again, from the side, pointed at the sky",
+   "camera": "Close, side",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "alt": [
+     70,
+     1.15,
+     0.6
+    ],
+    "stamp": "EXPECTED A CALL"
+   }
+  },
+  {
+   "n": 19,
+   "segment": "gone",
+   "weight": 1.0,
+   "kind": "ear_search",
+   "action": "The reflector tilts back and forth; Rook, tiny, watches it",
+   "camera": "Low, behind him",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "creak",
+     0.1
+    ],
+    [
+     "low",
+     0.0
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 20,
+   "segment": "gone",
+   "weight": 1.0,
+   "kind": "rook_listen",
+   "action": "Rook in headphones, hand to his ear. Nothing. He shrugs",
+   "camera": "Close",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "heartbeat",
+     0.2
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 21,
+   "segment": "gone",
+   "weight": 1.0,
+   "kind": "blank_page",
+   "action": "Page after page of the follow-up printouts: nothing",
+   "camera": "Flat insert, scrolling",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.0
+    ],
+    [
+     "hit",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 22,
+   "segment": "twist",
+   "weight": 1.0,
+   "kind": "cloud",
+   "action": "Drifting through a cold teal hydrogen cloud among the stars",
+   "camera": "Drift",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "low",
+     0.0
+    ],
+    [
+     "whoosh",
+     0.3
+    ]
+   ],
+   "hud": "2024",
+   "prm": {}
+  },
+  {
+   "n": 23,
+   "segment": "twist",
+   "weight": 1.0,
+   "kind": "flare",
+   "action": "A dead star flares; light floods the cloud and it blazes",
+   "camera": "Wide",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 4,
+   "transition": "cut",
+   "sfx": [
+    [
+     "riser",
+     0.0
+    ],
+    [
+     "boom",
+     0.45
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 24,
+   "segment": "twist",
+   "weight": 1.0,
+   "kind": "rook_space",
+   "action": "Rook floating beside the blazing cloud, hat lifting",
+   "camera": "Medium",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 3,
+   "transition": "cut",
+   "sfx": [
+    [
+     "gasp",
+     0.15
+    ],
+    [
+     "flap",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 25,
+   "segment": "twist",
+   "weight": 1.0,
+   "kind": "wave_earth",
+   "action": "An orange ring leaves the cloud and races toward Earth",
+   "camera": "Chase",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "whoosh",
+     0.1
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 26,
+   "segment": "question",
+   "weight": 1.0,
+   "kind": "theory_board",
+   "action": "Rook's wall: the gas cloud, the telescope, a big question mark",
+   "camera": "Flat insert",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "bloop",
+     0.15
+    ],
+    [
+     "bloop",
+     0.5
+    ],
+    [
+     "hit",
+     0.8
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 27,
+   "segment": "question",
+   "weight": 1.0,
+   "kind": "rook_cam",
+   "action": "Rook faces the lens and spreads his hands",
+   "camera": "Close, front",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "pop",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 28,
+   "segment": "question",
+   "weight": 1.0,
+   "kind": "ear_night",
+   "action": "The telescope under the stars, from the other side",
+   "camera": "Wide",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.0
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "alt": [
+     60,
+     0.8,
+     8
+    ],
+    "nostamp": true
+   }
+  },
+  {
+   "n": 29,
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "ear_dawn",
+   "action": "Dawn over the Big Ear",
+   "camera": "Slow push",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "gulls",
+     0.1
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 30,
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "rook_comment",
+   "action": "Rook points down at the comments",
+   "camera": "Medium",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "bloop",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 31,
+   "segment": "end",
+   "weight": 0.95,
+   "kind": "rook_pen",
+   "action": "He holds up Ehman's red pen, turning it in the light",
+   "camera": "Close",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 32,
+   "segment": "end",
+   "weight": 1.15,
+   "kind": "signoff",
+   "action": "He flips the pen, catches it. This case stays open",
+   "camera": "Low hero",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "boom",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "brand": true
+  }
+ ]
+}
