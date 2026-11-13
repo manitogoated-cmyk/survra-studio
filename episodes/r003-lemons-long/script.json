@@ -1,14 +1,130 @@
 {
-  "id": "r003-lemons", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9,
-  "segments": [
-    {"scene": "hook",   "mood": "hook",    "text": "A hundred metres under the North Sea, a diver's lifeline snaps. He has about five minutes of gas."},
-    {"scene": "doubt",  "mood": "calm",    "text": "No chance. Five minutes of gas doesn't last half an hour. Let's go look."},
-    {"scene": "job",    "mood": "action",  "text": "September {2012|twenty twelve}. Chris Lemons is working on an oil well. His breathing gas comes down a cable from the ship."},
-    {"scene": "drift",  "mood": "tense",   "text": "The ship's positioning system fails. It drifts. His cable snags, pulls tight, and snaps."},
-    {"scene": "dark",   "mood": "sad",     "text": "In the dark, he climbs on top of the structure and waits. Then his gas runs out."},
-    {"scene": "watch",  "mood": "tense",   "text": "Up top, they watch him on a robot's camera. His movements slow. Then stop."},
-    {"scene": "rescue", "mood": "action",  "text": "Around thirty minutes later, the ship is back. Diver Dave Yuasa hauls him to the bell, sure he's carrying a body."},
-    {"scene": "breath", "mood": "triumph", "text": "Helmet off. A crewmate breathes into his mouth. And Chris Lemons breathes again."},
-    {"scene": "end",    "mood": "end",     "text": "Best guess: the cold, and oxygen-rich gas. No lasting damage. I was wrong. Case closed."}
-  ]
+ "id": "r003-lemons-long",
+ "voice": "am_fenrir",
+ "speed": 1.12,
+ "gap": 0.16,
+ "lead": 0.1,
+ "tail": 1.0,
+ "segments": [
+  {
+   "scene": "hook",
+   "mood": "hook",
+   "text": "A hundred metres under the North Sea, a diver's lifeline snaps. His ship is gone. He has about five minutes of gas."
+  },
+  {
+   "scene": "doubt",
+   "mood": "calm",
+   "text": "No chance. Help is half an hour away. Five minutes of gas doesn't last half an hour. Let's go look."
+  },
+  {
+   "scene": "where",
+   "mood": "calm",
+   "text": "September eighteenth, {2012|twenty twelve}. The dive support vessel Bibby Topaz sits over the Huntington oil field, about two hundred kilometres east of Aberdeen."
+  },
+  {
+   "scene": "sat",
+   "mood": "calm",
+   "text": "On board are saturation divers. They live under pressure in a chamber on the ship, breathing a mix of helium and oxygen. Helium does things to a voice. I am not judging."
+  },
+  {
+   "scene": "team",
+   "mood": "action",
+   "text": "A diving bell takes three of them down. Chris Lemons and Dave Yuasa go out to work on a steel structure on the seabed. Duncan Allcock stays in the bell, tending their lines."
+  },
+  {
+   "scene": "cord",
+   "mood": "calm",
+   "text": "Each diver is tied to the bell by an umbilical. It carries his breathing gas, hot water to keep him warm, power for his lamp, and the voice of his supervisor. Lose it, and you lose all four."
+  },
+  {
+   "scene": "storm",
+   "mood": "tense",
+   "text": "Up top, the sea is rough and the wind is high. The ship holds its spot with a computer system called dynamic positioning. Then an alarm sounds. The system has failed."
+  },
+  {
+   "scene": "drift",
+   "mood": "action",
+   "text": "The Topaz starts to drift, dragging the bell with it. The supervisor orders both divers back to the bell."
+  },
+  {
+   "scene": "snag",
+   "mood": "tense",
+   "text": "They go. But Chris's umbilical has caught on the structure. The ship keeps pulling. The line goes bar tight."
+  },
+  {
+   "scene": "snap",
+   "mood": "action",
+   "text": "And it snaps. He said later it went like a shotgun. Gas, heat, light, voices. All gone at once."
+  },
+  {
+   "scene": "duncan",
+   "mood": "sad",
+   "text": "In the bell, Duncan Allcock hauls the line in. He said he was hoping he was pulling Chris in. What comes up is a torn end."
+  },
+  {
+   "scene": "dave",
+   "mood": "tense",
+   "text": "Dave Yuasa has been dragged off the structure too. His own line won't reach far enough to go back. He has to return to the bell, and wait."
+  },
+  {
+   "scene": "dark",
+   "mood": "sad",
+   "text": "Chris is alone, in complete darkness, in water a few degrees above freezing. He switches to the emergency bottles on his back. About five minutes of gas."
+  },
+  {
+   "scene": "climb",
+   "mood": "sad",
+   "text": "He gets back to the structure and climbs on top of it. Then he lies down. He said later that knowing he could do nothing more was strangely calming."
+  },
+  {
+   "scene": "far",
+   "mood": "tense",
+   "text": "By now the ship has drifted about two hundred and forty metres. On the bridge, the crew fight to get control back."
+  },
+  {
+   "scene": "rov",
+   "mood": "tense",
+   "text": "They send down a remote-controlled robot. Its camera finds a figure on top of the structure. He is still moving. Barely. Then he isn't."
+  },
+  {
+   "scene": "back",
+   "mood": "action",
+   "text": "Roughly half an hour after the snap, the Topaz is back over the site. Dave Yuasa drops out of the bell and goes straight for him."
+  },
+  {
+   "scene": "carry",
+   "mood": "action",
+   "text": "He finds Chris lying on his side, not moving. He is sure he's recovering a body. He drags him back to the bell anyway, and Duncan pulls him inside."
+  },
+  {
+   "scene": "breath",
+   "mood": "triumph",
+   "text": "Helmet off. Duncan Allcock gives him two rescue breaths. And Chris Lemons breathes. Moments later, he's awake."
+  },
+  {
+   "scene": "how",
+   "mood": "wonder",
+   "text": "How? A body holds maybe a couple of litres of oxygen. That is minutes, not half an hour. The best guesses: the near-freezing water slowed him right down, and the oxygen-rich gas he'd been breathing under pressure had soaked into his tissues. Nobody can say for sure."
+  },
+  {
+   "scene": "count",
+   "mood": "calm",
+   "text": "Even the clock is argued over. The reports say twenty-nine minutes, thirty-three, thirty-eight, forty. Pick any one. It is still not five."
+  },
+  {
+   "scene": "after",
+   "mood": "calm",
+   "text": "He had no lasting damage. About three weeks later he was diving again, with Dave and Duncan, on the same structure. And he married his fiancée, Morag."
+  },
+  {
+   "scene": "fix",
+   "mood": "calm",
+   "text": "The failure was traced to a fault inside the positioning system. The hardware was replaced, and the safety regulator sent a warning to the rest of the industry."
+  },
+  {
+   "scene": "end",
+   "mood": "end",
+   "text": "Five minutes of gas. Half an hour on the seabed. And a crewmate who went back for a body, and brought home a friend. I was wrong. Case closed."
+  }
+ ]
 }
