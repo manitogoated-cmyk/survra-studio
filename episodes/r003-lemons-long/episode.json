@@ -5,25 +5,31 @@
  "synthetic": false,
  "host": "rook",
  "case": 3,
- "title": "His Lifeline Snapped 100 m Down. Help Was 30 Minutes Away #shorts",
- "description": "Case 003. 18 September 2012, the North Sea: saturation diver Chris Lemons was working on a well structure about 100 metres down when his ship's dynamic positioning system failed. The vessel drifted, his umbilical snagged and snapped, and he was left on the seabed with only a few minutes of emergency gas. Around half an hour later fellow diver Dave Yuasa carried him back to the diving bell, where Duncan Allcock resuscitated him. He recovered with no lasting damage. Rook didn't believe it either.\n\nAnimated reconstruction of a true story.",
+ "title": "His Lifeline Snapped 100 m Under the North Sea. He Had 5 Minutes of Gas",
+ "description": "Case 003, the full case file. On 18 September 2012 the dive support vessel Bibby Topaz was working over the Huntington field in the North Sea when her dynamic positioning system failed in rough weather. The ship drifted, dragging the diving bell with her. Saturation diver Chris Lemons' umbilical snagged on the steel structure he was working on and snapped, taking his breathing gas, his heat, his light and his communications with it. He was left about 100 metres down, in the dark, with roughly five minutes of emergency gas. This is the whole case: the chamber the divers live in, the three-man bell team, the alarm on the bridge, Duncan Allcock hauling in a torn line, Dave Yuasa forced to wait, the robot's camera, the half hour it took to get the ship back, the two rescue breaths, the best guesses at how he survived, and the day three weeks later when he went back to work on the same structure. Rook, Survra's sceptical crow detective, did not believe it either.\n\nAnimated reconstruction of a true story. Figures and sets are stylised, not likenesses.",
  "tags": [
   "Chris Lemons",
   "Last Breath",
+  "Last Breath true story",
   "saturation diver",
+  "saturation diving",
   "North Sea",
   "Bibby Topaz",
+  "Dave Yuasa",
+  "Duncan Allcock",
   "true story",
   "survival story",
   "animated story",
+  "3D animation",
   "diving accident",
   "Rook",
-  "Survra"
+  "Survra",
+  "full case"
  ],
  "hashtags": [
-  "#shorts",
   "#truestory",
-  "#survival"
+  "#survival",
+  "#animation"
  ],
  "playlist": "Rook's Case Files (Full Cases)",
  "story_score": {
@@ -39,13 +45,46 @@
   "repeatability": 9,
   "total": 88
  },
- "source_notes": "Date, ship and place: 18 September 2012, DSV Bibby Topaz, Huntington field, North Sea (The National; Undercurrent gives the same date and ship). Depth: 'almost 100 metres' (The National), '100 metres (330 ft)' (Wikipedia), '330 feet' (Undercurrent); Offshore Technology says 90 m; the script says 'a hundred metres'. Cause: failure of the ship's dynamic positioning system, which let it drift (The National, Offshore Technology, Undercurrent, Wikipedia). Emergency gas: 'only five minutes' (Wikipedia), 'a few minutes' (Undercurrent), 'nine or ten minutes' (Offshore Technology); the script says 'about five minutes' and the description 'a few minutes'. Time without breathing gas: 'around 30 minutes' (The National, Wikipedia); Undercurrent says 38 minutes; the script says 'half an hour' and 'around thirty minutes'. He was told to get on top of the structure (The National; Offshore Technology: 'climbed atop a structure on the seabed floor'). The crew watched on the ROV's cameras 'as Lemons' movements gradually stopped' (Undercurrent; Wikipedia confirms an ROV located him). Dave Yuasa 'recovered what he thought was Lemons' corpse' and took him to Duncan Allcock in the bell, who removed his helmet (The National). Resuscitation: 'two breaths of mouth-to-mouth' (Undercurrent), 'performed CPR' (The National); the script says 'a crewmate breathes into his mouth' and gives no count. Why he lived is not settled ('there is not one definitive theory', Offshore Technology); the explanations offered are the cold water and oxygen-rich breathing gas saturating his blood (Wikipedia, The National, Undercurrent), so the script calls it the 'best guess'. Outcome: 'no long-term health effects' (Offshore Technology); he went on working as a saturation diver (Undercurrent). Dramatised, not reported: the red beacon and the supervisor's gestures in dive control, the gauge graphics, the exact way the line lies over the structure, and everything Rook does. No dialogue is attributed to anyone. The BBC Future article on the case could not be fetched during this run and is not used.",
+ "source_notes": "Date, ship and place: 18 September 2012, DSV Bibby Topaz, Huntington field, North Sea (The National; Undercurrent gives the same date and ship). Depth: 'almost 100 metres' (The National), '100 metres (330 ft)' (Wikipedia), '330 feet' (Undercurrent); Offshore Technology says 90 m; the script says 'a hundred metres'. Cause: failure of the ship's dynamic positioning system, which let it drift (The National, Offshore Technology, Undercurrent, Wikipedia). Emergency gas: 'only five minutes' (Wikipedia), 'a few minutes' (Undercurrent), 'nine or ten minutes' (Offshore Technology); the script says 'about five minutes' and the description 'a few minutes'. Time without breathing gas: 'around 30 minutes' (The National, Wikipedia); Undercurrent says 38 minutes; the script says 'half an hour' and 'around thirty minutes'. He was told to get on top of the structure (The National; Offshore Technology: 'climbed atop a structure on the seabed floor'). The crew watched on the ROV's cameras 'as Lemons' movements gradually stopped' (Undercurrent; Wikipedia confirms an ROV located him). Dave Yuasa 'recovered what he thought was Lemons' corpse' and took him to Duncan Allcock in the bell, who removed his helmet (The National). Resuscitation: 'two breaths of mouth-to-mouth' (Undercurrent), 'performed CPR' (The National); the script says 'a crewmate breathes into his mouth' and gives no count. Why he lived is not settled ('there is not one definitive theory', Offshore Technology); the explanations offered are the cold water and oxygen-rich breathing gas saturating his blood (Wikipedia, The National, Undercurrent), so the script calls it the 'best guess'. Outcome: 'no long-term health effects' (Offshore Technology); he went on working as a saturation diver (Undercurrent). Dramatised, not reported: the red beacon and the supervisor's gestures in dive control, the gauge graphics, the exact way the line lies over the structure, and everything Rook does. No dialogue is attributed to anyone. The BBC Future article on the case could not be fetched during this run and is not used. LONG-FORM ADDITIONS. How these were checked: in this run the session's network policy blocked direct page fetches, so every added fact was checked through web search results (several searches, each fact kept only when a named outlet's result supported it, and the core ones when two did); the pages themselves were not read in full. Anything that only one low-quality page supported was left out (his present job, where he lives, the '28 days' in saturation, a 'foetal position', what he thought about on the seabed). Place: about 200 km east of Aberdeen (incident summary; consistent with the Huntington field). Team: Lemons and Yuasa in the water, Allcock in the bell (NBC, Derbyshire Times, The National). Chamber life and helium-oxygen breathing gas are standard saturation diving (Business Insider, Undercurrent); 'Helium does things to a voice. I am not judging' is Rook's joke, not a claim about any one diver. Umbilical: gas, hot water, power/light and communications (Undercurrent/Business Insider: 'gas, hot water and power'; CBC: 'breathing gas, light, and heat'). Weather: 'high winds and rough seas' (Rigzone). DP alarm and drift, supervisor's order back to the bell (incident summary, Rigzone, NBC). Snag and snap: 'Like a shotgun, it snapped' is Lemons' own description (STV); the stamp quotes three words of it. Allcock hauling in the line and 'I was hoping I was pulling Chris in, but in my heart of hearts I knew I wasn't' (Derbyshire Times; STV describes the torn end coming up); the script paraphrases. Yuasa dragged off and sent back to the bell because his umbilical had no slack to return (The National, STV). Darkness and cold: 'in complete darkness' (CBC/speaker profile); water 3 to 4 C in the reports, the script says 'a few degrees above freezing'. The Short showed his hat lamp still lit after the snap (dramatised); the long version turns it off, because the lamp's power came down the umbilical. 'Strangely calming' is his own phrase to CBC. Drift: about 240 m / 785 ft (incident summary, Rigzone). How the bridge got control back is described differently (system reset vs manual control), so the script says only that the crew 'fight to get control back'. ROV: located him and showed his movements stopping (Undercurrent, Wikipedia). 'Roughly half an hour' (The National, Wikipedia, incident summaries). Found 'lying on his side' atop the structure (NBC). 'Two rescue breaths' (NBC, Undercurrent); he came round almost at once (Screen Rant citing Allcock in the 2019 documentary). Time without gas is disputed and the script says so: 29 minutes (2019 film credits), 33 (2022 case report in Healthcare/MDPI), 38 (Undercurrent, Daily Mail), about 40 (Rigzone, early reports). 'A couple of litres' of oxygen in a body is physiologist Mike Tipton's figure to BBC Future, as quoted in search results; the explanation (cold plus oxygen-rich gas under pressure) is offered as the best guesses, and 'Nobody can say for sure' follows Offshore Technology and Lemons himself. Back at work in about three weeks on the same structure with Yuasa and Allcock (NBC and others); married his fiancee Morag (Business Insider, Daily Mail); the script gives no wedding date because sources differ. Cause: a fault in the DP system's data network hardware, replaced afterwards (incident summaries); the Health and Safety Executive issued a warning (Riviera Maritime Media headline). The script does not say what time of day it happened; the animation keeps the Short's grey daylight although the recovery is logged at 22:48 (Rigzone), so the surface shots are stylised. The positioning officer, the supervisor and the chamber interior are generic; no dialogue is attributed to anyone beyond the two sourced phrases. 'It is still not five' and 'brought home a friend' are Rook's words.",
  "sources": [
   "https://www.thenationalnews.com/arts-culture/television/last-breath-the-miraculous-underwater-survival-story-of-chris-lemons-1.879013",
   "https://www.offshore-technology.com/features/featurelifeline-lost-documenting-a-divers-near-death-dramatic-rescue-in-the-north-sea-4809349/",
   "https://undercurrent.org/UCnow/dive_magazine/2019/330FeetDeep201906.html",
-  "https://en.wikipedia.org/wiki/Last_Breath_(2019_film)"
+  "https://en.wikipedia.org/wiki/Last_Breath_(2019_film)",
+  "https://www.nbc.com/nbc-insider/the-true-story-behind-underwater-rescue-film-last-breath",
+  "https://www.derbyshiretimes.co.uk/news/the-incredible-story-of-a-chesterfield-divers-mission-to-save-his-friend-trapped-at-the-bottom-of-the-north-sea-without-oxygen-988839",
+  "https://archive.news.stv.tv/highlands-islands/1436829-last-breath-the-diver-who-survived-being-lost-at-sea.html",
+  "https://www.rigzone.com/news/oil_gas/a/120945/oilfield_diver_survives_after_oxygen_cut_for_40_minutes/",
+  "https://www.cbc.ca/radio/thecurrent/lemons-diving-survival-story-1.7487922",
+  "https://mdpi.com/2227-9032/10/3/453",
+  "https://www.rivieramm.com/news-content-hub/news-content-hub/hse-issues-warning-after-dsv-suffers-dp-incident-40828",
+  "https://www.slideshare.net/slideshow/incident-summary-081012-bibby-topaz/14765946",
+  "https://www.energyvoice.com/oilandgas/452854/diver-chris-lemons-reflects-on-miraculous-north-sea-survival-a-decade-on/",
+  "https://time.com/7262779/last-breath-true-story/",
+  "https://www.businessinsider.in/a-diver-survived-more-than-30-minutes-at-the-bottom-of-the-north-sea-after-his-oxygen-cord-was-severed-in-an-oil-rig-repair-job-gone-horribly-wrong/articleshow/69270953.cms"
  ],
  "case_of": "r003-lemons",
- "claimed_at": "2026-11-13T08:48:21Z"
+ "claimed_at": "2026-11-13T08:48:21Z",
+ "title_options": [
+  "His Lifeline Snapped 100 m Under the North Sea. He Had 5 Minutes of Gas",
+  "5 Minutes of Gas. Half an Hour Until Help. The Diver Who Lived",
+  "They Went Back for a Body. He Was Still Alive"
+ ],
+ "added_facts": {
+  "about 200 km east of Aberdeen, Huntington field": "incident summary (SlideShare); The National",
+  "three-man bell team: Lemons and Yuasa in the water, Allcock in the bell": "NBC; Derbyshire Times; The National",
+  "umbilical carries gas, hot water, power/light, communications": "Undercurrent; Business Insider; CBC",
+  "rough seas, high wind; DP alarm; ship drifts dragging the bell; divers ordered back": "Rigzone; incident summary; NBC",
+  "'like a shotgun' (Lemons)": "STV",
+  "Allcock hauled in the line hoping he was pulling Chris in; a torn end came up": "Derbyshire Times; STV",
+  "Yuasa dragged off, no slack to go back, returned to the bell": "The National; STV",
+  "complete darkness; 'strangely calming'": "CBC",
+  "drifted about 240 m": "incident summary; Rigzone (785 ft)",
+  "found lying on his side on top of the structure": "NBC",
+  "two rescue breaths; awake almost at once": "NBC; Undercurrent; Screen Rant",
+  "29 / 33 / 38 / 40 minutes": "2019 film credits; MDPI case report; Undercurrent; Rigzone",
+  "a couple of litres of oxygen in a body": "Mike Tipton to BBC Future (via search results)",
+  "diving again about three weeks later on the same structure with Yuasa and Allcock; married Morag": "NBC; Business Insider",
+  "fault in the DP system hardware, replaced; HSE warning": "incident summaries; Riviera Maritime Media"
+ }
 }

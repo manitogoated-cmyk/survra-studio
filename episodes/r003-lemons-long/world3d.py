@@ -1848,17 +1848,17 @@ for _n in ('fall_back', 'alone_wide', 'bell_away', 'climb', 'rook_sit', 'still_b
 def photo_thumb(S, k, t, lt):
     """Thumbnail picture: the diver thrown back, the cut line whipping above him, the bell lights leaving; Rook, shocked."""
     A = deep(S, 'dim')
-    bell_at(S, (1.6, 9, 8.6), 1.0, 5000)
-    uw(S, 'lem', A(-0.6, -1.6, 0.3), 0.3, P('up', aL=(2.4, 0.7, 0.4), aR=(2.0, 0.8, 0.5), lL=(0.9, 0.5), lR=(0.3, 0.9), head=(-0.2, 0.0)), 1.0, pitch=-0.3, face='shock')
+    bell_at(S, (0.9, 9, 8.6), 1.0, 5000)
+    uw(S, 'lem', A(0.2, -1.6, 0.3), 0.3, P('up', aL=(1.5, 1.1, 0.4), aR=(1.2, 1.2, 0.5), lL=(0.9, 0.5), lR=(0.3, 0.9), head=(-0.1, 0.0)), 1.0, pitch=-0.3, face='shock')
     lamp(S, 'lem', 1500)
     rope(S, 1, back_of(S, 'lem'), (1.0, -0.6, 3.6), 0.4, 1.0, 0.3, 8)
     rope(S, 0, (2.2, 3.0, 5.6), (1.8, 8.6, 5.6), -0.6, 1.0, 0.4, 8)
     burst(S, A(1.1, -0.5, 3.7), 0.5, 14, 0, 1.2, seed=5, size=1.0)
     S['spark'].location, S['spark'].scale = (1.0, -0.6, 3.6), (0.8, 0.8, 0.8)
-    rook_uw(S, A(-3.6, -2.4, 0), -0.6, P('up', aL=(2.3, 0.6, 1.3), aR=(2.3, 0.6, 1.3), head=(-0.1, 0.2)), 'shocked', 1.0, bubbles=False)
+    rook_uw(S, A(-1.5, -3.2, 0), -0.25, P('up', aL=(1.4, 1.2, 0.9), aR=(1.4, 1.2, 0.9), head=(-0.1, 0.2)), 'shocked', 1.0, bubbles=False)
     key(S, 'kc', A(-4, -7, 5), A(-0.6, -1.6, 1.8), 3400)
-    key(S, 'kw', A(-5, -7.5, 3), A(-2.4, -2.2, 2.4), 2400)
-    cam(S, A(1.6, -9.0, 1.7), A(1.7, -0.6, 2.9), 30)
+    key(S, 'kw', A(-2.5, -8.5, 3), A(-1.5, -3.2, 2.4), 1800)
+    cam(S, A(0.9, -9.0, 1.7), A(1.0, -0.6, 2.9), 30)
 
 
 STILLS['thumb'] = photo_thumb
