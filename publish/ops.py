@@ -4,6 +4,7 @@
   python3 publish/ops.py about       update only the channel description and keywords
   python3 publish/ops.py release     make approved episodes that were uploaded privately for review public
   python3 publish/ops.py analytics   write ANALYTICS.md + plan/learnings.json from real channel numbers (weekly)
+  python3 publish/ops.py repair      retry captions, playlist and thumbnail steps that failed after an upload (daily)
 """
 import datetime as dt
 import json
@@ -142,8 +143,45 @@ def release():
     return 1 if bad else 0
 
 
+def repair():
+    """Retries the extras of an upload (captions, playlist, long-form thumbnail) that failed at upload time.
+    The rendered files come from the publish runs' episode artifacts, restored into episodes/<id>/build/ by the workflow."""
+    yt = YouTube()
+    channel(yt)
+    lp = os.path.join(ROOT, "publish", "ledger.json")
+    ledger = json.load(open(lp))
+    left = 0
+    for ep, row in ledger.items():
+        vid, build = row.get("video_id"), os.path.join(ROOT, "episodes", ep, "build")
+        ej = os.path.join(ROOT, "episodes", ep, "episode.json")
+        if not vid or not os.path.exists(ej):
+            continue
+        e = json.load(open(ej))
+        steps = (("captions", lambda: yt.upload_captions(vid, os.path.join(build, "captions.srt")), os.path.join(build, "captions.srt")),
+                 ("thumbnail", lambda: yt.set_thumbnail(vid, os.path.join(build, "thumbnail.jpg")), os.path.join(build, "thumbnail.jpg")),
+                 ("playlist", lambda: yt.add_to_playlist(yt.ensure_playlist(e["playlist"]), vid), None))
+        for name, fn, need in steps:
+            if not str(row.get(name, "")).startswith("failed"):
+                continue
+            if need and not os.path.exists(need):
+                print(ep, name, "still failed: no rendered file available to retry with"); left += 1
+                continue
+            try:
+                fn()
+                row[name] = e["playlist"] if name == "playlist" else "ok"
+                print(ep, name, "repaired")
+            except AuthExpired:
+                raise
+            except Exception as ex:
+                row[name] = "failed: " + str(ex)[:160]; left += 1
+                print(ep, name, "still failed:", str(ex)[:200])
+    json.dump(ledger, open(lp, "w"), indent=2, sort_keys=True)
+    print(f"repair: {left} step(s) still failing")
+    return 0
+
+
 if __name__ == "__main__":
     try:
-        sys.exit(dict(brand=brand, about=about, analytics=analytics, release=release)[sys.argv[1]]())
+        sys.exit(dict(brand=brand, about=about, analytics=analytics, release=release, repair=repair)[sys.argv[1]]())
     except AuthExpired as ex:
         print("AUTH EXPIRED:", ex); sys.exit(2)

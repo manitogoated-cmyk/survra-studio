@@ -3,12 +3,13 @@ name: Survra channel ops
 on:
   schedule:
     - cron: "41 11 * * 1"        # weekly analytics report, Mondays 11:41 UTC
+    - cron: "23 13 * * *"        # daily repair: retry failed captions / playlist / thumbnail steps
   workflow_dispatch:
     inputs:
       task:
-        description: "analytics, brand, about (channel description only), or release (publish approved review uploads)"
+        description: "analytics, brand, about (channel description only), release (publish approved review uploads), or repair (retry failed captions/playlist/thumbnail)"
         type: choice
-        options: [analytics, brand, about, release]
+        options: [analytics, brand, about, release, repair]
         default: analytics
 
 concurrency:
@@ -17,6 +18,7 @@ concurrency:
 
 permissions:
   contents: write
+  actions: read                  # repair downloads the rendered files from earlier publish runs
 
 jobs:
   ops:
@@ -29,16 +31,27 @@ jobs:
         with:
           python-version: "3.13"
       - run: pip install requests
+      - name: Restore rendered files from recent publish runs (repair only)
+        if: inputs.task == 'repair' || github.event.schedule == '23 13 * * *'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for id in $(gh run list -R "${{ github.repository }}" --workflow publish.yml --limit 15 --json databaseId,conclusion -q '.[].databaseId'); do
+            gh run download "$id" -R "${{ github.repository }}" -p 'episode-*' -D "_art/$id" 2>/dev/null || true
+          done
+          shopt -s nullglob
+          for d in $(ls -d _art/*/episode-* 2>/dev/null | sort -t/ -k2 -n); do cp -r "$d"/. . 2>/dev/null || true; done
+          find episodes -path '*/build/*' \( -name captions.srt -o -name thumbnail.jpg \) | head -40
       - env:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
-          TASK: ${{ inputs.task || 'analytics' }}
+          TASK: ${{ inputs.task || (github.event.schedule == '23 13 * * *' && 'repair') || 'analytics' }}
         run: python3 publish/ops.py "$TASK"
       - name: Save the report
         if: always()
         env:
-          TASK: ${{ inputs.task || 'analytics' }}
+          TASK: ${{ inputs.task || (github.event.schedule == '23 13 * * *' && 'repair') || 'analytics' }}
         run: |
           python3 publish/publisher.py status || true
           git config user.name "survra-bot"; git config user.email "survra-bot@users.noreply.github.com"
