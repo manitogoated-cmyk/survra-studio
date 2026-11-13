@@ -23,12 +23,25 @@ def channel(yt):
     return ch
 
 
+ABOUT = """Rook's Case Files: unbelievable true stories, checked by one sceptical crow.
+
+Rook is a detective who does not believe a word of it. Every video is a case: a survival story, a rescue, a mystery that sounds impossible. He goes to look, and reports what actually happened.
+
+Original 3D animation. Every case is researched from named sources, listed in each description. Narration is a synthetic voice.
+
+New Shorts and full case files every week.
+
+About, privacy and contact: https://manitogoated-cmyk.github.io/survra/"""
+KEYWORDS = '"true stories" "survival stories" "animated stories" "3D animation" Rook Survra "case files" documentary mystery rescue'
+
+
 def brand():
     yt = YouTube()
     ch = channel(yt)
     res = {}
     for name, fn in (("banner", lambda: yt.set_banner(os.path.join(ROOT, "brand", "rook_banner_2560x1440.jpg"))),
-                     ("watermark", lambda: yt.set_watermark(os.path.join(ROOT, "brand", "rook_watermark_150.png"), ch["id"]))):
+                     ("watermark", lambda: yt.set_watermark(os.path.join(ROOT, "brand", "rook_watermark_150.png"), ch["id"])),
+                     ("about", lambda: yt.set_channel_text(ABOUT, KEYWORDS))):
         try:
             fn(); res[name] = "ok"
         except AuthExpired:

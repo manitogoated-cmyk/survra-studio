@@ -194,6 +194,13 @@ class YouTube:
         bs.setdefault("image", {})["bannerExternalUrl"] = url
         return self._req("PUT", f"{API}/channels", params=dict(part="brandingSettings"), json=dict(id=ch["id"], brandingSettings=bs))
 
+    def set_channel_text(self, description, keywords):
+        """Channel description and keywords; every other branding setting is sent back unchanged."""
+        ch = self._req("GET", f"{API}/channels", params=dict(part="brandingSettings", mine="true"))["items"][0]
+        bs = ch.get("brandingSettings", {})
+        bs.setdefault("channel", {}).update(description=description, keywords=keywords)
+        return self._req("PUT", f"{API}/channels", params=dict(part="brandingSettings"), json=dict(id=ch["id"], brandingSettings=bs))
+
     def set_watermark(self, path, channel_id):
         """Video watermark (150x150 PNG) shown for the whole video."""
         import json as _j
