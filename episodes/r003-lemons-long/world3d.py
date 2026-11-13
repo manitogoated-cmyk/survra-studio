@@ -1175,11 +1175,11 @@ def set_chamber(r):
     for i in range(6):
         add('cube', ('3DDC84', 'FF4030', 'FFD866')[i % 3], (3.8 + (i % 3) * 0.4, 1.96, 2.2 - (i // 3) * 0.5), scale=(0.2, 0.04, 0.2), size=1, parent=r, emit=4)
     for x in (-2.4, 2.4):
-        add('cube', 'FFF2D0', (x, 0, 3.83), scale=(1.8, 0.4, 0.04), size=1, parent=r, emit=7)
-        light((x, 0, 3.3), 260, 'FFE8C0', kind='POINT', parent=r)
+        add('cube', 'FFF2D0', (x, 0, 3.83), scale=(1.8, 0.4, 0.04), size=1, parent=r, emit=4)
+        light((x, 0, 3.3), 80, 'FFE8C0', kind='POINT', parent=r)
     aim = empty((0, 0.6, 1.8), r)
-    light((0, -6.5, 3.2), 900, 'FFE2B8', 5.0, aim, parent=r)
-    light((-6, -5, 2.5), 300, '5E8FD0', 4.0, aim, parent=r)
+    light((0, -6.5, 3.2), 380, 'FFE2B8', 5.0, aim, parent=r)
+    light((-6, -5, 2.5), 200, '5E8FD0', 4.0, aim, parent=r)
     # the corridor outside
     add('cube', '262C36', (0, 5.6, 3), scale=(12, 0.3, 6.4), size=1, parent=r)
     add('cube', 'FF7A1A', (0, 5.42, 1.5), scale=(12, 0.05, 0.16), size=1, parent=r, emit=1.5)
@@ -1192,7 +1192,7 @@ def set_chamber(r):
     add('cube', 'D8D2C0', (0, 2.33, 4.4), scale=(11.2, 0.06, 1.0), size=1, parent=r)
     for x in (-3, 0, 4.6):
         add('cube', YEL, (x, 2.36, 2.0), scale=(0.25, 0.06, 3.9), size=1, parent=r)
-    light((px, 3.6, 4.2), 220, 'FFB060', kind='POINT', parent=r)
+    light((px, 3.6, 4.2), 60, 'FFB060', kind='POINT', parent=r)
     return {}
 
 
@@ -1277,6 +1277,7 @@ def extend(S):
         for uc in list(ob.users_collection):
             uc.objects.unlink(ob)
         S['colls']['bay'].objects.link(ob)
+    S['in_lights'] = [(o, o.data.energy) for o in S['colls']['inside'].objects if o.type == 'LIGHT']
     S['dave'] = K.Rig(DAVE, person_head('C8936C', '2A2420'))
     add('cylinder', '15181F', (0, 0, -0.3), radius=0.2, depth=0.12, vertices=8, parent=S['dave'].head)
     S['dpo'] = K.Rig(DPO, person_head('C68A5E', '5A4632'))
@@ -1302,6 +1303,8 @@ def reset(S):
         S[who].apply(P())
         S['face'][who] = 'calm'
     S['mug'].hide_render = True
+    for l, e0 in S['in_lights']:
+        l.data.energy = e0
     S['dp_ok'].hide_render, S['dp_bad'].hide_render = False, True
     S['dp_mark'].location = (0, -0.07, 0)
     S['dp_mark'].rotation_euler = (0, 0, 0)
@@ -1337,6 +1340,15 @@ def dark_lamp(fn, boost=1.5):
 def lamp_off(S, who='lem'):
     S[who].extra['lamp'].data.energy = 0
     S[who].extra['glow'].hide_render = True
+
+
+def lying(S, who, A, x0, t, twitch=0.0, face=None, y=3.0, z=TOP + 0.42):
+    """Long-form: he lies on his side on the roof, knees drawn up, head toward +X (replaces the Short's flat-on-his-back pose)."""
+    S[who].place(A(x0 + 0.3, y - 0.4, z + 0.02 * math.sin(t * 1.4)), 0.0, 0.0, PI / 2)
+    S[who].apply(P('stand', aL=(0.9 + 0.5 * twitch * max(0, math.sin(t * 5.0)), 0.2, 1.4 + 0.3 * twitch * math.sin(t * 5.0)), aR=(0.7, 0.2, 1.6), lL=(1.1, 1.4), lR=(0.8, 1.2),
+                   head=(0.35, 0.0)))
+    if face:
+        S['face'][who] = face
 
 
 # ---------------------------------------------------------------- long shots: the chamber
@@ -1380,23 +1392,23 @@ def chamber_cu(S, k, t, lt):
     S['rook'].place(A(PORT[0], 3.05, 0.02), 0.0)
     S['rook'].apply(P('stand', aL=(1.9, 0.5, 1.2), aR=(1.9, 0.5, 1.2), head=(0.05, -0.3)))
     S['face']['rook'] = 'deadpan'
-    key(S, 'kw', A(1.5, -3.5, 2.6), A(-1.3, 0.4, 2.3), 220)
-    cam(S, A(lerp(1.5, 1.2, k), lerp(-2.6, -2.3, k), 2.35), A(-0.7, 0.6, 2.2), 36)
+    key(S, 'kw', A(PORT[0] - 0.6, 2.5, 3.3), A(PORT[0], 2.95, 2.5), 160)
+    cam(S, A(lerp(0.9, 0.6, k), lerp(-3.4, -3.0, k), 2.35), A(0.3, 1.2, 2.25), 30)
 
 
 def rook_ears(S, k, t, lt):
     """Out in the corridor Rook listens at the porthole, then claps his wings over his ears."""
     A = chamber(S)
     e = ease((lt - 0.5) / 0.4)
-    S['rook'].place(A(PORT[0] + 0.2, 3.25, 0), 0.25)
-    S['rook'].apply(blend(P('stand', aR=(1.3, 0.3, 1.6), head=(0.1, -0.3), lean=0.15), P('stand', aL=(0.2, 1.9, 1.9, -1.5), aR=(0.2, 1.9, 1.9, -1.5), head=(0.18, 0.9), lean=-0.05), e))
+    S['rook'].place(A(PORT[0] + 0.25, 3.3, 0), -0.55)
+    S['rook'].apply(blend(P('stand', aR=(1.3, 0.3, 1.6), head=(0.1, 0.5), lean=0.15), P('stand', aL=(0.2, 1.9, 1.9, -1.5), aR=(0.2, 1.9, 1.9, -1.5), head=(0.18, -0.5), lean=-0.05), e))
     S['face']['rook'] = 'calm' if e < 0.5 else 'deadpan'
     S['hat_tip'] = 0.5 * e
     seated(S, 'chris', A, -1.3, PI / 2, t, 0.0, 'happy')
     seated(S, 'dave', A, 1.7, -PI / 2, t, 1.7, 'happy')
-    key(S, 'kw', A(4.6, 5.0, 3.4), A(PORT[0], 3.2, 2.4), 420)
-    key(S, 'kc', A(0.5, 4.8, 2.0), A(PORT[0], 3.2, 2.4), 160)
-    cam(S, A(lerp(5.4, 5.0, k), lerp(4.6, 4.4, k), 2.5), A(PORT[0] - 0.2, 3.0, 2.45), 34)
+    key(S, 'kw', A(-1.0, 5.0, 3.3), A(PORT[0], 3.4, 2.4), 260)
+    key(S, 'kc', A(4.6, 4.8, 2.0), A(PORT[0], 3.2, 2.4), 120)
+    cam(S, A(lerp(-1.3, -0.9, k), lerp(4.5, 4.3, k), 2.5), A(PORT[0] - 0.1, 3.1, 2.45), 34)
 
 
 # ---------------------------------------------------------------- long shots: the bell goes down
@@ -1412,7 +1424,7 @@ def bell_stage(S, k, t, lt):
     A = deep(S, 'work')
     bell_at(S, (-3.2, 6.5, 10.0), t, 5200)
     e = ease(k)
-    for i, (who, x, y, z0, z1) in enumerate((('lem', -0.6, 3.0, 6.2, 3.9), ('yua', -2.6, 5.2, 7.2, 5.4))):
+    for i, (who, x, y, z0, z1) in enumerate((('lem', -0.4, 2.6, 5.4, 3.3), ('yua', -2.4, 4.6, 6.4, 4.4))):
         uw(S, who, A(x, y, lerp(z0, z1, e)), 0.4 - 0.5 * i, swimmer(t, i * 1.5), t, pitch=0.25, ph=i)
         lamp(S, who, 2600)
         rope(S, i, back_of(S, who), (-3.2 + 0.3 * i, 6.3, 6.7), 0.6, t, 0.25, 10)
@@ -1421,7 +1433,7 @@ def bell_stage(S, k, t, lt):
     S['rook'].apply(P('stand', aL=(2.4, 0.25, 0.5), aR=(1.6, 0.3, 0.2), lL=(0.2, 0.3), lR=(-0.2 + 0.2 * math.sin(t * 3), 0.4), head=(0.3, -0.4)))
     S['face']['rook'], S['helm'] = 'calm', True
     key(S, 'kw', A(4, -4, 8), A(-1, 5, 7), 2600)
-    cam(S, A(lerp(8.2, 7.2, k), lerp(-9.5, -8.5, k), lerp(1.4, 1.9, k)), A(-1.0, 3.6, 5.0), 26)
+    cam(S, A(lerp(5.6, 5.0, k), lerp(-6.4, -5.8, k), lerp(1.6, 2.0, k)), A(-1.3, 4.0, 5.6), 30)
 
 
 def tend_pose(pull=0.0, s=0.0):
@@ -1435,6 +1447,12 @@ def hands_of(S, who):
     return tuple((a + b) / 2)
 
 
+def bell_dim(S, f):
+    """Turn the bell's own lamps down for the long shots that look straight at its near wall."""
+    for l, e0 in S['in_lights']:
+        l.data.energy = e0 * f
+
+
 def dunc_tend(S, k, t, lt):
     """Inside the bell Duncan Allcock pays the divers' lines out through the hatch."""
     A = show(S, 'inside')
@@ -1446,8 +1464,8 @@ def dunc_tend(S, k, t, lt):
     hnd = hands_of(S, 'dunc')
     rope(S, 0, hnd, A(HATCH[0] - 0.15, HATCH[1], -0.4), 0.15, t, 0.03, 6)
     rope(S, 1, (hnd[0] + 0.25, hnd[1], hnd[2] - 0.1), A(HATCH[0] + 0.2, HATCH[1], -0.4), 0.2, t, 0.03, 6)
-    key(S, 'kw', A(0.8, 0.5, 2.8), A(-1.6, -1.6, 1.8), 300)
-    cam(S, A(lerp(0.9, 0.6, k), lerp(2.3, 2.1, k), 2.5), A(-1.4, -1.1, 1.45), 22)
+    bell_dim(S, 0.45)
+    cam(S, A(lerp(0.5, 0.2, k), lerp(1.5, 1.3, k), 2.3), A(-1.5, -1.3, 1.5), 24)
 
 
 def rook_line(S, k, t, lt):
@@ -1471,7 +1489,7 @@ def storm_wide(S, k, t, lt):
     x, y = lerp(6, 3, k), 30
     ship_at(S, x, y, 0.55, t, 2.1, 0.13)
     burst(S, A(x + 16, y + 10, 1.0), (lt * 1.1) % 1, 20, 0, 6.0, seed=5, size=9.0, up=1.6)
-    cam(S, A(lerp(-30, -27, k), lerp(-2, 0, k), lerp(2.2, 3.0, k)), A(x - 4, y - 2, 7.0), 30, 0.05 * math.sin(t * 1.3))
+    cam(S, A(lerp(-27, -25, k), lerp(0, 1.5, k), lerp(3.2, 3.9, k)), A(x - 3, y - 1, 6.5), 34, 0.05 * math.sin(t * 1.3))
 
 
 def bridge(S, t, state='ok', off=0.0):
@@ -1524,7 +1542,7 @@ def bridge_fight(S, k, t, lt):
     S['hat_tip'] = 0.4
     key(S, 'kw', A(3.0, 2.0, 3.2), A(2.2, -2.9, 2.4), 520)
     key(S, 'kc', A(-2.6, 3.9, 2.9), A(0, 1.7, 2.4), 240)
-    cam(S, A(lerp(-1.9, -1.5, k), lerp(4.25, 4.15, k), 2.45), A(0.5, 0.9, 2.3), 24, r * 1.2)
+    cam(S, A(lerp(-2.9, -2.6, k), lerp(3.1, 2.9, k), 2.45), A(0.5, 0.6, 2.3), 24, r * 1.2)
 
 
 # ---------------------------------------------------------------- long shots: the drift on the seabed
@@ -1539,10 +1557,10 @@ def bell_drag(S, k, t, lt):
         uw(S, who, A(x + 0.5 * e, -0.2 - 0.4 * e, 0), PI + 0.9 - 0.4 * i, P('stand', aL=(1.0, 0.6, 0.5), aR=(1.4, 0.5, 0.4), lL=(0.4, 0.3), lR=(-0.3, 0.4), head=(-0.3, 0.6)), t, ph=i)
         lamp(S, who, 3000)
         rope(S, i, back_of(S, who), (bx - 0.3 + 0.6 * i, by, bz - 3.3), lerp(1.3, 0.2, e), t, 0.2)
-    rook_uw(S, A(-5.6, -3.2, 0), -0.9, P('reach', aR=(2.3, 0.3, 0.1), aL=(0.5, 0.6, 1.0), head=(-0.35, -0.2)), 'shocked', t)
-    key(S, 'kw', A(-7, -7, 3), A(-5.6, -3.2, 2.2), 1500)
+    rook_uw(S, A(-4.2, -4.6, 0), -0.9, P('reach', aR=(2.3, 0.3, 0.1), aL=(0.5, 0.6, 1.0), head=(-0.35, -0.2)), 'shocked', t)
+    key(S, 'kw', A(-6, -8, 3), A(-4.2, -4.6, 2.2), 1500)
     key(S, 'kc', A(-6, -8, 7), A(0, 2, 3), 3000)
-    cam(S, A(lerp(-10.5, -9.5, k), lerp(-8.5, -7.8, k), 1.6), A(lerp(-1.5, 0.5, e), 3.5, 5.6), 24, 0.03 * math.sin(t * 9))
+    cam(S, A(lerp(-8.6, -8.0, k), lerp(-6.6, -6.0, k), 1.5), A(lerp(-1.5, 0.5, e), 3.5, 5.2), 30, 0.03 * math.sin(t * 9))
 
 
 def go_back(S, k, t, lt):
@@ -1579,7 +1597,7 @@ def dunc_haul(S, k, t, lt):
     rope(S, 0, hnd, A(HATCH[0], HATCH[1], -0.5), 0.02, t, 0.06, 6)
     rope(S, 2, (hnd[0] + 0.5, hnd[1] + 0.4, hnd[2] - 0.3), A(0.4, -0.9, 0.1), 0.5, t, 0.03, 6)
     burst(S, A(HATCH[0], HATCH[1], 0.1), (lt * 1.6) % 1, 8, 0, 0.7, seed=2, size=0.6, up=0.5)
-    key(S, 'kw', A(0.8, 0.2, 2.2), A(-1.6, -1.6, 1.8), 340)
+    bell_dim(S, 0.45)
     cam(S, A(lerp(0.75, 0.55, k), lerp(1.2, 1.0, k), 1.05), A(-1.5, -1.4, 1.9), 24, 0.025 * math.sin(t * 11))
 
 
@@ -1595,7 +1613,7 @@ def dunc_end(S, k, t, lt):
     rope(S, 0, (hnd[0] - 0.3, hnd[1] - 0.35, hnd[2] - 1.5), hnd, -0.3, t, 0.0, 5)
     rope(S, 1, hnd, end, 0.12, t, 0.02, 4)
     S['spark'].location, S['spark'].scale = end, (0.35, 0.35, 0.35)
-    key(S, 'kw', A(0.2, 0.6, 2.4), A(-1.4, -1.5, 1.9), 360)
+    bell_dim(S, 0.4)
     cam(S, A(lerp(0.2, 0.0, k), lerp(0.75, 0.55, k), lerp(2.15, 2.05, k)), A(-1.35, -1.5, 1.95), lerp(36, 42, k))
 
 
@@ -1612,8 +1630,8 @@ def rook_hatch(S, k, t, lt):
     S['dunc'].place(A(1.9, 1.6, 0), 0.9)
     S['dunc'].apply(kneel(0.2, head=(0.5, 0.0), aL=(0.3, 0.2, 0.5), aR=(0.3, 0.2, 0.5)))
     S['face']['dunc'] = 'sad'
-    key(S, 'kw', A(0.5, 1.8, 2.6), A(HATCH[0], HATCH[1], 1.2), 380)
-    cam(S, A(lerp(-0.9, -1.0, k), lerp(2.3, 2.1, k), lerp(3.1, 2.9, k)), A(-0.6, 0.1, 0.5), 22)
+    bell_dim(S, 0.5)
+    cam(S, A(lerp(-0.3, -0.5, k), lerp(2.3, 2.1, k), lerp(1.9, 1.7, k)), A(-1.0, -0.2, 0.75), 22)
 
 
 def yua_dragged(S, k, t, lt):
@@ -1628,7 +1646,7 @@ def yua_dragged(S, k, t, lt):
     burst(S, A(x, y, z + 2), min(1, k * 1.3), 12, 0, 1.5, seed=6, size=1.1)
     key(S, 'kc', A(-5, -5, 7), A(1, 3.5, 4), 3200)
     key(S, 'kw', A(2, -3, 5.5), A(x, y, z + 1.5), 900)
-    cam(S, A(lerp(-3.6, -3.0, k), lerp(-4.4, -3.8, k), 4.3), A(lerp(0.4, 1.4, e), 3.6, lerp(4.0, 5.0, e)), 30, 0.04 * math.sin(t * 13))
+    cam(S, A(lerp(-3.6, -3.0, k), lerp(-4.4, -3.8, k), 4.3), A(lerp(0.4, 1.4, e), 3.6, lerp(4.0, 5.0, e)), 40, 0.04 * math.sin(t * 13))
 
 
 def yua_climb(S, k, t, lt):
@@ -1649,16 +1667,16 @@ def yua_wait(S, k, t, lt):
     """In the bell: Yuasa sits by the hatch, helmet still on, Allcock at the panel. Rook sits against the wall, hat low."""
     A = show(S, 'inside')
     sky(S, '000000')
-    S['yua'].place(A(0.25, -0.45, 0), PI / 2 + 0.2)
+    S['yua'].place(A(0.25, -0.45, 0), -PI / 2)
     S['yua'].apply(P('stand', lL=(1.5, 0.5), lR=(1.3, 1.1), lift=-0.93, lean=0.3, aL=(0.9, 0.2, 1.0), aR=(0.9, 0.2, 1.0), head=(0.45, 0.1 * math.sin(t * 1.1))))
     lamp(S, 'yua', 0)
-    S['dunc'].place(A(0.3, 2.2, 0), PI + 0.5)
-    S['dunc'].apply(P('stand', aR=(1.4, 0.1, 0.6), aL=(0.3, 0.2, 0.4), head=(0.1, 0.9 + 0.1 * math.sin(t * 0.9)), lean=0.1))
+    S['dunc'].place(A(1.2, -2.4, 0), -2.21)
+    S['dunc'].apply(P('stand', aR=(0.3, 0.2, 0.4), aL=(0.3, 0.2, 0.4), head=(0.35, 0.1 * math.sin(t * 0.9)), lean=0.1))
     S['face']['dunc'] = 'scared'
-    S['rook'].place(A(1.7, -1.9, 0), 2.5)
+    S['rook'].place(A(2.3, 0.6, 0), -1.74)
     S['rook'].apply(P('stand', lL=(1.4, 0.4), lR=(1.2, 0.9), lift=-0.93, lean=0.2, aL=(0.7, 0.2, 1.1), aR=(0.7, 0.2, 1.1), head=(0.35, 0.2)))
     S['face']['rook'] = 'sad'
-    key(S, 'kw', A(-1.0, 0.2, 2.6), A(1.0, -0.8, 1.2), 360)
+    bell_dim(S, 0.5)
     cam(S, A(lerp(-2.3, -2.1, k), lerp(1.3, 1.1, k), lerp(2.3, 2.1, k)), A(0.7, -0.5, 1.15), 20)
 
 
@@ -1693,10 +1711,7 @@ def lem_side(S, k, t, lt):
     """On the roof of the structure he lies on his side, knees drawn up. With prm 'yua' a helmet lamp finds him."""
     A = deep(S, 'dark')
     found = S['prm'].get('yua')
-    S['lem'].place(A(-1.3, 2.6, TOP + 0.42 + 0.02 * math.sin(t * 1.4)), 0.0, 0.0, PI / 2)
-    tw = 0.0 if found else max(0.0, 0.6 - k)
-    S['lem'].apply(P('stand', aL=(0.9 + 0.2 * tw * math.sin(t * 5), 0.2, 1.4), aR=(0.7, 0.2, 1.6), lL=(1.1, 1.4), lR=(0.8, 1.2), head=(0.35, 0.0)))
-    S['face']['lem'] = 'closed' if found else 'tired'
+    lying(S, 'lem', A, -1.6, t, 0.0 if found else max(0.0, 0.6 - k), 'closed' if found else 'tired')
     lamp_off(S)
     if not found and k < 0.5:
         bub(S, A(1.1, 2.4, TOP + 0.8), t, 3, 0, 0.2, 4.0, 0.7, size=0.9)
@@ -1705,12 +1720,12 @@ def lem_side(S, k, t, lt):
     if found:
         bell_at(S, (1.5, 6.5, 10.5), t, 4200)
         e = ease(k)
-        uw(S, 'yua', A(lerp(1.9, 1.5, e), lerp(4.9, 4.5, e), TOP + lerp(1.0, 0.0, e)), 0.75, P('stand', aL=(1.1, 0.4, 0.5), aR=(1.3, 0.2, 0.4), lL=(0.5, 0.8), lR=(0.2, 0.5), lean=0.35,
+        uw(S, 'yua', A(lerp(1.9, 1.5, e), lerp(4.9, 4.5, e), TOP + lerp(0.5, 0.0, e)), 0.75, P('stand', aL=(1.1, 0.4, 0.5), aR=(1.3, 0.2, 0.4), lL=(0.5, 0.8), lR=(0.2, 0.5), lean=0.35,
            head=(0.3, 0.0)), t)
         lamp(S, 'yua', 5200)
         rope(S, 1, back_of(S, 'yua'), (1.4, 6.4, 7.3), 0.6, t, 0.2)
         bub(S, A(1.6, 4.6, TOP + 3.4), t, 6, 0, 0.3, 4.0, 2.2, size=1.2)
-    cam(S, A(lerp(0.9, 0.5, k), lerp(-2.6, -2.2, k), lerp(3.5, 3.3, k)), A(0.3, 2.9, TOP + 0.55), 34)
+    cam(S, A(lerp(1.1, 0.7, k), lerp(-1.6, -1.2, k), lerp(5.4, 5.1, k)), A(0.2, 2.7, TOP + 0.4), 34)
 
 
 def rov_launch(S, k, t, lt):
@@ -1723,26 +1738,24 @@ def rov_launch(S, k, t, lt):
     bub(S, A(p[0], p[1] + 0.8, p[2] + 0.9), t, 10, 0, 0.9, 6.0, 3.0, size=1.3)
     key(S, 'kc', A(6, -8, z + 4), A(p[0], p[1], z), 5200)
     key(S, 'kw', A(-5, -6, z - 3), A(p[0], p[1], z), 1300)
-    cam(S, A(lerp(4.6, 4.0, k), lerp(-5.6, -5.0, k), z - 2.2), A(p[0], p[1], z + 0.3), 30, 0.04 * math.sin(t * 1.3))
+    cam(S, A(lerp(4.6, 4.0, k), lerp(-5.6, -5.0, k), z - 2.2), A(p[0], p[1], z + 0.3), 46, 0.04 * math.sin(t * 1.3))
 
 
 def yua_drop(S, k, t, lt):
     """Low on the roof beside the still diver: Yuasa comes down out of the bell lights, lamp blazing."""
     A = deep(S, 'dim')
     bell_at(S, (1.5, 6.5, 10.8), t, 5200)
-    S['lem'].place(A(-1.3, 2.6, TOP + 0.42), 0.0, 0.0, PI / 2)
-    S['lem'].apply(P('stand', aL=(0.9, 0.2, 1.4), aR=(0.7, 0.2, 1.6), lL=(1.1, 1.4), lR=(0.8, 1.2), head=(0.35, 0.0)))
-    S['face']['lem'] = 'closed'
+    lying(S, 'lem', A, -1.6, t, 0.0, 'closed')
     lamp_off(S)
     e = ease(k)
-    z = lerp(7.6, 4.6, e)
+    z = lerp(6.6, 4.2, e)
     uw(S, 'yua', A(1.3, 5.0, z), 0.5, swimmer(t, 0.5, aL=(1.3, 0.5, 0.3), aR=(1.5, 0.4, 0.3), head=(0.45, 0.0)), t, pitch=0.5)
     lamp(S, 'yua', 6000)
     rope(S, 1, back_of(S, 'yua'), (1.5, 6.4, 7.6), 0.3, t, 0.2, 8)
     bub(S, A(1.3, 5.0, z + 3.2), t, 8, 0, 0.3, 4.5, 2.6, size=1.3)
     key(S, 'kc', A(-6, -3, 6), A(0, 3, 3.5), 2600)
     key(S, 'kw', A(-3, -1, 3.4), A(0.2, 2.6, 3.0), 500)
-    cam(S, A(lerp(-3.4, -3.0, k), lerp(0.2, 0.5, k), 3.15), A(0.6, 4.2, lerp(6.0, 5.2, e)), 24, 0.02 * math.sin(t * 5))
+    cam(S, A(lerp(-3.8, -3.4, k), lerp(-0.6, -0.3, k), 3.2), A(0.5, 3.9, lerp(5.0, 4.5, e)), 24, 0.02 * math.sin(t * 5))
 
 
 # ---------------------------------------------------------------- long shots: how, and after
@@ -1756,11 +1769,11 @@ def rook_quad(S, k, t, lt):
     """Rook raps a knuckle on the rack of gas cylinders: a body does not hold much."""
     A = bay_night(S)
     kn = max(0.0, math.sin(lt * 7.5)) if lt < 1.7 else 0.0
-    S['rook'].place(A(-5.3, 3.5, 0), PI - 0.9)
-    S['rook'].apply(P('stand', aR=(1.4 + 0.25 * kn, 0.25, 1.1 - 0.5 * kn), aL=(0.2, 0.3, 0.5), head=(0.0, 0.75 - 0.5 * ease((lt - 1.7) / 0.5))))
+    S['rook'].place(A(-3.9, 4.2, 0), 0.35)
+    S['rook'].apply(P('stand', aL=(0.5, 1.25 + 0.2 * kn, 0.5 - 0.3 * kn), aR=(0.2, 0.3, 0.5), head=(0.0, -0.7 + 0.6 * ease((lt - 1.7) / 0.5))))
     S['face']['rook'] = 'calm'
-    key(S, 'kw', A(-2.5, 0.5, 3.6), A(-5.3, 3.5, 2.4), 520)
-    cam(S, A(lerp(-2.2, -2.6, k), lerp(-0.6, -0.1, k), 2.2), A(-5.6, 4.4, 2.2), 30)
+    key(S, 'kw', A(-2.0, -1.0, 3.6), A(-4.4, 4.4, 2.4), 900)
+    cam(S, A(lerp(-3.2, -3.5, k), lerp(-1.6, -1.2, k), 2.2), A(-4.9, 4.6, 2.2), 32)
 
 
 def rook_count(S, k, t, lt):
@@ -1835,17 +1848,17 @@ for _n in ('fall_back', 'alone_wide', 'bell_away', 'climb', 'rook_sit', 'still_b
 def photo_thumb(S, k, t, lt):
     """Thumbnail picture: the diver thrown back, the cut line whipping above him, the bell lights leaving; Rook, shocked."""
     A = deep(S, 'dim')
-    bell_at(S, (7.0, 9, 9.5), 1.0, 5000)
-    uw(S, 'lem', A(0.2, -1.2, 0.5), 0.35, P('up', aL=(2.4, 0.7, 0.4), aR=(2.0, 0.8, 0.5), lL=(0.9, 0.5), lR=(0.3, 0.9), head=(-0.3, 0.0)), 1.0, pitch=-0.75, face='shock')
-    lamp(S, 'lem', 5000)
-    rope(S, 1, back_of(S, 'lem'), (2.0, -0.4, 2.6), 0.5, 1.0, 0.3)
-    rope(S, 0, (5.4, 3.0, 5.2), (7.0, 8.6, 6.4), -0.6, 1.0, 0.4, 8)
-    burst(S, A(2.1, -0.3, 2.7), 0.5, 14, 0, 1.3, seed=5, size=1.1)
-    S['spark'].location, S['spark'].scale = (2.0, -0.4, 2.6), (0.8, 0.8, 0.8)
-    rook_uw(S, A(-2.7, -2.6, 0), -0.5, P('up', aL=(2.3, 0.6, 1.3), aR=(2.3, 0.6, 1.3), head=(-0.1, 0.2)), 'shocked', 1.0)
-    key(S, 'kc', A(-4, -7, 5), A(0, -1, 1.8), 3400)
-    key(S, 'kw', A(-5, -6.5, 3), A(-2.7, -2.6, 2.4), 1700)
-    cam(S, A(0.8, -8.2, 1.5), A(0.9, -0.6, 2.7), 30)
+    bell_at(S, (1.6, 9, 8.6), 1.0, 5000)
+    uw(S, 'lem', A(-0.6, -1.6, 0.3), 0.3, P('up', aL=(2.4, 0.7, 0.4), aR=(2.0, 0.8, 0.5), lL=(0.9, 0.5), lR=(0.3, 0.9), head=(-0.2, 0.0)), 1.0, pitch=-0.3, face='shock')
+    lamp(S, 'lem', 1500)
+    rope(S, 1, back_of(S, 'lem'), (1.0, -0.6, 3.6), 0.4, 1.0, 0.3, 8)
+    rope(S, 0, (2.2, 3.0, 5.6), (1.8, 8.6, 5.6), -0.6, 1.0, 0.4, 8)
+    burst(S, A(1.1, -0.5, 3.7), 0.5, 14, 0, 1.2, seed=5, size=1.0)
+    S['spark'].location, S['spark'].scale = (1.0, -0.6, 3.6), (0.8, 0.8, 0.8)
+    rook_uw(S, A(-3.6, -2.4, 0), -0.6, P('up', aL=(2.3, 0.6, 1.3), aR=(2.3, 0.6, 1.3), head=(-0.1, 0.2)), 'shocked', 1.0, bubbles=False)
+    key(S, 'kc', A(-4, -7, 5), A(-0.6, -1.6, 1.8), 3400)
+    key(S, 'kw', A(-5, -7.5, 3), A(-2.4, -2.2, 2.4), 2400)
+    cam(S, A(1.6, -9.0, 1.7), A(1.7, -0.6, 2.9), 30)
 
 
 STILLS['thumb'] = photo_thumb

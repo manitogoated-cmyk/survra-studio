@@ -152,7 +152,7 @@ def board_gas(cv, c):
     cv.restore()
     card(cv, '5 MIN OF GAS', 1400, 250, 600, -4, 72, after(c, 0.3))
     card(cv, '30 MIN WAIT', 1440, 450, 580, 3, 72, after(c, 0.6), 'F4EEDF')
-    pop(cv, 'NO CHANCE', 1420, 660, 150, after(c, 0.95, 0.12), RED, -5)
+    pop(cv, 'NO CHANCE', 1380, 660, 116, after(c, 0.95, 0.12), RED, -5)
 
 
 def map_north(cv, c):
@@ -296,9 +296,9 @@ def body_o2(cv, c):
     cv.drawRect(skia.Rect.MakeLTRB(x - 200, y + 330 - 470 * lvl, x + 200, y + 340), P(Wd.alpha(h('FF7A1A'), 0.8)))
     cv.restore()
     Wd.text_card(cv, 'O2', x, y + 130, 110, 0xFFFFFFFF, 0xFF000000)
-    pop(cv, 'A COUPLE OF LITRES', 1330, 330, 92, after(c, 0.4))
-    pop(cv, 'of oxygen in a body', 1330, 420, 56, after(c, 0.6), WHITE)
-    card(cv, 'MINUTES. NOT HALF AN HOUR.', 1330, 640, 900, -3, 54, after(c, 1.5), 'F4EEDF')
+    pop(cv, 'A COUPLE OF LITRES', 1300, 330, 80, after(c, 0.4))
+    pop(cv, 'of oxygen in a body', 1300, 420, 56, after(c, 0.6), WHITE)
+    card(cv, 'MINUTES. NOT HALF AN HOUR.', 1300, 640, 800, -3, 46, after(c, 1.5), 'F4EEDF')
 
 
 def why_cold(cv, c):
@@ -319,7 +319,7 @@ def why_cold(cv, c):
         cv.restore()
     cv.restore()
     Wd.text_card(cv, 'BEST GUESS 1', 1320, 250, 56, h(AMB), 0xFF000000)
-    pop(cv, 'NEAR-FREEZING WATER', 1320, 400, 88, after(c, 0.3), WHITE)
+    pop(cv, 'NEAR-FREEZING WATER', 1370, 400, 72, after(c, 0.3), WHITE)
     pop(cv, 'slowed his body right down', 1320, 500, 58, after(c, 0.9), 'BFEFFF')
 
 
@@ -334,7 +334,7 @@ def why_o2(cv, c):
         cv.drawCircle(x, y, 76, P(0xFF000000, 9))
         Wd.text_card(cv, 'O2', x, y + 26, 70, 0xFFFFFFFF, None)
     Wd.text_card(cv, 'BEST GUESS 2', 1320, 250, 56, h(AMB), 0xFF000000)
-    pop(cv, 'OXYGEN-RICH GAS', 1320, 400, 96, after(c, 0.3), WHITE)
+    pop(cv, 'OXYGEN-RICH GAS', 1370, 400, 84, after(c, 0.3), WHITE)
     pop(cv, 'breathed under pressure', 1320, 500, 58, after(c, 0.9), 'FFD0A0')
     card(cv, 'NOBODY KNOWS FOR SURE', 1320, 690, 820, 3, 56, after(c, 2.0))
 
@@ -393,10 +393,10 @@ def dp_fix(cv, c):
     cv.drawRect(skia.Rect.MakeXYWH(-90, -30, 180, 60), P(h('FF7A1A')))
     cv.restore()
     Wd.text_card(cv, 'DYNAMIC POSITIONING', 540, 180, 48, h('FF7A1A'), None)
-    pop(cv, 'FAULT TRACED', 1400, 250, 100, after(c, 0.2), RED)
+    pop(cv, 'FAULT TRACED', 1380, 250, 90, after(c, 0.2), RED)
     pop(cv, 'inside the positioning system', 1400, 340, 52, after(c, 0.4), WHITE)
-    pop(cv, 'HARDWARE REPLACED', 1400, 500, 84, (c.k - 0.5) / 0.05, '3DDC84')
-    card(cv, 'SAFETY WARNING TO THE INDUSTRY', 1400, 660, 900, -3, 46, (c.k - 0.72) / 0.05)
+    pop(cv, 'HARDWARE REPLACED', 1380, 500, 64, (c.k - 0.5) / 0.05, '3DDC84')
+    card(cv, 'SAFETY WARNING TO THE INDUSTRY', 1380, 660, 860, -3, 42, (c.k - 0.72) / 0.05)
 
 
 def board_true(cv, c):
@@ -543,6 +543,6 @@ def THUMB(cv, c):
         cv.clear(h('0B1A22'))
     cv.drawRect(skia.Rect(0, 0, 1280, 720), skia.Paint(Shader=skia.GradientShader.MakeLinear(
         [(700, 0), (1280, 0)], [0x00000000, 0xD0000000])))
-    Wd.text_card(cv, 'LIFELINE CUT', 985, 200, 72, 0xFFFFFFFF, 0xFF000000)
-    Wd.text_card(cv, '5 MIN OF GAS', 985, 340, 84, h(AMB), 0xFF000000)
-    Wd.text_card(cv, 'ALIVE', 985, 510, 140, h('3DDC84'), 0xFF000000)
+    Wd.text_card(cv, 'LIFELINE CUT', 1000, 230, 66, 0xFFFFFFFF, 0xFF000000)
+    Wd.text_card(cv, '5 MIN OF GAS', 1000, 360, 76, h(AMB), 0xFF000000)
+    Wd.text_card(cv, 'ALIVE', 1000, 530, 136, h('3DDC84'), 0xFF000000)
