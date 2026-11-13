@@ -60,5 +60,5 @@
   "method": "3D contact sheet reviewed in four rounds (the last at full frame size for eight key shots), composited stills (captions, HUD, overlays, inserts) in one, and a three-frames-per-shot strip from a full-length low-resolution rehearsal (216x384, 4 samples), which passed the automated gate locally: 39 shots, mean 1.11 s, longest 1.56 s, loudness -15.0 LUFS, voice 11.9 dB over the bed, host in 17/39 shots (44%), closest match to an earlier episode 0.78; caption pairs were measured against the frame width and the script reworded where a pair overflowed; the regulator's colour was changed after the rehearsal and not re-rendered; audio was measured, not listened to; the full-resolution render and final gate run in the cloud"
  },
  "case_of": "r004-packard",
- "claimed_at": "2026-11-13T08:49:56Z"
+ "claimed_at": "2026-11-13T20:48:35Z"
 }
