@@ -281,7 +281,7 @@ def record(cv, c):
     Wd.text_card(cv, 'VESNA VULOVIĆ  1972', 0, 260, 52, INK, None)
     cv.restore()
     card(cv, 'DISPUTED 2009', 300, 170, 500, 140, -6, 58, pop(c.lt, 0.3), h('D8D4C8'))
-    stamp_(cv, 'STILL STANDS', 1470, 700, -7, 120, pop(c.lt, 0.7), GREEN)
+    stamp_(cv, 'STILL STANDS', 1380, 700, -7, 100, pop(c.lt, 0.7), GREEN)
 
 
 def board_true(cv, c):
@@ -408,7 +408,7 @@ def clock(cv, c):
     a = math.radians((c.t * 360) % 360 - 90)
     cv.drawLine(cx, cy, cx + math.cos(a) * (r - 50), cy + math.sin(a) * (r - 50), P(RED, 6))
     cv.drawCircle(cx, cy, 26, P(INK))
-    m = int(mins)
+    m = int(round(mins))
     Wd.text_card(cv, f'{m // 60}:{m % 60:02d}', 1370, 380, 250, AMBER, 0xFF000000)
     if late:
         Wd.text_card(cv, '+ 46 MIN', 1370, 560, 120, 0xFFFFFFFF, 0xFF000000)
@@ -515,14 +515,14 @@ def dispute(cv, c):
     k = ease(pop(c.lt, 0.05, 0.7))
     top = lerp(860, 120, k)
     cv.drawRect(skia.Rect.MakeLTRB(1180, top, 1330, 860), P(AMBER))
-    cv.drawRect(skia.Rect.MakeLTRB(520, lerp(860, 802, k), 670, 860), P(RED))
+    cv.drawRect(skia.Rect.MakeLTRB(780, lerp(860, 802, k), 930, 860), P(RED))
     jet_icon(cv, 1255, top - 40, 1.1)
-    jet_icon(cv, 595, lerp(860, 802, k) - 40, 1.1, 0xFFFFD0D0)
+    jet_icon(cv, 855, lerp(860, 802, k) - 40, 1.1, 0xFFFFD0D0)
     Wd.text_card(cv, 'OFFICIAL', 1560, 250, 70, 0xFFFFFFFF, 0xFF000000)
     Wd.text_card(cv, '10,160 m', 1570, 370, 120, AMBER, 0xFF000000)
-    Wd.text_card(cv, '2009 CLAIM', 300, 600, 70, 0xFFFFFFFF, 0xFF000000)
-    Wd.text_card(cv, 'ABOUT 800 m', 300, 700, 84, RED, 0xFF000000)
-    stamp_(cv, 'DISMISSED', 420, 420, -8, 120, pop(c.lt, max(1.2, c.d * 0.6)))
+    Wd.text_card(cv, '2009 CLAIM', 400, 600, 70, 0xFFFFFFFF, 0xFF000000)
+    Wd.text_card(cv, 'ABOUT 800 m', 400, 700, 84, RED, 0xFF000000)
+    stamp_(cv, 'DISMISSED', 470, 400, -8, 120, pop(c.lt, max(1.2, c.d * 0.6)))
 
 
 def memoriam(cv, c):
@@ -604,13 +604,13 @@ OVER = dict(
     rook_snow=snow, stretcher=snow, tail_fall=wind, fall_top=wind, plunge=wind,
     medical=pick(stamp('PASSED', 520, 220, 150, 1.3, '3DDC84', -6), None),
     dispatch=pick(None, stamp('THE WRONG VESNA', 640, 200, 96, 0.5, 'FF7A1A', -3)),
-    rook_caw=pick(stamp('"A CIGARETTE."', 520, 240, 96, 0.5, 'FFFFFF', -3), None),
+    rook_caw=pick(stamp('A CIGARETTE?', 520, 240, 96, 0.5, 'FFFFFF', -3), None),
     fly_home=pick(stamp('SEDATIVE?  NO.', 600, 190, 92, 0.5, 'FFFFFF', -3), stamp('NOTHING TO FEAR', 620, 190, 92, 0.3, '3DDC84', -3)),
     walks=pick(stamp('10 MONTHS LATER', 600, 190, 92, 0.3, 'FFB000', -3), None),
     desk_job=pick(stamp('FREIGHT CONTRACTS', 600, 190, 84, 0.5, 'FFFFFF', -3), None),
     stage_wide=stamp('LONDON, 1985', 520, 190, 96, 0.3, 'FFD866', -3),
     phone_call=pick(None, stamp('NOBODY ARRESTED', 640, 200, 96, 0.4, 'E5392F', -3)),
-    reporters=pick(None, stamp('"CIRCUMSTANTIAL"', 620, 200, 92, 0.4, 'FFFFFF', -3)),
+    reporters=pick(None, stamp('EVIDENCE: CIRCUMSTANTIAL', 760, 200, 84, 0.4, 'FFFFFF', -3)),
     signoff=closed)
 
 

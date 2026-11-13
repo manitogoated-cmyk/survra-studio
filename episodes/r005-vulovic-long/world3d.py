@@ -1358,7 +1358,10 @@ def belgrade(S, k, t, lt):
         S['rook'].apply(blend(w, P('hat', lL=w['lL'], lR=w['lR']), 1 - lt / 0.8))
         S['face']['rook'] = 'deadpan'
     S['disc'].rotation_euler = (0, 0, t * 5)
-    cam(S, A(lerp(4.5, 3.0, k), -11.5, 2.3), A(-4.5, 3.2, 2.9), 30)
+    if S['prm'].get('alone'):
+        cam(S, A(lerp(3.0, 2.0, k), -5.6, 1.9), A(-1.4, 2.4, 2.4), 36)
+    else:
+        cam(S, A(x + 2.2, -5.4, 1.9), A(x - 2.0, 2.6, 2.35), 38)
 
 
 def vinyl(S, k, t, lt):
@@ -1477,7 +1480,7 @@ def dispatch(S, k, t, lt):
     A = office(S)
     e = ease((k - 0.35) / 0.3)
     S['otag'].location = (-2.2, 4.76, lerp(4.36, 3.61, e))
-    S['clerk'].place(A(0.5, 2.55, 0.36), 0.25)
+    S['clerk'].place(A(0.5, 2.55, 0.85), 0.25)
     S['clerk'].apply(P('sit', aR=(1.3, 0.25, 2.3, 0.6), aL=(0.9, 0.0, 1.0, 0.6), head=(0.1, 0.4), lean=0.1))
     hp = hand(S, 'clerk')
     S['handset'].location = (hp[0] - 2400, hp[1], hp[2] + 0.1)
@@ -1493,7 +1496,7 @@ def desk_job(S, k, t, lt):
     A = office(S)
     st = max(0.0, math.sin(t * 7))
     turn = ease((k - 0.45) * 3)
-    S['civil'].place(A(0.5, 2.55, 0.36), 0.0)
+    S['civil'].place(A(0.5, 2.55, 0.85), 0.0)
     S['civil'].apply(P('sit', aR=(0.9 + 0.5 * st * (1 - turn), 0.0, 1.0), aL=(0.8, 0.0, 1.1, 0.5), head=(lerp(0.3, -0.1, turn), lerp(0.0, -0.8, turn)), lean=0.15))
     S['face']['civil'] = 'calm' if turn < 0.5 else 'sad'
     if S['prm'].get('empty'):                    # the desk after she was dismissed
@@ -1509,7 +1512,7 @@ def desk_job(S, k, t, lt):
 def phone_call(S, k, t, lt):
     A = office(S, 'night')
     up = ease((k - 0.5) * 4)
-    S['paxb'].place(A(0.5, 2.55, 0.36), 0.3)
+    S['paxb'].place(A(0.5, 2.55, 0.85), 0.3)
     S['paxb'].apply(blend(P('sit', aR=(1.0, 0.4, 0.6), aL=(0.9, 0.0, 1.0, 0.6), head=(0.3, 0.5), lean=0.2),
                           P('sit', aR=(1.3, 0.25, 2.3, 0.6), aL=(0.9, 0.0, 1.0, 0.6), head=(0.0, 0.3), lean=0.05), up))
     S['face']['paxb'] = 'calm' if up < 0.5 else 'scared'
@@ -1527,7 +1530,7 @@ def phone_call(S, k, t, lt):
 def reporters(S, k, t, lt):
     A = office(S, 'cool')
     ty = 0.25 * math.sin(t * 15)
-    S['paxb'].place(A(0.5, 2.55, 0.36), -0.2)
+    S['paxb'].place(A(0.5, 2.55, 0.85), -0.2)
     S['paxb'].apply(P('sit', aL=(1.0, -0.2, 0.9 + ty, 0.5), aR=(1.0, -0.2, 0.9 - ty, 0.5), head=(0.3, -0.3), lean=0.2))
     S['paxa'].place(A(-2.9, 2.3, 0), 0.55)
     S['paxa'].apply(P('stand', aL=(1.0, -0.05, 1.2, 0.5), aR=(1.0, -0.05, 1.2, 0.5), head=(0.35, 0.0)))
@@ -1575,11 +1578,11 @@ def stage_wide(S, k, t, lt):
 def medal_cu(S, k, t, lt):
     A = stage(S)
     on_stage(S, A, 0.6 + 0.4 * k, t)
-    S['rook'].place(A(-3.6, 6.4, 0.8), 0.45, 0, -0.22)
+    S['rook'].place(A(-2.9, 6.2, 0.8), 0.45, 0, -0.22)
     S['rook'].apply(P('stand', aL=(0.4, 0.5, 0.8), aR=(1.0, 0.5, 1.2), head=(0.0, -0.35)))
     S['face']['rook'] = 'shocked'
     S['hat_up'] = 0.15 * math.sin(PI * min(1, lt / 0.8))
-    cam(S, A(lerp(-1.2, -0.9, k), lerp(-0.4, 0.2, k), 2.9), A(-0.9, 5.0, 3.15), 44)
+    cam(S, A(lerp(-1.2, -0.9, k), lerp(-0.4, 0.2, k), 2.9), A(-0.6, 5.0, 3.15), 34)
 
 
 def rook_clap(S, k, t, lt):
@@ -1605,10 +1608,10 @@ def crew_board(S, k, t, lt):
         S[who].apply(walk(t + i * 0.3, 1.4))
     S['face']['vesna'] = 'happy'
     w = walk(t + 0.5, 1.4)
-    S['rook'].place(A(x + 2.2, 0.6, 0), -PI / 2 + 0.3)
+    S['rook'].place(A(x + 1.6, 0.7, 0), -PI / 2 + 0.3)
     S['rook'].apply(blend(w, P('hat', lL=w['lL'], lR=w['lR']), 1 - lt / 0.9))
     S['face']['rook'] = 'deadpan'
-    cam(S, A(lerp(4.5, 3.0, k), -10.5, 1.7), A(1.5, 3.5, 3.2), 30)
+    cam(S, A(lerp(5.4, 4.2, k), -7.4, 1.6), A(x - 1.6, 2.5, 2.7), 30)
 
 
 def honke_hears(S, k, t, lt):
@@ -1661,14 +1664,14 @@ def stretcher(S, k, t, lt):
         xx, yy = 6 + i * 3.2, 17 + (i % 2) * 5 + (i % 3) * 2
         o.location = A(xx, yy, hz(xx) + 2.2 + 0.25 * math.sin(t * 7 + i * 2))
     S['pov'].data.energy = 300
-    cam(S, A(lerp(19.6, 19.0, k), lerp(-9.5, -8.5, k), hz(19) + 1.6), A(15.4, 1.5, z + 2.1), 34)
+    cam(S, A(lerp(19.6, 19.0, k), lerp(-9.5, -8.5, k), hz(19) + 1.6), A(15.4, 1.5, z + 2.1), 42)
 
 
 def wake(S, k, t, lt):
     A = ward(S)
     op = ease((k - 0.3) * 4)
     S['patient'].place(A(-0.3, 2.6, 1.32), -PI / 2, -PI / 2 + 0.3, 0)
-    S['patient'].apply(P('stand', aL=(0.3, 0.3, 0.3), aR=(0.3 + 0.5 * op, 0.3, 0.3 + 0.9 * op), head=(0.25, lerp(0.0, 0.45, op))))
+    S['patient'].apply(P('stand', aL=(0.3, 0.3, 0.3), aR=(0.3 + 0.15 * op, 0.3, 0.3 + 0.3 * op), head=(0.25, lerp(0.0, 0.45, op))))
     S['face']['patient'] = 'closed' if op < 0.2 else ('tired' if op < 0.8 else 'calm')
     S['rook'].place(A(2.1, 4.25, 0), 0.25)
     S['rook'].apply(P('stand', aL=(0.5, 0.9, 0.5), aR=(0.5, 0.9, 0.5), head=(0.3, -0.2), lean=0.3))
@@ -1688,7 +1691,7 @@ def ward_doctor(S, k, t, lt):
     hp = hand(S, 'doctor', 0)
     S['clip'].location = (hp[0], hp[1] - 0.05, hp[2] + 0.2)
     S['clip'].rotation_euler = (-0.5, 0, 0.9)
-    S['rook'].place(A(-4.3, 1.9, 0), 0.9)
+    S['rook'].place(A(-1.9, 4.15, 0), 0.35)
     S['rook'].apply(P('stand', aR=(0.75, -0.2, 2.0, 1.1), head=(0.2, 0.0)))
     S['hat_off'] = True
     S['face']['rook'] = 'sad'
@@ -1715,16 +1718,18 @@ def legs(S, k, t, lt):
 def fly_home(S, k, t, lt):
     A = cabin(S)
     sky(S, '9AC0F0', 1.0)
-    S['patient'].place(A(-1.45, -1.95, 0.36), 0.0)
-    S['patient'].apply(P('sit', aL=(0.7, -0.1, 1.5, 1.0), aR=(0.7, -0.1, 1.5, 1.0), head=(0.0, lerp(-0.7, 0.0, ease((k - 0.5) * 3))), lean=0.1))
+    S['patient'].place(A(1.06, -3.95, 0.36), 0.0)
+    S['patient'].apply(P('sit', aL=(0.7, -0.1, 1.5, 1.0), aR=(0.7, -0.1, 1.5, 1.0), head=(0.0, lerp(0.0, -0.6, ease((k - 0.5) * 3))), lean=0.1))
     S['face']['patient'] = 'happy'
     j = 0.03 * math.sin(t * 40)
-    seat_rook(S, A, P('sit', aL=(0.9, 0.6, 1.4), aR=(0.9, 0.6, 1.4), head=(-0.1, 0.4 * math.sin(t * 5)), lean=0.0 + j), 'shocked', y=-4)
+    S['rook'].place(A(1.88, -3.95, 0.36), 0.0)
+    S['rook'].apply(P('sit', aL=(0.9, 0.5, 1.4), aR=(0.9, 0.2, 1.4), head=(-0.1, 0.4 * math.sin(t * 5)), lean=0.0 + j))
+    S['face']['rook'] = 'shocked'
     for i, f in enumerate(S['fea'][:5]):
         u = (t * 0.6 + i * 0.23) % 1
-        f.location = A(1.45 + math.cos(i * 2.3) * (0.4 + 0.5 * u), -4.1 - 0.3 * u, 2.7 + 0.5 * math.sin(i * 1.7) - 1.2 * u)
+        f.location = A(1.9 + math.cos(i * 2.3) * (0.4 + 0.5 * u), -4.2 - 0.3 * u, 2.7 + 0.5 * math.sin(i * 1.7) - 1.2 * u)
         f.rotation_euler = (t * 3 + i, t * 2 + i * 2, i)
-    cam(S, A(lerp(0.9, 0.6, k), lerp(-8.8, -8.2, k), 2.5), A(0.2, -3.2, 2.0), 34)
+    cam(S, A(lerp(0.1, 0.4, k), lerp(-7.2, -6.8, k), 2.85), A(1.45, -4.0, 2.2), 44)
 
 
 HOST |= {'belgrade', 'vinyl', 'friend', 'coffee', 'medical', 'rook_cup', 'dispatch', 'desk_job', 'reporters', 'stage_wide', 'medal_cu',
@@ -1761,4 +1766,14 @@ def photo_thumb(S, k, t, lt):
     cam(S, A(3.5, -15, -3.2), A(-0.6, 0, 1.2), 34)
 
 
-STILLS['thumb'] = photo_thumb
+def _no_jet(f):
+    """The falling-section shots: only the torn section is in the sky, not the intact aircraft."""
+    def g(S, k, t, lt):
+        f(S, k, t, lt)
+        S['jet'].location = (0, 0, -900)
+    g.__name__ = f.__name__
+    return g
+
+
+SHOTS3D.update({f.__name__: _no_jet(f) for f in (tail_fall, fall_top, plunge, debris_sky)})
+STILLS['thumb'] = _no_jet(photo_thumb)
