@@ -1,14 +1,14 @@
 {
   "id": "r006-wisnierska", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9,
   "segments": [
-    {"scene": "hook",   "mood": "hook",    "text": "A storm cloud swallows a paraglider and drags her up, higher than Everest. Then she blacks out."},
-    {"scene": "doubt",  "mood": "calm",    "text": "No chance. Nobody passes out up there and lands alive. Let's go look."},
-    {"scene": "launch", "mood": "action",  "text": "February {2007|two thousand seven}, Australia. German champion {Ewa|Eva} {Wisnierska|Vishnyairska} is training for the world championships. A storm is building."},
-    {"scene": "suck",   "mood": "tense",   "text": "She tries to fly around it. It sucks her in. She spirals down. She keeps going up."},
-    {"scene": "climb",  "mood": "action",  "text": "In about fifteen minutes she is nearly ten kilometres high. Hail. Lightning. Almost no air."},
-    {"scene": "out",    "mood": "tense",   "text": "She blacks out for over half an hour. Her glider flies on by itself."},
-    {"scene": "wake",   "mood": "triumph", "text": "Then she wakes up. Covered in ice, still flying. And she lands it."},
-    {"scene": "loss",   "mood": "sad",     "text": "The same storm kills another pilot, {He|Huh} {Zhongpin|Jong-pin}. He was {42|forty-two}."},
-    {"scene": "end",    "mood": "end",     "text": "She walks away with frostbite. I was wrong. Case closed."}
+    {"scene": "hook", "mood": "hook", "text": "A storm swallows a paraglider and drags her up, higher than Everest. Then she blacks out."},
+    {"scene": "doubt", "mood": "calm", "text": "No chance. Nobody passes out up there and lands alive. Let's go look."},
+    {"scene": "launch", "mood": "action", "text": "Australia, February {2007|two thousand seven}. German pilot {Ewa|Eva} {Wisnierska|Vishnyairska} is training for the world titles. A storm is building."},
+    {"scene": "suck", "mood": "tense", "text": "She tries to fly around it. It sucks her in. She spirals down. She keeps going up."},
+    {"scene": "climb", "mood": "action", "text": "In about fifteen minutes she is nearly ten kilometres up. Hail. Lightning. And almost no air."},
+    {"scene": "out", "mood": "tense", "text": "She blacks out for over half an hour. Her glider flies on by itself."},
+    {"scene": "wake", "mood": "triumph", "text": "Then she wakes up. Covered in ice, still flying. And she lands it."},
+    {"scene": "loss", "mood": "sad", "text": "That same storm kills another pilot, {He|Huh} {Zhongpin|Jong-pin}, aged {42|forty-two}."},
+    {"scene": "end", "mood": "end", "text": "She walks away with frostbite. I was wrong. Case closed."}
   ]
 }

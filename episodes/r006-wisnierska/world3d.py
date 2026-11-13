@@ -127,7 +127,7 @@ def set_hill(r):
     for j in range(4):
         add('cone', 'FF7A1A' if j % 2 == 0 else 'F4EEDF', (0.3 + j * 0.5, 0, 0), rot=(0, PI / 2, 0), radius1=0.36 - j * 0.06, radius2=0.3 - j * 0.06,
             depth=0.5, vertices=8, parent=sock)
-    for i, (x, y) in enumerate(((-10, 7), (-12, 0), (-9, 12.5), (11, 12), (-11, -6))):
+    for i, (x, y) in enumerate(((-10, 7), (-12, 0), (-14, 11), (11, 12), (-11, -6))):
         add('cylinder', 'C8C0B0', (x, y, 2.0), radius=0.24, depth=4.0, vertices=6, parent=r)
         for j in range(3):
             add('ico_sphere', ('5E7040', '4E6034', '6A7C48')[(i + j) % 3], (x + (j - 1) * 1.3, y + (j % 2) * 0.8, 4.3 + (j % 2) * 0.9),
@@ -145,9 +145,10 @@ def set_hill(r):
     tower = empty((60, 300, -9), r)
     for i in range(12):
         a = i * PI / 6
-        add('ico_sphere', ('232A3C', '2C3448')[i % 2], (math.cos(a) * 62, math.sin(a) * 30, 44), scale=(1, 1, 0.5), radius=36, subdivisions=2, parent=tower)
-    for i in range(9):
-        add('cube', '39435A', (-64 + i * 16, 4, 14), rot=(0, 0.16, 0), scale=(5, 3, 34), size=1, parent=tower)
+        add('ico_sphere', ('485270', '545E7C')[i % 2], (math.cos(a) * (58 + (i % 3) * 8), math.sin(a) * 30, 46 + (i % 2) * 6), scale=(1, 1, 0.62), radius=34 + (i % 3) * 4, subdivisions=2, parent=tower)
+    add('cube', '8A96B0', (4, -8, 13), rot=(0, 0.14, 0), scale=(112, 2, 34), size=1, parent=tower, alpha=0.4)
+    for i in range(26):
+        add('cube', '9AA6C0', (-62 + i * 5, -30 + (i % 4) * 5, 13), rot=(0, 0.2, 0), scale=(0.45, 0.45, 30), size=1, parent=tower, alpha=0.6)
     for i in range(16):
         lvl = i // 2
         add('ico_sphere', ('59647E', '6E7892', '8791AA', 'A3ACC2', 'BEC6D8', 'D4DAE8', 'E4E8F2', 'EEF1F8')[lvl],
@@ -365,7 +366,7 @@ def finish(S, t):
         r['brows'][i].location.z = 0.135 + (0.07 if e == 'shocked' else 0.0)
     tip = S['hat_tip']
     if S['hat_off']:
-        r['hat'].location, r['hat'].rotation_euler = (0.1, -0.52, -1.12), (0.75, 0.0, 0.2)
+        r['hat'].location, r['hat'].rotation_euler = (0.12, -0.5, -1.3), (1.0, 0.0, 0.25)
     else:
         r['hat'].location = (0, 0, 0.27 + (0.13 if e == 'shocked' else 0.0) + tip * 0.1)
         r['hat'].rotation_euler = (-0.2 + dict(smirk=0.2, deadpan=0.12).get(e, 0.0) + tip * 0.35, 0.07, 0)
@@ -472,8 +473,8 @@ def flash(lt, at_, d=0.22):
 # ---------------------------------------------------------------- shots: hook
 def suck_up(S, k, t, lt):
     f = flash(lt, 0.0, 0.3)
-    A = clouds(S, t, 70, lerp_col('141A28', 'AEC4F0', f), 1 + 3 * f)
-    S['cflash'].data.energy = 9 * f
+    A = clouds(S, t, 70, lerp_col('141A28', '8EA4D0', f), 1 + 1.0 * f)
+    S['cflash'].data.energy = 5 * f
     z = lerp(-9, 2.5, ease(k))
     fly(S, A(0.4 * math.sin(t * 9), 0, z), 0.5 + 0.2 * math.sin(t * 5), 0.25 * math.sin(t * 7), 0.3 * math.sin(t * 6),
         P('stand', head=(-0.4, 0.2 * math.sin(t * 8)), **{**BRAKE, 'aL': (2.7, 0.5, 0.3), 'aR': (2.3, 0.6, 0.8)}), 'shock')
@@ -508,12 +509,12 @@ def blackout_cu(S, k, t, lt):
 
 # ---------------------------------------------------------------- shots: doubt + launch (the hill)
 def rook_hill(S, k, t, lt):
-    A = hill(S, 0.9, 0.9, t)
+    A = hill(S, 0.6, 0.9, t)
     S['rook'].place(A(0, 0, 0), -0.25)
     S['rook'].apply(P('cross', head=(0.05, 0.1 + 0.24 * math.sin(t * 4.2) * max(0, 1 - lt / 1.0))))
     S['face']['rook'] = 'deadpan'
     minis(S, t, ((-2, 60, 17, 0), (22, 90, 24, 2), (-6, 120, 30, 4)))
-    cam(S, A(lerp(-1.5, -1.1, k), lerp(-7.2, -5.6, k), 2.0), A(0.05, 0, 2.05), 40)
+    cam(S, A(lerp(-1.6, -1.2, k), lerp(-6.6, -5.2, k), 0.9), A(0.05, 0, 2.3), 36)
 
 
 def rook_collar(S, k, t, lt):
@@ -605,7 +606,7 @@ def spiral(S, k, t, lt):
     A = clouds(S, t, 46)
     a = t * 4.2
     fly(S, A(3.4 * math.cos(a), 3.4 * math.sin(a), 0), a + PI, 0.25, 0.95, P('stand', head=(0.1, -0.5), **{**BRAKE, 'aR': (1.5, 0.3, 1.2)}), 'scared')
-    brolly_rook(S, A(-3.5 + 1.2 * math.cos(a * 0.4), -7.0 + 1.2 * math.sin(a * 0.4), 2.5), a * 0.4 + 0.3, t, tilt=0.5)
+    brolly_rook(S, A(4.2 + 0.8 * math.cos(a * 0.4), -4.2 + 0.8 * math.sin(a * 0.4), 3.0), a * 0.4 + 0.3, t, tilt=0.5)
     cam(S, A(1.5, -9.5, 19), A(0, -1.5, -0.5), 24, 0.25 * math.sin(t * 2))
 
 
@@ -630,11 +631,11 @@ def top_out(S, k, t, lt):
     A = show(S, 'high')
     sky(S, '080C26', 1.0)
     e = ease(k * 1.2)
-    z = lerp(-9, 5.5, e)
-    fly(S, A(0, 0, z), 0.45, lerp(-0.25, 0.0, e), 0.1 * math.sin(t * 5), P('stand', head=(-0.5, 0.3), **BRAKE), 'shock', True)
+    z = lerp(-4, 5.5, e)
+    fly(S, A(-1.0, 0, z), 0.45, lerp(-0.25, 0.0, e), 0.1 * math.sin(t * 5), P('stand', head=(-0.5, 0.3), **BRAKE), 'shock', True)
     puffs(S, A(0, 0, -2), min(1, lt / 0.9), 16, 9, 22)
-    puffs(S, A(4.6, -5, -2), min(1, max(0, lt - 0.2) / 0.8), 10, 4, 9, start=16)
-    brolly_rook(S, A(4.6, -5, lerp(-10, 1.0, ease(k * 1.5 - 0.15))), -0.4, t, 'shocked', True, True)
+    puffs(S, A(3.6, -9, -4), min(1, max(0, lt - 0.2) / 0.8), 10, 4, 4, start=16)
+    brolly_rook(S, A(4.6, -10, lerp(-8, 2.6, ease(k * 1.6 - 0.1))), -0.4, t, 'shocked', True, True)
     cam(S, A(lerp(6, 5, k), lerp(-27, -24, k), 2.5), A(1.5, 0, 6.0), 26)
 
 
@@ -649,12 +650,12 @@ def hail_(S, k, t, lt):
 
 def bolt(S, k, t, lt):
     f = max(flash(lt, 0.12, 0.3), flash(lt, 0.7, 0.25))
-    A = clouds(S, t, 40, lerp_col('0B0F1A', 'B8CCF4', f), 1 + 4 * f)
-    S['cflash'].data.energy = 12 * f
+    A = clouds(S, t, 40, lerp_col('0B0F1A', '7E94C4', f), 1 + 0.8 * f)
+    S['cflash'].data.energy = 5 * f
     if f > 0.03:
         S['bolt'].location = (7.5, 9, 4)
         S['bolt'].rotation_euler = (0, 0.12, 0.3 if lt < 0.5 else -0.6)
-        S['boltl'].data.energy = 400000 * f
+        S['boltl'].data.energy = 120000 * f
     fly(S, A(-3.2 + 0.2 * math.sin(t * 8), 0, -2.5 + lerp(0, 2.5, k)), 0.5, 0.2 * math.sin(t * 6), 0.35 * math.sin(t * 5), None, 'shock', True)
     cam(S, A(-1, -19.5, -6), A(1.5, 0, 4.5), 26, 0.1 * math.sin(t * 9))
 
@@ -752,9 +753,9 @@ def landing(S, k, t, lt):
 
 # ---------------------------------------------------------------- shots: the one who did not come back, and the end
 def dusk(S, t):
-    A = hill(S, 0.001, 1.3, t, '4A3E5C', 0.8)
+    A = hill(S, 0.001, 1.3, t, '5A4C70', 1.1)
     S['tower'].location = (60, 300, -600)
-    S['hsun'].data.energy, S['hsun'].data.color = 1.6, K.hexc('FF9A5A')[:3]
+    S['hsun'].data.energy, S['hsun'].data.color = 2.4, K.hexc('FFA468')[:3]
     return A
 
 
@@ -769,8 +770,8 @@ def dusk_hill(S, k, t, lt):
 def rook_hat(S, k, t, lt):
     A = dusk(S, t)
     S['rook'].place(A(0, 0, 0), 0.35)
-    S['rook'].apply(P('stand', aR=(0.75, -0.15, 2.1, 1.0), head=(lerp(0.15, 0.38, ease(k)), -0.1)))
-    S['face']['rook'], S['hat_off'] = 'sad', True
+    S['rook'].apply(blend(P('stand', head=(0.1, -0.1)), P('hat', head=(0.4, -0.1)), k * 2.2))
+    S['face']['rook'], S['hat_tip'] = 'sad', -0.4 * ease(k * 2.2)
     cam(S, A(lerp(1.6, 1.3, k), lerp(-5.6, -4.8, k), 2.2), A(0.0, 0, 2.05), 46)
 
 

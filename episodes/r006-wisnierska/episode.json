@@ -1,17 +1,63 @@
 {
  "id": "r006-wisnierska",
  "format": "short",
- "status": "draft",
+ "status": "approved",
  "synthetic": false,
  "host": "rook",
  "case": 6,
- "title": "A Storm Sucked Her 10 km Up. She Passed Out. Then Woke Up Flying #shorts",
+ "title": "A Storm Sucked Her Higher Than Everest. She Blacked Out, Then Woke Up Flying #shorts",
+ "description": "Case 006. 14 February 2007, Manilla, New South Wales, Australia: Ewa Wiśnierska, 35, a Polish-born pilot on the German paragliding team, was training ahead of the world championships when a thunderstorm pulled her glider up into the cloud. She tried to fly around it, then to spiral down against the lift. In about fifteen minutes she was carried from roughly 760 metres to almost 10,000 metres, higher than Everest, through hail, lightning, extreme cold and thin air. She lost consciousness for more than half an hour while the glider flew on uncontrolled, came round covered in ice, and landed. She was treated for frostbite. Rook didn't believe it either.\n\nIn memory of He Zhongpin, 42, a paraglider pilot from China who died in the same storm.\n\nAnimated reconstruction of a true story.",
+ "tags": [
+  "Ewa Wisnierska",
+  "Ewa Wiśnierska",
+  "paraglider",
+  "paragliding",
+  "thunderstorm",
+  "cloud suck",
+  "Manilla",
+  "2007",
+  "higher than Everest",
+  "true story",
+  "survival story",
+  "animated story",
+  "Rook",
+  "Survra"
+ ],
+ "hashtags": [
+  "#shorts",
+  "#truestory",
+  "#survival"
+ ],
  "playlist": "Rook's Case Files (Shorts)",
+ "story_score": {
+  "curiosity": 9,
+  "stakes": 9,
+  "freshness": 8,
+  "story": 8,
+  "visual": 9,
+  "audience_fit": 9,
+  "payoff": 8,
+  "packaging": 9,
+  "research": 8,
+  "repeatability": 8,
+  "total": 85
+ },
+ "title_options": [
+  "A Storm Sucked Her Higher Than Everest. She Blacked Out, Then Woke Up Flying #shorts",
+  "She Passed Out Almost 10 km Up, Inside a Thunderstorm. Her Glider Kept Flying #shorts",
+  "The Paraglider Who Was Swallowed by a Storm Cloud #shorts",
+  "She Tried to Spiral Down. The Storm Took Her Up Past Everest #shorts",
+  "Unconscious for Half an Hour Under a Paraglider. She Woke Up Covered in Ice #shorts"
+ ],
+ "source_notes": "Read for this run: two Associated Press reports (Rod McGuirk, Canberra, 16-17 Feb 2007, as carried by The Spokesman-Review and Fox News), Dawn (agencies, 17 Feb 2007), AVweb (18 Feb 2007) and Wikipedia. NBC and ABC News pages could not be opened by this run and are not used. Date and place: 14 February 2007 near Manilla, New South Wales; she was training for the 2007 World Paragliding Championships, which began on 24 February (Wikipedia, AP). Who: Ewa Wisnierska, 35, 'German champion' and 'Paragliding 2005 World Cup winner' (AP); 'Polish-born German' (Dawn); member of the German national team (Wikipedia). The script says 'German pilot'; the description adds that she was born in Poland. Escape attempts: she 'attempted to skirt the thunderstorm and when that failed, repeatedly attempted to spiral against its powerful lift' (AP). Climb: organiser Godfrey Wenness said she went 'from 2,500 feet to her maximum height in about 15 minutes' (AP); AVweb says about 10 minutes; the script says 'about fifteen minutes'. Height: 32,612 ft, about 9,940 m (AP, from her GPS and radio equipment); 'about 30,000 feet' (Dawn, AVweb); Wikipedia's lead says 'almost 10,000 metres' and its body 10,054 m from GPS data. Because the figures differ, the script says 'nearly ten kilometres' and 'higher than Everest' (AP headline; Everest is 8,849 m), the graphics say ALMOST 10 KM / ALMOST 10,000 m, and the flight-computer insert shows digits racing upward that never settle on an exact figure. Conditions: hail and lightning in her own words ('It's raining and hailing and I'm still climbing', AP; 'I could hear lightning in front of me, behind me, around me', Dawn); 'lack of oxygen' and extreme cold (AP, Wikipedia). The -50 C figure and 'orange-sized hail' appear only in AVweb and are not used. Blackout: 'more than 30 minutes while her paraglider flew on uncontrolled, sinking and lifting several times' (AP); about 40 minutes (Dawn); about an hour (AVweb). The script says 'over half an hour' and the stopwatch insert stops at 30+ MIN. Waking: AP says she regained consciousness at about 1,640 ft, AVweb after a descent to about 20,000 ft; the sources disagree, so no height is given for it. Ice: she landed 'covered in ice' (Dawn), 'coated in ice' (AVweb), with 'ice in her lightweight flying suit' (AP). Landing: she 'landed safely' (AP); Wikipedia says more than three hours after launch and about 60 km north of her starting point (not used). Injuries: frostbite to her face, an hour in hospital for observation (AP); frostbite and bruises (AVweb). The script says 'She walks away with frostbite.' He Zhongpin: 42, from China, died in the same weather system; AP reported the cause as apparently lack of oxygen and extreme cold, Wikipedia says a lightning strike, so the script says only that the same storm killed him; his body was found the next day about 75 km from his launch site (AP; not shown). He is not depicted; the film shows an empty launch hill at dusk, a plain memorial card and Rook lowering his hat. Dramatised, not reported: the look of the launch hill, the plains, the windsock, the paddock, the windmill and water tank; the colours of her wing, suit and helmet; the flight computer and climb gauge (the gauge shows no number); the exact moment and manner of her blackout and waking; the hand on the brake handle; her landing on her knees; her wave in the paddock; the pilot-file card layout; and everything Rook does (the umbrella, the icicle). No dialogue is attributed to anyone. Pronunciation: 'Ewa Wisnierska' is spelled 'Eva Vishnyairska' and 'He Zhongpin' 'Huh Jong-pin' for the synthetic voice; neither was checked by ear.",
  "sources": [
   "https://www.spokesman.com/stories/2007/feb/17/storm-sends-paraglider-higher-than-everest/",
   "https://www.foxnews.com/story/german-paraglider-survives-being-lifted-higher-than-mount-everest",
   "https://www.dawn.com/news/233312/world-s-luckiest-woman",
   "https://avweb.com/news/paraglider-survives-thunderstorm-encounter/",
   "https://en.wikipedia.org/wiki/Ewa_Wi%C5%9Bnierska"
- ]
+ ],
+ "quality_gate": {
+  "method": "3D contact sheet reviewed in three rounds with fixes after each (staging, camera angles, the storm tower rebuilt to read as cloud, lightning flashes toned down), composited stills (captions, HUD, overlays, inserts) in one round, then two full-length low-resolution rehearsals (216x384, 4 samples) reviewed at two frames per shot each, plus six shots at 360x640; the final rehearsal passed the automated gate locally: 38 shots, mean 1.16 s, longest 1.69 s, loudness -15.1 LUFS, host in 16/38 shots (42%), closest match to an earlier episode 0.79; every caption pair was measured to fit the frame width and numbers were placed so no word is hidden; audio was measured, not listened to; the full-resolution render and final gate run in the cloud"
+ }
 }

@@ -202,7 +202,7 @@ def trophy(cv, c):
     taped(cv, 0, 0, 860, 900, 2)
     cv.rotate(2)
     cv.drawRect(skia.Rect.MakeXYWH(-430, -450, 860, 150), P(h('20242B')))
-    Wd.text_card(cv, 'PILOT FILE', 0, -350, 84, AMBER, None)
+    Wd.text_card(cv, 'EWA WISNIERSKA', 0, -350, 84, AMBER, None)
     cv.save()
     cv.translate(-250, -70)
     cv.rotate(8 * math.sin(c.t * 3))
@@ -239,14 +239,14 @@ def vario(cv, c):
     cv.drawCircle(cx, cy, r, P(h('0B0F18')))
     for i in range(25):
         a = math.radians(180 + (i - 12) * 11)
-        up = i < 12
-        col = Wd.mix(h('3DDC84'), RED, (12 - i) / 12) if up else h('5A6478')
+        up = i > 12
+        col = Wd.mix(h('3DDC84'), RED, (i - 12) / 12) if up else h('5A6478')
         r0 = r - (70 if i % 4 == 0 else 44)
         cv.drawLine(cx + math.cos(a) * r0, cy + math.sin(a) * r0, cx + math.cos(a) * (r - 14), cy + math.sin(a) * (r - 14), P(col, 16))
     Wd.text_card(cv, 'UP', cx + 20, cy - 190, 120, RED if (c.t * 6) % 1 < 0.6 else AMBER, None)
     Wd.text_card(cv, 'DOWN', cx + 20, cy + 270, 70, h('5A6478'), None)
     Wd.text_card(cv, 'CLIMB', cx + 150, cy + 30, 54, 0x99FFFFFF, None)
-    ang = math.radians(180 + lerp(100, -128, ease(c.lt / 0.3)) + (3 * math.sin(c.t * 50) if c.lt > 0.3 else 0))
+    ang = math.radians(180 + lerp(-30, 128, ease(c.lt / 0.3)) + (3 * math.sin(c.t * 50) if c.lt > 0.3 else 0))
     cv.drawLine(cx, cy, cx + math.cos(ang) * (r - 90), cy + math.sin(ang) * (r - 90), P(0xFFFFFFFF, 22))
     cv.drawCircle(cx, cy, 44, P(0xFFFFFFFF))
     glider_icon(cv, 190, 300 - 60 * math.sin(c.t * 4), 0.9, AMBER)
