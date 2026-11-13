@@ -32,11 +32,12 @@ jobs:
         run: |
           python3 - <<'EOF'
           import base64, os, requests
+          env = {k: os.environ[k].strip().strip('"').strip("'") for k in ("YT_CLIENT_ID", "YT_CLIENT_SECRET", "CODE", "VERIFIER")}
           from cryptography.hazmat.primitives import hashes, serialization
           from cryptography.hazmat.primitives.asymmetric import padding
           r = requests.post("https://oauth2.googleapis.com/token", data=dict(
-              code=os.environ["CODE"], client_id=os.environ["YT_CLIENT_ID"], client_secret=os.environ["YT_CLIENT_SECRET"],
-              redirect_uri="http://127.0.0.1:8765", grant_type="authorization_code", code_verifier=os.environ["VERIFIER"]), timeout=30)
+              code=env["CODE"], client_id=env["YT_CLIENT_ID"], client_secret=env["YT_CLIENT_SECRET"],
+              redirect_uri="http://127.0.0.1:8765", grant_type="authorization_code", code_verifier=env["VERIFIER"]), timeout=30)
           if r.status_code != 200:
               print("EXCHANGE_FAILED", r.status_code, r.json().get("error"), r.json().get("error_description")); raise SystemExit(1)
           t = r.json()
