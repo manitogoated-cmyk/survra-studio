@@ -1,7 +1,7 @@
 {
  "id": "r004-packard-long",
  "format": "long",
- "status": "draft",
+ "status": "approved",
  "synthetic": false,
  "host": "rook",
  "case": 4,
@@ -67,7 +67,7 @@
   "https://www.newsweek.com/humpback-whale-swallowed-massachusetts-man-survived-1715130"
  ],
  "quality_gate": {
-  "method": "3D contact sheet reviewed in four rounds (the last at full frame size for eight key shots), composited stills (captions, HUD, overlays, inserts) in one, and a three-frames-per-shot strip from a full-length low-resolution rehearsal (216x384, 4 samples), which passed the automated gate locally: 39 shots, mean 1.11 s, longest 1.56 s, loudness -15.0 LUFS, voice 11.9 dB over the bed, host in 17/39 shots (44%), closest match to an earlier episode 0.78; caption pairs were measured against the frame width and the script reworded where a pair overflowed; the regulator's colour was changed after the rehearsal and not re-rendered; audio was measured, not listened to; the full-resolution render and final gate run in the cloud"
+  "method": "Taken over from a cut-off run on 13 Nov 2026. Every factual claim in the script re-checked against the listed sources and five lines corrected. Three review rounds on 16:9 material: (1) the full 3D contact sheet in three parts (all 3D shots), (2) the composited sheet plus every flat insert at full frame size, which found three texts clipped at the right edge (fixed) and an unsourced limp (removed), (3) the full contact sheet again after the changes, with the changed shots and the thumbnail looked at individually. Thumbnail restaged so Rook's face is visible and the hook cut to four words. Because Case 003 long failed the cloud gate on a static stretch, the 21 longest shots were rehearsed at low resolution (384x216, 4 samples) and their frame-to-frame motion measured the way the gate does; near-static cards were shortened (no shot is over 3.4 s), the plane card was given movement and the last beat a third shot. Measured locally: 94 shots, 187 s, mean 1.99 s, longest 3.40 s, 598 words in 25 segments, 77 shot kinds (none used more than 3 times, none twice in a row), Rook in 49/94 shots (52%). Not done locally: a full-length render, the automated QC gate and listening to the audio; those run in the cloud."
  },
  "case_of": "r004-packard",
  "claimed_at": "2026-11-13T20:48:35Z"
