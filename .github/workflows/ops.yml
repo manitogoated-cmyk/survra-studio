@@ -11,6 +11,10 @@ on:
         type: choice
         options: [analytics, brand, about, release, repair]
         default: analytics
+      only:
+        description: "release only: episode id to make public now (blank = every approved private upload)"
+        required: false
+        default: ""
 
 concurrency:
   group: survra-ops
@@ -47,6 +51,7 @@ jobs:
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
           TASK: ${{ inputs.task || (github.event.schedule == '23 13 * * *' && 'repair') || 'analytics' }}
+          ONLY: ${{ inputs.only }}
         run: python3 publish/ops.py "$TASK"
       - name: Save the report
         if: always()

@@ -119,7 +119,10 @@ def release():
     lp = os.path.join(ROOT, "publish", "ledger.json")
     ledger = json.load(open(lp))
     bad = 0
+    only = os.environ.get("ONLY", "").strip()          # release just this episode (leaves scheduled ones on their slots)
     for ep, row in ledger.items():
+        if only and ep != only:
+            continue
         ej = os.path.join(ROOT, "episodes", ep, "episode.json")
         if not os.path.exists(ej) or json.load(open(ej)).get("status") != "approved":
             continue
@@ -135,6 +138,10 @@ def release():
         row.update(privacy=st.get("privacyStatus"), review=False, upload_status=st.get("uploadStatus"),
                    released_at=dt.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"))
         row.pop("release_error", None)
+        if st.get("privacyStatus") == "public":
+            row["publish_at"] = None
+        else:
+            row.pop("released_at", None)
         print(ep, row["url"], "->", st.get("privacyStatus"), "| uploadStatus", st.get("uploadStatus"),
               "| rejection", st.get("rejectionReason"), "| failure", st.get("failureReason"))
         if st.get("privacyStatus") != "public":

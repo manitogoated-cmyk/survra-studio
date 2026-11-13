@@ -9,6 +9,7 @@ Episode status in episode.json: draft -> ready (render it) -> approved (may be s
 Safety rails: config "paused"; "review_mode" (uploads stay PRIVATE, unscheduled); QC FAIL never uploads;
 ledger by episode id + file hash blocks duplicates; token must belong to the Survra channel.
 """
+import time
 import argparse, datetime as dt, glob, hashlib, json, os, subprocess, sys
 from zoneinfo import ZoneInfo
 
@@ -128,8 +129,13 @@ def upload(cfg, ledger, only=None):
         vid = res["id"]; extras = {}
         if now_:
             try:
+                for _ in range(30):                     # YouTube ignores a release while the upload is still processing
+                    if (yt.video_status(vid) or {}).get("status", {}).get("uploadStatus") == "processed": break
+                    time.sleep(10)
                 st = yt.set_privacy(vid, "public"); res["status"]["privacyStatus"] = st.get("privacyStatus")
-                extras["released_at"] = now().strftime("%Y-%m-%dT%H:%M:%SZ"); extras["upload_status"] = st.get("uploadStatus")
+                extras["upload_status"] = st.get("uploadStatus")
+                if st.get("privacyStatus") == "public": extras["released_at"] = now().strftime("%Y-%m-%dT%H:%M:%SZ")
+                else: extras["release_error"] = "still " + str(st.get("privacyStatus")) + " after the release request; run ops release with only=" + e["id"]
                 log(f"  released now: privacy={st.get('privacyStatus')} uploadStatus={st.get('uploadStatus')} rejection={st.get('rejectionReason')}")
             except Exception as ex:
                 extras["release_error"] = str(ex)[:300]; log("  release failed (video stays private):", ex)
