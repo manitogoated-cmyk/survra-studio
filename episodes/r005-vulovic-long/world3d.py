@@ -1013,3 +1013,752 @@ SHOTS3D = {f.__name__: f for f in (
     rook_brace, debris_sky, rook_hat, pinned, plunge, hill_wide, impact, villager, wreck_in, rook_lantern, rescuers, ward_bed, walks,
     rook_caw, rook_paper, rook_wrong, signoff)}
 STILLS = dict(vesna=photo_vesna, jet=photo_jet)
+
+
+# ================================================================ long-form extension (16:9 full case file)
+# Same story, same world, more of it: Belgrade in 1971, the airline medical, the crew office, boarding in Copenhagen,
+# the villager who heard her, the stretcher, the ward step by step, the flight home, the desk job, the 1985 ceremony,
+# the phone call and the 2009 dispute.
+ORG.update(street=(1600, 0, 0), clinic=(2000, 0, 0), office=(2400, 0, 0), stage=(2800, 0, 0))
+CIVIL = dict(top='C8503A', pants='3A3050', hand='E2B48C', boot='2A2026', fore='E2B48C')
+FRIEND = dict(top='24408A', pants='1B2F66', hand='D9AC8A', boot='15151C', fore='24408A')
+DOCTOR = dict(top='E8ECEE', pants='5A6470', hand='D9AC8A', boot='2A2A30')
+CLERK = dict(top='8A8468', pants='3A3A34', hand='C99A78', boot='1E1A16')
+MC = dict(top='20222C', pants='20222C', hand='E2B48C', boot='101014')
+XCAST = ('civil', 'friend', 'doctor', 'clerk', 'mc')
+
+
+def woman_head(hair, cap=False):
+    def fn(head):
+        x = face(head, 'D9AC8A', hair, 'C09070')
+        add('ico_sphere', hair, (0, 0.06, 0.1), scale=(1.02, 1.0, 1.0), radius=0.31, subdivisions=1, parent=head)
+        add('cube', hair, (0, 0.24, -0.16), scale=(0.5, 0.14, 0.4), size=1, parent=head)
+        if cap:
+            add('cylinder', NAVY, (0, -0.02, 0.4), rot=(-0.15, 0, 0), radius=0.2, depth=0.13, vertices=8, parent=head)
+            add('cube', 'FFC233', (0, -0.21, 0.4), scale=(0.07, 0.02, 0.05), size=1, parent=head, rough=0.4)
+        return x
+    return fn
+
+
+def room(r, w_, d, floor, wall, side, dado=None, hgt=7.0):
+    add('cube', floor, (0, 0, -0.1), scale=(w_, d + 4, 0.2), size=1, parent=r)
+    add('cube', wall, (0, d / 2 - 1, hgt / 2), scale=(w_, 0.2, hgt), size=1, parent=r)
+    for s in (-1, 1):
+        add('cube', side, (s * w_ / 2, 0, hgt / 2), scale=(0.2, d + 4, hgt), size=1, parent=r)
+    if dado:
+        add('cube', dado, (0, d / 2 - 1.12, 0.8), scale=(w_, 0.06, 1.6), size=1, parent=r)
+    return d / 2 - 1
+
+
+def set_street(r):
+    add('plane', '3A3642', (0, 0, 0), size=200, parent=r)
+    add('cube', '6A6672', (0, 3.4, 0.08), scale=(110, 5.0, 0.16), size=1, parent=r)
+    for i in range(-18, 19):
+        add('cube', '4E4A56', (i * 3, 0.95, 0.09), scale=(2.6, 0.12, 0.18), size=1, parent=r)
+    cols = ('8A6A54', '6A7088', '9A8468', '5E5A70', '7A5A4A', '80785E')
+    for i, cx in enumerate(range(-50, 51, 10)):
+        hgt = (11, 14, 10, 13, 12, 15, 11, 13, 10, 14, 12)[i]
+        add('cube', cols[i % 6] if cx else '7A6248', (cx, 10, hgt / 2), scale=(9.8, 8, hgt), size=1, parent=r)
+        add('cube', '3A3038', (cx, 10, hgt + 0.3), scale=(10.2, 8.4, 0.6), size=1, parent=r)
+        for z in (5.6, 8.8, 12.0):
+            if z > hgt - 1.6:
+                continue
+            for j, wx in enumerate((-3, 0, 3)):
+                lit = (i * 3 + j + int(z)) % 3 != 0
+                add('cube', 'FFD890' if lit else '2A3040', (cx + wx, 5.95, z), scale=(1.5, 0.1, 2.0), size=1, parent=r, emit=2.2 if lit else 0.0)
+        if cx:
+            add('cube', '2A2630', (cx + 2.6, 5.95, 1.7), scale=(1.7, 0.1, 3.4), size=1, parent=r)
+            add('cube', 'C8B890', (cx - 1.6, 5.95, 2.2), scale=(4.0, 0.1, 2.4), size=1, parent=r, emit=0.7)
+    # the record shop
+    add('cube', 'FFE2B0', (-1.2, 5.9, 2.2), scale=(5.6, 0.1, 2.8), size=1, parent=r, emit=3.0)
+    add('cube', '2A2026', (3.3, 5.9, 1.7), scale=(1.7, 0.1, 3.4), size=1, parent=r)
+    add('cube', 'FF7A1A', (0, 5.0, 3.9), rot=(0.35, 0, 0), scale=(9.6, 2.2, 0.1), size=1, parent=r)
+    for i in range(5):
+        add('cube', 'F4EEDF', (-3.8 + i * 1.9, 4.98, 3.93), rot=(0.35, 0, 0), scale=(0.7, 2.2, 0.1), size=1, parent=r)
+    for i, x in enumerate((-3.2, -1.3, 0.6)):
+        add('cylinder', '15151C', (x, 5.74, 2.3), rot=(PI / 2, 0, 0), radius=0.72, depth=0.05, vertices=14, parent=r)
+        add('cylinder', ('FF7A1A', 'E5392F', 'FFC233')[i], (x, 5.7, 2.3), rot=(PI / 2, 0, 0), radius=0.24, depth=0.05, vertices=10, parent=r, emit=0.6)
+    add('cube', '6A4A2A', (-2.4, 3.6, 0.6), scale=(1.0, 1.0, 0.9), size=1, parent=r)
+    add('cube', '3A2A20', (-2.4, 3.6, 1.15), scale=(1.1, 0.9, 0.2), size=1, parent=r)
+    add('cone', 'C89A3A', (-2.9, 3.95, 1.75), rot=(-0.5, -0.5, 0), radius1=0.5, radius2=0.06, depth=0.9, vertices=8, parent=r, rough=0.35)
+    disc = empty((-2.25, 3.55, 1.28), r)
+    add('cylinder', '15151C', (0, 0, 0), radius=0.4, depth=0.03, vertices=14, parent=disc)
+    add('cylinder', 'FF7A1A', (0, 0, 0.02), radius=0.13, depth=0.03, vertices=8, parent=disc, emit=0.8)
+    add('cube', 'F4EEDF', (0.26, 0, 0.02), scale=(0.12, 0.05, 0.02), size=1, parent=disc)
+    for x in (-7.5, 8.5):
+        add('cylinder', '2A2630', (x, 1.6, 3.0), radius=0.1, depth=6, vertices=6, parent=r)
+        add('ico_sphere', 'FFE2B0', (x, 1.6, 6.2), radius=0.36, subdivisions=1, parent=r, emit=9)
+        light((x, 1.2, 5.6), 700, 'FFD8A0', kind='POINT', parent=r)
+    add('cube', 'A03A2A', (-13, -2.6, 0.8), scale=(4.6, 1.9, 0.9), size=1, parent=r)
+    add('cube', 'C8D8E8', (-13.2, -2.6, 1.6), scale=(2.3, 1.7, 0.8), size=1, parent=r, rough=0.3)
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            add('cylinder', '15151C', (-13 + sx * 1.5, -2.6 + sy * 0.95, 0.42), rot=(PI / 2, 0, 0), radius=0.42, depth=0.3, vertices=8, parent=r)
+    for x in (13.5, -20):
+        add('cylinder', '3A2A20', (x, 2.2, 1.6), radius=0.2, depth=3.2, vertices=5, parent=r)
+        add('ico_sphere', '6A5A3A', (x, 2.2, 4.4), scale=(1, 1, 1.2), radius=1.9, subdivisions=1, parent=r)
+    aim = empty((0, 2.5, 2), r)
+    aimed((-9, -10, 8), 3600, 'FFD8A8', 6.0, aim, r)
+    aimed((10, -8, 3), 900, '8A7AD0', 5.0, aim, r)
+    aimed((5, 4.5, 7), 1200, 'FF7A1A', 3.0, aim, r)
+    aimed((-20, -30, 30), 1.6, 'FFC890', 1.0, aim, r, kind='SUN')
+    return dict(disc=disc)
+
+
+def set_clinic(r):
+    back = room(r, 18, 12, 'A89878', 'D8D0B8', 'CCC4AC', '6A8A7A')
+    add('cylinder', 'F4F0E6', (3.6, back - 0.12, 3.7), rot=(PI / 2, 0, 0), radius=1.35, depth=0.12, vertices=16, parent=r, emit=0.5)
+    add('torus', '3A3A44', (3.6, back - 0.18, 3.7), rot=(PI / 2, 0, 0), major_radius=1.38, minor_radius=0.07, major_segments=16, minor_segments=4, parent=r)
+    for i in range(9):
+        a = -1.25 + i * 2.5 / 8
+        add('cube', 'E5392F' if i < 3 else '2A2630', (3.6 + math.sin(a) * 1.08, back - 0.2, 3.7 + math.cos(a) * 1.08), rot=(0, a, 0),
+            scale=(0.07, 0.04, 0.24), size=1, parent=r)
+    needle = empty((3.6, back - 0.24, 3.7), r)
+    add('cube', 'E5392F', (0, 0, 0.5), scale=(0.08, 0.04, 1.0), size=1, parent=needle, emit=0.6)
+    add('cylinder', '2A2630', (0, 0, 0), rot=(PI / 2, 0, 0), radius=0.13, depth=0.08, vertices=8, parent=needle)
+    add('cube', 'F4EEDF', (-5.6, back - 0.12, 3.7), scale=(1.9, 0.06, 2.7), size=1, parent=r)
+    for j in range(5):
+        for i in range(2 + j):
+            sz = 0.34 - j * 0.05
+            add('cube', '2A2630', (-5.6 + (i - (1 + j) / 2) * (sz + 0.14), back - 0.17, 4.7 - j * 0.5), scale=(sz, 0.03, sz), size=1, parent=r)
+    add('cube', 'E0B030', (-2.4, back - 0.12, 2.7), scale=(0.34, 0.06, 5.2), size=1, parent=r)
+    for i in range(10):
+        add('cube', '2A2630', (-2.4, back - 0.17, 0.5 + i * 0.5), scale=(0.34 if i % 2 else 0.2, 0.03, 0.04), size=1, parent=r)
+    add('cube', 'DCEEFF', (-0.3, back - 0.1, 4.6), scale=(2.6, 0.06, 2.0), size=1, parent=r, emit=1.6)
+    add('cube', 'F4F0E6', (-0.3, back - 0.14, 4.6), scale=(0.1, 0.08, 2.1), size=1, parent=r)
+    add('cube', 'F4F0E6', (-7.0, 2.6, 1.0), scale=(2.2, 4.4, 0.3), size=1, parent=r)
+    add('cube', '8A9AA0', (-7.0, 2.6, 0.45), scale=(1.9, 4.0, 0.9), size=1, parent=r)
+    add('cube', 'E8ECEE', (7.6, 3.6, 2.3), scale=(2.2, 1.7, 4.6), size=1, parent=r)
+    add('cube', 'E5392F', (7.6, 2.72, 3.4), scale=(0.9, 0.05, 0.26), size=1, parent=r)
+    add('cube', 'E5392F', (7.6, 2.72, 3.4), scale=(0.26, 0.05, 0.9), size=1, parent=r)
+    add('cube', '8A6A4A', (-1.5, 0.6, 1.5), scale=(3.6, 1.6, 0.12), size=1, parent=r)
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            add('cube', '6A4A2A', (-1.5 + sx * 1.6, 0.6 + sy * 0.65, 0.74), scale=(0.14, 0.14, 1.48), size=1, parent=r)
+    add('cylinder', 'FF7A1A', (-2.9, 0.75, 1.86), radius=0.24, depth=0.6, vertices=8, parent=r, rough=0.5)
+    add('cone', 'FF7A1A', (-2.9, 0.75, 2.24), radius1=0.24, radius2=0.06, depth=0.18, vertices=8, parent=r)
+    add('cube', '2A2630', (-3.22, 0.75, 1.9), scale=(0.3, 0.08, 0.34), size=1, parent=r)
+    add('cylinder', '8A9AA0', (2.6, 1.4, 0.4), radius=0.1, depth=0.8, vertices=6, parent=r)
+    add('cylinder', '5A6A70', (2.6, 1.4, 0.82), radius=0.5, depth=0.1, vertices=10, parent=r)
+    add('cube', 'FFF8E8', (0, 1, 6.9), scale=(4, 1.2, 0.1), size=1, parent=r, emit=3)
+    aim = empty((0.5, 1.5, 2.0), r)
+    aimed((-4, -8, 5), 800, 'FFF0DC', 5.0, aim, r)
+    aimed((7, -6, 3), 300, 'A0C0FF', 4.0, aim, r)
+    light((0, 1, 6.2), 500, 'FFF2DC', kind='POINT', parent=r)
+    return dict(needle=needle)
+
+
+def set_office(r):
+    back = room(r, 18, 12, '5A4A3A', '6A7A70', '5E6C64', '4A3A2A')
+    add('cube', 'E8E2D2', (-4.2, back - 0.12, 3.6), scale=(5.6, 0.08, 3.4), size=1, parent=r)
+    add('cube', '4A3222', (-4.2, back - 0.1, 3.6), scale=(5.9, 0.05, 3.7), size=1, parent=r)
+    for j in range(4):
+        add('cube', '8A8478', (-4.2, back - 0.18, 2.5 + j * 0.75), scale=(5.4, 0.03, 0.04), size=1, parent=r)
+        for i in range(5):
+            if (i + j * 2) % 3 == 0:
+                continue
+            add('cube', ('5EC8F0', '8ACB5A', 'E8B43A', 'B48AE8')[(i + j) % 4], (-6.2 + i * 1.0, back - 0.2, 2.86 + j * 0.75), scale=(0.8, 0.04, 0.4),
+                size=1, parent=r)
+    otag = add('cube', 'FF7A1A', (-2.2, back - 0.24, 4.36), scale=(0.86, 0.05, 0.44), size=1, parent=r, emit=1.0)
+    wday = add('cube', 'CFE4FF', (4.6, back - 0.1, 3.8), scale=(4.4, 0.06, 3.0), size=1, parent=r, emit=2.4)
+    wnight = add('cube', '1A2A50', (4.6, back - 0.1, 3.8), scale=(4.4, 0.06, 3.0), size=1, parent=r, emit=0.6)
+    for x in (2.4, 4.6, 6.8):
+        add('cube', '3A2A20', (x, back - 0.16, 3.8), scale=(0.14, 0.1, 3.2), size=1, parent=r)
+    for z in (2.25, 3.8, 5.35):
+        add('cube', '3A2A20', (4.6, back - 0.16, z), scale=(4.6, 0.1, 0.14), size=1, parent=r)
+    ojet = empty((0, 0, -30), r)
+    add('cube', 'FFFFFF', (0, 0, 0), scale=(0.9, 0.03, 0.14), size=1, parent=ojet, emit=1.5)
+    add('cube', 'FFFFFF', (-0.05, 0, 0), rot=(0, 0, 0), scale=(0.2, 0.03, 0.7), size=1, parent=ojet, emit=1.5)
+    add('cube', 'FFFFFF', (-0.4, 0, 0.14), scale=(0.14, 0.03, 0.26), size=1, parent=ojet, emit=1.5)
+    add('cube', '4A3222', (0.5, 1.2, 1.5), scale=(5.4, 2.2, 0.14), size=1, parent=r)
+    add('cube', '3E2A1C', (0.5, 0.2, 0.75), scale=(5.4, 0.12, 1.5), size=1, parent=r)
+    for s in (-1, 1):
+        add('cube', '3E2A1C', (0.5 + s * 2.64, 1.2, 0.75), scale=(0.12, 2.2, 1.5), size=1, parent=r)
+    add('cube', '15151C', (-1.3, 0.9, 1.67), scale=(0.66, 0.5, 0.2), size=1, parent=r)
+    add('cylinder', 'D8D4C8', (-1.3, 0.86, 1.78), radius=0.16, depth=0.03, vertices=10, parent=r)
+    handset = add('cube', '15151C', (-1.3, 1.02, 1.84), scale=(0.8, 0.16, 0.13), size=1, parent=r)
+    add('cube', '3A4A5A', (1.7, 1.1, 1.76), scale=(1.0, 0.75, 0.38), size=1, parent=r)
+    add('cube', 'F4EEDF', (1.7, 1.42, 2.15), rot=(-0.2, 0, 0), scale=(0.8, 0.03, 0.6), size=1, parent=r)
+    for i, (x, n) in enumerate(((0.1, 5), (2.75, 3), (-2.3, 2))):
+        for j in range(n):
+            add('cube', 'E8E2D2' if j % 2 else 'D8D0BC', (x + 0.03 * (j % 2), 1.85, 1.6 + j * 0.07), rot=(0, 0, 0.05 * j), scale=(0.6, 0.8, 0.06), size=1, parent=r)
+    add('cylinder', '2A2630', (-2.6, 1.3, 1.9), radius=0.04, depth=0.7, vertices=5, parent=r)
+    add('cone', 'FF7A1A', (-2.6, 1.3, 2.34), radius1=0.34, radius2=0.12, depth=0.3, vertices=8, parent=r, emit=2.0)
+    olamp = light((-2.6, 1.1, 2.1), 160, 'FFC070', kind='POINT', parent=r)
+    add('cube', '6A4A2A', (0.5, 2.7, 0.75), scale=(1.1, 1.0, 0.14), size=1, parent=r)
+    add('cube', '6A4A2A', (0.5, 3.2, 1.6), scale=(1.1, 0.12, 1.7), size=1, parent=r)
+    add('cube', '5A6470', (7.8, 3.6, 2.0), scale=(1.7, 1.7, 4.0), size=1, parent=r)
+    add('cube', '5A6470', (6.2, 3.2, 0.95), scale=(1.5, 1.5, 1.9), size=1, parent=r)
+    for z in (0.5, 1.4, 2.4, 3.3):
+        add('cube', 'C8CCD4', (7.8 if z > 2 else 6.2, 2.72 if z > 2 else 2.42, z), scale=(0.6, 0.05, 0.1), size=1, parent=r, rough=0.3)
+    add('cylinder', '3A2A20', (-7.8, 3.4, 2.6), radius=0.08, depth=5.2, vertices=6, parent=r)
+    add('cone', '6A5236', (-7.8, 3.4, 5.3), radius1=0.5, radius2=0.3, depth=0.4, vertices=8, parent=r)
+    add('cube', '2E3444', (-7.5, 3.3, 4.0), scale=(0.5, 0.4, 1.8), size=1, parent=r)
+    add('cube', 'C8B890', (-8.85, 0.6, 3.6), scale=(0.06, 2.6, 2.0), size=1, parent=r)
+    add('cube', 'FFF8E8', (0, 1, 6.9), scale=(5, 1.2, 0.1), size=1, parent=r, emit=2.5)
+    aim = empty((0.5, 1.8, 2.2), r)
+    okey = aimed((-5, -8, 5), 800, 'FFE8C8', 5.0, aim, r)
+    ofill = aimed((7, -6, 3), 280, '8A9AD0', 4.0, aim, r)
+    otop = light((0, 1, 6.2), 420, 'FFF2DC', kind='POINT', parent=r)
+    return dict(otag=otag, wday=wday, wnight=wnight, ojet=ojet, handset=handset, olamp=olamp, okey=okey, ofill=ofill, otop=otop)
+
+
+def set_stage(r):
+    add('plane', '1E1A26', (0, 0, 0), size=80, parent=r)
+    add('cube', '5A3A2A', (0, 5.5, 0.4), scale=(24, 7, 0.8), size=1, parent=r)
+    add('cube', 'C89A3A', (0, 1.98, 0.74), scale=(24, 0.06, 0.12), size=1, parent=r, emit=1.0, rough=0.4)
+    for i in range(24):
+        add('cube', '8A2A4A' if i % 2 else '6A1E3A', (-11.5 + i, 9 + 0.12 * (i % 2), 5.2), scale=(1.02, 0.3, 9.6), size=1, parent=r)
+    for s in (-1, 1):
+        add('cube', '3A1020', (s * 12.2, 5, 5), scale=(1.4, 9, 10), size=1, parent=r)
+        add('cube', '4A1428', (s * 10.4, 2.6, 5), rot=(0, 0, s * 0.25), scale=(2.6, 0.3, 10), size=1, parent=r)
+        add('cone', 'FFD866', (s * 5.0, 8.74, 6.9), rot=(PI / 2, 0, 0), radius1=0.5, radius2=0.0, depth=0.1, vertices=5, parent=r, emit=2.5)
+    add('cube', '4A1428', (0, 2.4, 9.6), scale=(26, 1.0, 1.6), size=1, parent=r)
+    add('cube', 'C89A3A', (0, 2.3, 8.75), scale=(26, 1.0, 0.16), size=1, parent=r, emit=0.8, rough=0.4)
+    add('cube', 'C89A3A', (0, 8.74, 6.9), scale=(7.6, 0.1, 1.7), size=1, parent=r, emit=1.4, rough=0.4)
+    add('cube', '3A1020', (0, 8.68, 6.9), scale=(7.0, 0.1, 1.2), size=1, parent=r)
+    for i in range(9):
+        add('ico_sphere', 'FFE2B0', (-10 + i * 2.5, 2.1, 0.92), radius=0.14, subdivisions=1, parent=r, emit=10)
+    add('cube', '3A2A20', (4.6, 4.2, 1.75), scale=(1.3, 0.9, 1.9), size=1, parent=r)
+    add('cube', 'C89A3A', (4.6, 3.74, 2.0), scale=(0.7, 0.04, 0.7), size=1, parent=r, emit=0.8, rough=0.4)
+    add('cylinder', '8A90A0', (4.6, 4.0, 3.0), rot=(0.3, 0, 0), radius=0.03, depth=0.7, vertices=5, parent=r)
+    add('ico_sphere', '2A2630', (4.6, 3.88, 3.36), radius=0.1, subdivisions=1, parent=r)
+    k = 0
+    for row, y in enumerate((-1.5, -3.5, -5.5)):
+        for i in range(15):
+            x = -10.5 + i * 1.5 + 0.75 * (row % 2)
+            if row == 1 and abs(x - 3) < 1.3:
+                continue
+            add('cone', ('17141E', '1E1A28', '14121A')[k % 3], (x, y, 0.9), radius1=0.52, radius2=0.36, depth=1.5, vertices=6, parent=r)
+            add('ico_sphere', ('221E2C', '1A1722', '2A2434')[k % 3], (x, y, 1.95), radius=0.3, subdivisions=1, parent=r)
+            k += 1
+    aim = empty((0, 5, 2.6), r)
+    spot = light((0, -3, 12), 9000, 'FFF2D8', kind='SPOT', spot=0.62, target=aim, parent=r)
+    aimed((-9, 6, 5), 900, 'FF7A1A', 3.0, aim, r)
+    aimed((9, 0, 6), 700, 'B080FF', 4.0, aim, r)
+    sfill = aimed((0, -9, 3.4), 500, '8A7AD8', 6.0, empty((0, -2, 2), r), r)
+    return dict(spot=spot, sfill=sfill)
+
+
+def extend(S):
+    for name, fn in (('street', set_street), ('clinic', set_clinic), ('office', set_office), ('stage', set_stage)):
+        S['colls'][name], out = group(name, fn)
+        S.update(out)
+    S['civil'] = K.Rig(CIVIL, attendant_head(cap=False))
+    S['friend'] = K.Rig(FRIEND, woman_head('C8A050', cap=True))
+    S['doctor'] = K.Rig(DOCTOR, man_head('D9AC8A', '9A9A9A', tash=True))
+    S['clerk'] = K.Rig(CLERK, man_head('C99A78', '3A2A20'))
+    S['mc'] = K.Rig(MC, man_head('E2B48C', '2A2018'))
+    S['notes'] = []
+    for i in range(6):
+        o = add('ico_sphere', 'FF7A1A' if i % 2 else 'FFC233', FAR, radius=0.11, subdivisions=1, emit=3)
+        add('cube', '2A2630', (0.09, 0, 0.17), scale=(0.03, 0.03, 0.34), size=1, parent=o)
+        S['notes'].append(o)
+    S['cups'] = [add('cylinder', 'F4F0E6', FAR, radius=0.11, depth=0.2, vertices=7) for _ in range(8)]
+    S['stretch'] = empty(FAR)
+    for s in (-1, 1):
+        add('cylinder', '6A4A2A', (s * 0.5, 0, 0), rot=(PI / 2, 0, 0), radius=0.045, depth=4.0, vertices=5, parent=S['stretch'])
+    add('cube', 'D8D4C8', (0, 0, 0.0), scale=(0.96, 2.9, 0.06), size=1, parent=S['stretch'])
+    add('cube', '8A7A5A', (0, 0.3, 0.2), scale=(0.9, 2.1, 0.34), size=1, parent=S['stretch'])
+    add('cube', 'F4F0E6', (0, -1.15, 0.12), scale=(0.7, 0.5, 0.16), size=1, parent=S['stretch'])
+    add('ico_sphere', 'E2B48C', (0, -1.1, 0.34), radius=0.24, subdivisions=1, parent=S['stretch'])
+    add('ico_sphere', '5A3620', (0, -1.2, 0.36), scale=(1.05, 1, 0.9), radius=0.26, subdivisions=1, parent=S['stretch'])
+    S['clip'] = empty(FAR)
+    add('cube', '6A4A2A', (0, 0, 0), scale=(0.44, 0.04, 0.6), size=1, parent=S['clip'])
+    add('cube', 'F4EEDF', (0, -0.03, -0.02), scale=(0.38, 0.02, 0.5), size=1, parent=S['clip'])
+    S['medal'] = empty(FAR)
+    add('cylinder', 'FFD866', (0, 0, 0), rot=(PI / 2, 0, 0), radius=0.17, depth=0.04, vertices=10, parent=S['medal'], rough=0.25, emit=2.0)
+    add('cube', 'E5392F', (0, 0, 0.3), scale=(0.12, 0.02, 0.36), size=1, parent=S['medal'])
+    S['toes'] = [add('cube', 'B8CCE0', FAR, scale=(0.3, 0.26, 0.34), size=1) for _ in range(2)]
+    S['xl'] = light((0, 0, 0), 0, 'FFE8D0', 4.0, None, 'AREA', parent=None)
+    S['xaim'] = empty()
+    c = S['xl'].constraints.new('TRACK_TO')
+    c.target, c.track_axis, c.up_axis = S['xaim'], 'TRACK_NEGATIVE_Z', 'UP_Y'
+
+
+_build0, _reset0, _finish0 = build, reset, finish
+
+
+def build():
+    S = _build0()
+    extend(S)
+    return S
+
+
+def reset(S):
+    _reset0(S)
+    for who in XCAST:
+        S[who].place(FAR)
+        S[who].apply(P())
+        S[who].root.scale = (1, 1, 1)
+        S['face'][who] = 'calm'
+    for o in S['notes'] + S['cups'] + S['toes']:
+        o.location, o.rotation_euler = FAR, (0, 0, 0)
+    for o in S['toes']:
+        o.scale = (0.3, 0.26, 0.34)
+    for kk in ('stretch', 'clip', 'medal'):
+        S[kk].location, S[kk].rotation_euler, S[kk].scale = FAR, (0, 0, 0), (1, 1, 1)
+    S['disc'].rotation_euler = (0, 0, 0)
+    S['needle'].rotation_euler = (0, -1.0, 0)
+    S['otag'].location = (-2.2, 4.76, 4.36)
+    S['ojet'].location = (0, 0, -30)
+    S['handset'].location, S['handset'].rotation_euler = (-1.3, 1.02, 1.84), (0, 0, 0)
+    S['wday'].hide_render, S['wnight'].hide_render = False, True
+    S['olamp'].data.energy, S['okey'].data.energy, S['ofill'].data.energy, S['otop'].data.energy = 160, 800, 280, 420
+    S['spot'].data.energy, S['sfill'].data.energy = 9000, 500
+    S['xl'].data.energy = 0
+
+
+def finish(S, t):
+    _finish0(S, t)
+    for who in XCAST:
+        e = S['face'][who]
+        x = S[who].extra
+        kk = dict(scared=1.3, shock=1.7, calm=1.0, sad=0.6, happy=0.8, closed=0.08, tired=0.5).get(e, 1.0)
+        for ey in x['eyes']:
+            ey.scale = (ey.scale[0], ey.scale[1], x['eye0'] * kk)
+        x['jaw'].rotation_euler = (0.5 if e == 'shock' else 0.0, 0, 0)
+        x['jaw'].scale = (1.5, 1, 1.6) if e == 'happy' else (1, 1, 1)
+
+
+def xlight(S, pos, look, e, col='FFE8D0'):
+    """A free fill light for close shots."""
+    S['xl'].location, S['xaim'].location = pos, look
+    S['xl'].data.energy = e
+    S['xl'].data.color = K.hexc(col)[:3]
+
+
+def face_to(frm, to):
+    """Yaw that turns a rig standing at `frm` toward `to` (x, y)."""
+    return math.atan2(to[0] - frm[0], -(to[1] - frm[1]))
+
+
+# ---------------------------------------------------------------- long shots: Belgrade, 1971
+def street(S):
+    A = show(S, 'street')
+    sky(S, 'E8A878', 1.0)
+    return A
+
+
+def belgrade(S, k, t, lt):
+    A = street(S)
+    x = lerp(-9.5, -4.0, k)
+    w = walk(t + 0.2, 1.3)
+    if S['prm'].get('alone'):                    # years later: Rook walks the street by himself, hat in hand
+        sky(S, '6A5A88', 0.8)
+        S['rook'].place(A(lerp(-3.0, -0.5, k), 2.2, 0.16), 1.15)
+        S['rook'].apply(P('stand', lL=w['lL'], lR=w['lR'], aR=(0.75, -0.2, 2.0, 1.1), head=(0.25, 0.0), lean=0.08))
+        S['hat_off'] = True
+        S['face']['rook'] = 'sad'
+    else:
+        S['civil'].place(A(x, 2.6, 0.16), 1.15)
+        S['civil'].apply(walk(t, 1.3))
+        S['face']['civil'] = 'happy'
+        S['rook'].place(A(x - 4.6, 2.0, 0.16), 1.25)
+        S['rook'].apply(blend(w, P('hat', lL=w['lL'], lR=w['lR']), 1 - lt / 0.8))
+        S['face']['rook'] = 'deadpan'
+    S['disc'].rotation_euler = (0, 0, t * 5)
+    cam(S, A(lerp(4.5, 3.0, k), -11.5, 2.3), A(-4.5, 3.2, 2.9), 30)
+
+
+def vinyl(S, k, t, lt):
+    A = street(S)
+    sw = math.sin(t * 6)
+    S['civil'].place(A(-0.7, 3.2, 0.16), -0.45, 0, 0.07 * sw)
+    S['civil'].apply(P('stand', aL=(0.5, 0.7 + 0.3 * sw, 1.3), aR=(0.5, 0.7 - 0.3 * sw, 1.3), head=(0.0, 0.2 * sw), lL=(0.12 * sw, 0.2 * max(0, sw)), lR=(-0.12 * sw, 0.2 * max(0, -sw))))
+    S['face']['civil'] = 'happy'
+    S['disc'].rotation_euler = (0, 0, t * 5)
+    for i, o in enumerate(S['notes']):
+        u = (t * 0.55 + i * 0.17) % 1
+        o.location = A(-2.6 + 0.6 * math.sin(i * 2 + t * 2) + u * 0.8, 3.4, 2.0 + u * 3.0)
+        o.rotation_euler = (0, 0.3 * math.sin(t * 3 + i), 0)
+    tap = 0.25 * max(0.0, math.sin(t * 12))
+    S['rook'].place(A(2.3, 2.5, 0.16), -0.35)
+    S['rook'].apply(P('cross', head=(0.05, 0.35), lR=(0.2 + tap, 0.3 + tap)))
+    S['face']['rook'] = 'deadpan'
+    xlight(S, A(1, -4, 3), A(0, 3, 2), 500)
+    cam(S, A(lerp(1.2, 0.7, k), lerp(-4.6, -4.0, k), 2.0), A(0.1, 3.2, 2.15), 34)
+
+
+def friend(S, k, t, lt):
+    A = street(S)
+    e = ease(k * 1.6)
+    fx = lerp(7.0, 2.4, e)
+    S['friend'].place(A(fx, 2.7, 0.16), -PI / 2 + 0.35)
+    S['friend'].apply(walk(t, 1.3) if e < 1 else P('stand', aR=(0.6, 0.9 + 0.25 * math.sin(t * 9), 2.0, -0.6)))
+    S['face']['friend'] = 'happy'
+    S['civil'].place(A(0.0, 2.7, 0.16), PI / 2 - 0.35)
+    S['civil'].apply(blend(P('stand', head=(0, -0.2)), P('up', aL=(1.6, 0.8, 1.2), aR=(1.6, 0.8, 1.2), head=(-0.1, 0)), (k - 0.45) * 4))
+    S['face']['civil'] = 'calm' if k < 0.45 else 'shock'
+    tap = 0.25 * max(0.0, math.sin(t * 11))
+    S['rook'].place(A(-3.6, 1.9, 0.16), 0.75)
+    S['rook'].apply(P('stand', aR=(1.25 + tap * 0.3, -0.15, 2.25, 0.75), head=(0.05, -0.2)))
+    S['face']['rook'] = 'smirk'
+    xlight(S, A(0, -5, 3), A(1, 2.7, 2), 500)
+    cam(S, A(lerp(0.6, 0.9, k), lerp(-7.2, -6.4, k), 2.1), A(0.6, 2.7, 2.2), 36)
+
+
+# ---------------------------------------------------------------- long shots: the airline medical
+def clinic(S):
+    A = show(S, 'clinic')
+    sky(S, '1A1E24', 1.0)
+    return A
+
+
+def cups_row(S, A, n, x0=-2.3):
+    for i in range(n):
+        o = S['cups'][1 + i]
+        o.location = A(x0 + i * 0.36, 0.25 + 0.1 * (i % 2), 1.66 if i % 3 else 1.62)
+        o.rotation_euler = (0, 0 if i % 3 else PI / 2, i)
+
+
+def coffee(S, k, t, lt):
+    A = clinic(S)
+    u = 0.5 + 0.5 * math.sin(t * 5.5)
+    S['civil'].place(A(-1.3, 1.75, 0), 0.1)
+    S['civil'].apply(P('stand', aR=(lerp(1.0, 1.75, u), 0.1, lerp(1.3, 2.3, u)), aL=(0.6, 0.2, 1.0), head=(lerp(0.1, -0.35, u), 0.0)))
+    S['face']['civil'] = 'scared'
+    hp = hand(S, 'civil')
+    S['cups'][0].location = (hp[0], hp[1] - 0.05, hp[2] + 0.12)
+    S['cups'][0].rotation_euler = (lerp(0, -0.9, u), 0, 0)
+    cups_row(S, A, 2 + int(k * 5.5))
+    S['rook'].place(A(1.9, 0.5, 0), -0.75)
+    S['rook'].apply(P('stand', aL=(1.3, 0.2, 1.7, 0.3), aR=(1.2, 0.1, 1.9, 0.5), head=(0.1, 0.45)))
+    S['face']['rook'] = 'deadpan'
+    S['hat_tip'] = ease((k - 0.5) * 3)
+    cam(S, A(lerp(1.1, 0.7, k), lerp(-6.2, -5.6, k), 2.3), A(0.0, 1.1, 2.05), 34)
+
+
+def medical(S, k, t, lt):
+    A = clinic(S)
+    e = 0.0 if S['prm'].get('pre') else ease((k - 0.2) / 0.5)
+    S['needle'].rotation_euler = (0, lerp(-1.05, 0.25, e) + 0.05 * math.sin(t * 21), 0)
+    S['civil'].place(A(2.6, 1.4, 0.36), -0.3)
+    S['civil'].apply(P('sit', aR=(1.2, 0.5, 0.4), aL=(0.7, -0.1, 1.5, 1.0), head=(-0.1, -0.5), lean=0.05))
+    S['face']['civil'] = 'scared' if e < 0.9 else 'happy'
+    S['doctor'].place(A(5.4, 2.4, 0), -0.55)
+    S['doctor'].apply(P('stand', aL=(2.2, 0.5, 0.3), aR=(0.8, 0.1, 1.4), head=(-0.15, 0.5)))
+    S['clip'].location = hand(S, 'doctor')
+    S['clip'].rotation_euler = (-0.5, 0, -0.55)
+    cups_row(S, A, 7)
+    S['rook'].place(A(-0.4, 2.3, 0), 0.75)
+    S['rook'].apply(P('cross', head=(-0.05, -0.3)))
+    S['face']['rook'] = 'deadpan' if e < 0.9 else 'shocked'
+    cam(S, A(lerp(2.0, 2.5, k), lerp(-6.6, -6.0, k), 2.5), A(2.7, 3.2, 2.75), 32)
+
+
+def rook_cup(S, k, t, lt):
+    A = clinic(S)
+    S['rook'].place(A(0.9, 0.3, 0), -0.2)
+    look = ease((k - 0.5) * 4)
+    S['rook'].apply(P('stand', aR=(1.45, 0.15, 1.5, 0.3), aL=(0.3, 0.2, 0.5), head=(lerp(0.3, 0.0, look), lerp(-0.25, 0.0, look))))
+    S['face']['rook'] = 'deadpan' if look < 0.5 else 'smirk'
+    hp = hand(S, 'rook')
+    S['cups'][0].location = (hp[0], hp[1] - 0.05, hp[2] + 0.16 + 0.03 * math.sin(t * 16))
+    S['cups'][0].rotation_euler = (PI + 0.2 * math.sin(t * 16), 0, 0)
+    cups_row(S, A, 7)
+    xlight(S, A(-1, -4, 3), A(0.9, 0.3, 2.3), 300)
+    cam(S, A(lerp(1.5, 1.2, k), lerp(-3.9, -3.3, k), 2.3), A(0.8, 0.3, 2.3), 50)
+
+
+# ---------------------------------------------------------------- long shots: the office (crew desk, freight desk, newsrooms)
+def office(S, mode='day'):
+    A = show(S, 'office')
+    sky(S, '14161C' if mode == 'day' else '05060A', 1.0)
+    if mode == 'night':
+        S['wday'].hide_render, S['wnight'].hide_render = True, False
+        S['okey'].data.energy, S['ofill'].data.energy, S['otop'].data.energy, S['olamp'].data.energy = 110, 420, 40, 900
+    elif mode == 'cool':
+        S['okey'].data.energy, S['ofill'].data.energy = 450, 700
+    return A
+
+
+def dispatch(S, k, t, lt):
+    A = office(S)
+    e = ease((k - 0.35) / 0.3)
+    S['otag'].location = (-2.2, 4.76, lerp(4.36, 3.61, e))
+    S['clerk'].place(A(0.5, 2.55, 0.36), 0.25)
+    S['clerk'].apply(P('sit', aR=(1.3, 0.25, 2.3, 0.6), aL=(0.9, 0.0, 1.0, 0.6), head=(0.1, 0.4), lean=0.1))
+    hp = hand(S, 'clerk')
+    S['handset'].location = (hp[0] - 2400, hp[1], hp[2] + 0.1)
+    S['handset'].rotation_euler = (0, PI / 2 - 0.3, 0)
+    S['rook'].place(A(-6.6, 2.4, 0), 0.5)
+    S['rook'].apply(blend(P('point', aR=(2.0, -0.5, 0.2), head=(-0.1, -0.5)), P('hat', head=(0.25, 0.0)), (k - 0.7) * 5))
+    S['face']['rook'] = 'shocked' if 0.35 < k < 0.7 else 'deadpan'
+    S['hat_tip'] = ease((k - 0.72) * 5)
+    cam(S, A(lerp(-1.6, -2.2, k), lerp(-7.0, -6.4, k), 2.5), A(-2.4, 3.4, 2.9), 30)
+
+
+def desk_job(S, k, t, lt):
+    A = office(S)
+    st = max(0.0, math.sin(t * 7))
+    turn = ease((k - 0.45) * 3)
+    S['civil'].place(A(0.5, 2.55, 0.36), 0.0)
+    S['civil'].apply(P('sit', aR=(0.9 + 0.5 * st * (1 - turn), 0.0, 1.0), aL=(0.8, 0.0, 1.1, 0.5), head=(lerp(0.3, -0.1, turn), lerp(0.0, -0.8, turn)), lean=0.15))
+    S['face']['civil'] = 'calm' if turn < 0.5 else 'sad'
+    if S['prm'].get('empty'):                    # the desk after she was dismissed
+        S['civil'].place(FAR)
+    S['ojet'].location = (lerp(2.4, 7.2, k), 4.6, lerp(3.2, 4.9, k))
+    S['ojet'].rotation_euler = (0, -0.35, 0)
+    S['rook'].place(A(6.2, 3.1, 1.45), -0.6)
+    S['rook'].apply(P('sit', aL=(0.9, 0.25, 1.2), aR=(0.7, -0.1, 1.5, 1.0), head=(0.1, 0.55), lean=0.1))
+    S['face']['rook'] = 'sad'
+    cam(S, A(lerp(1.2, 1.8, k), lerp(-7.0, -6.4, k), 2.7), A(2.7, 2.6, 2.6), 30)
+
+
+def phone_call(S, k, t, lt):
+    A = office(S, 'night')
+    up = ease((k - 0.5) * 4)
+    S['paxb'].place(A(0.5, 2.55, 0.36), 0.3)
+    S['paxb'].apply(blend(P('sit', aR=(1.0, 0.4, 0.6), aL=(0.9, 0.0, 1.0, 0.6), head=(0.3, 0.5), lean=0.2),
+                          P('sit', aR=(1.3, 0.25, 2.3, 0.6), aL=(0.9, 0.0, 1.0, 0.6), head=(0.0, 0.3), lean=0.05), up))
+    S['face']['paxb'] = 'calm' if up < 0.5 else 'scared'
+    if up < 0.5:
+        j = abs(math.sin(t * 38))
+        S['handset'].location = (-1.3 + 0.03 * math.sin(t * 60), 1.02, 1.84 + 0.07 * j)
+        S['handset'].rotation_euler = (0, 0.12 * math.sin(t * 38), 0.1 * math.sin(t * 50))
+    else:
+        hp = hand(S, 'paxb')
+        S['handset'].location = (hp[0] - 2400, hp[1], hp[2] + 0.1)
+        S['handset'].rotation_euler = (0, PI / 2 - 0.3, 0)
+    cam(S, A(lerp(-2.9, -2.3, k), lerp(-3.9, -3.3, k), 2.5), A(-0.5, 1.6, 2.0), 40)
+
+
+def reporters(S, k, t, lt):
+    A = office(S, 'cool')
+    ty = 0.25 * math.sin(t * 15)
+    S['paxb'].place(A(0.5, 2.55, 0.36), -0.2)
+    S['paxb'].apply(P('sit', aL=(1.0, -0.2, 0.9 + ty, 0.5), aR=(1.0, -0.2, 0.9 - ty, 0.5), head=(0.3, -0.3), lean=0.2))
+    S['paxa'].place(A(-2.9, 2.3, 0), 0.55)
+    S['paxa'].apply(P('stand', aL=(1.0, -0.05, 1.2, 0.5), aR=(1.0, -0.05, 1.2, 0.5), head=(0.35, 0.0)))
+    S['paper'].location = A(-2.55, 1.62, 1.75)
+    S['paper'].rotation_euler = (-0.6, 0, 0.55 + 0.03 * math.sin(t * 9))
+    S['rook'].place(A(3.9, 3.2, 0), -0.5)
+    S['rook'].apply(P('cross', head=(0.1, 0.45)))
+    S['face']['rook'] = 'deadpan'
+    S['hat_tip'] = 0.6
+    cam(S, A(lerp(-0.2, 0.6, k), lerp(-6.8, -6.2, k), 2.6), A(0.4, 2.5, 2.5), 32)
+
+
+# ---------------------------------------------------------------- long shots: London, 1985
+def stage(S):
+    A = show(S, 'stage')
+    sky(S, '07060C', 1.0)
+    return A
+
+
+def on_stage(S, A, k, t):
+    give = ease((k - 0.35) / 0.3)
+    S['civil'].place(A(-0.7, 4.6, 0.8), 0.3)
+    S['civil'].apply(blend(P('stand', head=(0, 0.3)), P('stand', aR=(1.7, 0.3, 1.2), aL=(0.4, 0.3, 0.6), head=(-0.1, 0.0)), (k - 0.55) * 4))
+    S['face']['civil'] = 'happy'
+    S['mc'].place(A(1.7, 4.5, 0.8), -0.75)
+    cl = 0.25 * math.sin(t * 14)
+    S['mc'].apply(blend(P('point', aR=(1.35, 0.25, 0.25), head=(0.0, -0.3)), P('stand', aL=(1.2, -0.1 + cl, 1.1, 0.6), aR=(1.2, -0.1 - cl, 1.1, 0.6)), (k - 0.6) * 4))
+    S['face']['mc'] = 'happy'
+    a, b = hand(S, 'mc'), hand(S, 'civil')
+    S['medal'].location = [a[i] + (b[i] - a[i]) * give for i in range(3)]
+    S['medal'].location.z += 0.1
+    S['medal'].rotation_euler = (0, 0, 0.5 * math.sin(t * 5))
+    S['medal'].scale = (1.5, 1.5, 1.5)
+
+
+def stage_wide(S, k, t, lt):
+    A = stage(S)
+    on_stage(S, A, k, t)
+    cl = 0.3 * math.sin(t * 13)
+    S['rook'].place(A(3.0, -3.5, 0), PI + 0.15)
+    S['rook'].apply(P('stand', aL=(1.3, -0.1 + cl, 1.2, 0.6), aR=(1.3, -0.1 - cl, 1.2, 0.6), head=(-0.1, 0.0)))
+    cam(S, A(lerp(-1.6, -0.6, k), lerp(-10.5, -9.5, k), 3.3), A(0.6, 5, 3.3), 30)
+
+
+def medal_cu(S, k, t, lt):
+    A = stage(S)
+    on_stage(S, A, 0.6 + 0.4 * k, t)
+    S['rook'].place(A(-3.6, 6.4, 0.8), 0.45, 0, -0.22)
+    S['rook'].apply(P('stand', aL=(0.4, 0.5, 0.8), aR=(1.0, 0.5, 1.2), head=(0.0, -0.35)))
+    S['face']['rook'] = 'shocked'
+    S['hat_up'] = 0.15 * math.sin(PI * min(1, lt / 0.8))
+    cam(S, A(lerp(-1.2, -0.9, k), lerp(-0.4, 0.2, k), 2.9), A(-0.9, 5.0, 3.15), 44)
+
+
+def rook_clap(S, k, t, lt):
+    A = stage(S)
+    S['sfill'].data.energy = 1500
+    cl = 0.3 * math.sin(t * 13)
+    tip = math.sin(PI * ease((lt - 1.0) / 1.0)) if lt > 1.0 else 0
+    S['rook'].place(A(3.0, -3.5, 0), PI - 0.1)
+    S['rook'].apply(blend(P('stand', aL=(1.3, -0.1 + cl, 1.2, 0.6), aR=(1.3, -0.1 - cl, 1.2, 0.6)), P('hat', head=(0.2, 0)), tip))
+    S['hat_tip'] = tip
+    S['face']['rook'] = 'warm'
+    xlight(S, A(1.0, 0.5, 3.4), A(3, -3.5, 2.3), 900, 'FFE2B0')
+    cam(S, A(lerp(1.6, 2.0, k), lerp(1.6, 1.0, k), 2.5), A(3.0, -3.5, 2.35), 44)
+
+
+# ---------------------------------------------------------------- long shots: Copenhagen, the hillside, the ward, the flight home
+def crew_board(S, k, t, lt):
+    A = apron(S, 'dawn')
+    sky(S, 'B8C4DC', 1.0)
+    x = lerp(9.5, 3.5, k)
+    for i, who in enumerate(('paxa', 'friend', 'vesna')):
+        S[who].place(A(x + i * 2.3 - 5.5, 1.6 - 0.25 * i, 0), -PI / 2 + 0.35)
+        S[who].apply(walk(t + i * 0.3, 1.4))
+    S['face']['vesna'] = 'happy'
+    w = walk(t + 0.5, 1.4)
+    S['rook'].place(A(x + 2.2, 0.6, 0), -PI / 2 + 0.3)
+    S['rook'].apply(blend(w, P('hat', lL=w['lL'], lR=w['lR']), 1 - lt / 0.9))
+    S['face']['rook'] = 'deadpan'
+    cam(S, A(lerp(4.5, 3.0, k), -10.5, 1.7), A(1.5, 3.5, 3.2), 30)
+
+
+def honke_hears(S, k, t, lt):
+    A = hill(S, 'night')
+    wreck_rest(S, A)
+    x, y = 10.0, -7.0
+    turn = ease((k - 0.3) * 3)
+    S['bruno'].place(A(x, y, hz(x)), lerp(0.2, -0.5, turn))
+    S['bruno'].apply(P('stand', aL=(0.3, 1.5, 2.3, -1.2), aR=(1.1, 0.3, 0.9), head=(-0.1, lerp(0.0, 0.9, turn)), lean=0.08))
+    S['face']['bruno'] = 'scared'
+    hp = hand(S, 'bruno')
+    lantern_at(S, (hp[0], hp[1], hp[2] - 0.4), 900)
+    S['pov'].data.energy = 250
+    cam(S, A(lerp(11.6, 11.0, k), lerp(-12.6, -11.8, k), hz(11) + 1.5), A(8.6, -4.5, hz(9) + 2.7), 36)
+
+
+def rook_snow(S, k, t, lt):
+    A = hill(S, 'sad')
+    wreck_rest(S, A)
+    x, y = -4.0, -3.4
+    poke = 0.5 + 0.5 * math.sin(t * 4)
+    S['rook'].place(A(x, y, hz(x)), 0.5)
+    S['rook'].apply(kneel(aR=(lerp(0.9, 1.3, poke), 0.2, 0.5), aL=(0.4, 0.3, 0.9), head=(lerp(0.35, 0.0, ease((k - 0.6) * 4)), -0.3)))
+    S['face']['rook'] = 'calm' if k < 0.6 else 'shocked'
+    hp = hand(S, 'rook')
+    S['cane'].location = (hp[0], hp[1] - 0.1, hp[2] - 0.5 - 0.25 * poke)
+    S['cane'].rotation_euler = (0.25, 0.1, 0)
+    S['pov'].data.energy = 400
+    cam(S, A(lerp(-1.2, -1.8, k), lerp(-9.0, -8.2, k), hz(-2) + 1.3), A(-3.0, -2.0, hz(-3) + 1.7), 34)
+
+
+def stretcher(S, k, t, lt):
+    A = hill(S, 'night')
+    wreck_rest(S, A)
+    x, y = 15.0, lerp(5.0, 1.0, k)
+    z = hz(x)
+    bob = 0.04 * math.sin(t * 9)
+    S['stretch'].location = A(x, y, z + 1.12 + bob)
+    w = walk(t, 1.3)
+    S['bruno'].place(A(x, y - 2.5, z), 0.0)
+    S['bruno'].apply(P('stand', lL=w['lL'], lR=w['lR'], aL=(-0.35, 0.25, 0.15), aR=(-0.35, 0.25, 0.15), lean=0.1))
+    S['paxa'].place(A(x, y + 2.5, z), 0.0)
+    S['paxa'].apply(P('stand', lL=w['lR'], lR=w['lL'], aL=(0.45, 0.25, 0.2), aR=(0.45, 0.25, 0.2), lean=0.12, head=(0.2, 0)))
+    S['rook'].place(A(x + 2.3, y - 0.4, hz(x + 2.3)), -0.15)
+    S['rook'].apply(P('stand', lL=w['lR'], lR=w['lL'], aR=(2.0, 1.0, 0.25), aL=(0.3, 0.3, 0.6), head=(0.15, 0.5)))
+    S['face']['rook'] = 'sad'
+    hp = hand(S, 'rook')
+    lantern_at(S, (hp[0], hp[1], hp[2] - 0.42), 700)
+    for i, o in enumerate(S['resc']):
+        xx, yy = 6 + i * 3.2, 17 + (i % 2) * 5 + (i % 3) * 2
+        o.location = A(xx, yy, hz(xx) + 2.2 + 0.25 * math.sin(t * 7 + i * 2))
+    S['pov'].data.energy = 300
+    cam(S, A(lerp(19.6, 19.0, k), lerp(-9.5, -8.5, k), hz(19) + 1.6), A(15.4, 1.5, z + 2.1), 34)
+
+
+def wake(S, k, t, lt):
+    A = ward(S)
+    op = ease((k - 0.3) * 4)
+    S['patient'].place(A(-0.3, 2.6, 1.32), -PI / 2, -PI / 2 + 0.3, 0)
+    S['patient'].apply(P('stand', aL=(0.3, 0.3, 0.3), aR=(0.3 + 0.5 * op, 0.3, 0.3 + 0.9 * op), head=(0.25, lerp(0.0, 0.45, op))))
+    S['face']['patient'] = 'closed' if op < 0.2 else ('tired' if op < 0.8 else 'calm')
+    S['rook'].place(A(2.1, 4.25, 0), 0.25)
+    S['rook'].apply(P('stand', aL=(0.5, 0.9, 0.5), aR=(0.5, 0.9, 0.5), head=(0.3, -0.2), lean=0.3))
+    S['face']['rook'] = 'calm' if op < 0.5 else 'shocked'
+    S['hat_up'] = 0.2 * math.sin(PI * min(1.0, max(0.0, (k - 0.4) * 2.5)))
+    xlight(S, A(1, -3, 3.5), A(1.8, 2.8, 2.0), 250)
+    cam(S, A(lerp(0.9, 1.3, k), lerp(-2.4, -1.8, k), 2.9), A(1.7, 2.9, 2.25), 44)
+
+
+def ward_doctor(S, k, t, lt):
+    A = ward(S)
+    S['patient'].place(A(-0.3, 2.6, 1.32), -PI / 2, -PI / 2 + 0.3, 0)
+    S['patient'].apply(P('stand', aL=(0.3, 0.3, 0.3), aR=(0.3, 0.3, 0.3), head=(0.25, 0.0)))
+    S['face']['patient'] = 'closed'
+    S['doctor'].place(A(-2.5, 0.7, 0), 0.9)
+    S['doctor'].apply(P('stand', aR=(1.25, 0.3, 0.3 + 0.2 * math.sin(t * 4)), aL=(0.8, 0.1, 1.4), head=(0.2, -0.3)))
+    hp = hand(S, 'doctor', 0)
+    S['clip'].location = (hp[0], hp[1] - 0.05, hp[2] + 0.2)
+    S['clip'].rotation_euler = (-0.5, 0, 0.9)
+    S['rook'].place(A(-4.3, 1.9, 0), 0.9)
+    S['rook'].apply(P('stand', aR=(0.75, -0.2, 2.0, 1.1), head=(0.2, 0.0)))
+    S['hat_off'] = True
+    S['face']['rook'] = 'sad'
+    cam(S, A(lerp(4.9, 4.4, k), lerp(-5.4, -4.8, k), 1.9), A(-0.9, 2.0, 2.1), 34)
+
+
+def legs(S, k, t, lt):
+    A = ward(S)
+    S['patient'].place(A(-0.3, 2.6, 1.32), -PI / 2, -PI / 2 + 0.3, 0)
+    S['patient'].apply(P('stand', aL=(0.3, 0.3, 0.3), aR=(0.3, 0.3, 0.3), head=(0.1, 0.3)))
+    S['face']['patient'] = 'happy'
+    for i, o in enumerate(S['toes']):
+        wg = max(0.0, math.sin(t * 9 + i * 1.6)) * ease(k * 3)
+        o.location = A(-1.15, 2.6 + (i - 0.5) * 0.5, 1.5 + 0.08 * wg)
+        o.rotation_euler = (0, 0.45 * wg, 0)
+    S['rook'].place(A(-3.3, 1.5, 0), 1.25)
+    S['rook'].apply(P('stand', aL=(0.5, 1.0, 0.5), aR=(0.5, 1.0, 0.5), head=(0.25, -0.5), lean=0.35))
+    S['face']['rook'] = 'shocked'
+    S['hat_up'] = 0.22 * math.sin(PI * min(1, lt / 0.9))
+    xlight(S, A(-2, -3, 3), A(-1.5, 2.4, 1.8), 200)
+    cam(S, A(lerp(-1.0, -1.3, k), lerp(-2.6, -2.0, k), 2.5), A(-1.9, 2.3, 2.0), 40)
+
+
+def fly_home(S, k, t, lt):
+    A = cabin(S)
+    sky(S, '9AC0F0', 1.0)
+    S['patient'].place(A(-1.45, -1.95, 0.36), 0.0)
+    S['patient'].apply(P('sit', aL=(0.7, -0.1, 1.5, 1.0), aR=(0.7, -0.1, 1.5, 1.0), head=(0.0, lerp(-0.7, 0.0, ease((k - 0.5) * 3))), lean=0.1))
+    S['face']['patient'] = 'happy'
+    j = 0.03 * math.sin(t * 40)
+    seat_rook(S, A, P('sit', aL=(0.9, 0.6, 1.4), aR=(0.9, 0.6, 1.4), head=(-0.1, 0.4 * math.sin(t * 5)), lean=0.0 + j), 'shocked', y=-4)
+    for i, f in enumerate(S['fea'][:5]):
+        u = (t * 0.6 + i * 0.23) % 1
+        f.location = A(1.45 + math.cos(i * 2.3) * (0.4 + 0.5 * u), -4.1 - 0.3 * u, 2.7 + 0.5 * math.sin(i * 1.7) - 1.2 * u)
+        f.rotation_euler = (t * 3 + i, t * 2 + i * 2, i)
+    cam(S, A(lerp(0.9, 0.6, k), lerp(-8.8, -8.2, k), 2.5), A(0.2, -3.2, 2.0), 34)
+
+
+HOST |= {'belgrade', 'vinyl', 'friend', 'coffee', 'medical', 'rook_cup', 'dispatch', 'desk_job', 'reporters', 'stage_wide', 'medal_cu',
+         'rook_clap', 'crew_board', 'rook_snow', 'stretcher', 'wake', 'ward_doctor', 'legs', 'fly_home'}
+SHOTS3D.update({f.__name__: f for f in (
+    belgrade, vinyl, friend, coffee, medical, rook_cup, dispatch, desk_job, phone_call, reporters, stage_wide, medal_cu, rook_clap,
+    crew_board, honke_hears, rook_snow, stretcher, wake, ward_doctor, legs, fly_home)})
+
+
+def photo_thumb(S, k, t, lt):
+    """Thumbnail picture: the torn fuselage section falling through open sky, Rook falling beside it, hat gone."""
+    A = high(S, '3A72C8', clz=-60)
+    S['cl'].scale = (1.5, 1.5, 1)
+    S['wreck'].location = A(-7.5, 3, 1.5)
+    S['wreck'].rotation_euler = (0.5, 0.75, 0.6)
+    S['wreck'].scale = (1.25, 1.25, 1.25)
+    for i in range(8):
+        u = (i + 1) / 8
+        o = S['smoke'][i]
+        o.location = A(-8.5 - 2.5 * u, 3.5, 5 + u * 14)
+        o.scale = (1.0 + 1.6 * u,) * 3
+    drift(S['deb'], A(-4, 2, 3), 1.0, 14, (22, 6, 22), (0, 0, 9), spin=3)
+    drift(S['streak'], A(0, 4, 0), 1.0, 10, (34, 8, 40), (0, 0, 90))
+    for o in S['streak'][:10]:
+        o.rotation_euler = (0, 0, 0)
+    S['rook'].place(A(0.2, -2.5, -1.2), 0.25, -0.35, 0.3)
+    S['rook'].apply(P('up', aL=(2.4, 0.9, 0.5), aR=(2.2, 1.0, 0.6), lL=(0.5, 0.7), lR=(-0.3, 0.4), head=(-0.1, 0.15), lean=-0.15))
+    S['face']['rook'] = 'shocked'
+    S['hat_up'] = 0.55
+    for i, f in enumerate(S['fea']):
+        f.location = A(0.2 + math.cos(i * 2.3) * 1.3, -2.6, 1.6 + math.sin(i * 1.7) * 0.9 + 0.3 * i)
+        f.rotation_euler = (i, i * 2, i)
+    S['pov'].data.energy = 1500
+    cam(S, A(3.5, -15, -3.2), A(-0.6, 0, 1.2), 34)
+
+
+STILLS['thumb'] = photo_thumb
