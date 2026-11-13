@@ -136,6 +136,32 @@
     "url": "https://youtu.be/uEDw7H3Xq_E",
     "video_id": "uEDw7H3Xq_E"
   },
+  "r006-wisnierska": {
+    "captions": "ok",
+    "format": "short",
+    "playlist": "Rook's Case Files (Shorts)",
+    "privacy": "private",
+    "publish_at": "2026-11-14T20:00:00Z",
+    "review": false,
+    "sha256": "d75d42d7a0b7099f9ce2037dd767ab4f6703e3df890ccb5bdfe9c9c5bc5e79d8",
+    "title": "A Storm Sucked Her Higher Than Everest. She Blacked Out, Then Woke Up Flying #shorts",
+    "uploaded_at": "2026-11-13T18:25:19Z",
+    "url": "https://youtu.be/8BZp0WQiDBg",
+    "video_id": "8BZp0WQiDBg"
+  },
+  "r007-rankin": {
+    "captions": "ok",
+    "format": "short",
+    "playlist": "Rook's Case Files (Shorts)",
+    "privacy": "private",
+    "publish_at": "2026-11-14T23:00:00Z",
+    "review": false,
+    "sha256": "1287d37895c98949855322ab631d2d439d335b1f02b61f50a0227c856c2ab60c",
+    "title": "A Pilot Fell Into a Thunderstorm. It Kept Him for 40 Minutes #shorts",
+    "uploaded_at": "2026-11-13T18:25:23Z",
+    "url": "https://youtu.be/OGVhaUVwwFs",
+    "video_id": "OGVhaUVwwFs"
+  },
   "s001-alvarenga": {
     "privacy": "private",
     "publish_at": null,
