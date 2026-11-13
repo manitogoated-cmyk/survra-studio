@@ -1086,14 +1086,13 @@ def ward(S, k, t, lt):
 
 
 def limp(t):
-    p = walk(t, 1.15)
-    p['lift'] = -0.1 * max(0.0, math.sin(t * 1.15 * 2 * PI))
-    p['lean'] = 0.16
+    p = walk(t, 1.15)                # a slow, careful walk; no source describes a limp, so none is shown
+    p['lean'] = 0.1
     return p
 
 
 def walk_out(S, k, t, lt):
-    """He walks out on his own legs, with a limp. Rook waits at the door."""
+    """He walks out on his own legs, slowly. Rook waits at the door."""
     A = show(S, 'ward')
     sky(S, '101418')
     S['mike'].place(A(lerp(0.4, 2.7, k), lerp(1.2, 3.9, k), 0), 2.43)
@@ -2169,7 +2168,7 @@ def baleen_cu(S, k, t, lt):
     S['face']['rook'] = 'smirk' if k > 0.6 else 'calm'
     S['plates'][0].rotation_euler.y = 0.03 * math.sin(lt * 9)
     key(S, 'kw', A(0, -2, 3.2), A(1.4, 2.6, 2.4), 300)
-    cam(S, A(lerp(5.0, 4.6, k), lerp(-1.0, -0.6, k), 2.5), A(2.5, 3.4, 2.5), 34)
+    cam(S, A(lerp(2.2, 2.5, k), lerp(0.4, 0.8, k), 3.5), A(3.1, 4.2, 2.6), 34)
 
 
 # ---------------------------------------------------------------- long-form shots: afterwards
@@ -2220,11 +2219,11 @@ def photo_thumb(S, k, t, lt):
     whale(S, A(-3.6, 5.0, 1.6), PI / 2 + 0.25, -PI / 2 + 0.2, 0.1, 0.75, 1.0, 2.0)
     in_mouth(S, 1.0, 2.7, 'shock')
     spray(S, A(-3.6, 5.0, 0.4), 0.5, 44, 0, 7.5, 6.5, seed=3, size=3.2)
-    S['rook'].place(A(-2.2, -3.4, -1.25), 0.15, 0.0)
-    S['rook'].apply(P('up', aL=(2.3, 0.9, 0.6), aR=(2.5, 0.7, 0.5), head=(-0.25, -0.35)))
+    S['rook'].place(A(-1.9, -4.6, -1.0), 0.3, 0.0)
+    S['rook'].apply(P('shrug', aL=(0.9, 1.0, 1.7, -0.9), aR=(0.9, 1.0, 1.7, -0.9), head=(0.0, 0.1)))
     S['face']['rook'], S['hat'] = 'shocked', 0.5
-    spray(S, A(-2.2, -3.2, 0.1), 0.35, 12, 46, 1.8, 1.0, seed=2, size=1.0)
-    key(S, 'kw', A(-4, -9, 2.5), A(-2.2, -3.4, 1.2), 1500)
+    spray(S, A(-1.9, -4.4, 0.1), 0.35, 12, 46, 1.8, 1.0, seed=2, size=1.0)
+    key(S, 'kw', A(-4, -10, 2.5), A(-1.9, -4.6, 1.4), 1500)
     cam(S, A(0.6, -8.6, 1.0), A(-1.0, 3.0, 3.9), 27)
 
 
