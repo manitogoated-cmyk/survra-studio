@@ -104,8 +104,9 @@
    "world": "dunes, abandoned shrine",
    "est_score": 82,
    "long_form_candidate": true,
-   "status": "idea",
-   "facts": "verify with 2+ sources at authoring; skip if they do not hold"
+   "status": "in progress",
+   "facts": "verify with 2+ sources at authoring; skip if they do not hold",
+   "claimed_at": "2026-11-13T18:20:06Z"
   },
   {
    "case": 9,
