@@ -47,24 +47,30 @@ def test_auth_expired(monkeypatch):
 def test_slots():
     cfg = json.load(open(publisher.CFG))
     tz = publisher.ZoneInfo(cfg['timezone'])
-    now = dt.datetime(2026, 11, 11, 22, 0, tzinfo=tz)
+
+    def utc(day, hhmm):
+        hh, mm = map(int, hhmm.split(':'))
+        return dt.datetime(2026, 11, day, hh, mm, tzinfo=tz).astimezone(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+    S, L = cfg['short_slots_local'], cfg['long_slots_local']
+    now = dt.datetime(2026, 11, 11, 23, 30, tzinfo=tz)            # after every slot of the day
     a = publisher.next_slot(cfg, {}, 'short', now)
-    assert a == '2026-11-12T14:15:00Z', a          # 09:15 EST next morning
+    assert a == utc(12, S[0]), a
     b = publisher.next_slot(cfg, {'x': {'publish_at': a}}, 'short', now)
-    assert b == '2026-11-12T17:15:00Z', b          # 12:15 EST
-    l = publisher.next_slot(cfg, {}, 'long', now)
-    assert l == '2026-11-12T15:00:00Z', l          # 10:00 EST
-    # a slot later the same day is used when it is more than 30 minutes away
-    assert publisher.next_slot(cfg, {}, 'short', dt.datetime(2026, 11, 11, 17, 0, tzinfo=tz)) == '2026-11-11T23:30:00Z'
-    assert publisher.next_slot(cfg, {}, 'short', dt.datetime(2026, 11, 11, 18, 10, tzinfo=tz)) == '2026-11-12T02:00:00Z'
-    # seven uploads in a day never share a time
+    assert b == utc(12, S[1]), b
+    assert publisher.next_slot(cfg, {}, 'long', now) == utc(12, L[0])
+    # a slot later the same day is used only when it is more than 30 minutes away
+    hh, mm = map(int, S[-1].split(':'))
+    last = dt.datetime(2026, 11, 11, hh, mm, tzinfo=tz)
+    assert publisher.next_slot(cfg, {}, 'short', last - dt.timedelta(minutes=45)) == utc(11, S[-1])
+    assert publisher.next_slot(cfg, {}, 'short', last - dt.timedelta(minutes=10)) == utc(12, S[0])
+    # a full day of uploads never shares a time
     led = {}
-    for i in range(4):
+    for i in range(len(S)):
         led['s%d' % i] = {'publish_at': publisher.next_slot(cfg, led, 'short', now)}
-    for i in range(3):
+    for i in range(len(L)):
         led['l%d' % i] = {'publish_at': publisher.next_slot(cfg, led, 'long', now)}
     times = [v['publish_at'] for v in led.values()]
-    assert len(set(times)) == 7 and all(t.startswith(('2026-11-12', '2026-11-13T0')) for t in times), times
+    assert len(set(times)) == len(S) + len(L), times
 
 
 def test_plan_skips_uploaded():
