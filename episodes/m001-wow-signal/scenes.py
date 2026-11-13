@@ -305,6 +305,17 @@ def flare_fx(cv, c):
     stamp(cv, c, '2024 HYPOTHESIS', 540, 430, 100, 0.55, 'FFFFFF', -3)
 
 
+def warp(cv, c):
+    """Star streaks rushing past as the signal travels."""
+    for i in range(48):
+        ang = rnd(i, 50) * 2 * math.pi
+        r0 = ((c.t * 900 + rnd(i, 51) * 1400) % 1400) + 60
+        L = 60 + 0.25 * r0
+        x0, y0 = 540 + math.cos(ang) * r0, 760 + math.sin(ang) * r0
+        x1, y1 = 540 + math.cos(ang) * (r0 + L), 760 + math.sin(ang) * (r0 + L)
+        cv.drawLine(x0, y0, x1, y1, P(0xFFFFFFFF, 3 + 3 * rnd(i, 52), a=0.45))
+
+
 def your_theory(cv, c):
     stamp(cv, c, 'YOUR THEORY?', 540, 430, 116, 0.35, 'FFB000', -4)
 
@@ -326,4 +337,4 @@ def still_open(cv, c):
 
 OVER = dict(beam_hit=hit_flash, ear_night=seventy_two, ear_sweep=twinkle, ear_dark=never, ear_aerial=big_ear, horn_cu=listening,
             ehman_shock=wow_stamp, rook_chart=hydrogen, ear_search=again, flare=flare_fx, rook_cam=your_theory, rook_comment=comments,
-            signoff=still_open, rook_plane=twinkle, rook_listen=twinkle, cloud=twinkle)
+            signoff=still_open, wave_earth=warp, rook_plane=twinkle, rook_listen=twinkle, cloud=twinkle)

@@ -71,6 +71,6 @@
   "https://arxiv.org/abs/2408.08513"
  ],
  "quality_gate": {
-  "method": "3D contact sheet reviewed in two rounds and composited stills (captions, HUD, stamps, inserts) in two; a full-length low-resolution rehearsal (216x384, 4 samples) passed the automated gate locally after two static shots were given more movement: 32 shots, mean 1.53 s, longest 1.75 s, loudness -15.3 LUFS, host in 13/32 shots (41%), closest match to an earlier episode 0.62; audio was measured, not listened to; the full-resolution render and final gate run in the cloud"
+  "method": "3D contact sheet reviewed in two rounds and composited stills (captions, HUD, stamps, inserts) in two; a full-length low-resolution rehearsal (216x384, 4 samples) passed the automated gate locally after two static shots were given more movement: 32 shots, mean 1.53 s, longest 1.75 s, loudness -15.3 LUFS, host in 13/32 shots (41%), closest match to an earlier episode 0.62; audio was measured, not listened to; the full-resolution render and final gate run in the cloud; the first cloud run failed the gate on one slow shot (wave_earth), so seven low-motion shots got stronger camera moves and a star-streak overlay, and the local rehearsal was re-checked with every shot over 1.5 s at a mean frame change of 1.8 or more"
  }
 }

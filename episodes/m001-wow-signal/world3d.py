@@ -427,13 +427,13 @@ def beam_hit(S, k, t, lt):
 def ear_night(S, k, t, lt):
     A = ear(S)
     S['beacon'].hide_render = (t * 1.6) % 1 < 0.5
-    cam(S, A(lerp(-36, -32, k), lerp(-58, -54, k), lerp(4.0, 5.0, k)), A(0, 18, 7), 21)
+    cam(S, A(lerp(-36, -24, k), lerp(-50, -40, k), lerp(3.0, 7.5, k)), A(lerp(-4, 4, k), 18, 7), 21, roll=lerp(-0.06, 0.04, k))
 
 
 def ear_sweep(S, k, t, lt):
     A = ear(S)
     S['flat'].rotation_euler = (lerp(-0.25, -0.5, ease(k)), 0, 0)
-    cam(S, A(lerp(30, 24, k), lerp(26, 30, k), lerp(6, 14, ease(k))), A(0, 62, lerp(14, 12, k)), 24)
+    cam(S, A(lerp(34, 20, k), lerp(24, 32, k), lerp(4, 19, k)), A(0, 62, lerp(15, 11, k)), 24)
 
 
 def ear_dark(S, k, t, lt):
@@ -441,7 +441,7 @@ def ear_dark(S, k, t, lt):
     S['hut_glow'].data.energy = lerp(3500, 0, ease(k * 1.6))
     S['beacon'].hide_render = k > 0.35
     S['hutwin'].hide_render = k > 0.5
-    cam(S, A(lerp(9, 13, k), lerp(-22, -18, k), lerp(2.5, 4.0, k)), A(0, -40, 2.4), 24)
+    cam(S, A(lerp(5, 18, k), lerp(-27, -10, k), lerp(1.5, 8.0, k)), A(0, -40, 2.4), lerp(34, 20, k), roll=lerp(0.05, -0.05, k))
 
 
 # ---------------------------------------------------------------- doubt
@@ -452,7 +452,7 @@ def rook_plane(S, k, t, lt):
     S['hat_tip'] = 0.4
     key(S, 'kw', A(-3, -25, 4), A(0, -20, 2.2), 900)
     key(S, 'kc', A(4, -17, 3.5), A(0, -20, 2.2), 700)
-    cam(S, A(lerp(1.6, 1.1, k), lerp(-27.2, -25.6, k), 2.1), A(0, -20, 2.35), 31)
+    cam(S, A(lerp(2.6, 0.7, k), lerp(-28.4, -25.0, k), lerp(1.7, 2.3, k)), A(0, -20, 2.35), 31)
 
 
 def rook_walk(S, k, t, lt):
@@ -462,11 +462,11 @@ def rook_walk(S, k, t, lt):
         y = -21
     else:
         pose = walk(lt - 0.45)
-        y = -21 + (lt - 0.45) * 2.2
+        y = -21 + (lt - 0.45) * 3.2
     rook(S, A(0, y, 0.05), PI, pose, 'smirk')
     key(S, 'kw', A(-4, y - 3, 4), A(0, y, 2.0), 800)
     key(S, 'kc', A(3, y + 4, 3), A(0, y, 2.0), 700)
-    cam(S, A(1.9, y - 6.0, 1.7), A(0.2, y + 6, 3.2), 24)
+    cam(S, A(lerp(2.6, 1.2, k), lerp(-27.5, -26.5, k), 1.6), A(0.2, y + 5, 3.0), 24)
 
 
 # ---------------------------------------------------------------- scope
@@ -481,7 +481,7 @@ def horn_cu(S, k, t, lt):
     S['beacon'].hide_render = (t * 1.6) % 1 < 0.5
     S['hut_glow'].data.energy = 900
     key(S, 'kc', A(-6, -30, 7), A(0, -36.5, 2.6), 260)
-    cam(S, A(lerp(6.5, 5.0, k), lerp(-26.5, -27.8, k), lerp(4.0, 3.4, k)), A(0, -36.4, 2.6), 30)
+    cam(S, A(lerp(9.0, 3.0, k), lerp(-25.0, -29.5, k), lerp(5.0, 3.0, k)), A(lerp(-1.0, 0.8, k), -36.4, 2.6), 30, roll=lerp(-0.08, 0.06, k))
 
 
 def printer(S, k, t, lt):
@@ -566,7 +566,7 @@ def rook_listen(S, k, t, lt):
          'deadpan' if e < 0.5 else 'sad')
     key(S, 'kw', A(-2.6, -28, 3.6), A(0, -24, 2.4), 820)
     key(S, 'kc', A(3, -21, 3), A(0, -24, 2.4), 600)
-    cam(S, A(lerp(0.8, 0.6, k), lerp(-28.6, -28.0, k), 2.45), A(0, -24, 2.45), 34)
+    cam(S, A(lerp(1.8, 0.4, k), lerp(-29.6, -27.6, k), lerp(2.0, 2.6, k)), A(0, -24, 2.45), 34)
 
 
 # ---------------------------------------------------------------- twist
@@ -606,7 +606,8 @@ def wave_earth(S, k, t, lt):
     loc = (lerp(2, 9.5, p), lerp(-20, -64, p), lerp(0, -5, p))
     ring_at(S, A(*loc), lerp(4.0, 0.8, p), (PI / 2, 0, t * 3))
     S['earth'].rotation_euler = (0.3, 0, t * 0.8)
-    cam(S, A(lerp(24, 14, ease(k)), lerp(-38, -52, ease(k)), lerp(5, -1, k)), A(9, -64, -5), lerp(26, 34, k))
+    S['earth'].rotation_euler = (0.3, 0, t * 2.4)
+    cam(S, A(lerp(26, 13, k), lerp(-34, -55, k), lerp(7, -2, k)), A(lerp(6, 9.5, k), -64, -5), lerp(22, 38, k), roll=lerp(-0.15, 0.1, k))
 
 
 # ---------------------------------------------------------------- question
@@ -630,7 +631,7 @@ def rook_comment(S, k, t, lt):
     e = ease(lt / 0.35)
     rook(S, A(0, -22, 0.05), 0.0, blend(P('stand', head=(0.1, 0)), P('stand', aR=(0.55, 0.25, 0.1), head=(0.35, -0.1), lean=0.1), e), 'smirk')
     key(S, 'kw', A(-3, -26, 4), A(0, -22, 2.2), 700)
-    cam(S, A(lerp(1.4, 1.0, k), lerp(-27.0, -26.2, k), lerp(2.9, 2.7, k)), A(0, -22, 1.9), 30)
+    cam(S, A(lerp(3.0, 0.4, k), lerp(-28.5, -25.6, k), lerp(3.6, 2.4, k)), A(0, -22, 1.9), 30)
 
 
 def rook_pen(S, k, t, lt):
