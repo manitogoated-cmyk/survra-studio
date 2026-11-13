@@ -203,6 +203,7 @@ def camera3d(cv, sh, t, impacts, W, H):
         z *= 1 + 0.06 * (1 - ease_out(lt / 0.18))
     if tr in ('zoom', 'flare'):
         z *= 1 + 0.5 * (1 - ease_out(lt / 0.25))
+    z *= 1 + 0.035 * min(1.0, lt / max(0.2, sh['b'] - sh['a']))      # slow push-in at full frame rate keeps held frames alive
     amp = sh.get('shake', 0) * 0.7
     for it in impacts:
         if 0 <= t - it < 0.3:

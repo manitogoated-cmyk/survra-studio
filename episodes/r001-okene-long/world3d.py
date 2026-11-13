@@ -948,7 +948,50 @@ def reset(S):
     for o in S['locks'] + S['doors']:
         o.location = FAR
     S['warm'].data.energy = 0
+    S['warm'].data.color = K.hexc('FFD9A0')[:3]
     S['vestl'].data.energy = 60
+
+
+_cabin0 = cabin
+
+
+def cabin(S, flipped=True, wl=1.5, lamp=22, fill=30):
+    """The 16:9 cut spends much longer in the air pocket, so it is lit brighter than the Short (dark shots read as dead air)."""
+    A = _cabin0(S, flipped, wl, lamp * 3 + 30, fill * 4 + 220)
+    sky(S, '1A4654', 1.0)
+    return A
+
+
+def day_stamp(S, k, t, lt):
+    """Long cut: the same beat as the Short, with the camera drifting round him and the raft rocking."""
+    A = cabin(S, True, 1.3 + 0.05 * math.sin(t * 1.3), 40, 150)
+    mz = 1.32 + 0.08 * math.sin(t * 1.8)
+    S['matt'].location, S['matt'].rotation_euler = (0.1 + 0.25 * math.sin(t * 0.9), 0.2, mz), (0.08 * math.sin(t * 1.5), 0.1 * math.sin(t * 1.2), 0.15 + 0.2 * math.sin(t * 0.7))
+    S['okene'].place(A(0.1 + 0.25 * math.sin(t * 0.9), 0.55, mz - 0.38), 0.3 + 0.2 * math.sin(t * 0.7), 0.06 * math.sin(t * 1.5))
+    S['okene'].apply(P('sit', head=(0.42 - 0.3 * abs(math.sin(t * 1.1)), 0.5 * math.sin(t * 0.8)), lean=0.25 + 0.08 * math.sin(t * 2.1)))
+    S['face']['okene'] = 'sad'
+    bubbles(S, A(1.6, -0.9, 1.25), t, 8, 0.5, 0.6, 0.6, seed=4, size=0.9)
+    cam(S, A(lerp(-2.6, 1.6, k), lerp(-6.6, -5.4, k), lerp(3.1, 2.5, k)), A(0.1, 0.2, 1.9), 36)
+
+
+def chest_water(S, k, t, lt):
+    A = cabin(S, True, 1.52 + 0.05 * math.sin(t * 1.7), lerp(30, 10, k), lerp(90, 40, k))
+    sh = 0.02 * math.sin(t * 43)
+    S['okene'].place(A(0.1 + sh, 0.2, 0.0), 0.25 + 0.25 * math.sin(t * 0.9))
+    S['okene'].apply(P('cross', head=(0.2, 0.5 * math.sin(t * 1.3)), lean=0.06))
+    S['face']['okene'] = 'scared'
+    bubbles(S, A(-1.2, -0.6, 1.4), t, 8, 0.5, 0.6, 0.7, seed=6, size=0.9)
+    cam(S, A(lerp(2.2, -0.6, k), lerp(-6.2, -4.4, k), 2.6), A(0.1, 0.2, 2.2), 45)
+
+
+_show0 = show
+
+
+def show(S, name):
+    A = _show0(S, name)
+    if name == 'deep':
+        S['top'].data.energy = 130000
+    return A
 
 
 def corridor_dry(S):
@@ -993,7 +1036,7 @@ def feel_walls(S, k, t, lt):
     S['okene'].apply(P('stand', aL=(2.0 + 0.3 * math.sin(t * 3), 0.5, 0.5), aR=(1.6 - 0.3 * math.sin(t * 3), 0.4, 0.6), lL=(0.3 * math.sin(t * 2.4), 0.2), lR=(-0.3 * math.sin(t * 2.4), 0.2), head=(-0.1, 0.5)))
     S['face']['okene'] = 'shock'
     S['pov'].data.energy = 90
-    cam(S, A(lerp(-1.9, -1.3, k), -6.6, 2.5), A(1.1, y * 0.5, 1.9), 40)
+    cam(S, A(lerp(-2.6, -0.6, k), lerp(-6.8, -5.4, k), 2.5), A(1.1, y * 0.5, 1.9), 40)
 
 
 def flashlights(S, k, t, lt):
@@ -1014,7 +1057,7 @@ def mattress_build(S, k, t, lt):
     S['okene'].place(A(mx - 1.25, 0.15, 0.0 + 0.02 * math.sin(t * 30)), PI / 2 - 0.15)
     S['okene'].apply(P('stand', aL=(1.25, 0.2, 0.35), aR=(1.35, 0.2, 0.3), lL=(0.4 * math.sin(t * 3), 0.3), lR=(-0.4 * math.sin(t * 3), 0.3), lean=0.3, head=(-0.1, 0)))
     S['face']['okene'] = 'scared'
-    cam(S, A(lerp(-0.2, 0.3, k), -6.6, 2.7), A(0.3, 0.2, 1.75), 38)
+    cam(S, A(lerp(-1.2, 0.8, k), lerp(-6.8, -5.6, k), 2.7), A(0.3, 0.2, 1.75), 38)
 
 
 def plank_wait(S, k, t, lt):
@@ -1027,7 +1070,7 @@ def plank_wait(S, k, t, lt):
     S['plank'].location = A(0.55 + 0.02 * math.sin(t * 23), -0.15, mz + 0.95)
     S['plank'].rotation_euler = (0.15, 0, 0.55)
     bubbles(S, A(2.0, -0.8, 1.2), t, 7, 0.4, 0.5, 0.5, seed=5, size=0.8)
-    cam(S, A(lerp(-2.0, -1.6, k), -5.9, 2.7), A(0.5, 0.1, 2.0), 42)
+    cam(S, A(lerp(-2.4, -0.8, k), lerp(-6.2, -5.0, k), 2.7), A(0.5, 0.1, 2.0), 42)
 
 
 def shadow_pass(S, k, t, lt):
@@ -1038,8 +1081,10 @@ def shadow_pass(S, k, t, lt):
     S['fish'].rotation_euler = (0, 0, 0.12 * math.sin(t * 3.2))
     S['tail'].rotation_euler = (0, 0, 0.5 * math.sin(t * 6))
     bubbles(S, A(0.6, 2, 0.4), t, 8, 0.6, 2.4, 0.5, seed=9, size=0.6)
-    S['pov'].data.energy = 420
-    cam(S, A(1.1, -6.5, 1.0), A(0.0, 5, 1.6), 30, 0.05)
+    S['pov'].data.energy = 1500
+    S['warm'].location, S['warm'].data.energy, S['warm'].data.color = A(0.5, 3, 2.5), 700, K.hexc('2A9AAA')[:3]
+    sky(S, '06181E')
+    cam(S, A(1.1, lerp(-6.5, -4.5, k), 1.0), A(0.0, 5, 1.6), 30, 0.05)
 
 
 def pray(S, k, t, lt):
@@ -1050,7 +1095,7 @@ def pray(S, k, t, lt):
     S['okene'].apply(P('sit', aL=(1.2, -0.28, 1.95, 0.5), aR=(1.2, -0.28, 1.95, 0.5), head=(0.6, 0), lean=0.3))
     S['face']['okene'] = 'closed'
     S['bottle'].location, S['bottle'].rotation_euler = (1.3, -0.6, 1.36 + 0.03 * math.sin(t * 2)), (1.3, 0, 0.8)
-    cam(S, A(lerp(1.0, 0.6, k), lerp(-5.0, -3.9, k), 2.6), A(0.0, 0.5, 2.15), 48)
+    cam(S, A(lerp(1.6, 0.2, k), lerp(-5.2, -3.7, k), 2.6), A(0.0, 0.5, 2.15), 48)
 
 
 def divers_down(S, k, t, lt):
@@ -1187,7 +1232,7 @@ def rook_pocket(S, k, t, lt):
 
 HOST |= {'rook_corridor', 'chamber', 'stars', 'rook_desk', 'rook_board', 'rook_window', 'rook_pocket'}
 SHOTS3D.update({f.__name__: f for f in (
-    platform_work, locked_doors, rook_corridor, feel_walls, flashlights, mattress_build, plank_wait, shadow_pass, pray, divers_down,
+    day_stamp, chest_water, platform_work, locked_doors, rook_corridor, feel_walls, flashlights, mattress_build, plank_wait, shadow_pass, pray, divers_down,
     hammer, helmet_on, walk_out, chamber, stars, rook_desk, rook_board, rook_window, rook_pocket)})
 
 

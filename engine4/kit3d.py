@@ -348,6 +348,9 @@ def run(ep_dir, mode='all', w=432, h=768, samples=8, part=None):
             todo += [(i, sh) for i in range(i0, i1)]
         else:
             todo.append((int((sh['a'] + 0.55 * (sh['b'] - sh['a'])) * FPS3), sh))
+    if os.environ.get('KIT3D_SHOTS'):            # local spot checks: only these shot numbers
+        want = {int(x) for x in os.environ['KIT3D_SHOTS'].split(',')}
+        todo = [(i, sh) for i, sh in todo if sh['n'] in want]
     if part:
         todo = todo[part[0]::part[1]]
     done = 0
