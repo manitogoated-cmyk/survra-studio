@@ -1,0 +1,32 @@
+{
+ "pass": true,
+ "fails": [],
+ "warnings": [],
+ "notes": [
+  "31 shots, mean 1.38s, longest 1.60s",
+  "motion: mean frame change 7.05, 54 hard cuts detected",
+  "audio: -15.3 LUFS, peak -1.5 dBFS, voice 10.8 dB over bed",
+  "host: acts in 12/31 shots (39%)",
+  "originality: closest match to any earlier episode 0.67 (shot 22 vs r001-okene)"
+ ],
+ "rules": {
+  "first_shot_max": 1.2,
+  "hook_impact_by": 1.0,
+  "shot_max": 2.0,
+  "shot_mean_max": 1.6,
+  "kind_max_uses": 2,
+  "static_window": 1.5,
+  "static_motion_min": 1.2,
+  "cut_diff": 28.0,
+  "first_second_motion_min": 2.0,
+  "repeat_corr": 0.97,
+  "repeat_pairs_max": 1,
+  "lufs": -14.0,
+  "lufs_tol": 1.5,
+  "tp_max": -1.0,
+  "voice_over_bed_db": 6.0,
+  "dead_air_s": 0.8,
+  "dead_air_db": -45.0
+ },
+ "format": "short"
+}
