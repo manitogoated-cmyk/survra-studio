@@ -21,7 +21,7 @@ Daily target set by the owner: 4 Shorts and 3 long-form videos. The target never
 ## Long run
 See "Long-form" in `AUTHORING.md`. In short: a long-form video is the full case file of a case that already has a Short. Copy that Short's episode to `episodes/<id>-long/`, keep its 3D world, extend it with new shots, write a 3 to 4 minute script, and ship it the same way with format `long`.
 1. **Queue check.** If three or more `long` episodes are waiting (status `ready` or `approved`, not in the ledger), author nothing.
-2. **Pick the case:** the oldest episode in `publish/ledger.json` with format `short` whose case has no `-long` episode directory yet. If there is none, report and stop.
+2. **Pick the case:** among the episodes in `publish/ledger.json` whose id starts with `r`, that have a `world3d.py`, and that are public or scheduled (`privacy` is `public` or `publish_at` is set), take the oldest one with no `episodes/<id>-long/` directory yet. Create that directory with its `episode.json` (status `draft`) and push right away, so a parallel run does not take the same case. If there is no such case, report and stop.
 3. Follow the long-form section of `AUTHORING.md`, review the 16:9 contact sheet at least three rounds, ship with status `approved` or `ready`, report.
 
 ## Hard rules (both runs)
