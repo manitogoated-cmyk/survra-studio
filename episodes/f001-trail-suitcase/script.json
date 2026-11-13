@@ -1,0 +1,60 @@
+{
+ "id": "f001-trail-suitcase",
+ "voice": "am_fenrir",
+ "speed": 1.12,
+ "gap": 0.14,
+ "lead": 0.1,
+ "tail": 0.9,
+ "segments": [
+  {
+   "scene": "hook",
+   "mood": "hook",
+   "text": "A runner finds a huge suitcase hidden in tall grass. Then a man steps out of the woods."
+  },
+  {
+   "scene": "doubt",
+   "mood": "calm",
+   "text": "This one's from Reddit, so nobody's checked it. Let's go look."
+  },
+  {
+   "scene": "trail",
+   "mood": "action",
+   "text": "The runner uses this forest trail all the time. Today, there's a suitcase. They step closer."
+  },
+  {
+   "scene": "man",
+   "mood": "tense",
+   "text": "A man jumps out, right between them and the case. He never touches it. He says he's running {50|fifty} kilometres."
+  },
+  {
+   "scene": "clue",
+   "mood": "tense",
+   "text": "Look at his feet. Boots. Nobody runs {50|fifty} kilometres in boots."
+  },
+  {
+   "scene": "run",
+   "mood": "action",
+   "text": "The runner sees it too, and gets out of there fast."
+  },
+  {
+   "scene": "twist",
+   "mood": "sad",
+   "text": "For the next two days, police search those trails for the body of a missing person."
+  },
+  {
+   "scene": "show",
+   "mood": "tense",
+   "text": "The runner has to show them exactly where the suitcase had been."
+  },
+  {
+   "scene": "theories",
+   "mood": "wonder",
+   "text": "Lost luggage? Or something he didn't want found? Nobody knows."
+  },
+  {
+   "scene": "end",
+   "mood": "end",
+   "text": "So what was in it? Tell me your theory in the comments. This case stays open."
+  }
+ ]
+}

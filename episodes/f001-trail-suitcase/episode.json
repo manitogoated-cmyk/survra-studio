@@ -1,0 +1,74 @@
+{
+ "id": "f001-trail-suitcase",
+ "format": "short",
+ "status": "approved",
+ "publish": "now",
+ "series": "Reddit File",
+ "synthetic": false,
+ "host": "rook",
+ "case": "Reddit File 001",
+ "truth_label": "firsthand account by a Reddit user, not independently verified",
+ "title": "A Runner Found a Suitcase in the Woods. Then a Man Stepped Out #shorts",
+ "description": "Reddit File 001. This is one Reddit user's own account of something they say happened to them. Nobody has verified it, and Rook says so.\n\nThey were running a forest trail they use all the time when they noticed a huge suitcase half hidden in tall grass. As they stepped closer, a man came out of the woods and stood between them and the case. He never touched it. He said he was out running 50 km, but he was wearing boots. The runner left quickly. For the next two days they met police on those trails, searching for the body of a missing person, and had to show them where the suitcase had been. The account ends there: it does not say who the man was, what was in the case, or what the police found.\n\nWhat do you think was in it? The best theories in the comments can become a follow-up.\n\nStory: Reddit user u/KkatT1o1, in an AskReddit thread started by u/Idontlikeenemasmom, as collected by BuzzFeed (Hannah Dobrogosz, 13 July 2025). Retold in our own words; the forest, the people's appearance and everything Rook does are an animated reconstruction, not a record. If this is your story and you want the credit changed or the video removed, contact us: https://manitogoated-cmyk.github.io/survra/",
+ "tags": [
+  "reddit stories",
+  "scary stories",
+  "true scary stories",
+  "creepy encounters",
+  "askreddit",
+  "stranger danger",
+  "unsolved",
+  "animated story",
+  "Rook",
+  "Survra"
+ ],
+ "hashtags": [
+  "#shorts",
+  "#redditstories",
+  "#scarystories"
+ ],
+ "playlist": "Rook's Reddit Files (Shorts)",
+ "story_score": {
+  "curiosity": 10,
+  "stakes": 9,
+  "freshness": 8,
+  "story": 8,
+  "visual": 9,
+  "audience_fit": 10,
+  "payoff": 8,
+  "packaging": 9,
+  "research": 5,
+  "repeatability": 9,
+  "total": 85
+ },
+ "reddit_hunter_score": {
+  "immediate_curiosity": 19,
+  "suspense_mystery": 14,
+  "emotional_impact": 12,
+  "unexpected_developments": 13,
+  "animation_potential": 9,
+  "viewer_interaction": 10,
+  "originality": 8,
+  "research_reliability": 2,
+  "total": 87
+ },
+ "candidates_considered": "From the same AskReddit thread as collected by BuzzFeed: the cashier phoned at work by a customer pretending to be her father (scored 74: strong twist, weak visuals); the man who leapt from bushes at a stop sign (68: one beat, no mystery); the masked man with a knife on a forest trail (70: frightening, but the account names a former acquaintance, so it risks pointing at a real person). r/LetsNotMeet and r/nosleep posts were not used: those communities require the author's permission before a story is narrated, and no permission has been asked for yet.",
+ "permission": "No permission requested. Facts-only retelling of a public AskReddit answer, credited and linked; no text from the post is used; takedown on request.",
+ "viewer_question": "What was in the suitcase?",
+ "title_options": [
+  "A Runner Found a Suitcase in the Woods. Then a Man Stepped Out #shorts",
+  "He Said He Was Running 50 km. He Was Wearing Boots #shorts",
+  "The Suitcase on the Running Trail (Reddit Story) #shorts",
+  "A Suitcase in Tall Grass. A Man in Boots. Then the Police #shorts",
+  "Reddit User: The Man Never Touched the Suitcase #shorts"
+ ],
+ "source_notes": "Everything in the script comes from one Reddit user's answer (u/KkatT1o1) in the AskReddit thread 'What's the most terrifying, unexplainable encounter you've had with a stranger that still haunts you?' started by u/Idontlikeenemasmom, as reproduced by BuzzFeed on 13 July 2025 (Hannah Dobrogosz) and syndicated by Yahoo. Reddit itself could not be opened from the authoring session, so the thread was not read directly and the answer's wording is known only through BuzzFeed. The account says: the poster runs a wooded trail regularly; one day they came across a huge suitcase slightly hidden in tall grass; when they got closer a man jumped out of the woods and got between them and the suitcase without touching or picking it up; he wore boots but said he had been trying to run 50 km; the poster was already moving away fast and noticed the boots; over the next two days they ran into police on the trails who were looking for the body of a missing person, and had to show them where the suitcase had been. Nothing else is known: not the place, the date, the poster's gender (the script says 'the runner' and 'they'), who the man was, what the suitcase held, or what the police found. The account is unverified and the video says so in the second line ('nobody's checked it') and on screen. Dramatised, not reported: the forest, the trail sign, the colour and look of the suitcase, how everyone looks and is dressed apart from the boots, the hooded jacket, the patrol car, tape and torches, the missing-person poster (a blank silhouette, no name), and everything Rook does. The script does not say what was in the suitcase and does not call the man a criminal; 'Lost luggage? Or something he didn't want found? Nobody knows.' is framed as an open question. No dialogue is attributed to anyone beyond the reported claim that he was running 50 km.",
+ "sources": [
+  "https://www.buzzfeed.com/hannahdobro/spine-chilling-encounters-with-strangers",
+  "https://www.yahoo.com/news/19-truly-terrifying-stranger-danger-033104376.html",
+  "https://www.reddit.com/r/AskReddit/comments/1lu74cm/whats_the_most_terrifying_unexplainable_encounter/"
+ ],
+ "quality_gate": {
+  "method": "3D contact sheet reviewed in two rounds and composited stills (captions, HUD, stamps, inserts) in two; a full-length low-resolution rehearsal (216x384, 4 samples) passed the automated gate locally: 31 shots, mean 1.38 s, longest 1.61 s, loudness -15.3 LUFS, host in 12/31 shots (39%), closest match to an earlier episode 0.67, every shot at a mean frame change of 2.1 or more; three stamps were moved after that rehearsal and checked on stills only; audio was measured, not listened to; the full-resolution render and final gate run in the cloud"
+ }
+}

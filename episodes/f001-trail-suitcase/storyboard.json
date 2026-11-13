@@ -1,0 +1,1080 @@
+{
+ "id": "f001-trail-suitcase",
+ "shots": [
+  {
+   "n": 1,
+   "segment": "hook",
+   "weight": 0.75,
+   "kind": "suitcase_cu",
+   "action": "Rushing through tall grass to a huge oxblood suitcase with brass corners",
+   "camera": "Low push-in, shaking",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 6,
+   "transition": "cut",
+   "sfx": [
+    [
+     "boom",
+     0.02
+    ],
+    [
+     "whoosh",
+     0.0
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 2,
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "runner_stop",
+   "action": "A runner in a hi-vis top jogs up the trail and pulls up, staring off to the side",
+   "camera": "Low, in front",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.5
+    ],
+    [
+     "gasp",
+     0.7
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 3,
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "grass_pov",
+   "action": "Through the runner's eyes: stepping off the trail toward the case",
+   "camera": "POV push",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.0
+    ],
+    [
+     "heartbeat",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 4,
+   "segment": "hook",
+   "weight": 1.05,
+   "kind": "man_out",
+   "action": "A hooded man leaps out of the trees and lands between the runner and the case",
+   "camera": "Wide, shaking",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 6,
+   "transition": "whip",
+   "sfx": [
+    [
+     "whoosh",
+     0.05
+    ],
+    [
+     "boom",
+     0.45
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 5,
+   "segment": "doubt",
+   "weight": 1.0,
+   "kind": "rook_sign",
+   "action": "Rook at the trailhead map, arms crossed, shaking his head",
+   "camera": "Push-in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "clunk",
+     0.1
+    ]
+   ],
+   "hud": "REDDIT FILE 001",
+   "prm": {}
+  },
+  {
+   "n": 6,
+   "segment": "doubt",
+   "weight": 1.0,
+   "kind": "post_card",
+   "action": "A story card: a Reddit user's account, stamped NOT VERIFIED",
+   "camera": "Flat insert",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "bloop",
+     0.15
+    ],
+    [
+     "bloop",
+     0.4
+    ],
+    [
+     "hit",
+     0.7
+    ]
+   ],
+   "hud": "REDDIT FILE 001",
+   "prm": {}
+  },
+  {
+   "n": 7,
+   "segment": "trail",
+   "weight": 1.0,
+   "kind": "trail_aerial",
+   "action": "From above the pines: the trail winding through the forest, the runner a bright dot",
+   "camera": "Aerial",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "wind",
+     0.0
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 8,
+   "segment": "trail",
+   "weight": 1.0,
+   "kind": "runner_jog",
+   "action": "Tracking the runner; Rook jogs behind, one hand on his hat",
+   "camera": "Side tracking",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "flap",
+     0.2
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 9,
+   "segment": "trail",
+   "weight": 1.0,
+   "kind": "suitcase_wide",
+   "action": "From behind the case in the grass: the runner steps off the trail toward it",
+   "camera": "Low, in the grass",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.0
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 10,
+   "segment": "trail",
+   "weight": 1.0,
+   "kind": "rook_crouch",
+   "action": "Rook crouches at the case, eyes on the brass tag, and taps his beak",
+   "camera": "Medium push-in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.55
+    ],
+    [
+     "tick",
+     0.75
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 11,
+   "segment": "man",
+   "weight": 1.0,
+   "kind": "man_block",
+   "action": "Over the runner's shoulder: the man stands in the way, arms loose at his sides",
+   "camera": "Over the shoulder",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 3,
+   "transition": "flash",
+   "sfx": [
+    [
+     "hit",
+     0.05
+    ],
+    [
+     "low",
+     0.1
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 12,
+   "segment": "man",
+   "weight": 1.0,
+   "kind": "man_cu",
+   "action": "His hood, a face in shadow, two pale eyes",
+   "camera": "Close, drifting",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "heartbeat",
+     0.1
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 13,
+   "segment": "man",
+   "weight": 1.0,
+   "kind": "case_between",
+   "action": "Low past the case: his back to it, never reaching for it; Rook peeks round a tree",
+   "camera": "Low, behind the case",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "creak",
+     0.2
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 14,
+   "segment": "man",
+   "weight": 1.0,
+   "kind": "fifty_card",
+   "action": "Rook's wall: a looping route draws itself, HE SAYS: 50 KM",
+   "camera": "Flat insert",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "zoom",
+   "sfx": [
+    [
+     "scratch",
+     0.2
+    ],
+    [
+     "hit",
+     0.62
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 15,
+   "segment": "clue",
+   "weight": 1.0,
+   "kind": "rook_lean",
+   "action": "Rook leans into the lens and points down",
+   "camera": "Close, push-in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "bloop",
+     0.2
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 16,
+   "segment": "clue",
+   "weight": 1.0,
+   "kind": "boots_cu",
+   "action": "Ground level: heavy work boots, laces, mud",
+   "camera": "Low arc",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.25
+    ],
+    [
+     "hit",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 17,
+   "segment": "clue",
+   "weight": 1.0,
+   "kind": "boots_vs",
+   "action": "A running shoe, ticked. A work boot, crossed out. 50 KM?",
+   "camera": "Flat insert",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 4,
+   "transition": "cut",
+   "sfx": [
+    [
+     "bloop",
+     0.2
+    ],
+    [
+     "hit",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 18,
+   "segment": "run",
+   "weight": 1.0,
+   "kind": "runner_eyes",
+   "action": "The runner's eyes drop to the boots, then go wide",
+   "camera": "Close, push-in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "gasp",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 19,
+   "segment": "run",
+   "weight": 1.0,
+   "kind": "runner_flee",
+   "action": "The runner sprints back down the trail, Rook right behind; the man stands and watches",
+   "camera": "Low, head-on",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 5,
+   "transition": "whip",
+   "sfx": [
+    [
+     "flap",
+     0.2
+    ],
+    [
+     "shout",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 20,
+   "segment": "twist",
+   "weight": 1.0,
+   "kind": "police_lights",
+   "action": "Night. Red and blue through the trunks, a patrol car on the trail",
+   "camera": "Low push",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "low",
+     0.0
+    ],
+    [
+     "horn_far",
+     0.2
+    ]
+   ],
+   "hud": "THE NEXT 2 DAYS",
+   "prm": {}
+  },
+  {
+   "n": 21,
+   "segment": "twist",
+   "weight": 1.0,
+   "kind": "cops_search",
+   "action": "Officers sweep torches over the grass inside the tape; Rook stands with his hat low",
+   "camera": "Wide arc",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "heartbeat",
+     0.2
+    ]
+   ],
+   "hud": "THE NEXT 2 DAYS",
+   "prm": {}
+  },
+  {
+   "n": 22,
+   "segment": "twist",
+   "weight": 1.0,
+   "kind": "missing_card",
+   "action": "Rook's wall: a MISSING poster with a blank silhouette",
+   "camera": "Flat insert",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.0
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 23,
+   "segment": "show",
+   "weight": 1.0,
+   "kind": "runner_points",
+   "action": "The runner, back with an officer, points into the dark grass; Rook stands behind",
+   "camera": "Side on",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 24,
+   "segment": "show",
+   "weight": 1.0,
+   "kind": "grass_reverse",
+   "action": "From down in the grass: the runner and the officer lean over the spot, torchlight in their faces",
+   "camera": "Low, looking up",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "heartbeat",
+     0.1
+    ],
+    [
+     "low",
+     0.0
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 25,
+   "segment": "theories",
+   "weight": 1.0,
+   "kind": "theory_board",
+   "action": "Rook's wall: the case photo, LOST LUGGAGE? OR SOMETHING ELSE?",
+   "camera": "Flat insert",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "bloop",
+     0.15
+    ],
+    [
+     "bloop",
+     0.45
+    ],
+    [
+     "hit",
+     0.75
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 26,
+   "segment": "theories",
+   "weight": 1.0,
+   "kind": "suitcase_cu",
+   "action": "The case again, from the other side",
+   "camera": "Low arc",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.0
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "alt": [
+     115,
+     1.15,
+     0.4
+    ]
+   }
+  },
+  {
+   "n": 27,
+   "segment": "theories",
+   "weight": 1.0,
+   "kind": "man_watch",
+   "action": "The man stands in the middle of the trail as we back away",
+   "camera": "Pull back",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "heartbeat",
+     0.1
+    ],
+    [
+     "wind",
+     0.0
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 28,
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "rook_cam",
+   "action": "Rook faces the lens and spreads his hands",
+   "camera": "Close, front",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "pop",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 29,
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "trail_dusk",
+   "action": "The empty trail at dusk, rising through the trunks",
+   "camera": "Crane up",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.0
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 30,
+   "segment": "end",
+   "weight": 0.95,
+   "kind": "rook_tag",
+   "action": "He holds up his brass trail compass, turning it",
+   "camera": "Close",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 31,
+   "segment": "end",
+   "weight": 1.15,
+   "kind": "signoff",
+   "action": "He flips the compass and catches it. This case stays open",
+   "camera": "Low hero",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "boom",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "brand": true
+  }
+ ]
+}

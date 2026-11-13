@@ -116,7 +116,8 @@ def upload(cfg, ledger, only=None):
         fmt = e.get("format", "short")
         meta = dict(title=e["title"], description=description(e), tags=e.get("tags", []), category=cfg.get("category_id", 1),
                     synthetic=e.get("synthetic", False))
-        if review: meta["privacy"] = "private"
+        now_ = e.get("publish") == "now" and not review        # the owner asked for this one to go public as soon as it is ready
+        if review or now_: meta["privacy"] = "private"
         else: meta["publish_at"] = next_slot(cfg, ledger, fmt)
         try:
             res = yt.upload(mp4(e), meta, log=log)
@@ -125,6 +126,13 @@ def upload(cfg, ledger, only=None):
         except Exception as ex:
             log("  upload failed:", ex); failures.append(e["id"]); continue
         vid = res["id"]; extras = {}
+        if now_:
+            try:
+                st = yt.set_privacy(vid, "public"); res["status"]["privacyStatus"] = st.get("privacyStatus")
+                extras["released_at"] = now().strftime("%Y-%m-%dT%H:%M:%SZ"); extras["upload_status"] = st.get("uploadStatus")
+                log(f"  released now: privacy={st.get('privacyStatus')} uploadStatus={st.get('uploadStatus')} rejection={st.get('rejectionReason')}")
+            except Exception as ex:
+                extras["release_error"] = str(ex)[:300]; log("  release failed (video stays private):", ex)
         build = os.path.join(e["_dir"], "build")
         for name, path, fn in (("thumbnail", os.path.join(build, "thumbnail.jpg"), lambda p: yt.set_thumbnail(vid, p)),
                                ("captions", os.path.join(build, "captions.srt"), lambda p: yt.upload_captions(vid, p))):
