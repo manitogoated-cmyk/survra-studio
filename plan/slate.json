@@ -43,15 +43,15 @@
   {
    "case": 4,
    "day": 4,
-   "title": "A Whale Swallowed Him and Spat Him Out",
+   "title": "He Spent 30 Seconds Inside a Whale's Mouth",
    "subject": "Michael Packard",
    "year": 2021,
    "premise": "Lobster diver ends up inside a humpback's mouth off Cape Cod",
    "world": "Cape Cod seabed, inside the whale",
    "est_score": 85,
    "long_form_candidate": false,
-   "status": "in progress",
-   "facts": "verify with 2+ sources at authoring; skip if they do not hold"
+   "status": "authored",
+   "facts": "verified (see episodes/r004-packard/episode.json); he was held in the mouth, not swallowed, so the title changed"
   },
   {
    "case": 5,
