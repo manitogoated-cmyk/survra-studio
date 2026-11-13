@@ -1,13 +1,13 @@
 {
   "id": "r008-prosperi", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9,
   "segments": [
-    {"scene": "hook", "mood": "hook", "text": "A runner vanishes in a Sahara sandstorm. Nine days later he walks out alive, on bat blood."},
+    {"scene": "hook", "mood": "hook", "text": "A runner vanishes in a sandstorm in the Sahara. Nine days later he walks out alive, on bat blood."},
     {"scene": "doubt", "mood": "calm", "text": "No chance. Nobody lasts nine days out there. Let's go look."},
-    {"scene": "race", "mood": "action", "text": "April {1994|nineteen ninety-four}. Italian policeman Mauro Prosperi runs a six-day race across the Sahara. On day four, a sandstorm swallows the trail."},
+    {"scene": "race", "mood": "action", "text": "April {1994|nineteen ninety-four}. Mauro Prosperi, an Italian policeman, runs a six-day race across the Sahara. On day four, a sandstorm hits and the trail is gone."},
     {"scene": "lost", "mood": "tense", "text": "He keeps running. When it clears, nothing. A helicopter passes over. It never sees him."},
     {"scene": "shrine", "mood": "tense", "text": "He finds an abandoned shrine. Bats in the tower. He drinks their blood."},
     {"scene": "walk", "mood": "action", "text": "Then he walks toward far mountains, at dawn and dusk, eating lizards and beetles."},
-    {"scene": "found", "mood": "wonder", "text": "Day nine. Goat tracks. A shepherd girl. He is in Algeria, almost three hundred kilometres off course."},
+    {"scene": "found", "mood": "wonder", "text": "Day nine. Goat tracks. A shepherd girl. He is now in Algeria, almost three hundred kilometres off course."},
     {"scene": "end", "mood": "end", "text": "He went back and ran that race again. I was wrong. Case closed."}
   ]
 }

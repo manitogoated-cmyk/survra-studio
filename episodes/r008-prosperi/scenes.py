@@ -207,7 +207,7 @@ def id_card(cv, c):
     cv.restore()
     k3 = pop(c.lt, 0.6)
     if k3 > 0:
-        card(cv, 'PENTATHLETE', 720, 1290, 520, 160, -5, 62, k3)
+        card(cv, 'PENTATHLETE', 540, 1560, 560, 170, -4, 66, k3)
 
 
 def race_map(cv, c):
@@ -216,19 +216,19 @@ def race_map(cv, c):
     sun_icon(cv, 860, 300, 90, 0xFFFFF0C0, c.t)
     dune_band(cv, 1420, 50, h('C8743A'), 0.4)
     dune_band(cv, 1560, 40, h('A85A2E'), 2.0)
-    Wd.text_card(cv, '6 DAYS', 400, 330, 150, 0xFFFFFFFF, 0xFF000000)
+    Wd.text_card(cv, '6 DAYS', 360, 300, 140, 0xFFFFFFFF, 0xFF000000)
     hs = (260, 300, 290, 640, 330, 170)
     for i, hh in enumerate(hs):
         k = ease(c.k * 4.5 - i * 0.35)
         x = 110 + i * 150
         col = ORANGE if i == 3 else CREAM
-        cv.drawRoundRect(skia.Rect.MakeLTRB(x, 1250 - hh * k, x + 112, 1250), 12, 12, P(0xFF000000))
-        cv.drawRoundRect(skia.Rect.MakeLTRB(x + 8, 1258 - hh * k if hh * k > 16 else 1250, x + 104, 1242), 8, 8, P(col))
-        Wd.text_card(cv, str(i + 1), x + 56, 1330, 70, 0xFFFFFFFF, 0xFF000000)
+        cv.drawRoundRect(skia.Rect.MakeLTRB(x, 1150 - hh * k, x + 112, 1150), 12, 12, P(0xFF000000))
+        cv.drawRoundRect(skia.Rect.MakeLTRB(x + 8, 1158 - hh * k if hh * k > 16 else 1150, x + 104, 1142), 8, 8, P(col))
+        Wd.text_card(cv, str(i + 1), x + 56, 1228, 64, 0xFFFFFFFF, 0xFF000000)
     k2 = pop(c.lt, 0.62)
     if k2 > 0:
         cv.save()
-        cv.translate(616, 520)
+        cv.translate(616, 440)
         cv.scale(1.5 - 0.5 * k2, 1.5 - 0.5 * k2)
         Wd.text_card(cv, 'DAY 4', 0, 0, 96, AMBER, 0xFF000000)
         cv.restore()
@@ -250,10 +250,10 @@ def sun_arc(cv, c):
     dune_band(cv, 1090, 46, h('D89A52'), 0.9)
     dune_band(cv, 1230, 40, h('B8743A'), 2.4)
     mid = 1 - night
-    for x, lab, on in ((190, 'WALK', k < 0.3), (890, 'WALK', k > 0.7)):
+    for x, lab, on in ((240, 'WALK', k < 0.3), (840, 'WALK', k > 0.7)):
         cv.save()
-        cv.translate(x, 1330)
-        s = 1.25 if on else 1.0
+        cv.translate(x, 1570)
+        s = 1.15 if on else 1.0
         cv.scale(s, s)
         Wd.text_card(cv, lab, 0, 0, 96, AMBER if on else 0x88FFFFFF, 0xFF000000)
         cv.restore()
@@ -263,8 +263,8 @@ def sun_arc(cv, c):
     cv.scale(s, s)
     Wd.text_card(cv, 'HIDE', 0, 0, 110, 0xFFFFFFFF if mid > 0.5 else 0x77FFFFFF, 0xFF000000)
     cv.restore()
-    Wd.text_card(cv, 'DAWN', 190, 1440, 56, 0xDDFFFFFF, 0xFF000000)
-    Wd.text_card(cv, 'DUSK', 890, 1440, 56, 0xDDFFFFFF, 0xFF000000)
+    Wd.text_card(cv, 'DAWN', 240, 1670, 56, 0xDDFFFFFF, 0xFF000000)
+    Wd.text_card(cv, 'DUSK', 840, 1670, 56, 0xDDFFFFFF, 0xFF000000)
 
 
 def map_off(cv, c):
@@ -283,7 +283,7 @@ def map_off(cv, c):
             if i % 2 == 0:
                 cv.drawLine(lerp(p0[0], p1[0], i / 6), lerp(p0[1], p1[1], i / 6), lerp(p0[0], p1[0], (i + 1) / 6), lerp(p0[1], p1[1], (i + 1) / 6), P(BROWN, 8))
     Wd.text_card(cv, 'MOROCCO', 300, 330, 78, 0xAA4A2E1A, None)
-    Wd.text_card(cv, 'ALGERIA', 760, 1290, 78, 0xAA4A2E1A, None)
+    Wd.text_card(cv, 'ALGERIA', 330, 1230, 78, 0xAA4A2E1A, None)
     route = [(150, 520), (300, 600), (420, 520), (560, 430), (700, 330), (860, 250)]
     for p0, p1 in zip(route, route[1:]):
         cv.drawLine(p0[0], p0[1], p1[0], p1[1], P(TEAL, 12))

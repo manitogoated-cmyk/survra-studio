@@ -55,14 +55,14 @@ def aim(l, d):
 
 
 # ---------------------------------------------------------------- scenery pieces
-def dunes(r, n, clear, dmin=26, span=420, seed=0.0):
+def dunes(r, n, clear, dmin=26, span=420, seed=0.0, r0=14, rv=30, far=0.05):
     """Low crescent dunes scattered round the set origin. clear(x, y) -> True keeps that spot flat."""
     for i in range(n):
         a = i * 2.399 + seed
         d = dmin + (i * 37 % span)
         x, y = math.cos(a) * d, math.sin(a) * d
-        rad = 14 + (i * 7 % 30) + d * 0.05
-        if clear(x, y, rad):
+        rad = r0 + (i * 7 % rv) + d * far
+        if clear(x, y, rad * 1.9):
             continue
         add('ico_sphere', SAND[i % 4], (x, y, -rad * 0.05), rot=(0, 0, 0.5 * math.sin(i * 1.7)), scale=(1.0, 1.7, 0.2 + 0.05 * (i % 3)), radius=rad,
             subdivisions=2, parent=r)
@@ -95,6 +95,8 @@ def make_sky(low, mid, top, sun_col, sun_at, sun_r=38):
     add('cylinder', mid, (0, 0, 120), radius=905, depth=120, vertices=28, end_fill_type='NOTHING', parent=s, emit=1.0)
     add('cone', top, (0, 0, 330), radius1=910, radius2=40, depth=300, vertices=28, end_fill_type='NOTHING', parent=s, emit=1.0)
     add('ico_sphere', sun_col, sun_at, radius=sun_r, subdivisions=2, parent=s, emit=10)
+    for o in s.children:
+        o.visible_shadow = o.visible_diffuse = o.visible_glossy = False
     return s
 
 
@@ -170,15 +172,15 @@ def make_heli():
 
 def make_lizard():
     z = empty(FAR)
-    add('cube', '9A8A4A', (0, 0, 0.07), scale=(0.16, 0.5, 0.1), size=1, parent=z)
+    add('cube', '7AA050', (0, 0, 0.07), scale=(0.16, 0.5, 0.1), size=1, parent=z)
     head = empty((0, -0.27, 0.08), z)
-    add('cube', 'A89A54', (0, -0.1, 0.02), scale=(0.15, 0.22, 0.1), size=1, parent=head)
+    add('cube', '8AB45A', (0, -0.1, 0.02), scale=(0.15, 0.22, 0.1), size=1, parent=head)
     for s in (-1, 1):
         add('cube', '0E0D14', (s * 0.07, -0.13, 0.07), scale=(0.03, 0.04, 0.03), size=1, parent=head)
         for y in (-0.16, 0.16):
-            add('cube', '8A7A40', (s * 0.14, y, 0.03), rot=(0, 0, s * 0.5), scale=(0.2, 0.05, 0.04), size=1, parent=z)
+            add('cube', '6A9044', (s * 0.14, y, 0.03), rot=(0, 0, s * 0.5), scale=(0.2, 0.05, 0.04), size=1, parent=z)
     tail = empty((0, 0.25, 0.07), z)
-    add('cone', '8A7A40', (0, 0.3, 0), rot=(-PI / 2, 0, 0), radius1=0.07, radius2=0.0, depth=0.6, vertices=4, parent=tail)
+    add('cone', '6A9044', (0, 0.3, 0), rot=(-PI / 2, 0, 0), radius1=0.07, radius2=0.0, depth=0.6, vertices=4, parent=tail)
     return dict(root=z, head=head, tail=tail)
 
 
@@ -241,7 +243,8 @@ def veiled(skin, cloth):
 def set_erg(r):
     """The race course: a flat track between dunes, marker flags, the start arch (plain orange, no lettering)."""
     add('plane', 'D8A45A', (0, 0, 0), size=1900, parent=r)
-    dunes(r, 90, lambda x, y, rad: abs(x) < 16 + rad * 0.9 and -90 < y < 90)
+    dunes(r, 120, lambda x, y, m: abs(x) < 16 + m and -90 - m < y < 90 + m, span=520)
+    dunes(r, 60, lambda x, y, m: abs(x) < 12 + m and -90 - m < y < 90 + m, dmin=20, span=110, seed=0.7, r0=4, rv=6, far=0.0)
     ripples(r, 26, (60, 120))
     add('cube', 'CC9A52', (0, 0, 0.01), scale=(9, 400, 0.02), size=1, parent=r)
     for i in range(-6, 7):
@@ -261,8 +264,16 @@ def set_erg(r):
     return {}
 
 
+HY = 60
+
+
+def hero(A):
+    """Coordinates on the hero dune: the same as the set's, moved HY north, so (0, 16) is its top."""
+    return lambda x, y, z: A(x, y + HY, z)
+
+
 def hero_z(x, y):
-    """Height of the hero dune in the wild set (centre (0, 16), top about 4.2)."""
+    """Height of the hero dune (in hero() coordinates: centre (0, 16), top about 4.2)."""
     q = 1 - (x / 22.0) ** 2 - ((y - 16) / 26.0) ** 2
     return -0.3 + 4.5 * math.sqrt(q) if q > 0 else 0.0
 
@@ -270,8 +281,10 @@ def hero_z(x, y):
 def set_wild(r):
     """Open desert: where the storm hits and where he is lost. A hero dune north of the origin, mountains far beyond."""
     add('plane', 'D6A058', (0, 0, 0), size=1900, parent=r)
-    dunes(r, 110, lambda x, y, rad: (x * x + y * y) < (30 + rad) ** 2 or (abs(x) < 30 + rad and -10 < y < 60), dmin=40, span=460, seed=1.3)
-    add('ico_sphere', 'E2B06A', (0, 16, -0.3), scale=(22, 26, 4.5), radius=1, subdivisions=3, parent=r)
+    cl = lambda x, y, m: (x * x + y * y) < (16 + m) ** 2 or (abs(x) < 24 + m and -10 - m < y < 104 + m)
+    dunes(r, 130, cl, dmin=40, span=560, seed=1.3)
+    dunes(r, 70, cl, dmin=24, span=120, seed=0.4, r0=4, rv=7, far=0.0)
+    add('ico_sphere', 'E2B06A', (0, 16 + HY, -0.3), scale=(22, 26, 4.5), radius=1, subdivisions=3, parent=r)
     ripples(r, 34, (70, 30), 0.21)
     for i in range(7):
         add('ico_sphere', ('8A6A54', '7A5C4A')[i % 2], (-9 + i * 3.1 + math.sin(i * 2.2), -3.5 + 2.2 * math.cos(i * 1.7), 0.1), scale=(1, 1.3, 0.6),
@@ -283,7 +296,9 @@ def set_wild(r):
 def set_shrine(r):
     """The abandoned shrine: a whitewashed cube with a dome, a square tower beside it, a broken wall, a dead tree."""
     add('plane', 'D2A058', (0, 0, 0), size=1900, parent=r)
-    dunes(r, 90, lambda x, y, rad: (x * x + (y - 6) ** 2) < (30 + rad) ** 2, dmin=36, span=420, seed=2.6)
+    cl = lambda x, y, m: (x * x + (y - 2) ** 2) < (28 + m) ** 2
+    dunes(r, 120, cl, dmin=36, span=520, seed=2.6)
+    dunes(r, 60, cl, dmin=30, span=110, seed=0.9, r0=4, rv=7, far=0.0)
     ripples(r, 24, (60, 40), 0.47)
     b = empty((0, 12, 0), r)
     add('cube', 'E8DCC4', (0, 0, 2.3), scale=(7.4, 7.0, 4.6), size=1, parent=b)
@@ -340,7 +355,7 @@ def set_tower(r):
 def set_camp(r):
     """The nomad camp on a gravel plain: a low tent open to the south, rugs, palms by a waterhole, mountains beyond."""
     add('plane', 'C8A470', (0, 0, 0), size=1900, parent=r)
-    dunes(r, 60, lambda x, y, rad: (x * x + y * y) < (60 + rad) ** 2, dmin=70, span=400, seed=4.1)
+    dunes(r, 100, lambda x, y, m: (x * x + y * y) < (62 + m) ** 2, dmin=70, span=520, seed=4.1)
     for i in range(40):
         a, d = i * 2.399, 4 + (i * 13 % 34)
         add('ico_sphere', ('9A7E5A', '8A6E4E', 'B0946A')[i % 3], (math.cos(a) * d, math.sin(a) * d - 4, 0.05), scale=(1, 1.2, 0.5), radius=0.18 + 0.1 * (i % 3),
@@ -415,7 +430,7 @@ def build():
     add('cube', 'C8CCD8', (0, -0.31, 0.75), scale=(0.34, 0.03, 0.1), size=1, parent=e.body, rough=0.3)
     S['wall'] = empty(FAR)
     S['lumps'] = make_wall(S['wall'])
-    S['sand'] = [add('ico_sphere', ('F0CC8C', 'E0B470', 'FFE0A8')[i % 3], FAR, scale=(3.4, 0.5, 0.5), radius=0.09, subdivisions=1, emit=0.8) for i in range(90)]
+    S['sand'] = [add('ico_sphere', ('E8C080', 'D8A860', 'F0D098')[i % 3], FAR, scale=(6, 0.3, 0.3), radius=0.09, subdivisions=1, emit=0.12) for i in range(90)]
     S['dust'] = [add('ico_sphere', ('D8B078', 'C89C60')[i % 2], FAR, radius=0.5, subdivisions=1, emit=0.15) for i in range(14)]
     S['prints'] = [add('cylinder', '9A6E38', FAR, scale=(1, 1.9, 1), radius=0.13, depth=0.02, vertices=8) for _ in range(18)]
     S['fea'] = [add('cone', '2F2B4D', FAR, radius1=0.07, radius2=0.0, depth=0.34, vertices=4) for _ in range(9)]
@@ -465,13 +480,13 @@ def cam(S, pos, look, lens=50, roll=0.0):
     S['cam'].rotation_euler = (0, 0, roll)
 
 
-TOD = dict(   # sky rig, background, sun (energy, colour, direction), fill (energy, colour, direction)
-    day=('day', '5A9FE0', (4.6, 'FFF2D8', (-0.35, 0.55, -0.75)), (1.3, '9AC0FF', (0.6, 0.4, -0.5))),
-    dusk=('dusk', '3E3078', (3.4, 'FF9A50', (0.75, 0.55, -0.3)), (1.2, '7A6AE0', (-0.5, 0.6, -0.6))),
-    dawn=('dawn', '6478C4', (3.2, 'FFB890', (-0.75, 0.5, -0.3)), (1.1, '8AA0F0', (0.5, 0.6, -0.6))),
-    back=('dawn', '6478C4', (3.4, 'FFC090', (-0.5, -0.8, -0.22)), (1.5, '8AA0F0', (0.3, 0.8, -0.4))),
-    storm=(None, 'A87840', (1.5, 'FFB060', (-0.3, 0.5, -0.8)), (1.3, 'D09A58', (0.5, 0.5, -0.4))),
-    tower=(None, '07060C', (0.0, 'FFFFFF', (0, 0, -1)), (0.0, 'FFFFFF', (0, 0, -1))))
+TOD = dict(   # sky rig, ambient (colour, strength), sun (energy, colour, direction), fill (energy, colour, direction)
+    day=('day', ('C8C4C0', 0.75), (4.4, 'FFF2D8', (-0.35, 0.55, -0.75)), (0.9, 'B0C8FF', (0.6, 0.4, -0.5))),
+    dusk=('dusk', ('8A5A80', 0.55), (3.6, 'FF9A50', (0.75, 0.55, -0.3)), (1.0, '7A6AE0', (-0.5, 0.6, -0.6))),
+    dawn=('dawn', ('B098B8', 0.6), (3.4, 'FFB890', (-0.75, 0.5, -0.3)), (1.0, '8AA0F0', (0.5, 0.6, -0.6))),
+    back=('dawn', ('B098B8', 0.6), (3.6, 'FFC090', (-0.5, -0.8, -0.22)), (1.4, '8AA0F0', (0.3, 0.8, -0.4))),
+    storm=(None, ('A87840', 1.0), (1.5, 'FFB060', (-0.3, 0.5, -0.8)), (1.3, 'D09A58', (0.5, 0.5, -0.4))),
+    tower=(None, ('07060C', 1.0), (0.0, 'FFFFFF', (0, 0, -1)), (0.0, 'FFFFFF', (0, 0, -1))))
 
 
 def stage(S, name, tod='day', dim=0.0):
@@ -481,11 +496,11 @@ def stage(S, name, tod='day', dim=0.0):
     rig_, bg, sun, fill = TOD[tod]
     if dim > 0:
         st = TOD['storm']
-        bg = mixc(bg, st[1], dim)
+        bg = (mixc(bg[0], st[1][0], dim), lerp(bg[1], st[1][1], dim))
         sun = (lerp(sun[0], st[2][0], dim), mixc(sun[1], st[2][1], dim), sun[2])
-    if rig_ and dim < 0.99:
+    if rig_:
         S['skies'][rig_].location = ORG[name]
-    sky(S, bg, 1.0)
+    sky(S, *bg)
     for l, (e, c, d) in ((S['sun'], sun), (S['fill'], fill)):
         l.data.energy, l.data.color = e, K.hexc(c)[:3]
         aim(l, d)
@@ -520,7 +535,7 @@ def reset(S):
     for o in S['dust'] + S['fea'] + [S['flask'], S['mflag'], S['rock'], S['bowl'], S['glass'], S['wall'], S['heli']['root'], S['lizard']['root'], S['beetle']['root']]:
         o.scale = (1, 1, 1)
     for o in S['sand']:
-        o.scale = (3.4, 0.5, 0.5)
+        o.scale = (6, 0.3, 0.3)
     for o in S['prints']:
         o.scale = (1, 1.9, 1)
     for b in S['bats']:
@@ -597,7 +612,7 @@ def sandblast(S, org, t, n=70, box=(26, 12, 8), speed=60, rise=0.12, size=1.0):
                       org[2] + ((i * 0.37) % 1) * box[2] + rise * u * box[0] * math.sin(i))
         b.rotation_euler = (0, 0.1 * math.sin(i * 2.0), 0)
         s = size * (0.6 + ((i * 0.41) % 1))
-        b.scale = (3.4 * s, 0.5 * s, 0.5 * s)
+        b.scale = (6 * s, 0.3 * s, 0.3 * s)
 
 
 def puffs(S, org, t, n=8, spread=1.6, grow=1.0, back=(0, 1, 0)):
@@ -674,26 +689,27 @@ def storm_hit(S, k, t, lt):
 def vanish(S, k, t, lt):
     """From above: the brown-out closes over him and he is gone."""
     A = stage(S, 'wild', 'storm')
-    wall(S, A(0, lerp(30, 5, ease(k)), -6), t)
+    wall(S, A(0, lerp(52, 30, ease(k)), -6), t)
     S['man'].place(A(0.2 * math.sin(t * 5), -1.0 - 1.2 * k, 0), 0.5 * math.sin(t * 2.0))
     S['man'].apply(blend(run(t, 1.6, 0.42, 0.6), P('stand', aL=(1.7, -0.5, 1.9, 0.6), aR=(1.2, 0.5, 1.2), lean=0.5, lift=-0.2, lL=(0.5, 0.7), lR=(-0.3, 0.6), head=(0.4, 0)), 0.6))
     S['face']['man'] = 'closed'
     sandblast(S, A(0, -1, 0.3), t, 90, (30, 16, 6), 85, 0.05, 1.4)
     footprints(S, A, [(0.25 * (-1) ** i, 0.6 + i * 1.1, 0, 0.1) for i in range(8)], 1 - k)
-    lamp(S, A, (0, -1, 1.5), (4, -4, 5), (-3, -6, 6), 1400, 1200)
+    lamp(S, A, (0, -1, 1.5), (4, -4, 5), (-3, -6, 6), 900, 300)
     cam(S, A(lerp(1.5, 0.5, k), lerp(-10.5, -8.5, k), lerp(8.5, 10.5, k)), A(0, lerp(1.5, 0.5, k), 1.2), 26, 0.12 * math.sin(t * 2.2))
 
 
 def walk_out(S, k, t, lt):
     """Nine days later: a thin figure comes over the crest against the dawn."""
-    A = stage(S, 'wild', 'back')
-    y = lerp(15.5, 12.0, k)
+    A = hero(stage(S, 'wild', 'back'))
+    y = lerp(19.0, 15.5, k)
     S['man'].place(A(0.4, y, hero_z(0.4, y)), 0.1 * math.sin(t * 1.6), 0.0, 0.06 * math.sin(t * 2.0))
     S['man'].apply(trudge(t, 1.0))
     S['gaunt'], S['pack_on'], S['face']['man'] = True, False, 'tired'
     footprints(S, A, [(0.4 + 0.22 * (-1) ** i, y + 0.7 + i * 0.9, hero_z(0.4, y + 0.7 + i * 0.9), 0.0) for i in range(6)])
-    lamp(S, A, (0.4, y, 5.5), (-3, y - 3.5, 6.5), (3.5, y - 7, 3.5), 1500, 1700)
-    cam(S, A(lerp(-2.6, -2.0, k), lerp(3.6, 4.2, k), 2.2), A(0.4, y, hero_z(0.4, y) + lerp(2.6, 2.2, k)), 38)
+    lamp(S, A, (0.4, y, 6.0), (-3, y - 3.5, 7.5), (3.0, y - 7, 5.5), 1500, 1900)
+    cz = hero_z(-2.2, 6.0) + 0.5
+    cam(S, A(lerp(-2.6, -2.0, k), lerp(5.6, 6.4, k), cz), A(0.4, y, hero_z(0.4, y) + lerp(2.5, 2.1, k)), 40)
 
 
 def rook_bat(S, k, t, lt):
@@ -747,7 +763,7 @@ def race_wide(S, k, t, lt):
         d = S['dust'][i]
         d.location = A((-1.2, 1.0, -0.6, 1.6)[j] + 0.6 * math.sin(i * 2.0), lead + (0, 7, 15, 26)[j] + 0.6 + 3.5 * u, 0.2 + 0.7 * u)
         d.scale = (0.4 + 1.2 * u,) * 3
-    cam(S, A(lerp(11, 9.5, k), lerp(-46, -43, k), lerp(6.5, 5.5, k)), A(0, lead + 12, 2.0), 30)
+    cam(S, A(lerp(7, 6, k), lerp(-44, -42, k), lerp(4.6, 3.8, k)), A(0, lead + 9, 2.2), 30)
 
 
 def run_close(S, k, t, lt):
@@ -757,13 +773,13 @@ def run_close(S, k, t, lt):
     S['man'].place(A(-0.5, y, 0), 0.0)
     S['man'].apply(run(t, 2.5))
     S['face']['man'] = 'calm'
-    S['rook'].place(A(1.5, y + 1.7, 0), 0.0)
+    S['rook'].place(A(1.9, y + 0.9, 0), 0.0)
     S['rook'].apply(run(t + 0.2, 2.9, 0.34) | dict(aR=(0.2, 1.9, 1.6, -1.5), head=(0.0, 0.25)))
     S['face']['rook'] = 'shocked'
-    puffs(S, A(0.4, y + 1.2, 0), t, 10, 2.2)
-    feathers(S, A(1.5, y + 3, 2.2), t, 3)
+    puffs(S, A(0.6, y + 1.6, 0), t, 10, 2.2)
+    feathers(S, A(1.9, y + 2.2, 2.2), t, 3)
     lamp(S, A, (0, y, 2), (4.5, y + 3, 3.5), None, 900)
-    cam(S, A(-4.6, y - 5.4, 1.5), A(0.4, y + 0.6, 2.2), 30)
+    cam(S, A(-2.6, y - 7.6, 1.3), A(0.7, y + 0.4, 2.2), 30)
 
 
 def rook_jog(S, k, t, lt):
@@ -786,7 +802,8 @@ def rook_jog(S, k, t, lt):
 def wall_come(S, k, t, lt):
     """Day four: the horizon stands up and comes at him."""
     A = stage(S, 'wild', 'day', 0.35 * k)
-    wall(S, A(0, lerp(150, 105, k), 0), t)
+    wall(S, A(0, lerp(110, 72, k), 0), t)
+    S['wall'].scale = (1.3, 1, 1.5)
     x = lerp(-5, 2, k)
     S['man'].place(A(x, -2, 0), PI / 2 - 0.1)
     S['man'].apply(blend(run(t, 2.4), P('stand', head=(-0.15, 0.9), aR=(0.9, 0.2, 1.4), lean=0.05), ease((k - 0.45) * 3)))
@@ -794,7 +811,7 @@ def wall_come(S, k, t, lt):
     S['mflag'].location = A(6.5, -1.2, 0)
     S['mflag'].rotation_euler = (0, 0.12 * math.sin(t * 9), 0.2)
     sandblast(S, A(0, 6, 0.2), t, 24, (50, 20, 4), 40, 0.02, 1.3)
-    cam(S, A(lerp(-3, -1.5, k), -17, 1.6), A(0.5, 40, lerp(13, 15, k)), 24)
+    cam(S, A(lerp(-3, -1.5, k), -15, 1.4), A(0.5, 30, lerp(11, 13, k)), 24)
 
 
 def rook_sand(S, k, t, lt):
@@ -840,7 +857,7 @@ def run_blind(S, k, t, lt):
 
 def clear_empty(S, k, t, lt):
     """When it clears: one man and one crow on a dune, and nothing else to the horizon."""
-    A = stage(S, 'wild', 'dusk')
+    A = hero(stage(S, 'wild', 'dusk'))
     z = hero_z(0, 16)
     S['man'].place(A(-1.1, 16, z), lerp(0.9, -1.0, ease(k)))
     S['man'].apply(P('stand', aR=(1.9, 0.9, 2.2, -1.0), head=(-0.05, 0.3 * math.sin(t * 2.4))))
@@ -849,12 +866,12 @@ def clear_empty(S, k, t, lt):
     S['rook'].apply(blend(P('stand', head=(0, 0.9)), P('shrug', head=(-0.05, -0.3)), ease((k - 0.3) * 2.5)))
     S['face']['rook'] = 'deadpan'
     lamp(S, A, (0, 16, z + 2), (5, 19, z + 4), (-3, 9, z + 3), 1300, 500)
-    cam(S, A(lerp(4.5, 6.5, k), lerp(4.0, 1.0, k), lerp(z + 2.4, z + 5.5, k)), A(0, 16, z + 2.0), 26)
+    cam(S, A(lerp(4.5, 6.5, k), lerp(4.0, 1.0, k), lerp(z + 2.4, z + 5.5, k)), A(0, 16, z + 2.2), 36)
 
 
 def heli_pass(S, k, t, lt):
     """A search helicopter passes right over him."""
-    A = stage(S, 'wild', 'dusk')
+    A = hero(stage(S, 'wild', 'dusk'))
     z = hero_z(0, 16)
     S['man'].place(A(0, 16, z), PI + 0.5 - 1.0 * k)
     wv = math.sin(t * 13)
@@ -866,7 +883,7 @@ def heli_pass(S, k, t, lt):
 
 def flare_up(S, k, t, lt):
     """He fires his flare. The helicopter does not turn."""
-    A = stage(S, 'wild', 'dusk')
+    A = hero(stage(S, 'wild', 'dusk'))
     z = hero_z(0, 16)
     S['man'].place(A(0, 16, z), 2.1)
     S['man'].apply(P('reach', aR=(2.95, 0.1, 0.05), aL=(0.3, 0.5, 0.4), head=(-0.45, 0.2)))
@@ -879,7 +896,7 @@ def flare_up(S, k, t, lt):
         u = i / 10
         d = S['dust'][i]
         d.location = A(0.5 + 1.6 * e * u + 0.25 * math.sin(i * 2 + t * 4), 16.2, z + 3.6 + (fz - z - 3.6) * u)
-        d.scale = (0.3 + 0.5 * (1 - u),) * 3
+        d.scale = (0.16 + 0.3 * (1 - u),) * 3
     heli(S, A(lerp(26, 44, k), lerp(52, 70, k), z + 13), -PI / 2 - 0.5, t)
     lamp(S, A, (0, 16, z + 2), (-4, 18, z + 3), (2, 9, z + 2), 900, 500)
     cam(S, A(lerp(-5.5, -5.0, k), 7.6, z + 0.9), A(1.2, 17, z + lerp(4.6, 8.0, e)), 22)
@@ -887,7 +904,7 @@ def flare_up(S, k, t, lt):
 
 def rook_wave(S, k, t, lt):
     """Rook jumps and flaps at the shrinking helicopter, then gives up."""
-    A = stage(S, 'wild', 'dusk')
+    A = hero(stage(S, 'wild', 'dusk'))
     z = hero_z(0, 16)
     g = ease((k - 0.55) * 3.5)
     wv = math.sin(t * 15)
@@ -905,15 +922,15 @@ def rook_wave(S, k, t, lt):
 def shrine_wide(S, k, t, lt):
     """At sunset, a small white shrine with a tower, and nobody home."""
     A = stage(S, 'shrine', 'dusk')
-    y = lerp(-3.5, -1.2, k)
-    S['man'].place(A(-1.6, y, 0), PI + 0.15)
+    y = lerp(-1.5, 1.0, k)
+    S['man'].place(A(-1.2, y, 0), PI + 0.15)
     S['man'].apply(trudge(t, 1.1, 0.3))
-    S['rook'].place(A(1.7, -5.2, 0), PI + 0.5)
-    S['rook'].apply(P('point', aR=(1.5, -0.15, 0.05), head=(-0.1, 0.1)))
+    S['rook'].place(A(2.3, -2.6, 0), PI + 0.75)
+    S['rook'].apply(P('point', aR=(1.5, -0.15, 0.05), head=(-0.1, -0.9)))
     S['face']['rook'] = 'calm'
-    footprints(S, A, [(-1.6 + 0.2 * (-1) ** i, y - 0.7 - i * 0.9, 0, 0.0) for i in range(7)])
-    lamp(S, A, (0, -3, 2.2), (6, -5, 4), (-5, -10, 4), 1400, 900)
-    cam(S, A(lerp(3.6, 3.0, k), lerp(-13.5, -12.2, k), 1.5), A(-1.0, 6, 4.4), 26)
+    footprints(S, A, [(-1.2 + 0.2 * (-1) ** i, y - 0.7 - i * 0.9, 0, 0.0) for i in range(7)])
+    lamp(S, A, (1, -1, 2.2), (7, -2, 4), (-3, -8, 4), 1400, 900)
+    cam(S, A(lerp(1.6, 1.2, k), lerp(-10.5, -9.4, k), 1.3), A(-0.4, 6, 4.6), 26)
 
 
 def bats_up(S, k, t, lt):
@@ -933,14 +950,14 @@ def bat_grab(S, k, t, lt):
     """A hand closes round one of them."""
     A = stage(S, 'tower', 'tower')
     g = ease(k * 1.7)
-    hz = lerp(4.2, 5.52, g)
-    S['hand'].place(A(0.05, 0.72, hz), (-PI / 2 + 0.12, 0.25, 0.1))
-    S['hand'].root.scale = (2.0, 2.0, 2.0)
-    S['hand'].grip(lerp(0.05, 0.7, ease((k - 0.5) * 3)))
+    hz = lerp(4.4, 5.55, g)
+    S['hand'].place(A(0.05, 0.7, hz), (-PI / 2 + 0.12, 0.25, 0.1))
+    S['hand'].root.scale = (1.5, 1.5, 1.5)
+    S['hand'].grip(lerp(0.45, 0.95, ease((k - 0.45) * 3)))
     for i in range(5):
         fl = (t * 34) if i == 2 and k > 0.5 else ((t * 20 + i) if i in (1, 3) and k > 0.55 else None)
         bat(S, i, A(-1.5 + i * 0.75, 0.9, 6.0), fl, 0.3 * math.sin(i * 2.3), s=1.25)
-    lamp(S, A, (0, 0.9, 5.6), (2.5, -1.5, 5.0), (-1.5, -3, 4.2), 500, 420)
+    lamp(S, A, (0, 0.9, 5.6), (2.5, -1.5, 5.0), (-1.5, -3, 4.2), 300, 160)
     cam(S, A(lerp(1.3, 1.0, k), lerp(-3.2, -2.7, k), 4.3), A(0, 0.9, 5.5), 36, 0.03 * math.sin(t * 9))
 
 
@@ -950,7 +967,7 @@ def rook_gag(S, k, t, lt):
     S['rook'].place(A(0.5, -0.4, 0), 0.5)
     S['rook'].apply(P('stand', aR=(1.25, -0.35, 2.3, 0.9), aL=(0.2, 0.3, 0.4), head=(0.22, -0.55 - 0.1 * ease(k * 2)), lean=0.1))
     S['face']['rook'] = 'sick'
-    S['man'].place(A(-1.7, 2.3, 0), PI - 0.5)
+    S['man'].place(A(-1.5, 2.0, 0), PI - 0.5)
     S['man'].apply(P('sit', head=(-0.45, 0), aL=(1.5, 0.2, 2.2), aR=(1.5, 0.2, 2.2), lean=0.1))
     S['pack_on'] = False
     for i in range(1, 5):
@@ -964,34 +981,34 @@ def rook_gag(S, k, t, lt):
 def to_mountains(S, k, t, lt):
     """He leaves the shrine behind and walks for the mountains on the horizon."""
     A = stage(S, 'shrine', 'dawn')
-    y = lerp(-13, -16.5, k)
-    S['man'].place(A(4.0, y, 0), -0.25)
+    y = lerp(-3.0, 0.5, k)
+    S['man'].place(A(9.0, y, 0), PI - 0.1)
     S['man'].apply(trudge(t, 1.15, 0.22) | dict(head=(0.1, 0.0)))
     S['gaunt'], S['face']['man'] = True, 'tired'
-    footprints(S, A, [(4.0 + 0.25 * (i + 1) + 0.2 * (-1) ** i, y + 0.8 + i * 0.95, 0, -0.25) for i in range(9)])
-    lamp(S, A, (4, y, 2.2), (0, y - 3, 3.5), (7, y - 6, 3), 1200, 700)
-    cam(S, A(lerp(1.0, 0.4, k), lerp(-24.5, -25.5, k), 1.3), A(4.6, y + 6, 3.4), 30)
+    footprints(S, A, [(9.0 - 0.1 * i + 0.2 * (-1) ** i, y - 0.8 - i * 0.95, 0, 0.1) for i in range(9)])
+    lamp(S, A, (9, y, 2.2), (13, y - 2, 3.5), (6, y - 6, 3), 1200, 900)
+    cam(S, A(lerp(7.4, 7.8, k), lerp(-11.5, -10.5, k), 1.2), A(8.0, y + 8, 3.6), 30)
 
 
 def lizard(S, k, t, lt):
     """Rook, nose to nose with a lizard on a rock. A hand comes in and takes it."""
     A = stage(S, 'wild', 'day')
-    S['rock'].location = A(0.9, -24, 0)
+    S['rock'].location = A(0.9, -7, 0)
     g = ease((k - 0.55) * 4)
     lz = S['lizard']
-    lz['root'].location = A(0.75, -24.1, 0.82 + 1.4 * g)
+    lz['root'].location = A(0.75, -7.1, 0.82 + 1.4 * g)
     lz['root'].rotation_euler = (0.5 * g, 0, PI / 2 + 0.2)
     lz['root'].scale = (2.2, 2.2, 2.2)
     lz['head'].rotation_euler = (0, 0, 0.5 * math.sin(t * 7))
     lz['tail'].rotation_euler = (0, 0, 0.6 * math.sin(t * 9 + 1))
-    S['rook'].place(A(-1.25, -24, 0), PI / 2 - 0.25)
+    S['rook'].place(A(-1.25, -7, 0), PI / 2 - 0.25)
     S['rook'].apply(P('hips', lean=0.62, lift=-0.5, lL=(1.3, 1.9), lR=(1.3, 1.9), head=(-0.35 - 0.3 * g, 0.2)))
     S['face']['rook'] = 'smirk' if g < 0.4 else 'shocked'
-    S['hand'].place(A(lerp(4.6, 1.3, ease(k * 2.2)), -24.15, lerp(1.9, 1.05, ease(k * 2.2)) + 1.4 * g), (0.0, -0.3, -PI / 2))
+    S['hand'].place(A(lerp(4.6, 1.3, ease(k * 2.2)), -7.15, lerp(1.9, 1.05, ease(k * 2.2)) + 1.4 * g), (0.0, -0.3, -PI / 2))
     S['hand'].root.scale = (2.2, 2.2, 2.2)
     S['hand'].grip(lerp(0.0, 0.75, g + ease((k - 0.45) * 5) * 0.6))
-    lamp(S, A, (0, -24, 1.4), (3.5, -22, 3), None, 900)
-    cam(S, A(lerp(0.4, 0.1, k), lerp(-29.4, -28.8, k), 1.0), A(-0.05, -24, 1.55), 34)
+    lamp(S, A, (0, -7, 1.4), (3.5, -5, 3), None, 900)
+    cam(S, A(lerp(0.4, 0.1, k), lerp(-12.4, -11.8, k), 1.0), A(-0.05, -7, 1.55), 34)
 
 
 def beetle(S, k, t, lt):
@@ -999,19 +1016,19 @@ def beetle(S, k, t, lt):
     A = stage(S, 'wild', 'day')
     b = S['beetle']
     bx = lerp(-0.7, 0.25, k)
-    b['root'].location, b['root'].rotation_euler, b['root'].scale = A(bx, -30, 0.0), (0, 0, PI / 2), (2.4, 2.4, 2.4)
+    b['root'].location, b['root'].rotation_euler, b['root'].scale = A(bx + 9, -8, 0.0), (0, 0, PI / 2), (2.4, 2.4, 2.4)
     for i, l in enumerate(b['legs']):
         l.rotation_euler = (0, 0, 0.5 * math.sin(t * 30 + i * 2.1))
-    footprints(S, A, [(bx - 0.5 - i * 0.42, -30 + 0.1 * (-1) ** i, 0, PI / 2) for i in range(8)], 1.0, 0.22)
-    S['man'].place(A(lerp(-2.6, -1.5, k), -28.6, 0), PI / 2 - 0.2)
+    footprints(S, A, [(bx + 9 - 0.5 - i * 0.42, -8 + 0.1 * (-1) ** i, 0, PI / 2) for i in range(8)], 1.0, 0.22)
+    S['man'].place(A(lerp(7.4, 8.4, k), -7.25, 0), PI / 2 - 0.2)
     S['man'].apply(trudge(t, 1.2, 0.25))
     S['gaunt'] = True
     g = ease((k - 0.5) * 3)
-    S['hand'].place(A(lerp(2.6, 0.75, g), -30.05, lerp(1.4, 0.5, g)), (0.5, -0.5, -PI / 2))
+    S['hand'].place(A(lerp(11.6, 9.75, g), -8.05, lerp(1.4, 0.5, g)), (0.5, -0.5, -PI / 2))
     S['hand'].root.scale = (1.7, 1.7, 1.7)
     S['hand'].grip(0.25)
-    lamp(S, A, (0, -30, 0.3), (2.5, -28, 2), None, 600)
-    cam(S, A(lerp(0.5, 0.2, k), -32.6, 0.42), A(-0.1, -29.6, 0.5), 30)
+    lamp(S, A, (9, -8, 0.3), (11.5, -6, 2), None, 600)
+    cam(S, A(lerp(9.5, 9.2, k), -10.6, 0.42), A(8.9, -7.6, 0.5), 30)
 
 
 # ---------------------------------------------------------------- shots: found
@@ -1025,7 +1042,7 @@ def tracks(S, k, t, lt):
     footprints(S, A, pts, 1.0, 0.45)
     d = ease(k * 1.8)
     S['man'].place(A(-53.3, -29.6, 0), PI / 2 + 0.5)
-    S['man'].apply(blend(trudge(t, 1.0), P('stand', lean=0.75, lift=-0.62, lL=(0.55, 2.2), lR=(0.75, 2.3), aR=(1.35, -0.1, 0.25), aL=(0.3, 0.3, 0.6), head=(0.1, 0.0)), d))
+    S['man'].apply(blend(trudge(t, 1.0), P('stand', lean=0.45, lift=-0.58, lL=(0.35, 2.0), lR=(0.5, 2.1), aR=(0.95, -0.1, 0.2), aL=(0.3, 0.3, 0.6), head=(0.3, 0.0)), d))
     S['gaunt'], S['pack_on'], S['face']['man'] = True, False, 'shock'
     lamp(S, A, (-52.6, -30, 1), (-49, -27, 3), (-55, -34, 3), 1200, 800)
     cam(S, A(lerp(-51.2, -51.5, k), lerp(-34.6, -34.0, k), 0.5), A(-52.6, -29.8, lerp(1.0, 1.25, k)), 30)
@@ -1052,19 +1069,19 @@ def girl(S, k, t, lt):
     """A girl minding the herd sees the stranger come out of the desert."""
     A = stage(S, 'camp', 'dawn')
     back = ease((k - 0.45) * 3)
-    S['girl'].place(A(-21.2 - 0.5 * back, -12.0 - 0.3 * back, 0), -PI / 2 + 0.75)
+    S['girl'].place(A(-20.0 - 0.5 * back, -13.6 - 0.3 * back, 0), -PI / 2 + 0.75)
     S['girl'].apply(blend(P('stand', aR=(0.9, 0.25, 0.9), head=(0, -0.35)), P('stand', aR=(1.0, 0.3, 1.0), aL=(0.7, 0.6, 1.6), lean=-0.12, head=(-0.05, -0.5), lL=(0.3, 0.1), lR=(-0.3, 0.1)), back))
     S['face']['girl'] = 'shock' if back > 0.3 else 'calm'
     mx = lerp(-12.5, -14.2, k)
     S['man'].place(A(mx, -9.5, 0), PI / 2 + PI - 0.25)
     S['man'].apply(trudge(t, 0.9, 0.34) | dict(aR=(1.2, 0.3, 0.5)))
     S['gaunt'], S['pack_on'], S['face']['man'] = True, False, 'tired'
-    goat(S, 0, A(-19.2, -13.2, 0), 2.4, 0.8 + 0.1 * math.sin(t * 6))
-    goat(S, 1, A(-22.9, -10.2, 0), -1.4, -0.3)
+    goat(S, 0, A(-17.2, -14.6, 0), 2.4, 0.8 + 0.1 * math.sin(t * 6))
+    goat(S, 1, A(-21.9, -9.2, 0), -1.4, -0.3)
     goat(S, 3, A(-17.6, -8.2, 0), 1.2, -0.4 + 0.3 * ease(k * 2))
     goat(S, 4, A(-15.5, -12.6, 0), 1.9, 0.85)
     lamp(S, A, (-19, -11.5, 1.6), (-16, -8, 3.5), (-22.5, -16.5, 2.5), 1300, 1000)
-    cam(S, A(lerp(-22.6, -22.2, k), lerp(-17.6, -17.0, k), 1.25), A(-18.2, -11.0, 1.5), 32)
+    cam(S, A(lerp(-22.0, -21.6, k), lerp(-19.0, -18.4, k), 1.2), A(-17.6, -11.4, 1.5), 32)
 
 
 def tent(S, k, t, lt):
@@ -1076,15 +1093,15 @@ def tent(S, k, t, lt):
     S['gaunt'], S['pack_on'], S['face']['man'] = True, False, 'tired' if sip > 0.5 else 'calm'
     S['bowl'].location = A(-0.42, 7.3 - 0.05 * sip, 1.42 + 0.42 * sip)
     S['bowl'].scale = (1.25, 1.25, 1.25)
-    S['elder'].place(A(-2.5, 8.3, 0.05), -0.75)
+    S['elder'].place(A(-2.1, 8.3, 0.05), -0.75)
     S['elder'].apply(P('sit', aR=(0.9, 0.1, 0.7), aL=(0.6, 0.0, 1.4, 0.8), head=(0.1, -0.2), lean=0.2))
-    S['girl'].place(A(-3.6, 9.6, 0), -0.6)
+    S['girl'].place(A(-2.9, 9.6, 0), -0.6)
     S['girl'].apply(P('stand', head=(0.1, -0.3), aL=(0.3, 0.2, 1.2, 0.8)))
-    S['rook'].place(A(2.0, 7.7, 0.05), 0.6)
+    S['rook'].place(A(1.45, 7.7, 0.05), 0.6)
     tip = math.sin(PI * ease((lt - 0.25) / 0.9)) if lt > 0.25 else 0
     S['rook'].apply(P('sit', aR=(1.25 + 0.3 * tip, 0.25, 1.2), aL=(0.7, -0.1, 1.5, 1.0), head=(0.1, 0.55), lean=0.1))
     S['hat_tip'], S['face']['rook'] = tip * 0.6, 'warm'
-    S['glass'].location = A(1.42 + 0.04 * tip, 6.92 - 0.05 * tip, 1.42 + 0.34 * tip)
+    S['glass'].location = A(0.87 + 0.04 * tip, 6.92 - 0.05 * tip, 1.42 + 0.34 * tip)
     S['glass'].scale = (1.3, 1.3, 1.3)
     goat(S, 2, A(4.9, 4.2, 0), 1.1, 0.2 + 0.2 * math.sin(t * 5))
     lamp(S, A, (0, 7.8, 1.5), (4.5, 5, 3), (-2, 2.5, 2.6), 1200, 1500)
@@ -1103,32 +1120,32 @@ def run_again(S, k, t, lt):
         e.place(A((2.6, -3.2, 0.9)[i], y + (7, 10.5, 15)[i], 0), 0.0)
         e.apply(run(t + 0.3 * i, 2.3))
     tip = math.sin(PI * ease((lt - 0.2) / 0.9)) if lt > 0.2 else 0
-    S['rook'].place(A(2.9, -0.4, 0), 0.75)
+    S['rook'].place(A(2.0, 0.6, 0), 0.75)
     S['rook'].apply(blend(P('stand', head=(0, -0.55)), P('hat', head=(0.15, -0.6 + 0.5 * k)), tip))
     S['hat_tip'], S['face']['rook'] = tip, 'warm'
     puffs(S, A(-0.9, y + 0.8, 0), t, 8, 1.2)
-    lamp(S, A, (0.8, 1, 2.2), (6, 3, 4), None, 1000)
+    lamp(S, A, (1.6, 0.6, 2.2), (6, 2, 4), (1, -5, 2.5), 1000, 900)
     cam(S, A(lerp(-0.6, -0.2, k), lerp(-7.6, -6.8, k), 0.9), A(0.9, 2.0, 2.5), 28)
 
 
 def signoff(S, k, t, lt):
     """He flips the runner's steel flask, catches it. Case closed."""
     A = stage(S, 'erg', 'dusk')
-    S['rook'].place(A(0, -70, 0), 0.15)
+    S['rook'].place(A(0, -14, 0), 0.15)
     tip = math.sin(PI * ease(lt / 0.8)) if lt < 0.8 else 0
     S['rook'].apply(blend(P('stand', aL=(0.9, 0.25, 1.2), head=(0.05, 0)), P('hat', aL=(0.9, 0.25, 1.2), head=(0.22, 0)), tip))
     S['hat_tip'], S['face']['rook'] = tip, 'smirk'
     c = max(0.0, min(1.0, (lt - 0.25) / 0.9))
-    S['flask'].location = A(-0.75 - 0.2 * c, -70.75, 1.75 + 2.5 * math.sin(c * PI))
+    S['flask'].location = A(-0.75 - 0.2 * c, -14.75, 1.75 + 2.5 * math.sin(c * PI))
     S['flask'].rotation_euler = (t * 13, t * 5, 0)
     S['flask'].scale = (1.5, 1.5, 1.5)
-    lamp(S, A, (0, -70, 2.2), (4, -67, 4), (-3, -76, 3), 1300, 700)
-    cam(S, A(lerp(1.1, 0.8, k), lerp(-76.4, -75.2, k), 1.0), A(0, -70, 2.05), 38)
+    lamp(S, A, (0, -14, 2.2), (4, -11, 4), (-3, -20, 3), 1300, 700)
+    cam(S, A(lerp(1.1, 0.8, k), lerp(-20.4, -19.2, k), 1.0), A(0, -14, 2.05), 38)
 
 
 # ---------------------------------------------------------------- photographs for the case board
 def photo_desert(S, k, t, lt):
-    A = stage(S, 'wild', 'day')
+    A = hero(stage(S, 'wild', 'day'))
     S['man'].place(A(3, 30, hero_z(3, 30)), PI + 0.4)
     S['man'].apply(trudge(0.3))
     footprints(S, A, [(3 - 0.5 * i + 0.2 * (-1) ** i, 29 - i * 1.0, hero_z(3 - 0.5 * i, 29 - i * 1.0), 0.4) for i in range(16)], 1.0, 1.5)

@@ -104,8 +104,8 @@
    "world": "dunes, abandoned shrine",
    "est_score": 82,
    "long_form_candidate": true,
-   "status": "in progress",
-   "facts": "verify with 2+ sources at authoring; skip if they do not hold",
+   "status": "authored",
+   "facts": "verified (see episodes/r008-prosperi/episode.json); account disputed by the race founder, noted in the description",
    "claimed_at": "2026-11-13T18:20:06Z"
   },
   {
