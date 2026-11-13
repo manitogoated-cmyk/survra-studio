@@ -2,7 +2,7 @@
   "f001-trail-suitcase": {
     "captions": "ok",
     "format": "short",
-    "playlist": "failed: POST https://www.googleapis.com/youtube/v3/playlistItems -> 409: {\n  \"error\": {\n    \"code\": 409,\n    \"message\": \"The operation was aborted.\",\n    \"errors\": [\n  ",
+    "playlist": "Rook's Reddit Files (Shorts)",
     "privacy": "public",
     "publish_at": null,
     "released_at": "2026-11-13T05:32:58Z",
