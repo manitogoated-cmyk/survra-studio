@@ -1,7 +1,7 @@
 {
  "id": "r005-vulovic-long",
  "format": "long",
- "status": "draft",
+ "status": "approved",
  "synthetic": false,
  "host": "rook",
  "case": 5,
@@ -66,5 +66,8 @@
   "https://inquirer.com/philly/obituaries/20161226_Vesna_Vulovic___Crash_sole_survivor__66.html"
  ],
  "case_of": "r005-vulovic",
- "claimed_at": "2026-11-13T21:54:11Z"
+ "claimed_at": "2026-11-13T21:54:11Z",
+ "quality_gate": {
+  "method": "3D contact sheet (16:9) reviewed in three rounds, with re-renders of every changed shot; composited stills (inserts, overlays, captions, HUD) and the 1280x720 thumbnail reviewed; then a full-length low-resolution rehearsal (384x216, 4 samples) composited with sound and reviewed at one frame every 1.1 s. The rehearsal passed the automated gate locally: 93 shots, mean 2.19 s, longest 3.11 s, loudness -15.0 LUFS, voice 13.2 dB over the bed, host in 49/93 shots (53%), closest match to an earlier episode 0.76. After the first rehearsal two cuts between similar shots left the static-stretch check with almost no margin (0.80 against 0.8), so ten cuts were given whip or flash transitions and two shots more camera travel; the second rehearsal has no 3.5 s window without a detected cut. Audio was measured, not listened to. The full-resolution render and the final gate run in the cloud."
+ }
 }

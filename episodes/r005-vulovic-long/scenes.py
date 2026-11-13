@@ -610,7 +610,7 @@ OVER = dict(
     desk_job=pick(stamp('FREIGHT CONTRACTS', 600, 190, 84, 0.5, 'FFFFFF', -3), None),
     stage_wide=stamp('HALL OF FAME, 1985', 600, 190, 96, 0.3, 'FFD866', -3),
     phone_call=pick(None, stamp('NOBODY ARRESTED', 640, 200, 96, 0.4, 'E5392F', -3)),
-    reporters=pick(None, stamp('EVIDENCE: CIRCUMSTANTIAL', 760, 200, 84, 0.4, 'FFFFFF', -3)),
+    reporters=pick(None, stamp('EVIDENCE: CIRCUMSTANTIAL', 900, 200, 76, 0.4, 'FFFFFF', -3)),
     signoff=closed)
 
 
