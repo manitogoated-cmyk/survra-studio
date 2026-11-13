@@ -28,6 +28,46 @@
     "url": "https://youtu.be/z52b0vJIFXc",
     "video_id": "z52b0vJIFXc"
   },
+  "r001-okene-long": {
+    "captions": "failed: captions -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"I",
+    "format": "long",
+    "playlist": "failed: POST https://www.googleapis.com/youtube/v3/playlistItems -> 409: {\n  \"error\": {\n    \"code\": 409,\n    \"message\": \"The operation was aborted.\",\n    \"errors\": [\n  ",
+    "privacy": "private",
+    "publish_at": "2026-11-13T15:00:00Z",
+    "review": false,
+    "sha256": "d2577308a9e3af980da197983fd40af64daaecd2a3f3ff988ddfd212e0c310f8",
+    "thumbnail": "failed: thumbnail -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The authenticated user doesn't have permissions to upload and set custom video thumbnails.\",\n ",
+    "title": "He Survived 3 Days at the Bottom of the Atlantic. Then a Diver Reached for a \"Body\"",
+    "uploaded_at": "2026-11-13T02:55:38Z",
+    "url": "https://youtu.be/ePBtSD8gWH8",
+    "video_id": "ePBtSD8gWH8"
+  },
+  "r002-grimes": {
+    "captions": "failed: captions -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"I",
+    "format": "short",
+    "playlist": "Rook's Case Files (Shorts)",
+    "privacy": "private",
+    "publish_at": "2026-11-13T17:00:00Z",
+    "review": false,
+    "sha256": "d71eaf44c2ecac7de09efebe1ff2dad972b3064e3c8270186087807063974634",
+    "title": "He Fell Off a Cruise Ship\u2026 and Treaded Water All Night #shorts",
+    "uploaded_at": "2026-11-13T02:55:43Z",
+    "url": "https://youtu.be/0gcKBCSQD0Y",
+    "video_id": "0gcKBCSQD0Y"
+  },
+  "r003-lemons": {
+    "captions": "failed: captions -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"I",
+    "format": "short",
+    "playlist": "Rook's Case Files (Shorts)",
+    "privacy": "private",
+    "publish_at": "2026-11-13T20:00:00Z",
+    "review": false,
+    "sha256": "6801d107c91cb2c1e32b129a70bb1fd1abb3f7c9c010c6b0af0f7eb4c0f995e9",
+    "title": "His Lifeline Snapped 100 m Down. Help Was 30 Minutes Away #shorts",
+    "uploaded_at": "2026-11-13T02:55:49Z",
+    "url": "https://youtu.be/eQFNuqzJhug",
+    "video_id": "eQFNuqzJhug"
+  },
   "s001-alvarenga": {
     "privacy": "private",
     "publish_at": null,
