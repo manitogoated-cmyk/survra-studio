@@ -6,9 +6,9 @@ on:
   workflow_dispatch:
     inputs:
       task:
-        description: "analytics, brand, or release (publish approved review uploads)"
+        description: "analytics, brand, about (channel description only), or release (publish approved review uploads)"
         type: choice
-        options: [analytics, brand, release]
+        options: [analytics, brand, about, release]
         default: analytics
 
 concurrency:

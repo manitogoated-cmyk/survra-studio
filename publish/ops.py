@@ -1,6 +1,7 @@
 """Channel operations that need the YouTube API (run on GitHub Actions, where the secrets live).
 
   python3 publish/ops.py brand       upload brand/rook_banner_2560x1440.jpg + brand/rook_watermark_150.png to the Survra channel
+  python3 publish/ops.py about       update only the channel description and keywords
   python3 publish/ops.py release     make approved episodes that were uploaded privately for review public
   python3 publish/ops.py analytics   write ANALYTICS.md + plan/learnings.json from real channel numbers (weekly)
 """
@@ -23,16 +24,16 @@ def channel(yt):
     return ch
 
 
-ABOUT = """Rook's Case Files: unbelievable true stories, checked by one sceptical crow.
+ABOUT = """Rook's Case Files: unbelievable true stories, unsolved mysteries and the strangest stories from Reddit, checked by one sceptical crow.
 
-Rook is a detective who does not believe a word of it. Every video is a case: a survival story, a rescue, a mystery that sounds impossible. He goes to look, and reports what actually happened.
+Rook is a detective who does not believe a word of it. Every video is a case: a survival story, a rescue, an unsolved mystery, or a Reddit story that sounds impossible. He goes to look, shows you the clues, and asks what you think happened. The best viewer theories turn into follow-up episodes.
 
-Original 3D animation. Every case is researched from named sources, listed in each description. Narration is a synthetic voice.
+Original 3D animation. True cases are researched from named sources, listed in each description. Reddit stories are credited to their authors and used with permission, and every video says whether a story is documented, a personal account or fiction. Narration is a synthetic voice.
 
 New Shorts and full case files every week.
 
 About, privacy and contact: https://manitogoated-cmyk.github.io/survra/"""
-KEYWORDS = '"true stories" "survival stories" "animated stories" "3D animation" Rook Survra "case files" documentary mystery rescue'
+KEYWORDS = '"reddit stories" "unsolved mysteries" "true stories" "survival stories" "animated stories" "3D animation" Rook Survra "case files" documentary mystery rescue'
 
 
 def brand():
@@ -50,6 +51,17 @@ def brand():
             res[name] = "failed: " + str(ex)[:300]
     print(json.dumps(res, indent=1))
     return 0 if all(v == "ok" for v in res.values()) else 1
+
+
+def about():
+    """Only the channel description and keywords; banner and watermark are left alone."""
+    yt = YouTube()
+    channel(yt)
+    yt.set_channel_text(ABOUT, KEYWORDS)
+    got = yt._req("GET", "https://www.googleapis.com/youtube/v3/channels", params=dict(part="brandingSettings", mine="true"))["items"][0]
+    desc = got.get("brandingSettings", {}).get("channel", {}).get("description", "")
+    print(json.dumps(dict(about="ok" if desc.strip() == ABOUT.strip() else "mismatch", description=desc), indent=1))
+    return 0 if desc.strip() == ABOUT.strip() else 1
 
 
 def analytics():
@@ -132,6 +144,6 @@ def release():
 
 if __name__ == "__main__":
     try:
-        sys.exit(dict(brand=brand, analytics=analytics, release=release)[sys.argv[1]]())
+        sys.exit(dict(brand=brand, about=about, analytics=analytics, release=release)[sys.argv[1]]())
     except AuthExpired as ex:
         print("AUTH EXPIRED:", ex); sys.exit(2)
