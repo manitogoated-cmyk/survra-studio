@@ -50,6 +50,7 @@ def run(ep_dir, video):
         BASE.frames_gray = lambda v, w=96, h=54, fps=30: orig(v, w=96, h=54, fps=fps)
     try:
         rep = BASE.run(build, video)
+        rep['rules'] = dict(BASE.RULES)      # snapshot: the shared dict is restored to the Shorts rules below
     finally:
         BASE.RULES.clear()
         BASE.RULES.update(saved)

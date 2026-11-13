@@ -235,8 +235,7 @@ jobs:
         run: |
           python3 publish/publisher.py status
           git config user.name "survra-bot"; git config user.email "survra-bot@users.noreply.github.com"
-          git add publish/ledger.json STATUS.md qc/fingerprints 2>/dev/null || true
-          git diff --cached --quiet || (git commit -m "pipeline: run ${{ github.run_number }}" && git pull --rebase -q && git push)
+          python3 publish/sync_commit.py "pipeline: run ${{ github.run_number }}" publish/ledger.json STATUS.md qc/fingerprints
       - name: Ask for re-authorization
         if: steps.up.outputs.code == '2'
         env:

@@ -78,11 +78,11 @@ def board_ship(cv, c):
 def blackout(cv, c):
     t = c.t
     Wd.fill(cv, 0, 0, W, H, 0xFF000000)
-    Wd.particles(cv, W, H, t * 3, 160, Wd.alpha(h('BFE6FF'), 0.75), 7, size=(4, 12), drift=(-160, -420), wobble=60)
+    Wd.particles(cv, W, H, t * 3, 260, Wd.alpha(h('BFE6FF'), 0.8), 7, size=(5, 14), drift=(-220, -560), wobble=90)
     for i in range(5):
         x0 = (i * 431 + t * 900) % (W + 400) - 200
-        cv.drawLine(x0, 0, x0 - 260, H, P(Wd.alpha(h('3A6A8A'), 0.35), 46))
-    x, y = 800 + math.sin(t * 9) * 40, 470 + math.cos(t * 7) * 18
+        cv.drawLine(x0, 0, x0 - 260, H, P(Wd.alpha(h('3A6A8A'), 0.5), 46))
+    x, y = 800 + math.sin(t * 5) * 140, 470 + math.cos(t * 4) * 50
     blink = (t * 1.7) % 1 < 0.08
     for s_ in (-1, 1):
         if blink:
