@@ -1,6 +1,6 @@
 {
   "r001-okene": {
-    "captions": "failed: captions -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"I",
+    "captions": "ok",
     "format": "short",
     "playlist": "Rook's Case Files (Shorts)",
     "privacy": "public",
@@ -29,9 +29,9 @@
     "video_id": "z52b0vJIFXc"
   },
   "r001-okene-long": {
-    "captions": "failed: captions -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"I",
+    "captions": "ok",
     "format": "long",
-    "playlist": "failed: POST https://www.googleapis.com/youtube/v3/playlistItems -> 409: {\n  \"error\": {\n    \"code\": 409,\n    \"message\": \"The operation was aborted.\",\n    \"errors\": [\n  ",
+    "playlist": "Rook's Case Files (Full Cases)",
     "privacy": "private",
     "publish_at": "2026-11-13T15:00:00Z",
     "review": false,
@@ -43,7 +43,7 @@
     "video_id": "ePBtSD8gWH8"
   },
   "r002-grimes": {
-    "captions": "failed: captions -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"I",
+    "captions": "ok",
     "format": "short",
     "playlist": "Rook's Case Files (Shorts)",
     "privacy": "private",
@@ -56,7 +56,7 @@
     "video_id": "0gcKBCSQD0Y"
   },
   "r003-lemons": {
-    "captions": "failed: captions -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"I",
+    "captions": "ok",
     "format": "short",
     "playlist": "Rook's Case Files (Shorts)",
     "privacy": "private",
