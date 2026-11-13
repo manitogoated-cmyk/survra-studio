@@ -350,8 +350,10 @@ def set_north(r):
     xy = co.reshape(-1, 3)[:, :2].copy()
     ship = make_dsv(empty((0, 0, -70), r))
     mark = add('torus', 'FF7A1A', (0, 0, -30), major_radius=7.0, minor_radius=0.35, major_segments=20, minor_segments=4, parent=r, emit=6)
-    add('cube', '9AA6A4', (0, 560, 60), scale=(2600, 1, 120), size=1, parent=r, emit=0.9)
-    add('cube', 'C8D2CC', (0, 555, 4), scale=(2600, 1, 9), size=1, parent=r, emit=1.4)
+    for i in range(4):                           # a sky wall and a bright horizon band on all four sides, so no camera angle finds an end
+        q = i * PI / 2
+        add('cube', '9AA6A4', (-560 * math.sin(q), 560 * math.cos(q), 300), rot=(0, 0, q), scale=(1124, 1, 900), size=1, parent=r, emit=0.9)
+        add('cube', 'C8D2CC', (-555 * math.sin(q), 555 * math.cos(q), 4), rot=(0, 0, q), scale=(1112, 1, 9), size=1, parent=r, emit=1.4)
     aim = empty((0, 10, 3), r)
     sun = light((-60, 90, 70), 260000, 'DCE8E4', 40.0, aim, parent=r)
     light((30, -60, 20), 30000, '8AA0A8', 30.0, aim, parent=r)
@@ -976,13 +978,13 @@ def haul_up(S, k, t, lt):
     uw(S, 'lem', A(-1.25, 4.3, z - 0.5), 0.35, P('stand', aL=(0.3, 0.3, 0.2), aR=(0.3, 0.3, 0.2), lL=(0.3, 0.4), lR=(0.1, 0.3), head=(0.6, 0.3)), t, pitch=0.55,
        roll=-0.4, face='closed')
     rope(S, 1, (0.25, 3.9, z + 2.9), (-0.6, 5.0, 8.2), -0.15, t, 0.08, 8)
-    S['rook'].place(A(-0.75, 3.7, z - 3.6), 0.3, 0.1)
+    S['rook'].place(A(0.95, 3.6, z - 2.7), 0.75, 0.1)
     S['rook'].apply(P('up', aL=(2.9, 0.2, 0.25 + 0.15 * s), aR=(2.9, 0.2, 0.25 - 0.15 * s), lL=(0.5 * s, 0.6), lR=(-0.5 * s, 0.6), head=(-0.5, 0.0)))
     S['face']['rook'], S['helm'] = 'calm', True
     bub(S, A(-0.4, 4.2, z + 3), t, 10, 0, 0.5, 5.0, 3.0, size=1.4)
     key(S, 'kc', A(-6, -5, z + 2), A(-0.5, 4.2, z + 1.5), 3000)
     key(S, 'kw', A(4, -4, z - 1), A(-0.5, 4, z), 1400)
-    cam(S, A(lerp(2.6, 2.2, k), lerp(-2.6, -2.1, k), z - 2.0), A(-0.6, 4.3, z + 2.2), 26, 0.03 * math.sin(t * 5))
+    cam(S, A(lerp(3.2, 2.8, k), lerp(-3.4, -2.9, k), z - 1.2), A(-0.3, 4.3, z + 1.5), 26, 0.03 * math.sin(t * 5))
 
 
 # ---------------------------------------------------------------- shots: inside the bell
@@ -1105,7 +1107,8 @@ def signoff(S, k, t, lt):
     S['pick'].location = A(-0.75 - 0.2 * c, -0.75, 1.8 + 2.4 * math.sin(c * PI))
     S['pick'].rotation_euler = (t * 19, t * 9, 0)
     S['pick'].scale = (1.25, 1.25, 1.25)
-    cam(S, A(lerp(1.7, 1.3, k), lerp(-5.0, -4.2, k), 0.9), A(0, 0, 2.25), 36)
+    key(S, 'kw', A(2.6, -4.2, 3.4), A(0, 0, 2.5), 1500)
+    cam(S, A(lerp(-0.6, -0.9, k), lerp(-5.2, -4.4, k), 1.1), A(0, 0, 2.25), 36)
 
 
 # ---------------------------------------------------------------- stills for the case board
