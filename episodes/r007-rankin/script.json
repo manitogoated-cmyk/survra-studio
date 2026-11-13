@@ -1,0 +1,13 @@
+{
+  "id": "r007-rankin", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9,
+  "segments": [
+    {"scene": "hook", "mood": "hook", "text": "A pilot ejects fourteen kilometres up, falls into a thunderstorm, and the storm throws him back up."},
+    {"scene": "doubt", "mood": "calm", "text": "No chance. Storms don't hold on to people. Let's go look."},
+    {"scene": "flight", "mood": "action", "text": "July {1959|nineteen fifty-nine}. Marine pilot William Rankin flies over a thunderhead when his engine dies. The emergency power handle snaps off in his hand."},
+    {"scene": "eject", "mood": "tense", "text": "He ejects with no pressure suit, into air fifty below zero. Frostbite. His belly swells."},
+    {"scene": "storm", "mood": "action", "text": "His parachute opens inside the storm. Updrafts hurl him back up. Hail. Blue sheets of lightning. Rain so thick he holds his breath."},
+    {"scene": "time", "mood": "tense", "text": "It should take minutes. The storm keeps him for forty."},
+    {"scene": "land", "mood": "triumph", "text": "Then it drops him into trees in North Carolina."},
+    {"scene": "end", "mood": "end", "text": "He walks to a road, gets a ride, and flies again. I was wrong. Case closed."}
+  ]
+}
