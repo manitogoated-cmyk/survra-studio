@@ -1,13 +1,135 @@
 {
-  "id": "r004-packard", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9,
-  "segments": [
-    {"scene": "hook",   "mood": "hook",    "text": "A humpback whale shuts its mouth around a lobster diver. About thirty seconds later, it spits him out. Alive."},
-    {"scene": "doubt",  "mood": "calm",    "text": "No chance. Whales don't eat people. Let's go look."},
-    {"scene": "job",    "mood": "action",  "text": "June {2021|twenty twenty-one}. Off Cape Cod, Michael Packard is {45|forty-five} feet down, hunting for lobsters."},
-    {"scene": "hit",    "mood": "tense",   "text": "Something hits him like a truck. The world goes black. He thinks: shark. But there are no teeth."},
-    {"scene": "inside", "mood": "sad",     "text": "He's in a whale's mouth, still breathing from his tank. He thinks of his wife and his sons."},
-    {"scene": "out",    "mood": "action",  "text": "Then the whale surfaces, shakes its head, and throws him out. His crewmate gets him aboard."},
-    {"scene": "home",   "mood": "triumph", "text": "Bruised, but no broken bones. He's home by the afternoon."},
-    {"scene": "end",    "mood": "end",     "text": "Scientists call it an accident. The whale was feeding, and its throat is too narrow to swallow a man. So I was right. And wrong. Case closed."}
-  ]
+ "id": "r004-packard-long",
+ "voice": "am_fenrir",
+ "speed": 1.12,
+ "gap": 0.16,
+ "lead": 0.1,
+ "tail": 1.0,
+ "segments": [
+  {
+   "scene": "hook",
+   "mood": "hook",
+   "text": "Forty-five feet down, off Cape Cod, a humpback whale shuts its mouth around a lobster diver. Half a minute later, it spits him out. Alive."
+  },
+  {
+   "scene": "doubt",
+   "mood": "calm",
+   "text": "No chance. Whales don't eat people. And nobody goes home from that the same afternoon. Let's go look."
+  },
+  {
+   "scene": "morning",
+   "mood": "calm",
+   "text": "Friday, June eleventh, {2021|twenty twenty-one}. Provincetown, at the very tip of Cape Cod. A lobster boat heads out with two men aboard."
+  },
+  {
+   "scene": "crew",
+   "mood": "calm",
+   "text": "Michael Packard, {56|fifty-six}, from Wellfleet, is the diver. Josiah Mayo is his crewman. Remember that name."
+  },
+  {
+   "scene": "job",
+   "mood": "action",
+   "text": "Out here, lobster divers pick lobsters off the sandy bottom, by hand. Up top, the crewman keeps track of the diver by following his bubbles."
+  },
+  {
+   "scene": "dive",
+   "mood": "action",
+   "text": "A little before eight, off Herring Cove, Michael goes in again. The water is about sixty degrees. He can see maybe twenty feet."
+  },
+  {
+   "scene": "hit",
+   "mood": "tense",
+   "text": "He is nearly at the bottom when he feels a huge shove. Then everything goes black. He thinks: shark. A great white. But there are no teeth. And there is no real pain."
+  },
+  {
+   "scene": "inside",
+   "mood": "tense",
+   "text": "Then he feels himself moving. He can feel muscles squeezing around him. He is inside a whale's mouth. And he thinks it is trying to swallow him."
+  },
+  {
+   "scene": "air",
+   "mood": "tense",
+   "text": "By one account, the regulator is knocked from his mouth, and he has to find it in the dark. He does. He is breathing. And he wonders if he will just keep breathing in there, until the tank runs out."
+  },
+  {
+   "scene": "family",
+   "mood": "sad",
+   "text": "He is sure he is going to die. He thinks of his wife. And of his two boys."
+  },
+  {
+   "scene": "fight",
+   "mood": "action",
+   "text": "He struggles anyway. Thirty to forty seconds, by his own count. Then the whale starts shaking its head."
+  },
+  {
+   "scene": "out",
+   "mood": "action",
+   "text": "He sees light. Then he is in the air. Then he is in the water. Free, and just floating there."
+  },
+  {
+   "scene": "witness",
+   "mood": "action",
+   "text": "Up top, Josiah Mayo sees a huge splash, and thrashing. His first thought is shark, too. Then Michael pops up in the middle of it."
+  },
+  {
+   "scene": "second",
+   "mood": "calm",
+   "text": "And he is not the only witness. A charter captain nearby, Joe Francis, says he saw Michael come flying out of the water, feet first, flippers on."
+  },
+  {
+   "scene": "run",
+   "mood": "action",
+   "text": "Mayo gets him aboard, radios the shore, and races for the Provincetown pier. An ambulance takes him to Cape Cod Hospital."
+  },
+  {
+   "scene": "hospital",
+   "mood": "triumph",
+   "text": "The first reports say a broken leg. It turns out to be bruising. A lot of it. But no broken bones. He walks out that afternoon, limping."
+  },
+  {
+   "scene": "doubters",
+   "mood": "calm",
+   "text": "Now, I was not the only one who doubted it. A Boston Globe reporter says his editor asked him to debunk the story."
+  },
+  {
+   "scene": "film",
+   "mood": "calm",
+   "text": "He checked it, right down to the recording of the emergency call. Two years later, he released a documentary about it instead."
+  },
+  {
+   "scene": "science",
+   "mood": "calm",
+   "text": "So what happened? Whale scientists called it an accident. A humpback feeds by lunging, mouth wide open, through schools of small fish called sand lance."
+  },
+  {
+   "scene": "blind",
+   "mood": "wonder",
+   "text": "And when that mouth opens, it billows out like a parachute, and blocks the whale's view ahead. It probably never saw him."
+  },
+  {
+   "scene": "fly",
+   "mood": "calm",
+   "text": "One of those scientists is Stormy Mayo. Josiah's father. He compared it to sitting down to a really nice meal, and having a fly go into your mouth. Michael was the fly."
+  },
+  {
+   "scene": "throat",
+   "mood": "calm",
+   "text": "And it could never have swallowed him. A humpback's throat is far too narrow for a man. I checked."
+  },
+  {
+   "scene": "before",
+   "mood": "sad",
+   "text": "One more thing. Years earlier, Michael lived through a plane crash in Costa Rica. Three people on board did not. So this was not his first second chance."
+  },
+  {
+   "scene": "after",
+   "mood": "calm",
+   "text": "Days later, on television, he apologised to the whale, for getting in its way. And then he went back to the water."
+  },
+  {
+   "scene": "end",
+   "mood": "end",
+   "text": "In a whale's mouth? Yes. Swallowed? No. So I was right. And I was wrong. Case closed."
+  }
+ ]
 }
