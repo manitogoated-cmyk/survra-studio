@@ -1,10 +1,62 @@
 {
  "id": "r007-rankin",
  "format": "short",
- "status": "draft",
+ "status": "approved",
  "synthetic": false,
  "host": "rook",
  "case": 7,
- "title": "draft",
- "sources": []
+ "title": "A Pilot Fell Into a Thunderstorm. It Kept Him for 40 Minutes #shorts",
+ "description": "Case 007. 26 July 1959: U.S. Marine Corps Lt. Col. William Rankin was flying an F-8 Crusader from Massachusetts to South Carolina when his engine failed at about 47,000 feet (14 km), above a thunderstorm. The emergency power handle broke off in his hand, and at about 6 p.m. he ejected without a pressure suit into air around 50 below zero. He suffered frostbite and decompression injuries, and his parachute opened inside the storm, where updrafts carried him back up again and again through hail, lightning and rain so heavy he held his breath. A descent that should have taken minutes took about forty. He came down in trees in North Carolina, found a road, got help, was treated in hospital at Ahoskie and later returned to flying. He told the story in his 1960 book The Man Who Rode the Thunder. He died in 2009. Rook didn't believe it either.\n\nAnimated reconstruction of a true story.",
+ "tags": [
+  "William Rankin",
+  "The Man Who Rode the Thunder",
+  "pilot ejects into thunderstorm",
+  "F-8 Crusader",
+  "1959",
+  "thunderstorm",
+  "parachute",
+  "ejection",
+  "Marine pilot",
+  "true story",
+  "survival story",
+  "animated story",
+  "Rook",
+  "Survra"
+ ],
+ "hashtags": [
+  "#shorts",
+  "#truestory",
+  "#survival"
+ ],
+ "playlist": "Rook's Case Files (Shorts)",
+ "story_score": {
+  "curiosity": 9,
+  "stakes": 9,
+  "freshness": 7,
+  "story": 9,
+  "visual": 9,
+  "audience_fit": 9,
+  "payoff": 8,
+  "packaging": 8,
+  "research": 8,
+  "repeatability": 8,
+  "total": 84
+ },
+ "title_options": [
+  "A Pilot Fell Into a Thunderstorm. It Kept Him for 40 Minutes #shorts",
+  "He Ejected 14 km Up, Above a Thunderstorm. It Threw Him Back Up #shorts",
+  "The Storm Wouldn't Let Him Land: 40 Minutes Inside a Thunderhead #shorts",
+  "His Parachute Opened Inside a Thunderstorm. He Went Up, Not Down #shorts",
+  "No Pressure Suit, 50 Below, and a Thunderstorm Under Him #shorts"
+ ],
+ "source_notes": "Read for this run: Wikipedia (William Rankin; its account rests mainly on Gavin Pretor-Pinney's The Cloudspotter's Guide, 2006, and cites Time, 'The Nightmare Fall', 17 Aug 1959, and Rankin's own book), White Eagle Aerospace ('Riding the Thunder', J. Terry White, 2020), We Are The Mighty (Ward Carroll, 2021, quoting Rankin's memoir) and MiGFlug (2026; it follows the Wikipedia account closely, so it is treated as a secondary check, not an independent one). The Task & Purpose page could not be opened by this run and is not used; the Time article and the book were not read directly. Agreed by all: 26 July 1959; Lt. Col. William Rankin, U.S. Marine Corps; an F-8 (F8U) Crusader; South Weymouth, Massachusetts to Beaufort, South Carolina; engine failure and a fire warning light at about 47,000 ft (14.3 km), just above a thunderhead topping out around 44,000-45,000 ft; the auxiliary/emergency power handle (the ram-air turbine handle) broke off in his hand; he ejected at about 6 p.m.; no pressure suit (White Eagle says 'a light summer flying suit'); his abdomen swelled from decompression and he was frostbitten; the parachute opened inside the storm; updrafts carried him back up; lightning he described as blue sheets or blades several feet thick; rain so dense he held his breath for fear of drowning; he landed in North Carolina and recovered. Where the sources differ: (1) Temperature: -50 C (Wikipedia, MiGFlug) or -70 F, about -57 C (White Eagle); the script says 'fifty below zero' and the thermometer insert stops at -50 with no unit. (2) Why the parachute opened: Wikipedia, White Eagle and MiGFlug say the storm tripped the barometric release early (it was set for 10,000 ft; White Eagle says it opened between 15,000 and 20,000 ft); We Are The Mighty says he feared the release had failed and pulled it himself. The script says only that it 'opens inside the storm'. (3) Hail: Wikipedia, White Eagle and MiGFlug; We Are The Mighty does not mention it. (4) Duration: 40 minutes from ejection to landing, watch reading 6:40 p.m. (Wikipedia, MiGFlug; White Eagle '40 minutes' by his watch). 'It should take minutes': We Are The Mighty gives about three and a half minutes of free fall to 10,000 ft, MiGFlug says a normal descent should have lasted less than ten minutes; the script gives no figure. (5) Landing: 'a forest' (Wikipedia, White Eagle), 'through trees near Ahoskie' (MiGFlug), 'a thicket of brush in the middle of a field near Ahoskie' (We Are The Mighty); the script says 'into trees in North Carolina' and the film shows pine woods. (6) Help: he reached a dirt road where several vehicles passed before someone took him to hospital (We Are The Mighty); a passing driver took him to a country store to phone for an ambulance (MiGFlug); Wikipedia says he searched for help and was admitted to hospital at Ahoskie. The script says 'He walks to a road, gets a ride.' (7) Where the storm was: near Norfolk, Virginia (White Eagle) or over North Carolina (We Are The Mighty); not stated in the film. (8) The lost left glove appears in We Are The Mighty and MiGFlug only; the film shows one bare hand. Returned to flying: White Eagle and We Are The Mighty (about three weeks in hospital in the latter only, so no duration is given). Bleeding from the eyes, ears, nose and mouth is reported by the sources and is not shown. His wingman, Lt. Herbert Nolan (White Eagle, We Are The Mighty), appears only as the second jet and is not named. Dramatised, not reported: the look of the jet (no markings), cockpit, flight suit, helmet and parachute colours; the airfield; the exact motion of the fall; the hand to his mask in the rain; the car on the road; his waving it down; the closing shot of him beside a jet; the flight-chart case board (the coastline is a sketch, not a map); and everything Rook does (the stowaway seat, the small parachute, the pocket watch). No dialogue is attributed to anyone.",
+ "sources": [
+  "https://en.wikipedia.org/wiki/William_Rankin",
+  "https://www.whiteeagleaerospace.com/riding-the-thunder/",
+  "https://www.wearethemighty.com/popular/that-time-a-fighter-pilot-ejected-into-a-thunderstorm-and-rode-the-lightning",
+  "https://migflug.com/jetflights/william-rankin-fell-through-thunderstorm-1959/"
+ ],
+ "quality_gate": {
+  "method": "3D contact sheet reviewed in three rounds with fixes after each (storm cloud shelves moved off the camera side after one swallowed the lens, Rook raised into view in the cockpit, the road and landing restaged and relit, lightning sheets toned down from white to blue, the handle close-up rebuilt), composited stills (captions, HUD, overlays, inserts) in one round, then two full-length low-resolution rehearsals (216x384, 4 samples) reviewed at two and three frames per shot, plus single-frame probes of the shots changed afterwards; the final rehearsal passed the automated gate locally: 37 shots, mean 1.19 s, longest 1.87 s, loudness -15.1 LUFS, voice 10.8 dB over the bed, host in 16/37 shots (43%), closest match to an earlier episode 0.71; every caption pair and HUD label was measured to fit the frame width (the script was reworded where a pair was too wide); audio was measured, not listened to; the full-resolution render and final gate run in the cloud"
+ }
 }

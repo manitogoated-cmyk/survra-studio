@@ -164,7 +164,7 @@ def set_sky(r):
         a = i * PI / 7
         add('ico_sphere', ('E8A890', 'D8949A')[i % 2], (math.cos(a) * (34 + (i % 3) * 9), math.sin(a) * (30 + (i % 2) * 10), 27 + (i % 3)), scale=(1, 1, 0.22),
             radius=22 + (i % 3) * 4, subdivisions=2, parent=anvil, emit=0.3)
-    tfl = add('ico_sphere', 'CFE0FF', (4, 6, 22), radius=10, subdivisions=1, parent=anvil, emit=40)
+    tfl = add('ico_sphere', 'CFE0FF', (4, 6, 15), radius=7, subdivisions=1, parent=anvil, emit=14)
     wisps = [add('ico_sphere', ('E8B8B0', 'C89AB0')[i % 2], FAR, scale=(1, 1, 0.3), radius=2.2 + (i % 3) * 0.8, subdivisions=1, emit=0.25) for i in range(10)]
     aim = empty((0, 0, 0), r)
     sun = light((-520, -560, 40), 3.6, 'FFB070', kind='SUN', target=aim, parent=r)
@@ -190,7 +190,7 @@ def set_pit(r):
         add('cube', 'F4EEDF', (0, 0, 0.065), scale=(0.022, 0.012, 0.13), size=1, parent=n, emit=1.5)
         needles.append(n)
     fire_off = add('cube', 'B02418', (0.62, -1.76, 2.02), scale=(0.36, 0.06, 0.22), size=1, parent=r, emit=2.5)
-    fire_on = add('cube', 'FF2A1A', (0.62, -1.75, 2.02), scale=(0.36, 0.07, 0.22), size=1, parent=r, emit=40)
+    fire_on = add('cube', 'FF2A1A', (0.62, -1.75, 2.02), scale=(0.36, 0.07, 0.22), size=1, parent=r, emit=9)
     firel = light((0.4, -1.2, 2.1), 0.0, 'FF3020', kind='POINT', parent=r)
     add('cylinder', '191720', (0, -0.95, 0.75), rot=(-0.2, 0, 0), radius=0.05, depth=1.3, vertices=6, parent=r)
     add('ico_sphere', '2E2E34', (0, -1.08, 1.4), radius=0.1, subdivisions=1, parent=r)
@@ -484,7 +484,7 @@ def finish(S, t):
     fire = S['fire']
     S['fire_on'].hide_render = not fire
     S['fire_off'].hide_render = fire
-    S['firel'].data.energy = 900 if fire else 0
+    S['firel'].data.energy = 260 if fire else 0
 
 
 # ---------------------------------------------------------------- helpers
@@ -631,7 +631,6 @@ def fall_in(S, k, t, lt):
     z = lerp(13, -2, k)
     tumble(S, 'pilot', A(0.8 * math.sin(t * 2), -140, z), t, 6.0)
     S['mask'], S['face']['pilot'] = True, 'shock'
-    wisps(S, A(0, -143, z), t, 26, (14, 6, 22), 8)
     cam(S, A(lerp(4, 2.5, k), -131, lerp(21, 17, k)), A(0, -140, lerp(6, -8, k)), 30, 0.25 * t)
 
 
@@ -782,11 +781,12 @@ def seat_away(S, k, t, lt):
     jet(S, 0, A(-4.5 - 2 * k, -8 - 5 * k, -4.5 - 5 * k), 0.25, 0.55 + 0.25 * k, 0.5 * t, flame=False, canopy=False)
     j = S['jets'][0][0].location
     smoke(S, (j[0] + 0.5, j[1] + 4, j[2] + 2.5), (-2, 7, 6), t, grow=0.8)
-    S['seat'].location, S['seat'].rotation_euler = A(2.0 + k, -1.5, 1.4 - 3.0 * k), (t * 4, t * 2.5, 0.4)
+    S['sflash'].data.energy = 1.6
+    S['seat'].location, S['seat'].rotation_euler = A(1.6 + k, -1.5, 1.4 - 3.0 * k), (t * 4, t * 2.5, 0.4)
     tumble(S, 'pilot', A(0, 0, 0.8 - 1.2 * k), t, 5.0)
     S['mask'], S['face']['pilot'], S['bare_on'] = True, 'shock', True
     wisps(S, A(0, 0, 0), t, 22, (16, 10, 24), 6)
-    cam(S, A(lerp(5.5, 4.6, k), lerp(-10.5, -9.2, k), 2.6), A(-1.0, -2.2, -1.0), 31, 0.1 * math.sin(t * 3))
+    cam(S, A(lerp(5.5, 4.6, k), lerp(-10.5, -9.2, k), 2.6), A(-0.8, -1.8, -0.8), 36, 0.1 * math.sin(t * 3))
 
 
 def rook_fall(S, k, t, lt):

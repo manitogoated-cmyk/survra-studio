@@ -313,7 +313,7 @@ def chevrons(cv, c):
 
 
 def warn(cv, c):
-    a = 0.22 * (0.5 + 0.5 * math.sin(c.t * 22))
+    a = 0.13 * (0.5 + 0.5 * math.sin(c.t * 22))
     cv.drawRect(skia.Rect.MakeWH(W, H), P(RED, None, a))
 
 

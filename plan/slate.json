@@ -90,9 +90,9 @@
    "world": "F-8 cockpit, storm interior",
    "est_score": 84,
    "long_form_candidate": false,
-   "status": "in progress",
+   "status": "authored",
    "claimed_at": "2026-11-13T11:38:26Z",
-   "facts": "verify with 2+ sources at authoring; skip if they do not hold"
+   "facts": "verified (see episodes/r007-rankin/episode.json)"
   },
   {
    "case": 8,
