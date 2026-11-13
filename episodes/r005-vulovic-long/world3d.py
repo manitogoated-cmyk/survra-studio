@@ -1646,7 +1646,7 @@ def rook_snow(S, k, t, lt):
 def stretcher(S, k, t, lt):
     A = hill(S, 'night')
     wreck_rest(S, A)
-    x, y = 15.0, lerp(5.0, 1.0, k)
+    x, y = 15.0, lerp(6.0, 0.0, k)
     z = hz(x)
     bob = 0.04 * math.sin(t * 9)
     S['stretch'].location = A(x, y, z + 1.12 + bob)
@@ -1664,7 +1664,7 @@ def stretcher(S, k, t, lt):
         xx, yy = 6 + i * 3.2, 17 + (i % 2) * 5 + (i % 3) * 2
         o.location = A(xx, yy, hz(xx) + 2.2 + 0.25 * math.sin(t * 7 + i * 2))
     S['pov'].data.energy = 300
-    cam(S, A(lerp(19.6, 19.0, k), lerp(-9.5, -8.5, k), hz(19) + 1.6), A(15.4, 1.5, z + 2.1), 42)
+    cam(S, A(lerp(20.2, 18.6, k), lerp(-10.0, -8.0, k), hz(19) + 1.6), A(15.4, y - 0.5, z + 2.1), 42)
 
 
 def wake(S, k, t, lt):
@@ -1695,7 +1695,7 @@ def ward_doctor(S, k, t, lt):
     S['rook'].apply(P('stand', aR=(0.75, -0.2, 2.0, 1.1), head=(0.2, 0.0)))
     S['hat_off'] = True
     S['face']['rook'] = 'sad'
-    cam(S, A(lerp(4.9, 4.4, k), lerp(-5.4, -4.8, k), 1.9), A(-0.9, 2.0, 2.1), 34)
+    cam(S, A(lerp(5.2, 3.8, k), lerp(-5.6, -4.2, k), lerp(1.8, 2.3, k)), A(-0.9, 2.0, 2.1), 34)
 
 
 def legs(S, k, t, lt):
