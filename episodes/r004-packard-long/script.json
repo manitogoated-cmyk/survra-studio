@@ -1,0 +1,13 @@
+{
+  "id": "r004-packard", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9,
+  "segments": [
+    {"scene": "hook",   "mood": "hook",    "text": "A humpback whale shuts its mouth around a lobster diver. About thirty seconds later, it spits him out. Alive."},
+    {"scene": "doubt",  "mood": "calm",    "text": "No chance. Whales don't eat people. Let's go look."},
+    {"scene": "job",    "mood": "action",  "text": "June {2021|twenty twenty-one}. Off Cape Cod, Michael Packard is {45|forty-five} feet down, hunting for lobsters."},
+    {"scene": "hit",    "mood": "tense",   "text": "Something hits him like a truck. The world goes black. He thinks: shark. But there are no teeth."},
+    {"scene": "inside", "mood": "sad",     "text": "He's in a whale's mouth, still breathing from his tank. He thinks of his wife and his sons."},
+    {"scene": "out",    "mood": "action",  "text": "Then the whale surfaces, shakes its head, and throws him out. His crewmate gets him aboard."},
+    {"scene": "home",   "mood": "triumph", "text": "Bruised, but no broken bones. He's home by the afternoon."},
+    {"scene": "end",    "mood": "end",     "text": "Scientists call it an accident. The whale was feeding, and its throat is too narrow to swallow a man. So I was right. And wrong. Case closed."}
+  ]
+}
