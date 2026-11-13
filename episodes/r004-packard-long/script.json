@@ -79,7 +79,7 @@
   {
    "scene": "run",
    "mood": "action",
-   "text": "Mayo gets him aboard, radios the shore, and races for the Provincetown pier. An ambulance takes him to Cape Cod Hospital."
+   "text": "Mayo gets him aboard, calls the shore on the radio, and heads in. Emergency crews take him to Cape Cod Hospital."
   },
   {
    "scene": "hospital",
@@ -94,7 +94,7 @@
   {
    "scene": "film",
    "mood": "calm",
-   "text": "He checked it, right down to the recording of the emergency call. Two years later, he released a documentary about it instead."
+   "text": "He checked it, right down to the recording of the emergency call. Two years later, he made a documentary about it instead."
   },
   {
    "scene": "science",
@@ -104,7 +104,7 @@
   {
    "scene": "blind",
    "mood": "wonder",
-   "text": "And when that mouth opens, it billows out like a parachute, and blocks the whale's view ahead. It probably never saw him."
+   "text": "And when that mouth opens to feed, it can block the whale's own view ahead. It probably never saw him."
   },
   {
    "scene": "fly",
@@ -119,7 +119,7 @@
   {
    "scene": "before",
    "mood": "sad",
-   "text": "One more thing. Years earlier, Michael lived through a plane crash in Costa Rica. Three people on board did not. So this was not his first second chance."
+   "text": "One more thing. Years earlier, Michael lived through a plane crash in Costa Rica. Other people on board did not. So this was not his first second chance."
   },
   {
    "scene": "after",

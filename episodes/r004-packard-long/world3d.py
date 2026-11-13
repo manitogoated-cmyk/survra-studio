@@ -1718,8 +1718,8 @@ def load_boat(S, k, t, lt):
     S['mayo'].apply(p)
     S['ctrap'].location, S['ctrap'].rotation_euler = (mx + 0.8, lerp(-2.4, -0.8, k) + 0.15, 1.6), (0, 0, PI / 2 - 0.2)
     aboard(S, 'pboat', 'mp', -3.2, 1.1, PI / 2, P('up', aL=(0.3, 0.3, 0.6), aR=(2.5, 0.5, 0.5 + 0.3 * math.sin(t * 7)), head=(0.0, 0.2)), 'happy')
-    S['rook'].place(A(-2.2, -5.2, 0), 1.15)
-    S['rook'].apply(P('cross', head=(0.05, 0.5 - 0.8 * ease(k))))
+    S['rook'].place(A(-4.4, -4.6, 0), -0.3)
+    S['rook'].apply(P('cross', head=(0.05, 1.0 - 0.9 * ease((lt - 1.0) / 0.8))))
     S['face']['rook'] = 'deadpan'
     key(S, 'kw', A(-3, -10, 4), A(0.5, -2, 1.8), 1900)
     cam(S, A(lerp(-5.6, -4.6, k), lerp(-9.6, -8.8, k), 2.5), A(2.4, 1.2, 2.0), 30)
@@ -1736,10 +1736,6 @@ def cast_off(S, k, t, lt):
     h = math.sin(PI * ease((lt - 0.3) / 1.2))
     aboard(S, 'pboat', 'rook', -6.5, -0.9, PI + 0.25, blend(P('stand', head=(0.0, -0.2)), P('hat', head=(0.1, -0.1)), h))
     S['face']['rook'], S['hat_tip'] = 'smirk', h
-    st = on(S, 'pboat', -8.0, 0, 0.3)
-    wake(S, (st[0], st[1], 0), PI - 0.3, t, 10, 3.0, 0.12, 0.3)
-    for w in S['wk']:
-        w.location.z = at('pier', 0, 0, -2.3)[2]
     key(S, 'kw', A(6, -4, 3.5), on(S, 'pboat', -6, 0, 3), 2600)
     cam(S, A(lerp(4.4, 5.0, k), lerp(-7.6, -6.6, k), 1.7), on(S, 'pboat', lerp(-4.5, -5.5, k), 0.5, 3.4), 34)
 
@@ -1815,7 +1811,7 @@ def bubble_watch(S, k, t, lt):
     S['face']['rook'] = 'calm'
     fizz(S, A(tr, 3.4, 0.1 + 0.6 * swell(tr, 3.4, t, 0.4)), t, 16, 0, 1.2, 1.6)
     fizz(S, A(tr - 2.6, 2.4, 0.1 + 0.6 * swell(tr - 2.6, 2.4, t, 0.4)), t + 0.4, 8, 16, 0.7, 1.1)
-    cam(S, A(lerp(-1.6, -2.4, k), lerp(-2.2, -1.6, k), 2.6), A(-2.5, 5.6, 2.9), 28, 0.02 * math.sin(t * 1.5))
+    cam(S, A(lerp(-1.6, -2.4, k), lerp(-5.0, -4.4, k), 3.6), A(-2.5, 5.2, 2.2), 30, 0.02 * math.sin(t * 1.5))
 
 
 # ---------------------------------------------------------------- long-form shots: the job, under water
@@ -1897,7 +1893,7 @@ def tumble(S, k, t, lt):
     S['face']['rook'], S['helm'], S['hat'] = 'shocked', True, None
     lantern(S, A, -0.4 + sx, -1.6, 0.5 + 0.2 * math.sin(t * 6.8), 150)
     key(S, 'kw', A(0, -3.5, 2.6), A(0, 0.3, 0), 240)
-    cam(S, A(0.3 * math.sin(t * 1.7), lerp(-2.4, -1.9, k), 3.0), A(-0.3, 0.6, -0.4), 17, 0.22 * math.sin(t * 3.4 + 1))
+    cam(S, A(0.3 * math.sin(t * 1.7), lerp(-2.0, -1.6, k), 2.35), A(-0.3, 0.7, -0.4), 15, 0.22 * math.sin(t * 3.4 + 1))
 
 
 def reg_lost(S, k, t, lt):
@@ -1906,7 +1902,7 @@ def reg_lost(S, k, t, lt):
     e = ease((k - 0.15) / 0.6)
     rp = A(0.9 + 0.12 * math.sin(t * 2.3), -0.4, 1.05 + 0.1 * math.sin(t * 3.1))
     S['regp'].location, S['regp'].rotation_euler, S['regp'].scale = rp, (0.2 * math.sin(t * 2), 0.2 * math.sin(t * 1.4), 0.25 + 0.2 * math.sin(t * 1.1)), (1.7, 1.7, 1.7)
-    S['hand'].place((rp[0] - lerp(2.3, 0.75, e), rp[1] - lerp(0.5, 0.1, e), rp[2] - lerp(0.7, 0.05, e)), (0.15, 0.3, -PI / 2 - 0.1))
+    S['hand'].place((rp[0] - lerp(2.3, 0.75, e), rp[1] - lerp(0.5, 0.1, e), rp[2] - lerp(0.7, 0.05, e)), (0.15, -0.3, PI / 2 + 0.1))
     S['hand'].grip(lerp(0.05, 0.75, ease((k - 0.7) / 0.25)))
     bub(S, (rp[0], rp[1], rp[2] + 0.1), t, 7, 0, 0.2, 2.0, 1.8, size=0.7)
     key(S, 'kw', A(-0.6, -3.0, 2.0), rp, 520)
@@ -2016,12 +2012,12 @@ def feet_first(S, k, t, lt):
     A = bay(S, t, 0.7)
     whale(S, A(0.5, 2.5, 0.2), 2.4, -PI / 2 + 0.25, 0.1 * math.sin(t * 8), 1.0, t, 2.0)
     q = 1 - (1 - min(1.0, lt / 1.6)) ** 2
-    S['pack'].place(A(lerp(0.0, -3.4, q), lerp(2.0, 1.0, q), lerp(6.4, 12.4, q)), 1.2 + 0.4 * lt, PI + 0.55 - 0.5 * q, 0.2)
+    S['pack'].place(A(lerp(0.0, -3.0, q), lerp(2.0, 1.0, q), lerp(6.2, 9.6, q)), 1.2 + 0.4 * lt, PI + 0.55 - 0.5 * q, 0.2)
     S['pack'].apply(P('up', aL=(2.4, 1.0, 0.5), aR=(2.0, 1.1, 0.8), lL=(0.25, 0.3), lR=(-0.25, 0.4), head=(0.2, 0.0)))
     S['face']['pack'] = 'shock'
     spray(S, A(0.5, 2.0, 3.0), q, 44, 0, 7.0, 6.0, seed=6, size=2.8)
     charter(S, 1, -26, 60, 0.4, t)
-    cam(S, A(lerp(26, 24, k), lerp(-30, -28, k), 2.2), A(-1.2, 1.6, lerp(6.6, 8.0, k)), 105, 0.03 * math.sin(t * 9))
+    cam(S, A(lerp(20, 18.5, k), lerp(-23, -21.5, k), 2.2), A(-1.0, 1.6, lerp(6.2, 6.8, k)), 80, 0.03 * math.sin(t * 9))
 
 
 # ---------------------------------------------------------------- long-form shots: the run for the pier
@@ -2031,7 +2027,7 @@ def radio(S, k, t, lt):
     boat_at(S, 0, 8, 0.0, t, 0.8)
     S['boat'].rotation_euler = (0.05 * math.sin(t * 5), -0.05 + 0.02 * math.sin(t * 7), 0.0)
     S['mic'].hide_render = False
-    aboard(S, 'boat', 'mayo', 0.45, 0.9, 0.0, P('stand', aL=(1.1, 0.3, 0.6), aR=(1.2, 0.35, 2.35, 0.5), head=(0.05, 2.2 - 0.5 * math.sin(lt * 2.2))), 'scared')
+    aboard(S, 'boat', 'mayo', 0.45, -1.0, 0.0, P('stand', aL=(1.1, 0.3, 0.6), aR=(1.2, 0.35, 2.35, 0.5), head=(0.05, 2.2 - 0.5 * math.sin(lt * 2.2))), 'scared')
     lay(S, 'mp', onboat(S, -5.6, -1.0, 2.2), 0.0, 'tired', P('stand', aL=(0.3, 0.5, 0.6), aR=(0.9, 0.3, 1.9), lL=(0.5, 0.9), lR=(0.1, 0.2), head=(-0.15, 0.2)))
     aboard(S, 'boat', 'rook', -2.5, 0.55, -PI / 2 - 0.7, P('hat', lL=(0.9, 1.5), lR=(0.9, 1.5), lift=-0.45, aL=(0.9, 0.2, 0.9), head=(0.3, -0.5)))
     S['face']['rook'], S['hat_tip'] = 'sad', 0.4
@@ -2040,7 +2036,7 @@ def radio(S, k, t, lt):
 
 
 def race_home(S, k, t, lt):
-    """Flat out for Provincetown."""
+    """Flat out for the shore."""
     A = bay(S, t, 0.8)
     x = lerp(-5.0, 3.0, k)
     boat_at(S, x, 15, 0.0, t, 0.8)
@@ -2075,6 +2071,7 @@ def ambulance(S, k, t, lt):
     S['rook'].place(A(8.2, 6.4, 0), -0.9)
     S['rook'].apply(P('stand', aR=(1.0, -0.15, 2.0, 1.0), head=(0.15, lerp(0.6, 0.25, k))))
     S['face']['rook'], S['hat'] = 'sad', 'chest'
+    key(S, 'kw', A(5, -1, 4), A(8.2, 6.4, 2), 1300)
     cam(S, A(lerp(7.6, 6.8, k), lerp(-1.8, -1.0, k), 2.3), A(2.2, 9.4, 2.1), 30)
 
 
@@ -2084,11 +2081,11 @@ def amb_go(S, k, t, lt):
     flash(S, t)
     e = ease(k)
     S['amb'].location = (lerp(0.5, -15, e), 11, 0)
-    S['mayo'].place(A(4.6, 7.6, 0), -PI / 2 - 0.3)
+    S['mayo'].place(A(0.4, 7.8, 0), -PI / 2 - 0.3)
     S['mayo'].apply(P('hips', head=(0.05, 0.0)))
     S['face']['mayo'] = 'tired'
     h = math.sin(PI * ease((lt - 0.4) / 1.3))
-    S['rook'].place(A(6.6, 6.2, 0), -PI / 2 - 0.1)
+    S['rook'].place(A(2.6, 5.4, 0), -PI / 2 + 0.35)
     S['rook'].apply(blend(P('stand', head=(0.0, -0.2)), P('hat', head=(0.1, -0.2)), h))
     S['face']['rook'], S['hat_tip'] = 'calm', h
     cam(S, A(lerp(4.2, 3.6, k), lerp(-1.6, -1.0, k), 1.8), A(lerp(-1.0, -3.0, k), 10.5, 2.4), 28)
@@ -2114,7 +2111,7 @@ def ward_doc(S, k, t, lt):
 def newsroom(S, k, t, lt):
     """A reporter told to debunk it, arms folded. Beside him, a crow in exactly the same mood."""
     A = room(S, 'news')
-    S['rep'].place(A(0, 3.5, 0.08), 0.0)
+    S['rep'].place(A(0, 3.5, 0.5), 0.0)
     S['rep'].apply(P('sit', lift=-0.5, lean=-0.12, aL=(0.5, -0.05, 1.7, 1.3), aR=(0.42, -0.05, 1.8, 1.3), head=(0.0, 0.3 * math.sin(lt * 1.4))))
     S['rook'].place(A(2.5, 3.3, 0), 0.3)
     S['rook'].apply(P('cross', head=(0.05, 0.5 - 0.5 * ease((lt - 0.5) / 0.6))))
@@ -2129,9 +2126,9 @@ def tape(S, k, t, lt):
     A = room(S, 'news')
     for o in S['phones']:
         o.hide_render = False
-    S['rep'].place(A(0, 3.5, 0.08), 0.0)
+    S['rep'].place(A(0, 3.5, 0.5), 0.0)
     S['rep'].apply(P('sit', lift=-0.5, lean=0.3, aL=(1.0, 0.3, 1.3), aR=(1.2, 0.5, 2.3), head=(0.1, 0.15)))
-    S['rook'].place(A(2.55, 2.5, 0), -PI / 2 + 0.25)
+    S['rook'].place(A(2.2, 4.7, 0), -0.9)
     S['rook'].apply(P('stand', lean=0.3, aR=(1.4, 0.15, 2.45, 0.4), aL=(0.4, 0.1, 1.0), head=(0.1, 0.25 + 0.1 * math.sin(lt * 2))))
     S['face']['rook'] = 'calm'
     for i, b in enumerate(S['bars']):
@@ -2150,7 +2147,7 @@ def lab_wide(S, k, t, lt):
     S['rook'].place(A(3.6, 4.2, 0), -0.55)
     S['rook'].apply(P('stand', aR=(1.4, 0.15, 2.45, 0.4), aL=(0.5, 0.0, 1.5, 1.0), head=(-0.05, -0.35 + 0.15 * math.sin(lt * 1.5))))
     S['face']['rook'] = 'calm'
-    cam(S, A(lerp(1.0, 0.5, k), lerp(-4.2, -3.6, k), 2.5), A(-0.2, 3.6, 2.75), 29)
+    cam(S, A(lerp(0.9, 0.5, k), lerp(-2.2, -1.6, k), 2.6), A(-0.1, 3.8, 2.8), 26)
 
 
 def sci_cu(S, k, t, lt):
@@ -2172,7 +2169,7 @@ def baleen_cu(S, k, t, lt):
     S['face']['rook'] = 'smirk' if k > 0.6 else 'calm'
     S['plates'][0].rotation_euler.y = 0.03 * math.sin(lt * 9)
     key(S, 'kw', A(0, -2, 3.2), A(1.4, 2.6, 2.4), 300)
-    cam(S, A(lerp(-0.9, -0.5, k), lerp(-1.4, -1.0, k), 2.4), A(2.3, 3.2, 2.5), 34)
+    cam(S, A(lerp(5.0, 4.6, k), lerp(-1.0, -0.6, k), 2.5), A(2.5, 3.4, 2.5), 34)
 
 
 # ---------------------------------------------------------------- long-form shots: afterwards
@@ -2181,17 +2178,17 @@ def fluke_dusk(S, k, t, lt):
     A = pier(S, True)
     e = ease(k)
     S['pboat'].location = (0, 0, -60)
-    whale(S, A(24, 26, lerp(1.0, -4.5, e) - 2.4), 0.6, 1.3, 0.0, 0.0, t, 1.0)
+    whale(S, A(30, 20, lerp(1.0, -4.5, e) - 2.4), 0.6, 1.3, 0.0, 0.0, t, 1.0)
     h = math.sin(PI * ease((lt - 0.3) / 1.3))
-    S['rook'].place(A(1.6, -3.8, 0), PI / 2 + 0.3)
-    S['rook'].apply(blend(P('stand', head=(0.0, 0.0)), P('hat', head=(0.1, 0.0)), h))
+    S['rook'].place(A(-0.6, -4.6, 0), PI / 2 - 0.55)
+    S['rook'].apply(blend(P('stand', head=(0.0, 0.8)), P('hat', head=(0.1, 0.8)), h))
     S['face']['rook'], S['hat_tip'] = 'warm', h
-    key(S, 'kc', A(14, 8, 6), A(24, 26, 2), 30000)
+    key(S, 'kc', A(18, 6, 6), A(30, 20, 2), 30000)
     cam(S, A(lerp(-2.6, -2.0, k), lerp(-8.6, -8.0, k), 2.2), A(7.5, 2.0, 2.4), 34)
 
 
 def rook_respect(S, k, t, lt):
-    """Hat off, at the rail. Three people did not come home from that one."""
+    """Hat off, at the rail. Other people did not come home from that one."""
     A = pier(S, True)
     S['rook'].place(A(-2.4, -3.2, 0), -0.55)
     S['rook'].apply(P('stand', aR=(1.0, -0.15, 2.0, 1.0), head=(lerp(0.2, 0.36, k), 0.25)))
@@ -2218,16 +2215,17 @@ SHOTS3D.update({f.__name__: f for f in (
 
 
 def photo_thumb(S, k, t, lt):
-    """Thumbnail picture: the whale upright in white water with the diver's fins still in its mouth, Rook in the swell, hat gone."""
+    """Thumbnail picture: the whale upright in white water with the diver's legs and fins still in its mouth, Rook in the swell, hat gone."""
     A = bay(S, 1.0, 0.6)
-    whale(S, A(-3.6, 4.0, 1.4), 2.3, -PI / 2 + 0.22, 0.1, 0.42, 1.0, 2.0)
-    in_mouth(S, 1.0, 1.9, 'shock')
-    spray(S, A(-3.6, 4.0, 0.4), 0.55, 44, 0, 7.0, 6.0, seed=3, size=3.0)
-    S['rook'].place(A(-7.6, -1.6, -1.5), -0.5, 0.0)
-    S['rook'].apply(P('up', aL=(2.3, 0.9, 0.6), aR=(2.5, 0.7, 0.5), head=(-0.3, -0.5)))
-    S['face']['rook'], S['hat'] = 'shocked', 0.55
-    key(S, 'kw', A(-10, -8, 3), A(-7.6, -1.6, 1.2), 30000)
-    cam(S, A(-1.0, -10.5, 1.6), A(-1.6, 2.5, 4.6), 30)
+    whale(S, A(-3.6, 5.0, 1.6), PI / 2 + 0.25, -PI / 2 + 0.2, 0.1, 0.75, 1.0, 2.0)
+    in_mouth(S, 1.0, 2.7, 'shock')
+    spray(S, A(-3.6, 5.0, 0.4), 0.5, 44, 0, 7.5, 6.5, seed=3, size=3.2)
+    S['rook'].place(A(-2.2, -3.4, -1.25), 0.15, 0.0)
+    S['rook'].apply(P('up', aL=(2.3, 0.9, 0.6), aR=(2.5, 0.7, 0.5), head=(-0.25, -0.35)))
+    S['face']['rook'], S['hat'] = 'shocked', 0.5
+    spray(S, A(-2.2, -3.2, 0.1), 0.35, 12, 46, 1.8, 1.0, seed=2, size=1.0)
+    key(S, 'kw', A(-4, -9, 2.5), A(-2.2, -3.4, 1.2), 1500)
+    cam(S, A(0.6, -8.6, 1.0), A(-1.0, 3.0, 3.9), 27)
 
 
 STILLS['thumb'] = photo_thumb

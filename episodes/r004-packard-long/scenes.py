@@ -141,7 +141,7 @@ def clock30(cv, c):
     cv.drawCircle(0, 0, r + 30, P(0xFF000000))
     cv.drawCircle(0, 0, r + 18, P(h('C8CCD4')))
     cv.drawCircle(0, 0, r, P(h(PAPER)))
-    sweep = lerp(0, 240 if wide else 180, c.lt / (1.0 if wide else 0.8))
+    sweep = lerp(0, 240 if wide else 180, c.lt / (1.6 if wide else 0.8))
     cv.drawArc(skia.Rect.MakeLTRB(-r + 40, -r + 40, r - 40, r - 40), -90, min(sweep, 180), True, P(Wd.alpha(h(ORANGE), 0.45)))
     if sweep > 180:
         cv.drawArc(skia.Rect.MakeLTRB(-r + 40, -r + 40, r - 40, r - 40), 90, sweep - 180, True, P(Wd.alpha(h(RED), 0.5)))
@@ -152,8 +152,8 @@ def clock30(cv, c):
     cv.drawLine(-math.cos(a) * 40, -math.sin(a) * 40, math.cos(a) * (r - 50), math.sin(a) * (r - 50), P(h(RED), 16))
     cv.drawCircle(0, 0, 28, P(INK))
     cv.restore()
-    punch(cv, c.prm.get('txt', 'HALF A MINUTE'), 1330, 380, 104 if not wide else 96, ramp(c.lt, 0.55), AMBER, -3)
-    punch(cv, 'BY HIS OWN COUNT' if wide else "IN A WHALE'S MOUTH", 1330, 520, 58, ramp(c.lt, 0.8), 'FFFFFF', -3)
+    punch(cv, c.prm.get('txt', 'HALF A MINUTE'), 1390, 380, 100 if not wide else 82, ramp(c.lt, 0.3 if not wide else 0.7), AMBER, -3)
+    punch(cv, 'BY HIS OWN COUNT' if wide else "IN A WHALE'S MOUTH", 1390, 520, 56, ramp(c.lt, 0.6 if not wide else 1.4), 'FFFFFF', -3)
 
 
 def board_whale(cv, c):
@@ -299,8 +299,8 @@ def board_true(cv, c):
     photo(cv, 'diver', 0, 26, 630, 610, (0.5, 0.3))
     cv.restore()
     punch(cv, 'TRUE', 520, 520, 190, ramp(c.lt, 0.2, 0.12), RED, -13, (310, 115))
-    card(cv, 'IN ITS MOUTH: YES', 1350, 300, 700, 150, -3, 66, ramp(c.lt, 0.5))
-    card(cv, 'SWALLOWED: NO', 1400, 560, 620, 150, 3, 66, ramp(c.lt, 0.68), PAPER)
+    card(cv, 'IN ITS MOUTH: YES', 1350, 300, 700, 150, -3, 66, ramp(c.lt, 0.6))
+    card(cv, 'SWALLOWED: NO', 1400, 560, 620, 150, 3, 66, ramp(c.lt, 1.5), PAPER)
 
 
 def map_cape(cv, c):
@@ -374,11 +374,11 @@ def xray(cv, c):
         cv.drawRoundRect(skia.Rect.MakeXYWH(x - 70, 300, 140, 300), 60, 60, P(Wd.alpha(h('BFE6F4'), 0.12)))
     k1 = ramp(c.lt, 0.15)
     card(cv, 'FIRST REPORT: A BROKEN LEG', 1400, 250, 800, 130, -3, 50, k1, PAPER)
-    k2 = ramp(c.lt, 0.5, 0.1)
+    k2 = ramp(c.lt, 0.45, 0.1)
     if k2 > 0:
         cv.drawLine(1010, 268, 1010 + 780 * k2, 232, P(h(RED), 16))
-    punch(cv, 'NO BROKEN BONES', 1400, 500, 92, ramp(c.lt, 0.6), AMBER, -4)
-    punch(cv, 'BRUISING. A LOT OF IT.', 1400, 640, 62, ramp(c.lt, 0.85), 'FFFFFF', -4)
+    punch(cv, 'BRUISING. A LOT OF IT.', 1400, 470, 66, ramp(c.lt, 0.7), 'FFFFFF', -4)
+    punch(cv, 'NO BROKEN BONES', 1400, 640, 96, ramp(c.lt, 1.5), AMBER, -4)
 
 
 def headline(cv, c):
@@ -394,8 +394,8 @@ def headline(cv, c):
     cv.drawRect(skia.Rect.MakeXYWH(-330, -370, 660, 740), P(h(PAPER)))
     cv.drawRect(skia.Rect.MakeXYWH(-290, -335, 580, 70), P(INK))
     cv.drawRect(skia.Rect.MakeXYWH(-290, -245, 580, 6), P(INK))
-    Wd.text_card(cv, 'DIVER: A WHALE', -5, -150, 62, INK, None)
-    Wd.text_card(cv, 'HAD ME IN ITS MOUTH', -5, -80, 52, INK, None)
+    for i in range(2):
+        cv.drawRect(skia.Rect.MakeXYWH(-290, -205 + i * 62, 580 - i * 150, 40), P(INK))
     photo(cv, 'whale', -130, 90, 300, 250, (0.5, 0.45))
     for i in range(7):
         cv.drawRect(skia.Rect.MakeXYWH(50, -30 + i * 38, 240 - (i % 3) * 30, 14), P(0x993A3A3A))
@@ -448,7 +448,7 @@ def fly(cv, c):
                 cv.drawRoundRect(skia.Rect.MakeXYWH(x - 9 + j * 26, cy - 300, 18, 110), 9, 9, P(h('C8CCD4')))
         else:
             cv.drawRoundRect(skia.Rect.MakeXYWH(x - 26, cy - 300, 52, 230), 26, 26, P(h('C8CCD4')))
-    u = min(1.0, c.lt / 1.6)
+    u = min(1.0, c.lt / 3.0)
     a = c.t * 5.5
     rad = lerp(330, 0, u * u)
     fx, fy = lerp(1300, cx, u) + math.cos(a) * rad * 0.6, lerp(250, cy - 30, u) + math.sin(a) * rad * 0.4
@@ -460,32 +460,45 @@ def fly(cv, c):
         cv.restore()
     cv.drawOval(skia.Rect.MakeXYWH(fx - 17, fy - 11, 34, 24), P(0xFF14121A))
     cv.drawCircle(fx + 15, fy, 9, P(0xFF14121A))
-    card(cv, 'A REALLY NICE MEAL', 1440, 300, 640, 130, -3, 54, ramp(c.lt, 0.15), PAPER)
-    card(cv, 'AND A FLY', 1500, 480, 420, 130, 3, 60, ramp(c.lt, 0.45))
-    punch(cv, 'MICHAEL = THE FLY', 1440, 700, 84, ramp(c.lt, max(1.3, c.d - 1.1)), AMBER, -3)
+    card(cv, 'A REALLY NICE MEAL', 1440, 330, 640, 130, -3, 54, ramp(c.lt, 0.4), PAPER)
+    card(cv, 'AND A FLY', 1500, 540, 420, 130, 3, 60, ramp(c.lt, 2.2))
 
 
 def before(cv, c):
-    """Sober: years earlier he lived through a plane crash that killed three people. No stamps, no jokes."""
+    """Sober: years earlier he lived through a plane crash in which other people died. No stamps, no jokes."""
     Wd.vgrad(cv, 0, 0, W, H, [(0, h('1C2430')), (1, h('090C12'))])
     Wd.particles(cv, W, H, c.t, 24, Wd.alpha(h('C8D8E8'), 0.22), 7, size=(2, 4), drift=(0, -14), wobble=10)
     k = min(1, c.lt / 0.6)
-    a = Wd.alpha(h(PAPER), k)
-    cv.save()
+    cv.save()                                             # a small plane seen from above, nose to the upper right
     cv.translate(520, 420 + 10 * (1 - k))
-    cv.rotate(-8)
+    cv.rotate(-28)
     pl = P(Wd.alpha(h('8A96A8'), k))
-    cv.drawRoundRect(skia.Rect.MakeXYWH(-230, -24, 460, 48), 24, 24, pl)
-    cv.drawRoundRect(skia.Rect.MakeXYWH(-40, -250, 80, 500), 30, 30, pl)
-    cv.drawRoundRect(skia.Rect.MakeXYWH(-250, -86, 40, 172), 16, 16, pl)
-    cv.drawCircle(232, 0, 30, pl)
+    cv.drawRoundRect(skia.Rect.MakeXYWH(-300, -26, 600, 52), 26, 26, pl)
+    wing = skia.Path()
+    wing.moveTo(60, 0)
+    wing.lineTo(-30, -235)
+    wing.lineTo(-95, -235)
+    wing.lineTo(-70, 0)
+    wing.lineTo(-95, 235)
+    wing.lineTo(-30, 235)
+    wing.close()
+    cv.drawPath(wing, pl)
+    tail = skia.Path()
+    tail.moveTo(-235, 0)
+    tail.lineTo(-275, -90)
+    tail.lineTo(-305, -90)
+    tail.lineTo(-295, 0)
+    tail.lineTo(-305, 90)
+    tail.lineTo(-275, 90)
+    tail.close()
+    cv.drawPath(tail, pl)
+    cv.drawCircle(120, -150 * 0 - 0, 0, pl)
+    for sy in (-1, 1):
+        cv.drawRoundRect(skia.Rect.MakeXYWH(-10, sy * 110 - 16, 70, 32), 14, 14, pl)
     cv.restore()
-    Wd.text_card(cv, 'YEARS EARLIER', 1300, 270, 64, Wd.alpha(h(AMBER), k), None)
-    Wd.text_card(cv, 'COSTA RICA', 1300, 400, 110, a, None)
-    k2 = min(1, max(0, (c.lt - 0.9) / 0.6))
-    Wd.text_card(cv, 'A PLANE CRASH. HE SURVIVED.', 1300, 520, 54, Wd.alpha(h(PAPER), k2), None)
-    k3 = min(1, max(0, (c.lt - 1.8) / 0.6))
-    Wd.text_card(cv, 'THREE PEOPLE DID NOT.', 1300, 640, 54, Wd.alpha(h('C8D8E8'), k3), None)
+    Wd.text_card(cv, 'YEARS EARLIER', 1300, 300, 64, Wd.alpha(h(AMBER), min(1, max(0, (c.lt - 0.7) / 0.6))), None)
+    Wd.text_card(cv, 'COSTA RICA', 1300, 440, 110, Wd.alpha(h(PAPER), min(1, max(0, (c.lt - 2.6) / 0.6))), None)
+    Wd.text_card(cv, 'A PLANE CRASH. HE LIVED.', 1300, 570, 56, Wd.alpha(h(PAPER), min(1, max(0, (c.lt - 3.4) / 0.6))), None)
 
 
 SHOTS = {f.__name__: f for f in (clock30, board_whale, black, shark_q, family, throat, board_true, map_cape, conditions, xray, headline, film, fly, before)}
@@ -570,14 +583,14 @@ def closed(cv, c):
 
 
 OVER = dict(
-    gulp=murk, jaws_shut=murk, whale_wide=rays, spat=mist, descend=rays, lobster_cu=rays, shoal=rays,
+    gulp=murk, jaws_shut=murk, whale_wide=rays, spat=mist, lobster_cu=rays, shoal=rays,
     gear_up=stamp('MICHAEL PACKARD, 56', 700, 180, 80, 0.3, 'FFFFFF', -2),
     crewman=both(first(stamp('JOSIAH MAYO', 640, 180, 96, 0.3, 'FFFFFF', -2)), lambda cv, c: stamp("STORMY MAYO'S SON", 700, 180, 84, 0.3, 'FFB000', -2)(cv, c) if 'alt' in c.prm else None),
     bass_boats=first(stamp('BOATS OUT FOR STRIPED BASS', 800, 180, 64, 0.3, 'FFFFFF', -2)),
     pluck=both(rays, stamp('BY HAND', 620, 200, 130, 0.35, 'FFB000', -4)),
     bubble_watch=stamp('FOLLOW THE BUBBLES', 760, 180, 84, 0.4, 'FFFFFF', -2),
     roll_in=both(mist, first(stamp('IN HE GOES', 660, 180, 100, 0.5, 'FFFFFF', -3))),
-    cruise=both(rays, stamp('VISIBILITY: ABOUT 20 FEET', 780, 180, 68, 0.3, 'FFFFFF', -2)),
+    cruise=rays,
     sand_hunt=rays, shadow=murk, shove=both(murk, stamp('A HUGE SHOVE', 700, 190, 110, 0.45, 'FFFFFF', -4)),
     feel_dark=both(breath, stamp('NO TEETH', 620, 220, 150, 0.35, 'FFB000', -5)),
     tumble=both(breath, first(stamp("IT'S MOVING", 660, 190, 110, 0.4, 'FFFFFF', -4))),
@@ -594,15 +607,15 @@ OVER = dict(
     francis=stamp('JOE FRANCIS, CHARTER CAPTAIN', 800, 180, 62, 0.3, 'FFFFFF', -2),
     feet_first=both(mist, stamp('FEET FIRST. FLIPPERS ON.', 800, 180, 76, 0.3, 'FFB000', -3)),
     haul=mist, radio=stamp('RADIO TO SHORE', 700, 180, 90, 0.3, 'FFFFFF', -3), race_home=mist,
-    ward_doc=stamp('NO BROKEN BONES', 740, 180, 96, 0.4, 'FFB000', -3),
+    ward_doc=stamp('JUST BRUISES', 660, 180, 100, 0.3, 'FFB000', -3),
     rook_door=stamp('OUT THE SAME AFTERNOON', 780, 180, 76, 0.3, 'FFFFFF', -2),
-    newsroom=first(stamp('"DEBUNK IT"', 660, 190, 110, 0.6, 'E5392F', -4)),
+    newsroom=first(stamp('TOLD TO DEBUNK IT', 720, 190, 92, 0.6, 'E5392F', -4)),
     tape=stamp('HE CHECKED', 640, 190, 110, 0.5, 'FFFFFF', -3),
     lab_wide=first(stamp('AN ACCIDENT', 660, 190, 120, 0.5, 'FFFFFF', -3)),
     feeding=both(rays, first(stamp('LUNGE FEEDING', 700, 190, 100, 0.3, 'FFB000', -3))),
     mouthful=both(rays, first(stamp('MOUTH WIDE OPEN', 720, 190, 90, 0.25, 'FFFFFF', -3))),
     blind_spot=both(rays, stamp("IT CAN'T SEE AHEAD", 760, 190, 92, 0.5, 'FFB000', -3)),
-    throat_look=breath, fluke_dusk=stamp('SORRY, WHALE', 660, 200, 100, 0.6, 'FFFFFF', -3),
+    throat_look=breath, baleen_cu=stamp('MICHAEL = THE FLY', 760, 190, 96, 0.25, 'FFB000', -3), descend=both(rays, stamp('HE CAN SEE ABOUT 20 FEET', 800, 180, 70, 0.3, 'FFFFFF', -2)), fluke_dusk=stamp('SORRY, WHALE', 660, 200, 100, 1.0, 'FFFFFF', -3),
     signoff=closed)
 
 
@@ -617,6 +630,6 @@ def THUMB(cv, c):
         cv.clear(h('1C6F8E'))
     cv.drawRect(skia.Rect(0, 0, 1280, 720), skia.Paint(Shader=skia.GradientShader.MakeLinear(
         [(700, 0), (1280, 0)], [0x00000000, 0xD8000000])))
-    Wd.text_card(cv, 'IN ITS MOUTH', 985, 200, 74, 0xFFFFFFFF, 0xFF000000)
-    Wd.text_card(cv, '30 SECONDS', 985, 345, 92, h(AMBER), 0xFF000000)
-    Wd.text_card(cv, 'ALIVE', 985, 520, 140, h('3DDC84'), 0xFF000000)
+    Wd.text_card(cv, 'IN ITS MOUTH', 975, 200, 72, 0xFFFFFFFF, 0xFF000000)
+    Wd.text_card(cv, '30 SECONDS', 975, 340, 80, h(AMBER), 0xFF000000)
+    Wd.text_card(cv, 'ALIVE', 975, 520, 140, h('3DDC84'), 0xFF000000)
