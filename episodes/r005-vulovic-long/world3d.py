@@ -1729,7 +1729,7 @@ def fly_home(S, k, t, lt):
         u = (t * 0.6 + i * 0.23) % 1
         f.location = A(1.9 + math.cos(i * 2.3) * (0.4 + 0.5 * u), -4.2 - 0.3 * u, 2.7 + 0.5 * math.sin(i * 1.7) - 1.2 * u)
         f.rotation_euler = (t * 3 + i, t * 2 + i * 2, i)
-    cam(S, A(lerp(0.1, 0.4, k), lerp(-7.2, -6.8, k), 2.85), A(1.45, -4.0, 2.2), 44)
+    cam(S, A(0.45, lerp(-5.55, -5.3, k), 2.55), A(1.5, -3.95, 2.3), 30)
 
 
 HOST |= {'belgrade', 'vinyl', 'friend', 'coffee', 'medical', 'rook_cup', 'dispatch', 'desk_job', 'reporters', 'stage_wide', 'medal_cu',
