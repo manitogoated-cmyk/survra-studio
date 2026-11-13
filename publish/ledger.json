@@ -83,6 +83,20 @@
     "url": "https://youtu.be/0gcKBCSQD0Y",
     "video_id": "0gcKBCSQD0Y"
   },
+  "r002-grimes-long": {
+    "captions": "ok",
+    "format": "long",
+    "playlist": "Rook's Case Files (Full Cases)",
+    "privacy": "private",
+    "publish_at": "2026-11-13T19:00:00Z",
+    "review": false,
+    "sha256": "5e759f6d4035839394999d4010294f1ac41fbdacce8a30248acf949f51ad4b52",
+    "thumbnail": "failed: thumbnail -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The authenticated user doesn't have permissions to upload and set custom video thumbnails.\",\n ",
+    "title": "He Fell Off a Cruise Ship at Night. The Ship Kept Sailing",
+    "uploaded_at": "2026-11-13T07:45:24Z",
+    "url": "https://youtu.be/rKTxeED8Hjc",
+    "video_id": "rKTxeED8Hjc"
+  },
   "r003-lemons": {
     "captions": "ok",
     "format": "short",
@@ -95,6 +109,32 @@
     "uploaded_at": "2026-11-13T02:55:49Z",
     "url": "https://youtu.be/eQFNuqzJhug",
     "video_id": "eQFNuqzJhug"
+  },
+  "r004-packard": {
+    "captions": "ok",
+    "format": "short",
+    "playlist": "Rook's Case Files (Shorts)",
+    "privacy": "private",
+    "publish_at": "2026-11-14T02:00:00Z",
+    "review": false,
+    "sha256": "3d658308ebb3cbb18efe2f677da8524dd9a3e56c9984138dd835c97d131ee015",
+    "title": "He Spent 30 Seconds Inside a Whale's Mouth #shorts",
+    "uploaded_at": "2026-11-13T07:45:28Z",
+    "url": "https://youtu.be/GsQiYFoCtL8",
+    "video_id": "GsQiYFoCtL8"
+  },
+  "r005-vulovic": {
+    "captions": "ok",
+    "format": "short",
+    "playlist": "Rook's Case Files (Shorts)",
+    "privacy": "private",
+    "publish_at": "2026-11-14T17:00:00Z",
+    "review": false,
+    "sha256": "3d3eb8e5fc21d0a3e6794192caa6ac79eba240d06c9f7eb0e00dae5106b8af2a",
+    "title": "She Fell 10 km Without a Parachute. And Walked Again #shorts",
+    "uploaded_at": "2026-11-13T07:45:31Z",
+    "url": "https://youtu.be/uEDw7H3Xq_E",
+    "video_id": "uEDw7H3Xq_E"
   },
   "s001-alvarenga": {
     "privacy": "private",
