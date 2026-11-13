@@ -1,0 +1,59 @@
+{
+ "id": "r003-lemons",
+ "format": "short",
+ "status": "approved",
+ "synthetic": false,
+ "host": "rook",
+ "case": 3,
+ "title": "His Lifeline Snapped 100 m Down. Help Was 30 Minutes Away #shorts",
+ "description": "Case 003. 18 September 2012, the North Sea: saturation diver Chris Lemons was working on a well structure about 100 metres down when his ship's dynamic positioning system failed. The vessel drifted, his umbilical snagged and snapped, and he was left on the seabed with only a few minutes of emergency gas. Around half an hour later fellow diver Dave Yuasa carried him back to the diving bell, where Duncan Allcock resuscitated him. He recovered with no lasting damage. Rook didn't believe it either.\n\nAnimated reconstruction of a true story.",
+ "tags": [
+  "Chris Lemons",
+  "Last Breath",
+  "saturation diver",
+  "North Sea",
+  "Bibby Topaz",
+  "true story",
+  "survival story",
+  "animated story",
+  "diving accident",
+  "Rook",
+  "Survra"
+ ],
+ "hashtags": [
+  "#shorts",
+  "#truestory",
+  "#survival"
+ ],
+ "playlist": "Rook's Case Files (Shorts)",
+ "story_score": {
+  "curiosity": 9,
+  "stakes": 10,
+  "freshness": 7,
+  "story": 9,
+  "visual": 9,
+  "audience_fit": 9,
+  "payoff": 9,
+  "packaging": 9,
+  "research": 8,
+  "repeatability": 9,
+  "total": 88
+ },
+ "title_options": [
+  "His Lifeline Snapped 100 m Down. Help Was 30 Minutes Away #shorts",
+  "5 Minutes of Gas. 30 Minutes Until Help. He Lived #shorts",
+  "The Diver Who Ran Out of Gas on the Seabed and Survived #shorts",
+  "They Watched Him Stop Moving on a Robot's Camera #shorts",
+  "His Ship Drifted Away and Snapped His Lifeline #shorts"
+ ],
+ "source_notes": "Date, ship and place: 18 September 2012, DSV Bibby Topaz, Huntington field, North Sea (The National; Undercurrent gives the same date and ship). Depth: 'almost 100 metres' (The National), '100 metres (330 ft)' (Wikipedia), '330 feet' (Undercurrent); Offshore Technology says 90 m; the script says 'a hundred metres'. Cause: failure of the ship's dynamic positioning system, which let it drift (The National, Offshore Technology, Undercurrent, Wikipedia). Emergency gas: 'only five minutes' (Wikipedia), 'a few minutes' (Undercurrent), 'nine or ten minutes' (Offshore Technology); the script says 'about five minutes' and the description 'a few minutes'. Time without breathing gas: 'around 30 minutes' (The National, Wikipedia); Undercurrent says 38 minutes; the script says 'half an hour' and 'around thirty minutes'. He was told to get on top of the structure (The National; Offshore Technology: 'climbed atop a structure on the seabed floor'). The crew watched on the ROV's cameras 'as Lemons' movements gradually stopped' (Undercurrent; Wikipedia confirms an ROV located him). Dave Yuasa 'recovered what he thought was Lemons' corpse' and took him to Duncan Allcock in the bell, who removed his helmet (The National). Resuscitation: 'two breaths of mouth-to-mouth' (Undercurrent), 'performed CPR' (The National); the script says 'a crewmate breathes into his mouth' and gives no count. Why he lived is not settled ('there is not one definitive theory', Offshore Technology); the explanations offered are the cold water and oxygen-rich breathing gas saturating his blood (Wikipedia, The National, Undercurrent), so the script calls it the 'best guess'. Outcome: 'no long-term health effects' (Offshore Technology); he went on working as a saturation diver (Undercurrent). Dramatised, not reported: the red beacon and the supervisor's gestures in dive control, the gauge graphics, the exact way the line lies over the structure, and everything Rook does. No dialogue is attributed to anyone. The BBC Future article on the case could not be fetched during this run and is not used.",
+ "sources": [
+  "https://www.thenationalnews.com/arts-culture/television/last-breath-the-miraculous-underwater-survival-story-of-chris-lemons-1.879013",
+  "https://www.offshore-technology.com/features/featurelifeline-lost-documenting-a-divers-near-death-dramatic-rescue-in-the-north-sea-4809349/",
+  "https://undercurrent.org/UCnow/dive_magazine/2019/330FeetDeep201906.html",
+  "https://en.wikipedia.org/wiki/Last_Breath_(2019_film)"
+ ],
+ "quality_gate": {
+  "method": "3D contact sheet reviewed in five rounds and composited stills (captions, HUD, overlays, inserts) in two; full-length low-resolution rehearsal (216x384, 4 samples) passed the automated gate locally: 39 shots, mean 1.26 s, longest 1.71 s, loudness -15.0 LUFS, host in 17/39 shots (44%), closest match to an earlier episode 0.79; two shots were reordered and two stamps moved after that rehearsal and were checked on the sheet only; audio was measured, not listened to; the full-resolution render and final gate run in the cloud"
+ }
+}

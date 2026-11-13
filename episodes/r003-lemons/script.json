@@ -1,0 +1,14 @@
+{
+  "id": "r003-lemons", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9,
+  "segments": [
+    {"scene": "hook",   "mood": "hook",    "text": "A hundred metres under the North Sea, a diver's lifeline snaps. He has about five minutes of gas."},
+    {"scene": "doubt",  "mood": "calm",    "text": "No chance. Five minutes of gas doesn't last half an hour. Let's go look."},
+    {"scene": "job",    "mood": "action",  "text": "September {2012|twenty twelve}. Chris Lemons is working on an oil well. His breathing gas comes down a cable from the ship."},
+    {"scene": "drift",  "mood": "tense",   "text": "The ship's positioning system fails. It drifts. His cable snags, pulls tight, and snaps."},
+    {"scene": "dark",   "mood": "sad",     "text": "In the dark, he climbs on top of the structure and waits. Then his gas runs out."},
+    {"scene": "watch",  "mood": "tense",   "text": "Up top, they watch him on a robot's camera. His movements slow. Then stop."},
+    {"scene": "rescue", "mood": "action",  "text": "Around thirty minutes later, the ship is back. Diver Dave Yuasa hauls him to the bell, sure he's carrying a body."},
+    {"scene": "breath", "mood": "triumph", "text": "Helmet off. A crewmate breathes into his mouth. And Chris Lemons breathes again."},
+    {"scene": "end",    "mood": "end",     "text": "Best guess: the cold, and oxygen-rich gas. No lasting damage. I was wrong. Case closed."}
+  ]
+}

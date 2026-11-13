@@ -37,8 +37,8 @@
    "world": "North Sea bed, dive bell, storm ship",
    "est_score": 88,
    "long_form_candidate": true,
-   "status": "in progress",
-   "facts": "verify with 2+ sources at authoring; skip if they do not hold"
+   "status": "authored",
+   "facts": "verified (see episodes/r003-lemons/episode.json)"
   },
   {
    "case": 4,
