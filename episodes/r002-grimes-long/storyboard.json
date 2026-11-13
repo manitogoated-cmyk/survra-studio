@@ -1,0 +1,3095 @@
+{
+ "id": "r002-grimes-long",
+ "shots": [
+  {
+   "segment": "hook",
+   "weight": 0.7,
+   "kind": "wake_eyes",
+   "action": "Black water. A man's eyes snap open, chest-deep in the swell",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 6,
+   "transition": "cut",
+   "sfx": [
+    [
+     "boom",
+     0.03
+    ],
+    [
+     "gasp",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 1
+  },
+  {
+   "segment": "hook",
+   "weight": 1.1,
+   "kind": "wake_wide",
+   "action": "Crane up: one small figure alone on a moonlit sea",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wave",
+     0.0
+    ],
+    [
+     "low",
+     0.2
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 2
+  },
+  {
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "no_ship",
+   "action": "He spins, searching: empty horizon all the way round",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 3,
+   "transition": "whip",
+   "sfx": [
+    [
+     "swim",
+     0.0
+    ],
+    [
+     "heartbeat",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 3
+  },
+  {
+   "segment": "hook",
+   "weight": 1.1,
+   "kind": "top_down",
+   "action": "From above he stares up: how did he get here?",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "hit",
+     0.3
+    ],
+    [
+     "low",
+     0.0
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 4
+  },
+  {
+   "segment": "doubt",
+   "weight": 1.1,
+   "kind": "rook_pier",
+   "action": "Rook on the quay beside the liner, arms crossed, shaking his head",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "horn_far",
+     0.0
+    ]
+   ],
+   "hud": "CASE 002",
+   "prm": {},
+   "n": 5
+  },
+  {
+   "segment": "doubt",
+   "weight": 1.1,
+   "kind": "board_fall",
+   "action": "Case wall: the liner, an arrow to the water, FELL OFF? AND LIVED?",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "bloop",
+     0.05
+    ],
+    [
+     "hit",
+     0.5
+    ],
+    [
+     "pop",
+     0.8
+    ]
+   ],
+   "hud": "CASE 002",
+   "prm": {},
+   "n": 6
+  },
+  {
+   "segment": "doubt",
+   "weight": 1.0,
+   "kind": "rook_go",
+   "action": "He pops his collar and marches for the gangway",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "flap",
+     0.1
+    ],
+    [
+     "clunk",
+     0.6
+    ]
+   ],
+   "hud": "CASE 002",
+   "prm": {},
+   "n": 7
+  },
+  {
+   "segment": "sail",
+   "weight": 1.2,
+   "kind": "ship_sail",
+   "action": "The liner steams out at dusk, every window lit",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "horn",
+     0.05
+    ],
+    [
+     "wave",
+     0.4
+    ]
+   ],
+   "hud": "23 NOV 2022",
+   "prm": {},
+   "n": 8
+  },
+  {
+   "segment": "sail",
+   "weight": 1.2,
+   "kind": "family_board",
+   "action": "Earlier, at the quay: the family files up the gangway, James waving; Rook watches",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.2
+    ],
+    [
+     "shout",
+     0.5
+    ]
+   ],
+   "hud": "NEW ORLEANS",
+   "prm": {},
+   "n": 9
+  },
+  {
+   "segment": "sail",
+   "weight": 1.0,
+   "kind": "rook_rail",
+   "action": "Rook at the sun-deck rail, thumb over his shoulder at Mexico",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "gulls",
+     0.1
+    ]
+   ],
+   "hud": "BOUND FOR COZUMEL",
+   "prm": {},
+   "n": 10
+  },
+  {
+   "segment": "family",
+   "weight": 1.2,
+   "kind": "james_deck",
+   "action": "James on the sun deck with his family at sunset",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "gulls",
+     0.1
+    ],
+    [
+     "shout",
+     0.6
+    ]
+   ],
+   "hud": "THANKSGIVING EVE",
+   "prm": {},
+   "n": 11
+  },
+  {
+   "segment": "family",
+   "weight": 1.5,
+   "kind": "board_family",
+   "action": "Case wall: James, 28, Lafayette, Alabama, 18 family on board",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "pop",
+     0.12
+    ],
+    [
+     "pop",
+     0.4
+    ],
+    [
+     "pop",
+     0.72
+    ]
+   ],
+   "hud": "CASE 002",
+   "prm": {},
+   "n": 12
+  },
+  {
+   "segment": "party",
+   "weight": 1.1,
+   "kind": "lounge_wide",
+   "action": "The lounge: James shreds an invisible guitar; Rook stands in the crowd",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 3,
+   "transition": "whip",
+   "sfx": [
+    [
+     "cord",
+     0.0
+    ],
+    [
+     "shout",
+     0.4
+    ]
+   ],
+   "hud": "THANKSGIVING EVE",
+   "prm": {},
+   "n": 13
+  },
+  {
+   "segment": "party",
+   "weight": 0.9,
+   "kind": "guitar_cu",
+   "action": "Low angle: the windmill arm, head thrown back",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 4,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.05
+    ],
+    [
+     "cord",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 14
+  },
+  {
+   "segment": "party",
+   "weight": 1.0,
+   "kind": "winner",
+   "action": "Arms up in a shower of confetti",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 4,
+   "transition": "flash",
+   "sfx": [
+    [
+     "shout",
+     0.05
+    ],
+    [
+     "boom",
+     0.2
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 15
+  },
+  {
+   "segment": "party",
+   "weight": 1.1,
+   "kind": "bar_two",
+   "action": "At the bar with his sister, still playing the solo",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "cord",
+     0.2
+    ],
+    [
+     "pop",
+     0.7
+    ]
+   ],
+   "hud": "THE BAR",
+   "prm": {},
+   "n": 16
+  },
+  {
+   "segment": "party",
+   "weight": 1.1,
+   "kind": "rook_clap",
+   "action": "Rook gives the slowest clap in history, then half a smirk",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.15
+    ],
+    [
+     "tick",
+     0.5
+    ],
+    [
+     "tick",
+     0.85
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 17
+  },
+  {
+   "segment": "gone",
+   "weight": 1.0,
+   "kind": "bar_two",
+   "action": "The two of them at the bar, from the other side",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ]
+   ],
+   "hud": "ABOUT 11 PM",
+   "prm": {
+    "alt": [
+     55,
+     1.0,
+     0.3
+    ]
+   },
+   "n": 18
+  },
+  {
+   "segment": "gone",
+   "weight": 1.2,
+   "kind": "bar_leave",
+   "action": "He gets up and heads for the exit; his sister waves",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.3
+    ],
+    [
+     "clunk",
+     0.7
+    ]
+   ],
+   "hud": "ABOUT 11 PM",
+   "prm": {},
+   "n": 19
+  },
+  {
+   "segment": "gone",
+   "weight": 1.0,
+   "kind": "hall_walk",
+   "action": "James wanders off down the cabin corridor",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.2
+    ],
+    [
+     "clunk",
+     0.7
+    ]
+   ],
+   "hud": "ABOUT 11 PM",
+   "prm": {},
+   "n": 20
+  },
+  {
+   "segment": "gone",
+   "weight": 1.0,
+   "kind": "rook_peek",
+   "action": "Rook leans out of a doorway, tapping his beak, watching him go",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.2
+    ],
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 21
+  },
+  {
+   "segment": "gone",
+   "weight": 1.1,
+   "kind": "door_swing",
+   "action": "The restroom door swings on an empty corridor; the lights flicker",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 3,
+   "transition": "cut",
+   "sfx": [
+    [
+     "creak",
+     0.05
+    ],
+    [
+     "buzz",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 22
+  },
+  {
+   "segment": "gap",
+   "weight": 1.2,
+   "kind": "memory_gap",
+   "action": "A dead screen where the memory should be",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 3,
+   "transition": "flash",
+   "sfx": [
+    [
+     "scratch",
+     0.0
+    ],
+    [
+     "low",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 23
+  },
+  {
+   "segment": "gap",
+   "weight": 1.2,
+   "kind": "bar_empty",
+   "action": "His sister, alone, looks at the empty stool",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.0
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 24
+  },
+  {
+   "segment": "gap",
+   "weight": 1.2,
+   "kind": "rook_bar",
+   "action": "Rook at the empty stool, tapping his beak. No jokes",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": "CASE 002",
+   "prm": {},
+   "n": 25
+  },
+  {
+   "segment": "wake",
+   "weight": 1.2,
+   "kind": "ship_leaves",
+   "action": "Water level: the lit stern sails away; Rook bobs beside him in a life ring",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "horn_far",
+     0.1
+    ],
+    [
+     "wave",
+     0.0
+    ]
+   ],
+   "hud": "GULF OF MEXICO",
+   "prm": {},
+   "n": 26
+  },
+  {
+   "segment": "wake",
+   "weight": 1.0,
+   "kind": "tread_cu",
+   "action": "James treads water, eyes wide, looking everywhere",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 2,
+   "transition": "cut",
+   "sfx": [
+    [
+     "swim",
+     0.0
+    ],
+    [
+     "gasp",
+     0.5
+    ]
+   ],
+   "hud": "GULF OF MEXICO",
+   "prm": {},
+   "n": 27
+  },
+  {
+   "segment": "wake",
+   "weight": 1.0,
+   "kind": "wake_wide",
+   "action": "High and wide: one head in the swell",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wave",
+     0.0
+    ],
+    [
+     "low",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "alt": [
+     70,
+     0.55,
+     -2.5
+    ]
+   },
+   "n": 28
+  },
+  {
+   "segment": "wake",
+   "weight": 1.0,
+   "kind": "rook_ring",
+   "action": "Rook in his ring lowers his head",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wave",
+     0.0
+    ],
+    [
+     "low",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 29
+  },
+  {
+   "segment": "tread",
+   "weight": 1.1,
+   "kind": "swim_night",
+   "action": "He swims, straight at us, spray flying",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 3,
+   "transition": "whip",
+   "sfx": [
+    [
+     "swim",
+     0.0
+    ],
+    [
+     "splash",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 30
+  },
+  {
+   "segment": "tread",
+   "weight": 1.3,
+   "kind": "all_night",
+   "action": "A clock spins under a crossing moon; water about 70°F",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "zoom",
+   "sfx": [
+    [
+     "tick",
+     0.0
+    ],
+    [
+     "tick",
+     0.25
+    ],
+    [
+     "tick",
+     0.5
+    ],
+    [
+     "tick",
+     0.75
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 31
+  },
+  {
+   "segment": "tread",
+   "weight": 1.0,
+   "kind": "tread_cu",
+   "action": "Still treading, from the other side",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "swim",
+     0.1
+    ],
+    [
+     "wave",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "alt": [
+     -65,
+     1.25,
+     0.6
+    ]
+   },
+   "n": 32
+  },
+  {
+   "segment": "tread",
+   "weight": 1.0,
+   "kind": "top_down",
+   "action": "From high above: a dot on black water",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.0
+    ],
+    [
+     "wave",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "alt": [
+     120,
+     0.75,
+     0
+    ]
+   },
+   "n": 33
+  },
+  {
+   "segment": "shipon",
+   "weight": 1.3,
+   "kind": "ship_night",
+   "action": "The liner, small and bright, sails on; he is far behind it",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "horn_far",
+     0.1
+    ],
+    [
+     "wave",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 34
+  },
+  {
+   "segment": "shipon",
+   "weight": 1.0,
+   "kind": "rook_bar",
+   "action": "Rook at the bar: the stool is still empty",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "alt": [
+     -50,
+     1.1,
+     0.2
+    ],
+    "expr": "deadpan"
+   },
+   "n": 35
+  },
+  {
+   "segment": "jelly",
+   "weight": 1.3,
+   "kind": "jelly",
+   "action": "Underwater: glowing jellyfish drift round his legs",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 3,
+   "transition": "flash",
+   "sfx": [
+    [
+     "bubbles",
+     0.0
+    ],
+    [
+     "riser",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 36
+  },
+  {
+   "segment": "jelly",
+   "weight": 0.8,
+   "kind": "swim_night",
+   "action": "He thrashes through them",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 4,
+   "transition": "cut",
+   "sfx": [
+    [
+     "splash",
+     0.1
+    ],
+    [
+     "gasp",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "alt": [
+     -70,
+     0.9,
+     -0.6
+    ]
+   },
+   "n": 37
+  },
+  {
+   "segment": "jelly",
+   "weight": 1.2,
+   "kind": "sunrise",
+   "action": "The sun comes up on an empty sea",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.0
+    ],
+    [
+     "gulls",
+     0.5
+    ]
+   ],
+   "hud": "THANKSGIVING DAY",
+   "prm": {},
+   "n": 38
+  },
+  {
+   "segment": "jelly",
+   "weight": 1.0,
+   "kind": "rook_sun",
+   "action": "Rook in his ring turns from the sunrise to look at him",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wave",
+     0.1
+    ]
+   ],
+   "hud": "THANKSGIVING DAY",
+   "prm": {},
+   "n": 39
+  },
+  {
+   "segment": "fin",
+   "weight": 1.2,
+   "kind": "fin_circle",
+   "action": "A fin cuts an arc toward him; Rook yanks his wings up",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 4,
+   "transition": "flash",
+   "sfx": [
+    [
+     "riser",
+     0.0
+    ],
+    [
+     "splash",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 40
+  },
+  {
+   "segment": "fin",
+   "weight": 1.1,
+   "kind": "under_bump",
+   "action": "Underwater: a broad dark shape slides in and bumps his leg",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 8,
+   "transition": "cut",
+   "sfx": [
+    [
+     "bubbles",
+     0.0
+    ],
+    [
+     "hit",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 41
+  },
+  {
+   "segment": "fin",
+   "weight": 1.1,
+   "kind": "rook_wince",
+   "action": "Rook covers his beak and looks away",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.0
+    ],
+    [
+     "wave",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 42
+  },
+  {
+   "segment": "stick",
+   "weight": 1.2,
+   "kind": "stick_chew",
+   "action": "He gnaws a floating stick",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "scratch",
+     0.2
+    ],
+    [
+     "scratch",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 43
+  },
+  {
+   "segment": "stick",
+   "weight": 1.0,
+   "kind": "rook_ring",
+   "action": "Rook watches from his ring",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wave",
+     0.2
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "alt": [
+     60,
+     1.15,
+     0.4
+    ]
+   },
+   "n": 44
+  },
+  {
+   "segment": "noon",
+   "weight": 1.0,
+   "kind": "bar_empty",
+   "action": "Noon: his sister at the bar, the stool still empty",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "tick",
+     0.2
+    ],
+    [
+     "low",
+     0.4
+    ]
+   ],
+   "hud": "NOON",
+   "prm": {
+    "alt": [
+     60,
+     1.1,
+     0.4
+    ]
+   },
+   "n": 45
+  },
+  {
+   "segment": "noon",
+   "weight": 1.3,
+   "kind": "deck_search",
+   "action": "Daylight on the sun deck: a security officer with a photo; Rook searches with him",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "buzz",
+     0.1
+    ],
+    [
+     "clunk",
+     0.6
+    ]
+   ],
+   "hud": "NOON",
+   "prm": {},
+   "n": 46
+  },
+  {
+   "segment": "noon",
+   "weight": 1.2,
+   "kind": "hall_search",
+   "action": "Security knocks on cabin doors down the corridor",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.2
+    ],
+    [
+     "clunk",
+     0.45
+    ],
+    [
+     "clunk",
+     0.7
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 47
+  },
+  {
+   "segment": "turn",
+   "weight": 1.1,
+   "kind": "call_cg",
+   "action": "The ship calls the Coast Guard: passenger missing",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "buzz",
+     0.0
+    ],
+    [
+     "hit",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 48
+  },
+  {
+   "segment": "turn",
+   "weight": 1.3,
+   "kind": "ship_turn",
+   "action": "From above: the Valor swings round on her own wake",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "horn",
+     0.1
+    ],
+    [
+     "wave",
+     0.5
+    ]
+   ],
+   "hud": "THANKSGIVING DAY",
+   "prm": {},
+   "n": 49
+  },
+  {
+   "segment": "search",
+   "weight": 1.2,
+   "kind": "search_air",
+   "action": "A rescue helicopter sweeps low over the swell; Rook watches from his ring",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 3,
+   "transition": "whip",
+   "sfx": [
+    [
+     "engine_start",
+     0.0
+    ],
+    [
+     "whoosh",
+     0.5
+    ]
+   ],
+   "hud": "COAST GUARD",
+   "prm": {},
+   "n": 50
+  },
+  {
+   "segment": "search",
+   "weight": 1.1,
+   "kind": "search_boat",
+   "action": "A response boat slams through the swell",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 4,
+   "transition": "cut",
+   "sfx": [
+    [
+     "splash",
+     0.1
+    ],
+    [
+     "splash",
+     0.6
+    ]
+   ],
+   "hud": "COAST GUARD",
+   "prm": {},
+   "n": 51
+  },
+  {
+   "segment": "search",
+   "weight": 1.1,
+   "kind": "search_plane",
+   "action": "A patrol plane crosses overhead",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.2
+    ]
+   ],
+   "hud": "COAST GUARD",
+   "prm": {},
+   "n": 52
+  },
+  {
+   "segment": "search",
+   "weight": 1.2,
+   "kind": "ops_room",
+   "action": "The operations room: an officer points at the search box; Rook looks on",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "tick",
+     0.2
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": "COAST GUARD",
+   "prm": {},
+   "n": 53
+  },
+  {
+   "segment": "search",
+   "weight": 1.5,
+   "kind": "map_box",
+   "action": "The search box: 7,000+ square nautical miles, about one Massachusetts",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.1
+    ],
+    [
+     "hit",
+     0.35
+    ],
+    [
+     "pop",
+     0.65
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 54
+  },
+  {
+   "segment": "odds",
+   "weight": 1.3,
+   "kind": "rook_chart",
+   "action": "Rook taps the chart and turns to us",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.2
+    ],
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": "CASE 002",
+   "prm": {},
+   "n": 55
+  },
+  {
+   "segment": "odds",
+   "weight": 1.0,
+   "kind": "top_down",
+   "action": "One head in that much water",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.0
+    ],
+    [
+     "wave",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "alt": [
+     -100,
+     1.5,
+     5.0
+    ]
+   },
+   "n": 56
+  },
+  {
+   "segment": "odds",
+   "weight": 1.1,
+   "kind": "ops_room",
+   "action": "Rook and the officer at the chart, from the side",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.4
+    ]
+   ],
+   "hud": "CASE 002",
+   "prm": {
+    "alt": [
+     42,
+     0.9,
+     0.2
+    ],
+    "expr": "smirk"
+   },
+   "n": 57
+  },
+  {
+   "segment": "lights",
+   "weight": 1.2,
+   "kind": "lights_far",
+   "action": "Sunset: over his shoulder, a ship's lights on the horizon",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "riser",
+     0.0
+    ],
+    [
+     "horn_far",
+     0.5
+    ]
+   ],
+   "hud": "NEXT EVENING",
+   "prm": {},
+   "n": 58
+  },
+  {
+   "segment": "lights",
+   "weight": 1.0,
+   "kind": "swim_for",
+   "action": "He swims for it, spray flying",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 3,
+   "transition": "whip",
+   "sfx": [
+    [
+     "swim",
+     0.0
+    ],
+    [
+     "splash",
+     0.5
+    ]
+   ],
+   "hud": "NEXT EVENING",
+   "prm": {},
+   "n": 59
+  },
+  {
+   "segment": "socks",
+   "weight": 1.2,
+   "kind": "socks_wave",
+   "action": "He waves his white socks over his head",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 3,
+   "transition": "cut",
+   "sfx": [
+    [
+     "shout",
+     0.1
+    ],
+    [
+     "flap",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 60
+  },
+  {
+   "segment": "socks",
+   "weight": 1.0,
+   "kind": "rook_socks",
+   "action": "Rook shrugs: socks",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "bloop",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 61
+  },
+  {
+   "segment": "socks",
+   "weight": 1.2,
+   "kind": "carrier_big",
+   "action": "The bulk carrier slides past like a wall; he keeps waving",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 3,
+   "transition": "cut",
+   "sfx": [
+    [
+     "horn",
+     0.1
+    ],
+    [
+     "wave",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 62
+  },
+  {
+   "segment": "socks",
+   "weight": 0.9,
+   "kind": "socks_wave",
+   "action": "Still waving, from the side",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "flap",
+     0.2
+    ],
+    [
+     "shout",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "alt": [
+     -55,
+     1.2,
+     0.5
+    ]
+   },
+   "n": 63
+  },
+  {
+   "segment": "spotted",
+   "weight": 1.2,
+   "kind": "bridge_spot",
+   "action": "On the bridge wing a crewman lowers his binoculars and points",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 3,
+   "transition": "flash",
+   "sfx": [
+    [
+     "shout",
+     0.25
+    ],
+    [
+     "hit",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 64
+  },
+  {
+   "segment": "spotted",
+   "weight": 1.0,
+   "kind": "lights_far",
+   "action": "The carrier, closer now",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "horn_far",
+     0.2
+    ]
+   ],
+   "hud": "20 MILES OFF LOUISIANA",
+   "prm": {
+    "alt": [
+     30,
+     1.2,
+     1.0
+    ]
+   },
+   "n": 65
+  },
+  {
+   "segment": "spotted",
+   "weight": 1.1,
+   "kind": "carrier_big",
+   "action": "The hull towers over him and Rook",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "horn",
+     0.1
+    ],
+    [
+     "wave",
+     0.5
+    ]
+   ],
+   "hud": "20 MILES OFF LOUISIANA",
+   "prm": {
+    "alt": [
+     -28,
+     1.15,
+     1.5
+    ]
+   },
+   "n": 66
+  },
+  {
+   "segment": "spotted",
+   "weight": 1.0,
+   "kind": "bridge_spot",
+   "action": "The crewman, from the other side, still pointing",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "shout",
+     0.2
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "alt": [
+     -50,
+     1.1,
+     0.3
+    ]
+   },
+   "n": 67
+  },
+  {
+   "segment": "hoist",
+   "weight": 1.1,
+   "kind": "heli_in",
+   "action": "A rescue helicopter sweeps in, searchlight raking the water",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 5,
+   "transition": "whip",
+   "sfx": [
+    [
+     "engine_start",
+     0.0
+    ],
+    [
+     "riser",
+     0.3
+    ]
+   ],
+   "hud": "COAST GUARD",
+   "prm": {},
+   "n": 68
+  },
+  {
+   "segment": "hoist",
+   "weight": 1.1,
+   "kind": "swimmer_down",
+   "action": "A rescue swimmer comes down the cable, arm out",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 4,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.1
+    ],
+    [
+     "splash",
+     0.7
+    ]
+   ],
+   "hud": "COAST GUARD",
+   "prm": {},
+   "n": 69
+  },
+  {
+   "segment": "hoist",
+   "weight": 0.8,
+   "kind": "rook_hat",
+   "action": "Rotor wash: Rook's hat jumps off his head",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 6,
+   "transition": "cut",
+   "sfx": [
+    [
+     "flap",
+     0.1
+    ],
+    [
+     "gasp",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 70
+  },
+  {
+   "segment": "hoist",
+   "weight": 1.3,
+   "kind": "sling",
+   "action": "James goes limp in the rescue sling, the swimmer holding him",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 3,
+   "transition": "cut",
+   "sfx": [
+    [
+     "splash",
+     0.1
+    ],
+    [
+     "low",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 71
+  },
+  {
+   "segment": "hoist",
+   "weight": 1.2,
+   "kind": "hoist_up",
+   "action": "Both men rise on the cable; Rook points up from his ring",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 3,
+   "transition": "cut",
+   "sfx": [
+    [
+     "riser",
+     0.0
+    ],
+    [
+     "boom",
+     0.75
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "alt": [
+     0,
+     1.25,
+     1.2
+    ]
+   },
+   "n": 72
+  },
+  {
+   "segment": "hospital",
+   "weight": 1.4,
+   "kind": "ward",
+   "action": "Rook at the bedside takes his hat off; James looks over",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "tick",
+     0.2
+    ],
+    [
+     "flap",
+     0.5
+    ]
+   ],
+   "hud": "NEW ORLEANS",
+   "prm": {},
+   "n": 73
+  },
+  {
+   "segment": "hospital",
+   "weight": 1.2,
+   "kind": "ward_cu",
+   "action": "A hospital bed: James, eyes heavy, the monitor ticking",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.2
+    ],
+    [
+     "tick",
+     0.5
+    ],
+    [
+     "tick",
+     0.8
+    ]
+   ],
+   "hud": "NEW ORLEANS",
+   "prm": {},
+   "n": 74
+  },
+  {
+   "segment": "hospital",
+   "weight": 1.0,
+   "kind": "ward",
+   "action": "The ward from the window side",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ]
+   ],
+   "hud": "NEW ORLEANS",
+   "prm": {
+    "alt": [
+     50,
+     1.05,
+     0.2
+    ]
+   },
+   "n": 75
+  },
+  {
+   "segment": "gross",
+   "weight": 1.2,
+   "kind": "ops_room",
+   "action": "Back in the operations room: the officer at his chart",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "tick",
+     0.2
+    ]
+   ],
+   "hud": "COAST GUARD",
+   "prm": {
+    "alt": [
+     -30,
+     1.0,
+     0.4
+    ],
+    "expr": "warm"
+   },
+   "n": 76
+  },
+  {
+   "segment": "gross",
+   "weight": 1.1,
+   "kind": "rook_chart",
+   "action": "Rook at the chart, hat low, impressed against his will",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "pop",
+     0.7
+    ]
+   ],
+   "hud": "CASE 002",
+   "prm": {
+    "alt": [
+     -25,
+     1.15,
+     0.2
+    ],
+    "expr": "warm"
+   },
+   "n": 77
+  },
+  {
+   "segment": "again",
+   "weight": 1.3,
+   "kind": "ten_feet",
+   "action": "On the sun deck by day: Rook beckons from the rail; James stays well back",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "gulls",
+     0.1
+    ],
+    [
+     "wave",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 78
+  },
+  {
+   "segment": "again",
+   "weight": 1.0,
+   "kind": "james_deck",
+   "action": "James with the family again, grinning",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "shout",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "alt": [
+     -40,
+     1.1,
+     0.3
+    ]
+   },
+   "n": 79
+  },
+  {
+   "segment": "again",
+   "weight": 1.0,
+   "kind": "ten_feet",
+   "action": "James shakes his head: not one step closer",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "gulls",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "alt": [
+     115,
+     0.9,
+     0.2
+    ],
+    "expr": "laugh"
+   },
+   "n": 80
+  },
+  {
+   "segment": "end",
+   "weight": 1.2,
+   "kind": "board_true",
+   "action": "Case wall: James's photo, stamped TRUE, UP TO 20 HOURS",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 4,
+   "transition": "flash",
+   "sfx": [
+    [
+     "hit",
+     0.12
+    ],
+    [
+     "bloop",
+     0.35
+    ],
+    [
+     "pop",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "n": 81
+  },
+  {
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "rook_dawn",
+   "action": "Dawn on the quay: Rook tips his hat toward the sea",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "gulls",
+     0.1
+    ]
+   ],
+   "hud": "CASE 002",
+   "prm": {},
+   "n": 82
+  },
+  {
+   "segment": "end",
+   "weight": 1.3,
+   "kind": "signoff",
+   "action": "He flips a gold guitar pick, catches it. Case closed",
+   "camera": "3D",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     540,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "boom",
+     0.5
+    ]
+   ],
+   "hud": "CASE 002",
+   "prm": {},
+   "brand": true,
+   "n": 83
+  }
+ ]
+}

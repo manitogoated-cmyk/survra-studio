@@ -1,0 +1,135 @@
+{
+ "id": "r002-grimes-long",
+ "voice": "am_fenrir",
+ "speed": 1.12,
+ "gap": 0.16,
+ "lead": 0.1,
+ "tail": 1.0,
+ "segments": [
+  {
+   "scene": "hook",
+   "mood": "hook",
+   "text": "A man wakes up in the ocean. At night. No ship. No life jacket. And no idea how he got there."
+  },
+  {
+   "scene": "doubt",
+   "mood": "calm",
+   "text": "No chance. Nobody falls off a cruise ship, wakes up in the dark, and lives to tell it. Let's go look."
+  },
+  {
+   "scene": "sail",
+   "mood": "calm",
+   "text": "November twenty-third, {2022|twenty twenty two}. Thanksgiving eve. The Carnival Valor leaves New Orleans, bound for Cozumel, Mexico."
+  },
+  {
+   "scene": "family",
+   "mood": "calm",
+   "text": "On board is James Michael Grimes, {28|twenty eight}, from Lafayette, Alabama. He is travelling with {18|eighteen} members of his family."
+  },
+  {
+   "scene": "party",
+   "mood": "action",
+   "text": "That first day, he enters an air guitar contest. And wins it. The prize is a free drink. He says he'd had drinks, but he was not drunk."
+  },
+  {
+   "scene": "gone",
+   "mood": "tense",
+   "text": "Around eleven that night, he is at a bar with his sister. He leaves to find the restroom. He never comes back."
+  },
+  {
+   "scene": "gap",
+   "mood": "tense",
+   "text": "What happened next, nobody knows. Not even James. He doesn't remember the walk. He doesn't remember the fall."
+  },
+  {
+   "scene": "wake",
+   "mood": "sad",
+   "text": "He comes to in the Gulf of Mexico. In the water, with no boat in sight. He says his worst fear is drowning. And he says he can't float."
+  },
+  {
+   "scene": "tread",
+   "mood": "sad",
+   "text": "So he swims. And he treads water. Hour after hour. The water is about seventy degrees. That sounds warm, until you spend a night in it."
+  },
+  {
+   "scene": "shipon",
+   "mood": "calm",
+   "text": "And the ship? The ship sails on toward Mexico. Nobody raises the alarm until the next day."
+  },
+  {
+   "scene": "jelly",
+   "mood": "tense",
+   "text": "Out in the dark, he swims through two schools of jellyfish. Then the sun comes up. He is still alone."
+  },
+  {
+   "scene": "fin",
+   "mood": "tense",
+   "text": "Then he sees a fin. Something with a flat mouth bumps his leg. He doesn't think it was a shark. That would not comfort me."
+  },
+  {
+   "scene": "stick",
+   "mood": "calm",
+   "text": "A stick floats by. It looks like bamboo. He chews on it, just to taste something that isn't salt water."
+  },
+  {
+   "scene": "noon",
+   "mood": "tense",
+   "text": "Noon, Thanksgiving Day. His sister reports him missing. The ship calls for him over the speakers. Security searches the decks with his photo."
+  },
+  {
+   "scene": "turn",
+   "mood": "action",
+   "text": "Around {2:30|two thirty}, the ship calls the Coast Guard. Then the Valor turns around and retraces its route."
+  },
+  {
+   "scene": "search",
+   "mood": "action",
+   "text": "The Coast Guard launches a helicopter from New Orleans, a boat from Venice, and a plane from Mobile. The search area is more than {7,000|seven thousand} square nautical miles. Roughly the size of Massachusetts."
+  },
+  {
+   "scene": "odds",
+   "mood": "calm",
+   "text": "One head, in that much water. And nobody knows when he went in. I've seen better odds on a lottery ticket."
+  },
+  {
+   "scene": "lights",
+   "mood": "wonder",
+   "text": "Evening. James sees lights. A ship. He swims for it."
+  },
+  {
+   "scene": "socks",
+   "mood": "wonder",
+   "text": "And he waves the only thing he has. His socks. The rescue swimmer later called it a Hail Mary. Nobody spots socks."
+  },
+  {
+   "scene": "spotted",
+   "mood": "triumph",
+   "text": "{8:25|Eight twenty five} P M. About {20|twenty} miles south of Southwest Pass, Louisiana. The crew of a bulk carrier called Crinis is watching the water. They see him."
+  },
+  {
+   "scene": "hoist",
+   "mood": "triumph",
+   "text": "A Coast Guard Jayhawk helicopter lowers a rescue swimmer, Richard Hoefle. James collapses into the sling. Hoefle's best guess: between a minute and thirty seconds left."
+  },
+  {
+   "scene": "hospital",
+   "mood": "calm",
+   "text": "He is in shock, mildly hypothermic, and badly dehydrated. He says he spent four days in intensive care, and lost twenty pounds. But he is alive."
+  },
+  {
+   "scene": "gross",
+   "mood": "calm",
+   "text": "The officer who ran the search had seventeen years on the job. He said this case was unlike anything he had been part of."
+  },
+  {
+   "scene": "again",
+   "mood": "calm",
+   "text": "And James? He says he would go on another cruise. He just might not get within ten foot of the rails."
+  },
+  {
+   "scene": "end",
+   "mood": "end",
+   "text": "Up to {20|twenty} hours in open water. No jacket. No boat. I was wrong. Case closed."
+  }
+ ]
+}

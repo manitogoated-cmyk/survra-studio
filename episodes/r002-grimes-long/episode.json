@@ -1,27 +1,31 @@
 {
  "id": "r002-grimes-long",
  "format": "long",
- "status": "draft",
+ "status": "approved",
  "synthetic": false,
  "host": "rook",
  "case": 2,
- "title": "He Fell Off a Cruise Ship at Night. Nobody Noticed for 12 Hours",
- "description": "Case 002. November 2022: James Michael Grimes, 28, vanished from the Carnival Valor on the way to Mexico. He woke up alone in the Gulf of Mexico with no memory of falling, treaded water for up to 20 hours, and was spotted by a passing cargo ship's crew before a Coast Guard helicopter pulled him out. Rook didn't believe it either.",
+ "title": "He Fell Off a Cruise Ship at Night. The Ship Kept Sailing",
+ "description": "Case 002, the full case file. On Thanksgiving eve 2022, James Michael Grimes, 28, left a bar on the cruise ship Carnival Valor to find the restroom and never came back. He woke up in the Gulf of Mexico with no ship in sight and no memory of going overboard. This is the whole case: the air guitar contest, the empty stool, the night in the water, the jellyfish, the fin, the bamboo stick, the search that covered more than 7,000 square nautical miles, the bulk carrier whose crew spotted him at 8:25 PM, and the Coast Guard rescue swimmer who thought he had about a minute left. Rook, Survra's sceptical crow detective, did not believe it either.",
  "tags": [
   "James Michael Grimes",
   "Carnival Valor",
   "man overboard",
+  "cruise ship overboard",
   "true story",
   "survival story",
   "animated story",
+  "3D animation",
   "Coast Guard rescue",
   "Gulf of Mexico",
   "Rook",
-  "Survra"
+  "Survra",
+  "full case"
  ],
  "hashtags": [
   "#truestory",
-  "#survival"
+  "#survival",
+  "#animation"
  ],
  "playlist": "Rook's Case Files (Full Cases)",
  "story_score": {
@@ -37,11 +41,47 @@
   "repeatability": 9,
   "total": 84
  },
- "source_notes": "Time in the water: Global News says '15 to 20 hours' in the body and 20 in the headline; Old Salt Blog and The Daily Beast say about 20; the script says 'up to twenty hours'. He was last seen around 11 PM on 23 Nov 2022 (Thanksgiving eve) leaving for the restroom after winning an air guitar contest, and has no memory of going overboard, so the fall itself is not shown. The animal: he said he saw a fin and something with a flat mouth bumped his leg, and that he did not think it was a shark; the script says only 'something with a fin'. The stick ('looked like bamboo', chewed for a taste other than salt water), the socks, the passing ship at sunset and the rescue swimmer's estimate ('30 seconds to a minute left', Richard Hoefle, USCG) are from his ABC interview and the Coast Guard as reported by Global News; the script rounds the estimate to 'maybe a minute'. The ship that spotted him was the bulk carrier Crinis (Coast Guard statement quoted by Old Salt Blog); Grimes called it a tanker. 'Nobody spots socks' is Rook's opinion, not a reported fact. The fall date is given as 23 Nov; reports of the rescue day vary between 24 Nov and 'the day before Thanksgiving', so no rescue date is stated.",
+ "source_notes": "Time in the water: Global News says '15 to 20 hours' in the body and 20 in the headline; Old Salt Blog and The Daily Beast say about 20; the script says 'up to twenty hours'. He was last seen around 11 PM on 23 Nov 2022 (Thanksgiving eve) leaving for the restroom after winning an air guitar contest, and has no memory of going overboard, so the fall itself is not shown. The animal: he said he saw a fin and something with a flat mouth bumped his leg, and that he did not think it was a shark; the script says only 'something with a fin'. The stick ('looked like bamboo', chewed for a taste other than salt water), the socks, the passing ship at sunset and the rescue swimmer's estimate ('30 seconds to a minute left', Richard Hoefle, USCG) are from his ABC interview and the Coast Guard as reported by Global News; the script rounds the estimate to 'maybe a minute'. The ship that spotted him was the bulk carrier Crinis (Coast Guard statement quoted by Old Salt Blog); Grimes called it a tanker. 'Nobody spots socks' is Rook's opinion, not a reported fact. The fall date is given as 23 Nov; reports of the rescue day vary between 24 Nov and 'the day before Thanksgiving', so no rescue date is stated. LONG-FORM ADDITIONS. Who raised the alarm and when: CNN (Carnival statement) says his sister reported him missing at noon on Thanksgiving; the New York Times says the family notified the crew by 10:45 AM; the script uses noon. The Coast Guard release times the ship's call at about 2:30 PM. Time in the water is unknown because nobody saw him go in: the Coast Guard said it 'could have been more than 15 hours', most reports say about 20; from 11 PM to 8:25 PM is the upper bound, so the script keeps 'up to twenty hours' and Rook says 'nobody knows when he went in'. Spotting time: Coast Guard release 8:25 PM (used); the New York Times mentions 8:10 PM. Venice: the release says 'Station Venice', Military Times says Venice, Louisiana, CNN wrote 'Venice, Florida' (an error); the script says only 'Venice'. CNN also mentions a plane from Clearwater; the script names only the Mobile aircraft the Coast Guard release lists. What he swam toward at the end: he told ABC he saw the lights of a ship and swam for it (used, as in the Short); CBN's account has him swimming toward an oil rig's light. Hoefle's estimate is quoted as he said it ('between a minute and 30 seconds'); the on-screen stamp shortens it to 'A minute left. Maybe less.' Intensive care and weight loss are Grimes's own account to CBN and the script says 'He says'. Search area: 7,000 square nautical miles is the New York Times figure; CNN's '200 miles' is not used. Grimes told ABC he had taken his clothes off in the water; the animation keeps him dressed (general audience) and the script does not mention clothing. The fall is not shown or explained because nobody knows how it happened. 'That would not comfort me', 'better odds on a lottery ticket' and 'Nobody spots socks' are Rook's opinions. The officer in the operations room is a generic figure, not a likeness of Lt. Gross; the security officer, the sister and the family are generic figures too. Not included: his statements about faith, which are his own and outside the case facts.",
  "sources": [
   "https://globalnews.ca/news/9326855/james-michael-grimes-cruise-ship-overboard",
   "https://oldsaltblog.com/against-all-odds-cruise-passenger-survives-20-hours-in-the-gulf-of-mexico-after-going-overboard-from-carnival-valor/",
-  "https://www.thedailybeast.com/cruise-passenger-james-michael-grimes-who-survived-20-hours-overboard-cant-remember-falling"
+  "https://www.thedailybeast.com/cruise-passenger-james-michael-grimes-who-survived-20-hours-overboard-cant-remember-falling",
+  "https://content.govdelivery.com/accounts/USDHSCG/bulletins/339cd16",
+  "https://abc7.com/carnival-cruise-overboard-us-coast-guard-ship-rescue-missing-person/12493734/",
+  "https://www.ksl.com/article/50531003/cruise-ship-passenger-rescued-from-ocean-isnt-sure-how-he-went-overboard-he-tells-abc",
+  "https://www.militarytimes.com/news/your-military/2022/11/28/coasties-rescue-cruise-passenger-who-went-overboard-a-full-day-before/",
+  "https://www.sanjuandailystar.com/post/a-man-fell-from-a-cruise-ship-and-survived",
+  "https://www.foxbusiness.com/lifestyle/carnival-cruise-ship-passenger-had-seconds-left-we-lost-him-completely-coast-guard-diver-says",
+  "https://www.mediaite.com/news/man-who-fell-off-cruise-ship-after-winning-air-guitar-contest-cant-recall-event-claims-he-fought-off-sea-creatures-the-lord-was-with-me",
+  "https://cbn.com/news/us/man-survives-20-hour-baptism-sea-after-falling-cruise-ship-lord-was-me"
  ],
- "case_of": "r002-grimes"
+ "case_of": "r002-grimes",
+ "title_options": [
+  "He Fell Off a Cruise Ship at Night. The Ship Kept Sailing",
+  "He Woke Up in the Ocean. The Ship Was Gone. He Lasted Up to 20 Hours",
+  "The Man Who Fell Off the Carnival Valor and Treaded Water Until the Next Night"
+ ],
+ "added_facts": {
+  "sailed from New Orleans on Thanksgiving eve, bound for Cozumel": "CNN via ABC7; Military Times (New Orleans)",
+  "28, from Lafayette, Alabama, travelling with 18 family members": "CBN (hometown, 18); Mediaite/ABC interview (18); US Coast Guard release (28)",
+  "prize was a free drink; says he had drinks but was not drunk": "Mediaite/ABC interview (free drink, 'No, ma'am'); CNN via KSL ('not inebriated')",
+  "at a bar with his sister around 11 PM, left for the restroom": "Carnival statement to CNN (ABC7, KSL)",
+  "'in the water with no boat in sight'; worst fear is drowning; says he can't float": "CNN via KSL (first); Mediaite/ABC interview (other two)",
+  "water about 70 degrees F": "Lt. Seth Gross to CNN ('just above 70 degrees'); New York Times ('65- to 70-degree water')",
+  "two schools of jellyfish; watched the sun rise": "CBN interview",
+  "sister reported him missing at noon on Thanksgiving; announcements; security searched with his photo": "Carnival statement and passenger account, CNN via ABC7",
+  "ship called the Coast Guard about 2:30 PM, then turned around and retraced its route": "US Coast Guard release (2:30 PM); CNN via ABC7 (turned, retraced)",
+  "helicopter from New Orleans, boat from Venice, plane from Mobile": "US Coast Guard release; Military Times (Venice, Louisiana; Mobile, Alabama)",
+  "search area more than 7,000 square nautical miles, roughly the size of Massachusetts": "New York Times (Maria Cramer)",
+  "rescue swimmer called the sock-waving a 'Hail Mary'": "Richard Hoefle to WWL, quoted by Fox Business",
+  "8:25 PM, about 20 miles south of Southwest Pass, Louisiana, bulk carrier Crinis": "US Coast Guard release",
+  "MH-60 Jayhawk hoist; rescue swimmer Richard Hoefle; collapsed into the sling; 'between a minute and 30 seconds left'": "US Coast Guard release (Jayhawk); Fox Business quoting WWL (Hoefle)",
+  "in shock, mild hypothermia, extremely dehydrated": "Lt. Seth Gross, New York Times",
+  "four days in intensive care, lost 20 pounds": "Grimes to CBN (his own account)",
+  "search coordinator with 17 years: 'unlike anything I've been a part of'": "Lt. Seth Gross to CNN (ABC7)",
+  "would cruise again but 'might not get within 10 foot of the rails'": "Grimes to ABC, CNN via KSL and Mediaite"
+ },
+ "quality_gate": {
+  "method": "16:9 contact sheet of all 83 shots reviewed in three rounds (3D stills), plus the composited sheet (inserts, overlays, captions, HUD), the thumbnail in three versions, and 24 frames pulled from a low-resolution full-length rehearsal; the rehearsal passed the automated gate locally (83 shots, mean 2.14 s, longest 4.0 s, loudness -15.0 LUFS, peak -1.5 dBFS, voice 11.8 dB over the bed, host in 33/83 shots = 40%, originality 0.77 max); audio was measured, not listened to; the full-resolution render and the final gate run in the cloud"
+ }
 }
