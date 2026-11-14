@@ -1,7 +1,7 @@
 {
  "id": "r009-poonlim-long",
  "format": "long",
- "status": "draft",
+ "status": "approved",
  "synthetic": false,
  "host": "rook",
  "case": 9,
@@ -66,5 +66,8 @@
   "https://thevintagenews.com/2016/09/14/poon-lim-man-survived-133-days-sea-wooden-raft"
  ],
  "case_of": "r009-poonlim",
- "claimed_at": "2026-11-14T20:48:55Z"
+ "claimed_at": "2026-11-14T20:48:55Z",
+ "quality_gate": {
+  "method": "3D contact sheet (16:9) reviewed in two full rounds with fixes after each (round 1: the other raft was hidden behind the awning, the big fish and the jug were out of frame, the life-jacket cover sat on his head like an umbrella, the canvas hand wraps and the dried fins were far too large, Rook stood behind Poon Lim in the hauling shot and had his back to the camera at the drying line, the ward and the hall were overexposed, the Belem shot was blocked by the boat's sail and was re-staged along the quay, the Brooklyn and medal cameras were too far back, the moon shot cut the figures off; round 2: Poon Lim moved to the raft's edge in the other-raft shot, the nail and nail hook scaled down, the shark fight and moon shots re-framed), a composited still of every flat insert (map labels that ran off the frame or under the captions were moved, two stamps that covered the text beneath them were moved), the thumbnail viewed three times (the hook was clipped at the right edge and the fin was out of frame, then too large), then a full-length low-resolution rehearsal (384x216, 4 samples, every 3D frame) composited with captions, HUD, overlays, inserts and sound and reviewed at one frame every 1.5 s as round 3. The automated gate failed that first rehearsal on three static stretches (the medal, the manual page, the recruiting desk); those shots were split, two new angles were added, eight segments were re-cut so each shot starts on the words it shows, the DAY 133 stamp (clipped at the left edge) was moved, and the changed shots were re-rendered and reviewed again as round 4. The second rehearsal passed the gate locally: 100 shots, mean 2.33 s, longest 3.76 s, loudness -15.1 LUFS, true peak -1.9 dBFS, voice 13.8 dB over the bed, host in 57/100 shots (57%), closest match to an earlier episode 0.84; one warning, the Hainan sketch map appears twice on purpose. One insert label was moved after that rehearsal and checked on a composited still. Audio was measured, not listened to. The full-resolution render and the final gate run in the cloud. Build note: from the long-form extension on, this world file builds its primitives straight from mesh data instead of through Blender operators (the technique of Case 008's long file); the first two contact sheets, rendered before and after the switch, show the same geometry."
+ }
 }

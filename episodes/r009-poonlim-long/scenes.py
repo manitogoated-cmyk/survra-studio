@@ -508,7 +508,8 @@ def quota(cv, c):
         stamp(cv, 'QUOTA FULL', 1290, 330, -9, 1.0 if ex else min(1, (c.lt - 2.2) / 0.14), 100, RED, 0xEEF1E6CC)
     if ex and c.lt > 0.9:
         stamp(cv, 'SPECIAL EXCEPTION', 960, 690, 4, min(1, (c.lt - 0.9) / 0.14), 96, GREEN, 0xEEF1E6CC)
-    sketch_note(cv, 'ILLUSTRATION, NOT A REAL FORM')
+    if not ex:
+        sketch_note(cv, 'ILLUSTRATION, NOT A REAL FORM')
 
 
 def exception(cv, c):
@@ -521,6 +522,7 @@ def exception(cv, c):
     c.prm = dict(c.prm, ex=1)
     quota(cv, c)
     cv.restore()
+    T(cv, 'ILLUSTRATION, NOT A REAL FORM', 300, 60, 30, 0xCCFFFFFF, BLACK)
 
 
 def citizen(cv, c):
