@@ -148,8 +148,8 @@ def make_prop(parent, loc, r=5.0):
     add('cone', '8A6A2A', (0, 0.9, 0), rot=(-PI / 2, 0, 0), radius1=0.9, radius2=0.2, depth=2.4, vertices=6, parent=h, rough=0.3)
     for i in range(3):
         a = i * 2 * PI / 3
-        add('cube', 'C89A3A', (math.sin(a) * r * 0.55, 0, math.cos(a) * r * 0.55), rot=(0, a, 0.5), scale=(r * 0.42, 0.22, r * 0.9), size=1,
-            parent=h, rough=0.25)
+        add('cube', 'C89A3A', (math.sin(a) * r * 0.55, 0, math.cos(a) * r * 0.55), rot=(0, a, 0.5), scale=(r * 0.5, 0.3, r * 0.9), size=1,
+            parent=h, rough=0.25, emit=0.25)
     return h
 
 
@@ -200,12 +200,14 @@ def make_liner():
     for w in wins:
         use(w, wm)
     stripe = [add('cube', '2E7A4A', (sx * 14.06, 5, 12.8), scale=(0.1, 176, 1.5), size=1, parent=t) for sx in (-1, 1)]
-    props = [make_prop(t, (0, 110, -5.6), 4.6), make_prop(t, (-7.6, 103, -4.8), 5.2), make_prop(t, (7.6, 103, -4.8), 5.2)]
+    props = [make_prop(t, (0, 110, -5.8), 5.4), make_prop(t, (-8.6, 103, -4.6), 6.6), make_prop(t, (8.6, 103, -4.6), 6.6)]
     add('cube', '6A2A24', (0, 117.5, -2.4), scale=(0.5, 5.0, 8.5), size=1, parent=t)          # rudder
     for sx in (-1, 1):
         add('cube', '6A2A24', (sx * 4.6, 100, -4.6), rot=(0, sx * 0.5, 0), scale=(6.5, 1.0, 0.8), size=1, parent=t)   # shaft brackets
     gash = [add('ico_sphere', '08090C', (12.6, 84 + i * 3.0, 9.0 + (i % 2) * 2.2), rot=(i, i * 2, 0), scale=(0.5, 2.6, 2.6 + i % 2), radius=1.0,
                 subdivisions=1, parent=t) for i in range(3)]
+    gash += [add('cube', ('A8AEB6', '8A9098')[i % 2], (13.6 + 0.5 * (i % 2), 81 + i * 2.6, 6.5 + (i * 37 % 7)), rot=(i * 0.9, 0.5 + i * 0.4, i * 0.7),
+                 scale=(0.2, 2.4, 1.6), size=1, parent=t) for i in range(6)]
     return dict(liner=mov(t), hullm=hm, winm=wm, funm=fm, stripe=stripe, props=props, gash=gash)
 
 
@@ -253,7 +255,7 @@ def make_boat():
     o = bpy.data.objects.new('boat', me)
     bpy.context.scene.collection.objects.link(o)
     o.parent = t
-    add('cube', '9A7A52', (0, 0, 0.42), scale=(2.3, 8.2, 0.12), size=1, parent=t)             # bottom boards
+    add('cube', '9A7A52', (0, 0, 0.5), scale=(2.1, 5.6, 0.12), size=1, parent=t)              # bottom boards
     for y in (-2.8, 0, 2.8):
         add('cube', 'A88458', (0, y, 0.98), scale=(3.1, 0.7, 0.12), size=1, parent=t)         # thwarts
     for sx in (-1, 1):
@@ -376,7 +378,7 @@ def set_cabin(r):
     add('cube', wall, (0, 11, 1.7), scale=(2.4, 0.2, 3.4), size=1, parent=r)
     add('cube', wall, (0, 11, 6.75), scale=(2.4, 0.2, 1.9), size=1, parent=r)
     panem = own_mat('porthole', '2A3A5A', 1.0)
-    use(add('cylinder', '2A3A5A', (0, 11.25, 4.6), rot=(PI / 2, 0, 0), radius=1.25, depth=0.06, vertices=12, parent=r), panem)
+    use(add('cylinder', '2A3A5A', (0, 11.25, 4.6), rot=(PI / 2, 0, 0), radius=1.75, depth=0.06, vertices=12, parent=r), panem)
     add('torus', 'C89A3A', (0, 10.86, 4.6), rot=(PI / 2, 0, 0), major_radius=1.2, minor_radius=0.14, major_segments=12, minor_segments=5, parent=r, rough=0.3)
     for i in range(1, 6):                                                                   # tongue-and-groove lines
         for sx in (-1, 1):
@@ -415,8 +417,8 @@ def set_cabin(r):
     add('cylinder', '8A6A2A', (0, 0, -0.5), radius=0.04, depth=1.0, vertices=4, parent=sw)
     use(add('cone', 'FFE2B0', (0, 0, -1.2), radius1=0.55, radius2=0.2, depth=0.5, vertices=8, parent=sw), lampm)
     lamp = light((0, 0, -1.5), 900, 'FFD9A8', kind='POINT', parent=sw)
-    day = light((0, 9.6, 4.6), 0, 'DCEBFF', 2.4, parent=r)
-    day.rotation_euler = (PI / 2, 0, 0)
+    day = light((0, 10.6, 4.6), 0, 'DCEBFF', 2.2, parent=r)
+    day.rotation_euler = (-PI / 2, 0, 0)
     return dict(cab_lamp=lamp, cab_swing=sw, cab_lampm=lampm, cab_pane=panem, cab_day=day)
 
 
@@ -689,7 +691,7 @@ def puff(S, i, pos, s, sq=0.8):
 
 def boat_at(S, i, pos, yaw, t, bob=1.0):
     b = S['boats'][i]
-    b.location = (pos[0], pos[1], pos[2] + 0.12 * bob * math.sin(t * 2.1 + i))
+    b.location = (pos[0], pos[1], pos[2] - 0.3 + 0.1 * bob * math.sin(t * 2.1 + i))
     b.rotation_euler = (0.04 * bob * math.sin(t * 1.7 + i), 0.07 * bob * math.sin(t * 2.3 + i * 2), yaw)
     c, s = math.cos(yaw), math.sin(yaw)
     return b, (lambda x, y, z: (pos[0] + x * c - y * s, pos[1] + x * s + y * c, pos[2] + z))
@@ -745,10 +747,10 @@ AEGEAN, NIGHT, GREY, DUSK = '7EC0E8', '050912', '9AA8B4', '26364A'
 def stern_scene(S, t):
     A = env(S, 'isle', AEGEAN, sun=3.2, sunc='FFF0D8', sdir=(0.35, 0.7, 0.6), fk=1.6)
     Sp = ship(S, A, z=-3.5, pitch=0.12, look='white', spin=t * 6.5)
-    sea(S, A, 0, 130, 440, t, amp=0.6, col='176E90')
+    sea(S, A, 0, 130, 440, t, amp=0.3, col='176E90')
     for i in range(10):                                         # white water thrown up where the blades meet the sea
         u = (t * 1.4 + i * 0.31) % 1
-        px = (-7.6, 7.6, 0.0)[i % 3]
+        px = (-8.6, 8.6, 0.0)[i % 3]
         puff(S, i, A(px + (rnd(i, 1) - 0.5) * 9, 106 + rnd(i, 2) * 4 + u * 7, 0.2 + 3.4 * u - 3.4 * u * u), 0.9 + 1.5 * u)
     return A, Sp
 
@@ -765,7 +767,7 @@ def props_pull(S, k, t, lt):
     S['face']['vi'] = 'scared'
     crew_in(S, b, 0, 0.0, -2.8, blend(ROW, SIT_UP, 0.5 + 0.5 * math.sin(lt * 9)))
     crew_in(S, b, 1, 0.0, 2.9, SIT_UP)
-    cam(S, A(lerp(-41, -38, k), lerp(182, 176, k), 1.9), A(-4, 112, 7.5), 30)
+    cam(S, A(lerp(-36, -33, k), lerp(176, 170, k), 1.9), A(-5, 112, 7.0), 30)
 
 
 def boat_pov(S, k, t, lt):
@@ -783,10 +785,10 @@ def boat_pov(S, k, t, lt):
     crew_in(S, b, 0, 0.0, 2.8, SIT_UP)
     f = S['fprop']
     if v2:
-        f.location = A(-9.2, 134.2, 5.6)
+        f.location = A(-8.6, 139.0, 6.6)
         cam(S, A(lerp(-4.0, -4.3, k), lerp(131.6, 132.2, k), 2.5), B(0.75, -0.2, 2.75), 45)
     else:
-        f.location = A(-10.4, 131.0, 5.2)
+        f.location = A(2.6, 132.0, 8.6)
         cam(S, A(-4.6, lerp(126.6, 127.8, k), 2.3), B(0.0, -0.3, 2.8), 30)
     f.rotation_euler = (0.12, t * 6.5, 0.35)
 
@@ -816,7 +818,7 @@ def vi_jump(S, k, t, lt):
     if v2:
         cam(S, A(-19.5, 151.0, 1.0), (p1[0] + 1.2, p1[1], 2.0), 38)
     else:
-        cam(S, A(lerp(-23, -22, k), lerp(160, 158, k), 1.4), B(-2.4, 0.0, 3.4), 35)
+        cam(S, A(lerp(-18.5, -17.5, k), lerp(153.5, 152, k), 1.2), B(-2.6, 0.0, 3.0), 38)
 
 
 def rook_dive(S, k, t, lt):
@@ -830,7 +832,7 @@ def rook_dive(S, k, t, lt):
     S['rook'].apply(P('hat', lL=(0.9, 1.4), lR=(0.5, 1.0), lean=0.2))
     S['face']['rook'] = 'shocked'
     feather(S, tuple(p0 + Vector((0, 0, 2.6))), lt, 0.1)
-    cam(S, A(lerp(4.5, 3.5, k), lerp(154.0, 152.5, k), 1.2), (pos[0] - 1.5, pos[1], lerp(3.4, 2.6, k)), 34)
+    cam(S, A(lerp(4.5, 3.5, k), lerp(154.0, 152.5, k), 1.2), (pos[0] - 1.0, pos[1], lerp(3.2, 2.4, k)), 46)
 
 
 def stern_up(S, k, t, lt):
@@ -844,8 +846,8 @@ def stern_up(S, k, t, lt):
 
 def under(S, k, t, lt):
     v2 = S['prm'].get('v') == 2
-    A = env(S, 'deep', '0A4656', sun=1.8, sunc='BFF4FF', sdir=(0.1, -0.2, 1.0), fk=3.2)
-    sea(S, A, 0, 0, 320, t, amp=0.8, col='6AD8E4', emit=1.3, z=14.0)
+    A = env(S, 'deep', '06303E', sun=1.8, sunc='BFF4FF', sdir=(0.1, -0.2, 1.0), fk=3.2)
+    sea(S, A, 0, 0, 320, t, amp=0.8, col='2E9CB4', emit=0.45, z=14.0)
     if v2:
         ship(S, A, 0, -42, 12.5, pitch=0.12, look='white', spin=t * 6.5)
         z = lerp(0.6, 4.3, ease(k))
@@ -876,7 +878,7 @@ def quay_scene(S, t, late=False, day=False):
     if day:
         A = env(S, 'quay', '9CC4E0', sun=3.0, sunc='FFF2DC', sdir=(0.5, -0.6, 0.6), fk=1.6)
     elif late:
-        A = env(S, 'quay', 'C08A6E', sun=2.6, sunc='FFB878', sdir=(0.75, -0.55, 0.28), fk=2.4)
+        A = env(S, 'quay', 'C08A6E', sun=2.6, sunc='FFB878', sdir=(0.15, -0.85, 0.4), fk=2.4)
     else:
         A = env(S, 'quay', DUSK, sun=0.5, sunc='8FA8D8', sdir=(-0.5, -0.3, 0.8), fk=5.0)
     for l in S['quay_lamps']:
@@ -892,7 +894,7 @@ def rook_quay(S, k, t, lt):
     S['rook'].place(A(31, -44, 6), 0.0)
     S['rook'].apply(P('cross', head=(0.06, 0.32 * math.sin(lt * 10.0) * max(0.0, 1 - lt / 0.7))))
     S['face']['rook'] = 'deadpan'
-    cam(S, A(lerp(32.6, 32.2, k), lerp(-51.4, -50.4, k), 8.8), A(31, -44, 9.15), 40, fcol='FFD9B0')
+    cam(S, A(lerp(32.6, 32.2, k), lerp(-51.4, -50.4, k), 8.8), A(31, -44, 8.1), 40, fcol='FFD9B0')
 
 
 def rook_gangway(S, k, t, lt):
@@ -906,14 +908,14 @@ def rook_gangway(S, k, t, lt):
 
 def vi_gangway(S, k, t, lt):
     A, Sp = quay_scene(S, t, day=True)
-    u = lerp(0.05, 0.5, k)
+    u = lerp(0.12, 0.5, k)
     vi_look(S)
     S['vi'].place(A(26 - 11.6 * u, -20, 6.25 + 10.2 * u), -PI / 2)
     w = walk(t, 1.9)
     S['vi'].apply(dict(w, aR=(0.1, 0.1, 0.2, 0.0), lean=0.22))
     S['case'].parent = S['vi'].root
     S['case'].location = (0.62, -0.1, 0.72)
-    cam(S, A(lerp(33.0, 32.0, k), lerp(-27.5, -26.5, k), 7.6), A(20, -20, 13.5), 28)
+    cam(S, A(lerp(30.5, 29.5, k), lerp(-25.6, -24.8, k), 8.0), A(26 - 11.6 * u - 1.5, -20, 6.25 + 10.2 * u + 3.6), 30)
 
 
 def rook_wrong(S, k, t, lt):
@@ -923,7 +925,7 @@ def rook_wrong(S, k, t, lt):
     S['hat_off'] = off
     S['rook'].apply(blend(P('hat', head=(0.1, 0)), hat_hold(head=(0.25, 0.0)), off) if lt > 0.1 else blend(P('stand'), P('hat', head=(0.1, 0)), lt / 0.1))
     S['face']['rook'] = 'sad'
-    cam(S, A(lerp(31.8, 31.4, k), lerp(-42.4, -41.6, k), lerp(8.7, 8.9, k)), A(30, -37, 9.2), 50, fill=1.3, fcol='FFE0C0')
+    cam(S, A(lerp(31.8, 31.4, k), lerp(-42.4, -41.6, k), lerp(8.7, 8.9, k)), A(30, -37, 8.05), 50, fill=1.3, fcol='FFE0C0')
 
 
 def signoff(S, k, t, lt):
@@ -944,9 +946,9 @@ def signoff(S, k, t, lt):
     if pocket < 0.95:
         S['key'].location = A(lerp(27.9, 29.3, pocket), lerp(-33.9, -34.6, pocket), lerp(8.08, 7.6, pocket) + 0.5 * math.sin(pocket * PI))
         S['key'].rotation_euler = (0, lt * 2 * pocket, 0.6 + lt * 3 * pocket)
-        S['glow'].location = A(28.4, -34.6, 9.0)
+        S['glow'].location = A(27.0, -35.6, 9.4)
         S['glow'].data.energy = 90
-    cam(S, A(lerp(32.6, 32.0, k), lerp(-41.4, -40.4, k), 8.3), A(29.0, -34.3, 8.5), 38, fcol='FFE0C0')
+    cam(S, A(lerp(25.6, 26.2, k), lerp(-38.6, -37.8, k), 8.0), A(28.8, -34.4, 7.9), 34, fcol='FFE0C0')
 
 
 # ---------------------------------------------------------------- 1911: the collision
@@ -971,7 +973,7 @@ def oly_wide(S, k, t, lt):
     for i in range(4):
         u = (t * 0.8 + i * 0.25) % 1
         puff(S, i, Sp((1 if i % 2 else -1) * (2 + 7 * u), -124 + 22 * u, 0.6), 2.0 + 3 * u, 0.4)
-    cam(S, A(lerp(-58, -52, k), lerp(-268, -256, k), lerp(34, 28, k)), A(0, -20, 20), 35)
+    cam(S, A(lerp(-46, -40, k), lerp(-232, -218, k), lerp(20, 15, k)), A(0, -40, 22), 35)
 
 
 def vi_tray(S, k, t, lt):
@@ -998,7 +1000,7 @@ def hawke_bow(S, k, t, lt):
     for i in range(4):
         u = (t * 1.1 + i * 0.25) % 1
         puff(S, i, (tip[0] + (1 if i % 2 else -1) * (1 + 4 * u) + 0.64 * 10 * u, tip[1] + 0.76 * 12 * u, A(0, 0, 0.6)[2]), 1.4 + 2.2 * u, 0.4)
-    cam(S, A(lerp(31, 29, k), lerp(52, 58, k), lerp(4.5, 6.0, k)), (tip[0], tip[1], tip[2] + 4), 30)
+    cam(S, A(lerp(31, 29, k), lerp(52, 58, k), lerp(4.5, 6.0, k)), (tip[0], tip[1], tip[2] + 5), 48)
 
 
 def hawke_hit(S, k, t, lt):
@@ -1016,7 +1018,7 @@ def hawke_hit(S, k, t, lt):
             o.location = A(14.5 + (2 + 9 * rnd(i, 3)) * u, 85 + (rnd(i, 4) - 0.5) * 16 * u, 8 + 12 * rnd(i, 5) * u - 9 * u * u)
             o.rotation_euler = (u * 7 + i, u * 5, i)
             o.scale = (0.9, 0.5, 0.2)
-    cam(S, A(lerp(74, 70, k), lerp(34, 38, k), 12), A(15, 84, 10), 32)
+    cam(S, A(lerp(70, 66, k), lerp(30, 34, k), 26), A(17, 86, 8), 30)
 
 
 def deck_jolt(S, k, t, lt):
@@ -1049,14 +1051,14 @@ def oly_limp(S, k, t, lt):
 
 # ---------------------------------------------------------------- 1912: the ice
 def ice_night(S, t, y=0.0, z=0.0, pitch=0.0, x=7.5):
-    A = env(S, 'ice', NIGHT, sun=0.55, sunc='A8C0FF', sdir=(0.35, -0.55, 0.7), fk=1.2)
+    A = env(S, 'ice', NIGHT, sun=0.9, sunc='A8C0FF', sdir=(0.35, -0.55, 0.7), fk=1.2)
     Sp = ship(S, A, x=x, y=y, z=z, pitch=pitch, lit=1.0)
     sea(S, A, 0, -120, 1100, t, amp=0.45, col='0A1A2A')
     return A, Sp
 
 
 def tit_night(S, k, t, lt):
-    A, Sp = ice_night(S, t, y=lerp(-16, -50, k))
+    A, Sp = ice_night(S, t, y=lerp(-30, -62, k))
     funnel_smoke(S, Sp, t)
     for i in range(4):
         u = (t * 0.9 + i * 0.25) % 1
@@ -1081,8 +1083,8 @@ def berg_scrape(S, k, t, lt):
 def cabin(S, day=False):
     A = env(S, 'cabin', '000000', sun=0.0, fk=2.6)
     if day:
-        S['cab_day'].data.energy = 1500
-        S['cab_lamp'].data.energy = 380
+        S['cab_day'].data.energy = 420
+        S['cab_lamp'].data.energy = 300
         tint(S['cab_pane'], 'CFE8FF', 7.0)
     return A
 
@@ -1102,15 +1104,15 @@ def vi_berth(S, k, t, lt):
     cam(S, A(1.7, lerp(-0.3, 0.3, k), 3.4), A(-1.4, 6.5, 3.0), 24, roll=0.05 * hit * math.sin(lt * 12), fcol='FFE0C0')
 
 
-def davit_scene(S, t, zb, k):
+def davit_scene(S, t, zb, k, xb=16.7):
     A, Sp = ice_night(S, t, y=-110, z=-2.0, pitch=0.035, x=0.0)
     b = S['boats'][0]
     b.parent = S['liner']
-    b.location = (16.7, -20, zb)
+    b.location = (xb, -20, zb)
     b.rotation_euler = (0.03 * math.sin(t * 2.2), 0.05 * math.sin(t * 1.7), 0)
     for i, yy in enumerate((-24.5, -15.5)):
-        seg(S['ropes'][i], Sp(13.9, yy, 29.0), Sp(16.7, yy - (0.3 if i == 0 else -0.3), zb + 1.6), 0.09)
-    S['glow'].location = Sp(21, -20, zb + 5)
+        seg(S['ropes'][i], Sp(13.9, yy, 29.0), Sp(xb, yy - (0.3 if i == 0 else -0.3), zb + 1.6), 0.09)
+    S['glow'].location = Sp(xb + 5, -20, zb + 5)
     S['glow'].data.energy = 2600
     return A, Sp, b
 
@@ -1125,44 +1127,43 @@ def boat_lower(S, k, t, lt):
     S['face']['rook'] = 'shocked'
     seat(S['crew'][0], b, 0.0, -3.2, 1.0, P('up', aL=(2.6, 0.2, 0.3), aR=(2.6, 0.2, 0.3)), z=0.5)
     seat(S['crew'][1], b, 0.0, 3.4, 1.0, P('up', aL=(2.6, 0.2, 0.3), aR=(2.6, 0.2, 0.3)), z=0.5)
-    cam(S, Sp(lerp(37, 35, k), lerp(-37, -35, k), lerp(17, 13, k)), Sp(16.5, -20, zb + 2.0), 38, fcol='FFD9B0')
+    cam(S, Sp(lerp(37, 35, k), lerp(-37, -35, k), lerp(17, 13, k)), Sp(16.5, -20, zb + 2.0), 52, fcol='FFD9B0')
 
 
 def baby(S, k, t, lt):
-    A, Sp, b = davit_scene(S, t, 23.55, k)
+    A, Sp, b = davit_scene(S, t, 23.55, k, xb=13.8)
     give = ease((lt - 0.2) / 0.5)
     vi_look(S, vest=True, sit=True)
-    seat(S['vi'], b, -0.2, -0.2, -PI / 2, blend(P('sit', aL=(1.7, 0.2, 0.5), aR=(1.7, 0.2, 0.5), head=(-0.3, 0.0), lean=0.2), CRADLE, ease((lt - 0.6) / 0.3)))
+    seat(S['vi'], b, -0.1, -0.2, -PI / 2 + 0.5, blend(P('sit', aL=(1.7, 0.2, 0.5), aR=(1.7, 0.2, 0.5), head=(-0.3, 0.0), lean=0.2), CRADLE, ease((lt - 0.6) / 0.3)))
     S['face']['vi'] = 'shock' if give > 0.6 else 'scared'
-    seat(S['rook'], b, 0.55, 2.3, -PI / 2 - 0.75, blend(P('sit'), P('sit', aL=(0.5, 0.9, 0.6), aR=(0.5, 0.9, 0.6), head=(0.1, -0.45)), give))
+    seat(S['rook'], b, 0.45, 1.5, -0.9, blend(P('sit'), P('sit', aL=(0.5, 0.9, 0.6), aR=(0.5, 0.9, 0.6), head=(0.2, 0.55)), give))
     S['face']['rook'] = 'shocked' if give > 0.5 else 'deadpan'
     c = S['crew'][0]
-    aboard(S, c, 11.6, -20.2, BOATDECK, PI / 2)
-    c.apply(blend(P('stand', aL=(1.3, 0.1, 0.5), aR=(1.3, 0.1, 0.5), lean=0.45, head=(0.2, 0.0)), P('stand', aL=(0.9, 0.3, 0.3), aR=(0.9, 0.3, 0.3), lean=0.3), ease((lt - 0.75) / 0.3)))
+    aboard(S, c, 11.0, -20.5, BOATDECK, PI / 2)
+    c.apply(blend(P('stand', aL=(1.3, 0.1, 0.5), aR=(1.3, 0.1, 0.5), lean=0.5, head=(0.2, 0.0)), P('stand', aL=(0.9, 0.3, 0.3), aR=(0.9, 0.3, 0.3), lean=0.3), ease((lt - 0.75) / 0.3)))
     S['baby'].parent = S['liner']
-    S['baby'].location = (lerp(13.2, 15.55, give), -20.2, lerp(27.0, 25.75, give) + 0.3 * math.sin(give * PI))
+    S['baby'].location = (lerp(12.2, 13.25, give), -20.4, lerp(27.0, 25.8, give) + 0.3 * math.sin(give * PI))
     S['baby'].rotation_euler = (0, 0, PI / 2)
-    cam(S, Sp(lerp(18.4, 18.0, k), lerp(-26.2, -25.4, k), 26.5), Sp(14.6, -19.8, 26.2), 34, fcol='FFD9B0')
+    cam(S, Sp(lerp(16.2, 15.8, k), lerp(-25.2, -24.6, k), lerp(29.9, 29.5, k)), Sp(12.7, -19.3, 26.5), 24, fcol='FFD9B0')
 
 
 def tit_sink(S, k, t, lt):
     A, Sp = ice_night(S, t, y=0, z=lerp(-8, -10.5, k), pitch=lerp(0.16, 0.19, k), x=0.0)
-    b, B = boat_at(S, 0, A(57.5, 321, 0.2), -0.219, t, 0.8)
+    b, B = boat_at(S, 0, A(116.7, 225.6, 0.2), -0.594, t, 0.8)
     vi_look(S, vest=True, sit=True)
-    seat(S['vi'], b, -0.7, -0.4, 0.0, CRADLE)
+    seat(S['vi'], b, 0.65, -1.9, 0.0, CRADLE)
     S['baby'].parent = b
-    S['baby'].location = (-0.7, -0.95, 1.75)
+    S['baby'].location = (0.65, -2.45, 1.75)
     S['baby'].rotation_euler = (0, 0.2, PI / 2)
     S['hat_off'] = ease(lt / 0.5)
-    seat(S['rook'], b, 0.75, 0.7, 0.0, blend(P('sit'), SIT_HOLD, S['hat_off']))
-    S['rook'].head.rotation_euler = (0.05, 0, -0.75)
+    seat(S['rook'], b, -0.8, 0.3, 0.0, blend(P('sit'), SIT_HOLD, S['hat_off']))
+    S['rook'].head.rotation_euler = (0.05, 0, 1.0)
     S['face']['rook'] = 'sad'
     S['face']['vi'] = 'tired'
-    seat(S['crew'][0], b, 0.0, 3.2, PI, ROW)
-    S['glow'].location = B(2.5, 3.5, 3.0)
-    S['glow'].data.energy = 380
+    S['glow'].location = B(-2.0, 3.0, 3.2)
+    S['glow'].data.energy = 900
     S['glow'].data.color = K.hexc('A8C0FF')[:3]
-    cam(S, A(lerp(61.2, 60.6, k), lerp(331.2, 330.2, k), 3.3), A(8, 110, 30), 35, fill=1.6, fcol='A8C0FF')
+    cam(S, A(lerp(120.4, 120.0, k), lerp(230.5, 230.0, k), 1.7), A(5, 60, 26), 35, fill=2.2, fcol='A8C0FF')
 
 
 # ---------------------------------------------------------------- 1916: the hospital ship
@@ -1189,17 +1190,18 @@ def mine_hit(S, k, t, lt):
     u = min(1.0, hit * 1.5)
     base = Sp(13.5, -92, 0)
     if hit > 0:
-        for i in range(12):
+        for i in range(14):
             a = rnd(i, 1) * 2 * PI
-            hgt = (18 + 34 * rnd(i, 2)) * (u - 0.45 * u * u)
-            puff(S, i, (base[0] + math.cos(a) * (3 + 7 * u) * rnd(i, 3), base[1] + math.sin(a) * (3 + 7 * u) * rnd(i, 4), base[2] + hgt), 3.0 + 6.0 * u, 1.2)
+            hgt = (10 + 52 * (i / 13)) * (u - 0.4 * u * u)
+            w = (2.0 + 5.0 * u) * (1 - i / 20)
+            puff(S, i, (base[0] + math.cos(a) * w * rnd(i, 3), base[1] + math.sin(a) * w * rnd(i, 4), base[2] + hgt), (1.6 + 2.6 * u) * (1.3 - i / 20), 1.4)
         for i, o in enumerate(S['bits']):
             o.location = (base[0] + (rnd(i, 5) - 0.3) * 30 * u, base[1] + (rnd(i, 6) - 0.5) * 26 * u, base[2] + 30 * rnd(i, 7) * u - 14 * u * u + 3)
             o.scale = (0.9, 0.9, 0.9)
-        S['glow'].location = (base[0] + 4, base[1], base[2] + 6)
-        S['glow'].data.energy = 9e5 * max(0.0, 1 - hit / 0.3)
-        S['glow'].data.color = K.hexc('FFB060')[:3]
-    cam(S, A(lerp(78, 74, k), lerp(-172, -166, k), 5), A(12, -92, 16), 32)
+        S['glow'].location = (base[0] + 6, base[1] - 4, base[2] + 8)
+        S['glow'].data.energy = 6e5 * max(0.0, 1 - hit / 0.35)
+        S['glow'].data.color = K.hexc('FFA040')[:3]
+    cam(S, A(lerp(78, 74, k), lerp(-172, -166, k), 5), A(12, -92, 18), 32)
 
 
 def vi_brush(S, k, t, lt):
@@ -1213,7 +1215,7 @@ def vi_brush(S, k, t, lt):
     S['rook'].place(A(-0.9, 9.4, 0), 0.2)
     S['rook'].apply(blend(P('cross'), P('point', aR=(1.3, -0.5, 0.1), head=(0.0, -0.55)), reach))
     S['face']['rook'] = 'deadpan'
-    cam(S, A(lerp(1.3, 1.5, k), lerp(-0.5, 0.3, k), 3.6), A(1.5, 9, 3.2), 28, roll=0.07, fcol='FFF0DC')
+    cam(S, A(lerp(1.2, 1.4, k), lerp(1.2, 2.0, k), 3.5), A(1.3, 9, 3.1), 28, roll=0.07, fcol='FFF0DC')
 
 
 def brush_close(S, k, t, lt):
@@ -1226,7 +1228,7 @@ def brush_close(S, k, t, lt):
     S['brush'].location = A(4.45, 9.05, 3.12 + 1.1 * up)
     S['brush'].rotation_euler = (0.22 * (1 - up), 0.2 * (1 - up), 0)
     S['glow'].location = A(3.2, 7.8, 4.6)
-    S['glow'].data.energy = 140
+    S['glow'].data.energy = 30
     cam(S, A(lerp(2.7, 2.9, k), lerp(7.2, 7.5, k), 3.9), A(4.4, 9.0, 3.9 + 0.5 * up), 45, roll=0.07, fcol='FFF0DC')
 
 
@@ -1257,9 +1259,9 @@ def vi_rescued(S, k, t, lt):
     S['vi'].root.rotation_euler = (0.15, 0, -PI / 2)
     S['vi'].apply(P('up', aL=(2.5, 0.3, 0.3), aR=(2.5, 0.3, 0.3), head=(-0.2, 0.0)))
     S['face']['vi'] = 'tired'
-    seat(S['crew'][0], b, -0.9, -0.4, PI / 2, P('stand', aL=(1.0, 0.1, 0.4), aR=(1.0, 0.1, 0.4), lean=0.75, lL=(1.2, 1.5), lR=(1.2, 1.5), lift=-0.45, head=(0.1, 0)), z=0.55)
+    seat(S['crew'][0], b, -0.9, -0.4, -PI / 2, P('stand', aL=(1.0, 0.1, 0.4), aR=(1.0, 0.1, 0.4), lean=0.75, lL=(1.2, 1.5), lR=(1.2, 1.5), lift=-0.45, head=(0.1, 0)), z=0.55)
     S['hat_off'] = 1.0
-    seat(S['rook'], b, -0.5, 1.4, PI / 2 + 0.35, P('sit', aR=(1.2, 0.0, 0.3), aL=(0.75, -0.25, 1.75, 1.1), lean=0.4, head=(0.15, 0.0)))
+    seat(S['rook'], b, -0.5, 1.5, -PI / 2 + 0.45, P('sit', aR=(1.2, 0.0, 0.3), aL=(0.75, -0.25, 1.75, 1.1), lean=0.4, head=(0.15, 0.0)))
     S['face']['rook'] = 'sad'
     for i in range(5):
         u = (t * 1.0 + i * 0.2) % 1
