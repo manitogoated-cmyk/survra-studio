@@ -123,6 +123,20 @@
     "url": "https://youtu.be/GsQiYFoCtL8",
     "video_id": "GsQiYFoCtL8"
   },
+  "r004-packard-long": {
+    "captions": "ok",
+    "format": "long",
+    "playlist": "Rook's Case Files (Full Cases)",
+    "privacy": "private",
+    "publish_at": "2026-11-14T15:00:00Z",
+    "review": false,
+    "sha256": "9b82abc1d9e1171637562e1b2439f263e46a2132269e92a77144c1adb926285b",
+    "thumbnail": "failed: thumbnail -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The authenticated user doesn't have permissions to upload and set custom video thumbnails.\",\n ",
+    "title": "A Whale Closed Its Mouth Around a Lobster Diver. Then It Spat Him Out",
+    "uploaded_at": "2026-11-14T00:44:26Z",
+    "url": "https://youtu.be/r4QjtlIvpTE",
+    "video_id": "r4QjtlIvpTE"
+  },
   "r005-vulovic": {
     "captions": "ok",
     "format": "short",
@@ -161,6 +175,19 @@
     "uploaded_at": "2026-11-13T18:25:23Z",
     "url": "https://youtu.be/OGVhaUVwwFs",
     "video_id": "OGVhaUVwwFs"
+  },
+  "r008-prosperi": {
+    "captions": "ok",
+    "format": "short",
+    "playlist": "Rook's Case Files (Shorts)",
+    "privacy": "private",
+    "publish_at": "2026-11-15T02:00:00Z",
+    "review": false,
+    "sha256": "7761b192df288683c5a4498091fecf19aa6c3d9a1db6268981d1dc4508b7f987",
+    "title": "Lost in the Sahara for 9 Days, He Drank Bat Blood #shorts",
+    "uploaded_at": "2026-11-14T00:44:33Z",
+    "url": "https://youtu.be/rQ1HjcZxXag",
+    "video_id": "rQ1HjcZxXag"
   },
   "s001-alvarenga": {
     "privacy": "private",
