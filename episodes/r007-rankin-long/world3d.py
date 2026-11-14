@@ -1246,7 +1246,7 @@ def set_ward(r):
     add('cube', '8AA090', (0, 5.82, 1.3), scale=(22, 0.1, 0.25), size=1, parent=r)
     for sx in (-1, 1):
         add('cube', 'B8C6B8', (sx * 10, 0, 3.4), scale=(0.3, 18, 6.8), size=1, parent=r)
-    add('cube', 'CFE8FF', (3.2, 5.82, 3.7), scale=(4.6, 0.1, 3.0), size=1, parent=r, emit=3.2)
+    add('cube', 'CFE8FF', (3.2, 5.82, 3.7), scale=(4.6, 0.1, 3.0), size=1, parent=r, emit=1.6)
     for x in (0.9, 3.2, 5.5):
         add('cube', 'F4F6F8', (x, 5.74, 3.7), scale=(0.14, 0.12, 3.1), size=1, parent=r)
     for z in (2.2, 3.7, 5.2):
@@ -1272,10 +1272,10 @@ def set_ward(r):
     add('cube', 'C8B090', (6.0, -2.9, 1.5), scale=(1.3, 0.12, 1.5), size=1, parent=r)
     add('cylinder', 'F4F6F8', (-1, -1, 6.4), radius=0.9, depth=0.2, vertices=10, parent=r, emit=1.5)
     aim = empty((-1, 0.5, 2), r)
-    light((-40, -50, 60), 2.6, 'FFF4E0', kind='SUN', target=aim, parent=r)
-    light((3.2, 4.6, 3.7), 1500, 'DFF0FF', 3.0, aim, parent=r)
-    light((8, -6, 5), 1500, 'FF7A1A', 3.0, aim, parent=r)
-    light((-7, -8, 3), 600, '9AB8E8', 5.0, aim, parent=r)
+    light((-40, -50, 60), 0.9, 'FFF4E0', kind='SUN', target=aim, parent=r)
+    light((3.2, 4.6, 3.7), 500, 'DFF0FF', 3.0, aim, parent=r)
+    light((8, -6, 5), 600, 'FF7A1A', 3.0, aim, parent=r)
+    light((-7, -8, 3), 250, '9AB8E8', 5.0, aim, parent=r)
     return {}
 
 
@@ -1375,7 +1375,7 @@ def extend(S):
     S['beacon'], S['beaconl'] = make_amb(S['amb'])
     S['kid'] = empty()
     S['kidarm'] = make_kid(S['kid'])
-    S['rings'] = [add('torus', '8AC8FF', FAR, rot=(PI / 2, 0, 0), major_radius=1.0, minor_radius=0.05, major_segments=20, minor_segments=4, emit=6) for _ in range(3)]
+    S['rings'] = [add('torus', '4A8CFF', FAR, rot=(PI / 2, 0, 0), major_radius=1.0, minor_radius=0.014, major_segments=24, minor_segments=4, emit=3) for _ in range(3)]
     S['cano'] = add('ico_sphere', '9AD0E8', FAR, scale=(0.5, 1.35, 0.5), radius=1, subdivisions=1, rough=0.2, emit=0.5)
     return S
 
@@ -1428,8 +1428,8 @@ def finish(S, t):
 # ---------------------------------------------------------------- long: who he was, the take-off
 def rankin_brief(S, k, t, lt):
     A = apron(S, True)
-    jet(S, 0, A(-6.5, 6.5, 2.19), 0.75, -0.05, gear=True)
-    jet(S, 1, A(9, 15, 2.19), 0.75, -0.05, gear=True)
+    jet(S, 0, A(-9.5, 9.5, 2.19), 0.75, -0.05, gear=True)
+    jet(S, 1, A(8, 17, 2.19), 0.75, -0.05, gear=True)
     S['pilot'].place(A(-1.2, 1.0, 0), 0.5)
     S['pilot'].apply(P('hips', aL=(0.1, 0.15, 0.2), head=(-0.05, 0.25 * math.sin(t * 0.9))))
     S['face']['pilot'] = 'calm'
@@ -1437,7 +1437,7 @@ def rankin_brief(S, k, t, lt):
     S['rook'].place(A(wx, -1.4, 0), face_to((wx, -1.4), (-1.2, 1.0)))
     S['rook'].apply(blend(walk(t, 1.3), P('stand', aR=(1.2, 0.2, 2.0, 0.8), head=(-0.3, 0.0)), ease(k * 1.6)))
     S['face']['rook'] = 'deadpan'
-    cam(S, A(lerp(4.6, 4.0, k), lerp(-4.6, -4.0, k), 0.7), A(-0.4, 0.8, 2.3), 30)
+    cam(S, A(lerp(-5.0, -4.4, k), lerp(-5.0, -4.4, k), 0.9), A(0.3, 0.2, 2.2), 30)
 
 
 def takeoff(S, k, t, lt):
@@ -1450,11 +1450,12 @@ def takeoff(S, k, t, lt):
         z = 2.19 + 16 * max(0.0, kk - 0.45) ** 1.5
         jet(S, i, A(x, y, z), PI / 2, -0.05 - 0.3 * max(0.0, kk - 0.4), 0.0, gear=True)
         S['jets'][i][1]['flame'].hide_render = False
-    S['rook'].place(A(1.5, -50.5, 0), PI + 0.5 - 0.9 * k)
+    x0 = S['jets'][0][0].location[0] - ORG['base'][0]
+    S['rook'].place(A(1.5, -57.5, 0), PI + 0.7 - 1.3 * k)
     S['rook'].apply(P('hat', aL=(0.3, 0.5, 0.4), head=(-0.2, 0.0), lean=-0.06))
     S['face']['rook'] = 'calm'
-    feathers(S, A(2.4, -49.5, 2.2), t, 3, False, 0.5)
-    cam(S, A(lerp(5.5, 4.8, k), lerp(-44.5, -45.5, k), 1.2), A(lerp(-8, 6, k), -62, lerp(3.4, 5.5, k)), 28)
+    feathers(S, A(2.4, -56.5, 2.2), t, 3, False, 0.5)
+    cam(S, A(lerp(5.2, 4.6, k), lerp(-52.0, -52.6, k), 1.2), A(max(-14.0, min(16.0, 0.5 * x0)), -66, lerp(3.2, 6.5, k)), 28)
 
 
 def lead_wing(S, k, t, lt):
@@ -1469,13 +1470,13 @@ def lead_wing(S, k, t, lt):
 
 def storm_ahead(S, k, t, lt):
     A = dusk_sky(S)
-    S['anvil'].location = (0, lerp(-135, -110, k), -74)
+    S['anvil'].location = (0, lerp(-98, -84, k), -24)
     S['anvil'].scale = (1.7, 1.7, 1.7)
     S['tfl'].hide_render = int(t * 8) % 4 != 0
     b = math.sin(t * 2.4)
-    jet(S, 0, A(-3.5, 0, 0.2 * b), 0.0, 0.0, 0.05 * math.sin(t * 1.5))
-    jet(S, 1, A(4.5, 5, -1.0 - 0.2 * b), 0.0, 0.0, -0.05 * math.sin(t * 1.9))
-    cam(S, A(0.5, lerp(22, 19, k), -2.2), A(0, -110, 9), 42)
+    jet(S, 0, A(-5.5, -12, -3.2 + 0.2 * b), 0.0, 0.0, 0.05 * math.sin(t * 1.5))
+    jet(S, 1, A(5.5, -6, -4.4 - 0.2 * b), 0.0, 0.0, -0.05 * math.sin(t * 1.9))
+    cam(S, A(0.5, lerp(22, 19, k), -1.0), A(0, -90, 9), 36)
 
 
 def climb_over(S, k, t, lt):
@@ -1510,7 +1511,7 @@ def wing_view(S, k, t, lt):
     jet(S, 0, A(0, 0, -1.2 * k), 0.0, 0.08 + 0.1 * k, 0.12 * math.sin(t * 4), flame=False)
     smoke(S, A(0, 5.0, -1.2 * k), (0.6, 8, 2.4), t, grow=0.6)
     jet(S, 1, A(lerp(11, 9.5, k), -3, 1.4 + 0.3 * math.sin(t * 2)), 0.0, 0.0, -0.25 * ease(k))
-    cam(S, A(-4.4, lerp(-2.2, -1.6, k), 1.9 - 1.2 * k), A(9, -3, 1.2), 44)
+    cam(S, A(-4.6, lerp(-2.4, -1.8, k), 1.25 - 1.2 * k), A(9, -3, 0.1), 40)
 
 
 # ---------------------------------------------------------------- long: in the cockpit
@@ -1531,7 +1532,7 @@ def radio_call(S, k, t, lt):
     A = cockpit(S, t, fire=True)
     seated(S, A(0, 0.15, 0.32), (0, 0, 0), P('sit', lean=0.04, head=(0.05, -0.55 * ease(k * 2)), aL=MASK_ARM, aR=(0.9, -0.1, 0.8), lL=(1.35, 1.3), lR=(1.35, 1.3)))
     S['mask'], S['face']['pilot'] = True, 'scared'
-    S['rook'].place(A(0.62, 1.2, 0.45), 0.2)
+    S['rook'].place(A(-0.72, 1.25, 0.45), -0.3)
     S['rook'].root.scale = (0.82, 0.82, 0.82)
     S['rook'].apply(P('stand', aL=MASK_ARM, aR=MASK_ARM, head=(0.25, 0.0)))
     S['face']['rook'] = 'sad'
@@ -1598,7 +1599,7 @@ def cloud_dive(S, k, t, lt):
     S['rook'].apply(P('hat', aL=(1.6, 1.2, 0.4), lL=(-0.4 + 0.3 * kk, 0.8), lR=(-0.3 - 0.3 * kk, 1.0), head=(-0.6, 0.0)))
     S['face']['rook'] = 'shocked'
     feathers(S, A(4.2, -137, z + 7.5), t, 5, False)
-    cam(S, A(lerp(20, 17, k), lerp(-116, -119, k), 9), A(1.5, -140, lerp(12, 5, k)), 30, 0.05 * math.sin(t * 3))
+    cam(S, A(lerp(13, 11, k), lerp(-125, -127, k), z + 2.5), A(2.0, -139, z + 3.0), 36, 0.05 * math.sin(t * 3))
 
 
 def dark_fall(S, k, t, lt):
@@ -1608,7 +1609,7 @@ def dark_fall(S, k, t, lt):
     S['pilot'].place(A(0.2 * math.sin(t * 7), 0, 0.3 * math.sin(t * 5)), 0.6, 1.25 + 0.12 * math.sin(t * 4), 0.2 * math.sin(t * 3))
     S['pilot'].apply(P('stand', aL=(0.9, -0.2, 1.7, 1.0), aR=(0.9, -0.2, 1.7, 1.0), lL=(0.9, 1.3), lR=(0.6, 1.5), head=(0.4, 0.0), lean=0.3))
     S['mask'], S['face']['pilot'], S['bare_on'] = True, 'closed', True
-    rain(S, A(0, -1, 0), t, 40, (14, 8, 16), -70, 0.1, 0.8)
+    rain(S, A(0, 4, 0), t, 40, (14, 6, 16), -70, 0.1, 0.8)
     cam(S, A(lerp(4.2, 3.4, k), lerp(-6.6, -5.6, k), -2.6), A(0, 0, 0.9), 30, 0.08 * math.sin(t * 6))
 
 
@@ -1617,15 +1618,15 @@ def elevator(S, k, t, lt):
     A = storm(S, t, 0, mixc('120E26', '3A4A80', f))
     S['stflash'].data.energy = 3 * f
     up = k < 0.55
-    z1 = lerp(-20, 16, ease(k / 0.55)) if up else lerp(16, -6, ease((k - 0.55) / 0.45))
-    z2 = lerp(14, -14, ease(k / 0.6)) if k < 0.6 else lerp(-14, 6, ease((k - 0.6) / 0.4))
+    z1 = lerp(-15, 9, ease(k / 0.55)) if up else lerp(9, -6, ease((k - 0.55) / 0.45))
+    z2 = lerp(8, -12, ease(k / 0.6)) if k < 0.6 else lerp(-12, 3, ease((k - 0.6) / 0.4))
     hang(S, 'pilot', A(-6, 4, z1), 0.5, (0.15 * math.sin(t * 5), 0.15 * math.sin(t * 4)),
          P('stand', lL=(0.5 * math.sin(t * 8), 0.5), lR=(-0.5 * math.sin(t * 8), 0.6), head=(-0.3 if up else 0.4, 0), **HOLD), 1.0 if up else 0.7, 'shock')
     S['bare_on'] = True
     hang(S, 'rook', A(6.5, -2, z2 + 1), -0.4, (0.15 * math.sin(t * 6), 0.2 * math.sin(t * 5)),
          P('hat', aL=(2.75, 0.22, 0.35), lL=(0.4 * math.sin(t * 9), 0.4), lR=(-0.4 * math.sin(t * 9), 0.5), head=(0.2, 0.2)), 1.0, 'shocked')
     hail(S, A(0, 0, 0), t, 30, (26, 10, 30), 30, 0.2, 1.6, up=up)
-    cam(S, A(lerp(-2, 2, k), -40, lerp(-6, 2, k)), A(0, 2, 1), 22, 0.05 * math.sin(t * 3))
+    cam(S, A(lerp(-2, 2, k), -34, lerp(-6, 2, k)), A(0, 2, 0), 34, 0.05 * math.sin(t * 3))
 
 
 def canopy_hail(S, k, t, lt):
@@ -1649,7 +1650,7 @@ def thunder_feel(S, k, t, lt):
     S['bare_on'] = True
     for i, o in enumerate(S['rings']):
         u = (lt * 1.5 + i / 3) % 1
-        s = 1.5 + 13 * u
+        s = 1.5 + 9 * u
         o.location = A(0, 0, -1.2)
         o.scale = (s, s, s)
         o.rotation_euler = (PI / 2 + 0.25, 0, 0.3)
@@ -1659,28 +1660,28 @@ def thunder_feel(S, k, t, lt):
 def rook_soak(S, k, t, lt):
     A = storm(S, t, -6, '0C1420')
     sw = 0.1 * math.sin(t * 2.2)
-    hang(S, 'rook', A(0, 0, 2.3), -0.5, (0.05 * math.sin(t * 2), sw),
+    hang(S, 'rook', A(0, 0, 2.3), 0.55, (0.05 * math.sin(t * 2), sw),
          P('shrug', head=(0.1 + 0.25 * ease((lt - 0.4) / 0.4), -0.3), lL=(0.1, 0.1), lR=(-0.1, 0.2)), face='deadpan')
-    S['hat_tip'] = 1.2 * ease((lt - 0.4) / 0.4)
-    hang(S, 'pilot', A(-8, 13, 4 + math.sin(t * 1.4)), 0.8, (0.08 * math.sin(t * 3), 0.08),
+    S['hat_tip'] = 0.8 * ease((lt - 0.4) / 0.4)
+    hang(S, 'pilot', A(-12, 10, 5 + math.sin(t * 1.4)), 0.8, (0.08 * math.sin(t * 3), 0.08),
          P('stand', aL=(2.75, 0.22, 0.35), aR=MASK_ARM, lL=(0.3, 0.3), lR=(0.1, 0.5), head=(0.3, 0.2)), face='closed')
     S['bare_on'] = True
     rain(S, A(0, -0.4, 2.6), t, 70, (7, 4, 8), 30, 0.12, 0.6)
-    cam(S, A(lerp(3.4, 2.9, k), lerp(-4.6, -4.0, k), 3.3), A(-0.5, 0.6, 2.7), 36)
+    cam(S, A(lerp(3.4, 2.9, k), lerp(-4.8, -4.2, k), 2.2), A(-0.4, 0.6, 2.75), 36)
 
 
 def chute_sheet(S, k, t, lt):
     A = storm(S, t, -40, '120E26')
     S['chute'].location, S['chute'].rotation_euler = A(0, 0, 0.3 * math.sin(t * 6)), (0.15 * math.sin(t * 4), 0.2 * math.sin(t * 5), 0.4 + 0.5 * t)
-    S['can'].location = (0.3, 0.2, 1.3 + 0.2 * math.sin(t * 9))
-    S['can'].scale = (0.5 + 0.05 * math.sin(t * 13), 0.42, 1.9)
-    S['can'].rotation_euler = (0.5, 0.3 * math.sin(t * 7), 0)
+    S['can'].location = (0.5, 1.3, 1.9 + 0.2 * math.sin(t * 9))
+    S['can'].scale = (0.5 + 0.05 * math.sin(t * 13), 0.4, 1.2)
+    S['can'].rotation_euler = (-0.55, 0.3 * math.sin(t * 7), 0)
     S['pilot'].root.parent = S['chute']
     S['pilot'].place((0, 0.05, -2.3))
     S['pilot'].apply(P('stand', aL=(2.6 + 0.2 * math.sin(t * 11), 0.5, 0.9), aR=(2.4 - 0.2 * math.sin(t * 10), 0.6, 1.1), lL=(0.8 * math.sin(t * 8), 0.7), lR=(-0.8 * math.sin(t * 8), 0.8), head=(-0.3, 0.3 * math.sin(t * 6))))
     S['mask'], S['face']['pilot'], S['bare_on'] = True, 'shock', True
     rain(S, A(0, -2, 1), t, 60, (14, 8, 14), -30, 0.2)
-    cam(S, A(lerp(5.5, 4.6, k), lerp(-10.5, -9.5, k), -1.0), A(0, 0, 0.6), 30, 0.07 * math.sin(t * 5))
+    cam(S, A(lerp(5.5, 4.6, k), lerp(-10.5, -9.5, k), -1.6), A(0, 0, -0.3), 30, 0.07 * math.sin(t * 5))
 
 
 def seasick(S, k, t, lt):
@@ -1700,6 +1701,8 @@ def seasick(S, k, t, lt):
 # ---------------------------------------------------------------- long: under the cloud, the tree, the road
 def calm_rain(S, k, t, lt):
     A = woods(S, t)
+    S['wflash'].data.energy = 1.6
+    sky(S, '16263A', 1.0)
     z = lerp(34, 27, k)
     hang(S, 'pilot', A(2.5, 9, z), 0.5, (0.05 * math.sin(t * 1.6), 0.06 * math.sin(t * 1.3)),
          P('stand', lL=(0.15, 0.2), lR=(0.0, 0.3), head=(0.45, 0.2), **HOLD), face='calm')
@@ -1717,11 +1720,11 @@ def tree_hit(S, k, t, lt):
         u = (k / hit) ** 2
     else:
         u = 1 - 0.12 * math.sin(min(1.0, (k - hit) / 0.5) * PI)
-    px, py, pz = lerp(-5.5, 1.75, u), lerp(-3.2, 2.5, u), lerp(4.6, 2.7, u)
+    px, py, pz = lerp(-5.5, 1.75, u), lerp(-3.2, 2.5, u), lerp(2.6, 0.5, u)
     yaw = face_to((-5.5, -3.2), (1.75, 2.5))
     lean_ = 0.75 * (u if k < hit else 1 - 0.6 * min(1.0, (k - hit) / 0.3))
     S['chute'].location, S['chute'].rotation_euler = A(px, py, pz + 2.3), (0, 0, yaw)
-    S['can'].location = (0.8, -1.0 - 2.0 * u, 6.2)
+    S['can'].location = (0.8, -1.0 - 2.0 * u, 7.6)
     S['can'].scale = (0.7, 0.55, 0.9)
     S['can'].rotation_euler = (0.5, 0.4, 0.3)
     S['pilot'].place(A(px, py, pz), yaw, lean_)
@@ -1734,7 +1737,7 @@ def tree_hit(S, k, t, lt):
             f_.scale = (1.2, 1.2, 2.2)
     rain(S, A(0, 0, 4), t, 50, (14, 8, 10), 24, 0.15)
     sh = 0.25 * max(0.0, 1 - abs(k - hit) * 9)
-    cam(S, A(lerp(5.5, 5.0, k) + sh, lerp(-5.5, -4.8, k), 1.6 + sh), A(1.2, 1.8, 3.4), 26)
+    cam(S, A(lerp(5.5, 5.0, k) + sh, lerp(-6.5, -5.8, k), 1.3 + sh), A(0.6, 1.2, 2.5), 26)
 
 
 def helmet_cu(S, k, t, lt):
@@ -1787,7 +1790,7 @@ def cars_pass(S, k, t, lt):
     S['rook'].apply(blend(P('point', aR=(1.35, 0.9, 0.1), head=(0.0, 0.5 - 1.2 * u)), P('shrug', head=(0.0, -0.7)), ease((u - 0.6) / 0.25)))
     S['face']['rook'] = 'deadpan'
     rain(S, A(2, -14, 4), t, 50, (18, 8, 10), 24, 0.15)
-    cam(S, A(lerp(-10.5, -9.5, k), lerp(-21.6, -21.0, k), 0.9), A(5, -14.4, 2.3), 30)
+    cam(S, A(lerp(-3.6, -2.8, k), lerp(-20.2, -19.6, k), 0.9), A(5.2, -13.6, 2.2), 30)
 
 
 def boy_car(S, k, t, lt):
@@ -1836,28 +1839,28 @@ def store_floor(S, k, t, lt):
     S['rook'].place(A(-3.6, Y + 3.6, 0), face_to((-3.6, Y + 3.6), (-0.6, Y + 2.0)))
     S['rook'].apply(P('sit', lean=0.3, head=(0.35, 0.1 * math.sin(t * 1.5)), aL=(0.7, -0.1, 1.5, 1.0), aR=(0.7, -0.1, 1.5, 1.0)))
     S['face']['rook'] = 'sad'
-    cam(S, A(lerp(1.6, 0.9, k), lerp(Y - 6.6, Y - 5.6, k), 2.7), A(0.2, Y + 3.4, 1.5), 28)
+    cam(S, A(lerp(1.6, 0.9, k), lerp(Y - 5.6, Y - 4.6, k), 2.6), A(0.0, Y + 3.2, 1.3), 32)
 
 
 def ambulance(S, k, t, lt):
     A = show(S, 'store')
     sky(S, '0A1420', 1.0)
     e = k * k
-    S['amb'].location, S['amb'].rotation_euler = A(lerp(-3, 34, e), lerp(-4.5, -11.5, min(1.0, e * 2.2)), 0.03 * math.sin(t * 20)), (0, 0, -0.45 * (1 - min(1.0, e * 2.2)))
+    S['amb'].location, S['amb'].rotation_euler = A(lerp(3, 38, e), lerp(-4.5, -11.5, min(1.0, e * 2.2)), 0.03 * math.sin(t * 20)), (0, 0, -0.45 * (1 - min(1.0, e * 2.2)))
     S['beacon_on'] = int(t * 5) % 2 == 0
     S['car2'].location, S['car2'].rotation_euler = A(-9.5, 0.5, 0), (0, 0, 0.9)
     S['folk'].place(A(-3.2, 4.6, 0.4), PI - 0.6)
     S['folk'].apply(P('stand', aL=(0.3, 0.3, 0.4), head=(0, -0.3)))
-    S['rook'].place(A(1.6, 0.4, 0), -0.9 - 0.6 * k)
+    S['rook'].place(A(2.2, -0.8, 0), -1.2 - 0.5 * k)
     S['rook'].apply(P('hat', head=(0.1, 0.2)))
     S['hat_tip'], S['face']['rook'] = 0.8, 'sad'
     rain(S, A(0, -2, 4), t, 50, (22, 10, 10), 20, 0.12)
-    cam(S, A(lerp(-3.5, -2.5, k), lerp(-3.6, -3.0, k), 1.3), A(lerp(4, 9, k), lerp(-2, -4.5, k), 2.2), 26)
+    cam(S, A(lerp(-2.5, -1.5, k), lerp(-7.5, -7.0, k), 1.3), A(lerp(5, 9, k), lerp(-2.5, -4.5, k), 2.2), 26)
 
 
 def ward_room(S):
     A = show(S, 'ward')
-    sky(S, 'B8C8D8', 1.0)
+    sky(S, '56626E', 0.7)
     return A
 
 
@@ -1904,7 +1907,7 @@ def salute(S, k, t, lt):
     A = apron(S)
     sky(S, 'C87858', 1.0)
     S['bsun'].data.energy = 3.0
-    jet(S, 0, A(lerp(-30, -75, k), lerp(70, 120, k), lerp(16, 40, k)), 0.5, -0.45, 0.2 * k)
+    jet(S, 0, A(lerp(-9, -20, k), lerp(26, 44, k), lerp(8.5, 15, k)), 0.5, -0.4, 0.2 * k)
     jet(S, 1, A(9, 12, 2.19), 0.8, -0.05, gear=True)
     S['rook'].place(A(0, 0, 0), PI - 0.75)
     tip = ease(k * 2.2)
@@ -1925,16 +1928,16 @@ def photo_thumb(S, k, t, lt):
     """Thumbnail picture: inside the storm, the pilot under his parachute beside a blue sheet of lightning, Rook rising past under his own."""
     A = storm(S, 1.0, 0, '26386A', 1.3, 60000)
     S['stflash'].data.energy = 3.0
-    sheet(S, 0, (-20, 30, 6), 0.5, 0.3)
-    sheet(S, 1, (-44, 60, 0), 0.3, -0.2)
-    hang(S, 'pilot', A(-7.0, 4, 2.2), 0.5, (0.12, -0.2),
+    sheet(S, 0, (-30, 40, 6), 0.3, 0.3)
+    sheet(S, 1, (-60, 70, 0), 0.25, -0.2)
+    hang(S, 'pilot', A(-6.2, 1.5, 0.6), 0.5, (0.12, -0.2),
          P('stand', aL=(2.6, 0.5, 0.3), aR=(2.2, 0.6, 0.8), lL=(0.6, 0.6), lR=(-0.5, 0.8), head=(-0.4, 0.3)), face='shock')
     S['bare_on'] = True
-    hang(S, 'rook', A(-0.8, -4, -1.2), -0.35, (0.1, 0.25),
+    hang(S, 'rook', A(-1.6, -5.5, 0.6), -0.35, (0.1, 0.25),
          P('hat', aL=(2.75, 0.22, 0.35), lL=(0.5, 0.6), lR=(-0.5, 0.3), head=(0.1, 0.3)), face='shocked')
-    feathers(S, A(-0.8, -4, -2.4), 1.0, 6)
-    hail(S, A(-4, 0, 2), 1.0, 34, (22, 8, 14), 60, size=1.4)
-    cam(S, A(3.4, -19.5, -1.0), A(-3.2, 0, 3.4), 32)
+    feathers(S, A(-1.6, -5.5, -0.6), 1.0, 6)
+    hail(S, A(-4, 0, 2), 1.0, 34, (16, 8, 12), 60, size=1.4)
+    cam(S, A(5.0, -17.5, 0.0), A(1.2, 0, 2.6), 34)
 
 
 STILLS['thumb'] = photo_thumb

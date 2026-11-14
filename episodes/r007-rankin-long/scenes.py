@@ -256,12 +256,12 @@ def record(cv, c):
     punch(cv, 'KOREA', 520, 340, 96, pop(c.lt, 0.3 * c.d))
     n = int(100 * ease((c.k - 0.45) / 0.45))
     for i in range(100):
-        x, y = 1040 + (i % 20) * 38, 150 + (i // 20) * 82
+        x, y = 1040 + (i % 20) * 38, 100 + (i // 20) * 72
         on = i < n
-        cv.drawLine(x, y, x + (10 if (i % 5) != 4 else -150), y + 58 if (i % 5) != 4 else y + 50, P(AMBER if on else 0x33FFFFFF, 8))
+        cv.drawLine(x, y, x + (10 if (i % 5) != 4 else -150), y + 50 if (i % 5) != 4 else y + 44, P(AMBER if on else 0x33FFFFFF, 8))
     k2 = pop(c.lt, 0.5 * c.d)
-    punch(cv, 'ABOUT 100', 1400, 650, 150, k2, AMBER)
-    punch(cv, 'COMBAT MISSIONS', 1400, 760, 70, pop(c.lt, 0.62 * c.d))
+    punch(cv, 'ABOUT 100', 1400, 640, 140, k2, AMBER)
+    punch(cv, 'COMBAT MISSIONS', 1400, 750, 70, pop(c.lt, 0.62 * c.d))
     jet_icon(cv, 520 + 30 * math.sin(c.t * 1.3), 600 + 16 * math.sin(c.t * 2.1), 1.7, 0x55FFFFFF, 90)
 
 
@@ -445,10 +445,10 @@ def yoyo_graph(cv, c):
     """Up and down, as much as 6,000 ft at a time (the trace is an illustration, not his real track)."""
     Wd.vgrad(cv, 0, 0, W, H, [(0, h('120E26')), (1, h('1D3644'))])
     Wd.rain(cv, W, H, c.t, density=70, c=0x33BFE0FF, slant=0.25, speed=2400, length=70)
-    x0, x1, y0, y1 = 220, 1700, 760, 170
+    x0, x1, y0, y1 = 220, 1700, 780, 380
     cv.drawLine(x0, y0, x1, y0, P(0xAAFFFFFF, 6))
     cv.drawLine(x0, y0, x0, y1 - 30, P(0xAAFFFFFF, 6))
-    Wd.text_card(cv, 'HEIGHT', x0 + 10, y1 - 50, 44, 0xCCFFFFFF, BLACK)
+    Wd.text_card(cv, 'HEIGHT', x0 + 90, y1 - 50, 44, 0xCCFFFFFF, BLACK)
     pts = []
     n = 120
     kk = ease(c.k * 1.15)
@@ -463,12 +463,12 @@ def yoyo_graph(cv, c):
     chute_icon(cv, tip[0], tip[1] - 50, 0.85)
     k2 = pop(c.lt, 0.35 * c.d)
     if k2 > 0:
-        bx, by0, by1 = 1500, 250, 520
+        bx, by0, by1 = 1640, 110, 300
         cv.drawLine(bx, by0, bx, by1, P(WHITE, 8))
         for yy_, s in ((by0, 1), (by1, -1)):
             cv.drawPath(path(((bx - 26, yy_ + 34 * s), (bx, yy_), (bx + 26, yy_ + 34 * s))), P(WHITE, 8))
-    punch(cv, 'UP TO 6,000 FT', 1130, 300, 104, k2, AMBER)
-    punch(cv, 'AT A TIME', 1130, 400, 70, pop(c.lt, 0.5 * c.d))
+    punch(cv, 'UP TO 6,000 FT', 1130, 200, 110, k2, AMBER)
+    punch(cv, 'AT A TIME', 1130, 300, 70, pop(c.lt, 0.5 * c.d))
 
 
 PI_ = math.pi
@@ -509,7 +509,7 @@ def time_mag(cv, c):
     flight_chart(cv, c.t)
     k = pop(c.lt, 0.0, 0.25)
     cv.save()
-    cv.translate(800, 430 + 50 * (1 - k))
+    cv.translate(680, 430 + 50 * (1 - k))
     pinned(cv, 0, 0, 1180, 620, -2)
     cv.rotate(-2)
     cv.drawRect(skia.Rect.MakeXYWH(-590, -230, 1180, 120), P(NAVY))
@@ -521,8 +521,9 @@ def time_mag(cv, c):
         Wd.text_card(cv, 'SAW A JET PILOT', 0, 180, 66, INK, None)
         Wd.text_card(cv, 'STANDING IN THE ROAD', 0, 266, 66, INK, None)
     cv.restore()
-    card(cv, 'ABOUT 12 CARS PASSED', 1500, 250, 600, 150, 5, 46, pop(c.lt, 0.12 * c.d), h('BFD8EC'))
-    card(cv, 'ONE STOPPED', 1540, 520, 440, 150, -4, 58, pop(c.lt, 0.68 * c.d))
+    card(cv, 'ABOUT 12 CARS', 1600, 210, 520, 140, 5, 54, pop(c.lt, 0.12 * c.d), h('BFD8EC'))
+    card(cv, 'PASSED HIM', 1610, 400, 440, 140, -3, 54, pop(c.lt, 0.2 * c.d), h('BFD8EC'))
+    card(cv, 'ONE STOPPED', 1600, 610, 480, 140, -4, 58, pop(c.lt, 0.68 * c.d))
 
 
 def injuries(cv, c):
@@ -719,7 +720,7 @@ def THUMB(cv, c):
     else:
         cv.clear(h('26304A'))
     cv.drawRect(skia.Rect(0, 0, 1280, 720), skia.Paint(Shader=skia.GradientShader.MakeLinear(
-        [(640, 0), (1010, 0)], [0x00000000, 0xC8000000])))
-    Wd.text_card(cv, '40 MIN', 985, 300, 170, AMBER, BLACK)
-    Wd.text_card(cv, 'INSIDE', 985, 420, 96, WHITE, BLACK)
-    Wd.text_card(cv, 'A STORM', 985, 520, 96, WHITE, BLACK)
+        [(600, 0), (960, 0)], [0x00000000, 0xD0000000])))
+    Wd.text_card(cv, '40 MIN', 990, 300, 136, AMBER, BLACK)
+    Wd.text_card(cv, 'INSIDE', 990, 420, 92, WHITE, BLACK)
+    Wd.text_card(cv, 'A STORM', 990, 520, 92, WHITE, BLACK)
