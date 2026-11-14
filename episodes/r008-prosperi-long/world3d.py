@@ -1846,9 +1846,9 @@ def dawn_dune(S, k, t, lt):
     A = hero(stage(S, 'wild', 'dawn'))
     z = hero_z(0.5, 15)
     up = ease(k * 1.5)
-    S['man'].place(A(0.5, 15, z - 0.12), 1.15)
-    S['man'].apply(blend(P('sit', lean=1.05, head=(0.6, 0), aL=(0.4, 0.3, 0.4), aR=(0.4, 0.3, 0.4), lL=(1.5, 0.5), lR=(1.45, 0.9)),
-                         P('sit', lean=0.2, head=(-0.1, 0.85 * math.sin(t * 2.2)), aL=(0.5, 0.5, 0.6), aR=(0.9, 0.3, 1.5), lL=(1.5, 0.5), lR=(1.3, 1.5)), up))
+    S['man'].place(A(0.5, 15, z), 0.45)
+    S['man'].apply(blend(P('stand', **KNEEL, lean=1.25, head=(0.5, 0), aL=(1.6, 0.4, 0.5), aR=(1.6, 0.4, 0.5)),
+                         P('stand', **KNEEL, lean=0.05, head=(-0.1, 0.85 * math.sin(t * 2.2)), aL=(0.3, 0.3, 0.5), aR=(1.9, 0.9, 2.2, -1.0)), up))
     S['face']['man'] = 'closed' if up < 0.5 else 'scared'
     for i in range(8):
         d = S['dust'][i]
@@ -1983,8 +1983,8 @@ def hall_low(S, k, t, lt):
     A = stage(S, 'hall', 'hall')
     S['hl_door'].data.energy, S['hl_fill'].data.energy, S['hl_orange'].data.energy = 300 + 80 * math.sin(t * 0.9), 380, 40
     S['hl_door'].data.color, S['hl_fill'].data.color = K.hexc('6A86F0')[:3], K.hexc('3A54D8')[:3]
-    S['man'].place(A(-1.5, 1.7, 0.03), 1.95)
-    S['man'].apply(P('sit', lean=0.42, head=(0.8, 0), aL=(1.25, -0.2, 0.9), aR=(1.25, -0.2, 0.9), lL=(1.9, 1.9), lR=(1.9, 1.9), lift=-0.5 + 0.02 * math.sin(t * 1.8)))
+    S['man'].place(A(-1.7, 2.0, 0.03), 1.0)
+    S['man'].apply(P('sit', lean=0.4, head=(0.85, 0), aL=(0.9, 0.0, 0.6), aR=(0.9, 0.0, 0.6), lL=(1.5, 0.25), lR=(1.3, 0.8), lift=-0.5 + 0.02 * math.sin(t * 1.8)))
     S['pack_on'], S['gaunt'], S['face']['man'] = False, True, 'closed'
     for i in range(3):
         S['tally'][i].location = A(1.0 + i * 0.3, 4.46, 2.5)
