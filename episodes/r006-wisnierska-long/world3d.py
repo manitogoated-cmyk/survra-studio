@@ -828,3 +828,844 @@ SHOTS3D = {f.__name__.rstrip('_'): f for f in (
     spiral, rook_brolly, rise_tower, top_out, hail_, bolt, rook_ice, slump_wide, ghost_fly, rook_watch, eyes_open, ice_hands, descend,
     landing, dusk_hill, rook_hat, ewa_field, signoff)}
 STILLS = dict(storm=photo_storm, ewa=photo_ewa)
+
+
+# ================================================================ long-form extension (16:9 full case file)
+# Same story, same world, more of it: the briefing and the launch queue at Mount Borah, the flight north and the two
+# clouds that joined, the radio call and the team leader on the ground, the iced-up wing and GPS, the spiral down to
+# the farm, the phone call and the pick-up, the hospital, and what she did afterwards (the stitched number, the school).
+ORG.update(base=(2100, 0, 0), plains=(2800, 0, 0), road=(3500, 0, 0), ward=(4200, 0, 0), alps=(4900, 0, 0))
+LEADER = dict(top='2E5A8A', pants='3A3A44', hand='D9AC8A', boot='2A2026', fore='D9AC8A')
+DOCTOR = dict(top='E8ECEE', pants='5A6470', hand='C99A78', boot='2A2A30')
+EWA2 = dict(top='8A96A8', pants='4A5468', hand='E8B898', boot='E8ECEE', fore='8A96A8')
+SEG7 = {'9': 'abcdfg', '4': 'bcfg', '6': 'acdefg'}
+
+
+def face_to(frm, to):
+    """Yaw that turns a rig standing at `frm` toward `to` (x, y)."""
+    return math.atan2(to[0] - frm[0], -(to[1] - frm[1]))
+
+
+def ingroup(S, name, fn):
+    """Add more objects to a set that already exists (they hide and show with it)."""
+    before = set(bpy.data.objects)
+    out = fn(empty(ORG[name]))
+    c = S['colls'][name]
+    for o in set(bpy.data.objects) - before:
+        for uc in list(o.users_collection):
+            uc.objects.unlink(o)
+        c.objects.link(o)
+    return out
+
+
+def peg(parent, loc, yaw, col, helmet=None, skin='D9AC8A', pants='3A3A44'):
+    """A simple standing figure for crowds (same height as a rig, no joints). Faces -Y at yaw 0."""
+    e = empty(loc, parent, (0, 0, yaw))
+    add('cone', col, (0, 0, 1.55), radius1=0.3, radius2=0.37, depth=1.0, vertices=7, parent=e)
+    add('cube', col, (0, 0, 2.1), scale=(0.74, 0.34, 0.12), size=1, parent=e)
+    for s in (-1, 1):
+        add('cylinder', pants, (s * 0.16, 0, 0.53), radius=0.095, depth=1.06, vertices=5, parent=e)
+        add('cube', '2A2026', (s * 0.16, -0.09, 0.07), scale=(0.2, 0.42, 0.14), size=1, parent=e)
+        add('cylinder', col, (s * 0.5, 0, 1.62), rot=(0, s * 0.12, 0), radius=0.085, depth=0.95, vertices=5, parent=e)
+    add('ico_sphere', skin, (0, 0, 2.44), scale=(0.92, 1, 1.1), radius=0.29, subdivisions=1, parent=e)
+    if helmet:
+        add('ico_sphere', helmet, (0, 0.05, 2.53), radius=0.33, subdivisions=1, parent=e, rough=0.4)
+    else:
+        add('ico_sphere', '3A2A20', (0, 0.06, 2.52), radius=0.3, subdivisions=1, parent=e)
+    return e
+
+
+def flat_wing(parent, loc, yaw, col):
+    """A glider laid out on the grass behind its pilot."""
+    e = empty(loc, parent, (0, 0, yaw))
+    for j in range(-2, 3):
+        add('cube', col if j % 2 == 0 else 'EDE8DC', (j * 1.1, 0.25 * j * j, 0.08), rot=(0, 0, -j * 0.22), scale=(1.15, 1.5, 0.12), size=1, parent=e)
+    return e
+
+
+def leader_head(head):
+    out = K.human_head('D9AC8A', '5A4630')(head)
+    add('cylinder', 'F4EEDF', (0, 0.0, 0.3), radius=0.32, depth=0.14, vertices=8, parent=head)
+    add('cube', 'F4EEDF', (0, -0.36, 0.25), scale=(0.44, 0.34, 0.04), size=1, parent=head)
+    add('cube', '20242B', (0, -0.3, 0.06), scale=(0.5, 0.04, 0.09), size=1, parent=head)
+    return out
+
+
+def doctor_head(head):
+    out = K.human_head('C99A78', '8A8A8A')(head)
+    add('cube', '8A8A8A', (0, -0.27, -0.14), scale=(0.3, 0.06, 0.1), size=1, parent=head)
+    return out
+
+
+def ewa2_head(head):
+    out = K.human_head('E8B898', '6A4A2A')(head)
+    add('cube', '6A4A2A', (0, 0.3, -0.14), rot=(0.3, 0, 0), scale=(0.16, 0.14, 0.5), size=1, parent=head)
+    out['band'] = [add('cube', 'FFFFFF', (s * 0.29, 0.0, 0.0), scale=(0.07, 0.22, 0.28), size=1, parent=head, emit=0.3) for s in (-1, 1)]
+    out['band'].append(add('cube', 'FFFFFF', (0, -0.3, -0.03), scale=(0.1, 0.05, 0.06), size=1, parent=head, emit=0.3))
+    return out
+
+
+def cloud_tower(parent, loc, seed=0.0):
+    e = empty(loc, parent)
+    cols = ('4A5670', '59647E', '6E7892', '8791AA', 'A3ACC2', 'BEC6D8', 'E4E8F2', 'F2F4FA')
+    for i in range(18):
+        lvl = i * 8 // 18
+        a = i * 2.399 + seed
+        rad = (34 - lvl * 2.2) * (1.25 if i < 5 else 1.0)
+        add('ico_sphere', cols[lvl], (math.cos(a) * (26 - lvl * 2.5), math.sin(a) * 14, 12 + i * 8.2), scale=(1, 1, 0.8 if i < 5 else 1),
+            radius=rad, subdivisions=2, parent=e, emit=0.04 + 0.05 * lvl)
+    for i in range(7):
+        add('ico_sphere', 'EEF1F8', (-54 + i * 18, math.sin(i * 1.7 + seed) * 8, 166 + (i % 2) * 4), scale=(1, 1, 0.4), radius=22, subdivisions=2,
+            parent=e, emit=0.35)
+    return e
+
+
+def set_base(r):
+    add('plane', 'B89A5A', (0, 0, 0), size=900, parent=r)
+    for i in range(16):
+        add('cube', ('A89848', 'C0A860', '9A8A48')[i % 3], (-200 + (i * 83) % 400, 30 + (i * 47) % 260, 0.03), rot=(0, 0, i * 0.3),
+            scale=(34 + i % 3 * 12, 22, 0.05), size=1, parent=r)
+    add('cube', 'A8B0B8', (0, 10, 2.6), scale=(20, 6, 5.2), size=1, parent=r)
+    add('cube', '7A8490', (0, 9.6, 5.5), rot=(0.12, 0, 0), scale=(21.5, 7.4, 0.3), size=1, parent=r)
+    add('cube', '3A4048', (6.5, 6.95, 1.7), scale=(2.4, 0.1, 3.4), size=1, parent=r)
+    for i in range(10):
+        add('cube', '98A0A8', (-9.5 + i * 2.1, 6.96, 2.6), scale=(0.08, 0.06, 5.0), size=1, parent=r)
+    for x in (-3.9, 3.9):
+        add('cylinder', '6A5238', (x, 4.7, 2.2), radius=0.1, depth=4.4, vertices=5, parent=r)
+    add('cube', '6A5238', (0, 4.72, 2.9), scale=(8.4, 0.12, 3.9), size=1, parent=r)
+    add('cube', 'F4EEDF', (0, 4.62, 2.9), scale=(7.9, 0.1, 3.4), size=1, parent=r)
+    add('cube', '20242B', (0, 4.55, 4.35), scale=(7.9, 0.06, 0.5), size=1, parent=r)
+    add('cylinder', 'FFC233', (-2.6, 4.52, 3.1), rot=(PI / 2, 0, 0), radius=0.62, depth=0.06, vertices=12, parent=r, emit=1.2)
+    for i in range(8):
+        a = i * PI / 4
+        add('cube', 'FFC233', (-2.6 + math.cos(a) * 0.95, 4.52, 3.1 + math.sin(a) * 0.95), rot=(0, -a, 0), scale=(0.3, 0.05, 0.09), size=1, parent=r, emit=1.2)
+    for x, z, s_ in ((-0.6, 3.3, 0.36), (-0.1, 3.4, 0.44), (0.4, 3.3, 0.34)):
+        add('ico_sphere', 'C8D0DC', (x, 4.52, z), scale=(1, 0.2, 0.8), radius=s_, subdivisions=1, parent=r)
+    for x, z, s_ in ((2.0, 3.35, 0.5), (2.6, 3.5, 0.62), (3.2, 3.3, 0.46)):
+        add('ico_sphere', '4A5670', (x, 4.52, z), scale=(1, 0.2, 0.8), radius=s_, subdivisions=1, parent=r)
+    rod((2.75, 4.5, 3.0), (2.45, 4.5, 2.45), 0.07, 'FF7A1A', r, emit=2.0)
+    rod((2.45, 4.5, 2.45), (2.8, 4.5, 2.4), 0.07, 'FF7A1A', r, emit=2.0)
+    rod((2.8, 4.5, 2.4), (2.5, 4.5, 1.8), 0.07, 'FF7A1A', r, emit=2.0)
+    for i in range(5):
+        add('cube', '8A96B0', (-3.2 + i * 1.5, 4.55, 1.7 + 0.12 * math.sin(i * 1.4)), rot=(0, 0.1 * math.sin(i), 0), scale=(1.3, 0.04, 0.06), size=1, parent=r)
+    cols = ('C83248', '2E6AB8', 'E8C23A', '3F9A5A', 'E8742A', '7A4AB0', 'D8D4C8', '2E8A9A')
+    hel = ('EDE8DC', '20242B', 'E8742A', 'D8324A', '3A8AD8', 'E8C23A')
+    k = 0
+    for row in range(3):
+        for i in range(7):
+            x, y = -6.4 + i * 2.05 + (row % 2) * 0.8, 1.2 - row * 1.9
+            if abs(x - 0.9) < 0.9 and row == 0:
+                continue
+            peg(r, (x + 0.2 * math.sin(k * 3.1), y + 0.25 * math.cos(k * 1.7), 0), PI + 0.25 * math.sin(k * 2.3), cols[k % 8], hel[k % 6] if k % 3 else None)
+            k += 1
+    for sx in (-1, 1):
+        add('cylinder', 'D8D4C8', (sx * 11.5, 3.5, 3.0), radius=0.07, depth=6.0, vertices=5, parent=r)
+        for j in range(3):
+            add('cube', 'FF7A1A' if j % 2 == 0 else 'F4EEDF', (sx * 11.5 + 0.55, 3.5, 5.6 - j * 0.6), scale=(1.0, 0.04, 0.5), size=1, parent=r)
+    for x, col in ((-13.5, 'E8ECF4'), (-17.5, 'C83248'), (15, '2E6AB8')):
+        add('cube', col, (x, 3, 1.0), scale=(2.2, 5, 1.1), size=1, parent=r)
+        add('cube', col, (x, 2.2, 2.0), scale=(2.1, 2.4, 0.9), size=1, parent=r)
+        add('cube', '20242B', (x, 0.98, 2.0), scale=(1.8, 0.05, 0.6), size=1, parent=r)
+    add('cone', '7C8A3E', (60, 190, 22), radius1=150, radius2=30, depth=44, vertices=10, parent=r)
+    add('cone', '6E7C36', (-150, 230, 14), radius1=120, radius2=20, depth=28, vertices=9, parent=r)
+    for i in range(9):
+        x, y = -40 + i * 11 + (i % 2) * 3, 22 + (i % 3) * 5
+        add('cylinder', 'C8C0B0', (x, y, 2.5), radius=0.3, depth=5.0, vertices=6, parent=r)
+        add('ico_sphere', ('5E7040', '4E6034', '6A7C48')[i % 3], (x, y, 6.0), scale=(1, 1, 0.7), radius=3.0, subdivisions=1, parent=r)
+    aim = empty((0, 0, 2), r)
+    light((-70, -90, 80), 4.2, 'FFF0D0', kind='SUN', target=aim, parent=r)
+    light((8, -6, 5), 2200, 'FF7A1A', 3.0, aim, parent=r)
+    light((-7, -9, 3), 500, '9AB8E8', 5.0, aim, parent=r)
+    return {}
+
+
+def set_plains(r):
+    add('plane', 'A89848', (0, 300, -170), size=3600, parent=r)
+    cols = ('A89848', '7C8A3E', 'B8A050', '6E7C36', '9A8A40', 'C0AC5C', '8E8444')
+    for i in range(60):
+        add('cube', cols[i % 7], (-700 + (i * 197) % 1400, -260 + (i * 131) % 1300, -169.8), rot=(0, 0, (i % 5) * 0.2),
+            scale=(90 + i % 4 * 40, 60 + i % 3 * 30, 0.2), size=1, parent=r)
+    add('cube', '6A8AA8', (-120, 380, -169.6), rot=(0, 0, 0.5), scale=(16, 1500, 0.2), size=1, parent=r)
+    for i in range(8):
+        add('cone', ('66785E', '5A6C58')[i % 2], (-800 + i * 230, 1300, -150), radius1=170, radius2=20, depth=44, vertices=6, parent=r)
+    cA = cloud_tower(r, (-90, 250, -30), 0.0)
+    cB = cloud_tower(r, (90, 250, -30), 1.7)
+    for i in range(12):
+        add('ico_sphere', ('F2F4FA', 'E4E8F2')[i % 2], (-260 + (i * 97) % 520, 70 + (i * 61) % 330, 24 + (i % 4) * 9), scale=(1, 1, 0.5),
+            radius=10 + i % 3 * 4, subdivisions=1, parent=r, emit=0.3)
+    minis = []
+    for i in range(10):
+        g = empty((0, 0, -400), r)
+        col = ('E8C23A', '3A8AD8', 'EDE8DC', '48B878', 'B05AD0', 'E8742A', 'D8324A', '2E8A9A', 'F4EEDF', 'E8C23A')[i]
+        for j in (-1, 0, 1):
+            add('cube', col, (j * 1.5, 0, -abs(j) * 0.35), rot=(0, j * 0.45, 0), scale=(1.6, 1.1, 0.16), size=1, parent=g)
+        add('ico_sphere', '20242B', (0, 0, -2.4), radius=0.3, subdivisions=1, parent=g)
+        minis.append(g)
+    aim = empty((0, 0, 2), r)
+    sun = light((-70, -60, 90), 4.4, 'FFF0D0', kind='SUN', target=aim, parent=r)
+    light((8, -8, 5), 2600, 'FF7A1A', 4.0, aim, parent=r)
+    light((-7, -9, 2), 700, '9AB8E8', 5.0, aim, parent=r)
+    return dict(cA=cA, cB=cB, pminis=minis, psun=sun)
+
+
+def set_road(r):
+    add('plane', 'B89A5A', (0, 0, 0), size=1700, parent=r)
+    add('cube', 'D0B888', (0, -1.5, 0.02), scale=(700, 8, 0.04), size=1, parent=r)
+    for sx in (-1, 1):
+        add('cube', 'B8A070', (0, -1.5 + sx * 1.3, 0.05), scale=(700, 0.5, 0.03), size=1, parent=r)
+    for i in range(-14, 15):
+        add('cylinder', '6A5238', (i * 3.4, 4.5, 0.75), radius=0.09, depth=1.5, vertices=5, parent=r)
+    for z in (0.6, 1.2):
+        add('cylinder', 'B8BCC8', (0, 4.5, z), rot=(0, PI / 2, 0), radius=0.02, depth=96, vertices=4, parent=r)
+    for i in range(22):
+        add('cube', ('A89848', '7C8A3E', 'C0AC5C', '9A8A40')[i % 4], (-300 + (i * 89) % 600, 20 + (i * 57) % 300, 0.03), rot=(0, 0, i * 0.4),
+            scale=(44 + i % 3 * 16, 26, 0.05), size=1, parent=r)
+    for i, (x, y) in enumerate(((-13, 8), (-17, 11), (15, 9), (21, 12), (-30, 14), (34, 10))):
+        add('cylinder', 'C8C0B0', (x, y, 2.8), radius=0.3, depth=5.6, vertices=6, parent=r)
+        for j in range(3):
+            add('ico_sphere', ('5E7040', '4E6034', '6A7C48')[(i + j) % 3], (x + (j - 1) * 1.8, y + (j % 2), 6.2 + (j % 2) * 1.1), scale=(1, 1, 0.62),
+                radius=2.4 + 0.3 * j, subdivisions=1, parent=r)
+    for i in range(5):
+        x = -44 + i * 22
+        add('cylinder', '5A4630', (x, 16, 4.0), radius=0.14, depth=8.0, vertices=5, parent=r)
+        add('cube', '5A4630', (x, 16, 7.4), scale=(2.2, 0.14, 0.14), size=1, parent=r)
+    storm = empty((0, 430, 0), r)
+    for i in range(22):
+        lvl = i * 8 // 22
+        a = i * 2.399
+        add('ico_sphere', ('2A3348', '333D54', '3F4A64', '4E5A76', '65708C', '8791AA', 'AEB6CA', 'D4DAE8')[lvl],
+            (math.cos(a) * (70 - lvl * 5), math.sin(a) * 30, 20 + i * 11), scale=(1, 1, 0.8), radius=62 - lvl * 3, subdivisions=2, parent=storm,
+            emit=0.03 + 0.04 * lvl)
+    for i in range(11):
+        add('ico_sphere', 'DDE2EE', (-200 + i * 40, math.sin(i * 1.3) * 16, 262 + (i % 2) * 6), scale=(1, 1, 0.36), radius=44, subdivisions=2,
+            parent=storm, emit=0.3)
+    add('cube', '6A7892', (0, -30, 22), scale=(190, 3, 50), size=1, parent=storm, alpha=0.4)
+    rfl = add('ico_sphere', 'DCE8FF', (-20, -66, 90), radius=16, subdivisions=1, parent=storm, emit=30)
+    aim = empty((0, 0, 2), r)
+    light((-60, -70, 60), 2.6, 'E8D8C0', kind='SUN', target=aim, parent=r)
+    light((8, -8, 5), 2400, 'FF7A1A', 4.0, aim, parent=r)
+    light((-7, -10, 3), 900, '9AB8E8', 6.0, aim, parent=r)
+    return dict(rfl=rfl)
+
+
+def set_ward(r):
+    add('cube', '7E8E96', (0, 0, -0.1), scale=(15, 14, 0.2), size=1, parent=r)
+    add('cube', '9CBCC4', (0, 5, 3.6), scale=(15, 0.2, 7.2), size=1, parent=r)
+    for s in (-1, 1):
+        add('cube', '86A6B0', (s * 7.5, 0, 3.6), scale=(0.2, 14, 7.2), size=1, parent=r)
+    add('cube', '5E8C98', (0, 4.88, 0.9), scale=(15, 0.06, 1.8), size=1, parent=r)
+    add('cube', 'F4F4F0', (-3.2, 4.86, 3.9), scale=(3.6, 0.1, 2.8), size=1, parent=r)
+    add('cube', 'FFD9A0', (-3.2, 4.82, 3.9), scale=(3.2, 0.1, 2.4), size=1, parent=r, emit=2.2)
+    add('cube', 'F4F4F0', (-3.2, 4.78, 3.9), scale=(0.1, 0.1, 2.4), size=1, parent=r)
+    add('cube', 'F4F4F0', (-3.2, 4.78, 3.9), scale=(3.2, 0.1, 0.1), size=1, parent=r)
+    for s in (-1, 1):
+        add('cube', '6FA8B8', (-3.2 + s * 2.2, 4.7, 3.7), scale=(0.7, 0.12, 3.6), size=1, parent=r)
+    add('cube', 'E8ECEE', (2, 2.1, 0.75), scale=(2.7, 5.0, 0.2), size=1, parent=r)
+    add('cube', 'FAFAF6', (2, 2.1, 1.05), scale=(2.5, 4.8, 0.45), size=1, parent=r)
+    add('cube', '6FA8B8', (2, 1.9, 1.33), scale=(2.56, 2.6, 0.16), size=1, parent=r)
+    add('cube', 'FFFFFF', (2, 3.9, 1.45), rot=(0.25, 0, 0), scale=(1.8, 0.9, 0.34), size=1, parent=r)
+    add('cube', 'B8C4C8', (2, 4.6, 1.6), scale=(2.7, 0.14, 1.9), size=1, parent=r)
+    for sx in (-1, 1):
+        for y in (-0.2, 4.4):
+            add('cylinder', '8A90A6', (2 + sx * 1.25, y, 0.33), radius=0.07, depth=0.66, vertices=5, parent=r)
+    add('cylinder', '8A90A6', (4.9, 3.6, 2.3), radius=0.05, depth=4.6, vertices=5, parent=r)
+    add('cube', '20242B', (4.9, 3.5, 3.6), scale=(1.5, 0.2, 1.1), size=1, parent=r)
+    add('cube', '0E1A12', (4.9, 3.38, 3.6), scale=(1.3, 0.04, 0.9), size=1, parent=r)
+    beat = empty((4.9, 3.34, 3.6), r)
+    pts = ((-0.55, 0), (-0.2, 0), (-0.1, 0.25), (0.02, -0.3), (0.14, 0.1), (0.25, 0), (0.55, 0))
+    for p0, p1 in zip(pts, pts[1:]):
+        rod((p0[0], 0, p0[1]), (p1[0], 0, p1[1]), 0.022, '6FE08A', beat, emit=6)
+    add('cylinder', '8A90A6', (-0.4, 3.9, 2.6), radius=0.04, depth=5.2, vertices=5, parent=r)
+    add('cube', 'CFEFFF', (-0.4, 3.75, 4.6), scale=(0.4, 0.2, 0.7), size=1, parent=r, emit=0.4)
+    add('cube', 'E8ECEE', (-5.2, 3.8, 1.0), scale=(1.4, 1.2, 2.0), size=1, parent=r)
+    add('cube', 'D8324A', (-5.2, 3.15, 1.5), scale=(0.5, 0.06, 0.5), size=1, parent=r)
+    add('cube', 'F4F4F0', (-5.2, 3.12, 1.5), scale=(0.34, 0.06, 0.1), size=1, parent=r)
+    add('cube', 'F4F4F0', (-5.2, 3.12, 1.5), scale=(0.1, 0.06, 0.34), size=1, parent=r)
+    add('cube', '8A6A4A', (5.6, 0.5, 0.9), scale=(1.2, 1.2, 0.12), size=1, parent=r)
+    add('cube', '8A6A4A', (5.6, 1.1, 1.6), scale=(1.2, 0.12, 1.4), size=1, parent=r)
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            add('cylinder', '6A5238', (5.6 + sx * 0.5, 0.5 + sy * 0.5, 0.45), radius=0.05, depth=0.9, vertices=4, parent=r)
+    for i in range(6):
+        add('cube', 'B8C4C8', (-6.5 + i * 2.6, 4.86, 6.2), scale=(1.6, 0.06, 0.5), size=1, parent=r)
+    aim = empty((1.5, 0, 2), r)
+    light((-4, -7, 5.5), 420, 'FFE8D0', 5.0, aim, parent=r)
+    light((6, -6, 3), 150, '9AB8E8', 5.0, aim, parent=r)
+    light((1, 0, 6.8), 160, 'FFFFFF', 6.0, aim, parent=r)
+    light((5, -4, 4), 260, 'FF7A1A', 3.0, aim, parent=r)
+    return dict(beat=beat)
+
+
+def set_alps(r):
+    add('plane', '5E9A4A', (0, 0, 0), size=1500, parent=r)
+    for i in range(24):
+        add('cube', ('6AA654', '528A42', '78B25E')[i % 3], (-160 + (i * 67) % 320, -30 + (i * 43) % 200, 0.03), rot=(0, 0, i * 0.5),
+            scale=(26 + i % 3 * 10, 14, 0.05), size=1, parent=r)
+    for i in range(11):
+        x, hgt = -520 + i * 104, 150 + (i * 53) % 110
+        add('cone', ('6E7E96', '7A8AA2', '62728A')[i % 3], (x, 420 + (i % 3) * 40, hgt / 2 - 4), radius1=150 + (i % 3) * 30, radius2=4, depth=hgt,
+            vertices=6, parent=r)
+        add('cone', 'F4F6FA', (x, 420 + (i % 3) * 40, hgt - 4 - hgt * 0.14), radius1=(150 + (i % 3) * 30) * 0.3, radius2=3, depth=hgt * 0.28,
+            vertices=6, parent=r, emit=0.15)
+    for i in range(9):
+        add('cone', ('4E7A46', '457040')[i % 2], (-430 + i * 105, 230, 20), radius1=120, radius2=30, depth=48, vertices=7, parent=r)
+    for i in range(46):
+        x, y = -150 + (i * 71) % 300, 34 + (i * 37) % 120
+        hgt = 5 + (i % 4) * 1.4
+        add('cylinder', '5A4630', (x, y, 0.8), radius=0.25, depth=1.6, vertices=5, parent=r)
+        add('cone', ('2E5A3A', '356644', '28503A')[i % 3], (x, y, 1.4 + hgt / 2), radius1=2.0 + (i % 3) * 0.4, radius2=0.0, depth=hgt, vertices=6, parent=r)
+    add('cube', 'F0E8D8', (-10, 14, 1.6), scale=(6, 5, 3.2), size=1, parent=r)
+    add('cube', '8A5A3A', (-10, 14, 3.9), scale=(6.2, 5.2, 1.5), size=1, parent=r)
+    for s in (-1, 1):
+        add('cube', '6A4A2A', (-10 + s * 1.9, 14, 5.2), rot=(0, s * 0.62, 0), scale=(4.6, 6.2, 0.22), size=1, parent=r)
+    add('cube', '6A4A2A', (-10, 11.3, 3.2), scale=(6.4, 0.6, 0.14), size=1, parent=r)
+    for i in range(3):
+        add('cube', '3A4048', (-12 + i * 2, 11.48, 1.7), scale=(0.9, 0.06, 1.1), size=1, parent=r)
+        add('cube', 'D8324A', (-12 + i * 2, 11.2, 3.5), scale=(1.2, 0.3, 0.3), size=1, parent=r)
+    for i in range(-9, 10):
+        add('cylinder', '8A6A4A', (i * 3, 7.5, 0.6), radius=0.09, depth=1.2, vertices=5, parent=r)
+    for z in (0.5, 1.0):
+        add('cube', '8A6A4A', (0, 7.5, z), scale=(56, 0.07, 0.1), size=1, parent=r)
+    for i in range(34):
+        add('ico_sphere', ('FFD866', 'FFFFFF', 'FF9AB0')[i % 3], (-9 + (i * 2.9) % 18, -5 + (i * 1.7) % 11, 0.12), radius=0.09, subdivisions=1, parent=r, emit=0.8)
+    add('cylinder', 'D8D4C8', (7, 5, 2.6), radius=0.07, depth=5.2, vertices=6, parent=r)
+    for j in range(4):
+        add('cone', 'FF7A1A' if j % 2 == 0 else 'F4EEDF', (7.3 + j * 0.5, 5, 5.0 - j * 0.08), rot=(0, PI / 2 + 0.15, 0), radius1=0.36 - j * 0.06,
+            radius2=0.3 - j * 0.06, depth=0.5, vertices=8, parent=r)
+    studs = empty((0, 0, -300), r)
+    peg(studs, (-2.6, 1.0, 0), face_to((-2.6, 1.0), (0, 0)), '2E6AB8', 'E8C23A')
+    peg(studs, (-4.3, -0.3, 0), face_to((-4.3, -0.3), (0, 0)), '3F9A5A', 'E8742A')
+    peg(studs, (-3.9, 2.4, 0), face_to((-3.9, 2.4), (0, 0)), 'E8C23A', '3A8AD8')
+    panel = empty((0, 0, -300), r)
+    add('cube', 'EDE8DC', (0, 0, 0), scale=(3.6, 2.2, 0.08), size=1, parent=panel)
+    add('cube', 'D8324A', (0, 0.95, 0.01), scale=(3.6, 0.3, 0.08), size=1, parent=panel)
+    add('cube', '20242B', (0, -1.06, 0.01), scale=(3.6, 0.12, 0.09), size=1, parent=panel)
+    digs = []
+    w_, h_ = 0.36, 0.76
+    for n, ch in enumerate('9946'):
+        cx = -1.2 + n * 0.8
+        pos = dict(a=(0, h_ / 2, 0), g=(0, 0, 0), d=(0, -h_ / 2, 0), f=(-w_ / 2, h_ / 4, 1), b=(w_ / 2, h_ / 4, 1), e=(-w_ / 2, -h_ / 4, 1), c=(w_ / 2, -h_ / 4, 1))
+        for sg in SEG7[ch]:
+            x, y, v = pos[sg]
+            digs.append((add('cube', 'FF7A1A', (cx + x, y - 0.1, 0.05), scale=(0.09, h_ / 2 + 0.06, 0.03) if v else (w_ + 0.06, 0.09, 0.03), size=1,
+                             parent=panel, emit=0.6), n))
+    aim = empty((0, 0, 2), r)
+    light((-60, -80, 90), 4.6, 'FFF4E0', kind='SUN', target=aim, parent=r)
+    light((8, -7, 5), 2000, 'FF7A1A', 3.0, aim, parent=r)
+    light((-7, -9, 3), 600, 'BFD8FF', 5.0, aim, parent=r)
+    return dict(studs=studs, panel=panel, digs=digs)
+
+
+def make_truck():
+    """The team's retrieve ute. Free prop, front toward local -Y."""
+    r = empty(FAR)
+    add('cube', 'E8ECF4', (0, 0, 1.05), scale=(2.3, 5.6, 0.9), size=1, parent=r)
+    add('cube', 'E8ECF4', (0, -0.9, 1.95), scale=(2.2, 2.2, 1.0), size=1, parent=r)
+    add('cube', '20242B', (0, -2.02, 2.0), scale=(1.9, 0.05, 0.7), size=1, parent=r)
+    for s in (-1, 1):
+        add('cube', '20242B', (s * 1.11, -0.9, 2.05), scale=(0.05, 1.7, 0.62), size=1, parent=r)
+        add('cube', 'FF7A1A', (s * 1.16, 0, 1.1), scale=(0.04, 5.6, 0.22), size=1, parent=r)
+        add('cube', 'FFE8A0', (s * 0.8, -2.82, 1.15), scale=(0.4, 0.05, 0.26), size=1, parent=r, emit=3)
+        for y in (-1.8, 1.8):
+            add('cylinder', '191720', (s * 1.1, y, 0.58), rot=(0, PI / 2, 0), radius=0.58, depth=0.4, vertices=10, parent=r)
+    add('cube', 'B8BCC8', (0, 1.5, 1.75), scale=(2.3, 2.6, 0.08), size=1, parent=r)
+    add('cube', 'D8324A', (0, 1.6, 2.05), scale=(1.5, 2.0, 0.55), size=1, parent=r)
+    add('cube', 'E8C23A', (0.2, 1.2, 2.5), scale=(1.1, 1.3, 0.4), size=1, parent=r)
+    add('cylinder', 'B8BCC8', (0.8, -0.2, 3.4), radius=0.025, depth=2.0, vertices=4, parent=r)
+    return r
+
+
+def make_cow(col='F4EEDF', patch='2A2630'):
+    r = empty(FAR)
+    add('cube', col, (0, 0, 1.3), scale=(0.95, 2.2, 1.0), size=1, parent=r)
+    for i, (x, y, z, sx, sy) in enumerate(((0.48, 0.4, 1.4, 0.04, 0.9), (-0.48, -0.3, 1.3, 0.04, 0.8), (0.0, 0.6, 1.81, 0.6, 0.7), (0.48, -0.7, 1.15, 0.04, 0.5))):
+        add('cube', patch, (x, y, z), scale=(sx, sy, 0.6 if sx < 0.1 else 0.03), size=1, parent=r)
+    for sx in (-1, 1):
+        for y in (-0.8, 0.8):
+            add('cylinder', col, (sx * 0.32, y, 0.42), radius=0.11, depth=0.84, vertices=5, parent=r)
+    rod((0, 1.1, 1.6), (0, 1.35, 0.8), 0.04, patch, r)
+    hd = empty((0, -1.15, 1.75), r)
+    add('cube', col, (0, -0.3, 0.05), scale=(0.56, 0.8, 0.56), size=1, parent=hd)
+    add('cube', 'E8A8A0', (0, -0.74, -0.06), scale=(0.44, 0.14, 0.3), size=1, parent=hd)
+    for s in (-1, 1):
+        add('cube', patch, (s * 0.38, -0.05, 0.2), rot=(0, s * 0.5, 0), scale=(0.3, 0.06, 0.16), size=1, parent=hd)
+        add('cone', 'D8D4C8', (s * 0.2, 0.0, 0.42), radius1=0.06, radius2=0.0, depth=0.26, vertices=4, parent=hd)
+        add('cube', '0E0D14', (s * 0.2, -0.71, 0.14), scale=(0.07, 0.03, 0.07), size=1, parent=hd)
+    return r, hd
+
+
+def extend(S):
+    for name, fn in (('base', set_base), ('plains', set_plains), ('road', set_road), ('ward', set_ward), ('alps', set_alps)):
+        S['colls'][name], out = group(name, fn)
+        S.update(out)
+
+    def hill_extra(r):
+        q = empty((0, 0, -300), r)
+        cols = ('2E6AB8', 'E8C23A', '3F9A5A', 'E8742A', '7A4AB0', '2E8A9A', 'D8D4C8', 'C83248')
+        hel = ('20242B', 'E8742A', 'EDE8DC', '3A8AD8')
+        for i in range(8):
+            x, y = (4.0 + (i // 2) * 2.9, -4.4) if i % 2 == 0 else (5.2 + (i // 2) * 2.9, 6.4)
+            peg(q, (x, y, 0), PI / 2 + (0.5 if i % 2 == 0 else -0.5), cols[i], hel[i % 4])
+            flat_wing(q, (x - 2.2, y + (-1.6 if i % 2 == 0 else 1.6), 0), PI / 2 + (0.5 if i % 2 == 0 else -0.5), cols[(i + 3) % 8])
+        return q
+
+    def field_extra(r):
+        add('cube', 'F0E8D8', (-34, 46, 2.4), scale=(12, 8, 4.8), size=1, parent=r)
+        for s in (-1, 1):
+            add('cube', 'B04A3A', (-34, 46 + s * 2.3, 5.6), rot=(s * -0.55, 0, 0), scale=(13, 5.4, 0.3), size=1, parent=r)
+        add('cube', '8A929C', (-20, 50, 2.0), scale=(7, 6, 4.0), size=1, parent=r)
+        add('cube', '6A7078', (-20, 50, 4.2), rot=(0.1, 0, 0), scale=(7.6, 6.6, 0.3), size=1, parent=r)
+        for i in range(5):
+            x = -46 + i * 4
+            add('cylinder', 'C8C0B0', (x, 54 + (i % 2) * 3, 3.0), radius=0.3, depth=6.0, vertices=6, parent=r)
+            add('ico_sphere', ('5E7040', '4E6034')[i % 2], (x, 54 + (i % 2) * 3, 7.0), scale=(1, 1, 0.7), radius=3.2, subdivisions=1, parent=r)
+        for i in range(9):
+            add('ico_sphere', ('4E6034', '5E7040')[i % 2], (40 + i * 16, 120 + (i % 3) * 14, 5), scale=(1, 1, 0.8), radius=8 + i % 3, subdivisions=1, parent=r)
+        return None
+
+    S['queue'] = ingroup(S, 'hill', hill_extra)
+    ingroup(S, 'field', field_extra)
+    S['leader'] = K.Rig(LEADER, leader_head)
+    rh = S['leader'].hands[1]
+    S['handset'] = [add('cube', '20242B', (0.0, -0.08, -0.02), scale=(0.16, 0.12, 0.42), size=1, parent=rh),
+                    add('cylinder', '20242B', (0.04, -0.08, 0.34), radius=0.02, depth=0.36, vertices=4, parent=rh),
+                    add('cube', 'FF7A1A', (0.0, -0.15, 0.08), scale=(0.08, 0.02, 0.08), size=1, parent=rh, emit=3)]
+    S['doctor'] = K.Rig(DOCTOR, doctor_head)
+    lh = S['doctor'].hands[0]
+    add('cube', '6A4A2A', (0, -0.12, 0.05), rot=(0.9, 0, 0), scale=(0.44, 0.04, 0.6), size=1, parent=lh)
+    add('cube', 'F4EEDF', (0, -0.15, 0.06), rot=(0.9, 0, 0), scale=(0.38, 0.02, 0.5), size=1, parent=lh)
+    S['ewa2'] = K.Rig(EWA2, ewa2_head)
+    body = S['ewa'].body
+    S['eradio'] = [add('cube', '2A2F3A', (0.3, -0.33, 0.86), scale=(0.17, 0.1, 0.34), size=1, parent=body),
+                   add('cylinder', '2A2F3A', (0.36, -0.33, 1.16), radius=0.018, depth=0.34, vertices=4, parent=body),
+                   add('cube', 'FF7A1A', (0.3, -0.39, 0.9), scale=(0.07, 0.02, 0.07), size=1, parent=body, emit=5)]
+    S['fone'] = [add('cube', '20242B', (0.0, -0.1, 0.0), scale=(0.14, 0.05, 0.32), size=1, parent=S['ewa'].hands[1]),
+                 add('cube', '8FD0FF', (0.0, -0.13, 0.0), scale=(0.1, 0.01, 0.24), size=1, parent=S['ewa'].hands[1], emit=2)]
+    S['truck'] = make_truck()
+    S['cows'] = [make_cow(), make_cow('8A5A3A', 'F4EEDF'), make_cow(), make_cow('F4EEDF', '8A5A3A'), make_cow('3A3030', 'F4EEDF')]
+    S['gps'] = g = empty(FAR)
+    add('cube', '2A2F3A', (0, 0, 0), scale=(1.15, 0.16, 1.5), size=1, parent=g)
+    add('cube', 'FF7A1A', (0, -0.02, 0), scale=(1.21, 0.14, 1.56), size=1, parent=g)
+    add('cube', '2A2F3A', (0, -0.05, 0), scale=(1.13, 0.14, 1.48), size=1, parent=g)
+    add('cube', '0E1A12', (0, -0.13, 0.16), scale=(0.94, 0.03, 0.96), size=1, parent=g)
+    for i in range(6):
+        add('cube', '6FE08A', (-0.33 + i * 0.13, -0.15, -0.1 + i * 0.035), scale=(0.09, 0.02, 0.1 + i * 0.07), size=1, parent=g, emit=4)
+    add('cube', 'FFB000', (0.0, -0.15, 0.42), scale=(0.7, 0.02, 0.16), size=1, parent=g, emit=4)
+    for i in range(3):
+        add('cylinder', '1A1E28', (-0.33 + i * 0.33, -0.14, -0.55), rot=(PI / 2, 0, 0), radius=0.1, depth=0.04, vertices=8, parent=g)
+    S['gice'] = []
+    for i in range(12):
+        x, z = -0.37 + (i % 4) * 0.25, -0.2 + (i // 4) * 0.36
+        S['gice'].append((add('cube', 'DFF4FF', (x, -0.19, z), rot=(0, 0.2 * math.sin(i * 2.1), 0), scale=(0.28, 0.07, 0.4), size=1, parent=g, emit=0.5),
+                          ((i * 5) % 12) / 12))
+    S['needle'] = nd = empty(FAR)
+    add('cylinder', 'E8ECF4', (0, 0, 0), rot=(0, PI / 2, 0), radius=0.018, depth=0.7, vertices=4, parent=nd, rough=0.2, emit=1.0)
+    rod((-0.35, 0, 0), (-1.0, 0.2, -0.12), 0.012, 'FF7A1A', nd, emit=0.6)
+    S['tix'] = [add('cube', ('F4EEDF', 'FFD866', 'FF7A1A')[i % 3], FAR, scale=(0.24, 0.02, 0.44), size=1, emit=0.4) for i in range(10)]
+
+
+_build0, _reset0, _finish0 = build, reset, finish
+
+
+def build():
+    S = _build0()
+    extend(S)
+    return S
+
+
+def reset(S):
+    _reset0(S)
+    for who in ('leader', 'doctor', 'ewa2'):
+        S[who].place(FAR)
+        S[who].apply(P())
+        S[who].root.scale = (1, 1, 1)
+    S['face']['ewa2'] = 'calm'
+    for o in [S['truck'], S['gps'], S['needle']] + S['tix'] + [c for c, _ in S['cows']]:
+        o.location, o.rotation_euler, o.scale = FAR, (0, 0, 0), (1, 1, 1)
+    for _, hd in S['cows']:
+        hd.rotation_euler = (0, 0, 0)
+    for o in S['tix']:
+        o.scale = (0.24, 0.02, 0.44)
+    for o, _ in S['gice']:
+        o.scale = (0.28, 0.07, 0.4)
+    for g in S['pminis']:
+        g.location = (0, 0, -400)
+        g.scale = (1, 1, 1)
+    S['cA'].location, S['cB'].location = (-90, 250, -30), (90, 250, -30)
+    S['cA'].scale, S['cB'].scale = (1, 1, 1), (1, 1, 1)
+    S['psun'].data.energy = 4.4
+    for kk in ('queue', 'studs', 'panel'):
+        S[kk].location = (0, 0, -300)
+    S['panel'].rotation_euler = (0, 0, 0)
+    for o, _ in S['digs']:
+        o.hide_render = False
+    S['rfl'].hide_render = True
+    S['beat'].scale = (1, 1, 1)
+    S['band'], S['radio_on'], S['fone_on'], S['hset'] = False, False, False, True
+
+
+def finish(S, t):
+    _finish0(S, t)
+    for o in S['ewa2'].extra['band']:
+        o.hide_render = not S['band']
+    for o in S['eradio']:
+        o.hide_render = not S['radio_on']
+    S['eradio'][2].scale = (0.07, 0.02, 0.07) if (t * 5) % 1 < 0.6 else (0.02, 0.02, 0.02)
+    for o in S['fone']:
+        o.hide_render = not S['fone_on']
+    for o in S['handset']:
+        o.hide_render = not S['hset']
+    k = dict(scared=1.25, shock=1.8, calm=1.0, sad=0.6, happy=0.9, closed=0.1).get(S['face']['ewa2'], 1.0)
+    for ey in S['ewa2'].extra['eyes']:
+        ey.scale = (ey.scale[0], ey.scale[1], 0.075 * k)
+
+
+def cow(S, i, loc, yaw, nod=0.0, turn=0.0):
+    c, hd = S['cows'][i]
+    c.location, c.rotation_euler = loc, (0, 0, yaw)
+    hd.rotation_euler = (nod, 0, turn)
+
+
+def truck(S, loc, yaw, t=0.0, rattle=0.0):
+    S['truck'].location = (loc[0], loc[1], loc[2] + rattle * 0.04 * math.sin(t * 31))
+    S['truck'].rotation_euler = (rattle * 0.015 * math.sin(t * 23), 0, yaw)
+
+
+# ---------------------------------------------------------------- long shots: before the flight
+def briefing(S, k, t, lt):
+    A = show(S, 'base')
+    sky(S, 'A8C8E8', 1.0)
+    S['ewa'].place(A(0.9, 1.3, 0), PI + 0.15)
+    S['ewa'].apply(P('hips', head=(-0.1, 0.25 * math.sin(t * 0.9))))
+    S['rook'].place(A(4.6, -4.2, 0), PI - 0.75)
+    pt = ease((lt - 0.8) / 0.4)
+    S['rook'].apply(blend(P('cross', head=(-0.05, -0.75)), P('point', aR=(1.7, 0.1, 0.1), head=(-0.1, -0.2)), pt))
+    S['face']['rook'] = 'deadpan' if pt < 0.5 else 'calm'
+    cam(S, A(lerp(8.2, 6.6, k), lerp(-10.5, -9.2, k), lerp(3.3, 2.9, k)), A(1.2, 3.5, 2.5), 30)
+
+
+def launch_queue(S, k, t, lt):
+    A = hill(S, 0.72, 1.0, t)
+    S['queue'].location = (0, 0, 0)
+    minis(S, t, ((30, 60, 22, 0), (48, 86, 30, 1.3), (16, 100, 26, 2.6), (60, 120, 36, 3.9)))
+    x = lerp(2.5, 7.5, k)
+    S['rook'].place(A(x, -7.6, 0), PI / 2)
+    w = walk(t, 1.7)
+    w['head'] = (0.0, -0.75)
+    S['rook'].apply(w)
+    S['face']['rook'] = 'smirk'
+    S['ewa'].place(A(10.6, 1.0, 0), PI / 2 + 0.3)
+    S['ewa'].apply(P('hips', head=(-0.15, -0.3)))
+    cam(S, A(x + 4.4, -14.5, 1.7), A(x + 2.0, -2, 2.3), 30)
+
+
+def gaggle(S, k, t, lt):
+    A = show(S, 'plains')
+    sky(S, '8EC0F0', 1.0)
+    S['cA'].location, S['cB'].location = (-230, 520, -30), (240, 560, -30)
+    S['cA'].scale, S['cB'].scale = (0.6, 0.6, 0.6), (0.5, 0.5, 0.5)
+    for i, g in enumerate(S['pminis']):
+        g.location = (-30 + (i * 23) % 62 + 2 * math.sin(t * 0.6 + i), 22 + (i * 29) % 80 + 3 * t, -6 + (i * 11) % 26 + math.sin(t * 0.8 + i))
+        g.scale = (1.7, 1.7, 1.7)
+        g.rotation_euler = (0, 0.15 * math.sin(t * 0.7 + i), PI + 0.3 * math.sin(i * 1.7))
+    fly(S, A(0.6 * math.sin(t * 1.3), 0, 0.4 * math.sin(t * 1.1)), PI + 0.1 * math.sin(t * 0.8), 0.03, 0.1 * math.sin(t * 1.2), None, 'happy')
+    cam(S, A(lerp(-8, -6, k), lerp(-13, -10.5, k), lerp(3.4, 4.4, k)), A(3, 40, 3), 30)
+
+
+def two_clouds(S, k, t, lt):
+    A = show(S, 'plains')
+    e = ease(k)
+    sky(S, lerp_col('8EC0F0', '7088A8', e), 1.0)
+    S['cA'].location, S['cB'].location = (lerp(-78, -34, e), 250, -30), (lerp(78, 34, e), 250, -30)
+    s = lerp(0.85, 1.25, e)
+    S['cA'].scale = S['cB'].scale = (s, s, s)
+    S['psun'].data.energy = lerp(4.4, 2.6, e)
+    for i, g in enumerate(S['pminis'][:4]):
+        g.location = (-50 + i * 34, 90 + i * 22 - 14 * t, -12 + i * 5)
+        g.rotation_euler = (0, 0, 0.3 * i)
+    fly(S, A(0.5 * math.sin(t * 1.4), 0, 0.3 * math.sin(t)), PI, 0.02, 0.08 * math.sin(t * 1.3), P('stand', head=(-0.35, 0.0), **BRAKE), 'scared')
+    cam(S, A(lerp(3.2, 2.2, k), lerp(-10, -8, k), lerp(1.5, 0.6, k)), A(0, 60, lerp(16, 22, k)), 28)
+
+
+def merge_rook(S, k, t, lt):
+    A = show(S, 'plains')
+    sky(S, '5E7694', 1.0)
+    S['cA'].location, S['cB'].location = (-30, 240, -30), (30, 240, -30)
+    S['cA'].scale = S['cB'].scale = (1.35, 1.35, 1.35)
+    S['psun'].data.energy = 2.4
+    turn = ease((lt - 0.7) / 0.35)
+    brolly_rook(S, A(2.2, 0, 0), lerp(PI - 0.5, 0.45, turn), t, 'calm' if turn < 0.5 else 'shocked', False, False,
+                P('reach', aL=(lerp(1.5, 0.4, turn), 0.5, lerp(0.1, 1.4, turn)), lL=(0.15, 0.25), lR=(-0.15, 0.3), head=(-0.2, 0.15)), kick=2.0)
+    fly(S, A(-9, 46, 6 + 0.4 * math.sin(t)), PI + 0.2, 0.02, 0.1 * math.sin(t), None, 'scared')
+    cam(S, A(lerp(0.6, 1.2, k), lerp(-5.6, -4.6, k), 1.3), A(1.8, 3, 3.1), 30)
+
+
+# ---------------------------------------------------------------- long shots: inside the storm
+def wing_ice(S, k, t, lt):
+    awake = bool(S['prm'].get('awake'))
+    A = clouds(S, t, 10 if awake else -7, '26304A' if awake else '1A2236')
+    pose = P('stand', head=(-0.5, 0.2), **BRAKE) if awake else P('stand', **SLUMP)
+    fly(S, A(0.3 * math.sin(t * 0.9), 0, 0.3 * math.sin(t * 1.3)), lerp(0.9, 0.5, k), 0.06 * math.sin(t * 1.2), 0.12 * math.sin(t * 0.8), pose,
+        'shock' if awake else 'closed', True)
+    hail(S, A(0, 0, 4), t, 16, (10, 8, 12), 7, size=0.5)
+    cam(S, A(lerp(3.0, 2.2, k), lerp(-4.4, -3.4, k), lerp(-2.4, -1.6, k)), A(0, 0.4, 5.6), 24, 0.05 * math.sin(t))
+
+
+def radio_ewa(S, k, t, lt):
+    A = clouds(S, t, 60)
+    fly(S, A(0.07 * math.sin(t * 29), 0, 0.06 * math.sin(t * 25)), 0.3, 0.08 * math.sin(t * 5), 0.12 * math.sin(t * 6),
+        P('stand', head=(0.15, -0.55 + 0.1 * math.sin(t * 6)), **{**BRAKE, 'aR': (0.95, -0.2, 2.35, 0.7), 'aL': (2.5, 0.4, 0.6)}), 'scared')
+    S['radio_on'] = True
+    hail(S, A(0, -1, 1.5), t, 26, (7, 4, 8), 36, size=0.8)
+    cam(S, A(lerp(2.3, 1.8, k), lerp(-4.9, -4.1, k), 1.0), A(0.1, 0, 1.3), 46, 0.07 * math.sin(t * 5))
+
+
+def leader(S, k, t, lt):
+    A = show(S, 'road')
+    sky(S, '7888A0', 1.0)
+    late = bool(S['prm'].get('late'))
+    f = flash(lt, 0.9, 0.2) if not late else 0.0
+    S['rfl'].hide_render = f < 0.05
+    truck(S, A(6.2, -0.6, 0), -0.55)
+    sway = 0.15 * math.sin(t * 2.2)
+    S['leader'].place(A(1.4, -3.0, 0), PI + 0.25)
+    S['leader'].apply(P('stand', aR=(0.3, 1.75, 1.75, -1.4), aL=(-0.25, 0.75, 1.9, 1.5) if not late else (2.2 + 0.3 * math.sin(t * 9), 0.6, 0.4),
+                        head=(-0.5, -0.3 + sway), lean=-0.06))
+    S['rook'].place(A(-2.2, -3.6, 0), PI / 2 + 0.35)
+    S['rook'].apply(P('stand', aL=(0.2, 1.9, 1.6, -1.5), aR=(0.1, 0.3, 0.4), head=(-0.5, 0.75)))
+    S['face']['rook'] = 'shocked' if lt > 1.0 else 'calm'
+    feathers(S, A(-2.2, -3.6, 2.6), t, 4)
+    cam(S, A(lerp(2.6, 1.4, k), lerp(-12.5, -11, k), 1.5), A(0.4, 0, lerp(4.6, 5.4, k)), 28)
+
+
+def gps_scratch(S, k, t, lt):
+    A = clouds(S, t, -9, '2A3550')
+    S['gps'].location, S['gps'].rotation_euler = A(0, 0, 1.25), (0.12, 0, 0.12 + 0.03 * math.sin(t * 3))
+    for o, th in S['gice']:
+        s = 1.0 - ease((k * 1.25 - th * 0.8) / 0.2)
+        o.scale = (0.28 * s, 0.07 * s, 0.4 * s)
+    S['hand_e'].place(A(0.28 * math.sin(t * 13), -0.55, 0.75 + 0.5 * k + 0.1 * math.sin(t * 9)), (-PI / 2, 0, PI))
+    S['hand_e'].root.scale = (1.7, 1.7, 1.7)
+    S['hand_e'].grip(0.45)
+    puffs(S, A(0, -0.4, 1.3), (lt * 1.6) % 1, 12, 1.2, 0.5)
+    cam(S, A(lerp(1.3, 0.8, k), lerp(-4.4, -3.6, k), 1.7), A(0, 0, 1.2), 46, 0.05)
+
+
+# ---------------------------------------------------------------- long shots: down and found
+def spiral_down(S, k, t, lt):
+    A = show(S, 'field')
+    sky(S, 'E8C088', 1.0)
+    a = t * 2.9
+    z = lerp(27, 15, k)
+    cx, cy = -3, -5
+    fly(S, A(cx + 5.5 * math.cos(a), cy + 5.5 * math.sin(a), z), a + PI, 0.2, 0.8, P('stand', head=(0.3, -0.4), **{**BRAKE, 'aR': (1.5, 0.3, 1.2)}),
+        'scared', True)
+    brolly_rook(S, A(cx + 8 * math.cos(a - 1.5), cy + 8 * math.sin(a - 1.5), z + 2.5), a - 1.5 + PI, t, 'calm', False, True,
+                P('reach', aL=(0.3, 0.5, 0.4), lL=(0.2, 0.3), lR=(-0.2, 0.3), head=(0.3, 0.4)), kick=2, tilt=0.35)
+    S['mill'].rotation_euler = (0, t * 3, 0)
+    cam(S, A(cx + 2, lerp(-25, -22, k), z + 15), A(cx, 0, z - 6), 26, 0.12 * math.sin(t * 1.5))
+
+
+def herd(S, t, look):
+    spots = ((-6.5, 3.2, 0.5), (-10.5, 5.8, 0.2), (-3.4, 6.6, 0.9), (-13.5, 1.6, -0.2), (-8.2, 7.6, 0.6))
+    for i, (x, y, ph) in enumerate(spots):
+        cow(S, i, at('field', x, y, 0), face_to((x, y), look) + 0.15 * math.sin(i * 2.3), -0.45 + 0.06 * math.sin(t * 5 + ph * 4), 0.1 * math.sin(t * 1.3 + i))
+
+
+def cows(S, k, t, lt):
+    A = show(S, 'field')
+    sky(S, 'E8C088', 1.0)
+    gx, gz = lerp(-30, -18, k), lerp(17, 9.5, k)
+    herd(S, t, (gx, -1))
+    fly(S, A(gx, -1, gz), PI / 2 - 0.2, 0.04, 0.1 * math.sin(t * 2), P('stand', head=(0.3, 0.2), **BRAKE), 'scared', True)
+    S['rook'].place(A(1.6, 5.4, 0), 0.75)
+    S['rook'].apply(P('stand', aL=(0.2, 1.9, 1.6, -1.5), aR=(0.1, 0.3, 0.4), head=(-0.35, 0.75)))
+    S['face']['rook'] = 'calm'
+    S['mill'].rotation_euler = (0, t * 3, 0)
+    cam(S, A(lerp(5.2, 4.2, k), lerp(-5.4, -4.6, k), 1.1), A(-5, 4.5, lerp(3.4, 3.0, k)), 26)
+
+
+def phone(S, k, t, lt):
+    A = show(S, 'field')
+    sky(S, 'E8C088', 1.0)
+    S['gl'].location, S['gl'].rotation_euler, S['gl'].scale = A(-5.8, 4.4, 0.5), (-1.45, 0, 0.9), (1, 1, 0.55)
+    up = ease((lt - 0.5) / 0.4)
+    S['ewa'].place(A(-1.3, 0.4, -0.45), 0.35)
+    S['ewa'].apply(blend(P('stand', aL=(0.5, 0.3, 0.6), aR=(0.9, 0.2, 1.4), lL=(0.9, 1.5), lR=(0.2, 1.3), lift=-0.42, lean=0.3, head=(0.45, -0.3)),
+                         P('stand', aL=(0.5, 0.3, 0.6), aR=(0.3, 1.75, 1.75, -1.4), lL=(0.9, 1.5), lR=(0.2, 1.3), lift=-0.42, lean=0.1, head=(-0.1, 0.1)), up))
+    S['face']['ewa'], S['iced'], S['fone_on'] = 'shock' if up < 0.5 else 'happy', True, True
+    S['rook'].place(A(2.0, -0.4, 0), -0.85)
+    S['rook'].apply(blend(P('shrug', head=(0.2, 0.3)), P('point', aR=(1.3, 0.25, 0.2), head=(0.15, 0.3)), up))
+    S['face']['rook'] = 'deadpan' if up < 0.5 else 'shocked'
+    herd(S, t, (-1.3, 0.4))
+    for i in (0, 1, 2, 3, 4):
+        c = S['cows'][i][0]
+        c.location = (c.location[0] - 6, c.location[1] + 1.5, c.location[2])
+    S['mill'].rotation_euler = (0, t * 2.5, 0)
+    cam(S, A(lerp(1.6, 0.9, k), lerp(-8.4, -7.2, k), 1.4), A(-0.2, 0.3, 1.6), 34)
+
+
+def pickup(S, k, t, lt):
+    A = show(S, 'field')
+    sky(S, 'E0B078', 1.0)
+    S['gl'].location, S['gl'].rotation_euler, S['gl'].scale = A(-3.0, 5.2, 0.5), (-1.45, 0, 0.6), (1, 1, 0.55)
+    d = ease(k / 0.55)
+    tx = lerp(-36, -9.5, d)
+    truck(S, A(tx, -5.5, 0), PI / 2 + 0.12, t, 1.0 - d)
+    S['ewa'].place(A(-1.0, 0.6, 0), 1.1)
+    wave = ease((k - 0.3) / 0.3)
+    S['ewa'].apply(blend(P('cross', head=(0.1, 0.3)), P('stand', aL=(0.5, -0.05, 1.7, 1.3), aR=(2.5, 0.5, 0.4 + 0.3 * math.sin(t * 9)), head=(-0.05, 0.3)), wave))
+    S['face']['ewa'], S['iced'] = 'happy', False
+    out = ease((k - 0.6) / 0.4)
+    if out > 0.02:
+        lx, ly = lerp(-7.6, -3.2, out), lerp(-3.6, -0.2, out)
+        S['leader'].place(A(lx, ly, 0), face_to((lx, ly), (-1.0, 0.6)))
+        S['leader'].apply(walk(t, 2.4))
+        S['hset'] = False
+    S['rook'].place(A(2.4, -1.6, 0), -0.9)
+    S['rook'].apply(P('up', aL=(2.6 + 0.3 * math.sin(t * 8), 0.5, 0.2), aR=(2.6 - 0.3 * math.sin(t * 8), 0.5, 0.2), head=(-0.1, 0.4)))
+    S['face']['rook'] = 'warm'
+    herd(S, t, (tx, -5.5))
+    for i in range(5):
+        c = S['cows'][i][0]
+        c.location = (c.location[0] - 3, c.location[1] + 4.5, c.location[2])
+    S['mill'].rotation_euler = (0, t * 2.5, 0)
+    cam(S, A(lerp(4.6, 3.4, k), lerp(-10.5, -9.2, k), 2.0), A(-3.4, -0.6, 1.9), 28)
+
+
+def rook_ticket(S, k, t, lt):
+    A = show(S, 'field')
+    sky(S, 'E8C088', 1.0)
+    S['rook'].place(A(0, 0, 0), -0.45)
+    go = ease((lt - 1.0) / 0.3)
+    S['rook'].apply(blend(P('stand', aL=(1.0, 0.2, 1.3), aR=(0.9, 0.1, 1.5), head=(0.3, 0.1)), P('shrug', head=(-0.15, 0.25)), go))
+    S['face']['rook'] = 'deadpan' if go < 0.5 else 'shocked'
+    yaw = -0.45
+    u = max(0.0, lt - 1.0)
+    for i, o in enumerate(S['tix']):
+        base = off(A(0, 0, 0), yaw, (-0.42 + i * 0.09, -0.62, 1.78 + 0.03 * math.sin(i)))
+        a = i * 2.4
+        o.location = (base[0] + math.cos(a) * 1.6 * u, base[1] - 0.5 * u + math.sin(a) * 0.5 * u, base[2] + 2.6 * u - 1.3 * u * u)
+        o.rotation_euler = (u * (3 + i), (i - 4.5) * 0.13 + u * 2 * (i % 3), yaw + u * i)
+    S['mill'].rotation_euler = (0, t * 2.5, 0)
+    cam(S, A(lerp(-2.6, -2.0, k), lerp(-5.8, -4.9, k), 1.3), A(0, 0, 2.15), 38)
+
+
+# ---------------------------------------------------------------- long shots: the hospital
+def ward(S):
+    A = show(S, 'ward')
+    sky(S, '20262C', 1.0)
+    S['ewa2'].place(A(2.0, -0.15, 0.72), 0.0)
+    S['band'] = True
+    S['beat'].scale = (1, 1, 1.0 + 0.5 * 0)
+    return A
+
+
+def doctors(S, k, t, lt):
+    A = ward(S)
+    S['beat'].scale = (1, 1, 0.6 + 0.6 * abs(math.sin(t * 5)))
+    S['ewa2'].apply(P('sit', head=(0.1, 0.5 + 0.1 * math.sin(t * 1.5))))
+    S['face']['ewa2'] = 'calm'
+    d = (-1.1, -1.3)
+    S['doctor'].place(A(d[0], d[1], 0), face_to(d, (2.0, -0.6)))
+    S['doctor'].apply(P('stand', aL=(0.75, 0.05, 1.5), aR=(1.0 + 0.25 * math.sin(t * 4), 0.35, 0.9 + 0.3 * math.sin(t * 3)), head=(0.05, 0.15 * math.sin(t * 2))))
+    rk = (5.0, -1.9)
+    S['rook'].place(A(rk[0], rk[1], 0), face_to(rk, (1.0, -0.8)))
+    S['rook'].apply(P('cross', head=(0.08 * math.sin(t * 3), -0.2)))
+    S['face']['rook'] = 'calm'
+    cam(S, A(lerp(0.4, 1.6, k), lerp(-10.5, -9.5, k), 2.7), A(1.8, 0.6, 2.2), 30)
+
+
+def ward_cu(S, k, t, lt):
+    A = ward(S)
+    S['beat'].scale = (1, 1, 0.6 + 0.6 * abs(math.sin(t * 5)))
+    touch = math.sin(PI * ease(lt / 1.4)) if lt < 1.4 else 0.0
+    S['ewa2'].apply(blend(P('sit', head=(0.1, -0.35)), P('sit', aR=(0.5, 1.5, 2.2, -1.2), head=(0.15, -0.35)), touch))
+    S['face']['ewa2'] = 'happy'
+    rk = (4.4, -1.5)
+    S['rook'].place(A(rk[0], rk[1], 0), face_to(rk, (2.0, -0.6)) - 0.5)
+    tip = math.sin(PI * ease((lt - 0.4) / 1.0)) if 0.4 < lt < 1.4 else 0
+    S['rook'].apply(blend(P('stand', head=(0.05, 0.5)), P('hat', head=(0.2, 0.5)), tip))
+    S['hat_tip'] = tip
+    S['face']['rook'] = 'warm'
+    cam(S, A(lerp(3.6, 3.2, k), lerp(-6.2, -5.4, k), 2.3), A(3.0, -0.4, 2.35), 40)
+
+
+# ---------------------------------------------------------------- long shots: the one who did not come back
+def storm_far(S, k, t, lt):
+    A = hill(S, 0.55, 1.3, t, '5A4C70', 1.1)
+    S['tower'].location = (-40, 430, -9)
+    S['hsun'].data.energy, S['hsun'].data.color = 2.4, K.hexc('FFA468')[:3]
+    S['tfl'].hide_render = flash(lt, 1.1, 0.16) < 0.3 and flash(lt, 2.4, 0.12) < 0.3
+    cam(S, A(lerp(11, 8, k), lerp(-7, -4, k), lerp(3.4, 2.8, k)), A(-8, 200, lerp(34, 40, k)), 30)
+
+
+# ---------------------------------------------------------------- long shots: afterwards
+def alps(S):
+    A = show(S, 'alps')
+    sky(S, '7EB6F0', 1.0)
+    return A
+
+
+def stitch(S, k, t, lt):
+    A = alps(S)
+    S['panel'].location, S['panel'].rotation_euler = (0, 0, 0.3), (0.28, 0, 0.06)
+    n = k * 4.6
+    for o, i in S['digs']:
+        o.hide_render = i > n
+    x = lerp(-1.6, 1.7, min(1.0, n / 4.0)) + 0.1 * math.sin(t * 10)
+    S['needle'].location, S['needle'].rotation_euler = A(x, -0.5, 0.75 + 0.1 * math.sin(t * 10)), (0, 0.5, 0.3)
+    S['hand_e'].place(A(x + 0.75, -0.85, 1.0 + 0.1 * math.sin(t * 10)), (0.5, 0, PI / 2 - 0.3))
+    S['hand_e'].root.scale = (1.5, 1.5, 1.5)
+    S['hand_e'].grip(0.7)
+    S['rook'].place(A(2.9, 1.9, 0), 0.75)
+    S['rook'].apply(P('stand', aR=(1.5, 0.25, 2.3), aL=(0.3, 0.1, 0.4), head=(0.5, 0.25), lean=0.3))
+    S['face']['rook'] = 'calm' if k < 0.7 else 'warm'
+    cam(S, A(lerp(-1.4, -0.4, k), lerp(-5.6, -5.0, k), 2.7), A(0.5, 0.6, 0.9), 32)
+
+
+def school(S, k, t, lt):
+    A = alps(S)
+    S['studs'].location = (0, 0, 0)
+    S['gl'].location, S['gl'].rotation_euler, S['gl'].scale = A(-6.4, 5.4, 0.5), (-1.45, 0, 0.3), (1, 1, 0.55)
+    up = ease((lt - 0.4) / 0.5)
+    S['ewa'].place(A(0, 0, 0), face_to((0, 0), (-3.4, 0.9)) + 0.5)
+    S['ewa'].apply(blend(P('hips', head=(0, -0.4)), P('point', aR=(2.3, 0.3, 0.1), aL=(-0.25, 0.75, 1.9, 1.5), head=(-0.3, -0.4)), up))
+    S['face']['ewa'] = 'happy'
+    S['rook'].place(A(3.0, -0.8, 0), -0.75)
+    S['rook'].apply(P('hips', head=(lerp(0.0, -0.35, up), 0.45 - 0.9 * up)))
+    S['face']['rook'] = 'warm'
+    cam(S, A(lerp(4.6, 3.4, k), lerp(-9.6, -8.6, k), 1.7), A(-0.6, 0.8, 2.3), 30)
+
+
+def school_fly(S, k, t, lt):
+    A = alps(S)
+    x = lerp(-7, 3, k)
+    z = 34 + 0.6 * math.sin(t * 1.1)
+    fly(S, A(x, 24, z), 0.4, 0.02, 0.1 * math.sin(t * 1.4), None, 'happy')
+    brolly_rook(S, A(x + 5.5, 20.5, z + 1.2), -0.7, t, 'warm', False, False, P('reach', aL=(0.3, 0.5, 0.4), lL=(0.2, 0.3), lR=(-0.2, 0.3), head=(0.1, 0.5)), kick=2)
+    cam(S, A(x + lerp(3, 5, k), lerp(4, 6, k), z - 1.5), A(x + 2.2, 24, z + 2.6), 30)
+
+
+HOST |= {'briefing', 'launch_queue', 'merge_rook', 'leader', 'spiral_down', 'cows', 'phone', 'pickup', 'rook_ticket', 'doctors', 'ward_cu',
+         'stitch', 'school', 'school_fly'}
+SHOTS3D.update({f.__name__: f for f in (
+    briefing, launch_queue, gaggle, two_clouds, merge_rook, wing_ice, radio_ewa, leader, gps_scratch, spiral_down, cows, phone, pickup,
+    rook_ticket, doctors, ward_cu, storm_far, stitch, school, school_fly)})
+
+
+def photo_thumb(S, k, t, lt):
+    """Thumbnail picture: inside the storm, the glider yanked upward, Rook hanging from his blown-out umbrella."""
+    A = clouds(S, 1.0, 0, '5E76A8', 1.5)
+    S['cflash'].data.energy = 3.5
+    S['ckey'].data.energy = 60000
+    fly(S, A(-5.2, 2.5, 2.4), 0.55, 0.25, -0.3, P('stand', head=(-0.4, 0.3), **{**BRAKE, 'aL': (2.7, 0.5, 0.3), 'aR': (2.3, 0.6, 0.8)}), 'shock', True)
+    hail(S, A(-3, 0, 3), 1.0, 34, (22, 8, 14), 60, size=1.3)
+    S['bolt'].location, S['bolt'].rotation_euler = (9, 16, 6), (0, 0.15, 0.2)
+    S['boltl'].data.energy = 60000
+    brolly_rook(S, A(-0.6, -3.0, -1.2), 0.3, 1.0, 'shocked', True, True)
+    feathers(S, A(-0.6, -3.0, 0.4), 1.0, 7)
+    cam(S, A(3.2, -15.5, -2.2), A(-2.2, 0, 2.6), 32)
+
+
+STILLS['thumb'] = photo_thumb
