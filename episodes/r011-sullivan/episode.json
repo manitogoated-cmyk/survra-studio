@@ -1,7 +1,7 @@
 {
  "id": "r011-sullivan",
  "format": "short",
- "status": "draft",
+ "status": "approved",
  "synthetic": false,
  "host": "rook",
  "case": 11,
@@ -56,5 +56,8 @@
   "https://en.wikipedia.org/wiki/Roy_Sullivan",
   "https://nationalparkstraveler.org/2008/07/shenandoah-national-park-ranger-roy-sullivan-set-world-record-being-hit-lightning",
   "https://www.theweathernetwork.com/en/news/weather/severe/this-day-in-weather-history-june-25-1977-human-lightning"
- ]
+ ],
+ "quality_gate": {
+  "method": "3D contact sheet reviewed in five rounds with fixes after each (round 1: every lightning flash burned the sky and the figures out to white, so the flash was cut to about a third; the camera for the truck strike sat outside the guard wall; a pine blocked the wide shot of the tower; the tower roof was too low and its lamp hung at face height; Roy was hidden behind the radio on his desk in both station shots; the towel filled the frame at the sink; the scorched hat covered his face in the last portrait; Rook was out of frame in the exhibit hall. Round 2, with extra frames taken at the moment of each strike to confirm every bolt is on screen: the opening bolt now starts on frame one; the bolt across the truck window was thinned and moved off his face; Rook was standing on the chair when he jumps up; the chalk tally read back to front; Rook on his rock hid Roy on the jetty. Round 3, a full-length low-resolution rehearsal composited with captions, HUD, overlays, inserts and sound: the automated gate failed one static stretch (Rook holding the empty can for 1.9 s), so that shot was shortened and a new shot of Roy steaming and looking back up at the sky was added (40 shots); the counter insert and the eyebrow drawing were laid out again so nothing sits under the captions or the year. Round 4: composited stills of every changed shot; Rook was still cut off in the hall and the hat hid Roy's face in the truck close-up. Round 5: twelve shots at production resolution). The second rehearsal (216x384, 4 samples, every 3D frame) passed the automated gate locally: 40 shots, mean 1.18 s, longest 1.86 s, loudness -15.3 LUFS, voice 9.9 dB over the bed, host in 22/40 shots (55%), closest match to an earlier episode 0.83. Two small staging changes (Rook's position in the hall, the tilt of Roy's hat in one close-up) were made after that rehearsal and checked on stills only. The widest caption pair measures 929 of 1080 px. Every 3D kind in the storyboard exists in world3d.SHOTS3D, every flat kind in scenes.SHOTS, HOST lists every kind where Rook is on screen and no others, no kind is used more than twice or twice in a row, and the repository tests pass. Audio was measured, not listened to. The fingerprint file the local gate wrote was deleted, not committed. The full-resolution render and the final gate run in the cloud."
+ }
 }

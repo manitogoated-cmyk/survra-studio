@@ -134,16 +134,16 @@ def counter7(cv, c):
         age = c.k - i * 0.075
         drop = 1 - ease(age / 0.06)
         x = 150 + i * 130
-        y = 470 + (i % 2) * 70 - 500 * drop
-        bolt_icon(cv, x, y, 250)
+        y = 400 + (i % 2) * 60 - 500 * drop
+        bolt_icon(cv, x, y, 220)
         if age < 0.08:
             cv.drawRect(skia.Rect.MakeWH(W, H), P(0xFFFFFFFF, a=0.35 * (1 - age / 0.08)))
     if c.k > 0.52:
         k = min(1.0, (c.k - 0.52) / 0.1)
         cv.save()
-        cv.translate(540, 1010)
+        cv.translate(540, 940)
         cv.scale(1.9 - 0.9 * k, 1.9 - 0.9 * k)
-        Wd.text_card(cv, '7', 0, 150, 520, BOLT, 0xFF000000)
+        Wd.text_card(cv, '7', 0, 150, 440, BOLT, 0xFF000000)
         cv.restore()
         Wd.text_card(cv, 'ONE MAN', 540, 1560, 96, 0xFFFFFFFF, 0xFF000000)
     Wd.rain(cv, W, H, c.t, density=80, c=0x33CFE6FF, slant=0.3, speed=2400, length=64)
@@ -213,7 +213,7 @@ def brows(cv, c):
     gone = ease((c.lt - 0.2) / 0.3)
     Wd.text_card(cv, 'STRIKE 2', 540, 330, 150, BOLT, 0xFF000000)
     Wd.text_card(cv, '1969', 540, 440, 76, 0xFFFFFFFF, 0xFF000000)
-    cx, cy = 540, 900
+    cx, cy = 540, 990
     cv.drawOval(skia.Rect.MakeXYWH(cx - 230, cy - 250, 460, 540), P(h('E2B48C')))
     cv.drawOval(skia.Rect.MakeXYWH(cx - 230, cy - 250, 460, 540), P(INK, 10))
     cv.drawOval(skia.Rect.MakeXYWH(cx - 430, cy - 300, 860, 110), P(h('8A7450')))
@@ -308,6 +308,6 @@ def closed(cv, c):
         cv.restore()
 
 
-OVER = dict(bolt_tower=rain, tower_wide=rain, roy_tower=drizzle, tower_hit=drizzle, roy_runs=rain, rook_gate=rain, rook_collar=rain,
+OVER = dict(roy_steam=drizzle, water_can=drizzle, rook_can=drizzle, bolt_tower=rain, tower_wide=rain, roy_tower=drizzle, tower_hit=drizzle, roy_runs=rain, rook_gate=rain, rook_collar=rain,
             truck_drive=rain, bolt_truck=rain, rook_truck=drizzle, yard_wide=drizzle, yard_hit=rain, patrol_hit=drizzle,
             trail_hit=rain, roy_hop=drizzle, bolt_pond=rain, pond_wide=drizzle, pond_hit=rain, roy_burns=drizzle, signoff=closed)

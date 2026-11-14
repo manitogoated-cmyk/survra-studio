@@ -146,9 +146,9 @@
    "world": "ranger tower, truck, fishing pond",
    "est_score": 80,
    "long_form_candidate": false,
-   "status": "in progress",
+   "status": "authored",
    "claimed_at": "2026-11-14T11:38:28Z",
-   "facts": "verify with 2+ sources at authoring; skip if they do not hold"
+   "facts": "verified (see episodes/r011-sullivan/episode.json); the seven strikes and injuries follow the Guinness World Records entry; the sixth is 1976 (one source says 1974); his death in 1983 is left out of the Short on purpose"
   },
   {
    "case": 12,

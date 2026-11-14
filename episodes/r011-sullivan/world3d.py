@@ -929,9 +929,10 @@ def bolt_truck(S, k, t, lt):
     flash(S, A(2.4, 8.4, 3.8), f, 9000 if v == 1 else 3500)
     hit = ease((lt - t0) / 0.1)
     age(S, brows=hit < 0.5)
-    S['rhat'].rotation_euler = (-0.08 - 0.3 * hit, 0.35 * hit, 0)
+    S['rhat'].rotation_euler = (-0.08 + 0.33 * hit, 0.3 * hit, 0)
     S['roy'].place(drv, 0.0)
-    S['roy'].apply(blend(DRIVE, P('sit', aL=(1.3, 0.9, 0.9), aR=(1.3, 0.9, 0.9), lean=-0.1, head=(-0.3, 0.0)), hit))
+    S['roy'].apply(blend(DRIVE, P('sit', aL=(1.3, 0.9, 0.9), aR=(1.3, 0.9, 0.9), lean=-0.1, head=(-0.3, 0.0)) if v == 1 else
+                          P('sit', aL=(1.15, 0.25, 0.6), aR=(1.15, 0.25, 0.6), lean=-0.16, head=(-0.38, 0.0)), hit))
     S['face']['roy'] = 'shock' if hit > 0.3 else 'calm'
     S['jaw'] = 0.35 * hit
     if v == 1:
@@ -976,7 +977,7 @@ def patrol_hit(S, k, t, lt):
         S['lhat'].location = A(1.9 + 2.2 * u, 7.0 - 1.0 * u, 3.4 + 5.0 * u - 6.0 * u * u)
         S['lhat'].rotation_euler = (u * 7, u * 4, 0)
         burn(S, t, ease((lt - 0.56) / 0.2))
-    S['rook'].place(A(3.9, 10.6, 0), 0.25)
+    S['rook'].place(A(3.9, 7.7, 0), 0.25)
     S['rook'].apply(blend(P('cross'), DUCK, hit))
     S['face']['rook'] = 'shocked' if hit > 0.3 else 'deadpan'
     cam(S, A(lerp(6.6, 6.0, k), lerp(0.4, 1.2, k), 1.9), A(1.1, 8.8, 3.1), 30)
@@ -1008,21 +1009,37 @@ def rook_can(S, k, t, lt):
     S['roy'].apply(P('hips', head=(0.1, -0.3)))
     S['face']['roy'] = 'tired'
     smoke(S, A(0.9, 9.6, 3.0), t, 4, rise=2.0, size=0.26, speed=0.6)
-    sh = ease((lt - 1.05) / 0.3)
+    sh = ease((lt - 0.6) / 0.22)
     S['rook'].place(A(3.3, 5.6, 0), -0.25)
     S['rook'].apply(blend(P('point', aR=(1.35, 0.1, 0.05), head=(0.25, -0.15)), P('shrug', head=(-0.05, 0.1)), sh))
     S['face']['rook'] = 'deadpan'
-    shake = 0.12 * math.sin(lt * 26) * (1 - sh) * (1 if lt < 0.8 else 0)
-    S['can'].location = A(3.52, 4.5 - 0.5 * sh, 1.62 - 1.2 * ease((lt - 1.05) / 0.25) * 0.0 + shake)
-    S['can'].rotation_euler = (PI, 0.0, 0.3)
-    if sh > 0.05:
-        u = lt - 1.05
-        S['can'].location = A(3.52, 4.3, max(0.3, 1.62 - 4.0 * u * u))
-        S['can'].rotation_euler = (PI + u * 5, 0.3, 0.3)
-    if 0.25 < lt < 0.9:
-        u = (lt - 0.25) / 0.65
+    if sh < 0.05:
+        S['can'].location = A(3.52, 4.5, 1.62 + (0.12 * math.sin(lt * 30) if lt < 0.45 else 0.0))
+        S['can'].rotation_euler = (PI, 0.0, 0.3 + (0.2 * math.sin(lt * 23) if lt < 0.45 else 0.0))
+    else:
+        u = lt - 0.6
+        S['can'].location = A(3.52, 4.3, max(0.3, 1.62 - 5.0 * u * u))
+        S['can'].rotation_euler = (PI + u * 6, 0.3, 0.3)
+    if 0.12 < lt < 0.6:
+        u = (lt - 0.12) / 0.48
         S['drops'][0].location = A(3.52, 4.5, 1.3 - 1.25 * u * u)
-    cam(S, A(lerp(2.0, 2.3, k), lerp(0.2, 0.9, k), 2.4), A(3.1, 5.6, 2.55), 44)
+    cam(S, A(lerp(1.8, 2.5, k), lerp(-0.2, 1.2, k), lerp(2.3, 2.5, k)), A(3.1, 5.6, 2.55), 44)
+
+
+def roy_steam(S, k, t, lt):
+    """Doused: wet, steaming, he looks up at the sky again."""
+    A = mood(S, 'road', '424C5A', 0.0, fk=6.0, sunk=1.6)
+    truck_at(S, A, -1.5, 11.5, 0)
+    age(S, hat=False)
+    up = ease((lt - 0.2) / 0.35)
+    S['roy'].place(A(1.9, 7.2, 0), 0.3)
+    S['roy'].apply(P('stand', aL=(0.25, 0.3, 0.4), aR=(0.25, 0.3, 0.4), head=(0.2 - 0.6 * up, 0.25 * math.sin(lt * 5) * up)))
+    S['face']['roy'] = 'shut' if up < 0.4 else 'scared'
+    smoke(S, A(1.9, 7.1, 2.95), t, 6, rise=2.2, size=0.2, speed=1.1)
+    for i, o in enumerate(S['drops'][:6]):
+        u = (lt * 1.8 + i / 6) % 1
+        o.location = A(1.9 + 0.4 * math.sin(i * 2.4), 7.0 + 0.2 * math.cos(i * 1.3), 2.5 - 1.6 * u)
+    cam(S, A(lerp(3.3, 2.9, k), lerp(3.0, 3.8, k), lerp(2.5, 2.7, k)), A(1.95, 7.2, 2.6), 52)
 
 
 # ---------------------------------------------------------------- shots: his front yard (strike 3, 1970)
@@ -1075,7 +1092,7 @@ def rook_seat(S, A, t, lt, look=0.0):
     S['rook'].place(A(1.6, 5.4, 0), -PI / 4)
     S['rook'].apply(P('sit', aL=(0.7, -0.1, 1.5, 1.0), aR=(0.9, 0.2, 1.2, 0.0), head=(-0.05 * look, -0.85 * look)))
     u = (lt * 1.5) % 1
-    S['coin'].location = A(1.0, 4.8, 1.62 + 0.55 * 4 * u * (1 - u))
+    S['coin'].location = A(1.55, 4.45, 1.5 + 0.6 * 4 * u * (1 - u))
     S['coin'].rotation_euler = (lt * 30, 0.4, 0)
 
 
@@ -1138,17 +1155,17 @@ def roy_sink(S, k, t, lt):
     age(S, hat=False)
     S['roy'].place(A(5.5, 9.9, 0), PI)
     press = 0.06 * math.sin(lt * 14)
-    S['roy'].apply(P('hat', aL=(0.2, 1.9, 1.6, -1.5), lean=0.42, head=(0.3 + press, 0.0)))
+    S['roy'].apply(P('hat', aL=(0.2, 1.9, 1.6, -1.5), lean=0.28, head=(0.3 + press, 0.0)))
     S['face']['roy'] = 'shut'
     S['towel'].scale = (0.62, 0.5, 0.14)
-    S['towel'].location = A(5.5, 10.6, 2.8 + 0.03 * math.sin(lt * 14))
-    S['towel'].rotation_euler = (-0.5, 0.0, 0.08)
+    S['towel'].location = A(5.5, 10.45, 2.86 + 0.03 * math.sin(lt * 14))
+    S['towel'].rotation_euler = (-0.4, 0.0, 0.08)
     burn(S, t, 0.5 * (1 - ease(lt / 0.3)))
-    smoke(S, A(5.5, 10.5, 3.0), t, 6, rise=2.0, size=0.17, speed=1.0)
+    smoke(S, A(5.5, 10.4, 3.05), t, 6, rise=2.0, size=0.17, speed=1.0)
     for i, o in enumerate(S['drops'][:5]):
         u = (lt * 2.4 + i / 5) % 1
-        o.location = A(5.5 + 0.35 * math.sin(i * 2.2), 10.6 + 0.1 * math.cos(i), 2.6 - 0.5 * u)
-    cam(S, A(lerp(1.9, 2.3, k), lerp(10.0, 10.2, k), 2.9), A(5.5, 10.7, 2.6), 34, fill=1.6, fcol='FFE0C0')
+        o.location = A(5.5 + 0.3 * math.sin(i * 2.2), 10.5 + 0.1 * math.cos(i), 2.6 - 0.5 * u)
+    cam(S, A(lerp(0.3, 0.9, k), lerp(9.2, 9.4, k), 2.7), A(5.5, 10.6, 2.45), 34, fill=1.6, fcol='FFE0C0')
 
 
 def rook_tally(S, k, t, lt):
@@ -1315,10 +1332,10 @@ def signoff(S, k, t, lt):
 # ---------------------------------------------------------------- shots: the exhibit hall (two of his hats went on display)
 def hats_case(S, k, t, lt):
     A = mood(S, 'hall', '15131C', 0.0, fk=3.2)
-    S['rook'].place(A(-2.2, -1.8, 0), 2.17)
+    S['rook'].place(A(-1.0, -3.5, 0), 2.85)
     S['rook'].apply(dict(THINK, head=(0.1, 0.1 * math.sin(lt * 3))))
     e = ease(k)
-    cam(S, A(lerp(3.6, 2.5, e), lerp(-9.6, -8.3, e), lerp(3.7, 3.3, e)), A(-0.9, 0, 3.0), 32, fcol='FFE0C0')
+    cam(S, A(lerp(3.6, 2.5, e), lerp(-9.6, -8.3, e), lerp(3.7, 3.3, e)), A(-0.9, 0, 3.0), 32, fill=1.8, fcol='FFE0C0')
 
 
 def rook_hats(S, k, t, lt):
@@ -1351,6 +1368,6 @@ def photo_roy(S, k, t, lt):
 
 SHOTS3D = {f.__name__: f for f in (
     bolt_tower, bolt_truck, bolt_pond, rook_gate, rook_collar, tower_wide, roy_tower, tower_hit, roy_runs, truck_drive, rook_truck,
-    yard_wide, yard_hit, station_in, rook_desk, station_hit, roy_sink, patrol_hit, water_can, rook_can, trail_hit, roy_hop,
+    yard_wide, yard_hit, station_in, rook_desk, station_hit, roy_sink, patrol_hit, water_can, roy_steam, rook_can, trail_hit, roy_hop,
     pond_wide, pond_hit, roy_burns, rook_tally, roy_hat, rook_shock, hats_case, rook_hats, rook_wrong, signoff)}
 STILLS = dict(tower=photo_tower, roy=photo_roy)
