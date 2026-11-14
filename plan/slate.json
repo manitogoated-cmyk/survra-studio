@@ -160,8 +160,8 @@
    "world": "three liners",
    "est_score": 79,
    "long_form_candidate": false,
-   "status": "in progress",
-   "facts": "verify with 2+ sources at authoring; skip if they do not hold",
+   "status": "authored",
+   "facts": "verified (see episodes/r012-jessop/episode.json); three articles read, Wikipedia and Encyclopedia Titanica could not be fetched; the baby story is her own account; the Olympic did not sink, so the title says 'survived the Titanic and both of its sister ships'",
    "claimed_at": "2026-11-14T18:20:29Z"
   },
   {

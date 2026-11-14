@@ -1,7 +1,7 @@
 {
  "id": "r012-jessop",
  "format": "short",
- "status": "draft",
+ "status": "approved",
  "synthetic": false,
  "host": "rook",
  "case": 12,
@@ -57,5 +57,8 @@
   "https://www.nationalgeographic.com/magazine/article/titanic-woman-survivor-nurse-illness-unsinkable",
   "https://www.history.co.uk/articles/unsinkable-violet-jessop",
   "https://www.mentalfloss.com/history/titanic/unsinkable-violet-jessop"
- ]
+ ],
+ "quality_gate": {
+  "method": "3D contact sheet reviewed in five rounds with fixes after each (round 1: the lifeboat's bottom boards stuck out through its hull and the boats floated above the sea; the propellers were too small to read; the cabin's daylight lamp pointed at the wall and burned the room out to white; the baby hand-over was staged with Violet's back to the camera; the Titanic was a speck in the lifeboat shot; Rook's head sat too low on the quay; the man hauling Violet out faced the wrong way. Round 2: a foreground propeller blade covered both faces in the lifeboat; the sign-off was shot from behind Rook in shadow; the porthole had black corners. Round 3, a full-length low-resolution rehearsal composited with captions, HUD, overlays, inserts and sound: shots did not line up with the words (the iceberg came before 'Iceberg', the jump before 'She jumps'), so the storyboard was re-cut to the word timings and two shots were added (40 shots); captions covered faces in five shots, so those cameras were re-aimed; the TRUE stamp hid Violet's face on the board and the ticks overran. Round 4, a second rehearsal: the automated gate failed four static stretches (the tea tray on deck, the damaged liner, the liner at night, the hospital ship from above), so those cameras were given real travel and two were restaged, and the gate then passed. Round 5: eighteen shots at higher resolution). The last rehearsal (216x384, 4 samples, every 3D frame) passed the automated gate locally: 40 shots, mean 1.12 s, longest 1.88 s, loudness -15.3 LUFS, voice 9.6 dB over the bed, host in 21/40 shots (52%), closest match to an earlier episode 0.77. Two small camera changes (Rook's framing at the sign-off, extra fill light on Rook on the hospital ship's deck) were made after that rehearsal and checked on stills only. Every 3D kind in the storyboard exists in world3d.SHOTS3D, every flat kind in scenes.SHOTS, HOST lists every kind where Rook is on screen and no others, no kind is used more than twice or twice in a row, and the repository tests pass. Audio was measured, not listened to. The fingerprint file the local gate wrote was deleted, not committed. The full-resolution render and the final gate run in the cloud."
+ }
 }

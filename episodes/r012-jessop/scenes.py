@@ -151,6 +151,7 @@ def stamp(cv, s, x, y, ang, k, size=150, col=RED):
 def tick(cv, x, y, s, k):
     if k <= 0:
         return
+    k = min(1.0, k)
     path = skia.Path()
     path.moveTo(x - 0.4 * s, y)
     path.lineTo(x - 0.4 * s + 0.3 * s * min(1, k * 2), y + 0.3 * s * min(1, k * 2))
@@ -191,7 +192,6 @@ def three_ships(cv, c):
         cv.scale(1.8 - 0.8 * k, 1.8 - 0.8 * k)
         Wd.text_card(cv, '3 SHIPS', 0, 50, 190, AMBER, 0xFF000000)
         cv.restore()
-        Wd.text_card(cv, '5 YEARS', 540, 1610, 110, 0xFFFFFFFF, 0xFF000000)
 
 
 def board_no(cv, c):
@@ -262,7 +262,7 @@ def board_true(cv, c):
         liner_icon(cv, 240 + i * 300, 1620, 250, hull=0xFFECE8DC if i == 2 else 0xFF0E1016)
         tick(cv, 250 + i * 300, 1690, 54, (c.lt - 0.2 - i * 0.05) / 0.08)
     if c.lt > 0.34:
-        stamp(cv, 'TRUE', 560, 600, -10, min(1, (c.lt - 0.34) / 0.12), 170)
+        stamp(cv, 'TRUE', 690, 900, -10, min(1, (c.lt - 0.34) / 0.12), 150)
 
 
 SHOTS = {f.__name__: f for f in (three_ships, board_no, list3, board_true)}

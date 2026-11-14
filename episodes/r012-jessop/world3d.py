@@ -796,7 +796,7 @@ def boat_pov(S, k, t, lt):
         cam(S, A(lerp(-4.0, -4.3, k), lerp(131.6, 132.2, k), 2.5), B(0.75, -0.2, 2.2), 45)
     else:
         f.location = A(2.6, 132.0, 8.6)
-        cam(S, A(-4.6, lerp(126.6, 127.8, k), 2.3), B(0.0, -0.3, 2.45), 30)
+        cam(S, A(lerp(-3.2, -5.4, k), lerp(125.4, 128.6, k), lerp(2.0, 2.6, k)), B(0.0, -0.3, 2.45), 30)
     f.rotation_euler = (0.12, t * 6.5, 0.35)
 
 
@@ -942,7 +942,7 @@ def signoff(S, k, t, lt):
         S['key'].rotation_euler = (0, lt * 2 * pocket, 0.6 + lt * 3 * pocket)
         S['glow'].location = A(27.0, -35.6, 9.4)
         S['glow'].data.energy = 90
-    cam(S, A(lerp(25.6, 26.2, k), lerp(-38.6, -37.8, k), 8.0), A(28.8, -34.4, 7.3), 34, fcol='FFE0C0')
+    cam(S, A(lerp(24.4, 26.4, k), lerp(-40.2, -37.6, k), lerp(8.4, 7.8, k)), A(29.25, -34.5, 7.8), 34, fcol='FFE0C0')
 
 
 # ---------------------------------------------------------------- 1911: the collision
@@ -985,7 +985,7 @@ def vi_tray(S, k, t, lt):
     u = (lt * 1.5) % 1
     S['coin'].location = A(-9.75, -20.75, BOATDECK + 1.8 + 3.0 * u * (1 - u))
     S['coin'].rotation_euler = (lt * 30, 0, 0)
-    cam(S, A(-8.4, lerp(-29.6, -28.6, k), 27.4), A(-8.6, -20, 27.5), 34)
+    cam(S, A(lerp(-10.2, -7.2, k), lerp(-31.5, -28.0, k), lerp(26.9, 27.9, k)), A(-8.6, -20, 27.5), 34)
 
 
 def hawke_bow(S, k, t, lt):
@@ -1033,14 +1033,14 @@ def deck_jolt(S, k, t, lt):
 
 
 def oly_limp(S, k, t, lt):
-    A, Sp = grey_day(S, t, y=-6 * k, roll=0.035)
+    A, Sp = grey_day(S, t, y=-16 * k, roll=0.035 + 0.01 * math.sin(lt * 3))
     vis(S['gash'], True)
     S['warship'].location = A(96, 30, 0)
     S['warship'].rotation_euler = (0.05, 0, 2.5)
     for i in range(4):
         u = (t * 0.5 + i * 0.25) % 1
         puff(S, i, Sp(13.5 + 2 * u, 88 + 10 * u, 0.5), 1.2 + 1.5 * u, 0.4)
-    cam(S, A(lerp(46, 42, k), lerp(152, 146, k), lerp(6, 8, k)), A(11, 90, 12), 38)
+    cam(S, A(lerp(58, 38, k), lerp(166, 136, k), lerp(4, 11, k)), A(11, 88 - 12 * k, 12), 38)
 
 
 # ---------------------------------------------------------------- 1912: the ice
@@ -1057,7 +1057,7 @@ def tit_night(S, k, t, lt):
     for i in range(4):
         u = (t * 0.9 + i * 0.25) % 1
         puff(S, i, Sp((1 if i % 2 else -1) * (2 + 6 * u), -125 + 20 * u, 0.5), 1.6 + 2.6 * u, 0.4)
-    cam(S, A(lerp(-6, -3, k), lerp(-292, -284, k), lerp(3.5, 5.0, k)), A(14, -195, 15), 30, fcol='A8C0FF')
+    cam(S, A(lerp(-22, -8, k), lerp(-262, -228, k), lerp(2.5, 9.0, k)), A(lerp(12, 8, k), lerp(-185, -150, k), 16), 28, fcol='A8C0FF')
 
 
 def berg_scrape(S, k, t, lt):
@@ -1164,7 +1164,7 @@ def tit_sink(S, k, t, lt):
     S['glow'].location = B(-2.0, 3.0, 3.2)
     S['glow'].data.energy = 900
     S['glow'].data.color = K.hexc('A8C0FF')[:3]
-    cam(S, A(lerp(120.4, 120.0, k), lerp(230.5, 230.0, k), 1.7), A(5, 60, 26), 35, fill=2.2, fcol='A8C0FF')
+    cam(S, A(lerp(121.0, 120.0, k), lerp(231.2, 230.0, k), lerp(1.5, 1.9, k)), A(5, 60, 26), 35, fill=2.2, fcol='A8C0FF')
 
 
 # ---------------------------------------------------------------- 1916: the hospital ship
@@ -1181,7 +1181,7 @@ def brit_wide(S, k, t, lt):
     for i in range(4):
         u = (t * 0.8 + i * 0.25) % 1
         puff(S, i, Sp((1 if i % 2 else -1) * (2 + 7 * u), -124 + 22 * u, 0.6), 2.0 + 3 * u, 0.4)
-    cam(S, A(lerp(96, 88, k), lerp(-236, -226, k), lerp(78, 70, k)), A(0, -22, 12), 35)
+    cam(S, A(lerp(84, 34, k), lerp(-250, -196, k), lerp(70, 12, k)), A(0, lerp(-30, -70, k), 18), 32)
 
 
 def mine_hit(S, k, t, lt):
@@ -1254,7 +1254,7 @@ def rook_deck(S, k, t, lt):
         u = (lt * 1.7) % 1
         S['coin'].location = A(9.25, -19.85, BOATDECK + 1.8 + 2.8 * u * (1 - u))
         S['coin'].rotation_euler = (lt * 30, 0, 0)
-    cam(S, A(lerp(7.4, 7.7, k), lerp(-12.6, -13.4, k), 27.5), A(9.0, -20.4, 27.25), 32)
+    cam(S, A(lerp(6.6, 8.2, k), lerp(-10.6, -14.4, k), lerp(27.9, 27.3, k)), A(9.0, -20.4, 27.25), 32, fill=3.0, fcol='FFF0DC')
 
 
 def brit_side(S, k, t, lt):
