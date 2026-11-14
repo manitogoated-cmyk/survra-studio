@@ -1170,6 +1170,49 @@ EXHEAD = [('E0B090', '6A5A4A'), ('C89A70', '2A1A10'), ('B88860', '1A1410'), ('D9
 OLD = dict(top='8A7A5A', pants='3A3A44', hand=SKIN, boot='2A2420')
 
 
+# The kit's add() goes through Blender operators, which get slower with every object already in the scene. The same
+# primitives built straight from mesh data cost the same however big the scene is (the operators call these very bmesh
+# routines). From here on the whole file, including the Short's sets above, builds with the fast versions.
+import bmesh  # noqa: E402
+
+_add0 = add
+
+
+def add(kind, col, loc=(0, 0, 0), rot=(0, 0, 0), scale=(1, 1, 1), parent=None, rough=0.9, emit=0.0, alpha=1.0, **kw):
+    bm = bmesh.new()
+    if kind == 'cube':
+        bmesh.ops.create_cube(bm, size=kw.get('size', 2.0))
+    elif kind == 'plane':
+        bmesh.ops.create_grid(bm, x_segments=1, y_segments=1, size=kw.get('size', 2.0) / 2)
+    elif kind in ('cylinder', 'cone'):
+        r1, r2 = (kw.get('radius', 1.0),) * 2 if kind == 'cylinder' else (kw.get('radius1', 1.0), kw.get('radius2', 0.0))
+        bmesh.ops.create_cone(bm, cap_ends=True, cap_tris=False, segments=kw.get('vertices', 32), radius1=r1, radius2=r2, depth=kw.get('depth', 2.0))
+    elif kind == 'ico_sphere':
+        bmesh.ops.create_icosphere(bm, subdivisions=kw.get('subdivisions', 2), radius=kw.get('radius', 1.0))
+    else:
+        bm.free()
+        return _add0(kind, col, loc, rot, scale, parent, rough, emit, alpha, **kw)
+    me = bpy.data.meshes.new(kind)
+    bm.to_mesh(me)
+    bm.free()
+    o = bpy.data.objects.new(kind, me)
+    bpy.context.scene.collection.objects.link(o)
+    o.location, o.rotation_euler, o.scale = loc, rot, scale
+    me.materials.append(K.mat(col, rough, emit, alpha))
+    if parent:
+        o.parent = parent
+    return o
+
+
+def empty(loc=(0, 0, 0), parent=None, rot=(0, 0, 0)):
+    o = bpy.data.objects.new('empty', None)
+    bpy.context.scene.collection.objects.link(o)
+    o.location, o.rotation_euler = loc, rot
+    if parent:
+        o.parent = parent
+    return o
+
+
 def room(r, w, d0, d1, hgt, floor, wall, ceil=None):
     """Floor, back wall and two long side walls (the 16:9 lens sees a long way to each side)."""
     add('cube', floor, (0, (d0 + d1) / 2, -0.1), scale=(w, d1 - d0, 0.2), size=1, parent=r)
@@ -1315,7 +1358,7 @@ def set_ward(r):
     """A hospital ward (a reconstruction): three beds, tall windows, a ceiling fan."""
     room(r, 24, -14, 5.4, 5.0, 'C8C0A8', 'A8C4B0', 'D8DCD0')
     for x in (-8, -2.6, 2.6, 8):
-        add('cube', 'FFF4D0', (x, 5.26, 3.0), scale=(2.2, 0.06, 3.0), size=1, parent=r, emit=2.4)
+        add('cube', 'FFF4D0', (x, 5.26, 3.0), scale=(2.2, 0.06, 3.0), size=1, parent=r, emit=1.3)
         add('cube', 'E8E8E0', (x, 5.22, 3.0), scale=(0.1, 0.1, 3.0), size=1, parent=r)
         add('cube', 'E8E8E0', (x, 5.22, 3.0), scale=(2.3, 0.1, 0.1), size=1, parent=r)
         add('cube', 'E8E8E0', (x, 5.2, 1.44), scale=(2.6, 0.3, 0.12), size=1, parent=r)
@@ -1343,9 +1386,9 @@ def set_ward(r):
     for i in range(4):
         add('cube', '6E5030', (math.cos(i * PI / 2) * 1.1, math.sin(i * PI / 2) * 1.1, 0), rot=(0.15, 0, i * PI / 2), scale=(2.0, 0.34, 0.04), size=1, parent=fan)
     aim = empty((0, 2.5, 1.6), r)
-    light((0, 4.0, 4.2), 2600, 'FFF0D0', 6.0, aim, parent=r)
-    light((-5, -7, 4.0), 2200, 'FFF4E4', 4.0, aim, parent=r)
-    light((6, -5, 2.0), 700, '9AC0E0', 4.0, aim, parent=r)
+    light((0, 4.0, 4.2), 260, 'FFF0D0', 6.0, aim, parent=r)
+    light((-5, -7, 4.0), 420, 'FFF4E4', 4.0, aim, parent=r)
+    light((6, -5, 2.0), 160, '9AC0E0', 4.0, aim, parent=r)
     return dict(fan=fan)
 
 
@@ -1355,7 +1398,7 @@ def set_hall(r):
     add('cube', '5A3E2A', (0, 4.6, 0.3), scale=(18, 4.8, 0.6), size=1, parent=r)
     add('cube', '8A6A48', (0, 2.18, 0.3), scale=(18, 0.06, 0.6), size=1, parent=r)
     for x in (-9, -3, 3, 9):
-        add('cube', 'FFF0C8', (x, 6.86, 4.0), scale=(2.2, 0.06, 4.4), size=1, parent=r, emit=2.2)
+        add('cube', 'FFF0C8', (x, 6.86, 4.0), scale=(2.2, 0.06, 4.4), size=1, parent=r, emit=1.2)
         add('cube', '8A6A48', (x, 6.82, 4.0), scale=(0.12, 0.1, 4.4), size=1, parent=r)
     for x in (-12, -6, 0, 6, 12):
         add('cube', 'A83A2E', (x, 6.78, 3.8), scale=(1.5, 0.16, 6.0), size=1, parent=r)
@@ -1369,10 +1412,10 @@ def set_hall(r):
             add('cube', '3A3028', (x, y - 0.45, 1.35), scale=(1.1, 0.1, 1.3), size=1, parent=r)
     for x in (-6, 6):
         add('cylinder', 'FFE8B0', (x, 2.0, 6.5), radius=0.6, depth=0.2, vertices=10, parent=r, emit=5)
-        light((x, 2.0, 6.0), 900, 'FFE8B0', kind='POINT', parent=r)
+        light((x, 2.0, 6.0), 300, 'FFE8B0', kind='POINT', parent=r)
     aim = empty((0, 4, 2.6), r)
-    light((-6, -8, 5.5), 3600, 'FFE8C8', 5.0, aim, parent=r)
-    light((8, -6, 3.0), 1200, 'FFB070', 4.0, aim, parent=r)
+    light((-6, -8, 5.5), 1100, 'FFE8C8', 5.0, aim, parent=r)
+    light((8, -6, 3.0), 400, 'FFB070', 4.0, aim, parent=r)
     # the recruiting desk
     d = empty((60, 0, 0), r)
     room(d, 22, -14, 4.6, 5.0, '5A5A60', '8A9AA8', 'C8CCD0')
@@ -1540,7 +1583,7 @@ def reset(S):
         o.parent = None
         o.location, o.rotation_euler = FAR, (0, 0, 0)
     for o in (S['hook2'], S['nail'], S['cord'], S['nest'], S['jug'], S['buoy'], S['tray'], S['mop'], S['bucket'], S['medal'], S['watch'], S['bowl'], S['raft2'],
-              S['bboat']) + tuple(S['wraps']):
+              S['bboat']):
         o.scale = (1, 1, 1)
     S['bboat'].location, S['bboat'].rotation_euler = FAR, (0, 0, 0)
     S['cover'].rotation_euler = (PI, 0, 0)
@@ -1556,6 +1599,8 @@ def reset(S):
         o.scale = (0.3, 0.3, 0.06)
     for o in S['fins']:
         o.scale = (1, 0.14, 1)
+    for o in S['wraps']:
+        o.scale = (0.3, 0.3, 0.3)
     for o in S['knots']:
         o.hide_render = False
     S['qship'].location, S['qship'].rotation_euler = (0, 9, 0.3), (0, 0, 0)
@@ -1697,7 +1742,7 @@ def other_raft(S, k, t, lt):
     A = ocean(S, 'night', t, 0.7)
     ride(S, t, 0, 0, 0.25)
     d = lerp(46, 64, k) if far else lerp(15, 19, k)
-    ride2(S, t, A(0, 0, 0)[0] + d * 0.35, d, -0.4)
+    ride2(S, t, (-16 - (d - 46) * 0.3) if far else -7.5, d, -0.4)
     wv = math.sin(t * 7)
     for i, m in enumerate(S['ex'][1:]):
         aboard(S, m, (-1.2, 0.2, 1.4)[i], (-1.0, -1.5, -0.8)[i], (0.2, -0.1, 0.1)[i],
@@ -1708,16 +1753,16 @@ def other_raft(S, k, t, lt):
         S['hat_tip'] = 0.5
     else:
         pd = math.sin(t * 6)
-        aboard(S, S['poon'], -0.6, 1.5, PI, P('sit', aL=(1.6 + 0.5 * pd, 0.5, 0.4), aR=(1.6 - 0.5 * pd, 0.5, 0.4), lean=0.6, head=(-0.4, 0.0)))
+        aboard(S, S['poon'], -1.75, -0.9, -0.7 * PI, P('sit', aL=(1.6 + 0.5 * pd, 0.5, 0.4), aR=(1.6 - 0.5 * pd, 0.5, 0.4), lean=0.6, head=(-0.4, 0.0)))
         aboard(S, S['rook'], 1.3, -0.6, PI - 0.5, P('stand', aL=(0.1, 0.3, 0.2), aR=(1.3, 0.3, 0.2), head=(0.0, 0.0)))
-        splash(S, A(-0.6, 2.9, 0.3), (lt * 1.5) % 1, 6, 0.9, size=0.6)
+        splash(S, A(-2.9, -0.6, 0.3), (lt * 1.5) % 1, 6, 0.9, size=0.6)
     vest(S)
     S['face']['poon'] = 'scared' if not far else 'tired'
     S['face']['rook'] = 'sad'
     S['glow'].location = A(10, 20, 30)
     S['glow'].data.energy = 160000 if not far else 220000
     S['glow'].data.color = K.hexc('A8C0F0')[:3]
-    cam(S, A(lerp(-3.6, -2.8, k), lerp(-10.5, -9.5, k), lerp(4.0, 4.4, k)), A(3.0, 14 if not far else 22, 1.6), 38, fill=1.2)
+    cam(S, A(lerp(-3.6, -2.8, k), lerp(-10.5, -9.5, k), lerp(4.0, 4.4, k)), A(-1.5 if not far else -3.0, 12 if not far else 22, 1.6), 38, fill=1.2)
 
 
 # ---------------------------------------------------------------- long shots: the raft, one problem at a time
@@ -1785,14 +1830,14 @@ def nail_hook(S, k, t, lt):
     S['hand_p'].root.scale = (1.3, 1.3, 1.3)
     if bend < 0.05:
         on(S, S['nail'], R, (0.25 + wig, -1.3, DECK + 0.1 + 0.75 * u), (0, 0.05 * math.sin(lt * 16), 0))
-        S['nail'].scale = (1.8, 1.8, 1.8)
+        S['nail'].scale = (0.8, 0.8, 0.8)
     else:
         on(S, S['hook2'], R, (0.2, -1.3, DECK + 0.75), (PI / 2 - 0.5, 0, 0.2 * math.sin(t * 5)))
         sc = 2.4 + 0.9 * math.sin(PI * min(1, (lt - 0.9) / 0.4))
         S['hook2'].scale = (sc, sc, sc)
     on(S, S['hook'], R, (-1.1, -1.5, DECK + 0.14), (PI / 2, 0, 0.7))
     S['hook'].scale = (1.6, 1.6, 1.6)
-    cam(S, A(lerp(2.2, 1.6, k), lerp(-4.6, -4.2, k), lerp(3.2, 2.9, k)), A(0.1, -1.3, DECK + 0.6), 40)
+    cam(S, A(lerp(1.9, 1.4, k), lerp(-4.0, -3.7, k), lerp(2.9, 2.7, k)), A(0.2, -1.3, DECK + 0.6), 44)
 
 
 def big_fish(S, k, t, lt):
@@ -1804,17 +1849,17 @@ def big_fish(S, k, t, lt):
                                                P('up', aL=(2.7, 0.3, 0.4), aR=(2.5, 0.2, 0.3), lean=-0.3), u))
     S['face']['poon'] = 'happy'
     f = S['fish'][2]
-    fx, fy, fz = lerp(-2.6, -1.0, u), lerp(-5.4, -2.2, u), -0.4 + 5.0 * math.sin(PI * 0.6 * u)
+    fx, fy, fz = lerp(-2.8, -1.4, u), lerp(-5.0, -2.6, u), -0.4 + 3.4 * math.sin(PI * 0.6 * u)
     on(S, f, S['raft'], (fx, fy, fz), (0.3 * math.sin(t * 9), 0.5 * math.sin(t * 20) + 0.6, 0.4))
-    f.scale = (3.4, 3.4, 3.4)
+    f.scale = (3.0, 3.0, 3.0)
     on(S, S['line'], S['raft'], (0, 0, 0))
     span(S['line'], (-0.75, -1.45, DECK + lerp(1.7, 3.2, u)), (fx, fy, fz))
     splash(S, A(-2.9, -4.6, 0.2), min(1, lt / 0.7), 12, 2.2, size=1.6)
-    aboard(S, S['rook'], 1.2, -0.8, 0.5, P('stand', aR=(1.3, 0.25, 0.3), aL=(0.1, 0.3, 0.2), head=(lerp(0.2, -0.2, u), lerp(-0.3, 0.6, u))))
+    aboard(S, S['rook'], 1.5, -1.3, 0.3, P('stand', aR=(1.3, 0.25, 0.3), aL=(0.1, 0.3, 0.2), head=(lerp(0.2, -0.1, u), lerp(-0.3, 0.7, u))))
     on(S, S['fish'][3], S['rook'].hands[1], (0, 0.0, -0.5), (0, PI / 2, 0))
     S['fish'][3].scale = (0.9, 0.9, 0.9)
     S['face']['rook'] = 'shocked' if u > 0.4 else 'smirk'
-    cam(S, A(lerp(-4.6, -3.8, k), lerp(-8.4, -7.4, k), lerp(1.5, 1.9, k)), A(-0.2, -1.8, lerp(2.0, 2.5, k)), 34, -0.04)
+    cam(S, A(lerp(-3.0, -2.2, k), lerp(-10.6, -9.6, k), lerp(1.8, 2.2, k)), A(-0.2, -1.8, lerp(2.2, 2.6, k)), 34, -0.03)
 
 
 def hang(S, objs, x0, dx, z, t, sway=0.12):
@@ -1828,7 +1873,7 @@ def dry_line(S, k, t, lt):
     ride(S, t, 0, 0, 0.0)
     on(S, S['line'], S['raft'], (0, 0, 0))
     span(S['line'], (-2.0, 0.35, 2.3), (2.0, 0.35, 2.3))
-    hang(S, S['strips'], -1.7, 0.5, 2.0, t)
+    hang(S, S['strips'][:5], -1.7, 0.55, 2.0, t)
     for o in S['strips']:
         o.scale = (0.24, 0.05, 0.56)
     f = S['fish'][1]
@@ -1838,8 +1883,7 @@ def dry_line(S, k, t, lt):
     aboard(S, S['poon'], -1.0, -0.4, PI - 0.5, P('up', aL=(2.2, 0.3, 0.6), aR=(2.3, 0.2, 0.5), head=(-0.2, 0.0)))
     S['face']['poon'] = 'calm'
     aboard(S, S['rook'], 0.9, -1.1, 0.15, blend(P('stand', aR=(1.5, 0.2, 1.2), head=(0.0, -0.1)), P('stand', aR=(1.2, 0.5, 0.4), aL=(0.9, 0.0, 2.2, 0.9), head=(-0.2, 0.5), lean=-0.15), u))
-    on(S, S['blade'], S['rook'].hands[1], (0, 0, -0.3), (PI / 2, 0, 0))
-    S['blade'].scale = (0.2, 0.05, 0.5)
+    on(S, S['strips'][5], S['rook'].hands[1], (0, 0, -0.34), (0, 0, 0))
     S['face']['rook'] = 'deadpan' if u < 0.5 else 'shocked'
     cam(S, A(lerp(1.4, 0.8, k), lerp(-8.2, -7.2, k), lerp(2.4, 2.6, k)), A(0.0, -0.3, 2.2), 38)
 
@@ -1851,8 +1895,8 @@ def life_cover(S, k, t, lt):
     u = ease((lt - 0.8) / 0.6)
     aboard(S, S['poon'], -0.5, -0.9, -0.5, P('sit', aL=(lerp(1.0, 1.5, u), 0.0, lerp(1.0, 1.9, u), 0.7), aR=(lerp(1.0, 1.5, u), 0.0, lerp(1.0, 1.9, u), 0.7), head=(lerp(0.3, -0.25, u), 0.0), lean=0.1))
     S['face']['poon'] = 'happy'
-    on(S, S['cover'], S['poon'].body, (0, lerp(-0.75, -0.5, u), lerp(0.75, 1.25, u)), (PI + 0.5 * u, 0, 0))
-    S['cover'].scale = (1.3, 1.3, 1.3)
+    on(S, S['cover'], S['poon'].body, (0, lerp(-0.72, -0.5, u), lerp(0.45, 1.0, u)), (PI + 0.6 * u, 0, 0))
+    S['cover'].scale = (0.85, 0.85, 0.85)
     aboard(S, S['rook'], 1.2, -0.7, 0.5, P('stand', aR=(1.9, 0.3, 0.9), aL=(0.1, 0.3, 0.2), head=(-0.35 + 0.5 * ease((lt - 1.2) / 0.3), 0.2)))
     on(S, S['tin'], S['rook'].hands[1], (0, 0, -0.26), (PI, 0, 0))
     S['tin'].scale = (1.3, 1.3, 1.3)
@@ -1928,9 +1972,9 @@ def shark_haul(S, k, t, lt):
     span(S['line'], (-0.3, -2.1, DECK + 1.75), (sx, sy + 0.6, 0.0))
     S['line'].scale = (2.2, 2.2, S['line'].scale[2])
     splash(S, A(sx, sy, 0.3), (lt * 1.7) % 1, 14, 2.4, size=1.5)
-    aboard(S, S['rook'], -0.2, -0.3, 0.0, P('stand', aL=(1.3, 0.1, 0.5), aR=(1.3, 0.1, 0.5), lean=-0.4 - 0.08 * tug, lL=(0.6, 0.5), lR=(0.3, 0.3), head=(0.1, 0.5)))
+    aboard(S, S['rook'], -0.5, 0.1, -0.2, P('stand', aL=(1.3, 0.1, 0.5), aR=(1.3, 0.1, 0.5), lean=-0.4 - 0.08 * tug, lL=(0.6, 0.5), lR=(0.3, 0.3), head=(0.1, -0.6)))
     S['face']['rook'] = 'shocked'
-    cam(S, A(lerp(6.6, 5.6, k), lerp(-5.4, -4.6, k), lerp(2.3, 2.7, k)), A(-0.2, -2.4, 1.6), 34, 0.04 * tug)
+    cam(S, A(lerp(7.0, 6.0, k), lerp(-4.4, -3.6, k), lerp(2.3, 2.7, k)), A(-0.3, -2.2, 1.6), 34, 0.04 * tug)
 
 
 def shark_fight(S, k, t, lt):
@@ -1943,12 +1987,13 @@ def shark_fight(S, k, t, lt):
     sw = 0.5 + 0.5 * math.sin(t * 6.5)
     aboard(S, S['poon'], -1.3, -0.5, -0.6, P('up', aL=(2.9 - 1.6 * sw, 0.2, 0.3 + 0.4 * sw), aR=(2.9 - 1.6 * sw, 0.2, 0.3 + 0.4 * sw), lean=0.1 + 0.3 * sw, head=(0.2, 0.0), lL=(0.4, 0.5), lR=(-0.1, 0.2)))
     S['face']['poon'] = 'scared'
-    on(S, S['jug'], S['poon'].hands[1], (-0.3, 0, -0.75), (PI, 0, 0))
+    on(S, S['jug'], S['poon'].hands[1], (-0.45, 0, -0.1), (PI, 0, 0))
+    S['jug'].scale = (1.15, 1.15, 1.15)
     aboard(S, S['rook'], 1.75, 0.2, 0.5, P('up', aL=(1.9, 0.6, 1.4, 0.8), aR=(1.9, 0.6, 1.4, 0.8), lL=(1.2, 1.7), lR=(0.9, 1.5), head=(0.25, -0.5)), z=DECK + 0.9 + 0.08 * abs(th))
     S['face']['rook'] = 'shocked'
     feathers(S, A(1.6, -0.4, 3.4), min(1, (lt % 1.6) / 1.2), 5)
     splash(S, A(0.3, -1.6, 1.0), (lt * 1.5) % 1, 10, 1.4, size=0.7)
-    cam(S, A(lerp(1.6, 0.8, k), lerp(-8.6, -7.6, k), lerp(3.6, 3.1, k)), A(0.1, -0.6, 1.7), 36, 0.05 * th)
+    cam(S, A(lerp(1.6, 0.8, k), lerp(-9.6, -8.6, k), lerp(3.8, 3.3, k)), A(0.1, -0.6, 2.2), 36, 0.05 * th)
 
 
 def fins_dry(S, k, t, lt):
@@ -1959,14 +2004,14 @@ def fins_dry(S, k, t, lt):
     span(S['line'], (-2.0, 0.35, 2.3), (2.0, 0.35, 2.3))
     poke = max(0.0, math.sin((lt - 0.7) * 5)) if lt > 0.7 else 0.0
     for i, o in enumerate(S['fins']):
-        on(S, o, S['raft'], (-0.7 + i * 0.75, 0.35, 1.9), ((0.5 * poke if i == 2 else 0.0) + 0.08 * math.sin(t * 2 + i), 0, 0))
-        o.scale = (1.5, 0.2, 1.5)
+        on(S, o, S['raft'], (-0.5 + i * 0.6, 0.35, 2.0), ((0.5 * poke if i == 2 else 0.0) + 0.08 * math.sin(t * 2 + i), 0, 0))
+        o.scale = (0.85, 0.14, 0.85)
     hang(S, S['strips'][:2], -1.7, 0.45, 2.0, t)
     for o in S['strips'][:2]:
         o.scale = (0.24, 0.05, 0.56)
     aboard(S, S['poon'], -1.2, -0.7, 0.4, P('sit', head=(0.1, -0.2), aL=(0.7, 0.0, 1.4, 0.9), aR=(0.7, 0.0, 1.4, 0.9)))
     S['face']['poon'] = 'calm'
-    aboard(S, S['rook'], 1.15, -0.75, PI - 0.9, P('point', aR=(1.9, 0.2 + 0.1 * poke, 0.3), head=(-0.15, -0.5 + 0.9 * ease((lt - 1.6) / 0.4))))
+    aboard(S, S['rook'], 1.7, 0.1, -PI / 2 + 0.5, P('point', aR=(1.9, 0.2 + 0.1 * poke, 0.3), aL=(0.2, 0.3, 0.3), head=(-0.1, 0.9 * ease((lt - 1.6) / 0.4))))
     S['face']['rook'] = 'smirk'
     S['sundisc'].location = (60, 620, 300)
     cam(S, A(lerp(-1.0, -0.2, k), lerp(-7.8, -7.0, k), lerp(2.2, 2.5, k)), A(0.1, -0.2, 2.15), 40)
@@ -1986,14 +2031,14 @@ def swim_round(S, k, t, lt):
     span(S['line'], A(px, py, 0.1), A(0.6, 0.1, DECK + 0.2))
     aboard(S, S['rook'], 0.0, -0.4, a + PI / 2, P('point', aR=(1.4, 0.1, 0.1), aL=(0.2, 0.9, 1.4), head=(0.2, 0.0)))
     S['face']['rook'] = 'smirk'
-    cam(S, A(lerp(8.5, 7.0, k), lerp(-12.5, -11.0, k), lerp(8.5, 7.5, k)), A(0.0, 0.0, 0.4), 32)
+    cam(S, A(lerp(6.5, 5.5, k), lerp(-10.0, -9.0, k), lerp(7.0, 6.2, k)), A(0.0, -0.6, 0.4), 34)
 
 
 def moon_count(S, k, t, lt):
     """He stops tying knots, and counts full moons instead."""
     A = ocean(S, 'night', t, 0.4)
     ride(S, t, 0, 0, 0.15, tilt=0.6)
-    S['moon'].location = (-70, 560, 150)
+    S['moon'].location = (-60, 560, 120)
     S['moon'].scale = (2.2, 2.2, 2.2)
     aboard(S, S['poon'], -1.1, -0.6, PI - 0.25, P('sit', head=(-0.45, 0.0), aL=(0.3, 0.6, 0.3), aR=(0.3, 0.6, 0.3), lean=-0.25))
     S['face']['poon'] = 'calm'
@@ -2004,7 +2049,7 @@ def moon_count(S, k, t, lt):
     S['glow'].location = A(-6, 14, 16)
     S['glow'].data.energy = 26000
     S['glow'].data.color = K.hexc('C8D8FF')[:3]
-    cam(S, A(lerp(1.8, 1.2, k), lerp(-8.6, -7.8, k), lerp(1.9, 2.1, k)), A(-1.6, 18, lerp(6.4, 7.0, k)), 40, fill=1.3)
+    cam(S, A(lerp(1.8, 1.2, k), lerp(-10.0, -9.2, k), lerp(3.6, 3.8, k)), A(-0.6, 8, lerp(3.3, 3.6, k)), 40, fill=1.3)
 
 
 # ---------------------------------------------------------------- long shots: seen, and left
@@ -2046,7 +2091,7 @@ def marker_drop(S, k, t, lt):
     for p in S['props']:
         p.rotation_euler = (t * 40, 0, 0)
     u = min(1.0, lt / 0.9)
-    bx, by = 6.0, 7.0
+    bx, by = 5.2, -2.6
     hz = wave_h(bx, by, t, 0.6)
     S['buoy'].location = A(bx - 3 * (1 - u), by, lerp(14, hz, u * u))
     S['buoy'].rotation_euler = (0.15 * math.sin(t * 2), 0.2 * math.sin(t * 2.6) + 1.2 * (1 - u), 0)
@@ -2055,13 +2100,13 @@ def marker_drop(S, k, t, lt):
         v = min(1.0, (lt - 0.9) / 1.5)
         splash(S, A(bx, by, 0.3), min(1.0, (lt - 0.9) / 0.6), 12, 2.6, size=1.6)
         S['dye'].location = A(bx, by, hz + 0.1)
-        S['dye'].scale = (1 + 4 * v, 1 + 3 * v, 1)
+        S['dye'].scale = (1 + 2.5 * v, 1 + 1.8 * v, 1)
     w = math.sin(t * 9)
     aboard(S, S['poon'], -0.9, 0.2, PI - 0.5, P('up', aL=(2.7, 0.6 + 0.3 * w, 0.2), aR=(2.7, 0.6 - 0.3 * w, 0.2), head=(-0.4, 0.0), lift=0.12 * abs(w)))
     S['face']['poon'] = 'happy'
-    aboard(S, S['rook'], 0.9, -0.5, PI - 0.9, P('point', aR=(1.6, 0.2, 0.1), aL=(0.2, 1.9, 1.6, -1.5), head=(-0.15, -0.2)))
+    aboard(S, S['rook'], 0.9, -0.9, 0.9, P('point', aR=(1.2, 0.2, 0.1), aL=(0.2, 1.9, 1.6, -1.5), head=(0.1, -0.2)))
     S['face']['rook'] = 'shocked'
-    cam(S, A(lerp(-4.0, -3.0, k), lerp(-10.5, -9.5, k), lerp(3.2, 3.6, k)), A(3.0, 5.0, lerp(4.2, 3.4, k)), 30)
+    cam(S, A(lerp(-3.0, -2.0, k), lerp(-11.5, -10.5, k), lerp(3.4, 3.8, k)), A(2.4, 3.0, lerp(4.4, 3.6, k)), 30)
 
 
 def marker_lost(S, k, t, lt):
@@ -2072,7 +2117,7 @@ def marker_lost(S, k, t, lt):
     S['buoy'].rotation_euler = (0.2 * math.sin(t * 1.9), 0.25 * math.sin(t * 2.3), 0)
     S['buoy'].scale = (1.6, 1.6, 1.6)
     S['dye'].location = A(1.5, 1.0, hz + 0.3)
-    S['dye'].scale = (7, 4, 1)
+    S['dye'].scale = (3.6, 2.4, 1)
     S['plane'].location = A(lerp(-90, 60, k), 170, 46)
     S['plane'].rotation_euler = (0.3, 0, 0)
     for p in S['props']:
@@ -2111,11 +2156,11 @@ def shirt_wave(S, k, t, lt):
     aboard(S, S['poon'], -0.5, 0.3, PI - 0.2, P('up', aL=(0.4, 0.4, 0.3), aR=(2.8, 0.3 + 0.5 * w, 0.2), head=(-0.2, 0.0), lL=(0.2 * j, 0.5 * j), lR=(0.2 * j, 0.5 * j)), z=DECK + 0.45 * j)
     S['face']['poon'] = 'happy'
     on(S, S['shirt'], S['poon'].hands[1], (0.25 * w, 0, -0.45), (0, 0.6 * w, 0))
-    S['shirt'].scale = (0.95, 0.05, 0.75)
+    S['shirt'].scale = (1.2, 0.05, 0.95)
     aboard(S, S['rook'], 1.2, -0.5, PI - 0.6, P('up', aL=(2.7, 0.5 + 0.35 * w, 0.2), aR=(2.7, 0.5 - 0.35 * w, 0.2), head=(-0.2, 0.0)), z=DECK + 0.3 * abs(math.cos(t * 6)))
     S['face']['rook'] = 'shocked'
     u = ease(k)
-    bx, by = lerp(26, 14, u), lerp(46, 26, u)
+    bx, by = lerp(-22, -12, u), lerp(44, 26, u)
     S['boat'].location = A(bx, by, wave_h(bx, by, t, 0.5) + 0.25)
     S['boat'].rotation_euler = (0.04 * math.sin(t * 1.6), 0.03 * math.sin(t), lerp(0.3, PI + 0.9, ease(k * 1.4)))
     S['boat'].scale = (1.6, 1.6, 1.6)
@@ -2126,7 +2171,7 @@ def shirt_wave(S, k, t, lt):
         g['root'].location = A(-12 + i * 6 + t * 1.5, 18 + i * 7, 8 + i * 1.5 + 0.5 * math.sin(t * 2 + i))
         g['root'].scale = (2.2, 2.2, 2.2)
         flap(g, t + i * 0.3, 7.5, 0.65)
-    cam(S, A(lerp(-3.4, -2.6, k), lerp(-9.6, -8.8, k), lerp(3.2, 3.6, k)), A(4.5, 18, 3.6), 36, fill=0.8)
+    cam(S, A(lerp(2.4, 1.6, k), lerp(-9.6, -8.8, k), lerp(3.2, 3.6, k)), A(-2.5, 18, 3.6), 36, fill=0.8)
 
 
 # ---------------------------------------------------------------- long shots: ashore
@@ -2136,36 +2181,36 @@ def belem_dock(S, k, t, lt):
     sky(S, 'A8D4EE', 1.0)
     S['fillk'] = 7.0
     S['fill'].data.color = K.hexc('FFF4E0')[:3]
-    S['bboat'].location = (-3.0, 1.1, 0.35 + 0.05 * math.sin(t * 1.5))
+    S['bboat'].location = (-5.5, 0.9, 0.35 + 0.05 * math.sin(t * 1.5))
     S['bboat'].rotation_euler = (0.02 * math.sin(t * 1.3), 0, 0)
-    S['bboat'].scale = (1.5, 1.5, 1.5)
+    S['bboat'].scale = (1.25, 1.25, 1.25)
     u = ease(k * 1.1)
-    S['poon'].place(A(lerp(-2.4, 0.6, u), lerp(2.4, 4.6, u), lerp(1.75, 1.4, min(1, u * 2.5))), PI - 0.6)
+    S['poon'].place(A(lerp(-2.6, 0.4, u), lerp(2.6, 4.6, u), lerp(1.6, 1.4, min(1, u * 2.5))), PI / 2 + 0.5)
     pw = walk(t, 0.9)
     S['poon'].apply(P('stand', lL=pw['lL'], lR=pw['lR'], aL=(0.2, 0.3, 0.3), aR=(0.3, 0.2, 0.4), lean=0.14, head=(0.1, 0.0)))
     S['face']['poon'] = 'tired'
     S['men'][0].root.parent = S['bboat']
-    S['men'][0].place((1.4, 0.3, 0.9), PI - 0.2)
+    S['men'][0].place((1.9, 0.3, 0.9), PI / 2)
     S['men'][0].apply(P('stand', aR=(1.2, 0.2, 0.4), head=(0.0, 0.0)))
-    S['men'][0].root.scale = (0.7, 0.7, 0.7)
+    S['men'][0].root.scale = (0.8, 0.8, 0.8)
     S['men'][1].root.parent = S['bboat']
     S['men'][1].place((-1.6, 0.2, 0.9), PI)
     S['men'][1].apply(P('hips'))
-    S['men'][1].root.scale = (0.7, 0.7, 0.7)
-    S['ex'][0].place(A(3.6, 5.2, 1.4), 1.0)
+    S['men'][1].root.scale = (0.8, 0.8, 0.8)
+    S['ex'][0].place(A(3.6, 5.2, 1.4), -PI / 2 - 0.3)
     S['ex'][0].apply(P('stand', aR=(1.0, 0.2, 0.9), head=(0.05, 0.0)))
-    S['ex'][1].place(A(4.9, 5.9, 1.4), 0.9)
+    S['ex'][1].place(A(4.9, 6.3, 1.4), -PI / 2 - 0.1)
     S['ex'][1].apply(P('stand', aL=(0.8, 0.1, 1.2), aR=(0.8, 0.1, 1.2), head=(0.05, 0.0)))
-    S['ex'][2].place(A(-6.4, 6.4, 1.4), -0.6)
+    S['ex'][2].place(A(-1.5, 8.4, 1.4), 0.3)
     S['ex'][2].apply(P('hips', head=(0.0, 0.0)))
-    S['ex'][3].place(A(8.2, 7.4, 1.4), 0.7)
+    S['ex'][3].place(A(2.2, 8.8, 1.4), 0.2)
     S['ex'][3].apply(P('point', aR=(1.4, 0.2, 0.1)))
     tip = ease((lt - 0.6) / 0.6)
-    S['rook'].place(A(-3.4, 5.0, 1.4), -0.5)
-    S['rook'].apply(blend(P('stand', head=(0.0, -0.4)), P('hat', head=(0.15, -0.4)), tip))
+    S['rook'].place(A(4.6, 3.9, 1.4), 0.9)
+    S['rook'].apply(blend(P('stand', head=(0.0, 0.5)), P('hat', head=(0.15, 0.5)), tip))
     S['hat_tip'] = tip * 0.6
     S['face']['rook'] = 'warm'
-    cam(S, A(lerp(-1.6, 0.2, k), lerp(-8.6, -7.6, k), lerp(3.2, 3.5, k)), A(0.6, 4.6, 3.0), 32, fill=0.6)
+    cam(S, A(lerp(9.6, 8.6, k), lerp(-1.6, -0.8, k), lerp(3.6, 3.9, k)), A(0.2, 5.0, 2.9), 32, fill=0.6)
 
 
 def ward(S, k, t, lt):
@@ -2207,7 +2252,7 @@ def medal(S, k, t, lt):
     seat(S['ex'][2], A(-1.8, -0.6, 0.77), PI, aL=(0.9, 0.1 + cl, 1.4, 0.8), aR=(0.9, 0.1 + cl, 1.4, 0.8), head=(-0.1, 0.0))
     seat(S['ex'][3], A(3.6, -0.6, 0.77), PI, aL=(0.9, 0.1 + cl, 1.4, 0.8), aR=(0.9, 0.1 + cl, 1.4, 0.8), head=(-0.1, 0.0))
     seat(S['ex'][1], A(1.8, -2.4, 0.77), PI, aL=(0.9, 0.1, 1.4, 0.8), aR=(0.9, 0.1, 1.4, 0.8), head=(-0.1, 0.0))
-    cam(S, A(lerp(1.2, 0.2, k), lerp(-8.4, -7.2, k), lerp(3.4, 3.2, k)), A(-1.0, 4.1, 2.9), 34)
+    cam(S, A(lerp(0.9, 0.1, k), lerp(-5.6, -4.8, k), lerp(3.6, 3.4, k)), A(-1.2, 4.1, 3.0), 36)
 
 
 def watch(S, k, t, lt):
@@ -2216,19 +2261,19 @@ def watch(S, k, t, lt):
     for hnd in ('hand_p', 'hand_o'):
         S[hnd].root.scale = (1.5, 1.5, 1.5)
     u = ease(lt / 0.7)
-    S['hand_o'].place(A(lerp(2.2, 0.75, u), 3.0, 2.6), (0, PI, -PI / 2))
+    S['hand_o'].place(A(lerp(2.0, 0.62, u), 3.0, 2.6), (0, PI, -PI / 2))
     S['hand_o'].grip(0.25)
-    S['hand_p'].place(A(lerp(-2.4, -0.85, u), 3.0, 2.35), (0, PI, PI / 2))
+    S['hand_p'].place(A(lerp(-2.2, -0.7, u), 3.0, 2.38), (0, PI, PI / 2))
     S['hand_p'].grip(0.2 + 0.3 * ease((lt - 1.0) / 0.4))
     v = ease((lt - 0.9) / 0.5)
-    S['watch'].location = A(lerp(lerp(2.2, 0.75, u) - 0.75, -0.15, v), 3.0, 2.72 - 0.2 * v + 0.25 * math.sin(PI * v))
+    S['watch'].location = A(lerp(lerp(2.0, 0.62, u) - 0.62, -0.2, v), 2.9, 2.74 - 0.2 * v + 0.25 * math.sin(PI * v))
     S['watch'].rotation_euler = (0.5, 0.0, 0.3 + 0.2 * math.sin(t * 2))
-    sc = 2.6 + 0.3 * math.sin(t * 5)
+    sc = 1.5 + 0.15 * math.sin(t * 5)
     S['watch'].scale = (sc, sc, sc)
     S['glow'].location = A(0, 1.2, 3.2)
-    S['glow'].data.energy = 300
+    S['glow'].data.energy = 40
     S['glow'].data.color = K.hexc('FFE0A0')[:3]
-    cam(S, A(lerp(0.5, 0.1, k), lerp(-2.6, -1.9, k), lerp(2.9, 2.75, k)), A(0, 3.0, 2.55), 45, 0.04)
+    cam(S, A(lerp(0.5, 0.1, k), lerp(-0.9, -0.4, k), lerp(3.0, 2.9, k)), A(0, 3.0, 2.55), 45, 0.04)
 
 
 def flat_feet(S, k, t, lt):
@@ -2261,7 +2306,7 @@ def brooklyn(S, k, t, lt):
         S['rook'].apply(blend(P('sit', aL=(0.6, 0.0, 1.5, 1.0), aR=(0.6, 0.0, 1.5, 1.0), head=(0.3, -0.4)), P('sit', aL=(0.6, 0.0, 1.5, 1.0), aR=(0.2, 1.9, 1.6, -1.5), head=(0.3, 0.0)), tip))
         S['hat_tip'] = tip * 0.7
     S['face']['rook'] = 'warm' if not gone else 'sad'
-    cam(S, A(lerp(0.2, -0.8, k), lerp(-6.6, -5.6, k), lerp(2.3, 2.5, k)), A(-2.1, 4.4, 2.45), 36)
+    cam(S, A(lerp(-0.4, -1.2, k), lerp(-3.4, -2.6, k), lerp(2.2, 2.4, k)), A(-2.1, 4.4, 2.3), 40)
 
 
 def shark_won(S, k, t, lt):
@@ -2302,11 +2347,11 @@ def photo_thumb(S, k, t, lt):
     aboard(S, S['poon'], -0.9, -0.9, 0.35, P('stand', aL=(1.1, 0.2, 0.7), aR=(1.1, 0.2, 0.7), lean=0.25, lL=(0.4, 0.6), lR=(0.1, 0.3), head=(0.05, 0.3)))
     S['face']['poon'] = 'scared'
     on(S, S['line'], S['raft'], (0, 0, 0))
-    span(S['line'], (-1.05, -1.65, DECK + 1.5), (-2.6, -4.2, -0.3))
+    span(S['line'], (-1.05, -1.65, DECK + 1.5), (0.2, -4.4, -0.3))
     aboard(S, S['rook'], 1.0, -0.6, 0.0, P('hat', aL=(0.3, 0.9, 1.3), lL=(0.9, 1.5), lift=0.3, head=(0.2, 0.3)))
     S['face']['rook'] = 'shocked'
-    S['shark'].location = A(-3.9, -3.2, 0.25)
-    S['shark'].rotation_euler = (0, 0, 2.2)
+    S['shark'].location = A(1.6, -4.6, 0.3)
+    S['shark'].rotation_euler = (0, 0, 0.5)
     S['shark'].scale = (1.5, 1.5, 1.5)
     feathers(S, A(1.4, -0.9, 3.3), 0.45, 4)
     cam(S, A(5.2, -10.5, 3.6), A(2.6, -0.8, 1.9), 40)

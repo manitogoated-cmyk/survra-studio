@@ -222,7 +222,7 @@ def hainan(cv, c):
         path = poly([px(*p) for p in pts])
         cv.drawPath(path, P(h(col)))
         cv.drawPath(path, P(h('5E4E2A'), 6))
-    T(cv, 'CHINA', px(110, 23.4)[0], px(110, 23.4)[1], 110, h('5E4E2A'), None)
+    T(cv, 'CHINA', px(111.6, 22.55)[0], px(111.6, 22.55)[1], 110, h('5E4E2A'), None)
     T(cv, 'SOUTH CHINA SEA', px(113.6, 19.4)[0], px(113.6, 19.4)[1], 44, 0x88DFF4FF, None)
     hx, hy = px(109.8, 19.2)
     k = pop(c.lt, 0.25, 0.2)
@@ -248,15 +248,15 @@ SAMER = [(-70, 12), (-62, 10.7), (-57, 6), (-55.2, 5.9), (-52, 4.6), (-50, 0.5),
 def map_route(cv, c):
     """Sketch of the South Atlantic: Cape Town toward Suriname, and where she was sunk. Not to scale."""
     sea(cv)
-    px = lambda lon, lat: (960 + (lon + 20) * 19.5, 420 - (lat + 13) * 19.5)
+    px = lambda lon, lat: (960 + (lon + 20) * 15.5, 440 + (-13 - lat) * 15.5)
     for pts in (AFRICA, SAMER):
         path = poly([px(*p) for p in pts])
         cv.drawPath(path, P(h('D8C890')))
         cv.drawPath(path, P(h('5E4E2A'), 6))
     cv.drawLine(0, px(0, 0)[1], W, px(0, 0)[1], P(0x55BFE6F2, 3))
     T(cv, 'EQUATOR', 960, px(0, 0)[1] - 12, 26, 0x99BFE6F2, None)
-    T(cv, 'AFRICA', px(19, -8)[0], px(19, -8)[1], 64, h('5E4E2A'), None)
-    T(cv, 'SOUTH AMERICA', px(-56, -12)[0], px(-56, -12)[1], 56, h('5E4E2A'), None)
+    T(cv, 'AFRICA', px(19.5, -8)[0], px(19.5, -8)[1], 60, h('5E4E2A'), None)
+    T(cv, 'SOUTH AMERICA', px(-55, -12)[0], px(-55, -12)[1], 50, h('5E4E2A'), None)
     T(cv, 'SOUTH ATLANTIC', px(-12, -26)[0], px(-12, -26)[1], 44, 0x88DFF4FF, None)
     a, x_, b = px(18.4, -33.9), px(-38.75, 0.5), px(-55.2, 5.9)
     k = ease(c.k / 0.62)
@@ -266,15 +266,15 @@ def map_route(cv, c):
             break
         cv.drawCircle(lerp(a[0], x_[0], u), lerp(a[1], x_[1], u) - 40 * math.sin(u * math.pi), 8, P(WHITE))
     cv.drawCircle(a[0], a[1], 16, P(AMBER))
-    fit(cv, 'CAPE TOWN', a[0] - 30, a[1] + 78, 54, 420, WHITE)
-    fit(cv, 'LEFT 10 NOV 1942', a[0] - 30, a[1] + 128, 38, 420, AMBER)
+    fit(cv, 'CAPE TOWN', a[0] - 210, a[1] + 14, 54, 420, WHITE)
+    fit(cv, 'LEFT 10 NOV 1942', a[0] - 210, a[1] + 62, 38, 420, AMBER)
     cv.drawCircle(b[0], b[1], 14, P(0xFFFFFFFF, 6))
-    fit(cv, 'SURINAME', b[0] - 20, b[1] - 34, 46, 340, WHITE)
+    fit(cv, 'SURINAME', b[0] + 40, b[1] - 34, 46, 340, WHITE)
     if k >= 1:
         kk = pop(c.k, 0.64, 0.08)
         cv.drawLine(x_[0] - 26 * kk, x_[1] - 26 * kk, x_[0] + 26 * kk, x_[1] + 26 * kk, P(RED, 13))
         cv.drawLine(x_[0] - 26 * kk, x_[1] + 26 * kk, x_[0] + 26 * kk, x_[1] - 26 * kk, P(RED, 13))
-        fit(cv, 'SUNK 23 NOV', x_[0] + 230, x_[1] + 16, 54, 380, WHITE)
+        fit(cv, 'SUNK 23 NOV', x_[0] + 215, x_[1] - 30, 54, 380, WHITE)
         for i in range(8):
             u = i / 8
             cv.drawCircle(lerp(x_[0], b[0], u + 0.1), lerp(x_[1], b[1], u + 0.1), 5, P(0x66FFFFFF))
@@ -412,7 +412,7 @@ def map_drift(cv, c):
     path = poly([px(*p) for p in LAND])
     cv.drawPath(path, P(h('D8C890')))
     cv.drawPath(path, P(h('5E4E2A'), 6))
-    T(cv, 'BRAZIL', px(-47, -6.6)[0], px(-47, -6.6)[1], 110, h('5E4E2A'), None)
+    T(cv, 'BRAZIL', px(-49.5, -5.0)[0], px(-49.5, -5.0)[1], 96, h('5E4E2A'), None)
     T(cv, 'ATLANTIC OCEAN', 1300, 240, 46, 0x88DFF4FF, None)
     a, b = px(-38.75, 0.5), px(-47.3, -0.45)
     k = ease(c.k / 0.6)
@@ -504,9 +504,9 @@ def quota(cv, c):
         cv.drawLine(-580, 170 + i * 50, 300 - i * 120, 170 + i * 50, P(h('C8B88E'), 12))
     cv.restore()
     if c.k > 0.2:
-        stamp(cv, 'QUOTA FULL', 1180, 420, -9, min(1, (c.k - 0.2) / 0.06), 110, RED, 0x00000000)
+        stamp(cv, 'QUOTA FULL', 1290, 330, -9, min(1, (c.k - 0.2) / 0.06), 100, RED, 0xEEF1E6CC)
     if c.k > 0.62:
-        stamp(cv, 'SPECIAL EXCEPTION', 900, 640, 6, min(1, (c.k - 0.62) / 0.06), 100, GREEN, 0xEEF1E6CC)
+        stamp(cv, 'SPECIAL EXCEPTION', 960, 690, 4, min(1, (c.k - 0.62) / 0.06), 96, GREEN, 0xEEF1E6CC)
     sketch_note(cv, 'ILLUSTRATION, NOT A REAL FORM')
 
 
@@ -551,7 +551,7 @@ def record(cv, c):
     cv.restore()
     T(cv, 'ALONE ON A RAFT', 960, 580, 90, WHITE, BLACK)
     if c.k > 0.55:
-        stamp(cv, 'STILL THE RECORD', 960, 300, -7, min(1, (c.k - 0.55) / 0.08), 96, AMBER)
+        stamp(cv, 'STILL THE RECORD', 960, 740, -4, min(1, (c.k - 0.55) / 0.08), 90, AMBER)
 
 
 def board_true(cv, c):
@@ -638,7 +638,7 @@ def THUMB(cv, c):
     else:
         cv.clear(h('7EC0EE'))
     cv.drawRect(skia.Rect(0, 0, 1280, 720), skia.Paint(Shader=skia.GradientShader.MakeLinear(
-        [(660, 0), (1020, 0)], [0x00000000, 0xC8000000])))
-    T(cv, '133 DAYS', 975, 300, 138, AMBER, BLACK)
-    T(cv, 'ALONE', 975, 440, 138, WHITE, BLACK)
-    T(cv, 'ON A RAFT', 975, 540, 70, WHITE, BLACK)
+        [(640, 0), (960, 0)], [0x00000000, 0xC8000000])))
+    T(cv, '133 DAYS', 990, 250, 108, AMBER, BLACK)
+    T(cv, 'ALONE', 990, 390, 138, WHITE, BLACK)
+    T(cv, 'ON A RAFT', 990, 490, 70, WHITE, BLACK)
