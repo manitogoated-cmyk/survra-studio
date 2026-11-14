@@ -1,0 +1,31 @@
+{
+  "id": "r007-rankin-long", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9,
+  "segments": [
+    {"scene": "hook", "mood": "hook", "text": "A pilot ejects fourteen kilometres up, with no pressure suit, and falls into a thunderstorm. The storm throws him back up. Again and again."},
+    {"scene": "hook2", "mood": "tense", "text": "A fall that should take minutes lasts forty. Then the storm lets him go."},
+    {"scene": "doubt", "mood": "calm", "text": "No chance. Storms don't hold on to people. Let's go look."},
+    {"scene": "who", "mood": "calm", "text": "His name is William Rankin. Lieutenant Colonel, United States Marine Corps. A veteran of World War Two and Korea, with about a hundred combat missions behind him."},
+    {"scene": "flight", "mood": "calm", "text": "The twenty-sixth of July, {1959|nineteen fifty-nine}. Two F-8 Crusader jets leave South Weymouth, Massachusetts, for Beaufort, South Carolina. Rankin leads. His wingman is Lieutenant Herbert Nolan."},
+    {"scene": "climb", "mood": "tense", "text": "Ahead, a thunderhead tops out around forty-five thousand feet. So they climb over it, to forty-seven thousand, just under the speed of sound."},
+    {"scene": "engine", "mood": "action", "text": "Then, a thump, and a grinding from the engine. The fire warning light comes on. The engine stops."},
+    {"scene": "handle", "mood": "tense", "text": "He reaches for the emergency power handle. It snaps off in his hand. Not a great sign."},
+    {"scene": "radio", "mood": "tense", "text": "He radios Nolan: power failure, he may have to eject. He has no pressure suit. Just a flight suit, a helmet and an oxygen mask."},
+    {"scene": "eject", "mood": "action", "text": "Around six in the evening, he pulls the handles."},
+    {"scene": "cold", "mood": "tense", "text": "The air outside is around fifty below zero. The blast rips off his left glove, and that hand goes numb. The pressure drop swells his belly until, he said, it felt twice its size."},
+    {"scene": "freefall", "mood": "tense", "text": "He gets his mask on and breathes his emergency oxygen. His parachute is set to open by itself at ten thousand feet, where the air is thick enough to breathe. Until then, he can only fall. About three and a half minutes."},
+    {"scene": "open", "mood": "action", "text": "He drops into the cloud. Then, a jolt. The parachute is open, far too high. By most accounts, the storm's wild air pressure tripped the release early."},
+    {"scene": "up", "mood": "action", "text": "Now the storm has something to hold. Updrafts fling him up, then drop him, as much as six thousand feet at a time. He compared it to a very fast elevator."},
+    {"scene": "hail", "mood": "action", "text": "Hail pounds him, and he worries it will shred the canopy. Lightning stands around him in blue blades, several feet thick. He does not hear the thunder. He feels it."},
+    {"scene": "rain", "mood": "tense", "text": "The rain is so thick that a breath brings a mouthful of water. He holds his breath, afraid he will drown up here."},
+    {"scene": "sheet", "mood": "tense", "text": "Once, the parachute collapses and drapes over him like a sheet. Then it fills again. He gets seasick. So do I."},
+    {"scene": "time", "mood": "tense", "text": "The fall should have ended long ago. The storm keeps him for forty minutes."},
+    {"scene": "out", "mood": "calm", "text": "Then the air calms, and it is only rain. He comes out under the cloud, a few hundred feet above North Carolina."},
+    {"scene": "tree", "mood": "action", "text": "A gust swings him into the trees. The parachute snags, and he hits a trunk head first. His helmet takes it. His watch says six forty."},
+    {"scene": "road", "mood": "calm", "text": "He walks until he finds a country road. About a dozen cars pass a battered man in a flight suit. Not one stops."},
+    {"scene": "boy", "mood": "calm", "text": "Then one slows down. Time magazine reported that a small boy inside had spotted a jet pilot standing in the road."},
+    {"scene": "store", "mood": "calm", "text": "They take him to a country store. He lies down on the floor and waits for the ambulance to the hospital at Ahoskie."},
+    {"scene": "ward", "mood": "calm", "text": "Frostbite. Welts and bruises from the hail. Decompression shock. He spends weeks in hospital. And then he goes back to flying."},
+    {"scene": "after", "mood": "wonder", "text": "The next year he tells it all in a book, The Man Who Rode the Thunder. He retires from the Marines in {1964|nineteen sixty-four}, and dies in {2009|two thousand nine}, almost exactly fifty years after the storm."},
+    {"scene": "end", "mood": "end", "text": "Fourteen kilometres up, forty minutes inside a thunderstorm, and he walked to the road himself. I was wrong. Case closed."}
+  ]
+}
