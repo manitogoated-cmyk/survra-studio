@@ -260,7 +260,7 @@ def board_true(cv, c):
         note(cv, 540, 1180, 760, 180, 3, h('FFD866'), ['AT SEA UNTIL 1950'], 84)
     for i in range(3):
         liner_icon(cv, 240 + i * 300, 1620, 250, hull=0xFFECE8DC if i == 2 else 0xFF0E1016)
-        tick(cv, 240 + i * 300, 1690, 90, (c.lt - 0.2 - i * 0.05) / 0.08)
+        tick(cv, 250 + i * 300, 1690, 54, (c.lt - 0.2 - i * 0.05) / 0.08)
     if c.lt > 0.34:
         stamp(cv, 'TRUE', 560, 600, -10, min(1, (c.lt - 0.34) / 0.12), 170)
 

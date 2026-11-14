@@ -19,8 +19,8 @@ from engine4.kit3d import P, add, blend, empty, lerp, light, walk
 PI = math.pi
 ORG = dict(quay=(0, 0, 0), ice=(3000, 0, 0), isle=(6000, 0, 0), shore=(9000, 0, 0), cabin=(12000, 0, 0), deep=(15000, 0, 0))
 FAR = (0, 0, -2000)
-HOST = {'boat_pov', 'vi_jump', 'rook_quay', 'rook_gangway', 'vi_tray', 'deck_jolt', 'vi_berth', 'boat_lower', 'baby', 'tit_sink',
-        'vi_brush', 'rook_brush', 'rook_dive', 'vi_rescued', 'rook_shock', 'rook_wrong', 'signoff'}
+HOST = {'props_pull', 'boat_pov', 'vi_jump', 'rook_deck', 'rook_quay', 'rook_gangway', 'vi_tray', 'deck_jolt', 'vi_berth', 'boat_lower', 'baby', 'tit_sink',
+        'vi_brush', 'rook_brush', 'vi_rescued', 'rook_shock', 'rook_wrong', 'signoff'}
 ROOK = dict(top='566178', belt='3E4658', lap='6B7690', pants='2A2742', hand='2F2B4D', boot='8A90A6')
 SKIN = 'E8BE9C'
 DRESS = '27304A'
@@ -761,13 +761,20 @@ def crew_in(S, b, i, x, y, pose, yaw=0.0):
 
 def props_pull(S, k, t, lt):
     A, Sp = stern_scene(S, t)
-    b, _ = boat_at(S, 0, A(-21, lerp(160, 147, k), 0.25), 0.25, t, 1.6)
+    v2 = S['prm'].get('v') == 2
+    y = lerp(149, 141, k) if v2 else lerp(160, 147, k)
+    b, B = boat_at(S, 0, A(-19 if v2 else -21, y, 0.25), 0.25, t, 1.6)
     vi_look(S, vest=True, sit=True)
-    seat(S['vi'], b, 0.0, 0.2, 0.0, SIT_UP)
+    seat(S['vi'], b, -0.7, 0.2, 0.0, SIT_UP)
     S['face']['vi'] = 'scared'
+    seat(S['rook'], b, 0.75, 0.6, 0.0, SIT_HAT)
+    S['face']['rook'] = 'shocked'
     crew_in(S, b, 0, 0.0, -2.8, blend(ROW, SIT_UP, 0.5 + 0.5 * math.sin(lt * 9)))
-    crew_in(S, b, 1, 0.0, 2.9, SIT_UP)
-    cam(S, A(lerp(-36, -33, k), lerp(176, 170, k), 1.9), A(-5, 112, 7.0), 30)
+    crew_in(S, b, 1, 0.0, 3.2, SIT_UP)
+    if v2:
+        cam(S, A(lerp(-27.5, -26.5, k), lerp(160.5, 157.0, k), 2.6), A(-10, 118, 6.5), 30)
+    else:
+        cam(S, A(lerp(-36, -33, k), lerp(176, 170, k), 1.9), A(-5, 112, 7.0), 30)
 
 
 def boat_pov(S, k, t, lt):
@@ -786,10 +793,10 @@ def boat_pov(S, k, t, lt):
     f = S['fprop']
     if v2:
         f.location = A(-8.6, 139.0, 6.6)
-        cam(S, A(lerp(-4.0, -4.3, k), lerp(131.6, 132.2, k), 2.5), B(0.75, -0.2, 2.75), 45)
+        cam(S, A(lerp(-4.0, -4.3, k), lerp(131.6, 132.2, k), 2.5), B(0.75, -0.2, 2.2), 45)
     else:
         f.location = A(2.6, 132.0, 8.6)
-        cam(S, A(-4.6, lerp(126.6, 127.8, k), 2.3), B(0.0, -0.3, 2.8), 30)
+        cam(S, A(-4.6, lerp(126.6, 127.8, k), 2.3), B(0.0, -0.3, 2.45), 30)
     f.rotation_euler = (0.12, t * 6.5, 0.35)
 
 
@@ -820,19 +827,6 @@ def vi_jump(S, k, t, lt):
     else:
         cam(S, A(lerp(-18.5, -17.5, k), lerp(153.5, 152, k), 1.2), B(-2.6, 0.0, 3.0), 38)
 
-
-def rook_dive(S, k, t, lt):
-    A, Sp = stern_scene(S, t)
-    b, B = boat_at(S, 0, A(-10, 139, 0.25), 0.5, t, 2.0)
-    u = ease(lt / 0.75)
-    p0, p1 = Vector(B(1.6, 0.4, 1.3)), Vector(B(6.4, -0.6, -0.6))
-    pos = p0.lerp(p1, u) + Vector((0, 0, 5.0 * u * (1 - u)))
-    S['rook'].place(tuple(pos), -PI / 2 + 0.3)
-    S['rook'].root.rotation_euler = (0.5 * u, 0, -PI / 2 + 0.3 - 1.2 * u)
-    S['rook'].apply(P('hat', lL=(0.9, 1.4), lR=(0.5, 1.0), lean=0.2))
-    S['face']['rook'] = 'shocked'
-    feather(S, tuple(p0 + Vector((0, 0, 2.6))), lt, 0.1)
-    cam(S, A(lerp(4.5, 3.5, k), lerp(154.0, 152.5, k), 1.2), (pos[0] - 1.0, pos[1], lerp(3.2, 2.4, k)), 46)
 
 
 def stern_up(S, k, t, lt):
@@ -948,7 +942,7 @@ def signoff(S, k, t, lt):
         S['key'].rotation_euler = (0, lt * 2 * pocket, 0.6 + lt * 3 * pocket)
         S['glow'].location = A(27.0, -35.6, 9.4)
         S['glow'].data.energy = 90
-    cam(S, A(lerp(25.6, 26.2, k), lerp(-38.6, -37.8, k), 8.0), A(28.8, -34.4, 7.9), 34, fcol='FFE0C0')
+    cam(S, A(lerp(25.6, 26.2, k), lerp(-38.6, -37.8, k), 8.0), A(28.8, -34.4, 7.3), 34, fcol='FFE0C0')
 
 
 # ---------------------------------------------------------------- 1911: the collision
@@ -1091,17 +1085,24 @@ def cabin(S, day=False):
 
 def vi_berth(S, k, t, lt):
     A = cabin(S)
-    hit = ease((lt - 0.3) / 0.15)
-    S['cab_swing'].rotation_euler = (0, 0.5 * math.sin((lt - 0.3) * 9) * math.exp(-max(0, lt - 0.3) * 1.2) if lt > 0.3 else 0.0, 0)
+    hit = ease((lt - 1.05) / 0.15)
+    sw = 0.06 * math.sin(lt * 3.0)
+    if lt > 1.05:
+        sw = 0.5 * math.sin((lt - 1.05) * 9) * math.exp(-(lt - 1.05) * 1.2)
+    S['cab_swing'].rotation_euler = (0, sw, 0)
     vi_look(S, sit=True, cap=False)
     S['vi'].place(A(-2.35, 4.4, 1.45), PI / 2)
-    S['vi'].apply(blend(P('sit', head=(0.3, 0.2)), P('sit', aL=(0.5, 0.5, 0.6), aR=(0.5, 0.5, 0.6), lean=0.0, head=(-0.4, -0.5)), hit))
+    S['vi'].apply(blend(P('sit', head=(0.3, 0.2 + 0.15 * math.sin(lt * 2.5))), P('sit', aL=(0.5, 0.5, 0.6), aR=(0.5, 0.5, 0.6), lean=0.0, head=(-0.4, -0.5)), hit))
     S['face']['vi'] = 'scared' if hit > 0.5 else 'tired'
     S['rook'].place(A(-0.5, 8.3, 0), 0.25)
-    S['rook'].apply(blend(P('cross'), P('stand', aL=(0.5, 1.0, 0.5), aR=(0.5, 1.0, 0.5), head=(-0.55, 0.0)), hit))
+    S['rook'].apply(blend(P('stand', aR=(0.8, 0.1, 1.3, 0.2), aL=(0.3, 0.2, 0.4), head=(0.0, 0.3)), P('stand', aL=(0.5, 1.0, 0.5), aR=(0.5, 1.0, 0.5), head=(-0.55, 0.0)), hit))
     S['face']['rook'] = 'shocked' if hit > 0.5 else 'deadpan'
-    feather(S, A(-0.2, 8.0, 3.3), lt, 0.4)
-    cam(S, A(1.7, lerp(-0.3, 0.3, k), 3.4), A(-1.4, 6.5, 3.0), 24, roll=0.05 * hit * math.sin(lt * 12), fcol='FFE0C0')
+    if hit < 0.2:
+        u = (lt * 1.6) % 1
+        S['coin'].location = A(-0.15, 7.75, 1.85 + 2.6 * u * (1 - u))
+        S['coin'].rotation_euler = (lt * 30, 0, 0)
+    feather(S, A(-0.2, 8.0, 3.3), lt, 1.15)
+    cam(S, A(1.7, lerp(-0.6, 0.5, k), 3.4), A(-1.4, 6.5, 3.0), 24, roll=0.05 * hit * math.sin(lt * 12), fcol='FFE0C0')
 
 
 def davit_scene(S, t, zb, k, xb=16.7):
@@ -1235,11 +1236,33 @@ def brush_close(S, k, t, lt):
 def rook_brush(S, k, t, lt):
     A = cabin(S, day=True)
     S['rook'].place(A(-0.9, 9.4, 0), 0.1)
-    sh = ease(lt / 0.25)
+    sh = ease(lt / 0.12)
     S['rook'].apply(blend(P('point', aR=(1.3, -0.5, 0.1), head=(0.0, -0.4)), P('shrug', head=(0.05, 0.15)), sh))
     S['face']['rook'] = 'deadpan'
-    S['hat_tip'] = ease((lt - 0.5) / 0.3)
-    cam(S, A(lerp(0.4, 0.2, k), lerp(4.6, 5.2, k), 3.0), A(-0.9, 9.4, 3.15), 42, roll=0.07, fcol='FFF0DC')
+    S['hat_tip'] = ease((lt - 0.2) / 0.15)
+    cam(S, A(lerp(0.4, 0.2, k), lerp(4.6, 5.2, k), 3.0), A(-0.9, 9.4, 2.85), 42, roll=0.07, fcol='FFF0DC')
+
+
+def rook_deck(S, k, t, lt):
+    A, Sp = aegean(S, t)
+    funnel_smoke(S, Sp, t)
+    turn = ease((lt - 0.6) / 0.25)
+    S['rook'].place(A(9.6, -20.4, BOATDECK), PI - 0.5)
+    S['rook'].apply(blend(P('stand', aR=(0.8, 0.1, 1.3, 0.2), aL=(0.3, 0.2, 0.4), head=(0.0, 0.2)), P('stand', aR=(0.5, -0.1, 1.5, 1.0), aL=(0.3, 0.2, 0.4), head=(0.0, -1.0)), turn))
+    S['face']['rook'] = 'deadpan'
+    if turn < 0.3:
+        u = (lt * 1.7) % 1
+        S['coin'].location = A(9.25, -19.85, BOATDECK + 1.8 + 2.8 * u * (1 - u))
+        S['coin'].rotation_euler = (lt * 30, 0, 0)
+    cam(S, A(lerp(7.4, 7.7, k), lerp(-12.6, -13.4, k), 27.5), A(9.0, -20.4, 27.25), 32)
+
+
+def brit_side(S, k, t, lt):
+    A, Sp = aegean(S, t, y=lerp(40, 10, k))
+    for i in range(6):
+        u = (t * 0.9 + i * 0.17) % 1
+        puff(S, i, A(15.5 + 2.5 * u, -70 + i * 22 + 26 * u, 0.5), 1.0 + 1.8 * u, 0.4)
+    cam(S, A(lerp(27, 25, k), -78, lerp(2.2, 3.2, k)), A(11, 10, 17), 26)
 
 
 # ---------------------------------------------------------------- pulled out of the water
@@ -1267,7 +1290,7 @@ def vi_rescued(S, k, t, lt):
         u = (t * 1.0 + i * 0.2) % 1
         a = i * 1.3
         puff(S, i, B(-2.5 + math.cos(a) * 1.2 * u, -0.4 + math.sin(a) * 1.2 * u, 0.15), 0.3 + 0.5 * u, 0.3)
-    cam(S, A(lerp(-66.6, -66.0, k), lerp(226.0, 226.6, k), 1.1), B(-1.3, 0.3, 2.0), 32)
+    cam(S, A(lerp(-66.6, -66.0, k), lerp(226.0, 226.6, k), 1.1), B(-1.3, 0.3, 1.25), 32)
 
 
 def vi_alive(S, k, t, lt):
@@ -1278,7 +1301,7 @@ def vi_alive(S, k, t, lt):
     seat(S['vi'], b, 0.0, -0.3, 0.0, blend(P('sit', head=(0.4, 0.0)), P('sit', head=(-0.05, 0.1), lean=0.1), op))
     S['face']['vi'] = 'warm' if op > 0.5 else 'shut'
     seat(S['crew'][0], b, 0.0, 2.8, PI, blend(ROW, P('sit', aL=(1.2, 0.2, 1.3), aR=(1.2, 0.2, 1.3), lean=-0.1), 0.5 + 0.5 * math.sin(t * 4)))
-    cam(S, B(lerp(0.9, 0.6, k), lerp(-4.6, -4.0, k), 2.5), B(0.0, -0.3, 2.75), 50, fcol='FFF0DC')
+    cam(S, B(lerp(0.9, 0.6, k), lerp(-4.6, -4.0, k), 2.5), B(0.0, -0.3, 2.2), 50, fcol='FFF0DC')
 
 
 def rook_shock(S, k, t, lt):
@@ -1288,7 +1311,7 @@ def rook_shock(S, k, t, lt):
     seat(S['rook'], b, 0.0, 2.7, 0.0, blend(P('sit', aL=(0.5, -0.05, 1.7, 1.3), aR=(0.42, -0.05, 1.8, 1.3)), P('sit', aL=(0.5, 1.1, 0.6), aR=(0.5, 1.1, 0.6), lean=0.0, head=(-0.12, 0.0)), pop))
     S['face']['rook'] = 'shocked' if pop > 0.3 else 'deadpan'
     feather(S, B(0.3, 2.4, 3.1), lt, 0.1)
-    cam(S, B(lerp(1.3, 1.0, k), lerp(-1.6, -1.0, k), 2.5), B(0.0, 2.7, 2.7), 45, fcol='FFF0DC')
+    cam(S, B(lerp(1.3, 1.0, k), lerp(-1.6, -1.0, k), 2.5), B(0.0, 2.7, 2.1), 45, fcol='FFF0DC')
 
 
 # ---------------------------------------------------------------- photographs for the case board
@@ -1303,11 +1326,11 @@ def photo_vi(S, k, t, lt):
     S['vi'].place(A(-8.0, -18, BOATDECK), 0.15)
     S['vi'].apply(P('stand', aL=(0.6, -0.15, 1.1, 0.8), aR=(0.6, -0.15, 1.1, 0.8)))
     S['face']['vi'] = 'warm'
-    cam(S, A(-8.6, -22.6, 27.3), A(-8.0, -18, 27.35), 50)
+    cam(S, A(-8.8, -24.2, 27.7), A(-8.0, -18, 27.2), 50)
 
 
 SHOTS3D = {f.__name__: f for f in (
     props_pull, boat_pov, vi_jump, under, rook_quay, rook_gangway, oly_wide, vi_tray, hawke_bow, hawke_hit, deck_jolt, oly_limp,
-    tit_night, berg_scrape, vi_berth, boat_lower, baby, tit_sink, brit_wide, mine_hit, vi_brush, brush_close, rook_brush,
-    stern_up, rook_dive, vi_rescued, vi_alive, rook_shock, vi_gangway, rook_wrong, signoff)}
+    tit_night, berg_scrape, vi_berth, boat_lower, baby, tit_sink, brit_wide, rook_deck, brit_side, mine_hit, vi_brush, brush_close, rook_brush,
+    stern_up, vi_rescued, vi_alive, rook_shock, vi_gangway, rook_wrong, signoff)}
 STILLS = dict(ship=photo_ship, vi=photo_vi)
