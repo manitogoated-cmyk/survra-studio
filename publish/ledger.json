@@ -150,6 +150,20 @@
     "url": "https://youtu.be/uEDw7H3Xq_E",
     "video_id": "uEDw7H3Xq_E"
   },
+  "r005-vulovic-long": {
+    "captions": "ok",
+    "format": "long",
+    "playlist": "Rook's Case Files (Full Cases)",
+    "privacy": "private",
+    "publish_at": "2026-11-14T19:00:00Z",
+    "review": false,
+    "sha256": "fa98991db66c887e1463c9262068112a0cacdfe016ea3fb7a9f45e4f935e4ee2",
+    "thumbnail": "failed: thumbnail -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The authenticated user doesn't have permissions to upload and set custom video thumbnails.\",\n ",
+    "title": "A Jet Blew Up 10 km Up. One Flight Attendant Fell the Whole Way, and Lived",
+    "uploaded_at": "2026-11-14T07:34:38Z",
+    "url": "https://youtu.be/0rF87Gr2lO4",
+    "video_id": "0rF87Gr2lO4"
+  },
   "r006-wisnierska": {
     "captions": "ok",
     "format": "short",
@@ -162,6 +176,20 @@
     "uploaded_at": "2026-11-13T18:25:19Z",
     "url": "https://youtu.be/8BZp0WQiDBg",
     "video_id": "8BZp0WQiDBg"
+  },
+  "r006-wisnierska-long": {
+    "captions": "ok",
+    "format": "long",
+    "playlist": "Rook's Case Files (Full Cases)",
+    "privacy": "private",
+    "publish_at": "2026-11-14T21:30:00Z",
+    "review": false,
+    "sha256": "3a0986d9b8c9f3db87b7109006ad18d0014c57764bd383b49a23d7d52e3ca94f",
+    "thumbnail": "failed: thumbnail -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The authenticated user doesn't have permissions to upload and set custom video thumbnails.\",\n ",
+    "title": "A Storm Sucked Her Higher Than Everest. She Blacked Out, and Woke Up Still Flying",
+    "uploaded_at": "2026-11-14T07:34:44Z",
+    "url": "https://youtu.be/CUd6VpfaTqQ",
+    "video_id": "CUd6VpfaTqQ"
   },
   "r007-rankin": {
     "captions": "ok",
@@ -188,6 +216,19 @@
     "uploaded_at": "2026-11-14T00:44:33Z",
     "url": "https://youtu.be/rQ1HjcZxXag",
     "video_id": "rQ1HjcZxXag"
+  },
+  "r009-poonlim": {
+    "captions": "ok",
+    "format": "short",
+    "playlist": "Rook's Case Files (Shorts)",
+    "privacy": "private",
+    "publish_at": "2026-11-15T17:00:00Z",
+    "review": false,
+    "sha256": "9a8d8bd83ac17d83f3499fd4bfb446cb39848eefc351c4fe9dc0179156029941",
+    "title": "133 Days Alone on a Raft. He Made a Fish Hook From a Flashlight #shorts",
+    "uploaded_at": "2026-11-14T07:34:48Z",
+    "url": "https://youtu.be/kSJeT-fs4BM",
+    "video_id": "kSJeT-fs4BM"
   },
   "s001-alvarenga": {
     "privacy": "private",

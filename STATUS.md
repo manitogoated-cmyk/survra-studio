@@ -1,6 +1,6 @@
 # Survra production dashboard
 
-Updated 2026-11-14 00:44 UTC by the publish workflow. Daily target: 3 long-form + 4 Shorts. Review mode: **off**. Paused: **no**.
+Updated 2026-11-14 07:34 UTC by the publish workflow. Daily target: 3 long-form + 4 Shorts. Review mode: **off**. Paused: **no**.
 
 A stage shows `done` only when its output file exists; QC shows `done` only after the automated gate passed on the rendered video.
 
@@ -15,12 +15,14 @@ A stage shows `done` only when its output file exists; QC shows `done` only afte
 | r002-grimes | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-13T17:00:00Z | https://youtu.be/0gcKBCSQD0Y |
 | r003-lemons-long | long | approved | done | done | done | done | - | done | - | FAIL | - | - | - |
 | r003-lemons | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-13T20:00:00Z | https://youtu.be/eQFNuqzJhug |
-| r004-packard-long | long | approved | done | done | done | done | done | done | done | done | done | scheduled 2026-11-14T15:00:00Z | https://youtu.be/r4QjtlIvpTE |
+| r004-packard-long | long | approved | done | done | done | done | done | done | - | done | done | scheduled 2026-11-14T15:00:00Z | https://youtu.be/r4QjtlIvpTE |
 | r004-packard | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-14T02:00:00Z | https://youtu.be/GsQiYFoCtL8 |
-| r005-vulovic-long | long | approved | done | done | done | done | - | - | - | - | - | - | - |
+| r005-vulovic-long | long | approved | done | done | done | done | done | done | done | done | done | scheduled 2026-11-14T19:00:00Z | https://youtu.be/0rF87Gr2lO4 |
 | r005-vulovic | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-14T17:00:00Z | https://youtu.be/uEDw7H3Xq_E |
+| r006-wisnierska-long | long | approved | done | done | done | done | done | done | done | done | done | scheduled 2026-11-14T21:30:00Z | https://youtu.be/CUd6VpfaTqQ |
 | r006-wisnierska | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-14T20:00:00Z | https://youtu.be/8BZp0WQiDBg |
 | r007-rankin | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-14T23:00:00Z | https://youtu.be/OGVhaUVwwFs |
 | r008-prosperi | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-15T02:00:00Z | https://youtu.be/rQ1HjcZxXag |
-| r009-poonlim | short | draft | done | done | - | done | - | - | n/a | - | - | - | - |
+| r009-poonlim | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-15T17:00:00Z | https://youtu.be/kSJeT-fs4BM |
+| r010-yamaguchi | short | draft | done | done | done | done | - | - | n/a | - | - | - | - |
 | s001-alvarenga | short | draft | done | done | done | done | done | done | n/a | done | done | private (review) | https://youtu.be/FZZ4SOnRhYU |
