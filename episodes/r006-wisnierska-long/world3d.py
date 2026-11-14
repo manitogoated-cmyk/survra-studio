@@ -1573,7 +1573,7 @@ def doctors(S, k, t, lt):
     S['rook'].place(A(rk[0], rk[1], 0), face_to(rk, (1.0, -0.8)))
     S['rook'].apply(P('cross', head=(0.08 * math.sin(t * 3), -0.2)))
     S['face']['rook'] = 'calm'
-    cam(S, A(lerp(0.4, 1.6, k), lerp(-10.5, -9.5, k), 2.7), A(1.8, 0.6, 2.2), 30)
+    cam(S, A(lerp(0.6, 1.6, k), lerp(-8.4, -7.4, k), 2.6), A(1.9, 0.4, 2.2), 32)
 
 
 def ward_cu(S, k, t, lt):
@@ -1656,16 +1656,14 @@ SHOTS3D.update({f.__name__: f for f in (
 
 def photo_thumb(S, k, t, lt):
     """Thumbnail picture: inside the storm, the glider yanked upward, Rook hanging from his blown-out umbrella."""
-    A = clouds(S, 1.0, 0, '5E76A8', 1.5)
-    S['cflash'].data.energy = 3.5
+    A = clouds(S, 1.0, 0, '2E3A5C', 1.2)
+    S['cflash'].data.energy = 2.2
     S['ckey'].data.energy = 60000
-    fly(S, A(-5.2, 2.5, 2.4), 0.55, 0.25, -0.3, P('stand', head=(-0.4, 0.3), **{**BRAKE, 'aL': (2.7, 0.5, 0.3), 'aR': (2.3, 0.6, 0.8)}), 'shock', True)
-    hail(S, A(-3, 0, 3), 1.0, 34, (22, 8, 14), 60, size=1.3)
-    S['bolt'].location, S['bolt'].rotation_euler = (9, 16, 6), (0, 0.15, 0.2)
-    S['boltl'].data.energy = 60000
-    brolly_rook(S, A(-0.6, -3.0, -1.2), 0.3, 1.0, 'shocked', True, True)
-    feathers(S, A(-0.6, -3.0, 0.4), 1.0, 7)
-    cam(S, A(3.2, -15.5, -2.2), A(-2.2, 0, 2.6), 32)
+    fly(S, A(-7.6, 2.5, 3.0), 0.55, 0.25, -0.3, P('stand', head=(-0.4, 0.3), **{**BRAKE, 'aL': (2.7, 0.5, 0.3), 'aR': (2.3, 0.6, 0.8)}), 'shock', True)
+    hail(S, A(-4, 0, 3), 1.0, 34, (22, 8, 14), 60, size=1.3)
+    brolly_rook(S, A(-2.6, -4.2, -1.6), 0.35, 1.0, 'shocked', True, True)
+    feathers(S, A(-2.6, -4.2, 0.0), 1.0, 7)
+    cam(S, A(4.4, -15.5, -2.2), A(1.8, 0, 2.4), 32)
 
 
 STILLS['thumb'] = photo_thumb

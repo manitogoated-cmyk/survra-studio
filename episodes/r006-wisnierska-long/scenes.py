@@ -225,9 +225,9 @@ def board_storm(cv, c):
     cv.rotate(-3)
     photo(cv, 'storm', 0, 10, 830, 540, (0.5, 0.3))
     cv.restore()
-    card(cv, '10 KM UP', 1430, 250, 470, 190, -5, 84, pop(c.lt, 0.3))
-    card(cv, 'OUT COLD', 1480, 500, 470, 190, 4, 84, pop(c.lt, 0.5), h('BFE0EC'))
-    stamp(cv, 'NO CHANCE', 900, 500, -12, 170, pop(c.lt, 0.72, 0.12))
+    card(cv, '10 KM UP', 1430, 250, 500, 190, -5, 84, pop(c.lt, 0.3))
+    card(cv, 'OUT COLD', 1480, 520, 520, 190, 4, 84, pop(c.lt, 0.5), h('BFE0EC'))
+    stamp(cv, 'NO CHANCE', 700, 520, -12, 170, pop(c.lt, 0.72, 0.12))
 
 
 def trophy(cv, c):
@@ -361,9 +361,9 @@ def board_true(cv, c):
     photo(cv, 'ewa', 0, 10, 750, 600, (0.5, 0.2))
     cv.restore()
     stamp(cv, 'TRUE', 640, 560, -14, 210, pop(c.lt, 0.28, 0.12), GREEN)
-    card(cv, 'ALMOST 10 KM UP', 1430, 220, 620, 170, -4, 68, pop(c.lt, 0.45))
-    card(cv, 'OUT COLD 30+ MIN', 1470, 440, 620, 170, 3, 68, pop(c.lt, 0.6), h('BFE0EC'))
-    card(cv, 'LANDED IT HERSELF', 1430, 660, 640, 170, -3, 68, pop(c.lt, 0.75), h('BFEFC8'))
+    card(cv, 'ALMOST 10 KM UP', 1420, 240, 700, 160, -4, 62, pop(c.lt, 0.45))
+    card(cv, 'OUT COLD 30+ MIN', 1450, 450, 700, 160, 3, 62, pop(c.lt, 0.6), h('BFE0EC'))
+    card(cv, 'LANDED IT HERSELF', 1420, 660, 720, 160, -3, 62, pop(c.lt, 0.75), h('BFEFC8'))
 
 
 # ------------------------------------------------------------------ flat inserts (new for the full case file)
@@ -382,7 +382,7 @@ def calendar(cv, c):
         cv.drawRoundRect(skia.Rect.MakeXYWH(-240, -250, 480, 130), 24, 24, P(col))
         Wd.text_card(cv, 'FEBRUARY 2007', 0, -165, 52, WHITE, None)
         Wd.text_card(cv, day, 0, 100, 260, INK, None)
-        Wd.text_card(cv, sub, 0, 205, 44, col, None)
+        Wd.text_card(cv, sub, 0, 200, 36, col, None)
         for sx in (-120, 120):
             cv.drawRoundRect(skia.Rect.MakeXYWH(sx - 14, -290, 28, 80), 12, 12, P(h('8A90A6')))
         cv.restore()
@@ -394,7 +394,7 @@ def calendar(cv, c):
         cv.drawLine(800, 440, x1, 440, P(AMBER, 18))
         poly(cv, [(x1, 400), (x1 + 50, 440), (x1, 480)], P(AMBER))
         Wd.text_card(cv, '10 DAYS', 960, 390, 70, AMBER, BLACK)
-    punch(cv, '100+ PILOTS', 960, 640, 96, pop(c.lt, 0.72 * c.d))
+    punch(cv, '100+ PILOTS', 960, 800, 96, pop(c.lt, 0.72 * c.d))
 
 
 def route(cv, c):
@@ -403,7 +403,7 @@ def route(cv, c):
     chart(cv, c.t, 1560, 330)
     a, b = (330, 620), (1560, 330)
     cv.save()
-    cv.translate(1700, 760)
+    cv.translate(1730, 850)
     cv.drawCircle(0, 0, 74, P(0xCC0B1020))
     cv.drawCircle(0, 0, 74, P(CREAM, 6))
     poly(cv, [(-34, -24), (50, 0), (-34, 24), (-14, 0)], P(ORANGE))
@@ -441,14 +441,14 @@ def route(cv, c):
         storm_icon(cv, lerp(1640, 1480, kk), 300, 0.7 + 0.25 * kk, c.t + 0.4)
         punch(cv, 'ABOUT 2 HOURS IN', 760, 200, 72, pop(c.lt, 0.5 * c.d))
     else:
-        storm_icon(cv, 960, 250, 1.0, c.t, h('39445C'))
+        storm_icon(cv, 900, 200, 0.9, c.t, h('39445C'))
         k2 = pop(c.lt, 0.3)
         if k2 > 0:
             cv.drawLine(b[0] - 34, b[1] - 34, b[0] + 34, b[1] + 34, P(RED, 18))
             cv.drawLine(b[0] - 34, b[1] + 34, b[0] + 34, b[1] - 34, P(RED, 18))
         punch(cv, 'LANDED', b[0] - 30, b[1] + 130, 84, k2)
-        punch(cv, 'ABOUT 60 KM', 960, 620, 150, pop(c.lt, 0.45 * c.d), AMBER)
-        punch(cv, 'ABOUT 3.5 HOURS IN THE AIR', 960, 740, 66, pop(c.lt, 0.7 * c.d))
+        punch(cv, 'ABOUT 60 KM', 1120, 650, 140, pop(c.lt, 0.45 * c.d), AMBER)
+        punch(cv, 'ABOUT 3.5 HOURS IN THE AIR', 1120, 760, 62, pop(c.lt, 0.7 * c.d))
 
 
 def forecast(cv, c):
@@ -540,11 +540,11 @@ def o2(cv, c):
     for i, (lab, frac, col, at_) in enumerate((('AWAKE', 1.0, AMBER, 0.0), ('OUT COLD', 0.42, GREEN, 0.45 * c.d))):
         y = 340 + i * 230
         k = ease((c.lt - at_) / 0.5)
-        cv.drawRoundRect(skia.Rect.MakeXYWH(560, y - 60, 1080, 120), 20, 20, P(h('1A2236')))
+        cv.drawRoundRect(skia.Rect.MakeXYWH(640, y - 60, 1000, 120), 20, 20, P(h('1A2236')))
         if k > 0:
-            cv.drawRoundRect(skia.Rect.MakeXYWH(560, y - 60, 1080 * frac * k, 120), 20, 20, P(col))
-            Wd.text_card(cv, lab, 370, y + 24, 70, col, BLACK)
-    punch(cv, 'LESS', 1300, 590, 84, pop(c.lt, 0.45 * c.d + 0.5), GREEN)
+            cv.drawRoundRect(skia.Rect.MakeXYWH(640, y - 60, 1000 * frac * k, 120), 20, 20, P(col))
+            Wd.text_card(cv, lab, 400, y + 24, 70, col, BLACK)
+    punch(cv, 'LESS', 1340, 595, 84, pop(c.lt, 0.45 * c.d + 0.5), GREEN)
     Wd.text_card(cv, 'WHAT DOCTORS SAID AFTERWARDS', 960, 770, 48, 0xAAFFFFFF, None, weight=600)
 
 
@@ -723,10 +723,10 @@ def THUMB(cv, c):
     else:
         cv.clear(h('26304A'))
     cv.drawRect(skia.Rect(0, 0, 1280, 720), skia.Paint(Shader=skia.GradientShader.MakeLinear(
-        [(680, 0), (1280, 0)], [0x00000000, 0xD8000000])))
-    Wd.text_card(cv, 'SUCKED UP', 985, 250, 96, WHITE, BLACK)
-    Wd.text_card(cv, '10 KM', 985, 450, 200, h('FFB000'), BLACK)
+        [(620, 0), (1000, 0)], [0x00000000, 0xC8000000])))
+    Wd.text_card(cv, 'SUCKED UP', 960, 250, 96, WHITE, BLACK)
+    Wd.text_card(cv, '10 KM', 960, 440, 180, h('FFB000'), BLACK)
     for i in range(3):
-        y = 560 + i * 44
-        cv.drawLine(985 - 70, y + 34, 985, y, P(h('FFB000'), 16))
-        cv.drawLine(985, y, 985 + 70, y + 34, P(h('FFB000'), 16))
+        y = 530 + i * 44
+        cv.drawLine(960 - 70, y + 34, 960, y, P(h('FFB000'), 16))
+        cv.drawLine(960, y, 960 + 70, y + 34, P(h('FFB000'), 16))
