@@ -183,43 +183,39 @@ def id_card(cv, c):
     cv.restore()
 
 
-LAND = [(-55, 6.2), (-52, 5), (-50.5, 1.5), (-48.5, -0.6), (-44.5, -2.6), (-40, -2.9), (-37.2, -4.7), (-35, -5.6), (-35, -9), (-38, -13),
-        (-55, -13)]
-AFR = [(-17.5, 13), (-16.5, 11), (-13, 8.5), (-9, 5), (-4, 5.2), (-4, 13)]
+LAND = [(-56, 6.4), (-52, 5), (-50.5, 1.5), (-48.5, -0.6), (-44.5, -2.6), (-40, -2.9), (-37.2, -4.7), (-35, -5.6), (-35, -9), (-37, -11),
+        (-56, -11)]
 
 
 def map_drift(cv, c):
-    """Sketch of the equatorial Atlantic. The two ends are from the record; the path between them is not known."""
+    """Sketch of the sea off northern Brazil. The two ends are from the record; the path between them is not known."""
     Wd.vgrad(cv, 0, 0, W, H, [(0, h('1C5A72')), (1, h('0E3446'))])
-    px = lambda lon, lat: (540 + (lon + 30) * 21.0, 760 - lat * 21.0)
-    for lon in range(-55, 0, 10):
-        cv.drawLine(px(lon, 0)[0], 360, px(lon, 0)[0], 1040, P(0x33BFE6F2, 2))
-    cv.drawLine(0, 760, W, 760, P(0x66BFE6F2, 3))
-    Wd.text_card(cv, 'EQUATOR', 930, 748, 26, 0x99BFE6F2, None)
-    for pts, name, lx, ly in ((LAND, 'BRAZIL', -47, -7.5), (AFR, 'AFRICA', -10.5, 9.5)):
-        path = poly([px(*p) for p in pts])
-        cv.drawPath(path, P(h('D8C890')))
-        cv.drawPath(path, P(h('5E4E2A'), 5))
-        Wd.text_card(cv, name, px(lx, ly)[0], px(lx, ly)[1], 44, h('5E4E2A'), None)
-    Wd.text_card(cv, 'ATLANTIC OCEAN', 600, 520, 40, 0x88DFF4FF, None)
-    a, b = px(-38.75, 0.5), px(-47.3, -0.4)
+    px = lambda lon, lat: (540 + (lon + 42.5) * 44.0, 700 - lat * 44.0)
+    for lon in range(-50, -30, 5):
+        cv.drawLine(px(lon, 0)[0], 380, px(lon, 0)[0], 1120, P(0x33BFE6F2, 2))
+    cv.drawLine(0, 700, W, 700, P(0x66BFE6F2, 3))
+    Wd.text_card(cv, 'EQUATOR', 960, 686, 30, 0x99BFE6F2, None)
+    path = poly([px(*p) for p in LAND])
+    cv.drawPath(path, P(h('D8C890')))
+    cv.drawPath(path, P(h('5E4E2A'), 6))
+    Wd.text_card(cv, 'BRAZIL', px(-45.5, -8.0)[0], px(-45.5, -8.0)[1], 84, h('5E4E2A'), None)
+    Wd.text_card(cv, 'ATLANTIC OCEAN', 620, 430, 48, 0x88DFF4FF, None)
+    a, b = px(-38.75, 0.5), px(-47.3, -0.45)
     k = ease(c.k / 0.7)
-    for i in range(22):
-        u = i / 21
+    for i in range(24):
+        u = i / 23
         if u > k:
             break
-        x = lerp(a[0], b[0], u)
-        y = lerp(a[1], b[1], u) + 26 * math.sin(u * 9.0) * (1 - u)
-        cv.drawCircle(x, y, 7, P(0xFFFFFFFF))
-    cv.drawLine(a[0] - 22, a[1] - 22, a[0] + 22, a[1] + 22, P(RED, 10))
-    cv.drawLine(a[0] - 22, a[1] + 22, a[0] + 22, a[1] - 22, P(RED, 10))
-    fit(cv, 'SUNK 23 NOV 1942', a[0] + 150, a[1] - 52, 40, 520, 0xFFFFFFFF)
+        cv.drawCircle(lerp(a[0], b[0], u), lerp(a[1], b[1], u) + 34 * math.sin(u * 9.0) * (1 - u), 9, P(0xFFFFFFFF))
+    cv.drawLine(a[0] - 28, a[1] - 28, a[0] + 28, a[1] + 28, P(RED, 13))
+    cv.drawLine(a[0] - 28, a[1] + 28, a[0] + 28, a[1] - 28, P(RED, 13))
+    fit(cv, 'SUNK 23 NOV 1942', a[0] + 60, a[1] - 62, 52, 560, 0xFFFFFFFF)
     if k >= 1:
-        cv.drawCircle(b[0], b[1], 20, P(AMBER))
-        cv.drawCircle(b[0], b[1], 20 + 30 * ((c.t * 2) % 1), P(Wd.alpha(AMBER, 1 - (c.t * 2) % 1), 6))
-        fit(cv, 'FOUND 5 APR 1943', b[0] + 150, b[1] + 86, 40, 520, AMBER)
-    Wd.text_card(cv, '133 DAYS ADRIFT', 540, 300, 96, 0xFFFFFFFF, 0xFF000000)
-    Wd.text_card(cv, 'SKETCH: THE DRIFT PATH IS NOT KNOWN', 540, 1110, 32, 0xAAFFFFFF, None)
+        cv.drawCircle(b[0], b[1], 24, P(AMBER))
+        cv.drawCircle(b[0], b[1], 24 + 36 * ((c.t * 2) % 1), P(Wd.alpha(AMBER, 1 - (c.t * 2) % 1), 7))
+        fit(cv, 'FOUND 5 APR 1943', b[0] + 250, b[1] + 150, 52, 560, AMBER)
+    Wd.text_card(cv, '133 DAYS ADRIFT', 540, 320, 88, 0xFFFFFFFF, 0xFF000000)
+    Wd.text_card(cv, 'SKETCH: THE DRIFT PATH IS NOT KNOWN', 540, 1236, 34, 0xCCFFFFFF, None)
 
 
 def board_true(cv, c):

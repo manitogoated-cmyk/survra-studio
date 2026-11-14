@@ -189,7 +189,7 @@ def make_gull(col='F4F4F0'):
 
 def flap(g, t, speed=9.0, amp=0.7, fold=False):
     for s, w in zip((-1, 1), g['wings']):
-        w.rotation_euler = (s * (1.2 if fold else amp * math.sin(t * speed)), 0, 0)
+        w.rotation_euler = (s * (-1.35 if fold else amp * math.sin(t * speed)), 0, 0)
 
 
 def make_fish():
@@ -203,7 +203,7 @@ def make_fish():
 def make_shark():
     s = empty(FAR)
     add('ico_sphere', '6E7C8A', (0, 0, 0), scale=(2.4, 0.5, 0.56), radius=1.0, subdivisions=2, parent=s, rough=0.4)
-    add('cone', '5E6C7A', (-0.1, 0, 0.78), rot=(0, -0.45, 0), scale=(1, 0.14, 1), radius1=0.5, radius2=0.0, depth=1.05, vertices=4, parent=s)
+    add('cone', '36424E', (-0.1, 0, 0.78), rot=(0, -0.45, 0), scale=(1, 0.14, 1), radius1=0.5, radius2=0.0, depth=1.05, vertices=4, parent=s)
     add('cone', '5E6C7A', (-2.5, 0, 0.3), rot=(0, -0.9, 0), scale=(1, 0.14, 1), radius1=0.42, radius2=0.0, depth=1.2, vertices=4, parent=s)
     for d in (-1, 1):
         add('cone', '5E6C7A', (0.6, d * 0.6, -0.2), rot=(d * 1.3, 0, 0), scale=(1, 0.2, 1), radius1=0.3, radius2=0.0, depth=0.9, vertices=4, parent=s)
@@ -213,9 +213,12 @@ def make_shark():
 def make_hook():
     """The fish hook he bent out of the flashlight's spring. Rook keeps it."""
     h = empty(FAR)
-    add('cylinder', 'E8EEF4', (0, 0, 0.16), radius=0.02, depth=0.36, vertices=5, parent=h, rough=0.2, emit=1.2)
-    add('torus', 'E8EEF4', (0.1, 0, -0.02), rot=(PI / 2, 0, 0), major_radius=0.1, minor_radius=0.02, major_segments=10, minor_segments=4, parent=h, rough=0.2, emit=1.2)
-    add('torus', 'E8EEF4', (0, 0, 0.36), major_radius=0.04, minor_radius=0.015, major_segments=8, minor_segments=4, parent=h, rough=0.2, emit=1.2)
+    kw = dict(parent=h, rough=0.2, emit=1.2)
+    add('cylinder', 'E8EEF4', (0, 0, 0.17), radius=0.022, depth=0.38, vertices=5, **kw)
+    add('cylinder', 'E8EEF4', (0.085, 0, -0.02), rot=(0, PI / 2, 0), radius=0.022, depth=0.2, vertices=5, **kw)
+    add('cylinder', 'E8EEF4', (0.17, 0, 0.05), radius=0.022, depth=0.16, vertices=5, **kw)
+    add('cone', 'E8EEF4', (0.17, 0, 0.17), radius1=0.04, radius2=0.0, depth=0.1, vertices=4, **kw)
+    add('torus', 'E8EEF4', (0, 0, 0.39), rot=(PI / 2, 0, 0), major_radius=0.04, minor_radius=0.015, major_segments=8, minor_segments=4, **kw)
     return h
 
 
@@ -357,7 +360,7 @@ def build():
     S['tin'] = add('cylinder', 'B8442E', FAR, radius=0.17, depth=0.28, vertices=8, rough=0.4)
     add('cylinder', '2A1410', (0, 0, 0.135), radius=0.15, depth=0.02, vertices=8, parent=S['tin'])
     S['blade'] = add('cube', 'D8E0E8', FAR, scale=(0.5, 0.16, 0.012), size=1, rough=0.15, emit=0.5)
-    S['cloth'] = add('cone', 'CDB98C', FAR, rot=(PI, 0, 0), radius1=1.25, radius2=0.1, depth=0.55, vertices=6)
+    S['cloth'] = add('cone', 'CDB98C', FAR, rot=(PI, 0, 0), radius1=1.25, radius2=0.1, depth=0.55, vertices=6, emit=0.35)
     S['line'] = add('cylinder', 'E8E0C8', FAR, radius=0.022, depth=1.0, vertices=4, emit=0.5)
     S['strips'] = [add('cube', ('D88A78', 'C87868')[i % 2], FAR, scale=(0.12, 0.03, 0.42), size=1) for i in range(6)]
     S['fire'] = [add('ico_sphere', ('FF9A30', 'FFD060', 'FF6A20')[i % 3], FAR, radius=1.0, subdivisions=1, emit=14) for i in range(8)]
@@ -398,11 +401,11 @@ def show(S, name):
 
 #          sky       str  sea       sun  sun colour  sun position      cloud     emit  fill  fill colour
 MOODS = dict(
-    night=('070D1E', 1.0, '0A2A44', 1.3, 'A8C0F0', (-70, 110, 90), '1B2740', 0.25, 9.0, 'B8CCF8'),
+    night=('0C1632', 1.0, '0E3656', 2.6, 'A8C0F0', (-70, 60, 90), '22304E', 0.3, 13.0, 'B8CCF8'),
     day=('7EC0EE', 0.9, '0F6E8E', 3.4, 'FFF4DC', (50, -70, 120), 'FFFFFF', 0.85, 9.0, 'FFF0DC'),
-    noon=('A6D6F2', 1.0, '1284A4', 4.2, 'FFFBEF', (-20, -30, 140), 'FFFFFF', 0.9, 8.0, 'FFFFFF'),
+    noon=('A6D6F2', 1.0, '1284A4', 4.0, 'FFFBEF', (110, -70, 80), 'FFFFFF', 0.9, 8.0, 'FFFFFF'),
     dusk=('E88E52', 0.9, '6A4048', 2.6, 'FF9A50', (-60, 260, 40), 'FFB888', 0.7, 12.0, 'FFD0A8'),
-    storm=('39434E', 0.8, '1D3440', 0.9, 'B8C8D8', (30, -40, 120), '252C36', 0.2, 8.0, 'C8D4E0'),
+    storm=('4A5662', 0.9, '24404E', 1.3, 'B8C8D8', (30, -40, 120), '2C343E', 0.2, 13.0, 'D0DCE8'),
     dawn=('F6BCA2', 1.0, '3C8494', 2.8, 'FFD2A4', (150, 330, 60), 'FFE4D4', 0.8, 12.0, 'FFE0C8'),
 )
 
@@ -558,6 +561,7 @@ def reset(S):
         o.hide_render = False
     S['glow'].location = FAR
     S['glow'].data.energy = 0
+    S['glow'].data.color = K.hexc('FF9A40')[:3]
     S['fill'].data.energy = 0
     S['fillk'] = 0.0
     S['rough'] = 0.6
@@ -658,18 +662,21 @@ def ship_wide(S, k, t, lt):
         u = (t * 1.6 + i * 0.37) % 1
         d.location = A(x + 28 - u * 5, 34 + (-1) ** i * (1 + u * 4), 0.4 + 1.6 * math.sin(u * PI))
         d.scale = (5, 5, 5)
+    S['glow'].location = A(x + 26, 4, 44)
+    S['glow'].data.energy = 420000
+    S['glow'].data.color = K.hexc('A8C0F0')[:3]
     cam(S, A(lerp(48, 40, k), lerp(-16, -10, k), lerp(11, 6, k)), A(x + 4, 34, 6), 32, fill=0)
 
 
 def sub_wake(S, k, t, lt):
     A = ocean(S, 'night', t, 0.55)
-    S['sub'].location = A(-7, 0, 0.1 * math.sin(t * 1.4))
-    S['sub'].rotation_euler = (0, 0, 1.35)
+    S['sub'].location = A(-10.5, 4, 0.25 + 0.1 * math.sin(t * 1.4))
+    S['sub'].rotation_euler = (0, 0, 1.2)
     S['ship'].location = A(22, 110, 0)
     S['ship'].rotation_euler = (0, 0, -0.2)
     S['ship'].scale = (1.5, 1.5, 1.5)
     n = ease(lt / 1.1)
-    p0, p1 = Vector(A(-5.5, 9, 0.5)), Vector(A(14, 86, 0.5))
+    p0, p1 = Vector(A(-6.0, 15, 0.5)), Vector(A(14, 86, 0.5))
     p = p0 + (p1 - p0) * n
     span(S['wake'], p0, p)
     S['wake'].scale = (0.9, 0.06, max(0.1, (p - p0).length))
@@ -677,7 +684,10 @@ def sub_wake(S, k, t, lt):
         d = S['drops'][i]
         d.location = (p.x + math.sin(t * 20 + i) * 0.6, p.y + math.cos(t * 17 + i) * 0.6, 0.6 + 0.5 * abs(math.sin(t * 12 + i)))
         d.scale = (4, 4, 4)
-    cam(S, A(lerp(-17, -14, k), lerp(-13, -10, k), lerp(4.5, 3.2, k)), A(2, 40, 3.5), 34, 0.03, fill=0.5)
+    S['glow'].location = A(-17, -5, 12)
+    S['glow'].data.energy = 30000
+    S['glow'].data.color = K.hexc('A8C0F0')[:3]
+    cam(S, A(lerp(-19, -17, k), lerp(-13, -10, k), lerp(7.5, 6.2, k)), A(0, 40, 2.0), 34, 0.03, fill=0)
 
 
 def rook_deck(S, k, t, lt):
@@ -722,34 +732,34 @@ def jump(S, k, t, lt):
 
 def swim_night(S, k, t, lt):
     A = ocean(S, 'night', t, 0.8)
-    x = lerp(-1.2, 0.6, k)
-    h = wave_h(x, 0, t, 0.8)
+    y = lerp(3.6, 2.4, k)
+    h = wave_h(0, y - 2.2, t, 0.8)
     kick = math.sin(t * 8)
-    S['poon'].place(A(x, 0, h - 0.95), -PI / 2 + 0.25, 0, 1.05)
-    S['poon'].apply(P('swim', aL=(2.6 + 0.5 * kick, 0.3, 0.3), aR=(2.6 - 0.5 * kick, 0.3, 0.3), lL=(0.3 * kick, 0.3), lR=(-0.3 * kick, 0.3), head=(-0.9, 0.0)))
+    S['poon'].place(A(0, y, h - 0.75), 0.0, 1.2, 0.08 * kick)
+    S['poon'].apply(P('swim', aL=(2.7 + 0.5 * kick, 0.35, 0.3), aR=(2.7 - 0.5 * kick, 0.35, 0.3), lL=(0.3 * kick, 0.3), lR=(-0.3 * kick, 0.3), head=(-1.0, 0.0)))
     S['face']['poon'] = 'scared'
     vest(S)
     for i, o in enumerate(S['planks']):
-        px, py = -6 + i * 3.3, 4 + (i % 3) * 3.5
+        px, py = -7 + i * 3.2, 5 + (i % 3) * 4.5
         o.location = A(px, py, wave_h(px, py, t, 0.8) + 0.06)
         o.rotation_euler = (0.1 * math.sin(t + i), 0, i * 1.3)
-    smoke(S, A(-20, 60, 0), t, 6, 30, (0.2, 0), 5)
-    splash(S, A(x + 1.6, -0.2, h + 0.2), (lt * 1.6) % 1, 6, 0.9)
-    cam(S, A(lerp(3.6, 3.0, k), lerp(-6.2, -5.4, k), 0.95), A(x + 0.9, 0.0, 0.75), 38, 0.05)
+    smoke(S, A(-20, 70, 0), t, 6, 30, (0.2, 0), 5)
+    splash(S, A(0.5, y - 2.6, h + 0.1), (lt * 1.6) % 1, 6, 0.8, size=0.6)
+    cam(S, A(lerp(1.9, 1.4, k), lerp(-4.6, -4.0, k), 1.15), A(0, y - 2.0, 0.75), 52, 0.05)
 
 
 def raft_found(S, k, t, lt):
     A = ocean(S, 'night', t, 0.6)
-    ride(S, t, 0, 0, 0.3)
+    ride(S, t, 0, 0, 0.15)
     u = ease(k * 1.3)
-    aboard(S, S['poon'], 0.2, lerp(-3.3, -2.45, u), PI, P('up', aL=(2.2, 0.35, 0.5), aR=(2.3, 0.3, 0.4), head=(-0.5, 0.1), lean=0.5, lL=(0.2, 0.3), lR=(-0.2, 0.4)),
-           z=lerp(-2.2, -1.55, u))
+    aboard(S, S['poon'], -0.6, lerp(-3.4, -2.75, u), PI, P('up', aL=(2.0, 0.35, 0.5), aR=(2.1, 0.3, 0.4), head=(-0.3, 0.5), lean=0.35, lL=(0.2, 0.3), lR=(-0.2, 0.4)),
+           z=lerp(-1.9, -1.25, u))
     S['face']['poon'] = 'tired'
     vest(S)
-    aboard(S, S['rook'], 1.25, 0.2, -0.5, P('sit', aL=(0.3, 0.75, 1.5, -0.9), aR=(0.3, 0.75, 1.5, -0.9), head=(0.25, 0.3)))
+    aboard(S, S['rook'], 1.0, -0.2, -0.75, P('sit', aL=(0.3, 0.75, 1.5, -0.9), aR=(0.3, 0.75, 1.5, -0.9), head=(0.25, 0.3)))
     S['face']['rook'] = 'deadpan'
-    splash(S, A(0.3, -2.6, 0.3), (lt * 1.2) % 1, 8, 1.1)
-    cam(S, A(lerp(-4.2, -3.4, k), lerp(-7.4, -6.4, k), lerp(3.4, 2.9, k)), A(0.3, -0.9, 1.5), 36, 0.03)
+    splash(S, A(-0.6, -3.0, 0.3), (lt * 1.2) % 1, 8, 1.1, size=0.7)
+    cam(S, A(lerp(-6.4, -5.6, k), lerp(-5.4, -4.6, k), lerp(2.5, 2.2, k)), A(0.0, -1.5, 1.35), 36, 0.03)
 
 
 # ---------------------------------------------------------------- shots: the raft
@@ -772,7 +782,7 @@ def rook_raft_cu(S, k, t, lt):
     on(S, g['root'], S['rook'].extra['hat'], (0.0, lerp(1.2, 0.0, u), lerp(1.5, 0.52, u)), (0, 0, -PI / 2 + 0.4))
     g['root'].scale = (1.25, 1.25, 1.25)
     flap(g, t, 14, 0.9 * (1 - u) + 0.05, fold=u > 0.97)
-    cam(S, A(lerp(1.5, 1.1, k), lerp(-6.4, -5.3, k), lerp(2.3, 2.1, k)), A(0.3, -0.9, 2.15), 48)
+    cam(S, A(lerp(1.7, 1.2, k), lerp(-8.2, -6.9, k), lerp(2.3, 2.2, k)), A(0.3, -0.9, 2.2), 48)
 
 
 def raft_top(S, k, t, lt):
@@ -788,11 +798,11 @@ def raft_top(S, k, t, lt):
 def supplies(S, k, t, lt):
     A = ocean(S, 'day', t, 0.5)
     ride(S, t, 0, 0, 0.0, tilt=0.6)
-    S['hand_p'].root.scale = (1.3, 1.3, 1.3)
     u = ease(lt / 0.6)
-    on(S, S['hand_p'].root, S['raft'], (lerp(0.9, -0.55, u), lerp(-0.6, 0.72, u), DECK + 0.75 - 0.2 * u), (0.25, 0.0, 0.75))
+    on(S, S['hand_p'].root, S['raft'], (lerp(0.5, -0.5, u), lerp(-0.9, 0.42, u), DECK + lerp(1.1, 0.72, u)), (-0.35, 0.0, PI + 0.25))
+    S['hand_p'].root.scale = (0.85, 0.85, 0.85)
     S['hand_p'].grip(0.15 + 0.5 * ease((lt - 0.5) / 0.3))
-    cam(S, A(lerp(1.2, 0.9, k), lerp(-1.9, -1.4, k), lerp(2.2, 1.9, k)), A(-1.0, 1.1, 0.85), 34)
+    cam(S, A(lerp(1.5, 1.1, k), lerp(-3.4, -2.8, k), lerp(3.0, 2.6, k)), A(-0.8, 1.0, 0.85), 34)
 
 
 def tin_empty(S, k, t, lt):
@@ -801,10 +811,10 @@ def tin_empty(S, k, t, lt):
     for o in S['tins']:
         o.hide_render = True
     u = ease(lt / 0.45)
-    aboard(S, S['rook'], 0.2, -0.9, 0.15, blend(P('stand', aR=(1.2, 0.2, 1.4)), P('stand', aR=(2.5, 0.3, 0.7, 0.3), head=(-0.5, -0.2)), u))
+    aboard(S, S['rook'], 0.2, -0.9, 0.15, blend(P('stand', aR=(1.2, 0.2, 1.4)), P('stand', aR=(2.5, 0.75, 0.9, 0.3), head=(-0.5, -0.3)), u))
     S['face']['rook'] = 'sad'
     on(S, S['tin'], S['rook'].hands[1], (0, 0, -0.26), (0, 0, 0))
-    S['tin'].scale = (1.5, 1.5, 1.5)
+    S['tin'].scale = (1.2, 1.2, 1.2)
     c = max(0.0, min(1.0, (lt - 0.5) / 0.5))
     if c > 0:
         on(S, S['drops'][0], S['raft'], (0.62, -1.15, DECK + 3.3 - 2.6 * c * c))
@@ -815,29 +825,28 @@ def tin_empty(S, k, t, lt):
 
 
 def spring_hook(S, k, t, lt):
+    """Seen from above, stacked for the tall frame: the flashlight below, the spring drawn out of it upward, then the hook."""
     A = ocean(S, 'day', t, 0.4)
     ride(S, t, 0, 0, 0.0, tilt=0.4)
     R = S['raft']
-    z = DECK + 0.95
-    for hnd in ('hand_p', 'hand_q'):
-        S[hnd].root.scale = (1.5, 1.5, 1.5)
+    z = DECK + 0.7
     pull = ease(lt / 0.55)
     bend = ease((lt - 0.6) / 0.25)
-    on(S, S['hand_p'].root, R, (-0.95, -0.15, z + 0.02), (0.0, 0.0, -PI / 2))
-    S['hand_p'].grip(0.75)
-    on(S, S['torch']['root'], R, (-0.5, -0.5, z), (0, 0, 0))
-    S['torch']['root'].scale = (1.6, 1.6, 1.6)
-    S['torch']['spring'].location = (0.42 + 0.55 * pull, 0, 0)
-    hx = 0.75 + 0.5 * pull
-    on(S, S['hand_q'].root, R, (hx + 0.72, -0.2, z + 0.05 + 0.25 * bend), (0.0, 0.0, PI / 2))
-    S['hand_q'].grip(0.8)
+    on(S, S['torch']['root'], R, (0.0, -1.35, z), (0, 0, PI / 2))
+    S['torch']['root'].scale = (1.9, 1.9, 1.9)
+    S['torch']['spring'].location = (0.42 + 0.42 * pull, 0, 0)
+    on(S, S['hand_p'].root, R, (-0.75, -1.4, z + 0.3), (0.0, 0.0, PI / 2))
+    S['hand_p'].grip(0.85)
+    hy = -0.5 + 0.55 * pull
+    on(S, S['hand_q'].root, R, (0.8, hy + 0.2 * bend, z + 0.3 + 0.2 * bend), (0.0, 0.0, -PI / 2))
+    S['hand_q'].grip(0.85)
     if bend > 0.05:
         for o in S['torch']['spring'].children:
             o.hide_render = True
-        on(S, S['hook'], R, (hx + 0.1, -0.52, z + 0.25 * bend), (PI / 2 - 0.5, 0.2 + 0.3 * math.sin(t * 6), 0))
-        s = 2.2 + 0.9 * math.sin(PI * min(1, (lt - 0.6) / 0.3))
-        S['hook'].scale = (s, s, s)
-    cam(S, A(lerp(0.4, 0.3, k), lerp(-3.9, -3.3, k), lerp(3.1, 2.8, k)), A(0.25, -0.4, DECK + 0.95), 42)
+        on(S, S['hook'], R, (-0.1, hy - 0.15, z + 0.25 + 0.2 * bend), (-0.75, 0.2 * math.sin(t * 6), 0))
+        sc = 2.8 + 1.0 * math.sin(PI * min(1, (lt - 0.6) / 0.3))
+        S['hook'].scale = (sc, sc, sc)
+    cam(S, A(lerp(0.15, 0.05, k), lerp(-4.9, -4.5, k), lerp(5.4, 5.0, k)), A(0.0, -1.35, DECK + 0.7), 38)
 
 
 def line_cast(S, k, t, lt):
@@ -863,8 +872,8 @@ def fish_up(S, k, t, lt):
     S['face']['poon'] = 'happy'
     f = S['fish'][0]
     fx, fy, fz = lerp(1.6, 0.5, u), lerp(-5.2, -1.9, u), -0.3 + 5.2 * math.sin(PI * 0.62 * u)
-    on(S, f, S['raft'], (fx, fy, fz), (t * 9, 0.6 * math.sin(t * 22), PI / 2))
-    f.scale = (1.7, 1.7, 1.7)
+    on(S, f, S['raft'], (fx, fy, fz), (0.3 * math.sin(t * 9), 0.6 * math.sin(t * 22), 0.35))
+    f.scale = (1.5, 1.5, 1.5)
     on(S, S['line'], S['raft'], (0, 0, 0))
     span(S['line'], (0.25, -1.45, DECK + lerp(1.7, 3.3, u)), (fx, fy, fz))
     splash(S, A(1.8, -4.9, 0.2), min(1, lt / 0.6), 12, 1.8, size=1.4)
@@ -875,21 +884,20 @@ def tin_knife(S, k, t, lt):
     A = ocean(S, 'day', t, 0.4)
     ride(S, t, 0, 0, 0.0, tilt=0.4)
     R = S['raft']
-    S['hand_p'].root.scale = (1.4, 1.4, 1.4)
     f = S['fish'][1]
-    on(S, f, R, (0.1, -0.7, DECK + 0.14), (PI / 2, 0, 0.2))
-    f.scale = (2.4, 2.4, 2.4)
-    saw = 0.35 * math.sin(lt * 13)
-    on(S, S['hand_p'].root, R, (0.55 + saw, -0.15, DECK + 0.62), (0.5, 0.0, -PI / 2 + 0.35))
+    on(S, f, R, (0.0, -0.9, DECK + 0.12), (PI / 2, 0, 0.15))
+    f.scale = (1.9, 1.9, 1.9)
+    saw = 0.3 * math.sin(lt * 13)
+    on(S, S['hand_p'].root, R, (0.35 + saw, -1.55, DECK + 0.62), (-0.5, 0.0, PI - 0.2))
     S['hand_p'].grip(0.85)
-    on(S, S['blade'], R, (-0.2 + saw, -0.62, DECK + 0.36), (PI / 2 - 0.25, 0, 0.3))
-    S['blade'].scale = (0.75, 0.3, 0.02)
+    on(S, S['blade'], R, (0.25 + saw, -0.95, DECK + 0.4), (0.0, PI / 2 - 0.3, PI / 2 - 0.2))
+    S['blade'].scale = (0.6, 0.22, 0.02)
     on(S, S['line'], R, (0, 0, 0))
     span(S['line'], (-2.0, 0.35, 2.3), (2.0, 0.35, 2.3))
     for i, o in enumerate(S['strips']):
         on(S, o, R, (-1.5 + i * 0.6, 0.35, 2.02 + 0.03 * math.sin(t * 3 + i)), (0.12 * math.sin(t * 2.5 + i), 0, 0))
         o.scale = (0.26, 0.05, 0.56)
-    cam(S, A(lerp(1.3, 0.9, k), lerp(-4.4, -3.8, k), lerp(2.6, 2.3, k)), A(0.1, -0.3, 1.3), 36)
+    cam(S, A(lerp(1.0, 0.6, k), lerp(-5.6, -5.0, k), lerp(3.6, 3.3, k)), A(0.0, -0.4, 1.25), 38)
 
 
 def rain_catch(S, k, t, lt):
@@ -897,7 +905,7 @@ def rain_catch(S, k, t, lt):
     ride(S, t, 0, 0, 0.2)
     aboard(S, S['poon'], -0.75, -0.7, 0.2, P('up', aL=(2.5, 0.75, 0.3), aR=(2.5, 0.75, 0.3), head=(-0.45, 0.0)))
     S['face']['poon'] = 'happy'
-    on(S, S['cloth'], S['raft'], (-0.75, -1.05, DECK + 3.45 + 0.05 * math.sin(t * 5)), (PI, 0, 0))
+    on(S, S['cloth'], S['raft'], (-0.75, -1.05, DECK + 3.2 + 0.05 * math.sin(t * 5)), (PI, 0, 0))
     on(S, S['tin'], S['raft'], (-0.75, -1.1, DECK + 0.25))
     S['tin'].scale = (2.2, 2.2, 2.2)
     for i in range(4):
@@ -905,7 +913,7 @@ def rain_catch(S, k, t, lt):
         u = (t * 2.2 + i * 0.25) % 1
         on(S, d, S['raft'], (-0.75, -1.05, DECK + 3.1 - 2.4 * u))
         d.scale = (0.8, 0.8, 1.6)
-    aboard(S, S['rook'], 1.0, -0.9, -0.25, P('shrug', aL=(0.5, 1.0, 1.2, -0.9), aR=(0.5, 1.0, 1.2, -0.9), head=(-0.75, 0.0)))
+    aboard(S, S['rook'], 1.0, -0.9, -0.25, P('shrug', aL=(0.5, 1.0, 1.2, -0.9), aR=(0.5, 1.0, 1.2, -0.9), head=(-0.38, 0.0)))
     S['face']['rook'] = 'laugh'
     cam(S, A(lerp(1.1, 0.7, k), lerp(-8.6, -7.6, k), lerp(1.6, 2.0, k)), A(0.1, -0.8, 2.5), 36)
 
@@ -934,17 +942,17 @@ def shark(S, k, t, lt):
     A = ocean(S, 'noon', t, 0.5)
     ride(S, t, 0, 0, 0.35)
     a = 2.2 + lt * 1.35
-    sx, sy = math.cos(a) * 5.4, math.sin(a) * 5.0
-    S['shark'].location = A(sx, sy, wave_h(sx, sy, t, 0.5) - 0.42)
+    sx, sy = math.cos(a) * 3.5, math.sin(a) * 4.4
+    S['shark'].location = A(sx, sy, wave_h(sx, sy, t, 0.5) - 0.12)
     S['shark'].rotation_euler = (0, 0, a + PI / 2)
-    S['shark'].scale = (1.25, 1.25, 1.25)
+    S['shark'].scale = (1.6, 1.6, 1.6)
     aboard(S, S['rook'], 0.2, 0.0, a + PI / 2 + 0.4, P('hat', aL=(0.3, 0.9, 1.3), lL=(0.9, 1.5), lift=0.25 + 0.1 * abs(math.sin(t * 9)), head=(0.3, 0.0)))
     S['face']['rook'] = 'shocked'
     feathers(S, A(0.2, -0.3, 3.2), min(1, lt / 0.9), 5)
     aboard(S, S['poon'], -1.2, -1.2, 0.5, P('stand', aL=(1.0, 0.2, 0.7), aR=(1.0, 0.2, 0.7), lean=0.3, lL=(0.4, 0.7), lR=(0.2, 0.5), lift=-0.2, head=(0.1, 0.3)))
     on(S, S['line'], S['raft'], (0, 0, 0))
     span(S['line'], (-1.45, -1.9, DECK + 1.5), (-2.4, -4.4, -0.3))
-    cam(S, A(lerp(4.5, 3.0, k), lerp(-12.5, -10.5, k), lerp(9.5, 11, k)), A(0.3, -0.6, 0.8), 34, lerp(0.05, -0.04, k))
+    cam(S, A(lerp(4.5, 3.0, k), lerp(-13.5, -11.5, k), lerp(10.5, 12, k)), A(0.3, -0.4, 0.8), 30, lerp(0.05, -0.04, k))
 
 
 # ---------------------------------------------------------------- shots: missed, then found
@@ -957,34 +965,34 @@ def freighter_pass(S, k, t, lt):
     S['frt'].location = A(x, 190, 0)
     S['frt'].scale = (1.7, 1.7, 1.7)
     smoke(S, A(x - 5, 190, 21), t, 9, 40, (-1.4, 0), 3.4)
-    cam(S, A(lerp(2.4, 3.4, k), lerp(-10.5, -9.0, k), lerp(3.6, 4.2, k)), A(lerp(-9, -2, k), 60, 6.5), 42, fill=0.6)
+    cam(S, A(lerp(1.0, 1.8, k), lerp(-11.5, -10.0, k), lerp(4.6, 5.0, k)), A(lerp(-6, -2, k), 60, 3.0), 40, fill=0.6)
 
 
 def rook_wave(S, k, t, lt):
     A = ocean(S, 'dusk', t, 0.6)
-    ride(S, t, 0, 0, PI + 0.25)
+    ride(S, t, 0, 0, 0.2)
     u = ease((lt - 0.55) / 0.4)
     w = math.sin(t * 11) * (1 - u)
-    aboard(S, S['rook'], 0.7, 0.7, PI - 0.2, blend(P('up', aL=(2.7, 0.5 + 0.4 * w, 0.2), aR=(2.7, 0.5 - 0.4 * w, 0.2), head=(-0.25, 0.0), lift=0.12 * abs(w)),
-                                                 P('stand', aL=(0.1, 0.2, 0.1), aR=(0.1, 0.2, 0.1), head=(0.35, 0.0), lean=0.15), u))
+    aboard(S, S['rook'], 0.75, -1.2, 0.0, blend(P('up', aL=(2.7, 0.5 + 0.4 * w, 0.2), aR=(2.7, 0.5 - 0.4 * w, 0.2), head=(-0.25, 0.0), lift=0.12 * abs(w)),
+                                              P('stand', aL=(0.1, 0.2, 0.1), aR=(0.1, 0.2, 0.1), head=(0.35, 0.0), lean=0.15), u))
     S['face']['rook'] = 'sad' if u > 0.5 else 'shocked'
-    aboard(S, S['poon'], -0.9, 0.5, PI + 0.2, blend(P('up', aL=(2.6, 0.5, 0.2), aR=(2.6, 0.5, 0.2)), P('stand', head=(0.3, 0.0), lean=0.1), ease((lt - 0.35) / 0.5)))
+    aboard(S, S['poon'], -0.9, -0.9, 0.1, blend(P('up', aL=(2.6, 0.5, 0.2), aR=(2.6, 0.5, 0.2)), P('stand', head=(0.3, 0.0), lean=0.1), ease((lt - 0.35) / 0.5)))
     S['face']['poon'] = 'tired'
-    cam(S, A(lerp(-1.0, -0.4, k), lerp(-7.4, -6.2, k), lerp(2.2, 2.6, k)), A(0.0, 0.2, 2.75), 40, fill=1.4)
+    cam(S, A(lerp(0.6, 0.3, k), lerp(-9.4, -8.0, k), lerp(2.0, 2.4, k)), A(0.0, -1.0, 2.6), 40, fill=1.4)
 
 
 def plane_over(S, k, t, lt):
     A = ocean(S, 'day', t, 0.6)
     ride(S, t, 0, 0, 0.2)
-    aboard(S, S['poon'], -0.6, 0.2, PI - 0.15, P('up', aL=(2.7, 0.6 + 0.3 * math.sin(t * 9), 0.2), aR=(2.7, 0.6 - 0.3 * math.sin(t * 9), 0.2), head=(-0.5, 0.0)))
-    aboard(S, S['rook'], 0.9, -0.3, PI + 0.35, P('reach', aR=(2.5, 0.2, 0.05), aL=(0.2, 1.9, 1.6, -1.5), head=(-0.5, 0.2)))
+    aboard(S, S['poon'], -0.9, -0.2, PI - 0.15, P('up', aL=(2.7, 0.6 + 0.3 * math.sin(t * 9), 0.2), aR=(2.7, 0.6 - 0.3 * math.sin(t * 9), 0.2), head=(-0.5, 0.0)))
+    aboard(S, S['rook'], 0.8, -0.6, PI + 0.35, P('reach', aR=(2.5, 0.2, 0.05), aL=(0.2, 1.9, 1.6, -1.5), head=(-0.5, 0.2)))
     S['face']['rook'] = 'shocked'
-    py = lerp(120, -6, k)
-    S['plane'].location = A(lerp(8, 2, k), py, lerp(30, 17, k))
+    S['plane'].location = A(lerp(5, 1, k), lerp(95, 8, k), lerp(26, 16.5, k))
     S['plane'].rotation_euler = (0.25 * math.sin(lt * 2.2), 0.08, -PI / 2)
+    S['plane'].scale = (1.5, 1.5, 1.5)
     for p in S['props']:
         p.rotation_euler = (t * 40, 0, 0)
-    cam(S, A(lerp(3.2, 2.6, k), lerp(-7.8, -6.8, k), 1.25), A(1.0, lerp(14, 3, k), lerp(11, 12.5, k)), 24, 0.04)
+    cam(S, A(lerp(1.4, 1.0, k), lerp(-10.4, -9.6, k), 1.7), A(0.2, lerp(6, 2, k), lerp(7.0, 7.6, k)), 22, 0.04)
 
 
 def storm_hide(S, k, t, lt):
@@ -1021,7 +1029,7 @@ def fish_boat(S, k, t, lt):
     S['boat'].rotation_euler = (0.05 * math.sin(t * 1.6), 0.03 * math.sin(t * 1.2), PI + 0.45)
     S['boat'].scale = (1.35, 1.35, 1.35)
     for i, m in enumerate(S['men']):
-        aboard(S, m, (2.0, 0.1, -1.9)[i], (0.25, -0.2, 0.2)[i], PI / 2 + (0.4, 0.2, -0.1)[i],
+        aboard(S, m, (2.0, 0.35, -1.6)[i], (0.45, 0.55, 0.45)[i], PI / 2 + (0.4, 0.2, -0.1)[i],
                (P('point', aR=(1.5, 0.3, 0.05)), P('stand', aL=(1.9, 0.3, 0.9), head=(0, -0.3)), P('hips', head=(0.05, -0.4)))[i], z=0.9, on='boat')
         m.root.scale = (0.74, 0.74, 0.74)
     S['face']['men'] = 'shock'
@@ -1031,20 +1039,21 @@ def fish_boat(S, k, t, lt):
 
 def hands_meet(S, k, t, lt):
     A = ocean(S, 'dawn', t, 0.4)
-    S['boat'].location = A(2.6, 3.4, 0.2)
-    S['boat'].rotation_euler = (0, 0, 0.2)
+    S['boat'].location = A(7, 16, 0.2)
+    S['boat'].rotation_euler = (0, 0, 0.3)
     S['boat'].scale = (1.5, 1.5, 1.5)
     S['coast'].location = A(0, 330, 0)
     for hnd in ('hand_p', 'hand_f'):
         S[hnd].root.scale = (1.5, 1.5, 1.5)
     u = ease(lt / 0.45)
-    S['hand_f'].place(A(lerp(1.4, 0.3, u), 0.0, lerp(3.7, 2.55, u)), (0.0, -0.9, -PI / 2))
-    S['hand_f'].grip(0.2 + 0.7 * ease((lt - 0.4) / 0.15))
-    S['hand_p'].place(A(lerp(-1.7, -0.42, u), 0.06, lerp(0.7, 2.02, u)), (0.0, -0.9 + PI, -PI / 2))
-    S['hand_p'].grip(0.15 + 0.75 * ease((lt - 0.4) / 0.15))
+    g = ease((lt - 0.4) / 0.15)
+    S['hand_f'].place(A(lerp(1.5, 0.42, u), 0.0, lerp(3.9, 2.75, u)), (PI / 4, 0.0, -PI / 2))
+    S['hand_f'].grip(0.15 + 0.7 * g)
+    S['hand_p'].place(A(lerp(-1.6, -0.42, u), 0.1, lerp(0.7, 1.95, u)), (-PI / 4, 0.0, PI / 2))
+    S['hand_p'].grip(0.15 + 0.7 * g)
     if lt > 0.42:
-        splash(S, A(0, -0.3, 2.3), min(1, (lt - 0.42) / 0.5), 8, 1.0, size=0.7)
-    cam(S, A(lerp(0.5, 0.2, k), lerp(-5.4, -4.4, k), lerp(2.0, 2.25, k)), A(0, 0, 2.3), 45, 0.06)
+        splash(S, A(0, -0.3, 2.3), min(1, (lt - 0.42) / 0.5), 8, 1.0, size=0.6)
+    cam(S, A(lerp(0.6, 0.3, k), lerp(-6.4, -5.4, k), lerp(2.2, 2.4, k)), A(0, 0, 2.35), 45, 0.06)
 
 
 def rook_stunned(S, k, t, lt):
@@ -1055,9 +1064,9 @@ def rook_stunned(S, k, t, lt):
     aboard(S, S['rook'], 0.2, -0.9, 0.15, blend(P('stand', aL=(0.1, 0.6, 0.3), aR=(0.1, 0.6, 0.3), head=(-0.05, 0.0)), P('hat', head=(0.15, 0.0)), u))
     S['face']['rook'] = 'warm' if u > 0.5 else 'shocked'
     S['hat_tip'] = u * 0.6
-    bx, by = lerp(7, 12, k), lerp(9, 16, k)
+    bx, by = lerp(-5, -9, k), lerp(12, 20, k)
     S['boat'].location = A(bx, by, wave_h(bx, by, t, 0.5) + 0.25)
-    S['boat'].rotation_euler = (0, 0, 0.9)
+    S['boat'].rotation_euler = (0, 0, 2.3)
     S['boat'].scale = (1.35, 1.35, 1.35)
     for i, m in enumerate(S['men'][:2]):
         aboard(S, m, (1.9, -1.9)[i], 0.2, PI / 2, P('stand'), z=0.9, on='boat')
@@ -1070,27 +1079,25 @@ def rook_stunned(S, k, t, lt):
 def poon_safe(S, k, t, lt):
     A = ocean(S, 'dawn', t, 0.5)
     S['coast'].location = A(0, 300, 0)
-    S['boat'].location = A(0, lerp(-2, 2, k), wave_h(0, 0, t, 0.5) + 0.3)
-    S['boat'].rotation_euler = (0.04 * math.sin(t * 1.5), 0.03 * math.sin(t * 1.1), PI / 2 + 0.25)
+    S['boat'].location = A(lerp(-1.2, 0.4, k), 0, wave_h(0, 0, t, 0.5) + 0.3)
+    S['boat'].rotation_euler = (0.04 * math.sin(t * 1.5), 0.03 * math.sin(t * 1.1), 0.25)
     S['boat'].scale = (1.6, 1.6, 1.6)
-    aboard(S, S['poon'], 0.3, 0.0, PI / 2 + 0.5, P('sit', head=(-0.1, 0.25), aL=(0.6, 0.0, 1.3, 0.8), aR=(0.6, 0.0, 1.3, 0.8)), z=1.0, on='boat')
-    S['poon'].root.scale = (0.66, 0.66, 0.66)
+    aboard(S, S['poon'], 0.3, -0.5, -0.1, P('sit', head=(-0.1, 0.25), aL=(0.6, 0.0, 1.3, 0.8), aR=(0.6, 0.0, 1.3, 0.8)), z=1.0, on='boat')
     S['face']['poon'] = 'happy'
-    aboard(S, S['men'][0], -1.6, 0.3, PI / 2 + 0.2, P('stand', aR=(0.9, 0.2, 1.0), head=(0.2, 0.5)), z=0.9, on='boat')
-    aboard(S, S['men'][1], -2.9, -0.1, PI / 2, P('stand', aL=(1.2, 0.1, 0.9), aR=(1.2, 0.1, 0.9)), z=0.9, on='boat')
-    for m in S['men'][:2]:
-        m.root.scale = (0.66, 0.66, 0.66)
+    aboard(S, S['men'][0], -0.5, -0.6, -0.4, P('stand', aR=(0.9, 0.2, 1.0), head=(0.2, 0.5)), z=0.9, on='boat')
+    aboard(S, S['men'][1], -1.15, -0.2, -0.35, P('stand', aL=(1.2, 0.1, 0.9), aR=(1.2, 0.1, 0.9)), z=0.9, on='boat')
     S['face']['men'] = 'happy'
     tip = math.sin(PI * ease((lt - 0.3) / 0.9)) if lt > 0.3 else 0
-    aboard(S, S['rook'], 2.1, 0.0, PI / 2 + 0.9, blend(P('stand', head=(0, 0.3)), P('hat', head=(0.2, 0.3)), tip), z=1.0, on='boat')
-    S['rook'].root.scale = (0.66, 0.66, 0.66)
+    aboard(S, S['rook'], 1.15, -0.2, 0.2, blend(P('stand', head=(0, 0.3)), P('hat', head=(0.2, 0.3)), tip), z=1.0, on='boat')
+    for rig in [S['poon'], S['rook']] + S['men'][:2]:
+        rig.root.scale = (0.66, 0.66, 0.66)
     S['hat_tip'] = tip
     S['face']['rook'] = 'warm'
     for i, g in enumerate(S['gulls'][:3]):
         g['root'].location = A(-6 + i * 5 + t, 26 + i * 6, 9 + i + 0.5 * math.sin(t * 2 + i))
         g['root'].scale = (2.4, 2.4, 2.4)
         flap(g, t + i * 0.4, 7.5, 0.65)
-    cam(S, A(lerp(4.6, 3.6, k), lerp(-9.6, -8.4, k), lerp(3.6, 3.2, k)), A(0.6, 0.6, 3.3), 36)
+    cam(S, A(lerp(1.7, 1.1, k), lerp(-11.2, -10.2, k), lerp(3.6, 3.3, k)), A(0.45, 0.0, 2.9), 36)
 
 
 # ---------------------------------------------------------------- shots: the pier
@@ -1123,9 +1130,9 @@ def signoff(S, k, t, lt):
     S['hat_tip'] = tip
     S['face']['rook'] = 'smirk'
     c = max(0.0, min(1.0, (lt - 0.25) / 0.9))
-    S['hook'].location = A(-0.8 - 0.2 * c, -0.8, 3.1 + 2.5 * math.sin(c * PI))
+    S['hook'].location = A(-0.85 - 0.15 * c, -0.8, 3.0 + 1.5 * math.sin(c * PI))
     S['hook'].rotation_euler = (t * 16, t * 7, 0)
-    S['hook'].scale = (2.0, 2.0, 2.0)
+    S['hook'].scale = (1.5, 1.5, 1.5)
     cam(S, A(lerp(1.1, 0.8, k), lerp(-6.6, -5.4, k), 2.4), A(0, 0, 3.45), 38)
 
 
