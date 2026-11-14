@@ -195,7 +195,7 @@ def days_9(cv, c):
             cv.drawLine(x0 + wob, y0, x0 + 12, y0 + 330, P(CREAM, 24))
         else:
             cv.drawLine(x0 - 4 * 96 - 44, y0 + 270, x0 - 50, y0 + 60, P(AMBER, 24))
-    punch(cv, '9 DAYS', 1490, 500, 210, pop(c.lt, 0.45), AMBER)
+    punch(cv, '9 DAYS', 1450, 480, 180, pop(c.lt, 0.45), AMBER)
 
 
 def board_no(cv, c):
@@ -409,10 +409,10 @@ def bat_count(cv, c):
             cv.drawLine(x0 + wob, y0, x0 + 8, y0 + 250, P(CREAM, 16))
         else:
             cv.drawLine(x0 - 190, y0 + 200, x0 - 10, y0 + 50, P(AMBER, 16))
-    punch(cv, 'ABOUT 20', 1500, 400, 170, pop(c.lt, 0.5), AMBER)
+    punch(cv, 'ABOUT 20', 1440, 400, 140, pop(c.lt, 0.5), AMBER)
     k = pop(c.lt, 0.68)
     if k > 0:
-        T(cv, 'BY HIS OWN ACCOUNT', 1500, 520, 58, WHITE, BLACK)
+        T(cv, 'BY HIS OWN ACCOUNT', 1440, 510, 54, WHITE, BLACK)
     Wd.particles(cv, W, H, c.t, 30, Wd.alpha(0xFFFFD9A0, 0.35), 9, size=(2, 5), drift=(8, 18), wobble=22, twinkle=True)
 
 
@@ -707,6 +707,6 @@ def THUMB(cv, c):
         cv.clear(h('C8743A'))
     cv.drawRect(skia.Rect(0, 0, 1280, 720), skia.Paint(Shader=skia.GradientShader.MakeLinear(
         [(640, 0), (1010, 0)], [0x00000000, 0xC8000000])))
-    T(cv, 'LOST', 975, 230, 120, WHITE, BLACK)
-    T(cv, '9 DAYS', 975, 420, 170, h('FFB000'), BLACK)
-    T(cv, 'IN THE SAHARA', 975, 520, 62, WHITE, BLACK)
+    T(cv, 'LOST', 965, 240, 120, WHITE, BLACK)
+    T(cv, '9 DAYS', 965, 420, 150, h('FFB000'), BLACK)
+    T(cv, 'IN THE SAHARA', 965, 520, 60, WHITE, BLACK)

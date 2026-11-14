@@ -1570,7 +1570,7 @@ def set_ward(r):
     add('cube', wl, (-8.4, 0, 3.5), scale=(0.3, 11, 7), size=1, parent=r)
     add('cube', wl, (8.4, 0, 3.5), scale=(0.3, 11, 7), size=1, parent=r)
     add('cube', '8AA89A', (0, 5.02, 0.9), scale=(17, 0.06, 1.8), size=1, parent=r)
-    add('cube', 'E6F4FF', (4.2, 5.0, 3.9), scale=(3.4, 0.1, 2.6), size=1, parent=r, emit=5)
+    add('cube', 'E6F4FF', (4.2, 5.0, 3.9), scale=(3.4, 0.1, 2.6), size=1, parent=r, emit=2.2)
     for x in (2.5, 4.2, 5.9):
         add('cube', 'F2EEE4', (x, 4.92, 3.9), scale=(0.12, 0.1, 2.7), size=1, parent=r)
     add('cube', 'F2EEE4', (4.2, 4.92, 3.9), scale=(3.5, 0.1, 0.12), size=1, parent=r)
@@ -1599,8 +1599,9 @@ def set_ward(r):
     add('cube', 'B8D0C4', (7.6, 2.4, 2.8), scale=(0.1, 3.6, 5.2), size=1, parent=r)
     figure(r, (-2.9, 0.9, 0), PI / 2 + 0.25, 'ECEFF2', '4A5464', 'B07850')
     a1 = empty((0, 2, 1.8), r)
-    track(light((0, -1.5, 6.4), 1500, 'FFF4E0', 5.0, a1, parent=r))
-    track(light((4.2, 3.6, 4.0), 700, 'DCEBFF', 2.5, a1, parent=r))
+    add('cube', 'D8E2DA', (0, 0, 7.1), scale=(17, 11, 0.2), size=1, parent=r)
+    track(light((0, -1.5, 6.4), 420, 'FFF4E0', 5.0, a1, parent=r))
+    track(light((4.2, 3.6, 4.0), 220, 'DCEBFF', 2.5, a1, parent=r))
     track(light((-4.5, -4.5, 2.6), 260, 'FF7A1A', 2.5, a1, parent=r))
     # the study, 40 units east
     o = empty((40, 0, 0), r)
@@ -1658,7 +1659,7 @@ def extend(S):
     S['bot2'] = add('cylinder', 'D8ECF2', (0, -0.12, -0.66), rot=(0.2, 0, 0), radius=0.085, depth=0.46, vertices=8, parent=S['man'].el[1], rough=0.15)
     S['cloth'] = add('cube', 'F4EEDF', (0, -0.06, -0.95), rot=(0.2, 0, 0.3), scale=(0.9, 0.04, 0.8), size=1, parent=S['man'].el[1])
     S['itflag'] = make_itflag()
-    S['snake'] = [add('ico_sphere', ('B89A4A', '8A6E32')[i % 2], FAR, scale=(1.3, 1, 0.8), radius=0.12 if i else 0.16, subdivisions=1) for i in range(16)]
+    S['snake'] = [add('ico_sphere', ('4A7A3A', 'E0C84A')[i % 2], FAR, scale=(1.3, 1, 0.8), radius=0.13 if i else 0.17, subdivisions=1) for i in range(16)]
     S['rpack'] = empty(FAR)
     add('cube', 'C8402A', (0, 0, 0.5), scale=(0.9, 0.6, 1.0), size=1, parent=S['rpack'])
     add('cube', 'A83222', (0, -0.33, 0.4), scale=(0.6, 0.1, 0.5), size=1, parent=S['rpack'])
@@ -1799,11 +1800,11 @@ def kit(S, k, t, lt):
     S['hand'].grip(lerp(0.2, 0.8, g))
     S['itflag'].location, S['itflag'].rotation_euler = A(0.95, 0.3, 1.05), (0, 0.06 * math.sin(t * 5), 0.3)
     rc = ease((k - 0.35) * 2.4) * (1 - ease((k - 0.85) * 7))
-    S['rook'].place(A(1.75, 1.75, 0), 0.25)
+    S['rook'].place(A(1.15, 1.7, 0), 0.2)
     S['rook'].apply(P('stand', lean=0.42, aR=(1.0 + 0.45 * rc, -0.15, 0.5 - 0.2 * rc), aL=(0.2, 0.3, 0.6), head=(0.3, 0.15)))
     S['face']['rook'] = 'smirk' if rc < 0.9 else 'shocked'
     lamp(S, A, (0, 0, 1.4), (4, 2.5, 3.2), (-2.5, -4, 3.2), 900, 900)
-    cam(S, A(lerp(-0.7, 0.3, k), lerp(-4.6, -4.0, k), 2.5), A(0.2, 0.3, 1.45), 36)
+    cam(S, A(lerp(-0.9, 0.1, k), lerp(-5.0, -4.4, k), 2.6), A(0.1, 0.4, 1.7), 34)
 
 
 def checkpoint(S, k, t, lt):
@@ -1820,7 +1821,7 @@ def checkpoint(S, k, t, lt):
         e.apply(run(t + 0.3 * i, 2.3))
     puffs(S, A(-1.6, y + 1.2, 0), t, 8, 1.4)
     lamp(S, A, (-1.6, y, 2), (3, y + 3, 3.5), None, 800)
-    cam(S, A(lerp(4.6, 3.8, k), -80.5, 1.5), A(-2.4, lerp(-68, -71, k), 2.1), 30)
+    cam(S, A(lerp(3.4, 2.6, k), -77.5, 1.4), A(-2.6, lerp(-68.5, -71, k), 2.0), 32)
 
 
 # ---------------------------------------------------------------- new shots: the storm and the morning after
@@ -1845,7 +1846,7 @@ def dawn_dune(S, k, t, lt):
     A = hero(stage(S, 'wild', 'dawn'))
     z = hero_z(0.5, 15)
     up = ease(k * 1.5)
-    S['man'].place(A(0.5, 15, z - 0.12), 0.35)
+    S['man'].place(A(0.5, 15, z - 0.12), 1.15)
     S['man'].apply(blend(P('sit', lean=1.05, head=(0.6, 0), aL=(0.4, 0.3, 0.4), aR=(0.4, 0.3, 0.4), lL=(1.5, 0.5), lR=(1.45, 0.9)),
                          P('sit', lean=0.2, head=(-0.1, 0.85 * math.sin(t * 2.2)), aL=(0.5, 0.5, 0.6), aR=(0.9, 0.3, 1.5), lL=(1.5, 0.5), lR=(1.3, 1.5)), up))
     S['face']['man'] = 'closed' if up < 0.5 else 'scared'
@@ -1882,13 +1883,14 @@ def rook_buried(S, k, t, lt):
 def bottles(S, k, t, lt):
     """The water is nearly gone; the spare bottle comes out. Rook pulls his hat down and looks elsewhere."""
     A = stage(S, 'wild', 'day')
-    S['man'].place(A(3.4, 4.2, 0), PI - 0.75)
+    S['man'].place(A(2.7, 3.4, 0), PI - 0.75)
     S['man'].apply(P('stand', **KNEEL, lean=0.2, aR=(1.25 + 0.15 * math.sin(t * 2), 0.25, 1.5), aL=(0.4, 0.2, 0.9), head=(0.25, -0.3)))
     S['face']['man'] = 'tired'
     S['bot2_on'] = True
-    S['bot'].location, S['bot'].rotation_euler, S['bot'].scale = A(1.5, -0.4, 0.0), (0, 0.05 * math.sin(t * 3), 0), (2.6, 2.6, 2.6)
+    S['rock'].location, S['rock'].scale = A(2.5, -2.3, 0), (0.9, 0.9, 1.15)
+    S['bot'].location, S['bot'].rotation_euler, S['bot'].scale = A(2.45, -2.4, 0.78), (0, 0.03 * math.sin(t * 3), 0), (1.15, 1.15, 1.15)
     tip = ease((k - 0.2) * 3)
-    S['rook'].place(A(-0.6, 2.6, 0), 0.3)
+    S['rook'].place(A(-1.0, 2.4, 0), 0.3)
     S['rook'].apply(blend(P('stand', head=(0, 0.75)), P('hat', head=(0.2, -0.7), aL=(0.3, 0.2, 0.5)), tip))
     S['hat_tip'], S['face']['rook'] = tip, 'deadpan'
     lamp(S, A, (1, 3, 2), (5, 5, 4), (-3, -4, 3), 1000, 500)
@@ -1910,7 +1912,7 @@ def wait_dune(S, k, t, lt):
     S['coin'].rotation_euler = (t * 25, 0.4, 0)
     S['coin'].scale = (1.5, 1.5, 1.5)
     lamp(S, A, (0.3, 16, z + 1.6), (5, 18, z + 4), (-3, 9.5, z + 2.5), 1300, 700)
-    cam(S, A(lerp(-4.6, -3.2, k), lerp(7.4, 8.2, k), z + lerp(0.4, 1.0, k)), A(0.3, 16, z + 1.5), 30)
+    cam(S, A(lerp(-3.6, -2.4, k), lerp(9.6, 10.4, k), z + lerp(0.5, 1.0, k)), A(0.3, 16, z + 1.5), 32)
 
 
 # ---------------------------------------------------------------- new shots: the shrine
@@ -1935,12 +1937,12 @@ def hall_shade(S, k, t, lt):
     """Inside: bare walls, and out of the sun for the first time in days."""
     A = stage(S, 'hall', 'hall')
     br = 0.04 * math.sin(t * 2.2)
-    S['man'].place(A(-2.9, 3.55, 0.03), 0.3)
+    S['man'].place(A(-2.9, 3.4, 0.03), 0.95)
     S['man'].apply(P('sit', lean=-0.2, head=(0.5 + br, 0.35), aL=(0.25, 0.15, 0.3), aR=(0.3, 0.2, 0.5), lL=(1.5, 0.25), lR=(1.3, 0.8), lift=-0.5 + br * 0.5))
     S['pack_on'], S['face']['man'] = False, 'closed'
     S['rpack'].location, S['rpack'].rotation_euler = A(-4.3, 2.6, 0), (0, 0, 0.7)
     S['hl_door'].data.energy = 1500 + 500 * math.sin(t * 1.7)
-    cam(S, A(lerp(2.6, 1.0, k), -4.4, lerp(1.2, 1.6, k)), A(-1.2, 3.0, 1.5), 30)
+    cam(S, A(lerp(1.8, 0.6, k), lerp(-1.6, -1.0, k), lerp(1.1, 1.4, k)), A(-2.6, 3.4, 1.35), 32)
 
 
 def hall_days(S, k, t, lt):
@@ -1979,17 +1981,17 @@ def plane_over(S, k, t, lt):
 def hall_low(S, k, t, lt):
     """The lowest point. No jokes: he sits with his head down, and Rook stands by the door with nothing to say."""
     A = stage(S, 'hall', 'hall')
-    S['hl_door'].data.energy, S['hl_fill'].data.energy, S['hl_orange'].data.energy = 240 + 60 * math.sin(t * 0.9), 520, 60
-    S['hl_door'].data.color = K.hexc('8AA0E8')[:3]
-    S['man'].place(A(-1.3, 1.5, 0.03), PI - 0.7)
-    S['man'].apply(P('sit', lean=0.5, head=(0.75, 0), aL=(1.2, -0.2, 0.9), aR=(1.2, -0.2, 0.9), lL=(1.9, 1.9), lR=(1.9, 1.9), lift=-0.5 + 0.02 * math.sin(t * 1.8)))
+    S['hl_door'].data.energy, S['hl_fill'].data.energy, S['hl_orange'].data.energy = 300 + 80 * math.sin(t * 0.9), 380, 40
+    S['hl_door'].data.color, S['hl_fill'].data.color = K.hexc('6A86F0')[:3], K.hexc('3A54D8')[:3]
+    S['man'].place(A(-1.5, 1.7, 0.03), 1.95)
+    S['man'].apply(P('sit', lean=0.42, head=(0.8, 0), aL=(1.25, -0.2, 0.9), aR=(1.25, -0.2, 0.9), lL=(1.9, 1.9), lR=(1.9, 1.9), lift=-0.5 + 0.02 * math.sin(t * 1.8)))
     S['pack_on'], S['gaunt'], S['face']['man'] = False, True, 'closed'
     for i in range(3):
         S['tally'][i].location = A(1.0 + i * 0.3, 4.46, 2.5)
-    S['rook'].place(A(3.9, -0.9, 0), face_to((3.9, -0.9), (-1.3, 1.5)) + 0.25)
+    S['rook'].place(A(2.7, 1.3, 0), face_to((2.7, 1.3), (-1.3, 1.5)) + 0.5)
     S['rook'].apply(P('stand', aR=(0.75, -0.3, 2.1, 0.9), aL=(0.1, 0.1, 0.2), head=(0.35 + 0.03 * math.sin(t * 1.5), 0.0), lean=0.08))
     S['face']['rook'] = 'sad'
-    cam(S, A(lerp(1.6, 0.2, k), lerp(-4.5, -4.1, k), lerp(1.9, 1.5, k)), A(0.6, 1.2, 1.5), 32)
+    cam(S, A(lerp(1.4, 0.2, k), lerp(-4.0, -3.4, k), lerp(1.8, 1.4, k)), A(0.6, 1.4, 1.4), 32)
 
 
 def hall_dawn(S, k, t, lt):
@@ -2029,34 +2031,34 @@ def wadi_shade(S, k, t, lt):
     """Midday: he lies up under a ledge. Rook fans himself."""
     A = stage(S, 'wadi', 'day')
     br = 0.04 * math.sin(t * 2.4)
-    S['man'].place(A(-1.2, 5.9, 0.03), 0.25)
+    S['man'].place(A(-1.4, 5.7, 0.03), 1.05)
     S['man'].apply(P('sit', lean=-0.25, head=(0.5 + br, 0.3), aL=(0.25, 0.15, 0.3), aR=(0.3, 0.2, 0.5), lL=(1.5, 0.25), lR=(1.3, 0.8)))
     S['pack_on'], S['gaunt'], S['face']['man'] = False, True, 'closed'
-    S['rook'].place(A(2.3, 4.7, 0.03), -0.5)
+    S['rook'].place(A(2.3, 4.7, 0.03), -0.95)
     S['rook'].apply(P('sit', aR=(1.5, 0.2 + 0.5 * math.sin(t * 9), 1.7), aL=(0.4, 0.2, 0.6), head=(-0.2, 0.2), lean=0.0, lL=(1.5, 0.4), lR=(1.4, 1.0)))
     S['face']['rook'] = 'sick'
     feathers(S, A(2.3, 4.2, 2.3), t, 2)
     lamp(S, A, (0.5, 5, 1.5), (6, 2, 3), (-3, -2, 2.6), 900, 1400)
-    cam(S, A(lerp(1.9, 0.9, k), lerp(-5.4, -4.6, k), 1.25), A(0.6, 5.2, 1.6), 30)
+    cam(S, A(lerp(1.6, 0.8, k), lerp(-1.6, -0.9, k), 1.2), A(0.6, 5.2, 1.5), 32)
 
 
 def roots(S, k, t, lt):
     """A root wrung out over his mouth for a few drops."""
     A = stage(S, 'wadi', 'day')
-    S['man'].place(A(-5.3, -1.0, 0), -0.55)
-    S['man'].apply(P('stand', **KNEEL, lean=-0.15, head=(-0.75, 0.1), aR=(2.3, 0.3, 1.2), aL=(0.4, 0.3, 0.8)))
+    S['man'].place(A(-5.3, -1.0, 0), 0.5)
+    S['man'].apply(P('stand', **KNEEL, lean=-0.1, head=(-0.8, 0.0), aR=(0.5, 0.3, 0.9), aL=(0.4, 0.3, 0.8)))
     S['pack_on'], S['gaunt'], S['face']['man'] = False, True, 'closed'
     sq = 0.5 + 0.5 * math.sin(t * 6)
-    S['hand'].place(A(-5.6, -1.75, 3.05), (0.3, 0.2, PI / 2 + 0.6))
-    S['hand'].root.scale = (1.5, 1.5, 1.5)
+    S['hand'].place(A(-3.9, -1.55, 3.15), (0.0, -0.25, -PI / 2))
+    S['hand'].root.scale = (1.4, 1.4, 1.4)
     S['hand'].grip(0.75 + 0.2 * sq)
-    S['root'].location, S['root'].rotation_euler, S['root'].scale = A(-5.62, -1.8, 3.0), (0.2, 0.5 + 0.2 * sq, 0.4), (1.3, 1.3, 1.3)
+    S['root'].location, S['root'].rotation_euler, S['root'].scale = A(-5.05, -1.55, 3.0), (0.2 * sq, 0.2, 0.4), (1.2, 1.2, 1.2)
     for i, d in enumerate(S['drops'][:3]):
         u = (t * 1.5 + i / 3) % 1
-        d.location = A(-5.6, -1.82, 2.72 - 0.45 * u * u)
-        d.scale = (1.2 * (1 - 0.4 * u),) * 2 + (1.9,)
-    lamp(S, A, (-5.4, -1.2, 2.2), (-2, 0.5, 4), (-8, -5, 3), 900, 900)
-    cam(S, A(lerp(-7.9, -7.5, k), lerp(-5.4, -4.9, k), 1.7), A(-5.4, -1.3, 2.35), 36)
+        d.location = A(-5.05, -1.55, 2.62 - 0.4 * u * u)
+        d.scale = (1.3 * (1 - 0.4 * u),) * 2 + (2.0,)
+    lamp(S, A, (-5.2, -1.2, 2.2), (-2, 0.5, 4), (-8, -5, 3), 900, 900)
+    cam(S, A(lerp(-5.9, -5.5, k), lerp(-6.2, -5.7, k), 2.0), A(-4.9, -1.3, 2.4), 38)
 
 
 def snake(S, k, t, lt):
@@ -2064,18 +2066,18 @@ def snake(S, k, t, lt):
     A = stage(S, 'wadi', 'day')
     hx = lerp(9.2, 5.2, k)
     for i, o in enumerate(S['snake']):
-        u = i * 0.2
-        o.location = A(hx + u + 0.0, -3.0 + 0.32 * math.sin(t * 9 - i * 0.75), 0.1 + (0.06 if i == 0 else 0))
-        o.scale = (2.0, 1.5, 1.2) if i == 0 else (1.7 - 0.05 * i, 1.3 - 0.04 * i, 1.0 - 0.03 * i)
+        u = i * 0.34
+        o.location = A(hx + u, -4.4 + 0.5 * math.sin(t * 9 - i * 0.75), 0.2 + (0.1 if i == 0 else 0))
+        o.scale = (3.4, 2.6, 2.0) if i == 0 else (3.0 - 0.1 * i, 2.4 - 0.08 * i, 1.8 - 0.06 * i)
     j = ease((k - 0.35) * 5)
     hop = abs(math.sin(max(0.0, k - 0.35) * 9)) * j
-    S['rook'].place(A(4.0 - 0.9 * j, -2.4, 1.3 * hop), PI / 2 - 0.5)
+    S['rook'].place(A(3.6 - 0.9 * j, -2.2, 0.75 * hop), PI / 2 - 0.5)
     S['rook'].apply(blend(P('stand', head=(0.35, 0.3), lean=0.2), P('up', lL=(0.9, 1.5), lR=(0.6, 1.2), head=(0.3, 0.3)), j))
     S['face']['rook'] = 'shocked' if j > 0.2 else 'calm'
     S['hat_off'] = j > 0.3
     feathers(S, A(3.6, -2.6, 2.6), t, 6 if j > 0.2 else 0)
     lamp(S, A, (5, -2.6, 1.4), (9, 0, 3.4), (1, -7, 3), 1000, 700)
-    cam(S, A(lerp(6.4, 5.6, k), lerp(-9.6, -9.0, k), 0.6), A(5.2, -2.7, 1.55), 32)
+    cam(S, A(lerp(6.4, 5.6, k), lerp(-9.0, -8.4, k), 0.9), A(4.9, -3.0, 1.2), 32)
 
 
 def oasis(S, k, t, lt):
@@ -2090,7 +2092,7 @@ def oasis(S, k, t, lt):
     S['pack_on'], S['gaunt'], S['face']['man'] = False, True, 'shock'
     footprints(S, A, [(-0.8 + 0.25 * (-1) ** i, y - 0.8 - i * 0.9, 0, 0.1 * (-1) ** i) for i in range(10)])
     lamp(S, A, (-0.8, y, 2), (4, y + 3, 4), (-4, y - 6, 3), 1400, 900)
-    cam(S, A(lerp(3.4, 2.2, k), lerp(-17.5, -13.5, k), lerp(1.0, 1.6, k)), A(0, 3, 2.7), 28)
+    cam(S, A(lerp(3.4, 2.2, k), lerp(-17.5, -13.5, k), lerp(3.6, 4.4, k)), A(0, 4, 1.6), 28)
 
 
 def oasis_drink(S, k, t, lt):
@@ -2240,7 +2242,7 @@ def rook_bones(S, k, t, lt):
     S['rook'].apply(P('stand', **KNEEL, lean=0.3 + 0.2 * dn, aR=(1.1, -0.1, 0.7), aL=(0.3, 0.3, 0.9), head=(0.45, -0.2)))
     S['face']['rook'] = 'calm' if k < 0.6 else 'shocked'
     S['mag'].location = A(0.55 + 0.12 * math.sin(t * 2.5), -0.9, lerp(1.4, 0.95, dn))
-    S['mag'].rotation_euler, S['mag'].scale = (1.0, 0, 0.5), (1.6, 1.6, 1.6)
+    S['mag'].rotation_euler, S['mag'].scale = (1.0, 0, 0.5), (1.15, 1.15, 1.15)
     for i in range(1, 4):
         bat(S, i, A(-1.8 + i * 0.9, 0.9, 6.0), yaw=0.3 * i)
     lamp(S, A, (0.2, -0.4, 1.2), (3.0, -2.5, 3.0), (-1.5, -4.5, 2.4), 520, 380)
@@ -2294,7 +2296,7 @@ def finish_line(S, k, t, lt):
     S['face']['rook'] = 'laugh'
     puffs(S, A(-0.8, y - 1.0, 0), t, 8, 1.2, 1.0, (0, -1, 0))
     lamp(S, A, (1, 12, 2.4), (6, 16, 4), (-3, 21, 3), 1400, 1100)
-    cam(S, A(lerp(-0.2, 0.8, k), lerp(22.5, 21.0, k), 1.1), A(0.9, 10.5, 2.9), 28)
+    cam(S, A(lerp(0.2, 1.2, k), lerp(19.5, 18.2, k), 1.1), A(1.0, 10.5, 2.7), 30)
 
 
 HOST |= {'bivouac', 'kit', 'rook_buried', 'bottles', 'wait_dune', 'flag_roof', 'hall_days', 'hall_low', 'wadi_shade', 'snake', 'oasis_drink', 'caravan', 'jeep',
@@ -2318,7 +2320,7 @@ def photo_thumb(S, k, t, lt):
     feathers(S, A(0.3, 14.2, z + 2.6), 1.0, 5)
     footprints(S, A, [(-2.6 + 0.22 * (-1) ** i, 17.2 + i * 0.9, hero_z(-2.6, 17.2 + i * 0.9), 0.0) for i in range(6)])
     lamp(S, A, (-1, 15.5, z + 2), (4, 18, z + 4), (-4, 9, z + 2.5), 1800, 1500)
-    cam(S, A(2.2, 8.2, z + 0.9), A(1.6, 15.5, z + 1.9), 34)
+    cam(S, A(1.6, 7.6, z + 0.9), A(0.7, 15.5, z + 2.0), 34)
 
 
 STILLS['thumb'] = photo_thumb
