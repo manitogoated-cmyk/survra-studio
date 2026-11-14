@@ -1,13 +1,29 @@
 {
-  "id": "r010-yamaguchi", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9,
+  "id": "r010-yamaguchi-long", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9,
   "segments": [
-    {"scene": "hook", "mood": "hook", "text": "He lives through the atomic bomb at Hiroshima. Then he goes home. Home is Nagasaki."},
+    {"scene": "hook", "mood": "hook", "text": "A man lives through the atomic bomb at Hiroshima. He is burned, half deaf, and he wants one thing: to go home. So he gets on a train. Home is Nagasaki."},
     {"scene": "doubt", "mood": "calm", "text": "No chance. Not both. Let's go look."},
-    {"scene": "hiro", "mood": "tense", "text": "August {1945|nineteen forty-five}. Name: Tsutomu Yamaguchi. He is {29|twenty-nine}, an engineer, ending a work trip in Hiroshima. A flash. He is under two miles away."},
-    {"scene": "hurt", "mood": "sad", "text": "He is burned. His eardrums are burst. He shelters for the night. Next day, he goes home."},
-    {"scene": "office", "mood": "tense", "text": "Three days on, bandaged, he is back at work in Nagasaki, telling his boss about the bomb. His boss doesn't believe him."},
-    {"scene": "second", "mood": "sad", "text": "Then the same white light fills the room. He lives again."},
-    {"scene": "life", "mood": "wonder", "text": "He lived to {93|ninety-three}. In {2009|two thousand nine}, Japan certified him as a survivor of both. Officially, the only one."},
-    {"scene": "end", "mood": "end", "text": "He used those years to ask the world to give up the bomb. I was wrong. Case closed."}
+    {"scene": "who", "mood": "calm", "text": "His name is Tsutomu Yamaguchi. Born in Nagasaki in {1916|nineteen sixteen}. He is a draughtsman at Mitsubishi Heavy Industries, and he designs oil tankers."},
+    {"scene": "trip", "mood": "calm", "text": "In {1945|nineteen forty-five} the company sends him and two colleagues, Akira {Iwanaga|Ee-wah-nah-gah} and {Kuniyoshi|Koo-nee-yo-she} Sato, to its shipyard in Hiroshima. Three months, far from his wife, {Hisako|He-sah-ko}."},
+    {"scene": "last", "mood": "tense", "text": "By the sixth of August the job is done, and the three of them are leaving for home. Then he finds he has left something behind, and he goes back for it alone."},
+    {"scene": "road", "mood": "tense", "text": "A quarter past eight. He is walking toward the shipyard. He looks up, and sees one aircraft, very high, and two small parachutes. Then, a flash."},
+    {"scene": "flash", "mood": "sad", "text": "He is about three kilometres from the centre of it. It throws him to the ground. His eardrums are burst, his upper body is burned, and for a while he cannot see."},
+    {"scene": "found", "mood": "sad", "text": "He gets up. He goes looking for his two colleagues, and he finds them. Both alive."},
+    {"scene": "night", "mood": "sad", "text": "The three of them spend that night in an air-raid shelter. I have nothing clever to say about that night. Nobody should."},
+    {"scene": "train", "mood": "calm", "text": "The next day they make their way to a railway station. There is a train. It carries them west, to Nagasaki."},
+    {"scene": "home", "mood": "calm", "text": "He is home. His burns are treated, and he is wrapped in bandages. By any sensible rule, he stays in bed."},
+    {"scene": "work", "mood": "tense", "text": "He doesn't. On the ninth of August, three days after Hiroshima, he reports for work at Mitsubishi."},
+    {"scene": "boss", "mood": "tense", "text": "At about eleven o'clock he is telling his supervisor what he saw. One bomb. One whole city. His supervisor does not believe that a single bomb could do that."},
+    {"scene": "second", "mood": "sad", "text": "Then the same white light fills the room. He is about three kilometres away, again. He is thrown to the floor. And he lives, again."},
+    {"scene": "fever", "mood": "sad", "text": "His bandages are ruined, and for more than a week he lies ill with a high fever. {Hisako|He-sah-ko} has lived through it too. Six days after Nagasaki, the war ends."},
+    {"scene": "after", "mood": "calm", "text": "And then he does the most surprising thing of all. He gets on with it. He works as a translator for the American occupation forces. He teaches school. Then he goes back to Mitsubishi, and back to designing tankers."},
+    {"scene": "quiet", "mood": "calm", "text": "He and {Hisako|He-sah-ko} raise a family. In {1957|nineteen fifty-seven} he is registered as a survivor of Nagasaki. Only Nagasaki. And for decades he says very little about it in public."},
+    {"scene": "write", "mood": "calm", "text": "In his eighties, he writes it down. A memoir, and a book of poems."},
+    {"scene": "son", "mood": "sad", "text": "In {2005|two thousand five} his son dies of cancer. After that, he stops keeping quiet."},
+    {"scene": "un", "mood": "wonder", "text": "In {2006|two thousand six} he appears in a documentary about people who were under both bombs. There are thought to be about a hundred and sixty-five of them. It is shown at the United Nations in New York. And there, he asks the world to give up nuclear weapons."},
+    {"scene": "record", "mood": "wonder", "text": "In {2009|two thousand nine} he asks Japan to add Hiroshima to his record. In March, it does. He is the only person it has ever officially recognised as a survivor of both."},
+    {"scene": "said", "mood": "calm", "text": "He is reported to have said that now the record could go on telling young people what happened, even after he was gone."},
+    {"scene": "death", "mood": "sad", "text": "He dies in Nagasaki in January {2010|twenty ten}. He is {93|ninety-three}."},
+    {"scene": "end", "mood": "end", "text": "I came to prove no one could be under both. He was. And he spent the time he had left asking that nobody ever be under a third. I was wrong. Case closed."}
   ]
 }
