@@ -1564,7 +1564,7 @@ def ward(S):
 def doctors(S, k, t, lt):
     A = ward(S)
     S['beat'].scale = (1, 1, 0.6 + 0.6 * abs(math.sin(t * 5)))
-    S['ewa2'].apply(P('sit', head=(0.1, 0.5 + 0.1 * math.sin(t * 1.5))))
+    S['ewa2'].apply(P('sit', aL=(0.3, 0.1, 0.8, 0.3), aR=(0.3, 0.1, 0.8, 0.3), head=(0.1, 0.5 + 0.1 * math.sin(t * 1.5))))
     S['face']['ewa2'] = 'calm'
     d = (-1.1, -1.3)
     S['doctor'].place(A(d[0], d[1], 0), face_to(d, (2.0, -0.6)))
@@ -1580,7 +1580,8 @@ def ward_cu(S, k, t, lt):
     A = ward(S)
     S['beat'].scale = (1, 1, 0.6 + 0.6 * abs(math.sin(t * 5)))
     touch = math.sin(PI * ease(lt / 1.4)) if lt < 1.4 else 0.0
-    S['ewa2'].apply(blend(P('sit', head=(0.1, -0.35)), P('sit', aR=(0.5, 1.5, 2.2, -1.2), head=(0.15, -0.35)), touch))
+    S['ewa2'].apply(blend(P('sit', aL=(0.3, 0.1, 0.8, 0.3), aR=(0.3, 0.1, 0.8, 0.3), head=(0.1, -0.35)),
+                           P('sit', aL=(0.3, 0.1, 0.8, 0.3), aR=(0.5, 1.5, 2.2, -1.2), head=(0.15, -0.35)), touch))
     S['face']['ewa2'] = 'happy'
     rk = (4.4, -1.5)
     S['rook'].place(A(rk[0], rk[1], 0), face_to(rk, (2.0, -0.6)) - 0.5)
@@ -1659,11 +1660,11 @@ def photo_thumb(S, k, t, lt):
     A = clouds(S, 1.0, 0, '2E3A5C', 1.2)
     S['cflash'].data.energy = 2.2
     S['ckey'].data.energy = 60000
-    fly(S, A(-7.6, 2.5, 3.0), 0.55, 0.25, -0.3, P('stand', head=(-0.4, 0.3), **{**BRAKE, 'aL': (2.7, 0.5, 0.3), 'aR': (2.3, 0.6, 0.8)}), 'shock', True)
+    fly(S, A(-8.0, 2.5, 2.8), 0.55, 0.25, -0.3, P('stand', head=(-0.4, 0.3), **{**BRAKE, 'aL': (2.7, 0.5, 0.3), 'aR': (2.3, 0.6, 0.8)}), 'shock', True)
     hail(S, A(-4, 0, 3), 1.0, 34, (22, 8, 14), 60, size=1.3)
-    brolly_rook(S, A(-2.6, -4.2, -1.6), 0.35, 1.0, 'shocked', True, True)
-    feathers(S, A(-2.6, -4.2, 0.0), 1.0, 7)
-    cam(S, A(4.4, -15.5, -2.2), A(1.8, 0, 2.4), 32)
+    brolly_rook(S, A(-2.7, -3.0, -2.5), 0.35, 1.0, 'shocked', True, True)
+    feathers(S, A(-2.7, -3.0, -0.9), 1.0, 7)
+    cam(S, A(3.2, -15.5, -2.2), A(-2.2, 0, 2.6), 32)
 
 
 STILLS['thumb'] = photo_thumb

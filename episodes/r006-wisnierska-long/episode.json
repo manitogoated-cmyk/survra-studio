@@ -1,7 +1,7 @@
 {
  "id": "r006-wisnierska-long",
  "format": "long",
- "status": "draft",
+ "status": "approved",
  "synthetic": false,
  "host": "rook",
  "case": 6,
@@ -70,5 +70,8 @@
   "https://www.noiser.com/real-survival-stories/ewa-wisnierska-how-to-survive-in-the-stratosphere"
  ],
  "case_of": "r006-wisnierska",
- "claimed_at": "2026-11-14T02:54:29Z"
+ "claimed_at": "2026-11-14T02:54:29Z",
+ "quality_gate": {
+  "method": "3D contact sheet (16:9) reviewed in two rounds with fixes after each (staging, camera angles, re-framed repeats, the hospital room's exposure, the thumbnail), composited stills (inserts, overlays, captions, HUD) in a third round with layout fixes, then a full-length low-resolution rehearsal (384x216, 4 samples) composited with sound and reviewed at one frame every 1.07 s, and a second pass after re-rendering the four changed shots. The 1280x720 thumbnail was restaged twice so the hook sits inside the frame and off the subjects. The rehearsal passed the automated gate locally: 87 shots, mean 1.99 s, longest 2.85 s, loudness -15.0 LUFS, true peak -1.5 dBFS, voice 13.3 dB over the bed, host in 37/87 shots (43%), closest match to an earlier episode 0.77; the quietest 3.5 s window without a detected cut has a mean frame change of 1.80 against the 0.8 minimum. Audio was measured, not listened to. The full-resolution render and the final gate run in the cloud."
+ }
 }

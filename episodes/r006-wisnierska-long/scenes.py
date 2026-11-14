@@ -489,6 +489,7 @@ def rate(cv, c):
     """Climb rate: good lift against what her instruments logged."""
     night(cv, c.t, '101626')
     base = 800
+    Wd.text_card(cv, 'CLIMB RATE', 470, 190, 96, WHITE, BLACK)
     cv.drawLine(260, base, 1660, base, P(0x66FFFFFF, 6))
     k1 = pop(c.lt, 0.0, 0.3)
     h1 = 96 * k1
@@ -708,7 +709,7 @@ OVER = dict(
     rook_sock=gusts, storm_build=gusts, merge_rook=gusts, two_clouds=gusts, leader=gusts,
     dusk_hill=motes, rook_hat=motes, storm_far=motes,
     doctors=pick(label('ONE HOUR IN HOSPITAL', 560, 190, 84, 0.4, 'FFFFFF'), None),
-    stitch=label('9,946 m', 1500, 230, 130, 1.6, 'FFB000'),
+    stitch=label('9,946 m', 1480, 700, 130, 1.6, 'FFB000'),
     school=label('BAVARIA, TODAY', 470, 190, 92, 0.3, 'FFFFFF'),
     signoff=closed)
 
