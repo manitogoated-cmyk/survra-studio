@@ -132,7 +132,8 @@
    "world": "two cities, a train between them (handled soberly)",
    "est_score": 80,
    "long_form_candidate": true,
-   "status": "authored", "claimed_at": "2026-11-14T06:15:20Z",
+   "status": "authored",
+   "claimed_at": "2026-11-14T06:15:20Z",
    "facts": "verified (see episodes/r010-yamaguchi/episode.json); he is the only officially recognised double survivor, not the only person who was under both bombs"
   },
   {
@@ -145,7 +146,8 @@
    "world": "ranger tower, truck, fishing pond",
    "est_score": 80,
    "long_form_candidate": false,
-   "status": "idea",
+   "status": "in progress",
+   "claimed_at": "2026-11-14T11:38:28Z",
    "facts": "verify with 2+ sources at authoring; skip if they do not hold"
   },
   {
