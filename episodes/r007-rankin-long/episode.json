@@ -1,7 +1,7 @@
 {
  "id": "r007-rankin-long",
  "format": "long",
- "status": "draft",
+ "status": "approved",
  "synthetic": false,
  "host": "rook",
  "case": 7,
@@ -65,5 +65,8 @@
   "https://migflug.com/jetflights/william-rankin-fell-through-thunderstorm-1959/"
  ],
  "case_of": "r007-rankin",
- "claimed_at": "2026-11-14T08:43:13Z"
+ "claimed_at": "2026-11-14T08:43:13Z",
+ "quality_gate": {
+  "method": "3D contact sheet (16:9) reviewed in three rounds with fixes after each (round 1: the take-off, the storm wall, the radio call, the wingman view, the cloud dive, the elevator shot, the thunder rings, the collapsed canopy, the tree strike, the roadside, the ambulance and the over-exposed hospital room restaged or relit; round 2: the storm wall brought closer, Rook turned to the lens in the rain, the collapsed canopy moved off the pilot, one black re-framed repeat replaced; round 3 at double size: the wristwatch given a 12 o'clock marker, the helmet close-up raised, the dusk take-off re-framed), composited stills (inserts, overlays, captions, HUD) in one round with layout fixes to three inserts, then a full-length low-resolution rehearsal (384x216, 4 samples) composited with sound and reviewed at one frame per second. The 1280x720 thumbnail was restaged three times so that both figures are whole and the hook (40 MIN / INSIDE A STORM) sits inside the frame and off the subjects. The rehearsal passed the automated gate locally: 97 shots, mean 2.03 s, longest 3.78 s, loudness -15.2 LUFS, true peak -2.2 dBFS, voice 12.4 dB over the bed, host in 43/97 shots (44%), closest match to an earlier episode 0.80; one warning (the wristwatch insert is used twice, which the long-form rules allow). Audio was measured, not listened to. One sentence of the script was reworded before the rehearsal because no source supports the word 'Once' for the collapsed parachute. The full-resolution render and the final gate run in the cloud."
+ }
 }
