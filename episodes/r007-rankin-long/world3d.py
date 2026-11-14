@@ -1358,7 +1358,7 @@ def extend(S):
     add('cube', 'F4EEDF', (0, -0.17, -0.52), rot=(0.3, 0, 0), scale=(0.42, 0.02, 0.56), size=1, parent=S['doc'].el[0], emit=0.3)
     S['page'] = add('cube', 'F4EEDF', (0, -0.14, -0.6), rot=(0.4, 0, 0), scale=(0.5, 0.02, 0.66), size=1, parent=S['rook'].el[1], emit=0.4)
     # the wristwatch at 6:40, strapped to the close-up hand (12 o'clock toward the hand's +X)
-    w = empty((0, 0.3, 0.1), S['hand'].root)
+    w = empty((0, 0.3, 0.1), S['hand'].root, (0, 0, 1.05))
     add('cylinder', '5A3A24', (0, 0, -0.1), rot=(PI / 2, 0, 0), radius=0.135, depth=0.16, vertices=8, parent=w)
     add('cylinder', 'D8DCE8', (0, 0, 0.04), radius=0.125, depth=0.05, vertices=12, parent=w, rough=0.25)
     add('cylinder', 'F4EEDF', (0, 0, 0.07), radius=0.105, depth=0.02, vertices=12, parent=w, emit=1.4)
@@ -1368,6 +1368,7 @@ def extend(S):
     for a, ln, wd in ((math.radians(240), 0.085, 0.012), (math.radians(200), 0.055, 0.018)):
         add('cube', '0E0D14', (math.cos(a) * ln / 2, -math.sin(a) * ln / 2, 0.088), rot=(0, 0, -a), scale=(ln, wd, 0.008), size=1, parent=w)
     add('cylinder', 'FF7A1A', (0, 0, 0.092), radius=0.012, depth=0.01, vertices=6, parent=w)
+    add('cone', 'FF7A1A', (0.086, 0, 0.086), rot=(0, -PI / 2, 0), radius1=0.02, radius2=0.0, depth=0.035, vertices=3, parent=w, emit=1.0)
     S['wwatch'] = w
     S['car2'] = empty()
     make_car2(S['car2'])
@@ -1595,10 +1596,10 @@ def cloud_dive(S, k, t, lt):
     tumble(S, 'pilot', A(0, -140, z), t, 3.0, P('stand', aL=(1.9, -0.3, 2.2, 0.8), aR=MASK_ARM, lL=(0.6, 0.9), lR=(0.2, 1.1), head=(0.3, 0)))
     S['mask'], S['face']['pilot'], S['bare_on'] = True, 'closed', True
     kk = math.sin(t * 14)
-    S['rook'].place(A(4.2, -137, z + 5.5), -0.8, 0.9, 0.2 * math.sin(t * 4))
+    S['rook'].place(A(4.6, -137, z + 3.2), -0.8, 0.9, 0.2 * math.sin(t * 4))
     S['rook'].apply(P('hat', aL=(1.6, 1.2, 0.4), lL=(-0.4 + 0.3 * kk, 0.8), lR=(-0.3 - 0.3 * kk, 1.0), head=(-0.6, 0.0)))
     S['face']['rook'] = 'shocked'
-    feathers(S, A(4.2, -137, z + 7.5), t, 5, False)
+    feathers(S, A(4.6, -137, z + 5.2), t, 5, False)
     cam(S, A(lerp(13, 11, k), lerp(-125, -127, k), z + 2.5), A(2.0, -139, z + 3.0), 36, 0.05 * math.sin(t * 3))
 
 
@@ -1751,7 +1752,7 @@ def helmet_cu(S, k, t, lt):
     S['rook'].apply(P('stand', lean=0.5, aL=(0.4, 0.2, 0.6), aR=(0.9, 0.1, 1.9, 0.6), head=(-0.25, 0.0)))
     S['face']['rook'] = 'sad' if wake < 0.5 else 'warm'
     rain(S, A(1.5, 0, 3), t, 40, (9, 6, 8), 20, 0.12, 0.7)
-    cam(S, A(lerp(1.3, 1.5, k), lerp(-3.4, -2.9, k), 1.9), A(2.2, 1.4, 2.0), 40)
+    cam(S, A(lerp(1.3, 1.5, k), lerp(-3.6, -3.1, k), 2.9), A(2.2, 1.4, 2.15), 40)
 
 
 def wrist(S, k, t, lt):
@@ -1930,14 +1931,14 @@ def photo_thumb(S, k, t, lt):
     S['stflash'].data.energy = 3.0
     sheet(S, 0, (-30, 40, 6), 0.3, 0.3)
     sheet(S, 1, (-60, 70, 0), 0.25, -0.2)
-    hang(S, 'pilot', A(-6.2, 1.5, 0.6), 0.5, (0.12, -0.2),
+    hang(S, 'pilot', A(-11.0, 5, 1.5), 0.5, (0.12, -0.2),
          P('stand', aL=(2.6, 0.5, 0.3), aR=(2.2, 0.6, 0.8), lL=(0.6, 0.6), lR=(-0.5, 0.8), head=(-0.4, 0.3)), face='shock')
     S['bare_on'] = True
-    hang(S, 'rook', A(-1.6, -5.5, 0.6), -0.35, (0.1, 0.25),
+    hang(S, 'rook', A(-2.6, -3.5, -0.8), -0.35, (0.1, 0.25),
          P('hat', aL=(2.75, 0.22, 0.35), lL=(0.5, 0.6), lR=(-0.5, 0.3), head=(0.1, 0.3)), face='shocked')
-    feathers(S, A(-1.6, -5.5, -0.6), 1.0, 6)
+    feathers(S, A(-2.6, -3.5, -2.0), 1.0, 6)
     hail(S, A(-4, 0, 2), 1.0, 34, (16, 8, 12), 60, size=1.4)
-    cam(S, A(5.0, -17.5, 0.0), A(1.2, 0, 2.6), 34)
+    cam(S, A(6.0, -23.0, 0.5), A(1.5, 0, 2.0), 34)
 
 
 STILLS['thumb'] = photo_thumb
