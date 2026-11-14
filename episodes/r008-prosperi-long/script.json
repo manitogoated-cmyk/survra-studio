@@ -1,0 +1,30 @@
+{
+  "id": "r008-prosperi-long", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9,
+  "segments": [
+    {"scene": "hook", "mood": "hook", "text": "A runner vanishes in a sandstorm in the Sahara. Nine days later he walks out of the desert, in the wrong country. He says he lived on bat blood."},
+    {"scene": "doubt", "mood": "calm", "text": "No chance. Nobody lasts nine days out there. Let's go look."},
+    {"scene": "who", "mood": "calm", "text": "His name is Mauro Prosperi. A police officer from Italy, and a pentathlete. He fences, shoots, swims, rides and runs. I mostly sit."},
+    {"scene": "race", "mood": "action", "text": "April {1994|nineteen ninety-four}. The Marathon {des|day} {Sables|Sahbluh}, in Morocco. About two hundred and fifty kilometres across the Sahara in six days. Around eighty runners, and each one carries his own food on his back."},
+    {"scene": "day4", "mood": "action", "text": "Day four is the long one, more than eighty kilometres. He is running near the front. Then the wind picks up."},
+    {"scene": "storm", "mood": "tense", "text": "A sandstorm. By his account it lasts eight hours, and he keeps moving the whole time, afraid that if he stops, the sand will bury him."},
+    {"scene": "morning", "mood": "tense", "text": "When it is over, the dunes have changed shape. No flags. No tracks. No other runners. I checked. Twice."},
+    {"scene": "water", "mood": "calm", "text": "His water is running out. So he uses a trick his grandfather taught him, and saves his own urine in a spare bottle. I'll allow it."},
+    {"scene": "wait", "mood": "tense", "text": "The race has a rule: if you are lost, stay where you are and wait. So he waits. Near sunset a helicopter comes over. He fires his flare. It flies on."},
+    {"scene": "shrine", "mood": "calm", "text": "So he walks, and he finds a building. A marabout: a small Muslim shrine, long abandoned. Shade, at last. He plants a little Italian flag on the roof, in case anyone flies past."},
+    {"scene": "bats", "mood": "tense", "text": "In the tower there are bats. By his own account he kills about twenty of them, and drinks their blood. Raw, because cooking would dry them out."},
+    {"scene": "plane", "mood": "tense", "text": "Days go by in that shrine. An aeroplane passes over. It does not see him either."},
+    {"scene": "low", "mood": "sad", "text": "That is his lowest point. By his own account, he decides he is going to die here, and he thinks about his wife. He does not die. And in the morning, he decides to walk."},
+    {"scene": "walk", "mood": "action", "text": "He aims for mountains on the horizon. He walks only in the cool, early in the morning and in the evening, and lies up in whatever shade he can find at midday."},
+    {"scene": "food", "mood": "action", "text": "He eats what the desert has. Beetles. Lizards. A snake. He squeezes roots and plants for the few drops inside."},
+    {"scene": "oasis", "mood": "wonder", "text": "On the eighth day, an oasis. Water. He drinks."},
+    {"scene": "found", "mood": "wonder", "text": "The next day, goat tracks. Then goats. Then a young girl minding them, who sees a stranger come out of the desert."},
+    {"scene": "tent", "mood": "calm", "text": "Her family are Tuareg nomads. They give him goat's milk, and take him by camel to the nearest village."},
+    {"scene": "where", "mood": "wonder", "text": "That is where he learns where he is. Not Morocco. Algeria. {291|Two hundred and ninety-one} kilometres off course. He is taken to hospital in {Tindouf|Tin-doof}."},
+    {"scene": "body", "mood": "calm", "text": "He has lost about fifteen kilos. For months he cannot eat solid food. It takes him almost two years to recover."},
+    {"scene": "dispute", "mood": "tense", "text": "And not everyone believes him. The man who founded the race called the story a fabrication, and said it was physically impossible."},
+    {"scene": "proof", "mood": "calm", "text": "So I kept digging. A film crew that retraced his route reported finding the shrine, his belongings, and bat skeletons. And a doctor who studies survival at the extremes went through his account, and concluded he was telling the truth."},
+    {"scene": "verdict", "mood": "calm", "text": "I can't count the bats for you. But he went missing in Morocco and turned up in Algeria, fifteen kilos lighter. That part is not in dispute."},
+    {"scene": "after", "mood": "triumph", "text": "The race tightened its safety rules. And four years later, he was back on that start line. A toe injury stopped him. So he came back again, and he finished it."},
+    {"scene": "end", "mood": "end", "text": "Nine days, one flare, a tower full of bats, and he still wanted more sand. I was wrong. Case closed."}
+  ]
+}
