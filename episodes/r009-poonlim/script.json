@@ -1,0 +1,14 @@
+{
+  "id": "r009-poonlim", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9,
+  "segments": [
+    {"scene": "hook", "mood": "hook", "text": "A torpedo sinks his ship in two minutes. Then he drifts alone on a raft for {133|a hundred and thirty-three} days. And he lives."},
+    {"scene": "doubt", "mood": "calm", "text": "No chance. Nobody lasts four months out there. Let's go look."},
+    {"scene": "ship", "mood": "action", "text": "November {1942|nineteen forty-two}. Poon Lim is a steward on a British cargo ship. Two torpedoes hit. He jumps. Two hours later, he finds an empty raft."},
+    {"scene": "raft", "mood": "tense", "text": "Eight feet square. Some biscuits, some water. Then nothing."},
+    {"scene": "make", "mood": "action", "text": "So he bends a flashlight spring into a fish hook. Rope becomes line. A tin becomes a knife. Rain becomes water."},
+    {"scene": "hunt", "mood": "tense", "text": "He catches seabirds. Then a shark."},
+    {"scene": "missed", "mood": "sad", "text": "A freighter passes. It does not stop. Navy planes spot him. Then a storm hides him."},
+    {"scene": "found", "mood": "wonder", "text": "Day {133|one thirty-three}. Three fishermen find him off Brazil. He has lost just twenty pounds."},
+    {"scene": "end", "mood": "end", "text": "Still the record for one person alone on a raft. I was wrong. Case closed."}
+  ]
+}
