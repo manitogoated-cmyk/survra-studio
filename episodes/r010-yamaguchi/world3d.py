@@ -14,7 +14,7 @@ from engine4.kit3d import P, add, blend, empty, lerp, light, walk
 PI = math.pi
 ORG = dict(hiro=(0, 0, 0), shelter=(400, 0, 0), rail=(800, 0, 0), office=(1200, 0, 0), hall=(1600, 0, 0))
 FAR = (0, 0, -900)
-HOST = {'rook_station', 'rook_walk', 'yama_walk', 'flash_road', 'thrown', 'aftermath', 'rook_shelter', 'train_window',
+HOST = {'rook_station', 'rook_walk', 'yama_walk', 'rook_looks', 'flash_road', 'thrown', 'aftermath', 'rook_shelter', 'train_window',
         'office_wide', 'rook_office', 'office_blast', 'yama_stands', 'rook_hall', 'hall_wide', 'rook_wrong', 'signoff'}
 ROOK = dict(top='566178', belt='3E4658', lap='6B7690', pants='2A2742', hand='2F2B4D', boot='8A90A6')
 SKIN = 'D9A878'
@@ -658,11 +658,11 @@ def flash_city(S, k, t, lt):
 
 def yard_wide(S, k, t, lt):
     A = morning(S)
-    y = lerp(8, 12, k)
+    y = lerp(8, 10.5, k)
     S['yama'].place(A(0.4, y, 0), PI)
     S['yama'].apply(walk(t, 1.5))
     S['bag'].hide_render = False
-    cam(S, A(lerp(-3.4, -2.6, k), lerp(-10, -7, k), lerp(5.2, 4.4, k)), A(6, 60, 6.5), 30)
+    cam(S, A(lerp(-3.6, -1.4, ease(k)), lerp(-9, 0.5, ease(k)), lerp(7.0, 3.6, ease(k))), A(lerp(3, 5, k), 60, lerp(4.5, 7.5, k)), 30)
 
 
 def yama_walk(S, k, t, lt):
@@ -675,6 +675,27 @@ def yama_walk(S, k, t, lt):
     look = 0.5 * math.sin(lt * 2.6)
     S['rook'].apply(dict(walk(t + 0.3, 1.5), head=(-0.05, look)))
     cam(S, A(2.4, y + 7.4, 2.5), A(0.2, y - 0.8, 2.3), 42)
+
+
+def yama_cu(S, k, t, lt):
+    A = morning(S)
+    y = lerp(24, 26.4, k)
+    S['yama'].place(A(-0.7, y, 0), PI)
+    S['yama'].apply(dict(walk(t, 1.5), head=(-0.05, 0.25 * ease(lt / 0.8))))
+    S['bag'].hide_render = False
+    cam(S, A(lerp(-4.0, -3.4, k), y + 3.4, 2.5), A(-0.6, y + 0.3, 2.35), 46)
+
+
+def rook_looks(S, k, t, lt):
+    A = morning(S)
+    up = ease((lt - 0.15) / 0.45)
+    S['rook'].place(A(1.4, 27.6, 0), PI + 0.15)
+    S['rook'].apply(blend(walk(t, 1.2), P('hat', head=(-0.5, 0.15), lean=-0.1), up))
+    S['hat_tip'] = -0.2 * up
+    S['yama'].place(A(-1.7, 29.4, 0), PI + 0.25)
+    S['yama'].apply(P('stand', aR=(2.5, 0.5, 1.9, 0.3), head=(-0.55, 0.0), lean=-0.12))
+    S['bag'].hide_render = False
+    cam(S, A(lerp(3.4, 3.0, k), lerp(32.6, 32.0, k), lerp(1.5, 1.7, k)), A(0.9, 27.9, 2.7), 40)
 
 
 def plane_high(S, k, t, lt):
@@ -732,7 +753,7 @@ def thrown(S, k, t, lt):
         a = (i * 0.37) % 1
         o.location = A(-3 + a * 9, 42 - 30 * (lt / 0.9) * (0.6 + a * 0.6), 0.6 + 3.0 * abs(math.sin(lt * 5 + i)))
         o.rotation_euler = (t * 9 + i, t * 7, i)
-    cam(S, A(lerp(-4.7, -4.3, k), 22.6, 1.8), A(0.2, 27.2, 1.7), 30)
+    cam(S, A(lerp(-4.9, -4.5, k), 22.0, 1.8), A(0.2, 29.4 - 2.8 * u, 1.9), 24)
 
 
 def dust_rise(S, k, t, lt):
@@ -760,6 +781,18 @@ def aftermath(S, k, t, lt):
     drift_dust(S, A, t, (0, 46, 0), n=8, spread=22, size=1.7, speed=1.6)
     fall_bits(S, A, t, (0.5, 26.5, 0), n=12, spread=7, speed=0.9, hgt=6)
     cam(S, A(lerp(0.9, 0.6, k), lerp(19.2, 20.4, k), 2.1), A(0.5, 26.3, 1.55), 42)
+
+
+def yama_hurt(S, k, t, lt):
+    A = after(S, t)
+    S['yama'].place(A(-0.6, 26.5, 0), PI * 0.5 + 0.5)
+    hold = ease(lt / 0.4)
+    S['yama'].apply(blend(P('sit', lift=-0.92, lean=0.3, aL=(0.5, 0.0, 1.2, 0.5), aR=(0.9, -0.5, 1.6, 1.4), head=(0.4, 0.1)),
+                          P('sit', lift=-0.92, lean=0.35, aL=(1.5, 0.75, 2.5, -0.4), aR=(0.9, -0.5, 1.6, 1.4), head=(0.3, -0.3)), hold))
+    S['face']['yama'] = 'shut'
+    drift_dust(S, A, t, (0, 46, 0), n=8, spread=22, size=1.7, speed=1.6)
+    fall_bits(S, A, t, (0.5, 26.5, 0), n=12, spread=6, speed=1.1, hgt=5)
+    cam(S, A(lerp(2.9, 2.5, k), lerp(23.2, 23.6, k), 1.5), A(0.15, 26.85, 1.2), 44)
 
 
 # ---------------------------------------------------------------- shots: the shelter
@@ -969,7 +1002,7 @@ def rook_office(S, k, t, lt):
     S['rook'].apply(blend(P('stand', aR=(0.8, 0.1, 2.0, 0.6), head=(0.0, 0.0)), P('stand', aR=(0.3, 0.2, 0.4), head=(0.3, 0.25)), nod))
     S['face']['rook'] = 'calm' if nod < 0.5 else 'sad'
     draughtsmen(S, A, t, 1.0)
-    cam(S, A(lerp(4.4, 3.9, k), lerp(2.6, 2.1, k), 3.0), A(0.55, -1.2, 2.9), 36)
+    cam(S, A(lerp(4.4, 3.9, k), lerp(2.6, 2.1, k), 3.0), A(0.55, -1.2, 2.45), 36)
 
 
 def flash_office(S, k, t, lt):
@@ -1085,7 +1118,7 @@ def rook_hall(S, k, t, lt):
     S['glow'].location = A(0.2, -0.6, 3.4)
     S['glow'].data.energy = 260
     S['glow'].data.color = K.hexc('FFE0C0')[:3]
-    cam(S, A(lerp(-0.4, 0.0, k), lerp(0.4, -0.2, k), 2.5), A(1.75, -3.2, 2.45), 44, fcol='FFE0C0')
+    cam(S, A(lerp(-0.4, 0.0, k), lerp(0.6, 0.0, k), 2.3), A(1.7, -3.2, 1.55), 40, fill=2.0, fcol='FFE0C0')
 
 
 def hall_wide(S, k, t, lt):
@@ -1116,7 +1149,7 @@ def photo_old(S, k, t, lt):
 
 
 SHOTS3D = {f.__name__: f for f in (
-    flash_city, dust_rise, train_wide, flash_office, rook_station, rook_walk, yard_wide, yama_walk, plane_high, flash_road, thrown,
+    flash_city, dust_rise, train_wide, flash_office, rook_station, rook_walk, yard_wide, yama_walk, yama_cu, rook_looks, yama_hurt, plane_high, flash_road, thrown,
     aftermath, shelter_in, rook_shelter, train_window, office_wide, yama_tells, rook_office, boss_no, office_blast, yama_stands,
     old_yama, rook_hall, hall_wide, old_speaks, rook_wrong, signoff)}
 STILLS = dict(yard=photo_yard, old=photo_old)

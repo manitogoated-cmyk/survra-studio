@@ -160,7 +160,7 @@ def id_card(cv, c):
 def map_dist(cv, c):
     """Sketch only: how far he was from the centre of the explosion (about 3 km, under two miles)."""
     Wd.vgrad(cv, 0, 0, W, H, [(0, h('1A3C70')), (1, h('0C1E3E'))])
-    cx, cy = 540, 760
+    cx, cy = 540, 840
     for i, r in enumerate((130, 260, 390)):
         k = ease((c.k - 0.05 - i * 0.12) / 0.2)
         if k > 0:
@@ -175,8 +175,8 @@ def map_dist(cv, c):
         cv.drawCircle(px, py, 30, P(AMBER))
         cv.drawCircle(px, py, 30, P(0xFF000000, 6))
         Wd.text_card(cv, 'HIM', px - 10, py + 96, 76, AMBER, 0xFF000000)
-        Wd.text_card(cv, 'ABOUT 3 KM', 540, 250, 120, 0xFFFFFFFF, 0xFF000000)
-    Wd.text_card(cv, 'SKETCH, NOT A MAP', 540, 1250, 34, 0xCCFFFFFF, None)
+        Wd.text_card(cv, 'ABOUT 3 KM', 540, 420, 120, 0xFFFFFFFF, 0xFF000000)
+    Wd.text_card(cv, 'SKETCH, NOT A MAP', 540, 1500, 34, 0xCCFFFFFF, None)
 
 
 def map_two(cv, c):
@@ -206,7 +206,7 @@ def map_two(cv, c):
 def clock_1102(cv, c):
     """The time on record for Nagasaki: 11:02 in the morning."""
     Wd.vgrad(cv, 0, 0, W, H, [(0, h('B8B09A')), (1, h('7E7868'))])
-    cx, cy, r = 540, 720, 400
+    cx, cy, r = 540, 800, 380
     cv.drawCircle(cx + 14, cy + 20, r + 30, P(0x55000000))
     cv.drawCircle(cx, cy, r + 30, P(h('3A2C1E')))
     cv.drawCircle(cx, cy, r, P(h('EFE6CC')))
@@ -221,27 +221,28 @@ def clock_1102(cv, c):
     sa = math.radians(c.t * 6 * 8)
     cv.drawLine(cx, cy, cx + math.sin(sa) * 340, cy - math.cos(sa) * 340, P(RED, 6))
     cv.drawCircle(cx, cy, 24, P(INK))
-    Wd.text_card(cv, '11:02', 540, 1290, 150, 0xFFFFFFFF, 0xFF000000)
+    Wd.text_card(cv, '11:02', 540, 330, 170, 0xFFFFFFFF, 0xFF000000)
+    Wd.text_card(cv, '9 AUGUST 1945', 540, 1560, 60, 0xFFFFFFFF, 0xFF000000)
 
 
 def years(cv, c):
     """He was 29 in August 1945 and 93 when he died in January 2010."""
     Wd.vgrad(cv, 0, 0, W, H, [(0, h('1A3C70')), (1, h('0C1E3E'))])
-    k = ease(c.k / 0.7)
+    k = ease(c.k / 0.42)
     age = int(round(lerp(29, 93, k)))
     yr = int(round(lerp(1945, 2010, k)))
     for i in range(65):
         x = 90 + i * 14
         on = i <= (yr - 1945)
-        cv.drawLine(x, 1100, x, 1100 - (70 if i % 5 == 0 else 40), P(AMBER if on else 0x55FFFFFF, 6))
-    pop = 1 + 0.22 * max(0.0, 1 - abs(c.k - 0.72) / 0.1)
+        cv.drawLine(x, 1060, x, 1060 - (70 if i % 5 == 0 else 40), P(AMBER if on else 0x55FFFFFF, 6))
+    pop = 1 + 0.22 * max(0.0, 1 - abs(c.k - 0.45) / 0.1)
     cv.save()
     cv.translate(540, 700)
     cv.scale(pop, pop)
     Wd.text_card(cv, str(age), 0, 110, 400, AMBER if age >= 93 else 0xFFFFFFFF, 0xFF000000)
     cv.restore()
     Wd.text_card(cv, 'AGE', 540, 400, 96, 0xFFFFFFFF, 0xFF000000)
-    Wd.text_card(cv, str(yr), 540, 1230, 96, 0xFFFFFFFF, 0xFF000000)
+    Wd.text_card(cv, str(yr), 540, 1180, 96, 0xFFFFFFFF, 0xFF000000)
 
 
 def cert(cv, c):
@@ -278,12 +279,12 @@ def board_true(cv, c):
     cv.save()
     cv.translate(540, 660)
     cv.rotate(2)
-    photo(cv, 'old', 0, 10, 610, 660, (0.5, 0.3))
+    photo(cv, 'old', 0, 10, 610, 660, (0.5, 0.42))
     cv.restore()
-    note(cv, 270, 1210, 420, 150, -5, h('FFD866'), ['HIROSHIMA'], 60)
-    note(cv, 800, 1220, 420, 150, 4, h('BFE0EC'), ['NAGASAKI'], 60)
+    note(cv, 270, 1500, 420, 150, -5, h('FFD866'), ['HIROSHIMA'], 60)
+    note(cv, 800, 1510, 420, 150, 4, h('BFE0EC'), ['NAGASAKI'], 60)
     if c.lt > 0.3:
-        stamp(cv, 'TRUE', 560, 860, -14, min(1, (c.lt - 0.3) / 0.12), 190)
+        stamp(cv, 'TRUE', 560, 1010, -10, min(1, (c.lt - 0.3) / 0.12), 170)
 
 
 SHOTS = {f.__name__: f for f in (board_no, id_card, map_dist, map_two, clock_1102, years, cert, board_true)}
@@ -305,7 +306,7 @@ def flash_near(cv, c):
 
 
 def flash_room(cv, c):
-    white(cv, 0.7 * ease((c.lt - 0.45) / 0.7))
+    white(cv, 0.5 * ease((c.lt - 0.6) / 0.6))
 
 
 def fade_white(cv, c):

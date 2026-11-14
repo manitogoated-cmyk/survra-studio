@@ -3,11 +3,11 @@
   "segments": [
     {"scene": "hook", "mood": "hook", "text": "He lives through the atomic bomb at Hiroshima. Then he goes home. Home is Nagasaki."},
     {"scene": "doubt", "mood": "calm", "text": "No chance. Not both. Let's go look."},
-    {"scene": "hiro", "mood": "tense", "text": "August {1945|nineteen forty-five}. Tsutomu Yamaguchi, an engineer, twenty-nine, is ending a work trip in Hiroshima. A flash. He is under two miles away."},
-    {"scene": "hurt", "mood": "sad", "text": "Burned, eardrums burst, he shelters overnight. Next day, he goes home."},
-    {"scene": "office", "mood": "tense", "text": "Three days on, bandaged, he is at work in Nagasaki, telling his boss about the bomb. His boss doesn't believe him."},
+    {"scene": "hiro", "mood": "tense", "text": "August {1945|nineteen forty-five}. Name: Tsutomu Yamaguchi. He is {29|twenty-nine}, an engineer, ending a work trip in Hiroshima. A flash. He is under two miles away."},
+    {"scene": "hurt", "mood": "sad", "text": "He is burned. His eardrums are burst. He shelters for the night. Next day, he goes home."},
+    {"scene": "office", "mood": "tense", "text": "Three days on, bandaged, he is back at work in Nagasaki, telling his boss about the bomb. His boss doesn't believe him."},
     {"scene": "second", "mood": "sad", "text": "Then the same white light fills the room. He lives again."},
-    {"scene": "life", "mood": "wonder", "text": "He lived to ninety-three. In {2009|two thousand nine}, Japan recognised him as a survivor of both. Officially, the only one."},
+    {"scene": "life", "mood": "wonder", "text": "He lived to {93|ninety-three}. In {2009|two thousand nine}, Japan certified him as a survivor of both. Officially, the only one."},
     {"scene": "end", "mood": "end", "text": "He used those years to ask the world to give up the bomb. I was wrong. Case closed."}
   ]
 }
