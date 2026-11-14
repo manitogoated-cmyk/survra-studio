@@ -195,7 +195,7 @@ def days_9(cv, c):
             cv.drawLine(x0 + wob, y0, x0 + 12, y0 + 330, P(CREAM, 24))
         else:
             cv.drawLine(x0 - 4 * 96 - 44, y0 + 270, x0 - 50, y0 + 60, P(AMBER, 24))
-    punch(cv, '9 DAYS', 1450, 480, 180, pop(c.lt, 0.45), AMBER)
+    punch(cv, '9 DAYS', 1340, 480, 160, pop(c.lt, 0.45), AMBER)
 
 
 def board_no(cv, c):
@@ -292,8 +292,8 @@ def race_map(cv, c):
     dune_band(cv, 900, 34, h('A85A2E'), 2.0)
     _bars(cv, c, (230, 265, 255, 520, 290, 150), 700, 150, 150, 112, hot=-1)
     T(cv, 'STAGES', 590, 130, 60, 0xCCFFFFFF, BLACK)
-    punch(cv, '6 DAYS', 1440, 330, 150, pop(c.lt, 0.25))
-    punch(cv, 'ABOUT 250 KM', 1440, 520, 104, pop(c.lt, 0.62), AMBER)
+    punch(cv, '6 DAYS', 1370, 330, 150, pop(c.lt, 0.25))
+    punch(cv, 'ABOUT 250 KM', 1370, 520, 92, pop(c.lt, 0.62), AMBER)
 
 
 def long_day(cv, c):
@@ -383,7 +383,7 @@ def rule_card(cv, c):
         cv.save()
         cv.translate(0, 150)
         cv.scale(1.3 - 0.3 * k2, 1.3 - 0.3 * k2)
-        T(cv, 'STAY PUT. WAIT.', 0, 0, 132, WHITE, None)
+        T(cv, 'STAY PUT. WAIT.', 0, -6, 112, WHITE, None)
         cv.restore()
     cv.restore()
     for i in range(3):
@@ -495,18 +495,18 @@ def map_off(cv, c):
             T(cv, 'LOST HERE', 480, 250, 64, INK, WHITE)
         if k2 > 0:
             T(cv, 'FOUND HERE', x + 60, y - 80, 64, RED, WHITE)
-        punch(cv, 'MOROCCO', 1480, 250, 96, k1)
-        punch(cv, 'TO ALGERIA', 1480, 380, 96, k2, AMBER)
+        punch(cv, 'MOROCCO', 1420, 250, 90, k1)
+        punch(cv, 'TO ALGERIA', 1420, 380, 90, k2, AMBER)
     else:
         if k >= 1:
             T(cv, 'FOUND', x + 20, y - 54, 60, RED, WHITE)
         k2 = pop(c.lt, 0.55)
         v = int(lerp(0, 291, ease(c.k * 1.8)))
         cv.save()
-        cv.translate(1480, 300)
+        cv.translate(1400, 300)
         s = 1.4 - 0.4 * k2 if k2 > 0 else 1
         cv.scale(s, s)
-        T(cv, f'{v} KM', 0, 0, 190, AMBER, BLACK)
+        T(cv, f'{v} KM', 0, 0, 160, AMBER, BLACK)
         if k2 > 0:
             T(cv, 'OFF COURSE', 0, 110, 84, WHITE, BLACK)
         cv.restore()
@@ -641,13 +641,13 @@ def rules_after(cv, c):
 
 def board_true(cv, c):
     survey(cv, c.t)
-    taped(cv, 600, 420, 820, 640, 2)
+    taped(cv, 620, 420, 600, 680, 2)
     cv.save()
-    cv.translate(600, 420)
+    cv.translate(620, 420)
     cv.rotate(2)
-    photo(cv, 'mauro', 0, 16, 750, 540, (0.5, 0.2))
+    photo(cv, 'mauro', 0, 16, 530, 590, (0.5, 0.12))
     cv.restore()
-    stamp(cv, 'TRUE', 640, 500, -14, 210, pop(c.lt, 0.2, 0.12), GREEN)
+    stamp(cv, 'TRUE', 660, 560, -14, 200, pop(c.lt, 0.2, 0.12), GREEN)
     card(cv, '9 DAYS', 1430, 300, 420, 180, -5, 84, pop(c.lt, 0.36), h('BFE0E4'))
     card(cv, '291 KM', 1470, 560, 440, 180, 5, 84, pop(c.lt, 0.5))
 

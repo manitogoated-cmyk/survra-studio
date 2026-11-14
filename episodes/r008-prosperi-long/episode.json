@@ -1,7 +1,7 @@
 {
  "id": "r008-prosperi-long",
  "format": "long",
- "status": "draft",
+ "status": "approved",
  "synthetic": false,
  "host": "rook",
  "case": 8,
@@ -66,5 +66,8 @@
   "https://en.wikipedia.org/wiki/Marathon_des_Sables"
  ],
  "case_of": "r008-prosperi",
- "claimed_at": "2026-11-14T08:48:29Z"
+ "claimed_at": "2026-11-14T08:48:29Z",
+ "quality_gate": {
+  "method": "3D contact sheet (16:9) reviewed in two full rounds with fixes after each (round 1: 17 shots restaged: kit table, checkpoint, the bottle shot, the wait on the dune, shrine interior, the low-point shot's light and Rook's place in it, the dry riverbed, the snake, the root shot, the oasis camera, the ward's exposure, the finish line, one re-framed repeat that looked into a wall; round 2: sitting poses that read as standing were turned or replaced, the snake recoloured, the thumbnail reframed so the hook sits inside the frame and off the subjects), a composited still per shot to check inserts, overlays, captions and HUD, then a full-length low-resolution rehearsal (384x216, 4 samples, all 2263 3D frames) composited with sound and reviewed at one frame every 1.5 s as round 3, after which six inserts were re-laid out (text clipped at the right edge while popping in, the final board's photo) and the composite was rebuilt and re-checked. The rehearsal passed the automated gate locally both times: 88 shots, mean 2.21 s, longest 3.52 s, loudness -15.1 LUFS, true peak -2.2 dBFS, voice 12.7 dB over the bed, host in 41/88 shots (47%), closest match to an earlier episode 0.78. Audio was measured, not listened to. The full-resolution render and the final gate run in the cloud. Build note: this world file builds its primitives straight from mesh data instead of through Blender operators (same geometry, checked vertex for vertex), because the operator route took over ten minutes to build a scene of 3,800 objects; the build now takes about nine seconds."
+ }
 }
