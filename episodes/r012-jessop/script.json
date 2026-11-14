@@ -1,0 +1,13 @@
+{
+  "id": "r012-jessop", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9,
+  "segments": [
+    {"scene": "hook", "mood": "hook", "text": "Her lifeboat is being dragged into the propellers. So she jumps. It is her third ship disaster in five years."},
+    {"scene": "doubt", "mood": "calm", "text": "Three? No chance. Let's go look."},
+    {"scene": "olympic", "mood": "tense", "text": "{1911|Nineteen eleven}. Violet Jessop is a stewardess on the liner Olympic. It collides with a warship. Torn open, it limps home."},
+    {"scene": "titanic", "mood": "action", "text": "{1912|Nineteen twelve}. She joins the sister ship. Titanic. Iceberg. In the lifeboat, someone thrusts a baby into her arms."},
+    {"scene": "britannic", "mood": "tense", "text": "{1916|Nineteen sixteen}. The third sister, Britannic, a hospital ship, hits a mine. This time, she grabs her toothbrush."},
+    {"scene": "props", "mood": "action", "text": "But the propellers are still turning, and they pull the lifeboats in. She jumps. Her skull is fractured."},
+    {"scene": "lives", "mood": "wonder", "text": "And she lives. Then she goes back to sea, until {1950|nineteen fifty}."},
+    {"scene": "end", "mood": "end", "text": "Three sister ships. One stewardess. I was wrong. Case closed."}
+  ]
+}
