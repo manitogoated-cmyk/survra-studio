@@ -110,6 +110,20 @@
     "url": "https://youtu.be/eQFNuqzJhug",
     "video_id": "eQFNuqzJhug"
   },
+  "r003-lemons-long": {
+    "captions": "ok",
+    "format": "long",
+    "playlist": "Rook's Case Files (Full Cases)",
+    "privacy": "private",
+    "publish_at": "2026-11-15T15:00:00Z",
+    "review": false,
+    "sha256": "39d3c34315c97c43beb429447cc7ead94876f0782c0fe2cc44d1e92f482e9026",
+    "thumbnail": "failed: thumbnail -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The authenticated user doesn't have permissions to upload and set custom video thumbnails.\",\n ",
+    "title": "His Lifeline Snapped 100 m Under the North Sea. He Had 5 Minutes of Gas",
+    "uploaded_at": "2026-11-14T17:13:24Z",
+    "url": "https://youtu.be/PinThVcIVHk",
+    "video_id": "PinThVcIVHk"
+  },
   "r004-packard": {
     "captions": "ok",
     "format": "short",
@@ -204,6 +218,20 @@
     "url": "https://youtu.be/OGVhaUVwwFs",
     "video_id": "OGVhaUVwwFs"
   },
+  "r007-rankin-long": {
+    "captions": "ok",
+    "format": "long",
+    "playlist": "Rook's Case Files (Full Cases)",
+    "privacy": "private",
+    "publish_at": "2026-11-15T19:00:00Z",
+    "review": false,
+    "sha256": "d1cc081bdc7b6ed5ffcce5ce46822f90b0b4d397c5b883a70cd9e5799bd1d65b",
+    "thumbnail": "failed: thumbnail -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The authenticated user doesn't have permissions to upload and set custom video thumbnails.\",\n ",
+    "title": "A Pilot Ejected Above a Thunderstorm. It Kept Him in the Air for 40 Minutes",
+    "uploaded_at": "2026-11-14T17:13:31Z",
+    "url": "https://youtu.be/t9lmmXqdFFM",
+    "video_id": "t9lmmXqdFFM"
+  },
   "r008-prosperi": {
     "captions": "ok",
     "format": "short",
@@ -217,6 +245,20 @@
     "url": "https://youtu.be/rQ1HjcZxXag",
     "video_id": "rQ1HjcZxXag"
   },
+  "r008-prosperi-long": {
+    "captions": "ok",
+    "format": "long",
+    "playlist": "Rook's Case Files (Full Cases)",
+    "privacy": "private",
+    "publish_at": "2026-11-15T21:30:00Z",
+    "review": false,
+    "sha256": "da3e7a1eb4385ef638f028b8bacbed3562e0b58f2a5f902701908fd8a0b22534",
+    "thumbnail": "failed: thumbnail -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The authenticated user doesn't have permissions to upload and set custom video thumbnails.\",\n ",
+    "title": "He Vanished in a Sahara Sandstorm. 9 Days Later He Walked Out in Another Country",
+    "uploaded_at": "2026-11-14T17:13:37Z",
+    "url": "https://youtu.be/-qxcPESmX-Y",
+    "video_id": "-qxcPESmX-Y"
+  },
   "r009-poonlim": {
     "captions": "ok",
     "format": "short",
@@ -229,6 +271,32 @@
     "uploaded_at": "2026-11-14T07:34:48Z",
     "url": "https://youtu.be/kSJeT-fs4BM",
     "video_id": "kSJeT-fs4BM"
+  },
+  "r010-yamaguchi": {
+    "captions": "ok",
+    "format": "short",
+    "playlist": "Rook's Case Files (Shorts)",
+    "privacy": "private",
+    "publish_at": "2026-11-15T20:00:00Z",
+    "review": false,
+    "sha256": "8771accb13238a9913aea901db0abde831166cc2af4ca99dc2c952e11aaaba9f",
+    "title": "He Survived Hiroshima. Then He Went Home to Nagasaki #shorts",
+    "uploaded_at": "2026-11-14T17:13:41Z",
+    "url": "https://youtu.be/z_eLKEkA44M",
+    "video_id": "z_eLKEkA44M"
+  },
+  "r011-sullivan": {
+    "captions": "ok",
+    "format": "short",
+    "playlist": "Rook's Case Files (Shorts)",
+    "privacy": "private",
+    "publish_at": "2026-11-15T23:00:00Z",
+    "review": false,
+    "sha256": "205ba713fe17f7492309900056986929429e624fe1fb7fefa54c47fd9406ec88",
+    "title": "Lightning Hit This Park Ranger 7 Times. He Survived Them All #shorts",
+    "uploaded_at": "2026-11-14T17:13:45Z",
+    "url": "https://youtu.be/JSVSTR955O8",
+    "video_id": "JSVSTR955O8"
   },
   "s001-alvarenga": {
     "privacy": "private",
