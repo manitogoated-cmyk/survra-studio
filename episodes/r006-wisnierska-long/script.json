@@ -1,14 +1,29 @@
 {
-  "id": "r006-wisnierska", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9,
+  "id": "r006-wisnierska-long", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9,
   "segments": [
-    {"scene": "hook", "mood": "hook", "text": "A storm swallows a paraglider and drags her up, higher than Everest. Then she blacks out."},
+    {"scene": "hook", "mood": "hook", "text": "A thunderstorm swallows a paraglider and drags her nearly ten kilometres up, higher than Everest. No engine. No oxygen. Then she blacks out."},
+    {"scene": "hook2", "mood": "tense", "text": "More than half an hour later, she wakes up. Covered in ice. Still flying."},
     {"scene": "doubt", "mood": "calm", "text": "No chance. Nobody passes out up there and lands alive. Let's go look."},
-    {"scene": "launch", "mood": "action", "text": "Australia, February {2007|two thousand seven}. German pilot {Ewa|Eva} {Wisnierska|Vishnyairska} is training for the world titles. A storm is building."},
-    {"scene": "suck", "mood": "tense", "text": "She tries to fly around it. It sucks her in. She spirals down. She keeps going up."},
-    {"scene": "climb", "mood": "action", "text": "In about fifteen minutes she is nearly ten kilometres up. Hail. Lightning. And almost no air."},
-    {"scene": "out", "mood": "tense", "text": "She blacks out for over half an hour. Her glider flies on by itself."},
-    {"scene": "wake", "mood": "triumph", "text": "Then she wakes up. Covered in ice, still flying. And she lands it."},
-    {"scene": "loss", "mood": "sad", "text": "That same storm kills another pilot, {He|Huh} {Zhongpin|Jong-pin}, aged {42|forty-two}."},
-    {"scene": "end", "mood": "end", "text": "She walks away with frostbite. I was wrong. Case closed."}
+    {"scene": "who", "mood": "calm", "text": "Her name is {Ewa|Eva} {Wisnierska|Vishnyairska}. Born in Poland, flying for Germany, thirty-five years old. Two years earlier she won the Paragliding World Cup."},
+    {"scene": "place", "mood": "calm", "text": "February {2007|two thousand seven}. Manilla, Australia. The world championships start in ten days, and more than a hundred pilots are here for a warm-up."},
+    {"scene": "launch", "mood": "action", "text": "Around noon she launches from Mount Borah. Sunshine, small clouds. The forecast says thunderstorms are possible. Later."},
+    {"scene": "north", "mood": "tense", "text": "The wind is from the south, so the pilots fly north. About two hours in, two clouds ahead of her grow. Then they join."},
+    {"scene": "suck", "mood": "tense", "text": "She tries to fly around it. Too late. Pilots call it cloud suck: the storm breathes in, and she is in the way."},
+    {"scene": "spiral", "mood": "action", "text": "So she does what pilots do. A spiral dive: wing on its side, dropping as fast as it can. Once. Twice. Three times. She is still going up."},
+    {"scene": "rate", "mood": "tense", "text": "Good lift is three or four metres a second. Her instruments log about twenty. I brought an umbrella. It did not help."},
+    {"scene": "radio", "mood": "tense", "text": "She radios her team leader on the ground. It is raining, it is hailing, and she is still climbing."},
+    {"scene": "dark", "mood": "action", "text": "Inside, it is dark. Hail hammers her. Lightning cracks in front of her, behind her, all around."},
+    {"scene": "top", "mood": "wonder", "text": "In about fifteen minutes the storm carries her to nearly ten thousand metres. Up here it is around forty below zero, and the air is too thin to stay awake."},
+    {"scene": "out", "mood": "tense", "text": "She blacks out. For more than half an hour the glider flies itself, sinking and lifting, its pilot hanging in the harness."},
+    {"scene": "saved", "mood": "calm", "text": "Doctors said later that passing out may be what saved her. Unconscious, her body needed less oxygen."},
+    {"scene": "wake", "mood": "triumph", "text": "Then she wakes up. Her gloves are frozen. The brake handles are cased in ice. She scratches the ice off her GPS. She is still almost seven thousand metres up."},
+    {"scene": "down", "mood": "action", "text": "But the wing is open and flying. She takes the brakes and spirals down. This time, it works."},
+    {"scene": "land", "mood": "calm", "text": "About three and a half hours after take-off, she lands beside a farm, roughly sixty kilometres from where she started."},
+    {"scene": "phone", "mood": "calm", "text": "Her radio is dead. Then her phone rings. It is her team. She sends them her position, and they come and get her."},
+    {"scene": "ward", "mood": "calm", "text": "Frostbite on her ears and face. Bruises from the hail. About an hour in hospital, and she is out."},
+    {"scene": "odds", "mood": "wonder", "text": "The event's organiser put her odds at winning the lottery ten times in a row."},
+    {"scene": "loss", "mood": "sad", "text": "The storm did not let everyone go. {He|Huh} {Zhongpin|Jong-pin}, forty-two, flew for China and had more than ten years in the air. The same cloud took him. He was found the next day. A post-mortem found he had been struck by lightning."},
+    {"scene": "after", "mood": "calm", "text": "{Ewa|Eva} kept flying. She had her height, {9946|nine nine four six}, stitched onto her glider. In {2010|twenty ten} her flight became a documentary, Miracle in the Storm. Today she teaches paragliding in Bavaria."},
+    {"scene": "end", "mood": "end", "text": "Pulled up past Everest, out cold, and she landed it herself. I was wrong. Case closed."}
   ]
 }
