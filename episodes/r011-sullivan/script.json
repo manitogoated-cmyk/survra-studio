@@ -1,0 +1,13 @@
+{
+  "id": "r011-sullivan", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9,
+  "segments": [
+    {"scene": "hook", "mood": "hook", "text": "Lightning hits this park ranger. Then it hits him again. And again. Seven times."},
+    {"scene": "doubt", "mood": "calm", "text": "No chance. Not seven. Let's go look."},
+    {"scene": "first", "mood": "tense", "text": "Virginia, {1942|nineteen forty-two}. Ranger Roy Sullivan runs from a fire tower in a storm. The bolt takes a toenail."},
+    {"scene": "second", "mood": "action", "text": "{1969|Nineteen sixty-nine}. In his truck. There go his eyebrows. A year on, his own front yard. His shoulder."},
+    {"scene": "hair", "mood": "action", "text": "{1972|Nineteen seventy-two}. Inside the ranger station. His hair catches fire. Next year, it burns again. He douses it with the water can from his truck."},
+    {"scene": "then", "mood": "tense", "text": "{1976|Nineteen seventy-six}. His ankle. Then number {7|seven} finds him fishing. Chest and stomach, burned."},
+    {"scene": "record", "mood": "wonder", "text": "Seven strikes. He lives through every one. Guinness lists them all. Nobody on record has survived more."},
+    {"scene": "end", "mood": "end", "text": "Two of his scorched hats went on display. I was wrong. Case closed."}
+  ]
+}
