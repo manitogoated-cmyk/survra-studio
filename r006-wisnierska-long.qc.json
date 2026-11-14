@@ -1,0 +1,32 @@
+{
+ "pass": true,
+ "fails": [],
+ "warnings": [],
+ "notes": [
+  "87 shots, mean 1.99s, longest 2.85s",
+  "motion: mean frame change 5.22, 206 hard cuts detected",
+  "audio: -15.0 LUFS, peak -1.6 dBFS, voice 13.2 dB over bed",
+  "host: acts in 37/87 shots (43%)",
+  "originality: closest match to any earlier episode 0.77 (shot 49 vs r002-grimes-long)"
+ ],
+ "rules": {
+  "first_shot_max": 4.0,
+  "hook_impact_by": 1.0,
+  "shot_max": 7.0,
+  "shot_mean_max": 3.8,
+  "kind_max_uses": 4,
+  "static_window": 3.5,
+  "static_motion_min": 0.8,
+  "cut_diff": 28.0,
+  "first_second_motion_min": 2.0,
+  "repeat_corr": 0.97,
+  "repeat_pairs_max": 3,
+  "lufs": -14.0,
+  "lufs_tol": 1.5,
+  "tp_max": -1.0,
+  "voice_over_bed_db": 6.0,
+  "dead_air_s": 0.8,
+  "dead_air_db": -45.0
+ },
+ "format": "long"
+}
