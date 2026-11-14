@@ -2350,9 +2350,9 @@ def photo_thumb(S, k, t, lt):
     span(S['line'], (-1.05, -1.65, DECK + 1.5), (0.2, -4.4, -0.3))
     aboard(S, S['rook'], 1.0, -0.6, 0.0, P('hat', aL=(0.3, 0.9, 1.3), lL=(0.9, 1.5), lift=0.3, head=(0.2, 0.3)))
     S['face']['rook'] = 'shocked'
-    S['shark'].location = A(1.6, -4.6, 0.3)
-    S['shark'].rotation_euler = (0, 0, 0.5)
-    S['shark'].scale = (1.5, 1.5, 1.5)
+    S['shark'].location = A(1.2, -3.9, 0.12)
+    S['shark'].rotation_euler = (0, 0, 0.35)
+    S['shark'].scale = (0.8, 0.8, 0.8)
     feathers(S, A(1.4, -0.9, 3.3), 0.45, 4)
     cam(S, A(5.2, -10.5, 3.6), A(2.6, -0.8, 1.9), 40)
 

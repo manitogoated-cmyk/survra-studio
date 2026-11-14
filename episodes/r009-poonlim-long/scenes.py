@@ -266,8 +266,8 @@ def map_route(cv, c):
             break
         cv.drawCircle(lerp(a[0], x_[0], u), lerp(a[1], x_[1], u) - 40 * math.sin(u * math.pi), 8, P(WHITE))
     cv.drawCircle(a[0], a[1], 16, P(AMBER))
-    fit(cv, 'CAPE TOWN', a[0] - 210, a[1] + 14, 54, 420, WHITE)
-    fit(cv, 'LEFT 10 NOV 1942', a[0] - 210, a[1] + 62, 38, 420, AMBER)
+    fit(cv, 'CAPE TOWN', a[0] - 230, a[1] - 40, 54, 420, WHITE)
+    fit(cv, 'LEFT 10 NOV 1942', a[0] - 230, a[1] + 8, 38, 420, AMBER)
     cv.drawCircle(b[0], b[1], 14, P(0xFFFFFFFF, 6))
     fit(cv, 'SURINAME', b[0] + 40, b[1] - 34, 46, 340, WHITE)
     if k >= 1:

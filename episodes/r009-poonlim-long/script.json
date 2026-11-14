@@ -4,7 +4,7 @@
     {"scene": "hook", "mood": "hook", "text": "A torpedo sinks his ship in two minutes. He climbs onto a wooden raft, alone. Ships see him, and sail on. A hundred and thirty-three days later, he is still alive."},
     {"scene": "doubt", "mood": "calm", "text": "No chance. Nobody lasts four months on a raft. Let's go look."},
     {"scene": "who", "mood": "calm", "text": "His name is Poon Lim. Born on Hainan island, China, in {1918|nineteen eighteen}. At sixteen he goes to sea as a cabin boy on a British ship, is treated badly, and quits. Then the war comes, and the ships need men."},
-    {"scene": "ship", "mood": "calm", "text": "November {1942|nineteen forty-two}. He is second steward on the Ben Lomond, a British cargo steamer. She leaves Cape Town for Suriname. Armed, but slow, and sailing alone."},
+    {"scene": "ship", "mood": "calm", "text": "November {1942|nineteen forty-two}. He is second steward on the {Benlomond|Ben Lomond}, a British cargo steamer. She leaves Cape Town for Suriname. Armed, but slow, and sailing alone."},
     {"scene": "hit", "mood": "action", "text": "November twenty-third. A German submarine puts two torpedoes into her. He grabs a life jacket and goes over the side. In about two minutes, the ship is gone."},
     {"scene": "water", "mood": "tense", "text": "He is a poor swimmer. For two hours he floats in the wreckage, holding on to a plank. Then he sees a raft."},
     {"scene": "raft", "mood": "calm", "text": "Eight feet square. Wood, with a canvas awning. On board: water, tins of biscuits, chocolate, sugar, flares, and a flashlight. No way to steer it."},
@@ -19,12 +19,12 @@
     {"scene": "shark", "mood": "action", "text": "So he goes after something bigger. He braids the line double, baits the nail hook with what is left of a bird, and hauls in a shark. A small one. It fights him on the deck. He wins, with the water jug."},
     {"scene": "fins", "mood": "calm", "text": "It has not rained for days, so the shark is his water as well as his food. He dries the fins in the sun, the way they do at home in Hainan."},
     {"scene": "routine", "mood": "calm", "text": "He keeps himself strong. When the sea is calm he swims around the raft twice a day, unless there are fins in the water. And somewhere out there he stops tying knots, and counts full moons instead."},
-    {"scene": "freighter", "mood": "sad", "text": "A freighter passes close enough to hear him shout, in English. It does not stop. He believed it left him because he was Chinese. Others say submarines were rumoured to use a man on a raft as bait. Either way, it sails on."},
+    {"scene": "freighter", "mood": "sad", "text": "A freighter passes close enough to see him. He shouts to it, in English. It does not stop. He believed it left him because he was Chinese. Others say submarines were rumoured to use a man on a raft as bait. Either way, it sails on."},
     {"scene": "planes", "mood": "tense", "text": "Then American patrol planes. One drops a marker buoy beside him. A storm comes through, and when it clears, the raft is somewhere else."},
     {"scene": "land", "mood": "wonder", "text": "April {1943|nineteen forty-three}. The water changes colour: no longer deep-ocean blue. He has drifted about seven hundred and fifty miles."},
     {"scene": "found", "mood": "wonder", "text": "April fifth. Three Brazilian fishermen see a man on a raft, waving his shirt and jumping. They turn the boat around. Day {133|one thirty-three}."},
     {"scene": "port", "mood": "calm", "text": "Three days later they land him at {Belém|Beh-lem}. He has lost about twenty pounds. He spends weeks in hospital."},
-    {"scene": "honours", "mood": "triumph", "text": "Then New York. King George the Sixth awards him the British Empire Medal. His shipping line gives him a gold watch. And the Royal Navy puts what he did into its survival manuals."},
+    {"scene": "honours", "mood": "triumph", "text": "Then New York. King George the Sixth awards him the British Empire Medal. His shipping line gives him a gold watch. And by most accounts, the Royal Navy puts what he did into its survival manuals."},
     {"scene": "later", "mood": "calm", "text": "He applies to the US Navy. They turn him down. Flat feet. After the war, the quota for Chinese immigrants is full, but a senator wins him an exception, and in {1952|nineteen fifty-two} he becomes an American citizen. He goes back to sea, and dies in Brooklyn in {1991|nineteen ninety-one}, aged seventy-two."},
     {"scene": "end", "mood": "end", "text": "Told that nobody had lasted longer on a raft, he is reported to have said he hoped nobody would ever have to break that record. Nobody has. I was wrong. Case closed."}
   ]
