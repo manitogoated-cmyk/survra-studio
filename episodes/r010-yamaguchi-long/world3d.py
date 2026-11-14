@@ -1848,7 +1848,7 @@ def porch(S, k, t, lt):
         o.location = A(-10 + 0.9 * math.sin(t * 3.1 + i * 2), 4.9 + 0.3 * math.cos(t * 2.3 + i), 3.4 + 0.3 * math.sin(t * 4 + i))
         o.rotation_euler = (t * 5, t * 3, i)
         o.scale = (0.5, 0.5, 0.5)
-    cam(S, A(lerp(-6.6, -7.4, k), lerp(-3.4, -2.4, k), lerp(2.0, 2.3, k)), A(-10.0, 4.7, 2.0), 40, fcol='FFC8A0')
+    cam(S, A(lerp(-8.8, -9.4, k), lerp(-0.2, 0.6, k), lerp(2.2, 2.4, k)), A(-10.0, 4.7, 1.95), 36, fcol='FFC8A0')
 
 
 # ---------------------------------------------------------------- shots: the lodging street, 6 August
@@ -1869,7 +1869,7 @@ def dorm_wide(S, k, t, lt):
     bags(S)
     S['rook'].place(A(4.2, 3.6, 0), -0.7)
     S['rook'].apply(P('cross', head=(0.0, lerp(0.6, -0.2, ease(k)))))
-    cam(S, A(lerp(8.4, 7.2, k), lerp(-8.6, -7.4, k), lerp(4.4, 3.4, k)), A(0.6, 4.4, 2.6), 30)
+    cam(S, A(lerp(7.0, 6.0, k), lerp(-6.4, -5.4, k), lerp(3.8, 3.1, k)), A(0.8, 4.4, 2.6), 36)
 
 
 def three_go(S, k, t, lt):
@@ -1927,13 +1927,13 @@ def found_three(S, k, t, lt):
     S['cols'][0].apply(blend(P('stand', lean=0.15), P('stand', aR=(2.6, 0.4, 0.3 + 0.3 * math.sin(lt * 7)), head=(-0.1, 0.0)), wave))
     S['cols'][1].place(A(-1.9, 52.2, 0), -0.2)
     S['cols'][1].apply(P('stand', lean=0.2, aL=(0.6, 0.0, 1.4, 0.8), head=(0.1, 0.0)))
-    S['rook'].place(A(3.4, 45.6, 0), PI - 0.5)
+    S['rook'].place(A(3.7, 50.6, 0), -PI / 2 - 0.5)
     S['hat_off'] = 1.0
-    S['rook'].apply(hat_hold(head=(0.1, 0.25)))
+    S['rook'].apply(hat_hold(head=(0.1, 0.2)))
     S['face']['rook'] = 'sad'
-    drift_dust(S, A, t, (-1, 64, 0), n=10, spread=24, size=1.8, speed=1.8)
+    drift_dust(S, A, t, (-1, 66, 0), n=10, spread=24, size=1.8, speed=1.8)
     fall_bits(S, A, t, (0, 49, 0), n=10, spread=10, speed=0.7, hgt=6)
-    cam(S, A(lerp(7.4, 6.4, k), lerp(39.0, 40.0, k), lerp(2.3, 2.7, k)), A(0.2, 49.5, 2.5), 34)
+    cam(S, A(lerp(5.6, 4.8, k), lerp(41.6, 42.4, k), lerp(2.3, 2.6, k)), A(0.2, 50.0, 2.5), 34)
 
 
 def shelter_three(S, k, t, lt):
@@ -1944,9 +1944,9 @@ def shelter_three(S, k, t, lt):
     S['wraps'][3].hide_render = False
     S['cols'][0].place(A(2.05, 3.6, 0.0), -PI * 0.5)
     S['cols'][0].apply(P('sit', lift=-0.5, lean=0.5, aL=(0.9, 0.1, 1.2), aR=(0.9, 0.1, 1.2), head=(0.55 + breathe(lt, 1.7, 0.05), 0.0)))
-    S['cols'][1].place(A(2.05, 5.6, 0.0), -PI * 0.5)
+    S['cols'][1].place(A(2.05, 5.0, 0.0), -PI * 0.5)
     S['cols'][1].apply(P('sit', lift=-0.5, lean=-0.05, head=(-0.25, 0.3 + breathe(lt, 1.1, 0.1))))
-    cam(S, A(lerp(0.5, 0.1, k), lerp(-4.6, -3.4, k), lerp(2.5, 2.2, k)), A(0.0, 4.0, 1.7), 30, fcol='FFC890')
+    cam(S, A(lerp(0.5, 0.1, k), lerp(-4.2, -3.0, k), lerp(2.5, 2.2, k)), A(0.0, 4.0, 1.7), 30, fill=2.6, fcol='FFC890')
 
 
 def platform_wait(S, k, t, lt):
@@ -1956,15 +1956,15 @@ def platform_wait(S, k, t, lt):
     roll(S, x)
     steam(S, A, x, t)
     for i, (rig, px, py) in enumerate(((S['yama'], 0.4, 1.2), (S['cols'][0], 2.0, 1.0), (S['cols'][1], 3.4, 1.3))):
-        rig.place(A(px, py, 1.0), PI + 0.5)
-        rig.apply(P('stand', lean=0.12, head=(0.1, 0.35), aL=(0.7, -0.2, 1.5, 0.9) if i == 0 else (0.05, 0.12, 0.15)))
+        rig.place(A(px, py, 1.0), PI + 0.35)
+        rig.apply(P('stand', lean=0.12, head=(0.1, 0.5), aL=(0.7, -0.2, 1.5, 0.9) if i == 0 else (0.05, 0.12, 0.15)))
     S['face']['yama'] = 'tired'
     S['wraps'][3].hide_render = False
     S['rook'].place(A(-1.9, -3.05, 1.12), PI)
     S['hat_off'] = 1.0
     S['rook'].apply(P('sit', lean=0.2, aL=(0.8, -0.2, 1.5, 1.0), aR=(0.8, -0.2, 1.5, 1.0), head=(0.15, lerp(0.0, 0.5, ease(k)))))
     S['face']['rook'] = 'sad'
-    cam(S, A(lerp(9.6, 8.6, k), lerp(-2.4, -2.0, k), lerp(3.6, 3.3, k)), A(-1.0, 1.6, 2.7), 30)
+    cam(S, A(lerp(8.4, 7.6, k), lerp(3.2, 3.0, k), lerp(2.7, 2.5, k)), A(0.6, 0.4, 2.7), 32, fill=1.6)
 
 
 def platform_night(S, k, t, lt):
@@ -1977,7 +1977,7 @@ def platform_night(S, k, t, lt):
         o.location = A(1.7 + 0.7 * math.sin(t * 2.7 + i * 2), -0.6 + 0.5 * math.cos(t * 2.1 + i), 4.2 + 0.3 * math.sin(t * 3.7 + i))
         o.rotation_euler = (t * 5, t * 3, i)
         o.scale = (0.5, 0.5, 0.5)
-    cam(S, A(lerp(5.4, 3.8, k), lerp(12.5, 11.0, k), lerp(4.6, 3.9, k)), A(0.4, 0.2, 3.1), 36, fill=1.6, fcol='FFD0A0')
+    cam(S, A(lerp(5.0, 3.6, k), lerp(11.5, 10.0, k), lerp(4.4, 3.8, k)), A(0.5, 0.4, 3.0), 46, fill=1.6, fcol='FFD0A0')
 
 
 # ---------------------------------------------------------------- shots: the carriage
@@ -2001,12 +2001,12 @@ def carriage_wide(S, k, t, lt):
     S['cols'][0].apply(P('sit', lean=0.3, head=(0.45, 0.0)))
     S['cols'][1].place(A(1.55, 0.25, 0.2), -PI / 2)
     S['cols'][1].apply(P('sit', lean=0.05, head=(0.0, -0.5 + breathe(lt, 0.9, 0.1))))
-    S['rook'].place(A(-4.0, -0.5, 0), PI / 2 - 0.6)
+    S['rook'].place(A(-3.5, -0.4, 0), PI / 2 - 0.6)
     S['hat_off'] = 1.0
     S['rook'].apply(hat_hold(head=(0.12, 0.2), lean=0.03 * math.sin(t * 6)))
     S['face']['rook'] = 'sad'
     sw = 0.012 * math.sin(t * 6.3)
-    cam(S, A(lerp(0.8, 0.0, k), -5.4, 2.5 + sw), A(-0.6, 0.8, 1.95), 32, roll=sw, fcol='FFD0A0')
+    cam(S, A(lerp(0.4, -0.4, k), -5.8, 2.5 + sw), A(-0.8, 0.8, 1.95), 32, roll=sw, fcol='FFD0A0')
 
 
 # ---------------------------------------------------------------- shots: the room at home
@@ -2040,35 +2040,32 @@ def room_base(S, mood='day'):
     return A
 
 
+def treat_cast(S, A, lt, face):
+    S['blanket'].location = (0.5, 2.0, -40)
+    S['yama'].place(A(-1.5, 0.5, 0), -PI / 2)
+    S['yama'].apply(P('sit', lean=0.1, aL=(1.2, 0.3, 0.3), aR=(0.6, 0.0, 1.2, 0.5), head=(0.25 + breathe(lt), 0.35), **FLOOR))
+    S['face']['yama'] = face
+    bandaged(S)
+    S['doc'].place(A(-3.4, 0.0, 0), PI / 2 + 0.25)
+    w = math.sin(lt * 5.0)
+    S['doc'].apply(P('stand', lean=0.3, aL=(1.1 + 0.18 * w, 0.0, 0.9), aR=(1.1 - 0.18 * w, 0.2, 0.7), head=(0.3, 0.0), **KNEEL))
+
+
 def treated(S, k, t, lt):
     """Home: his burns are dressed. The doctor is a stand-in; where he was treated differs by account."""
     A = room_base(S)
-    S['blanket'].location = (0.5, 2.0, -40)
-    S['yama'].place(A(-1.0, -0.4, 0), PI / 2)
-    S['yama'].apply(P('sit', lean=0.1, aL=(1.2, 0.35, 0.3), aR=(0.6, 0.0, 1.2, 0.5), head=(0.25, -0.3), **FLOOR))
-    S['face']['yama'] = 'tired'
-    bandaged(S)
-    S['doc'].place(A(0.9, 0.3, 0), -PI / 2 - 0.3)
-    w = math.sin(lt * 5.0)
-    S['doc'].apply(P('stand', lean=0.3, aL=(1.1 + 0.15 * w, 0.2, 0.7), aR=(1.1 - 0.15 * w, 0.0, 0.9), head=(0.3, 0.0), **KNEEL))
-    S['rook'].place(A(3.9, -1.2, 0), -PI / 2 + 0.5)
+    treat_cast(S, A, lt, 'tired')
+    S['rook'].place(A(3.1, 2.6, 0), -PI / 2 - 0.5)
     S['hat_off'] = 1.0
     S['rook'].apply(hat_hold(head=(0.15, 0.1)))
     S['face']['rook'] = 'sad'
-    cam(S, A(lerp(2.4, 1.6, k), lerp(-7.0, -6.2, k), lerp(2.9, 2.5, k)), A(0.6, 0.2, 1.7), 30)
+    cam(S, A(lerp(0.4, -0.4, k), lerp(-6.6, -5.8, k), lerp(2.9, 2.5, k)), A(-1.4, 0.8, 1.7), 30)
 
 
 def bandage_cu(S, k, t, lt):
     A = room_base(S)
-    S['blanket'].location = (0.5, 2.0, -40)
-    S['yama'].place(A(-1.0, -0.4, 0), PI / 2)
-    S['yama'].apply(P('sit', lean=0.1, aL=(1.2, 0.35, 0.3), aR=(0.6, 0.0, 1.2, 0.5), head=(0.3 + breathe(lt), -0.4), **FLOOR))
-    S['face']['yama'] = 'shut'
-    bandaged(S)
-    S['doc'].place(A(0.9, 0.3, 0), -PI / 2 - 0.3)
-    w = math.sin(lt * 5.0)
-    S['doc'].apply(P('stand', lean=0.3, aL=(1.1 + 0.2 * w, 0.2, 0.7), aR=(1.1 - 0.2 * w, 0.0, 0.9), head=(0.3, 0.0), **KNEEL))
-    cam(S, A(lerp(-0.6, -0.2, k), lerp(-3.4, -3.0, k), lerp(2.0, 2.2, k)), A(-0.6, -0.2, 1.75), 54)
+    treat_cast(S, A, lt, 'shut')
+    cam(S, A(lerp(-1.6, -2.0, k), lerp(-2.9, -2.5, k), lerp(2.0, 2.2, k)), A(-2.3, 0.3, 1.75), 54)
 
 
 def gets_up(S, k, t, lt):
@@ -2088,16 +2085,18 @@ def in_bed(S, k, t, lt):
     """After Nagasaki: more than a week of fever. Hisako, who also lived through it, is shown beside him (dramatised)."""
     A = room_base(S, 'night')
     S['roomlamp'].rotation_euler = (0.05 * math.sin(t * 1.9), 0.06 * math.sin(t * 1.3), 0)
-    S['yama'].place(A(1.5, 2.0, 0.4), PI / 2, pitch=-PI / 2)
-    S['yama'].apply(P('stand', head=(0.0, 0.25 * math.sin(lt * 0.9))))
+    S['blanket'].location = (0.85, 2.0, 0.5)
+    S['blanket'].scale = (1.9, 2.5, 0.5)
+    S['yama'].place(A(1.5, 2.0, 0.52), PI / 2, pitch=-PI / 2)
+    S['yama'].apply(P('stand', aL=(0.2, 0.25, 0.3), aR=(0.2, 0.25, 0.3), head=(0.0, 0.25 * math.sin(lt * 0.9))))
     S['face']['yama'] = 'shut'
     S['wraps'][0].hide_render = False
     S['wraps'][1].hide_render = False
-    S['hisako'].place(A(-0.6, 0.1, 0), PI)
+    S['hisako'].place(A(-0.5, 3.75, 0), 0.1)
     dab = 0.5 + 0.5 * math.sin(lt * 2.2)
-    S['hisako'].apply(P('stand', lean=0.42, aR=(1.2 + 0.25 * dab, 0.15, 0.5), aL=(0.6, 0.0, 1.2, 0.6), head=(0.4, 0.2), **KNEEL))
-    S['bowl'].location = A(0.5, 0.2, 0.08)
-    cam(S, A(lerp(3.4, 2.8, k), lerp(-4.6, -4.0, k), lerp(2.6, 2.3, k)), A(-0.5, 1.4, 1.0), 36, fcol='FFC890')
+    S['hisako'].apply(P('stand', lean=0.5, aR=(1.1 + 0.25 * dab, 0.3, 0.4), aL=(0.6, 0.0, 1.2, 0.6), head=(0.45, -0.2), **KNEEL))
+    S['bowl'].location = A(-1.6, 3.6, 0.08)
+    cam(S, A(lerp(-3.4, -2.9, k), lerp(-2.6, -2.2, k), lerp(2.5, 2.2, k)), A(-0.5, 2.3, 0.95), 36, fill=2.0, fcol='FFC890')
 
 
 def rook_room(S, k, t, lt):
@@ -2170,11 +2169,11 @@ def alone(S, k, t, lt):
         o.location = A(-5.05 + 0.12 * math.sin(u * 7 + i), 2.25 + 0.1 * math.sin(u * 5), 1.6 + u * 2.2)
         s = 0.04 + 0.1 * u
         o.scale = (s, s, s * 1.6)
-    S['rook'].place(A(0.6, -0.8, 0), -PI / 2 + 0.9)
+    S['rook'].place(A(-0.9, 3.3, 0), -PI / 2 + 0.5)
     S['hat_off'] = 1.0
     S['rook'].apply(hat_hold(head=(lerp(0.1, 0.35, ease(k)), 0.0)))
     S['face']['rook'] = 'sad'
-    cam(S, A(lerp(3.6, 2.8, k), lerp(-5.0, -4.4, k), lerp(2.7, 2.4, k)), A(-2.4, 1.2, 1.7), 34, fill=1.6, fcol='FFB880')
+    cam(S, A(lerp(1.0, 0.4, k), lerp(-3.9, -3.4, k), lerp(2.5, 2.2, k)), A(-3.2, 1.9, 1.6), 34, fill=2.0, fcol='FFB880')
 
 
 def old_window(S, k, t, lt):
@@ -2233,9 +2232,9 @@ def classroom(S, k, t, lt):
     up = ease((lt - 0.9) / 0.4)
     for o in S['khands']:
         o.location = (o.location[0], o.location[1], 1.3 + 0.95 * up)
-    S['rook'].place(A(5.9, -4.6, 0), PI - 1.0)
-    S['rook'].apply(P('stand', aL=(-0.3, 0.2, 0.6), aR=(-0.3, 0.2, 0.6), head=(0.0, -0.9)))
-    cam(S, A(lerp(2.4, 1.4, k), lerp(-9.6, -8.8, k), lerp(4.0, 3.6, k)), A(0.6, 3.6, 2.4), 30)
+    S['rook'].place(A(4.5, -3.95, 0.05), PI - 0.5)
+    S['rook'].apply(P('sit', lean=0.1, aL=(0.9, 0.0, 1.2, 0.5), aR=(0.9, 0.0, 1.2, 0.5), head=(-0.05, 0.9)))
+    cam(S, A(lerp(3.2, 2.6, k), lerp(-8.8, -8.0, k), lerp(4.7, 4.3, k)), A(1.2, 2.6, 1.7), 34)
 
 
 def back_at_desk(S, k, t, lt):
@@ -2274,7 +2273,7 @@ def empty_lectern(S, k, t, lt):
         u = (t * 0.08 + i * 0.13) % 1
         o.location = A(-1.2 + ((i * 0.618) % 1) * 2.6, 6.0 + ((i * 0.37) % 1) * 1.4, 5.6 - 3.4 * u)
         o.scale = (0.035, 0.035, 0.035)
-    cam(S, A(lerp(1.6, 0.8, k), lerp(-2.6, 0.2, k), lerp(3.0, 2.8, k)), A(0.0, 6.6, 3.0), 46, fcol='FFE0C0')
+    cam(S, A(lerp(0.5, 0.15, k), lerp(-3.4, -0.6, k), lerp(3.7, 3.4, k)), A(0.0, 6.6, 2.9), 46, fcol='FFE0C0')
 
 
 def counter(S, k, t, lt):
@@ -2287,10 +2286,10 @@ def counter(S, k, t, lt):
     S['clerk'].apply(P('stand', lean=0.2 + 0.1 * press, aR=(1.0 + 0.25 * press, 0.25, 0.5), aL=(0.8, 0.1, 0.9), head=(0.35, 0.1)))
     S['stamp'].location = (lerp(0.75, 0.04, press), lerp(1.55, 1.13, press), lerp(2.75, 2.1, press))
     S['mark'].hide_render = lt < 1.25
-    S['rook'].place(A(-2.5, -0.5, 0), PI + 0.9)
-    S['rook'].apply(P('stand', aR=(1.0, 0.0, 0.6), lean=0.12, head=(0.1, 0.5)) if lt < 1.3 else P('hat', lean=0.05, head=(0.0, 0.5)))
+    S['rook'].place(A(-3.4, 0.0, 0), PI - 0.8)
+    S['rook'].apply(P('stand', aL=(1.0, 0.0, 0.6), lean=0.12, head=(0.1, -0.2)) if lt < 1.3 else P('hat', lean=0.05, head=(0.0, -0.2)))
     S['hat_tip'] = -0.25 * ease((lt - 1.3) / 0.3)
-    cam(S, A(lerp(-5.4, -4.6, k), lerp(-5.0, -4.4, k), lerp(3.3, 3.0, k)), A(-0.3, 1.7, 2.3), 32)
+    cam(S, A(lerp(2.4, 1.6, k), lerp(-5.4, -4.8, k), lerp(3.2, 3.0, k)), A(-1.0, 1.7, 2.3), 32)
 
 
 def stamp_cu(S, k, t, lt):
@@ -2302,7 +2301,7 @@ def stamp_cu(S, k, t, lt):
     S['clerk'].apply(P('stand', lean=0.2 + 0.1 * press, aR=(1.0 + 0.25 * press, 0.25, 0.5), aL=(0.8, 0.1, 0.9), head=(0.35, 0.1)))
     S['stamp'].location = (lerp(0.75, 0.04, press), lerp(1.55, 1.13, press), lerp(2.75, 2.1, press))
     S['mark'].hide_render = lt < 0.85
-    cam(S, A(lerp(-1.4, -1.1, k), lerp(-0.5, -0.2, k), lerp(3.1, 2.9, k)), A(-0.1, 1.3, 2.08), 56, fill=1.5)
+    cam(S, A(lerp(-1.0, -0.8, k), lerp(0.0, 0.2, k), lerp(3.6, 3.4, k)), A(-0.15, 1.3, 2.0), 56, fill=1.5)
 
 
 HOST |= {'yama_draws', 'rook_plan', 'to_work', 'porch', 'dorm_wide', 'goes_back', 'found_three', 'platform_wait', 'platform_night',
@@ -2315,14 +2314,15 @@ SHOTS3D.update({f.__name__: f for f in (
 
 def photo_thumb(S, k, t, lt):
     """Thumbnail picture: the second white light at the office windows, him bandaged in front of it, Rook beside him."""
-    A = office_base(S, 0.45)
-    S['yama'].place(A(-2.2, 2.2, 0), 0.5)
-    S['yama'].apply(P('stand', aR=(0.3, 0.2, 0.5), head=(-0.05, -0.55)))
+    A = office_base(S, 0.5)
+    S['yama'].place(A(0.1, -2.5, 0), 0.2)
+    S['yama'].apply(P('stand', aR=(0.3, 0.2, 0.5), aL=(0.7, -0.2, 1.5, 0.9), head=(-0.05, 0.0)))
+    S['face']['yama'] = 'shock'
     bandaged(S)
-    S['rook'].place(A(0.4, 1.4, 0), -0.3)
-    S['rook'].apply(P('stand', aR=(0.2, 1.9, 1.6, -1.5), head=(-0.1, 0.6)))
+    S['rook'].place(A(1.25, -2.1, 0), -0.2)
+    S['rook'].apply(P('stand', aR=(0.2, 1.9, 1.6, -1.5), aL=(0.5, 0.3, 0.8), head=(-0.05, -0.5)))
     S['face']['rook'] = 'shocked'
-    cam(S, A(1.2, -3.6, 2.5), A(-0.2, 2.2, 2.6), 30)
+    cam(S, A(2.0, -6.6, 2.7), A(2.0, 2.0, 2.75), 26, fill=1.4)
 
 
 STILLS['thumb'] = photo_thumb

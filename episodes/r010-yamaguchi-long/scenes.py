@@ -438,7 +438,7 @@ def closed(cv, c):
     if c.lt > 0.55:
         k = min(1, (c.lt - 0.55) / 0.15)
         cv.save()
-        cv.translate(480, 300)
+        cv.translate(1400, 330)
         cv.scale(1.4 - 0.4 * k, 1.4 - 0.4 * k)
         Wd.text_card(cv, 'SURVRA', 0, 0, 150, AMBER, BLACK)
         Wd.text_card(cv, 'CASE 010  CLOSED', 0, 90, 54, WHITE, BLACK)
