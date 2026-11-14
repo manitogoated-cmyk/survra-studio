@@ -1833,7 +1833,7 @@ def nail_hook(S, k, t, lt):
         S['nail'].scale = (0.8, 0.8, 0.8)
     else:
         on(S, S['hook2'], R, (0.2, -1.3, DECK + 0.75), (PI / 2 - 0.5, 0, 0.2 * math.sin(t * 5)))
-        sc = 2.4 + 0.9 * math.sin(PI * min(1, (lt - 0.9) / 0.4))
+        sc = 1.25 + 0.5 * math.sin(PI * min(1, (lt - 0.9) / 0.4))
         S['hook2'].scale = (sc, sc, sc)
     on(S, S['hook'], R, (-1.1, -1.5, DECK + 0.14), (PI / 2, 0, 0.7))
     S['hook'].scale = (1.6, 1.6, 1.6)
@@ -2234,7 +2234,8 @@ def ward(S, k, t, lt):
 def medal(S, k, t, lt):
     """New York, 16 July 1943: the British Empire Medal. The official is a stand-in, not a likeness of anyone."""
     A = inside(S, 'hall', '14100C')
-    u = ease((lt - 0.5) / 0.9)
+    clap = S['prm'].get('clap')
+    u = 1.0 if clap else ease((lt - 0.5) / 0.9)
     S['poon'].place(A(-0.9, 4.2, 0.6), PI / 2 - 0.35)
     S['poon'].apply(P('stand', head=(lerp(0.0, 0.2, u), 0.0)))
     S['face']['poon'] = 'happy'
@@ -2245,14 +2246,17 @@ def medal(S, k, t, lt):
     else:
         on(S, S['medal'], S['poon'].body, (-0.16, -0.36, 0.78))
     S['medal'].scale = (1.5, 1.5, 1.5)
-    cl = 0.25 * abs(math.sin(t * 9)) if u > 0.55 else 0.0
+    cl = 0.3 * abs(math.sin(t * 9)) if u > 0.55 else 0.0
     S['rook'].place(A(-4.2, 3.9, 0.6), 0.45)
-    S['rook'].apply(P('stand', aL=(1.1, -0.1 + cl, 1.3, 0.9), aR=(1.1, -0.1 + cl, 1.3, 0.9), head=(0.05, -0.5)))
+    S['rook'].apply(P('stand', aL=(1.1, -0.1 + cl, 1.3, 0.9), aR=(1.1, -0.1 + cl, 1.3, 0.9), head=(0.05 + 0.1 * cl, -0.5), lift=0.2 * cl if clap else 0.0))
     S['face']['rook'] = 'warm'
     seat(S['ex'][2], A(-1.8, -0.6, 0.77), PI, aL=(0.9, 0.1 + cl, 1.4, 0.8), aR=(0.9, 0.1 + cl, 1.4, 0.8), head=(-0.1, 0.0))
     seat(S['ex'][3], A(3.6, -0.6, 0.77), PI, aL=(0.9, 0.1 + cl, 1.4, 0.8), aR=(0.9, 0.1 + cl, 1.4, 0.8), head=(-0.1, 0.0))
     seat(S['ex'][1], A(1.8, -2.4, 0.77), PI, aL=(0.9, 0.1, 1.4, 0.8), aR=(0.9, 0.1, 1.4, 0.8), head=(-0.1, 0.0))
-    cam(S, A(lerp(0.9, 0.1, k), lerp(-5.6, -4.8, k), lerp(3.6, 3.4, k)), A(-1.2, 4.1, 3.0), 36)
+    if clap:
+        cam(S, A(lerp(-7.4, -6.2, k), lerp(-1.4, -0.6, k), lerp(3.0, 3.3, k)), A(-2.6, 4.0, 3.0), 38)
+    else:
+        cam(S, A(lerp(1.6, -0.2, k), lerp(-5.8, -4.6, k), lerp(3.7, 3.4, k)), A(-1.2, 4.1, 3.0), 36)
 
 
 def watch(S, k, t, lt):
@@ -2290,7 +2294,13 @@ def flat_feet(S, k, t, lt):
     S['rook'].place(A(-4.2, 0.2, 0), 0.5)
     S['rook'].apply(blend(P('hips', head=(0.0, -0.5)), P('stand', aL=(0.1, 0.5, 0.3), aR=(0.1, 0.5, 0.3), lL=(1.0, 1.1), head=(0.6, 0.15), lean=0.2), u))
     S['face']['rook'] = 'deadpan' if u < 0.5 else 'shocked'
-    cam(S, A(lerp(-1.4, -0.4, k), lerp(-8.0, -7.2, k), 2.9), A(-0.4, 1.4, 2.1), 34)
+    if S['prm'].get('feet'):
+        wig = math.sin(t * 9)
+        S['rook'].apply(P('stand', aL=(0.1, 0.5, 0.3), aR=(0.1, 0.5, 0.3), lL=(1.0 + 0.15 * wig, 1.1 - 0.3 * wig), head=(0.65, 0.15), lean=0.25))
+        S['face']['rook'] = 'shocked'
+        cam(S, A(lerp(-2.4, -2.9, k), lerp(-4.6, -3.8, k), lerp(1.3, 1.6, k)), A(-4.2, 0.2, lerp(1.5, 1.8, k)), 40)
+    else:
+        cam(S, A(lerp(-1.6, -0.2, k), lerp(-8.0, -7.0, k), 2.9), A(-0.4, 1.4, 2.1), 34)
 
 
 def brooklyn(S, k, t, lt):
@@ -2338,6 +2348,8 @@ cabin_quit = _with(cabin_boy, quit=1)
 frt_away = _with(frt_close, away=1)
 brooklyn_end = _with(brooklyn, gone=1)
 knots_night = _with(knots_cu, night=1)
+medal_clap = _with(medal, clap=1)
+rook_feet = _with(flat_feet, feet=1)
 
 
 def photo_thumb(S, k, t, lt):
@@ -2350,19 +2362,19 @@ def photo_thumb(S, k, t, lt):
     span(S['line'], (-1.05, -1.65, DECK + 1.5), (0.2, -4.4, -0.3))
     aboard(S, S['rook'], 1.0, -0.6, 0.0, P('hat', aL=(0.3, 0.9, 1.3), lL=(0.9, 1.5), lift=0.3, head=(0.2, 0.3)))
     S['face']['rook'] = 'shocked'
-    S['shark'].location = A(1.2, -3.9, 0.12)
+    S['shark'].location = A(1.0, -3.4, 0.14)
     S['shark'].rotation_euler = (0, 0, 0.35)
-    S['shark'].scale = (0.8, 0.8, 0.8)
+    S['shark'].scale = (1.0, 1.0, 1.0)
     feathers(S, A(1.4, -0.9, 3.3), 0.45, 4)
     cam(S, A(5.2, -10.5, 3.6), A(2.6, -0.8, 1.9), 40)
 
 
 HOST |= {'cabin_boy', 'mess', 'quay_leave', 'plank_float', 'other_raft', 'ration', 'wrist_rope', 'big_fish', 'dry_line', 'life_cover', 'nest_trap',
          'storm_after', 'shark_haul', 'shark_fight', 'fins_dry', 'swim_round', 'moon_count', 'frt_close', 'marker_drop', 'marker_lost', 'colour_change',
-         'shirt_wave', 'belem_dock', 'ward', 'medal', 'flat_feet', 'brooklyn', 'shark_won', 'drift_apart', 'cabin_quit', 'frt_away', 'brooklyn_end'}
+         'shirt_wave', 'belem_dock', 'ward', 'medal', 'flat_feet', 'brooklyn', 'shark_won', 'drift_apart', 'cabin_quit', 'frt_away', 'brooklyn_end', 'medal_clap', 'rook_feet'}
 SHOTS3D.update({f.__name__: f for f in (
     cabin_boy, mess, quay_leave, plank_float, other_raft, ration, wrist_rope, knots_cu, nail_hook, big_fish, dry_line, life_cover, nest_trap, storm_after,
     shark_haul, shark_fight, fins_dry, swim_round, moon_count, frt_close, marker_drop, marker_lost, colour_change, shirt_wave, belem_dock, ward, medal, watch,
     flat_feet, brooklyn, shark_won)})
-SHOTS3D.update(drift_apart=drift_apart, cabin_quit=cabin_quit, frt_away=frt_away, brooklyn_end=brooklyn_end, knots_night=knots_night)
+SHOTS3D.update(drift_apart=drift_apart, cabin_quit=cabin_quit, frt_away=frt_away, brooklyn_end=brooklyn_end, knots_night=knots_night, medal_clap=medal_clap, rook_feet=rook_feet)
 STILLS['thumb'] = photo_thumb

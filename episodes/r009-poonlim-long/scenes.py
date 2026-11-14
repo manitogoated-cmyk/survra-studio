@@ -478,7 +478,7 @@ def manual(cv, c):
     rows = ('A HOOK FROM A FLASHLIGHT SPRING', 'A LINE FROM UNPICKED ROPE', 'A KNIFE FROM A TIN', 'RAIN CAUGHT IN CANVAS')
     for i, s in enumerate(rows):
         y = -150 + i * 108
-        kk = pop(c.lt, 0.5 + i * 0.55)
+        kk = pop(c.lt, 0.5 + i * 0.45)
         fit(cv, s, -170, y + 20, 50, 760, INK if kk > 0 else h('B8A478'), None, center=False)
         if kk > 0:
             p = skia.Path()
@@ -493,7 +493,7 @@ def manual(cv, c):
 def quota(cv, c):
     """The quota for Chinese immigrants was full; a senator won him a special exception. Not a real form."""
     Wd.vgrad(cv, 0, 0, W, H, [(0, h('2A2630')), (1, h('100E14'))])
-    k = ease(c.lt / 0.25)
+    k = 1.0 if c.prm.get('ex') else ease(c.lt / 0.25)
     sheet(cv, 960, 450, 1300, 700, -1.2, k, 'APPLICATION TO IMMIGRATE', h('3A3A52'))
     for i, (lab, val) in enumerate((('NAME', 'POON LIM'), ('QUOTA', 'CHINESE IMMIGRANTS'))):
         y = -170 + i * 150
@@ -503,11 +503,24 @@ def quota(cv, c):
     for i in range(3):
         cv.drawLine(-580, 170 + i * 50, 300 - i * 120, 170 + i * 50, P(h('C8B88E'), 12))
     cv.restore()
-    if c.k > 0.2:
-        stamp(cv, 'QUOTA FULL', 1290, 330, -9, min(1, (c.k - 0.2) / 0.06), 100, RED, 0xEEF1E6CC)
-    if c.k > 0.62:
-        stamp(cv, 'SPECIAL EXCEPTION', 960, 690, 4, min(1, (c.k - 0.62) / 0.06), 96, GREEN, 0xEEF1E6CC)
+    ex = c.prm.get('ex')
+    if ex or c.lt > 2.2:
+        stamp(cv, 'QUOTA FULL', 1290, 330, -9, 1.0 if ex else min(1, (c.lt - 2.2) / 0.14), 100, RED, 0xEEF1E6CC)
+    if ex and c.lt > 0.9:
+        stamp(cv, 'SPECIAL EXCEPTION', 960, 690, 4, min(1, (c.lt - 0.9) / 0.14), 96, GREEN, 0xEEF1E6CC)
     sketch_note(cv, 'ILLUSTRATION, NOT A REAL FORM')
+
+
+def exception(cv, c):
+    """The same form, closer: a senator wins him a special exception."""
+    cv.save()
+    cv.translate(960, 560)
+    cv.scale(1.3, 1.3)
+    cv.rotate(-2)
+    cv.translate(-960, -600)
+    c.prm = dict(c.prm, ex=1)
+    quota(cv, c)
+    cv.restore()
 
 
 def citizen(cv, c):
@@ -568,7 +581,7 @@ def board_true(cv, c):
     note(cv, 'ALONE', 1440, 560, 340, 170, 6, 80, h('BFE0EC'), pop(c.lt, 0.5))
 
 
-SHOTS = {f.__name__: f for f in (tally_133, board_no, id_card, hainan, map_route, stores, crew_lost, weeks, views, map_drift, scale20, manual, quota, citizen,
+SHOTS = {f.__name__: f for f in (tally_133, board_no, id_card, hainan, map_route, stores, crew_lost, weeks, views, map_drift, scale20, manual, quota, exception, citizen,
                                  record, board_true)}
 
 
@@ -602,14 +615,14 @@ def size8(cv, c):
 
 
 def day133(cv, c):
-    k = ease((c.lt - 0.9) / 0.14)
+    k = ease((c.lt - 0.1) / 0.14)
     if k <= 0:
         return
     cv.save()
-    cv.translate(420, 250)
+    cv.translate(440, 330)
     cv.rotate(-5)
-    cv.scale(1.7 - 0.7 * k, 1.7 - 0.7 * k)
-    T(cv, 'DAY 133', 0, 0, 170, AMBER, BLACK)
+    cv.scale(1.3 - 0.3 * k, 1.3 - 0.3 * k)
+    T(cv, 'DAY 133', 0, 0, 150, AMBER, BLACK)
     cv.restore()
 
 
@@ -624,7 +637,7 @@ def closed(cv, c):
         cv.restore()
 
 
-OVER = dict(rain_catch=rain, life_cover=rain, storm_hide=squall, storm_after=drizzle, marker_lost=drizzle, raft_top=size8, fish_boat=day133, signoff=closed)
+OVER = dict(rain_catch=rain, life_cover=rain, storm_hide=squall, storm_after=drizzle, marker_lost=drizzle, raft_top=size8, rook_stunned=day133, signoff=closed)
 
 
 # ------------------------------------------------------------------ thumbnail
