@@ -202,6 +202,15 @@ HOSES = (('BREATHING GAS', 'FFD866'), ('HOT WATER', 'FF7A1A'), ('POWER FOR HIS L
 def umb_four(cv, c):
     t = c.t
     deepwater(cv, t)
+    for i in range(14):                      # gas bubbles climbing past the cut cable, so the diagram never sits still
+        u = (t * 0.28 + i * 0.173) % 1
+        bx = (i * 151 + 60) % W + 26 * math.sin(t * 2.2 + i)
+        cv.drawCircle(bx, H + 40 - u * (H + 80), 10 + (i % 4) * 5, P(Wd.alpha(h('BFF6FF'), 0.22), 5))
+    z = 0.92 + 0.07 * c.k                     # slow push-in on the whole diagram (never past the frame edge)
+    cv.save()
+    cv.translate(W / 2, H / 2)
+    cv.scale(z, z)
+    cv.translate(-W / 2 + 14 * math.sin(t * 1.3), -H / 2 + 8 * math.sin(t * 1.9))
     cx, cy, r = 470, 460, 270
     cv.drawCircle(cx, cy, r + 22, P(0xFF000000))
     cv.drawCircle(cx, cy, r, P(h('E8B020')))
@@ -220,6 +229,11 @@ def umb_four(cv, c):
             cv.drawLine(x + 78, y, lerp(x + 78, 860, kk), ty - 24, P(h(col), 6))
             if kk >= 1:
                 Wd.text_card(cv, label, 890, ty, 70, h(col), 0xFF000000, center=False)
+                for j in range(3):          # something is flowing down every line
+                    u = (t * 0.9 + j / 3 + i * 0.21) % 1
+                    cv.drawCircle(lerp(x + 78, 860, u), lerp(y, ty - 24, u), 13, P(0xFFFFFFFF))
+                    cv.drawCircle(lerp(x + 78, 860, u), lerp(y, ty - 24, u), 13, P(0xFF000000, 4))
+    cv.restore()
 
 
 def umb_cut(cv, c):

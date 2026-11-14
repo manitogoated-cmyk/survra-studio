@@ -84,7 +84,7 @@ def build(build_dir, out_wav):
     raw = out_wav.replace('.wav', '_raw.wav'); sf.write(raw, np.stack([mix, mix], 1).astype(np.float32), SR)
     sf.write(os.path.join(build_dir, 'stem_voice.wav'), (v / (np.abs(v).max() + 1e-9)).astype(np.float32), SR)
     sf.write(os.path.join(build_dir, 'stem_bed.wav'), (bed * 0.45).astype(np.float32), SR)
-    subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', raw, '-af', 'loudnorm=I=-14:TP=-2.0:LRA=9,alimiter=limit=0.79:level=disabled', '-ar', str(SR), out_wav], check=True)
+    subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', raw, '-af', 'loudnorm=I=-14:TP=-2.0:LRA=9,alimiter=limit=0.75:level=disabled', '-ar', str(SR), out_wav], check=True)
     print('audio ok', len(E['cues']), 'cues')
 
 if __name__ == '__main__':
