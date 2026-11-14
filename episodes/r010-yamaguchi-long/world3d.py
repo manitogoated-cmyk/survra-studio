@@ -2273,7 +2273,7 @@ def empty_lectern(S, k, t, lt):
         u = (t * 0.08 + i * 0.13) % 1
         o.location = A(-1.2 + ((i * 0.618) % 1) * 2.6, 6.0 + ((i * 0.37) % 1) * 1.4, 5.6 - 3.4 * u)
         o.scale = (0.035, 0.035, 0.035)
-    cam(S, A(lerp(0.5, 0.15, k), lerp(-3.4, -0.6, k), lerp(3.7, 3.4, k)), A(0.0, 6.6, 2.9), 46, fcol='FFE0C0')
+    cam(S, A(lerp(0.4, 0.15, k), lerp(-1.6, 0.6, k), lerp(3.6, 3.3, k)), A(0.0, 6.6, 2.9), 46, fcol='FFE0C0')
 
 
 def counter(S, k, t, lt):

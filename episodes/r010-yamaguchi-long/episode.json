@@ -1,7 +1,7 @@
 {
  "id": "r010-yamaguchi-long",
  "format": "long",
- "status": "draft",
+ "status": "approved",
  "synthetic": false,
  "host": "rook",
  "case": 10,
@@ -74,5 +74,8 @@
   "https://www.hiroshimapeacemedia.jp/?p=14868"
  ],
  "case_of": "r010-yamaguchi",
- "claimed_at": "2026-11-14T21:54:33Z"
+ "claimed_at": "2026-11-14T21:54:33Z",
+ "quality_gate": {
+  "method": "Reviewed in four rounds with fixes after each. Round 1, the 16:9 3D contact sheet (69 stills): the man in the futon was hidden under the blanket, Rook stood inside the low table in the treatment scene and the wrapped arm was on the far side from the camera, Rook blocked the colleagues on the road and the clerk at the counter, the third man in the shelter was lost in the dark, the platform shot showed only backs, the fence hid the two figures on the step, a seated listener's head filled a corner of the empty-lectern shot, the microphone crossed the old man's face in the reused lectern angle, Rook was out of frame in the classroom; all restaged. Round 2, composited stills of all 85 shots with captions, HUD, inserts and overlays, plus the thumbnail: Rook was out of frame on the road again and half out of it in the classroom, the sign-off title sat on his head, and the thumbnail was rebuilt three times (a drawing table hid the man, then the camera was behind a wall). Round 3, a full-length low-resolution rehearsal (384x216, 4 samples, every 3D frame) composited at 1920x1080 with sound: it passed the automated gate locally (85 shots, mean 2.25 s, longest 4.02 s, loudness -15.3 LUFS, voice 15.2 dB over the bed, host in 36/85 shots (42%), closest match to an earlier episode 0.82). Round 4, frame strips of 24 shots from that rehearsal: the HUD fits (it only looked cut off in round 2 because stills are taken at the instant a HUD appears), the shipyard was showing while the farewell was being narrated so those two shots were swapped, the empty-lectern move was started further forward, the sign-off title moved right. After round 4 the storyboard was checked again by rule (85 shots, mean 2.25 s, no kind more than twice, none twice in a row, every kind defined, HOST lists every kind with Rook on screen) and the changed shots were spot-rendered, but the rehearsal was not rendered a second time. Audio was measured, not listened to. The fingerprint file the local gate wrote was deleted, not committed. The repository tests pass. The full-resolution render and the final gate run in the cloud."
+ }
 }
