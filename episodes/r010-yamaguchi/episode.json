@@ -1,7 +1,7 @@
 {
  "id": "r010-yamaguchi",
  "format": "short",
- "status": "draft",
+ "status": "approved",
  "synthetic": false,
  "host": "rook",
  "case": 10,
@@ -60,5 +60,8 @@
   "https://www.npr.org/transcripts/122291007",
   "https://en.wikipedia.org/wiki/Nagasaki_Atomic_Bomb_Museum",
   "https://nagasakipeace.jp/en/search/record/photo/part_2_01.html"
- ]
+ ],
+ "quality_gate": {
+  "method": "3D contact sheet reviewed in six rounds with fixes after each (round 1: both flashes burned the frame out completely, dust blobs sat on the camera in three shots, the train never appeared because it was placed with world instead of set coordinates, the head bandage read as a blindfold, the boss was hidden behind Yamaguchi, the night platform was too dark; round 2: he was out of frame in the aircraft shot, a telegraph pole split the frame when he is thrown, he stood up with his back to the camera in the office, the far cloud read as a water tower and was rebuilt paler and further off; round 3, a full-length low-resolution rehearsal composited with captions, HUD, overlays, inserts and sound: eight caption pairs were wider than the frame, so four lines were reworded and every pair was measured again (widest now 947 of 1080 px, numbers kept on odd word positions so they show alone), three inserts collided with the captions or the HUD and were laid out again, Rook's face sat under the captions in the hall, and the gate failed a static stretch on the road shot; round 4: the storyboard was retimed word by word to the new narration with three new shots (39 in all) and the gate then failed the personnel card for holding 1.9 s, so it was cut to 1.4 s with a stronger push-in; round 5: frame strips of the hook, both flashes and the ending, where a sheet of paper crossed the lens and a dot showed in the sky before the first flash; round 6: twelve shots at production resolution, where the head bandage looked like a ring from above and was closed). The rehearsal (216x384, 4 samples, every 3D frame) passed the automated gate locally: 39 shots, mean 1.17 s, longest 1.79 s, loudness -15.2 LUFS, voice 10.3 dB over the bed, host in 17/39 shots (44%), closest match to an earlier episode 0.75. Every 3D kind in the storyboard exists in world3d.SHOTS3D, every flat kind in scenes.SHOTS, HOST lists every kind where Rook is on screen, no kind is used more than twice or twice in a row, and the repository tests pass. Audio was measured, not listened to. The fingerprint file the local gate wrote was deleted, not committed. The full-resolution render and the final gate run in the cloud."
+ }
 }

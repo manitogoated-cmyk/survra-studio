@@ -160,8 +160,8 @@ def id_card(cv, c):
 def map_dist(cv, c):
     """Sketch only: how far he was from the centre of the explosion (about 3 km, under two miles)."""
     Wd.vgrad(cv, 0, 0, W, H, [(0, h('1A3C70')), (1, h('0C1E3E'))])
-    cx, cy = 540, 840
-    for i, r in enumerate((130, 260, 390)):
+    cx, cy = 540, 690
+    for i, r in enumerate((110, 220, 330)):
         k = ease((c.k - 0.05 - i * 0.12) / 0.2)
         if k > 0:
             cv.drawCircle(cx, cy, r * k, P(0xFFFFFFFF if i == 2 else 0x66FFFFFF, 10 if i == 2 else 4))
@@ -170,13 +170,13 @@ def map_dist(cv, c):
     Wd.text_card(cv, 'CENTRE OF THE BLAST', cx, cy - 56, 40, 0xFFFFFFFF, 0xFF000000)
     if c.k > 0.4:
         a = math.radians(38)
-        px, py = cx + math.cos(a) * 390, cy + math.sin(a) * 390
+        px, py = cx + math.cos(a) * 330, cy + math.sin(a) * 330
         cv.drawLine(cx, cy, px, py, P(AMBER, 8))
         cv.drawCircle(px, py, 30, P(AMBER))
         cv.drawCircle(px, py, 30, P(0xFF000000, 6))
         Wd.text_card(cv, 'HIM', px - 10, py + 96, 76, AMBER, 0xFF000000)
-        Wd.text_card(cv, 'ABOUT 3 KM', 540, 420, 120, 0xFFFFFFFF, 0xFF000000)
-    Wd.text_card(cv, 'SKETCH, NOT A MAP', 540, 1500, 34, 0xCCFFFFFF, None)
+        Wd.text_card(cv, 'ABOUT 3 KM', 540, 1200, 110, 0xFFFFFFFF, 0xFF000000)
+    Wd.text_card(cv, 'SKETCH, NOT A MAP', 540, 1540, 34, 0xCCFFFFFF, None)
 
 
 def map_two(cv, c):
@@ -206,7 +206,7 @@ def map_two(cv, c):
 def clock_1102(cv, c):
     """The time on record for Nagasaki: 11:02 in the morning."""
     Wd.vgrad(cv, 0, 0, W, H, [(0, h('B8B09A')), (1, h('7E7868'))])
-    cx, cy, r = 540, 800, 380
+    cx, cy, r = 540, 760, 320
     cv.drawCircle(cx + 14, cy + 20, r + 30, P(0x55000000))
     cv.drawCircle(cx, cy, r + 30, P(h('3A2C1E')))
     cv.drawCircle(cx, cy, r, P(h('EFE6CC')))
@@ -216,10 +216,10 @@ def clock_1102(cv, c):
                     P(INK, 18 if i % 3 == 0 else 9))
     mins = 2 - 0.5 * (1 - ease(c.k / 0.5))
     am, ah = math.radians(mins * 6), math.radians((11 + mins / 60) * 30)
-    cv.drawLine(cx, cy, cx + math.sin(ah) * 210, cy - math.cos(ah) * 210, P(INK, 26))
-    cv.drawLine(cx, cy, cx + math.sin(am) * 330, cy - math.cos(am) * 330, P(INK, 16))
+    cv.drawLine(cx, cy, cx + math.sin(ah) * 175, cy - math.cos(ah) * 175, P(INK, 26))
+    cv.drawLine(cx, cy, cx + math.sin(am) * 270, cy - math.cos(am) * 270, P(INK, 16))
     sa = math.radians(c.t * 6 * 8)
-    cv.drawLine(cx, cy, cx + math.sin(sa) * 340, cy - math.cos(sa) * 340, P(RED, 6))
+    cv.drawLine(cx, cy, cx + math.sin(sa) * 285, cy - math.cos(sa) * 285, P(RED, 6))
     cv.drawCircle(cx, cy, 24, P(INK))
     Wd.text_card(cv, '11:02', 540, 330, 170, 0xFFFFFFFF, 0xFF000000)
     Wd.text_card(cv, '9 AUGUST 1945', 540, 1560, 60, 0xFFFFFFFF, 0xFF000000)

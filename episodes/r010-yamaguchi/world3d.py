@@ -432,7 +432,8 @@ def make_crane():
 
 def wrap_yama(rig):
     """Bandages: head, and the left arm and shoulder (his burns were to the left side of his upper body)."""
-    out = [add('cylinder', 'F4F2EA', (0, 0.01, 0.235), radius=0.3, depth=0.13, vertices=8, parent=rig.head, emit=0.15),
+    out = [add('ico_sphere', 'F4F2EA', (0, 0.04, 0.24), scale=(1, 1, 0.5), radius=0.285, subdivisions=1, parent=rig.head, emit=0.15),
+           add('cylinder', 'F4F2EA', (0, 0.01, 0.235), radius=0.3, depth=0.13, vertices=8, parent=rig.head, emit=0.15),
            add('cylinder', 'F4F2EA', (0, 0, -0.23), radius=0.105, depth=0.44, vertices=6, parent=rig.sh[1], emit=0.15),
            add('cylinder', 'F4F2EA', (0, 0, -0.2), radius=0.1, depth=0.42, vertices=6, parent=rig.el[1], emit=0.15),
            add('cube', 'F4F2EA', (0.2, -0.02, 0.86), rot=(0, 0.5, 0), scale=(0.62, 0.74, 0.07), size=1, parent=rig.body, emit=0.15)]
@@ -648,7 +649,7 @@ def flash_city(S, k, t, lt):
     f = ease(lt / 0.9) * 0.55
     A = morning(S, f)
     S['ball'].location = A(-70, 430, 170)
-    s = lerp(4, 120, ease(lt / 1.0))
+    s = lerp(0.5, 120, ease(lt / 1.0))
     S['ball'].scale = (s, s, s)
     S['yama'].place(A(0.6, 10, 0), PI)
     S['yama'].apply(blend(walk(t, 1.5), P('stand', aL=(2.2, 0.3, 1.5), aR=(2.2, 0.3, 1.5), lean=-0.15), f))
@@ -695,7 +696,7 @@ def rook_looks(S, k, t, lt):
     S['yama'].place(A(-1.7, 29.4, 0), PI + 0.25)
     S['yama'].apply(P('stand', aR=(2.5, 0.5, 1.9, 0.3), head=(-0.55, 0.0), lean=-0.12))
     S['bag'].hide_render = False
-    cam(S, A(lerp(3.4, 3.0, k), lerp(32.6, 32.0, k), lerp(1.5, 1.7, k)), A(0.9, 27.9, 2.7), 40)
+    cam(S, A(lerp(3.4, 3.0, k), lerp(32.6, 32.0, k), lerp(1.5, 1.7, k)), A(1.45, 27.7, 2.6), 40)
 
 
 def plane_high(S, k, t, lt):
@@ -792,7 +793,7 @@ def yama_hurt(S, k, t, lt):
     S['face']['yama'] = 'shut'
     drift_dust(S, A, t, (0, 46, 0), n=8, spread=22, size=1.7, speed=1.6)
     fall_bits(S, A, t, (0.5, 26.5, 0), n=12, spread=6, speed=1.1, hgt=5)
-    cam(S, A(lerp(2.9, 2.5, k), lerp(23.2, 23.6, k), 1.5), A(0.15, 26.85, 1.2), 44)
+    cam(S, A(lerp(2.9, 2.5, k), lerp(29.3, 28.9, k), 1.5), A(-0.2, 26.7, 1.3), 44)
 
 
 # ---------------------------------------------------------------- shots: the shelter
@@ -810,7 +811,7 @@ def shelter_in(S, k, t, lt):
     S['yama'].place(A(-2.05, 2.6, 0.0), PI * 0.5)
     S['yama'].apply(P('sit', lift=-0.5, lean=0.42, aL=(0.6, 0.0, 1.3, 0.6), aR=(0.9, -0.45, 1.7, 1.4), head=(0.5 - 0.06 * math.sin(lt * 2.5), -0.2)))
     S['face']['yama'] = 'tired'
-    S['wraps'][2].hide_render = False
+    S['wraps'][3].hide_render = False
     cam(S, A(lerp(1.5, 1.1, k), lerp(-2.6, -1.6, k), 2.0), A(-1.7, 2.7, 1.55), 34, fcol='FFC890')
 
 
@@ -1029,7 +1030,7 @@ def blast_props(S, A, lt, calm=0.0):
         a, b = (i * 0.618) % 1, (i * 0.37) % 1
         if calm:
             v = (lt * 0.25 + b) % 1
-            o.location = A(-5 + a * 11, -3.5 + b * 8, 0.1 + 3.2 * (1 - v) * (0.3 + 0.7 * a))
+            o.location = A(-5 + a * 7.6, -1.2 + b * 6, 0.1 + 3.2 * (1 - v) * (0.3 + 0.7 * a))
             o.rotation_euler = (0.5 * math.sin(lt * 2 + i), 0.4 * math.cos(lt * 2.3 + i), i)
         else:
             o.location = A(-5 + a * 11 + math.sin(lt * 4 + i), 5.5 - (3 + b * 8) * u, 1.6 + 2.6 * math.sin(u * PI * (0.6 + 0.4 * b)) + (i % 3) * 0.3)
