@@ -54,6 +54,7 @@ for sh, a, b in spans:
         Wm.SHOTS3D[sh['kind']](S, k, tt, tt - a)
         Wm.finish(S, tt)
         K.variant(S, S['prm'].get('alt'))
+        K.camlife(S, tt, 0 if S['prm'].get('still') else K.CAMLIFE)
         K.focus(S, S['prm'].get('fstop', K.FSTOP))
         sc.render.filepath = os.path.join(out, f"{sh['n']:02d}_{sh['kind']}_{int(k * 100):02d}.jpg")
         bpy.ops.render.render(write_still=True)

@@ -1048,7 +1048,8 @@
     ]
    ],
    "hud": null,
-   "prm": {}
+   "prm": {},
+   "hush": true
   },
   {
    "n": 31,
@@ -1297,5 +1298,6 @@
    "prm": {},
    "brand": true
   }
- ]
+ ],
+ "hook_text": "A HAND|GRABS THE DIVER"
 }

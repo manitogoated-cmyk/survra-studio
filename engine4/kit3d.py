@@ -405,6 +405,21 @@ def variant(S, alt):
     bpy.context.scene.camera.data.lens *= lm
 
 
+CAMLIFE = float(os.environ.get('KIT3D_CAMLIFE', 1.0))
+
+
+def camlife(S, t, amount=1.0):
+    """Handheld drift: the camera position floats by about 0.6 % of its distance to the subject on slow, unrelated
+    sine waves, so no shot is ever perfectly frozen. prm "still": true switches it off (graphics, locked comedy beats)."""
+    if 'camrig' not in S or 'camtgt' not in S or amount <= 0:
+        return
+    c, tg = S['camrig'].location, S['camtgt'].location
+    d = math.sqrt(sum((c[i] - tg[i]) ** 2 for i in range(3))) * 0.006 * amount
+    S['camrig'].location = (c[0] + d * (math.sin(t * 0.83) + 0.4 * math.sin(t * 2.1 + 1.3)),
+                            c[1] + d * 0.5 * math.sin(t * 0.61 + 2.0),
+                            c[2] + d * (math.sin(t * 1.07 + 0.7) + 0.3 * math.sin(t * 2.6)))
+
+
 CAMFILL0 = float(os.environ.get('KIT3D_CAMFILL', 60))
 
 
@@ -506,6 +521,7 @@ def run(ep_dir, mode='all', w=RES[0], h=RES[1], samples=SAMPLES, part=None):
         Wm.SHOTS3D[sh['kind']](S, max(0.0, min(1.0, lt / d)), t, lt)
         Wm.finish(S, t)
         variant(S, S['prm'].get('alt'))
+        camlife(S, t, 0 if S['prm'].get('still') else CAMLIFE)
         focus(S, S['prm'].get('fstop', FSTOP))
         if long_:
             sc.camera.data.lens *= LONG_LENS

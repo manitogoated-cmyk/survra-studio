@@ -111,6 +111,13 @@ def build(build_dir, out_wav):
         sig = f(); sig = sig / (np.abs(sig).max() + 1e-9)
         A.place(fx, c['t'], sig, 0.5 * A.GAIN.get(c['sfx'], 0.7))
     mus = score(N, E['windows'], E.get('moods', {}), zlib.crc32(E.get('episode', 'x').encode()) & 0xFFFF)
+    # storyboard shot flag "hush": true pulls the music out for that shot: silence before the payoff is the strongest
+    # sound cue there is. Effects and voice stay.
+    hush = np.ones(N)
+    for sh in E['shots']:
+        if sh.get('hush'):
+            hush[max(0, int((sh['a'] - 0.1) * SR)):min(N, int(sh['b'] * SR))] = 0.06
+    mus = mus * A.sm(hush, 0.2 * SR)
     voice, vsr = sf.read(os.path.join(build_dir, 'voice.wav'))
     v = np.interp(np.arange(N) / SR, np.arange(len(voice)) / vsr, voice)
     # per-mood narration level: quiet for sad/calm, forward for action, so the film breathes instead of sitting flat

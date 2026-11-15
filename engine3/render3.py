@@ -308,6 +308,37 @@ def hud(cv, text, age, W, H, fmt):
     cv.restore()
 
 
+def hook_title(cv, text, t, W, H, fmt):
+    """storyboard.json "hook_text": two to five words shown for the first 1.8 s, so a viewer who has the sound off
+    still knows in one glance what the video promises. Pops in, holds, fades."""
+    if not text or t > 1.8:
+        return
+    lines = text.upper().split('|')
+    size = 132 if fmt == 'short' else 96
+    f = skia.Font(TF, size)
+    widest = max(f.measureText(l) for l in lines)
+    if widest > W * 0.86:
+        size = int(size * W * 0.86 / widest)
+        f = skia.Font(TF, size)
+    k = ease_out(t / 0.14)
+    a = 1.0 if t < 1.5 else max(0.0, 1 - (t - 1.5) / 0.3)
+    cv.save()
+    cv.translate(W / 2, H * (0.17 if fmt == 'short' else 0.2))
+    cv.scale(1.35 - 0.35 * k, 1.35 - 0.35 * k)
+    for i, l in enumerate(lines):
+        w = f.measureText(l)
+        y = i * size * 1.08
+        edge = K.P(0xFF000000, size * 0.16)
+        edge.setStrokeJoin(skia.Paint.kRound_Join)
+        edge.setAlphaf(a)
+        fill = K.P(0xFFFFB000 if i == len(lines) - 1 else 0xFFFFFFFF)
+        fill.setAlphaf(a)
+        blob = skia.TextBlob(l, f)
+        cv.drawTextBlob(blob, -w / 2, y, edge)
+        cv.drawTextBlob(blob, -w / 2, y, fill)
+    cv.restore()
+
+
 def progress(cv, t, total, W, H):
     cv.drawRect(skia.Rect(0, H - 12, W, H), K.P(0x55000000))
     cv.drawRect(skia.Rect(0, H - 12, W * t / total, H), K.P(0xFFFFB000))
@@ -327,7 +358,7 @@ def render(ep_dir, out_path, only=None, fmt=None, clean=False):
     missing = sorted({sh['kind'] for sh in shots} - set(scenes.SHOTS) - k3)
     if missing:
         raise SystemExit(f'storyboard uses shots defined neither in world3d.py (rendered) nor scenes.py: {missing}')
-    json.dump({'shots': [{k: sh.get(k) for k in ('n', 'kind', 'segment', 'a', 'b', 'transition', 'action', 'camera')} for sh in shots],
+    json.dump({'shots': [{k: sh.get(k) for k in ('n', 'kind', 'segment', 'a', 'b', 'transition', 'action', 'camera', 'hush')} for sh in shots],
                'cues': cues, 'impacts': impacts, 'windows': win, 'moods': moods, 'duration': tl['duration'],
                'format': fmt, 'episode': ep['id']}, open(os.path.join(build, 'edl.json'), 'w'), indent=1)
     audio, sr = sf.read(os.path.join(build, 'voice.wav'))
@@ -379,6 +410,7 @@ def render(ep_dir, out_path, only=None, fmt=None, clean=False):
             last_hud, hud_t = h, t
         hud(cv, h, t - hud_t, W, H, fmt)
         captions(cv, words, t, W, H, fmt)
+        hook_title(cv, board.get('hook_text'), t, W, H, fmt)
         if fmt == 'short':
             progress(cv, t, total, W, H)
         img = surf.makeImageSnapshot()
