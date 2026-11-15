@@ -1,0 +1,60 @@
+{
+ "id": "r013-bugorski",
+ "format": "short",
+ "status": "draft",
+ "synthetic": false,
+ "host": "rook",
+ "case": 13,
+ "title": "A Particle Beam Went Through His Head. He Went Back to Work #shorts",
+ "description": "Case 013. In 1978 Anatoli Bugorski was a physicist at the Institute for High Energy Physics in Protvino, home of the U-70 synchrotron, then the largest particle accelerator in the Soviet Union. He leaned in to check a piece of equipment that was not working. A safety mechanism had failed and the proton beam was still running. It went in at the back of his head and came out beside his nose. He reportedly saw a flash 'brighter than a thousand suns' and felt no pain. The left side of his face swelled up, and he was taken to a clinic in Moscow where doctors expected him to die: by some estimates the dose along the beam's path was hundreds of times a lethal one. He lived. He lost the hearing in his left ear, the left half of his face became paralysed and he has had seizures, but he completed his doctorate and went back to work at the same accelerator. Rook didn't believe it either.\n\nAnimated reconstruction of a true story. The tunnel, control room, clinic and institute in the film are generic low-poly sets, not models of the real places or machines, and the cards, dials and diagrams are drawings made for it, not real documents or medical images. A proton beam inside an accelerator is not visible; the film draws it as a line of light so the story can be followed.",
+ "tags": [
+  "Anatoli Bugorski",
+  "particle accelerator",
+  "proton beam",
+  "U-70 synchrotron",
+  "Protvino",
+  "Soviet Union",
+  "physics",
+  "radiation",
+  "survivor",
+  "science history",
+  "true story",
+  "survival story",
+  "animated story",
+  "Rook",
+  "Survra"
+ ],
+ "hashtags": [
+  "#shorts",
+  "#truestory",
+  "#physics"
+ ],
+ "playlist": "Rook's Case Files (Shorts)",
+ "story_score": {
+  "curiosity": 9,
+  "stakes": 8,
+  "freshness": 7,
+  "story": 7,
+  "visual": 8,
+  "audience_fit": 8,
+  "payoff": 8,
+  "packaging": 9,
+  "research": 8,
+  "repeatability": 7,
+  "total": 79
+ },
+ "title_options": [
+  "A Particle Beam Went Through His Head. He Went Back to Work #shorts",
+  "He Put His Head in a Particle Accelerator. It Was Still On #shorts",
+  "A Proton Beam Went In the Back of His Head and Out His Nose #shorts",
+  "Doctors Waited for Him to Die. He Finished His Doctorate #shorts"
+ ],
+ "source_notes": "Read for this run (fetched 15 Nov 2026): Discover Magazine (Nathaniel Scharping, 'If You Stuck Your Head in a Particle Accelerator', 4 Dec 2017); Big Think republication of Joel Frohlich's Aeon essay ('Why we can stop worrying and love the particle accelerator'); Gizmodo (Daven Hiskey, republished from Today I Found Out, 20 Aug 2013); Wikipedia ('Anatoli Bugorski'); Amusing Planet (Kaushik Patowary, 14 Feb 2020). The Wired article by Masha Gessen (Dec 1997), which most of these draw on, and the Aeon, Smithsonian and Quartz pages could not be fetched in this run, so nothing in the film rests on them directly. Every narrated fact is in at least two of the pages read. 1978 and the U-70 synchrotron: all five. 'The biggest particle accelerator in the Soviet Union': Big Think and Wikipedia. Physicist/researcher at the institute in Protvino: Wikipedia, Gizmodo, Amusing Planet. Checking malfunctioning equipment: Gizmodo, Big Think, Wikipedia. 'A safety mechanism has failed': Big Think ('a safety mechanism failed') and Wikipedia ('the safety mechanisms failed'); Amusing Planet says more specifically that warning lights had been switched off for an earlier experiment and not turned back on, which is why the film shows an unlit warning lamp, but the narration keeps to the wording two sources share. In at the back of the head, out by the nose: Discover, Gizmodo, Wikipedia (left-hand side of the nose), Amusing Planet. The flash 'brighter than a thousand suns' is a reported description, so the narration says 'by his account'; no pain: Discover, Gizmodo, Wikipedia, Amusing Planet, Big Think. He kept working and told nobody at first: Wikipedia and Amusing Planet ('completed his work'). Left side of the face swelled: Discover, Gizmodo, Wikipedia, Amusing Planet. Clinic in Moscow, doctors expecting him to die: Big Think, Wikipedia, Amusing Planet (Moscow); Discover and Gizmodo (expected to die). Dose: Discover and Gizmodo give about 2,000 gray on entry and 3,000 on exit against roughly 5 gray as a lethal whole-body dose; Wikipedia gives 200,000 to 300,000 roentgens; Big Think says 'hundreds of times greater than a lethal dose by some estimates'; Amusing Planet notes that sources disagree on the figure. The narration therefore says 'by some estimates ... hundreds of times a lethal one' and the film shows no number. The beam was narrow, so this was a local dose along its path, not a whole-body dose, which is the usual explanation for his survival. Lost hearing in the left ear, left half of the face paralysed, seizures: Discover, Gizmodo, Wikipedia, Amusing Planet (Big Think: deaf in one ear, half his face paralysed). Completed his doctorate (PhD / candidate of sciences): all five. Went back to work at the same facility: Discover, Wikipedia (later experiment coordinator on the same accelerator), Amusing Planet. Conflict: the date of the accident is 13 July 1978 in Discover, Gizmodo, Big Think and Amusing Planet but 3 June 1978 in Wikipedia; the film gives only the year. Left out for length: his seizures and fatigue (they are in the description), the decade of secrecy, and his unsuccessful 1996 application for disability status.",
+ "sources": [
+  "https://www.discovermagazine.com/health/if-you-stuck-your-head-in-a-particle-accelerator",
+  "https://bigthink.com/hard-science/particle-accelerator/",
+  "https://gizmodo.com/what-happens-when-you-stick-your-head-into-a-particle-a-1171981874",
+  "https://en.wikipedia.org/wiki/Anatoli_Bugorski",
+  "https://www.amusingplanet.com/2020/02/anatoli-bugorski-man-who-stuck-his-head.html"
+ ]
+}
