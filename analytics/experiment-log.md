@@ -35,6 +35,24 @@ Status values: planned → running → read → decided.
 - **Metric:** comments per 1,000 views; secondary: subscribers per 1,000 views, average % viewed (check the question doesn't lose the end).
 - **Success:** question arm reaches 1+ comment per 1,000 views and the "Case closed" arm stays near 0.
 
+## E6. Quality upgrade: 60 fps, lit faces, acting, new mix (engine change, all videos)
+- **Status:** planned (starts with the first episode rendered after `quality-upgrade` is merged)
+- **Hypothesis:** smoother motion, readable faces and a mix with dynamics raise average % viewed across the board.
+- **Control:** the 10 v1 Shorts. **Confound:** runs together with spine v2 (E1/E2), so read E6 on the parts of the curve E1/E2 do not touch: audience at 50% and at 90% of runtime (`ret_50`, `ret_90`).
+- **Success:** median `ret_50` up 5+ points vs v1. This is a before/after comparison, not a controlled test: treat it as direction only.
+
+## E7. On-screen hook title in the first 1.8 s
+- **Status:** planned
+- **Design:** alternate inside the next batch: half the Shorts with `hook_text`, half without (cross with E3 so both first-frame arms get both).
+- **Metric:** engaged views / views (swipe proxy); Studio "Viewed vs swiped away" when the owner exports it (the API does not return it).
+- **Success:** hook-title arm 5+ points higher on the median. Five per arm: direction only.
+
+## E8. Loop ending and short tail
+- **Status:** planned
+- **Change:** tail 0.5 s or less and a last line that points back at the first.
+- **Metric:** average % viewed (a replay pushes it past 100%) and `ret_90`.
+- **Note:** outside sources claim loops help; none is official and none shows how YouTube weighs replays. Our own numbers decide.
+
 ## E5. Long-form custom thumbnails (fix first, then measure)
 - **Status:** blocked on the owner: phone-verify the channel at youtube.com/verify. The daily `repair` job then retries the 12 failed thumbnails automatically.
 - **Metric:** long-form views/day and impressions CTR (Studio) for 7 days before vs 7 days after.

@@ -18,6 +18,13 @@ never the storyboard text.
 - [ ] **should** Subjects fill at least 1/4 of the frame height in key story shots; wide shots are for geography only.
 - [ ] **should** One particle style per material (spray streaks, bubble spheres, debris shards); no single generic particle reused.
 
+## B2. Retention (from the channel audit and the 2026-11-15 research)
+- [ ] **must** `hook_text` set: two to five true words; first shot shows the subject close, in the danger, within the first second.
+- [ ] **must** One re-hook between 40% and 60% of the runtime (new question, reversal or raised stakes).
+- [ ] **must** One `hush` shot before the payoff.
+- [ ] **must** Shorts: tail 0.5 s or less; the ending pays off the hook's promise. **should** loop back to the first line.
+- [ ] **should** No stretch longer than 1.5 s without a new visual development.
+
 ## C. Preview stills (local Blender, before the cloud render)
 Run: `blender -b --factory-startup -P engine4/preview3d.py -- episodes/<id> <out> [kind@k,...] 720x1280`
 - [ ] **must** Every shot previewed at least at k=0.2 and k=0.8 and looked at. Fix staging before rendering.
