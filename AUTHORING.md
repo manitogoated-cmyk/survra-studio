@@ -14,7 +14,7 @@ Read first: `character/ROOK.md` (host bible, never change his design) and `episo
   2. One **re-hook** between 40% and 60% of the runtime: a new question, a reversal or a visible change of stakes, written into the script, not an editing trick.
   3. One `"hush": true` shot: the music drops out for the breath before the payoff. Use it once; twice at most in long-form.
   4. Hold a shot until its action lands (up to 3.5 s). Do not cut to hit a quota; do add a development (action, reveal, camera move, new prop) at least every 1.5 s inside a held shot.
-  5. Shorts end on the payoff with `"tail": 0.5` or less, and the last line should make the first line worth hearing again (loop). No "like and subscribe".
+  5. Shorts end on the payoff with `"tail": 0.5` or less, and loop seamlessly (owner's `seamless-loop-ending` skill): after the payoff and sign-off, the last shot returns to the opening shot's framing, the last line runs into the first line as one sentence, the music ends at the opening's level, and there is no end card or black. No "like and subscribe".
   6. The camera is never frozen (`camlife` is automatic; `"prm": {"still": true}` only for graphics). Dark scenes use `CAMFILL` so faces stay readable.
 - First frame and experiments: follow `analytics/next-batch-creative-brief.md` for the current batch (it sets which Shorts open on a person close-up vs a wide shot, and which end on a question). Record the sound plan in `episode.json`.
 - The character stays, the whole world changes. Every story gets brand-new sets in its own `world3d.py`. Never import or copy another episode's sets. The originality gate fails shots that match earlier episodes.

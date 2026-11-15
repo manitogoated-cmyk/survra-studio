@@ -22,7 +22,7 @@ never the storyboard text.
 - [ ] **must** `hook_text` set: two to five true words; first shot shows the subject close, in the danger, within the first second.
 - [ ] **must** One re-hook between 40% and 60% of the runtime (new question, reversal or raised stakes).
 - [ ] **must** One `hush` shot before the payoff.
-- [ ] **must** Shorts: tail 0.5 s or less; the ending pays off the hook's promise. **should** loop back to the first line.
+- [ ] **must** Shorts: tail 0.5 s or less; the ending pays off the hook's promise. **must** seamless loop (skill `seamless-loop-ending`): last frame matches the first frame, last line runs into the first line, sound levels match; checked by playing the last 2 s into the first 2 s.
 - [ ] **should** No stretch longer than 1.5 s without a new visual development.
 
 ## C. Preview stills (local Blender, before the cloud render)
