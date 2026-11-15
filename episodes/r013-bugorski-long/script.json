@@ -1,0 +1,27 @@
+{
+  "id": "r013-bugorski-long", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9,
+  "segments": [
+    {"scene": "hook", "mood": "hook", "text": "A beam of protons, from the biggest particle accelerator in the Soviet Union, goes in at the back of a man's head, and comes out beside his nose. He feels no pain. He finishes his work. And he lives."},
+    {"scene": "doubt", "mood": "calm", "text": "Through his head, and then back to work? No chance. Let's go look."},
+    {"scene": "where", "mood": "calm", "text": "The place is Protvino. Home of the Institute for High Energy Physics, and of a machine called the U-70. A synchrotron. In {1978|nineteen seventy-eight}, it is the biggest particle accelerator in the Soviet Union."},
+    {"scene": "who", "mood": "calm", "text": "One of the researchers there is a physicist named Anatoli Bugorski."},
+    {"scene": "unseen", "mood": "tense", "text": "Here is the first thing I learned down there. You can't see the beam. Inside the machine, it is invisible. I have drawn it in for you, as a line of light. Nobody drew it in for him."},
+    {"scene": "fault", "mood": "tense", "text": "One day that year, a piece of equipment isn't working. Most accounts say July the thirteenth. One says June. Either way, he goes to check it."},
+    {"scene": "lamp", "mood": "tense", "text": "And this is where it goes wrong. A safety mechanism has failed. By one account, the warning lights had been switched off for an earlier experiment, and nobody switched them back on. The beam is still running."},
+    {"scene": "lean", "mood": "tense", "text": "He leans in to look. And his head is in the path of the beam."},
+    {"scene": "beam", "mood": "action", "text": "It goes in at the back of his head, and out by the left side of his nose. He sees a flash. By his account, brighter than a thousand suns."},
+    {"scene": "nopain", "mood": "calm", "text": "And he feels no pain. None. I would have been heard in Moscow."},
+    {"scene": "work", "mood": "tense", "text": "What he does next is the part I can't get past. He finishes his work. And at first, he tells nobody."},
+    {"scene": "swell", "mood": "sad", "text": "It doesn't stay hidden. The left side of his face begins to swell."},
+    {"scene": "moscow", "mood": "sad", "text": "He is taken to a clinic in Moscow. And the doctors there expect him to die."},
+    {"scene": "dose", "mood": "tense", "text": "Here is why. One set of figures puts the dose at about two thousand gray where the beam went in, and three thousand where it came out. Around five, across the whole body, can be enough to kill. The sources don't agree on the exact number. But by some estimates, it is hundreds of times a lethal dose."},
+    {"scene": "lives", "mood": "wonder", "text": "So they wait. And he doesn't die. He lives."},
+    {"scene": "why", "mood": "calm", "text": "How? The usual explanation is the beam itself. It was narrow. All of that dose went along one thin line through his head, not through his whole body. The damage was terrible. But it was local."},
+    {"scene": "cost", "mood": "sad", "text": "And it was not free. He loses the hearing in his left ear. The left half of his face is paralysed. And he has seizures."},
+    {"scene": "phd", "mood": "wonder", "text": "And still, he finishes his doctorate."},
+    {"scene": "back", "mood": "triumph", "text": "Then he goes back to work. The same institute. The same accelerator. In time, he is coordinating experiments on the machine that put a beam through his head."},
+    {"scene": "secret", "mood": "calm", "text": "And for about a decade, almost none of this is public. The story stays secret."},
+    {"scene": "claim", "mood": "sad", "text": "In {1996|nineteen ninety-six}, he applies for disability status. He is turned down. A proton beam through the skull, and the answer is no. I have no joke for that."},
+    {"scene": "end", "mood": "end", "text": "I came to prove that nobody takes a particle beam through the head and goes back to work. He did. One piece of advice, from a crow: when a warning lamp is dark, find out why before you lean in. I was wrong. Case closed."}
+  ]
+}
