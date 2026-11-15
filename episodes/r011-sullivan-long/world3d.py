@@ -1371,3 +1371,744 @@ SHOTS3D = {f.__name__: f for f in (
     yard_wide, yard_hit, station_in, rook_desk, station_hit, roy_sink, patrol_hit, water_can, roy_steam, rook_can, trail_hit, roy_hop,
     pond_wide, pond_hit, roy_burns, rook_tally, roy_hat, rook_shock, hats_case, rook_hats, rook_wrong, signoff)}
 STILLS = dict(tower=photo_tower, roy=photo_roy)
+
+
+# ================================================================ long-form extension (16:9 full case file)
+# Same story, same world, more of it: a stone overlook on the ridge (who he was, the 27 quiet years, the people who
+# kept their distance, the last six years), the back yard with the washing line (the day his wife was hit), an
+# office where the strikes were written up, and new shots on the Short's sets (the new tower by daylight, the tower
+# on fire, the burned leg, the cab before and after the 1969 strike, the water can going into the truck, the cloud
+# over the patrol, the front yard afterwards, the fourth chalk mark, the empty jetty). Still generic: no badge, logo
+# or agency marking anywhere, and the extra people (his wife, two rangers, the man at the typewriter) are stand-ins,
+# not likenesses.
+import bmesh  # noqa: E402
+
+ORG.update(look=(3000, 0, 0), wash=(3500, 0, 0), office=(4000, 0, 0))
+WIFE = dict(top='7E9AB0', pants='6A86A0', hand='E8C0A0', boot='E8E0D0')
+SUP = dict(top='4A4E58', pants='3A3E48', hand='D8AC84', boot='1C1C20', fore='E8E8EC')
+_kit_add = add
+
+
+def add(kind, col, loc=(0, 0, 0), rot=(0, 0, 0), scale=(1, 1, 1), parent=None, rough=0.9, emit=0.0, alpha=1.0, **kw):
+    """The kit's add() goes through Blender operators, which get slower as the scene fills up. This builds the same
+    primitives straight from mesh data. From here on the whole file uses it (the Short's sets look the name up when
+    they run), so the nine sets build in seconds."""
+    bm = bmesh.new()
+    if kind == 'cube':
+        bmesh.ops.create_cube(bm, size=kw.get('size', 2.0))
+    elif kind == 'plane':
+        bmesh.ops.create_grid(bm, x_segments=1, y_segments=1, size=kw.get('size', 2.0) / 2)
+    elif kind == 'cylinder':
+        bmesh.ops.create_cone(bm, cap_ends=True, cap_tris=False, segments=kw.get('vertices', 32), radius1=kw.get('radius', 1.0),
+                              radius2=kw.get('radius', 1.0), depth=kw.get('depth', 2.0))
+    elif kind == 'cone':
+        bmesh.ops.create_cone(bm, cap_ends=True, cap_tris=False, segments=kw.get('vertices', 32), radius1=kw.get('radius1', 1.0),
+                              radius2=kw.get('radius2', 0.0), depth=kw.get('depth', 2.0))
+    elif kind == 'ico_sphere':
+        bmesh.ops.create_icosphere(bm, subdivisions=kw.get('subdivisions', 2), radius=kw.get('radius', 1.0))
+    else:
+        bm.free()
+        return _kit_add(kind, col, loc, rot, scale, parent, rough, emit, alpha, **kw)
+    me = bpy.data.meshes.new(kind)
+    bm.to_mesh(me)
+    bm.free()
+    o = bpy.data.objects.new(kind, me)
+    bpy.context.scene.collection.objects.link(o)
+    o.location, o.rotation_euler, o.scale = loc, rot, scale
+    me.materials.append(K.mat(col, rough, emit, alpha))
+    if parent:
+        o.parent = parent
+    return o
+
+
+def empty(loc=(0, 0, 0), parent=None, rot=(0, 0, 0)):
+    o = bpy.data.objects.new('empty', None)
+    bpy.context.scene.collection.objects.link(o)
+    o.location, o.rotation_euler = loc, rot
+    if parent:
+        o.parent = parent
+    return o
+
+
+def box(col, loc, scale, parent, rot=(0, 0, 0), **kw):
+    return add('cube', col, loc, rot=rot, scale=scale, size=1, parent=parent, **kw)
+
+
+def leafy(r, x, y, s=1.0, i=0):
+    add('cylinder', '3A2A1E', (x, y, 1.6 * s), radius=0.45 * s, depth=3.2 * s, vertices=6, parent=r)
+    add('ico_sphere', ('2E5234', '3A6240', '28482E')[i % 3], (x, y, 5.6 * s), scale=(1, 1, 1.15), radius=3.6 * s, subdivisions=1, parent=r)
+
+
+# ---------------------------------------------------------------- set 7: the overlook
+def set_look(r):
+    add('plane', '2C4630', (0, 0, -0.02), size=3000, parent=r)
+    box('6E6A60', (0, 0, 0.03), (34, 13, 0.06), r)                                         # the paved terrace
+    for i in range(11):
+        box('625E56', (-15 + i * 3.0, 0, 0.065), (0.05, 13, 0.01), r)
+    for i in range(23):                                                                    # the stone wall at the edge
+        box(('7A766C', '6A665E', '86827A')[i % 3], (-16.5 + i * 1.5, 6.3, 0.5 + 0.06 * (i % 2)), (1.44, 0.8, 1.0 + 0.12 * (i % 2)), r)
+    box('1C2C26', (0, 90, -9), (700, 160, 14), r)                                          # the drop beyond it
+    for row, (y0, c) in enumerate(((60, '2A4636'), (95, '2E4E46'), (135, '345660'))):       # wooded slopes below
+        for i in range(15):
+            x = -330 + i * 47 + rnd(i, row) * 20
+            add('cone', c, (x, y0 + rnd(i, row + 3) * 14, -8 + row * 3), radius1=34 + 12 * rnd(i, row + 5), radius2=3,
+                depth=16 + 10 * rnd(i, row + 7), vertices=6, parent=r)
+    ridges(r, 230, ('3E566C', '4E667C', '60788C'), n=13, span=1100, hgt=60)
+    bn = empty((2.6, 2.0, 0), r)                                                           # the bench, facing the view
+    box('6A5236', (0, 0, 0.5), (4.4, 0.95, 0.12), bn)
+    for z in (0.95, 1.3):
+        box('6A5236', (0, -0.52, z), (4.4, 0.1, 0.26), bn)
+    for sx in (-1, 1):
+        box('3A3A3E', (sx * 1.9, -0.1, 0.25), (0.14, 0.9, 0.5), bn)
+        box('3A3A3E', (sx * 1.9, -0.52, 0.85), (0.14, 0.12, 1.1), bn)
+    sc_ = empty((-6.5, 5.3, 0), r)                                                         # a viewing scope on a post
+    add('cylinder', '4A4A50', (0, 0, 1.0), radius=0.14, depth=2.0, vertices=6, parent=sc_)
+    add('cylinder', '8A8E96', (0, 0.1, 2.2), rot=(PI / 2 - 0.15, 0, 0), radius=0.26, depth=0.9, vertices=8, parent=sc_, rough=0.4)
+    sg = empty((-11, -3.5, 0), r)                                                          # a blank trail sign
+    for sx in (-1, 1):
+        add('cylinder', '5A4630', (sx * 1.3, 0, 1.5), radius=0.14, depth=3.0, vertices=6, parent=sg)
+    box('6E5638', (0, 0, 2.3), (3.2, 0.16, 1.3), sg)
+    box('FF7A1A', (0, 0.1, 1.85), (2.8, 0.03, 0.12), sg, emit=0.4)
+    box('5A4E3A', (0, -45, 0.02), (3.4, 78, 0.05), r)                                      # the path back into the woods
+    for i in range(70):
+        x = (rnd(i, 21) - 0.5) * 170
+        y = -9 - rnd(i, 22) * 70
+        if abs(x) < 4.2:
+            continue
+        pine(r, x, y, 1.0 + rnd(i, 23) * 1.0, i)
+    for i in range(16):
+        sx = -1 if i % 2 else 1
+        pine(r, sx * (21 + rnd(i, 24) * 30), -6 + rnd(i, 25) * 11, 1.0 + rnd(i, 26) * 0.8, i)
+    for i in range(7):
+        add('ico_sphere', ('4A4A48', '5A5852')[i % 2], (-15 + rnd(i, 27) * 30, -5.4 - rnd(i, 28) * 2, 0.25), scale=(1.4, 1, 0.7),
+            radius=0.5 + rnd(i, 29) * 0.6, subdivisions=1, parent=r)
+    tgt = empty((0, 2, 2), r)
+    sun = light((70, 60, 120), 2.0, 'FFF0D8', kind='SUN', target=tgt, parent=r)
+    return dict(look_sun=sun)
+
+
+# ---------------------------------------------------------------- set 8: the back yard and the washing line
+def set_wash(r):
+    add('plane', '2E4A30', (0, 0, -0.02), size=3000, parent=r)
+    hs = empty((0, 14, 0), r)                                                              # the back of the house
+    box('CFC8B2', (0, 0, 3.4), (22, 0.6, 6.8), hs)
+    box('5A3A30', (0, 0.9, 7.6), (23.4, 6.0, 0.3), hs, rot=(-0.5, 0, 0))
+    box('4A3226', (-5.0, -0.34, 2.0), (1.9, 0.1, 3.6), hs)                                 # back door and step
+    box('8E8676', (-5.0, -1.2, 0.2), (3.0, 1.8, 0.4), hs)
+    winm = own_mat('washwin', 'FFD890', 2.2)
+    for x in (2.5, 7.5):
+        use(box('FFD890', (x, -0.34, 3.5), (2.4, 0.1, 2.0), hs), winm)
+        box('E8E2D0', (x, -0.4, 3.5), (0.12, 0.06, 2.0), hs)
+        box('E8E2D0', (x, -0.4, 3.5), (2.4, 0.06, 0.12), hs)
+    box('8A4A3A', (-8.5, 1.5, 8.6), (1.3, 1.3, 3.0), hs)
+    for sx in (-1, 1):                                                                     # the line: two T posts, three wires
+        add('cylinder', '5A4630', (sx * 6.2, 2.0, 1.9), radius=0.14, depth=3.8, vertices=6, parent=r)
+        box('5A4630', (sx * 6.2, 2.0, 3.72), (0.14, 2.0, 0.14), r)
+    for y in (1.3, 2.0, 2.7):
+        box('1E1E1E', (0, y, 3.74), (12.4, 0.03, 0.03), r)
+    for x, w_, hgt, c, y in ((-4.6, 2.3, 2.0, 'F2F0E8', 2.0), (-2.9, 0.9, 1.1, 'B8CCE0', 1.3), (3.4, 1.0, 1.2, 'E8C8B0', 2.7),
+                             (4.7, 2.0, 2.0, 'E8E4D8', 2.0), (-5.3, 0.8, 1.0, 'D8B0A0', 2.7)):
+        box(c, (x, y, 3.7 - hgt / 2), (w_, 0.05, hgt), r, rot=(0.04, 0, 0))
+    bk = empty((2.2, 3.6, 0), r)                                                           # the basket
+    add('cone', 'B89A60', (0, 0, 0.32), rot=(PI, 0, 0), radius1=0.5, radius2=0.66, depth=0.64, vertices=8, parent=bk)
+    add('ico_sphere', 'F2F0E8', (0, 0, 0.62), scale=(1, 1, 0.5), radius=0.55, subdivisions=1, parent=bk)
+    for sx in (-1, 1):                                                                     # side fences
+        for i in range(16):
+            box('E0DACA', (sx * 12.5, -9 + i * 1.5, 0.9), (0.1, 0.34, 1.8), r)
+        box('E0DACA', (sx * 12.5, 2.2, 1.2), (0.08, 23, 0.16), r)
+    sh = empty((-9.2, 8.6, 0), r)                                                          # a garden shed
+    box('7A4A38', (0, 0, 1.8), (3.6, 3.2, 3.6), sh)
+    box('3E322C', (0, 0, 3.85), (4.2, 3.8, 0.3), sh, rot=(0, 0.14, 0))
+    box('4A2E24', (0.6, -1.62, 1.5), (1.3, 0.06, 2.8), sh)
+    wb = empty((8.6, 5.6, 0), r)                                                           # a wheelbarrow
+    box('5A7A5A', (0, 0, 0.9), (1.3, 1.9, 0.6), wb, rot=(0.12, 0, 0))
+    add('cylinder', '1A1A1C', (0, -1.2, 0.4), rot=(0, PI / 2, 0), radius=0.4, depth=0.16, vertices=10, parent=wb)
+    for sx in (-1, 1):
+        box('3A2A1E', (sx * 0.5, 1.5, 0.9), (0.08, 1.4, 0.08), wb, rot=(0.2, 0, 0))
+        box('3A2A1E', (sx * 0.5, 0.8, 0.3), (0.08, 0.08, 0.6), wb)
+    for i in range(12):
+        sx = -1 if i % 2 else 1
+        leafy(r, sx * (17 + rnd(i, 31) * 16), -6 + rnd(i, 32) * 30, 1.0 + rnd(i, 33) * 0.5, i)
+    for i in range(9):
+        leafy(r, -44 + i * 11 + rnd(i, 34) * 4, 30 + rnd(i, 35) * 12, 1.3 + rnd(i, 36) * 0.5, i + 1)
+    ridges(r, 210, ('34485A', '40566A'), span=900, hgt=55)
+    tgt = empty((0, 3, 2), r)
+    sun = light((-60, -90, 120), 1.8, 'A8B8D0', kind='SUN', target=tgt, parent=r)
+    return dict(wash_sun=sun)
+
+
+# ---------------------------------------------------------------- set 9: the office where it was written up
+def set_office(r):
+    box('4A3A2C', (0, 4, -0.1), (18, 14, 0.2), r)
+    box('6A3E36', (0.4, 4.6, 0.01), (8.4, 5.4, 0.02), r)                                   # a rug
+    box('3E3830', (0, 4, 7.6), (18, 14, 0.2), r)
+    wall = '6C7462'
+    box(wall, (-6.25, 10.1, 3.75), (5.5, 0.2, 7.5), r)                                     # back wall round the window
+    box(wall, (4.5, 10.1, 3.75), (9, 0.2, 7.5), r)
+    box(wall, (-1.75, 10.1, 1.15), (3.5, 0.2, 2.3), r)
+    box(wall, (-1.75, 10.1, 6.35), (3.5, 0.2, 2.3), r)
+    box(wall, (-9.0, 4, 3.75), (0.2, 14, 7.5), r)
+    box(wall, (9.0, 4, 3.75), (0.2, 14, 7.5), r)
+    box('4A5244', (0, 10.0, 0.4), (18, 0.1, 0.8), r)
+    for sx in (-1, 1):
+        box('4A5244', (sx * 8.9, 4, 0.4), (0.1, 14, 0.8), r)
+    panem = own_mat('offpane', '5A6E9A', 1.6)
+    use(box('5A6E9A', (-1.75, 10.3, 3.75), (3.5, 0.05, 2.9), r), panem)
+    for x in (-3.5, -1.75, 0.0):
+        box('2E2A24', (x, 10.0, 3.75), (0.16, 0.3, 2.9), r)
+    for z in (2.3, 3.75, 5.2):
+        box('2E2A24', (-1.75, 10.0, z), (3.6, 0.3, 0.16), r)
+    for i, x in enumerate((3.0, 4.7, 6.4)):                                                # filing cabinets
+        box(('5A6A5E', '52625A')[i % 2], (x, 9.3, 2.3), (1.6, 1.3, 4.6), r, rough=0.5)
+        for j in range(4):
+            box('3A463E', (x, 8.63, 0.75 + j * 1.1), (1.4, 0.03, 0.04), r)
+            box('C8C8C0', (x, 8.6, 1.2 + j * 1.1), (0.5, 0.06, 0.1), r, rough=0.3)
+    box('2E2A24', (-6.0, 9.95, 4.4), (2.6, 0.08, 2.0), r)                                   # a framed sketch of ridgelines
+    box('C8BE9A', (-6.0, 9.9, 4.4), (2.3, 0.06, 1.7), r)
+    for i in range(3):
+        box('6A7A5A', (-6.0 + (i - 1) * 0.3, 9.86, 4.0 + i * 0.3), (1.9 - i * 0.4, 0.02, 0.05), r, rot=(0, 0.12 * (i - 1), 0))
+    add('cylinder', 'E8E4D8', (7.4, 9.92, 5.6), rot=(PI / 2, 0, 0), radius=0.6, depth=0.1, vertices=12, parent=r)   # wall clock
+    add('cylinder', '2E2A24', (7.4, 9.95, 5.6), rot=(PI / 2, 0, 0), radius=0.68, depth=0.08, vertices=12, parent=r)
+    box('1A1A1A', (7.4, 9.85, 5.8), (0.05, 0.02, 0.42), r)
+    box('1A1A1A', (7.55, 9.85, 5.6), (0.3, 0.02, 0.05), r)
+    cs = empty((-7.6, 8.4, 0), r)                                                          # coat stand
+    add('cylinder', '3A2C20', (0, 0, 2.6), radius=0.09, depth=5.2, vertices=6, parent=cs)
+    add('cylinder', '3A2C20', (0, 0, 0.06), radius=0.6, depth=0.12, vertices=8, parent=cs)
+    for a in range(4):
+        box('3A2C20', (0.25 * math.cos(a * PI / 2), 0.25 * math.sin(a * PI / 2), 5.0), (0.5, 0.06, 0.06), cs, rot=(0, -0.5, a * PI / 2))
+    box('5A6050', (0.3, -0.1, 3.9), (0.9, 0.5, 2.0), cs)                                    # a coat on it
+    dk = empty((0.4, 5.0, 0), r)                                                           # the desk
+    box('5A4028', (0, 0, 1.55), (5.4, 2.4, 0.2), dk)
+    for sx in (-1, 1):
+        box('4A3420', (sx * 2.2, 0, 0.75), (0.9, 2.2, 1.5), dk)
+    box('4A3420', (0, 0.9, 0.9), (3.4, 0.1, 1.1), dk)
+    tw = empty((-0.3, 0.25, 1.65), dk)                                                     # the typewriter
+    box('26262A', (0, 0, 0.2), (1.3, 1.0, 0.4), tw, rough=0.4)
+    box('34343A', (0, -0.42, 0.12), (1.2, 0.5, 0.2), tw, rot=(0.3, 0, 0))
+    for j in range(3):
+        for i in range(8):
+            box('D8D4C8', (-0.49 + i * 0.14, -0.58 + j * 0.13, 0.23 + j * 0.045), (0.09, 0.08, 0.04), tw)
+    add('cylinder', '1A1A1C', (0, 0.42, 0.5), rot=(0, PI / 2, 0), radius=0.13, depth=1.5, vertices=8, parent=tw)
+    box('F0EEE4', (0, 0.5, 0.95), (0.95, 0.03, 0.9), tw, rot=(-0.15, 0, 0))
+    for j in range(5):
+        box('6A6A66', (-0.3 + (j % 2) * 0.1, 0.48, 0.75 + j * 0.13), (0.5 - (j % 2) * 0.15, 0.01, 0.03), tw, rot=(-0.15, 0, 0))
+    for i in range(7):                                                                     # seven reports in a pile
+        box(('D8B870', 'C8A860', 'E0C078')[i % 3], (1.7 + 0.04 * (i % 2), -0.1, 1.68 + i * 0.07), (1.2, 0.9, 0.06), dk, rot=(0, 0, 0.12 * (i % 3) - 0.1))
+    add('cylinder', '2E4A3A', (-2.1, 0.5, 1.75), radius=0.3, depth=0.2, vertices=8, parent=dk)   # desk lamp
+    add('cylinder', '2E4A3A', (-2.1, 0.5, 2.3), radius=0.05, depth=1.0, vertices=5, parent=dk)
+    add('cone', '2E4A3A', (-2.1, 0.3, 2.85), rot=(0.5, 0, 0), radius1=0.5, radius2=0.15, depth=0.5, vertices=8, parent=dk)
+    dlamp = light((-2.1, 0.1, 2.6), 300, 'FFC070', kind='POINT', parent=dk)
+    box('4A3420', (0, 1.7, 0.42), (1.5, 1.3, 0.1), dk)                                      # his chair
+    box('4A3420', (0, 2.35, 1.5), (1.5, 0.12, 2.2), dk)
+    box('4A3420', (5.6, 2.6, 0.42), (1.4, 1.4, 0.1), r)                                     # a spare chair
+    box('4A3420', (6.25, 2.6, 1.3), (0.12, 1.4, 1.8), r)
+    top = light((0, 4.0, 6.9), 900, 'FFD8A8', 3.0, parent=r)
+    top.rotation_euler = (0, 0, 0)
+    winl = light((-1.75, 9.4, 3.75), 90, '8AA0D0', 2.5, parent=r)
+    winl.rotation_euler = (-PI / 2, 0, 0)
+    return dict(off_top=top, off_desk=dlamp)
+
+
+# ---------------------------------------------------------------- extra cast and props
+def bun_head(skin, hair):
+    base = K.human_head(skin, hair)
+
+    def fn(head):
+        out = base(head)
+        add('ico_sphere', hair, (0, 0.3, 0.2), radius=0.17, subdivisions=1, parent=head)
+        return out
+    return fn
+
+
+_build0, _reset0 = build, reset
+
+
+def build():
+    S = _build0()
+    for name, fn in (('look', set_look), ('wash', set_wash), ('office', set_office)):
+        S['colls'][name], out = group(name, fn)
+        S.update(out)
+    S['suns'].update(look_sun=S['look_sun'].data.energy, wash_sun=S['wash_sun'].data.energy)
+    S['wife'] = K.Rig(WIFE, bun_head('E8C0A0', '6A4A30'))
+    add('cone', '6A86A0', (0, 0, -0.42), radius1=0.62, radius2=0.33, depth=0.95, vertices=8, parent=S['wife'].body)      # her skirt
+    add('cube', 'E8E4D8', (0, -0.3, 0.25), scale=(0.5, 0.04, 0.7), size=1, parent=S['wife'].body)                          # an apron
+    S['r2'] = K.Rig(ROY, K.human_head('C89A70', '2A2018'))
+    S['r3'] = K.Rig(ROY, K.human_head('E0B890', '8A6A40'))
+    for rg in (S['r2'], S['r3']):
+        make_hat(rg.head, (0, 0.0, 0.3))[0].rotation_euler = (-0.08, 0, 0)
+        add('cube', '2A2420', (0, 0, 0.05), scale=(0.66, 0.66, 0.08), size=1, parent=rg.body)
+    S['sup'] = K.Rig(SUP, K.human_head('D8AC84', 'B4B4B0'))
+    add('cube', '2A3040', (0, -0.33, 0.8), scale=(0.07, 0.03, 0.4), size=1, parent=S['sup'].body)
+    S['cast'] += [S['wife'], S['r2'], S['r3'], S['sup']]
+    roy = S['roy']                                                    # 1942: the burn down his right leg, the hole in his shoe
+    S['legmark'] = [add('cube', '16110E', (0, -0.1, -0.25), scale=(0.05, 0.03, 0.5), size=1, parent=roy.hp[0]),
+                    add('cube', '16110E', (0, -0.09, -0.2), scale=(0.05, 0.03, 0.42), size=1, parent=roy.kn[0]),
+                    add('ico_sphere', 'FF7A1A', (0.0, -0.3, -0.43), radius=0.07, subdivisions=1, parent=roy.kn[0], emit=3.0),
+                    add('ico_sphere', '0E0A08', (0.0, -0.29, -0.44), radius=0.1, subdivisions=1, parent=roy.kn[0])]
+    S['tfire'] = [mov(add('cone', ('FF9A1A', 'FFD040', 'FF5A10')[i % 3], FAR, radius1=0.55, radius2=0.0, depth=1.9, vertices=5, emit=10.0))
+                  for i in range(10)]
+    S['firel'] = light(FAR, 0, 'FF8A30', kind='POINT')
+    S['cloud'] = mov(empty(FAR))
+    for i in range(7):
+        add('ico_sphere', ('2A303C', '343A48', '22262E')[i % 3], ((i - 3) * 3.4, rnd(i, 41) * 3, rnd(i, 42) * 2.4), scale=(1.5, 1, 0.75),
+            radius=3.0 + rnd(i, 43) * 1.6, subdivisions=1, parent=S['cloud'])
+    S['tail'] = mov(empty(FAR))
+    for sx in (-1, 1):
+        add('ico_sphere', 'FF2A1A', (sx * 0.9, 0, 0), radius=0.2, subdivisions=1, parent=S['tail'], emit=14.0)
+    S['sunball'] = mov(add('ico_sphere', 'FFE8B0', FAR, radius=15, subdivisions=2, emit=9.0))
+    S['cloth'] = mov(add('cube', 'F2E8C8', FAR, scale=(0.7, 0.05, 0.9), size=1))
+    S['folder'] = mov(empty(FAR))
+    box('D8B870', (0, 0, 0), (1.1, 0.8, 0.05), S['folder'])
+    box('F0EEE4', (0, 0, 0.04), (0.95, 0.7, 0.03), S['folder'])
+    return S
+
+
+def reset(S):
+    _reset0(S)
+    vis(S['legmark'], False)
+    S['firel'].location = FAR
+    S['firel'].data.energy = 0
+    S['off_top'].data.energy = 900
+    S['face'].update(wife='calm')
+
+
+GROUND = P('stand', lL=(1.45, 0.3), lR=(1.3, 0.55), lift=-0.8, lean=-0.3, aL=(-0.7, 0.3, 0.25), aR=(-0.7, 0.3, 0.25), head=(0.4, 0.0))
+SIT = P('sit', aL=(0.5, 0.0, 0.9), aR=(0.5, 0.0, 0.9), head=(0.2, 0.0))
+BENCH = (2.6, 1.95)
+
+
+# ---------------------------------------------------------------- new shots: the ridge (1942)
+def day_ridge(S, col='5A6E8C'):
+    A = mood(S, 'ridge', col, 0.0, fk=6.0, sunk=3.0, sunc='E8D8C0')
+    S['cablight'].data.energy = 0
+    tint(S['cablampm'], '6A6050', 0.0)
+    return A
+
+
+def tower_new(S, k, t, lt):
+    """Before the storm: the new tower. v=2 looks at its bare roof: by the usual account it had no lightning rod."""
+    A = day_ridge(S)
+    age(S, grey=False)
+    if S['prm'].get('v', 1) == 1:
+        S['roy'].place(A(-3.0, lerp(-3.0, 3.0, k), 0), PI)
+        S['roy'].apply(walk(t, 1.5))
+        S['rook'].place(A(-5.4, 7.5, 0), 2.5)
+        S['rook'].apply(P('hat', head=(-0.5, 0.15 * math.sin(lt * 2.5))))
+        cam(S, A(lerp(-7.6, -6.6, k), 22, 2.0), A(-0.8, 11, lerp(6.0, 7.2, k)), 24)
+    else:
+        S['roy'].place(A(-0.9, 11.7, 9.3), 0.15)
+        S['roy'].apply(P('stand', aR=(2.3, 0.45, 2.0, 0.4), head=(-0.1, 0.2)))
+        S['rook'].place(A(3.95, 15.3, 9.3), -PI / 2)
+        up = ease((lt - 0.3) / 0.5)
+        S['rook'].apply(blend(P('stand'), P('reach', aR=(2.7, 0.05, 0.05), head=(-0.5, 0.25 * math.sin(lt * 6) * up)), up))
+        S['face']['rook'] = 'deadpan'
+        cam(S, A(lerp(10.0, 9.2, k), lerp(5.5, 6.3, k), lerp(10.2, 10.8, k)), A(0.8, 13.6, 12.6), 30)
+
+
+def tower_fire(S, k, t, lt):
+    f = 0.4 * flick(lt, 1.0)
+    A = mood(S, 'ridge', NIGHT, f, fk=3.5)
+    for i, o in enumerate(S['tfire']):
+        s = 0.8 + 0.4 * math.sin(t * 19 + i * 1.7)
+        o.location = A(-2.3 + (i % 5) * 1.15, 12.4 + (i // 5) * 3.0 + 0.3 * math.sin(i), 10.9 + 0.5 * s + (i % 3) * 0.5)
+        o.scale = (s, s, s * (1.1 + 0.4 * math.sin(t * 13 + i)))
+        o.rotation_euler = (0.2 * math.sin(t * 11 + i), 0.2 * math.cos(t * 9 + i), 0)
+    S['firel'].location = A(0, 12.5, 11.6)
+    S['firel'].data.energy = 5200 * (0.8 + 0.2 * math.sin(t * 17))
+    tint(S['cablampm'], 'FFB050', 30.0)
+    smoke(S, A(0, 14, 15.4), t, 8, rise=7.0, size=1.3, speed=0.5)
+    u = lerp(0.9, 0.3, k)
+    age(S, grey=False)
+    S['roy'].place(A(4.0, 8.4 + 7.4 * u, 0.42 + 8.9 * u), 0.0)
+    S['roy'].apply(run_pose(t, 2.2))
+    S['face']['roy'] = 'scared'
+    S['jaw'] = 0.3
+    u2 = min(1.0, u + 0.17)
+    S['rook'].place(A(4.0, 8.4 + 7.4 * u2, 0.42 + 8.9 * u2), 0.0)
+    S['rook'].apply(dict(run_pose(t + 0.2, 2.2), aR=(0.2, 1.9, 1.6, -1.5)))
+    S['face']['rook'] = 'shocked'
+    cam(S, A(lerp(12.5, 11.5, k), lerp(1.0, 2.2, k), 3.0), A(2.2, 12.8, 7.6), 26, roll=0.02 * math.sin(lt * 23))
+
+
+def leg_cu(S, k, t, lt):
+    """Afterwards, on the trail: the burn down his right leg and the hole in his shoe."""
+    f = 0.3 * flick(lt, 1.6)
+    A = mood(S, 'ridge', '1A2436', f, fk=6.5)
+    S['firel'].location = A(0, 12.5, 11.6)
+    S['firel'].data.energy = 3000 * (0.8 + 0.2 * math.sin(t * 17))
+    age(S, grey=False)
+    vis(S['legmark'], True)
+    S['roy'].place(A(-3.0, -2.0, 0), 0.5)
+    S['roy'].apply(dict(GROUND, head=(0.45 - 0.1 * math.sin(lt * 2), 0.0)))
+    S['face']['roy'] = 'scared' if lt < 0.8 else 'tired'
+    S['jaw'] = 0.2
+    smoke(S, A(-2.5, -3.2, 0.5), t, 4, rise=1.6, size=0.14, speed=0.9)
+    S['rook'].place(A(-0.7, -2.9, 0), -1.3)
+    S['rook'].apply(dict(KNEEL, aR=(1.0, 0.1, 0.5), head=(0.42, 0.1 * math.sin(lt * 3))))
+    S['face']['rook'] = 'shocked' if lt < 0.7 else 'calm'
+    cam(S, A(lerp(-1.4, -1.9, k), lerp(-7.9, -7.3, k), 1.5), A(-2.1, -2.7, 1.0), 36)
+
+
+# ---------------------------------------------------------------- new shots: the road (1969, the can, 1973)
+def cab_ride(S, k, t, lt):
+    """1969, before the strike: through the windscreen. Rook raps on the door pillar: a closed vehicle."""
+    f = 0.3 * flick(lt, 1.5)
+    A = mood(S, 'road', '3C4656', f, fk=6.0, sunk=1.6)
+    y = lerp(34, 24, k)
+    drv, pas = truck_at(S, A, -1.0, y, 140)
+    age(S)
+    S['roy'].place((drv[0], drv[1], drv[2] + 0.03 * math.sin(t * 21)), 0.0)
+    S['roy'].apply(dict(DRIVE, head=(0.0, 0.1 * math.sin(lt * 1.7))))
+    S['rook'].place((pas[0], pas[1], pas[2] + 0.03 * math.sin(t * 21 + 1)), 0.0)
+    S['rook'].apply(P('sit', aL=(1.5 + 0.25 * math.sin(lt * 15), 0.75, 1.3), aR=(0.7, -0.1, 1.5, 1.0), head=(0.0, 0.5 * ease((lt - 0.5) / 0.4)), lean=0.1))
+    S['face']['rook'] = 'deadpan'
+    cam(S, A(-1.0, y - 7.4, 3.5), A(-1.0, y + 0.4, 3.1), 42, fill=1.6)
+
+
+def truck_out(S, k, t, lt):
+    """1969, after: the truck has stopped. He is out cold over the wheel; Rook is at the door."""
+    A = mood(S, 'road', '3C4656', 0.0, fk=6.0, sunk=1.6)
+    drv, pas = truck_at(S, A, -1.0, 10, 140)
+    age(S, brows=False)
+    S['rhat'].rotation_euler = (-0.5, 0.35, 0)
+    S['roy'].place(drv, 0.0)
+    S['roy'].apply(P('sit', aL=(0.9, 0.1, 0.4), aR=(0.9, 0.1, 0.4), lean=0.5, head=(0.65, 0.25)))
+    S['face']['roy'] = 'shut'
+    smoke(S, (drv[0], drv[1] - 0.2, drv[2] + 2.4), t, 4, rise=1.0, size=0.15, speed=0.9)
+    S['rook'].place(A(1.75, 10.35, 0), -PI / 2)
+    S['rook'].apply(P('stand', aR=(1.45 + 0.12 * math.sin(lt * 12), 0.0, 0.25), aL=(0.3, 0.3, 0.6), lean=0.22, head=(0.1, 0.0)))
+    S['face']['rook'] = 'shocked' if lt < 1.0 else 'sad'
+    cam(S, A(lerp(4.5, 4.0, k), lerp(4.4, 5.2, k), 2.9), A(0.3, 10.2, 2.9), 34)
+
+
+def can_load(S, k, t, lt):
+    """After the fourth strike he keeps a can of water in the truck."""
+    A = mood(S, 'road', '5A6878', 0.0, fk=6.5, sunk=2.0)
+    truck_at(S, A, -1.5, 2.0, 0)
+    age(S)
+    put = ease((lt - 0.5) / 0.7)
+    S['roy'].place(A(1.1, 4.6, 0), -PI / 2)
+    S['roy'].apply(P('stand', aL=(1.2 - 0.25 * put, 0.0, 0.5), aR=(1.2 - 0.25 * put, 0.0, 0.5), lean=0.25 * put, head=(0.2, 0.0)))
+    S['can'].location = A(lerp(0.45, 0.2, put), 4.6, lerp(2.3, 2.0, put))
+    S['can'].rotation_euler = (0, 0, PI / 2)
+    look = ease((lt - 1.5) / 0.3)
+    S['rook'].place(A(2.9, 2.2, 0), PI + 0.7)
+    S['rook'].apply(P('cross', head=(0.05, -1.3 * look)))
+    S['face']['rook'] = 'deadpan' if look < 0.5 else 'calm'
+    cam(S, A(lerp(4.4, 4.0, k), lerp(-2.2, -1.4, k), 2.6), A(1.3, 3.6, 2.35), 34)
+
+
+def patrol_watch(S, k, t, lt):
+    """1973: on patrol, out of the truck, watching a cloud. Rook, in the truck bed, points at it."""
+    f = 0.25 * flick(lt, 1.6)
+    A = mood(S, 'road', '424C5A', f, fk=5.5, sunk=1.6)
+    truck_at(S, A, -1.5, 11.5, 0)
+    S['cloud'].location = A(lerp(-16, -5, k), 36, 21)
+    age(S)
+    S['roy'].place(A(1.9, 7.2, 0), 0.3)
+    S['roy'].apply(P('stand', aR=(2.3, 0.45, 2.0, 0.4), head=(-0.5, 0.2)))
+    S['rook'].place(A(-1.5, 14.0, 1.2), 0.25)
+    S['rook'].apply(P('stand', aR=(2.3, 0.3, 0.05), head=(-0.4, 0.0), aL=(0.2, 1.9, 1.6, -1.5)))
+    S['face']['rook'] = 'shocked'
+    cam(S, A(lerp(4.4, 3.9, k), lerp(0.4, 1.2, k), 1.5), A(0.2, 9.6, 4.7), 24)
+
+
+# ---------------------------------------------------------------- new shots: the front yard (1970), the station (the count)
+def yard_after(S, k, t, lt):
+    A = mood(S, 'yard', '525E6E', 0.0, fk=5.5)
+    sparks(S, A(8.75, 6.8, 9.0), t, 8, r=1.6, speed=2.2)
+    smoke(S, A(3.85, 0.85, 2.3), t, 4, rise=1.5, size=0.15, speed=1.0)
+    smoke(S, A(8.75, 6.8, 10.0), t, 4, rise=3.0, size=0.5, i0=4, speed=0.6)
+    age(S)
+    S['roy'].place(A(3.4, 0.6, 0), 0.5)
+    S['roy'].apply(P('stand', aL=(0.9, -0.55, 2.1, 1.0), head=(-0.25, -0.5 + 0.1 * math.sin(lt * 3)), lean=0.12, lL=(0.1, 0.25), lR=(0.1, 0.25)))
+    S['face']['roy'] = 'scared'
+    S['jaw'] = 0.2
+    S['rook'].place(A(1.2, -0.9, 0), 2.3)
+    S['rook'].apply(P('stand', aR=(2.1, 0.15, 0.05), head=(-0.4, 0.5 * math.sin(lt * 2.4))))
+    S['face']['rook'] = 'shocked'
+    cam(S, A(lerp(8.4, 7.7, k), lerp(-6.4, -5.8, k), 2.2), A(3.3, 1.6, 3.7), 30)
+
+
+def rook_four(S, k, t, lt):
+    A = room(S, 0.0)
+    S['fillk'] = 3.5
+    draw = ease((lt - 0.1) / 0.3)
+    done = ease((lt - 0.6) / 0.3)
+    vis(S['marks'][:3], True)
+    vis(S['marks'][3:4], lt > 0.4)
+    S['rook'].place(A(7.1, 4.9, 0), PI / 2)
+    S['rook'].apply(blend(blend(P('stand'), P('reach', aR=(2.05, 0.05, 0.25), head=(-0.2, 0.0)), draw), P('hips', head=(0.0, 1.15)), done))
+    S['face']['rook'] = 'calm' if done < 0.5 else 'deadpan'
+    cam(S, A(lerp(4.0, 4.4, k), lerp(9.6, 9.2, k), 3.4), A(8.2, 5.7, 3.5), 34, fill=1.4, fcol='FFE0C0')
+
+
+# ---------------------------------------------------------------- new shots: the pond, after the seventh
+def pond_gone(S, k, t, lt):
+    """He has been taken to hospital. The jetty is empty: his rod, his hat. Far off, tail lights."""
+    A = mood(S, 'pond', '2A3048', 0.0, fk=5.5)
+    rod_at(S, A, 0.5, 9.3, 0.68, 0.0, 0.5)
+    S['bhat'].location = A(-0.5, 8.0, 0.66)
+    S['bhat'].rotation_euler = (0, 0, 0.7)
+    S['tail'].location = A(lerp(9, 16, k), lerp(-26, -44, k), 1.3)
+    S['rook'].place(A(0.2, 6.0, 0.62), 0.25)
+    S['rook'].apply(hat_hold(head=(0.1, 0.0)))
+    S['hat_off'] = 1.0
+    S['face']['rook'] = 'sad'
+    cam(S, A(lerp(-6.6, -5.6, k), lerp(10.4, 9.8, k), 2.0), A(0.9, 4.2, 2.3), 30, fill=1.4)
+
+
+# ---------------------------------------------------------------- new shots: the overlook
+def look_day(S, k, t, lt):
+    """Who he was: a ranger at the edge of the Blue Ridge. Rook walks up beside him."""
+    A = mood(S, 'look', '7FA2C8', 0.0, fk=6.0, sunk=1.5, sunc='FFF0D8')
+    age(S, grey=False)
+    S['roy'].place(A(-1.4, 4.7, 0), PI)
+    S['roy'].apply(P('hips', head=(-0.05, 0.25 * math.sin(lt * 0.9))))
+    S['face']['roy'] = 'warm'
+    w = min(1.0, k / 0.7)
+    S['rook'].place(A(lerp(2.6, 1.0, w), lerp(-1.0, 4.3, w), 0), PI + 0.29)
+    S['rook'].apply(blend(walk(t, 1.7), P('hat', head=(-0.15, 0.3)), (k - 0.7) / 0.15))
+    cam(S, A(lerp(3.8, 3.0, k), 11.6, 3.4), A(-0.3, 4.4, 2.7), 30)
+
+
+def look_years(S, k, t, lt):
+    """Twenty-seven years go by: the sun crosses again and again, his hair greys. Rook waits on the bench."""
+    u = (lt * 0.62) % 1
+    day = math.sin(PI * u)
+    A = mood(S, 'look', mix_col('1A2238', '7FA2C8', day), 0.0, fk=2.5 + 4.0 * day, sunk=0.25 + 1.4 * day, sunc=mix_col('FF9A60', 'FFF0D8', day))
+    S['sunball'].location = A(170 - 340 * u, -430, 20 + 150 * day)
+    age(S, grey=k > 0.55)
+    S['roy'].place(A(-1.4, 4.7, 0), PI)
+    S['roy'].apply(P('hips', head=(-0.05, 0.3 * math.sin(lt * 1.3))))
+    S['rook'].place(A(BENCH[0] + 0.6, BENCH[1], 0), PI)
+    S['rook'].apply(P('sit', aL=(0.7, -0.1, 1.5, 1.0), aR=(0.9, 0.2, 1.2, 0.0), head=(0.1, 0.4 * math.sin(lt * 1.1))))
+    S['face']['rook'] = 'deadpan'
+    cu = (lt * 1.5) % 1
+    S['coin'].location = A(BENCH[0] + 0.25, BENCH[1] + 0.75, 1.5 + 0.6 * 4 * cu * (1 - cu))
+    S['coin'].rotation_euler = (lt * 30, 0.4, 0)
+    cam(S, A(lerp(9.0, 8.0, k), 11.6, 3.4), A(0.6, 3.2, 2.9), 26)
+
+
+def stormy_look(S, lt, t0=1.2):
+    f = 0.5 * flick(lt, t0)
+    A = mood(S, 'look', '323C50', f, fk=4.5, sunk=0.6)
+    if f > 0.25:
+        strike(S, A(-90, -330, 160), A(-80, -320, 25), 19, n=7, w=1.8)
+    return A
+
+
+def roy_bench(S, A, lt, turn=0.0):
+    age(S)
+    S['roy'].place(A(BENCH[0] - 0.5, BENCH[1], 0), PI)
+    S['roy'].apply(dict(SIT, head=(0.25, turn)))
+    S['face']['roy'] = 'tired'
+
+
+def look_alone(S, k, t, lt):
+    """The sky turns dark and the others walk away. v=2: from behind, later, two figures on one bench."""
+    v = S['prm'].get('v', 1)
+    A = stormy_look(S, lt, 1.2 if v == 1 else 0.9)
+    roy_bench(S, A, lt)
+    if v == 1:
+        for i, rg in enumerate((S['r2'], S['r3'])):
+            y = lerp(-0.6, -5.2, k) - i * 1.5
+            rg.place(A(-1.0 + i * 1.7, y, 0), 0.0)
+            rg.apply(dict(walk(t + i * 0.3, 1.8), head=(-0.3 * ease((lt - 1.2) / 0.3) * (1 - i), 0.0)))
+        S['rook'].place(A(6.4, 3.4, 0), PI - 0.5)
+        S['rook'].apply(P('cross', head=(0.0, lerp(0.9, -0.2, ease((lt - 1.4) / 0.6)))))
+        S['face']['rook'] = 'calm' if lt < 1.6 else 'sad'
+        cam(S, A(lerp(0.6, 1.4, k), 12.2, 3.0), A(1.9, 1.2, 2.2), 28)
+    else:
+        S['rook'].place(A(BENCH[0] + 1.0, BENCH[1], 0), PI)
+        S['rook'].apply(dict(SIT, aL=(0.75, -0.25, 1.75, 1.1), aR=(0.75, -0.25, 1.75, 1.1), head=(0.2, 0.25)))
+        S['hat_off'] = 1.0
+        S['face']['rook'] = 'sad'
+        cam(S, A(lerp(1.0, 2.0, k), lerp(-8.4, -7.4, k), lerp(5.2, 4.6, k)), A(2.8, 4.0, 1.8), 26)
+
+
+def rook_sits(S, k, t, lt):
+    """Rook sits down next to him and takes his hat off. No joke."""
+    A = stormy_look(S, lt, 2.2)
+    roy_bench(S, A, lt, 0.4 * ease((lt - 1.3) / 0.6))
+    sit = ease(lt / 0.8)
+    S['rook'].place(A(BENCH[0] + 1.0, lerp(BENCH[1] + 0.9, BENCH[1], sit), 0), PI)
+    S['rook'].apply(blend(P('stand'), dict(SIT, aL=(0.75, -0.25, 1.75, 1.1), aR=(0.75, -0.25, 1.75, 1.1), head=(0.15, -0.3)), sit))
+    S['hat_off'] = ease((lt - 0.9) / 0.6)
+    S['face']['rook'] = 'sad'
+    cam(S, A(lerp(4.2, 3.6, k), lerp(8.2, 7.6, k), 2.4), A(2.8, 1.9, 2.05), 36, fill=1.5)
+
+
+def look_odds(S, k, t, lt):
+    """Rook does the arithmetic at the wall. v=2: from behind, he sweeps an arm at the ridges."""
+    A = mood(S, 'look', '8A9CB0', 0.0, fk=6.0, sunk=1.3)
+    if S['prm'].get('v', 1) == 1:
+        S['rook'].place(A(-0.5, 4.5, 0), PI + 0.25)
+        n = int(lt * 2.5) % 3
+        S['rook'].apply(P('stand', aR=(1.25 + 0.12 * n, 0.25, 1.9, 0.3), aL=(0.9, 0.1, 1.7, 0.6), head=(0.2 - 0.1 * n, 0.15 * math.sin(lt * 3))))
+        S['face']['rook'] = 'calm'
+        u = (lt * 1.4) % 1
+        S['coin'].location = A(-0.95, 5.25, 2.2 + 0.7 * 4 * u * (1 - u))
+        S['coin'].rotation_euler = (lt * 30, 0.4, 0)
+        cam(S, A(lerp(2.8, 2.2, k), 10.6, 2.9), A(-0.2, 4.5, 2.75), 40)
+    else:
+        sweep = ease((lt - 0.3) / 0.8)
+        S['rook'].place(A(-0.5, 4.5, 0), PI + lerp(-0.5, 0.5, sweep))
+        S['rook'].apply(P('point', aR=(1.5, 0.3, 0.05), head=(-0.05, 0.3)))
+        cam(S, A(lerp(-5.0, -4.0, k), lerp(-2.0, -1.2, k), 3.5), A(1.5, 9, 2.7), 26)
+
+
+def golden_look(S):
+    return mood(S, 'look', 'E0A878', 0.0, fk=6.0, sunk=2.2, sunc='FFD0A0')
+
+
+def bench_empty(S, k, t, lt):
+    """1983. An empty bench and a clear evening sky. Rook, hat in his hands."""
+    A = golden_look(S)
+    S['rook'].place(A(-1.6, 3.2, 0), PI - 0.9)
+    S['rook'].apply(hat_hold(head=(0.3, 0.0)))
+    S['hat_off'] = 1.0
+    S['face']['rook'] = 'sad'
+    S['fea'][0].location = A(BENCH[0] + 0.4 - 0.5 * lt, BENCH[1] + 0.2 * math.sin(lt * 2), 2.6 - 0.55 * lt + 0.1 * math.sin(lt * 5))
+    S['fea'][0].rotation_euler = (lt * 2.5, lt * 1.5, 0.4)
+    cam(S, A(lerp(7.0, 5.6, k), lerp(10.2, 9.4, k), lerp(3.0, 2.6, k)), A(1.6, 2.0, 1.6), 34)
+
+
+def rook_sky(S, k, t, lt):
+    """He looks up. Nothing comes. He puts his hat back on."""
+    A = golden_look(S)
+    on = ease((lt - 1.3) / 0.5)
+    S['rook'].place(A(-1.2, 4.5, 0), PI)
+    S['rook'].apply(blend(hat_hold(head=(-0.5, 0.2 * math.sin(lt * 1.5))), P('hat', head=(-0.2, 0.0)), on))
+    S['hat_off'] = 1.0 - on
+    S['face']['rook'] = 'sad' if on < 0.5 else 'warm'
+    cam(S, A(lerp(0.4, -0.2, k), lerp(10.4, 9.6, k), 2.5), A(-1.2, 4.5, 3.05), 44)
+
+
+# ---------------------------------------------------------------- new shots: the back yard
+PEG = P('stand', aL=(2.35, 0.12, 0.45), aR=(2.35, 0.12, 0.45), head=(-0.25, 0.0))
+
+
+def wash_wide(S, k, t, lt):
+    f = 0.3 * flick(lt, 1.7)
+    A = mood(S, 'wash', '6A7890', f, fk=6.0, sunk=1.4)
+    age(S, hat=False)
+    S['wife'].place(A(0.6, 3.0, 0), 0.0)
+    S['wife'].apply(dict(PEG, aR=(2.35 + 0.1 * math.sin(lt * 6), 0.12, 0.45, 0.0)))
+    S['cloth'].location = A(1.45, 2.0, 3.22)
+    S['cloth'].rotation_euler = (0.06 * math.sin(lt * 3), 0, 0)
+    S['roy'].place(A(-1.5, 3.3, 0), -0.25)
+    S['roy'].apply(P('stand', aL=(0.95, 0.1, 1.0), aR=(0.95, 0.1, 1.0), head=(0.0, -0.3 - 0.3 * ease((lt - 1.7) / 0.3))))
+    S['towel'].scale = (0.7, 0.5, 0.1)
+    S['towel'].location = A(-1.5, 2.6, 2.05)
+    S['rook'].place(A(4.6, 0.3, 0), PI - 0.7)
+    S['rook'].apply(P('cross', head=(-0.3 * ease((lt - 1.7) / 0.3), 0.2)))
+    S['face']['rook'] = 'deadpan' if lt < 1.7 else 'calm'
+    cam(S, A(lerp(-2.6, -1.4, k), lerp(-8.0, -7.2, k), 2.7), A(0.6, 2.8, 2.6), 28)
+
+
+def wash_hit(S, k, t, lt):
+    f = flick(lt, 0.3)
+    A = mood(S, 'wash', '4A566A', f, fk=5.0)
+    hit = ease((lt - 0.3) / 0.1)
+    if f > 0.5:
+        strike(S, A(9, 22, 70), A(6.2, 2.0, 3.9), 81, n=8, w=0.3)
+        strike(S, A(6.2, 2.0, 3.75), A(1.3, 2.3, 3.4), 82, i0=8, n=6, w=0.12, jit=0.5)
+        sparks(S, A(6.2, 2.0, 3.8), t, 10, r=1.8, speed=3.5)
+    flash(S, A(2.5, -0.5, 4.0), f, 9000)
+    age(S, hat=False)
+    S['wife'].place(A(0.6, 3.0 + 0.5 * hit, 0), 0.0)
+    S['wife'].apply(blend(PEG, JOLT, hit))
+    S['cloth'].location = A(1.45 - 1.2 * max(0.0, lt - 0.3), 2.0 - 0.8 * max(0.0, lt - 0.3), 3.22 + 1.5 * max(0.0, lt - 0.3))
+    S['cloth'].rotation_euler = (lt * 4, lt * 3, 0)
+    S['roy'].place(A(-1.5, 3.3, 0), -0.25)
+    S['roy'].apply(blend(P('stand', aL=(0.95, 0.1, 1.0), aR=(0.95, 0.1, 1.0), head=(-0.3, -0.6)), COVER, hit))
+    S['face']['roy'] = 'shock' if hit > 0.3 else 'calm'
+    S['jaw'] = 0.35 * hit
+    S['rook'].place(A(4.6, 0.3, 0), PI - 0.7)
+    S['rook'].apply(blend(P('cross', head=(-0.3, 0.2)), DUCK, hit))
+    S['face']['rook'] = 'shocked' if hit > 0.3 else 'calm'
+    feather(S, A(4.5, 0.2, 3.3), lt, 0.4)
+    cam(S, A(lerp(-3.4, -2.8, k), lerp(-6.4, -5.8, k), 1.7), A(1.6, 2.6, 3.0), 26, roll=0.04 * math.sin(lt * 31) * hit)
+
+
+def wash_after(S, k, t, lt):
+    """Afterwards: she is sitting on the grass, he is beside her. He was not touched. Rook takes his hat off."""
+    A = mood(S, 'wash', '566278', 0.0, fk=6.0)
+    age(S, hat=False)
+    S['wife'].place(A(0.9, 3.5, 0), 0.25)
+    S['wife'].apply(dict(GROUND, lean=-0.1, aL=(0.3, 0.2, 1.2), aR=(-0.5, 0.3, 0.3), head=(0.3, 0.35)))
+    S['roy'].place(A(-0.35, 3.3, 0), -0.6)
+    S['roy'].apply(dict(KNEEL, aR=(1.15, 0.45, 0.5), aL=(0.8, 0.0, 0.9), head=(0.2 - 0.5 * ease((lt - 1.4) / 0.6), -0.45 + 0.45 * ease((lt - 1.4) / 0.6))))
+    S['face']['roy'] = 'scared'
+    smoke(S, A(6.2, 2.0, 3.9), t, 5, rise=2.6, size=0.3, speed=0.6)
+    S['cloth'].location = A(-0.9, 1.2, 0.05)
+    S['cloth'].rotation_euler = (PI / 2, 0, 0.5)
+    S['rook'].place(A(3.3, 1.9, 0), PI - 1.0)
+    S['rook'].apply(hat_hold(head=(0.2, 0.0)))
+    S['hat_off'] = ease(lt / 0.6)
+    S['face']['rook'] = 'sad'
+    cam(S, A(lerp(2.6, 1.8, k), lerp(-4.6, -4.0, k), 1.7), A(1.0, 3.0, 1.7), 34, fill=1.4)
+
+
+# ---------------------------------------------------------------- new shots: the office
+def office_base(S, t):
+    A = mood(S, 'office', '0C1018', 0.0, fk=3.6)
+    S['sup'].place(A(0.4, 6.7, 0), 0.0)
+    S['sup'].apply(P('sit', aL=(0.95 + 0.07 * math.sin(t * 13), -0.1, 1.2, 0.8), aR=(0.95 + 0.07 * math.cos(t * 11), -0.1, 1.2, 0.8),
+                     head=(0.32, 0.06 * math.sin(t * 2))))
+    return A
+
+
+def office_wide(S, k, t, lt):
+    """The strikes are put on record. v=2: across the typewriter."""
+    A = office_base(S, t)
+    S['rook'].place(A(4.9, 7.3, 0), 0.75)
+    S['rook'].apply(P('cross', head=(0.08, 0.5 + 0.2 * math.sin(lt * 1.6))))
+    S['face']['rook'] = 'deadpan'
+    if S['prm'].get('v', 1) == 1:
+        cam(S, A(lerp(4.4, 3.4, k), lerp(-3.8, -3.2, k), lerp(3.9, 3.5, k)), A(1.2, 6.2, 2.4), 26, fcol='FFD8B0')
+    else:
+        cam(S, A(lerp(-4.4, -3.8, k), lerp(1.6, 2.0, k), 2.5), A(1.2, 6.3, 2.35), 34, fcol='FFD8B0')
+
+
+def rook_file(S, k, t, lt):
+    """Rook reads a report, then looks at the man who wrote it. He was not standing next to him at the time."""
+    A = office_base(S, t)
+    look = ease((lt - 1.2) / 0.4)
+    S['rook'].place(A(4.0, 4.9, 0), -PI / 2 + 0.5)
+    S['rook'].apply(P('stand', aL=(0.95, -0.15, 1.25, 0.6), aR=(0.95, -0.15, 1.25, 0.6), head=(0.35 - 0.3 * look, -0.75 * look)))
+    S['face']['rook'] = 'calm' if look < 0.5 else 'deadpan'
+    S['hat_tip'] = 0.4 * look
+    S['folder'].location = A(3.35, 4.55, 1.95)
+    S['folder'].rotation_euler = (0.5, 0, -PI / 2 + 0.5)
+    cam(S, A(lerp(5.6, 5.1, k), lerp(0.4, 1.0, k), 2.9), A(2.3, 5.6, 2.45), 38, fcol='FFD8B0')
+
+
+HOST |= {'tower_new', 'tower_fire', 'leg_cu', 'cab_ride', 'truck_out', 'can_load', 'patrol_watch', 'yard_after', 'rook_four', 'pond_gone',
+         'look_day', 'look_years', 'look_alone', 'rook_sits', 'look_odds', 'bench_empty', 'rook_sky', 'wash_wide', 'wash_hit', 'wash_after',
+         'office_wide', 'rook_file'}
+SHOTS3D.update({f.__name__: f for f in (
+    tower_new, tower_fire, leg_cu, cab_ride, truck_out, can_load, patrol_watch, yard_after, rook_four, pond_gone, look_day, look_years,
+    look_alone, rook_sits, look_odds, bench_empty, rook_sky, wash_wide, wash_hit, wash_after, office_wide, rook_file)})
+
+
+def photo_thumb(S, k, t, lt):
+    """Thumbnail picture: the bolt on his hat on the ridge trail, the tower behind, Rook ducking beside him."""
+    A = mood(S, 'ridge', '1E2A44', 0.55, fk=5.0)
+    pts = strike(S, A(-9, 16, 60), A(-3.6, -3.5, 3.45), 23, n=9, w=0.3)
+    branch(S, pts[4], 5, 9, w=0.13, L=7)
+    flash(S, A(-2.4, -6.0, 4.0), 0.8, 9000)
+    sparks(S, A(-3.6, -3.5, 3.4), 0.3, 10, r=1.6, speed=1.0)
+    age(S)
+    S['roy'].place(A(-3.6, -3.5, 0), 0.25)
+    S['roy'].apply(JOLT)
+    S['face']['roy'] = 'shock'
+    S['jaw'] = 0.35
+    S['rook'].place(A(-1.5, -3.2, 0), -0.2)
+    S['rook'].apply(DUCK)
+    S['face']['rook'] = 'shocked'
+    cam(S, A(0.6, -11.4, 1.7), A(0.4, -2.0, 3.0), 30, fill=1.3)
+
+
+STILLS['thumb'] = photo_thumb
