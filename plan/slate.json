@@ -188,8 +188,9 @@
    "world": "Everest South Col in a storm",
    "est_score": 84,
    "long_form_candidate": true,
-   "status": "idea",
-   "facts": "verify with 2+ sources at authoring; skip if they do not hold"
+   "status": "in progress",
+   "facts": "verify with 2+ sources at authoring; skip if they do not hold",
+   "claimed_at": "2026-11-15T06:14:28Z"
   },
   {
    "case": 15,
