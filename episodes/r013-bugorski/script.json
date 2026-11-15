@@ -1,0 +1,13 @@
+{
+  "id": "r013-bugorski", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9,
+  "segments": [
+    {"scene": "hook", "mood": "hook", "text": "A proton beam goes straight through his head. In at the back. Out beside his nose. He feels no pain."},
+    {"scene": "doubt", "mood": "calm", "text": "Through his head? No chance. Let's go look."},
+    {"scene": "lab", "mood": "tense", "text": "{1978|Nineteen seventy eight}. Anatoli Bugorski is a physicist at the biggest particle accelerator in the Soviet Union. Something breaks. He leans in to check."},
+    {"scene": "beam", "mood": "action", "text": "But a safety mechanism has failed. The beam is still on. He sees a flash, by his account brighter than a thousand suns."},
+    {"scene": "after", "mood": "tense", "text": "He finishes his work. Then the left side of his face swells up."},
+    {"scene": "clinic", "mood": "sad", "text": "Doctors in Moscow expect him to die. By some estimates, the dose is hundreds of times a lethal one."},
+    {"scene": "lives", "mood": "wonder", "text": "He doesn't. He loses the hearing in his left ear, and half his face is paralysed. But he finishes his doctorate, and goes back to work at the same accelerator."},
+    {"scene": "end", "mood": "end", "text": "A beam through the brain. And he went back to work. I was wrong. Case closed."}
+  ]
+}
