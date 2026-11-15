@@ -80,7 +80,7 @@ jobs:
           if-no-files-found: ignore
 
   frames:
-    # 3D animation: Blender (bpy) + Cycles on CPU. Each episode's frames are split across 6 parallel jobs.
+    # 3D animation: Blender (bpy) + Cycles on CPU. Each episode's frames are split across 16 parallel jobs.
     needs: [plan, voice]
     if: needs.plan.outputs.ids != '[]'
     runs-on: ubuntu-latest
@@ -89,7 +89,7 @@ jobs:
       fail-fast: false
       matrix:
         id: ${{ fromJson(needs.plan.outputs.ids) }}
-        part: [0, 1, 2, 3, 4, 5]
+        part: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     steps:
       - uses: actions/checkout@v4
       - id: has
@@ -116,7 +116,7 @@ jobs:
           PART: ${{ matrix.part }}
         run: |
           nproc; free -g | head -2
-          python3 -u engine4/kit3d.py "episodes/$EP" all "$PART" 6 2>&1 | grep --line-buffered -v -E "^Fra:|Fontconfig"
+          python3 -u engine4/kit3d.py "episodes/$EP" all "$PART" 16 2>&1 | grep --line-buffered -v -E "^Fra:|Fontconfig"
       - if: steps.has.outputs.is3d == '1'
         uses: actions/upload-artifact@v4
         with:

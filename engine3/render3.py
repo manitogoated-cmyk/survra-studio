@@ -181,7 +181,7 @@ def manifest3d(build):
 
 
 def frame3d(build, sh, t, fps3):
-    """The rendered 3D frame for time t of this shot (held on twos); nearest existing one while a render is partial."""
+    """The rendered 3D frame for time t of this shot; nearest existing one while a render is partial."""
     i0, i1 = int(math.floor(sh['a'] * fps3)), int(math.ceil(sh['b'] * fps3))
     i = max(i0, min(i1 - 1, int(t * fps3 + 1e-6)))
     for j in sorted(range(i0, i1), key=lambda x: abs(x - i)):
@@ -192,6 +192,27 @@ def frame3d(build, sh, t, fps3):
             _F3['p'], _F3['img'] = p, skia.Image.open(p)
             return _F3['img']
     return None
+
+
+_GLOW = {}
+
+
+def glow3d(cv, img, W, H):
+    """Lens bloom: only the brightest parts of the frame (lamps, windows, fire, Rook's eyes) spill a soft halo.
+    Worked out at quarter size, so it costs almost nothing per frame."""
+    if W not in _GLOW:
+        k, b = 2.6, 1.9                              # keep what is brighter than ~73%, nothing else
+        w4, h4 = W // 4, H // 4
+        _GLOW[W] = (skia.Surface(w4, h4), skia.Surface(w4, h4),
+                    skia.Paint(ColorFilter=skia.ColorFilters.Matrix([k, 0, 0, 0, -b, 0, k, 0, 0, -b, 0, 0, k, 0, -b, 0, 0, 0, 1, 0])),
+                    skia.Paint(ImageFilter=skia.ImageFilters.Blur(W * 0.00275, W * 0.00275)),
+                    skia.Paint(BlendMode=skia.BlendMode.kScreen, Alphaf=0.6))
+    a, b, bright, blur, screen = _GLOW[W]
+    lin = skia.SamplingOptions(skia.FilterMode.kLinear)
+    a.getCanvas().drawImageRect(img, skia.Rect(0, 0, a.width(), a.height()), lin, bright)
+    b.getCanvas().clear(0xFF000000)
+    b.getCanvas().drawImage(a.makeImageSnapshot(), 0, 0, skia.SamplingOptions(), blur)
+    cv.drawImageRect(b.makeImageSnapshot(), skia.Rect(0, 0, W, H), lin, screen)
 
 
 def camera3d(cv, sh, t, impacts, W, H):
@@ -350,6 +371,7 @@ def render(ep_dir, out_path, only=None, fmt=None, clean=False):
                 raise SystemExit(f"3D frames missing for shot {sh['n']} ({sh['kind']}): run engine4/kit3d.py first")
             if img is not None:
                 cv.drawImageRect(img, skia.Rect(0, 0, W, H), skia.SamplingOptions(skia.CubicResampler.Mitchell()))
+                glow3d(cv, img, W, H)
             vignette(cv, W, H)
             if sh['kind'] in over:
                 over[sh['kind']](cv, ctx)

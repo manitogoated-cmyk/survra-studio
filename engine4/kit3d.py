@@ -8,11 +8,12 @@ import os
 import sys
 import time
 
+import bmesh
 import bpy
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
-FPS3 = 15
+FPS3 = 30                # every video frame is its own render (was 15, each held twice)
 LONG_LENS = 0.72        # 16:9 episodes: widen every shot's lens so portrait-style staging still fits
 _M = {}
 
@@ -41,9 +42,53 @@ def mat(col, rough=0.9, emit=0.0, alpha=1.0):
     return _M[key]
 
 
+_LAST = []
+
+
+def _prim(kind, kw):
+    """The kit's primitives straight from mesh data: identical shapes to Blender's operators, but the cost does not
+    grow with the number of objects already in the scene (operators made a big world take minutes to build)."""
+    bm = bmesh.new()
+    if kind == 'cube':
+        bmesh.ops.create_cube(bm, size=kw.get('size', 2.0))
+    elif kind == 'plane':
+        bmesh.ops.create_grid(bm, x_segments=1, y_segments=1, size=kw.get('size', 2.0) / 2)
+    elif kind in ('cylinder', 'cone'):
+        r1, r2 = (kw.get('radius', 1.0),) * 2 if kind == 'cylinder' else (kw.get('radius1', 1.0), kw.get('radius2', 0.0))
+        fill = kw.get('end_fill_type', 'NGON')
+        bmesh.ops.create_cone(bm, cap_ends=fill != 'NOTHING', cap_tris=fill == 'TRIFAN', segments=kw.get('vertices', 32), radius1=r1, radius2=r2,
+                              depth=kw.get('depth', 2.0))
+    elif kind == 'ico_sphere':
+        bmesh.ops.create_icosphere(bm, subdivisions=kw.get('subdivisions', 2), radius=kw.get('radius', 1.0))
+    else:
+        bm.free()
+        return None
+    me = bpy.data.meshes.new(kind)
+    bm.to_mesh(me)
+    bm.free()
+    return me
+
+
 def add(kind, col, loc=(0, 0, 0), rot=(0, 0, 0), scale=(1, 1, 1), parent=None, rough=0.9, emit=0.0, alpha=1.0, **kw):
-    getattr(bpy.ops.mesh, 'primitive_' + kind + '_add')(location=loc, rotation=rot, **kw)
-    o = bpy.context.object
+    me = _prim(kind, kw)
+    if me is None:                              # torus, circle, grid: rare, so the operator is fine
+        getattr(bpy.ops.mesh, 'primitive_' + kind + '_add')(location=loc, rotation=rot, **kw)
+        o = bpy.context.object
+    else:
+        o = bpy.data.objects.new(kind, me)
+        bpy.context.scene.collection.objects.link(o)
+        o.location, o.rotation_euler = loc, rot
+        for x in _LAST:                         # leave the new object selected and active, as the operators do
+            try:
+                x.select_set(False)
+            except (ReferenceError, RuntimeError):
+                pass
+        _LAST[:] = [o]
+        try:
+            o.select_set(True)
+            bpy.context.view_layer.objects.active = o
+        except RuntimeError:
+            pass
     o.scale = scale
     o.data.materials.append(mat(col, rough, emit, alpha))
     if parent:
@@ -52,8 +97,9 @@ def add(kind, col, loc=(0, 0, 0), rot=(0, 0, 0), scale=(1, 1, 1), parent=None, r
 
 
 def empty(loc=(0, 0, 0), parent=None, rot=(0, 0, 0)):
-    bpy.ops.object.empty_add(location=loc, rotation=rot)
-    o = bpy.context.object
+    o = bpy.data.objects.new('empty', None)
+    bpy.context.scene.collection.objects.link(o)
+    o.location, o.rotation_euler = loc, rot
     if parent:
         o.parent = parent
     return o
@@ -143,12 +189,15 @@ class Rig:
         for s in (-1, 1):
             sh = empty((s * 0.47, 0, 1.0), b)
             add('cylinder', C['top'], (0, 0, -0.23), radius=0.085, depth=0.5, vertices=6, parent=sh)
+            add('ico_sphere', C['top'], (0, 0, 0.01), radius=0.105, subdivisions=1, parent=sh)
             el = empty((0, 0, -0.46), sh)
+            add('ico_sphere', C['top'], (0, 0, 0), radius=0.086, subdivisions=1, parent=el)
             add('cylinder', C.get('fore', C['top']), (0, 0, -0.22), radius=0.08, depth=0.46, vertices=6, parent=el)
             self.hands.append(add('ico_sphere', C['hand'], (0, 0, -0.5), radius=0.11, subdivisions=1, parent=el))
             hp = empty((s * 0.16, 0, 0), b)
             add('cylinder', C['pants'], (0, 0, -0.25), radius=0.095, depth=0.54, vertices=6, parent=hp)
             kn = empty((0, 0, -0.5), hp)
+            add('ico_sphere', C['pants'], (0, 0, 0), radius=0.093, subdivisions=1, parent=kn)
             add('cylinder', C['pants'], (0, 0, -0.24), radius=0.085, depth=0.5, vertices=6, parent=kn)
             add('cube', C['boot'], (0, -0.09, -0.48), scale=(0.2, 0.42, 0.14), size=1, parent=kn)
             self.sh.append(sh); self.el.append(el); self.hp.append(hp); self.kn.append(kn)
@@ -175,23 +224,23 @@ class Rig:
 
 def rook_head(head):
     add('ico_sphere', '2F2B4D', (0, 0, 0), scale=(1, 1, 1.08), radius=0.33, subdivisions=1, parent=head)
-    add('cone', '8A90A6', (0, -0.52, -0.06), rot=(math.radians(100), 0, 0), radius1=0.14, radius2=0.0, depth=0.72, vertices=4, parent=head, rough=0.5)
+    add('cone', '8A90A6', (0, -0.52, -0.06), rot=(math.radians(100), 0, 0), radius1=0.14, radius2=0.012, depth=0.72, vertices=12, scale=(1, 0.66, 1), parent=head, rough=0.42)
     jaw = empty((0, -0.2, -0.13), head)
-    add('cone', '6A7088', (0, -0.3, -0.03), rot=(math.radians(96), 0, 0), radius1=0.1, radius2=0.0, depth=0.56, vertices=4, parent=jaw, rough=0.5)
+    add('cone', '6A7088', (0, -0.3, -0.03), rot=(math.radians(96), 0, 0), radius1=0.1, radius2=0.01, depth=0.56, vertices=12, scale=(1, 0.6, 1), parent=jaw, rough=0.42)
     eyes, brows = [], []
     for s in (-1, 1):
         eyes.append(add('cube', 'FFB000', (s * 0.14, -0.285, 0.06), rot=(0.2, s * 0.32, s * -0.25), scale=(0.15, 0.03, 0.07), size=1, parent=head, rough=0.4, emit=3.0))
         add('cube', '0E0D14', (s * 0.15, -0.305, 0.055), rot=(0.2, s * 0.32, s * -0.25), scale=(0.045, 0.02, 0.05), size=1, parent=head)
         brows.append(add('cube', '0E0D14', (s * 0.14, -0.29, 0.135), rot=(0.25, s * 0.5, s * -0.25), scale=(0.2, 0.05, 0.04), size=1, parent=head))
         for k in range(3):
-            add('cone', '2F2B4D', (s * 0.04 * k, 0.3, -0.12 + k * 0.1), rot=(math.radians(-65), 0, 0), radius1=0.08, radius2=0, depth=0.26, vertices=4, parent=head)
+            add('cone', '2F2B4D', (s * 0.04 * k, 0.3, -0.12 + k * 0.1), rot=(math.radians(-65), 0, 0), radius1=0.08, radius2=0.004, depth=0.26, vertices=8, scale=(1, 0.7, 1), parent=head)
     hat = empty((0, 0, 0.27), head, (-0.2, 0.07, 0))
     add('cylinder', '2B2733', (0, 0, 0), radius=0.66, depth=0.04, vertices=10, parent=hat)
     add('cone', '2B2733', (0, 0, 0.2), radius1=0.34, radius2=0.27, depth=0.38, vertices=8, parent=hat)
     add('cylinder', 'FF7A1A', (0, 0, 0.065), radius=0.35, depth=0.08, vertices=8, parent=hat, rough=0.6)
     # diving helmet: brass collar + cage rings + a hint of glass
     helmet = [add('ico_sphere', 'BFEFFF', (0, -0.05, 0.12), radius=0.86, subdivisions=3, parent=head, rough=0.02, alpha=0.045)]
-    bpy.ops.object.shade_smooth()
+    helmet[0].data.polygons.foreach_set('use_smooth', [True] * len(helmet[0].data.polygons))
     helmet.append(add('cylinder', 'C89A3A', (0, 0, -0.42), radius=0.5, depth=0.14, vertices=10, parent=head, rough=0.35))
     for rot in ((math.pi / 2, 0, 0.5), (math.pi / 2, 0, -0.5 + math.pi), (0, 0, 0)):
         helmet.append(add('torus', 'C89A3A', (0, -0.05, 0.12 if rot[0] else -0.2), rot=rot, major_radius=0.87 if rot[0] else 0.8, minor_radius=0.022,
@@ -273,7 +322,64 @@ def setup(samples=8):
     sc.render.threads_mode = 'AUTO'
     sc.render.image_settings.file_format = 'JPEG'
     sc.render.image_settings.quality = 92
-    sc.view_settings.view_transform = 'Standard'
+    sc.view_settings.view_transform = os.environ.get('KIT3D_VIEW', 'AgX')        # film-like roll-off: bright lamps and skies no longer clip
+    try:
+        sc.view_settings.look = os.environ.get('KIT3D_LOOK', 'AgX - Medium High Contrast')
+    except TypeError:
+        pass
+
+
+def _sky(S):
+    """Skies stop being one flat colour: the episode's sky colour now brightens toward the horizon and deepens
+    overhead. Episodes keep writing the colour to S['bg'] exactly as before; frame() copies it across."""
+    bg = S.get('bg')
+    if bg is None:
+        return
+    nt = bg.id_data
+    N, L = nt.nodes, nt.links
+    out = next((n for n in N if n.type == 'OUTPUT_WORLD'), None)
+    if out is None:
+        return
+    tc, sep, ab, mr = N.new('ShaderNodeTexCoord'), N.new('ShaderNodeSeparateXYZ'), N.new('ShaderNodeMath'), N.new('ShaderNodeMapRange')
+    pw, rgb, sca, bg2 = N.new('ShaderNodeMath'), N.new('ShaderNodeRGB'), N.new('ShaderNodeVectorMath'), N.new('ShaderNodeBackground')
+    ab.operation, pw.operation, sca.operation = 'ABSOLUTE', 'POWER', 'SCALE'
+    L.new(tc.outputs['Generated'], sep.inputs[0])
+    L.new(sep.outputs['Z'], ab.inputs[0])
+    L.new(ab.outputs[0], pw.inputs[0])
+    pw.inputs[1].default_value = 0.55
+    L.new(pw.outputs[0], mr.inputs['Value'])
+    mr.inputs['To Min'].default_value, mr.inputs['To Max'].default_value = 1.45, 0.62      # horizon .. straight up
+    L.new(rgb.outputs[0], sca.inputs[0])
+    L.new(mr.outputs[0], sca.inputs['Scale'])
+    L.new(sca.outputs[0], bg2.inputs['Color'])
+    L.new(bg2.outputs[0], out.inputs['Surface'])
+    S['_sky'] = (rgb, bg2)
+
+
+def frame(S):
+    """Once per frame, after the episode's finish()."""
+    if '_sky' in S:
+        rgb, bg2 = S['_sky']
+        rgb.outputs[0].default_value = S['bg'].inputs[0].default_value[:]
+        bg2.inputs['Strength'].default_value = S['bg'].inputs[1].default_value
+
+
+def finalize(S):
+    """After an episode's build(): the finish pass over every mesh, and a camera that focuses like a real lens."""
+    try:
+        from engine4 import polish3d
+    except ImportError:
+        import polish3d
+    n = polish3d.polish(skip=S.get('nopolish', ()))
+    print('3d scene: polished', n, flush=True)
+    if os.environ.get('KIT3D_SKY', '1') == '1':
+        _sky(S)
+    cam = S.get('cam') or bpy.context.scene.camera
+    if cam and S.get('camtgt') and os.environ.get('KIT3D_DOF', '1') == '1':
+        cam.data.dof.use_dof = True
+        cam.data.dof.focus_object = S['camtgt']
+        cam.data.dof.aperture_fstop = float(os.environ.get('KIT3D_FSTOP', '1.8'))
+    return n
 
 
 def variant(S, alt):
@@ -289,7 +395,7 @@ def variant(S, alt):
     bpy.context.scene.camera.data.lens *= lm
 
 
-def run(ep_dir, mode='all', w=432, h=768, samples=8, part=None):
+def run(ep_dir, mode='all', w=720, h=1280, samples=10, part=None):
     """mode: all | sheet (one low-res still per shot) | stills. part=(i, n) renders every n-th frame (parallel jobs)."""
     from engine3 import render3 as R3
     from engine3.voice3 import LipSync
@@ -314,6 +420,7 @@ def run(ep_dir, mode='all', w=432, h=768, samples=8, part=None):
     _M.clear()
     S = Wm.build()
     setup(samples if mode == 'all' else 4)
+    finalize(S)
     print('3d scene: built, rendering with', bpy.context.scene.render.engine, 'threads', bpy.context.scene.render.threads, flush=True)
     sc = bpy.context.scene
     out = os.path.join(build, '3d' if mode != 'sheet' else '3d_sheet')
@@ -329,6 +436,7 @@ def run(ep_dir, mode='all', w=432, h=768, samples=8, part=None):
         Wm.reset(S)
         fn(S, 0.5, 1.0, 0.5)
         Wm.finish(S, 1.0)
+        frame(S)
         sc.render.filepath = path
         keep = (sc.render.resolution_x, sc.render.resolution_y, sc.cycles.samples)
         if name == 'thumb':                      # the long-form thumbnail picture: 1280x720, clean
@@ -366,6 +474,7 @@ def run(ep_dir, mode='all', w=432, h=768, samples=8, part=None):
         Wm.reset(S)
         Wm.SHOTS3D[sh['kind']](S, max(0.0, min(1.0, lt / d)), t, lt)
         Wm.finish(S, t)
+        frame(S)
         variant(S, S['prm'].get('alt'))
         if long_:
             sc.camera.data.lens *= LONG_LENS

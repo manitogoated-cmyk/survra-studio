@@ -11,7 +11,7 @@ engine3/              voice + phoneme timings, compositor (captions, HUD, transi
 engine/, engine2/     first-generation engine and the shared sound library
 publish/              YouTube uploader, publisher, ops (banner, watermark, analytics), config.json, ledger.json
 plan/                 slate.json (case slate), learnings.json (from the weekly analytics report)
-.github/workflows/    publish.yml (voice -> 6 parallel 3D frame jobs -> composite + QC -> upload), ops.yml (analytics, branding)
+.github/workflows/    publish.yml (voice -> 16 parallel 3D frame jobs -> composite + QC -> upload), ops.yml (analytics, branding)
 AUTHORING.md          how a new episode is made; STATUS.md production dashboard; ANALYTICS.md weekly numbers
 ```
 

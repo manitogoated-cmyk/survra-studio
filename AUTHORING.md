@@ -20,12 +20,14 @@ Read first: `character/ROOK.md` (host bible, never change his design) and `episo
 - `scenes.py`: flat inserts `SHOTS = {kind: f(cv, c)}` (case board, graphics) and `OVER = {kind: f(cv, c)}` overlays drawn on top of a 3D shot (rain, stamps, numbers) on a 1080x1920 canvas (1920x1080 for long).
 
 ## 3D toolkit (`engine4/kit3d.py`)
-- `add(kind, colour, loc, rot, scale, parent, rough, emit, alpha, **primitive_args)` adds a flat-shaded low-poly primitive. `empty()`, `light()`.
+- `add(kind, colour, loc, rot, scale, parent, rough, emit, alpha, **primitive_args)` adds a primitive. Author with simple shapes; the finish pass (below) rounds and smooths them. `empty()`, `light()`.
 - `Rig(colours, head_fn, coat)`: jointed humanoid about 3 units tall, feet at the root, facing -Y. `rig.place(loc, yaw, pitch, roll)`, `rig.apply(pose)`.
 - Poses: `P('stand'|'point'|'hat'|'cross'|'shrug'|'up'|'reach'|'hips'|'sit'|'swim', **overrides)`, `blend(a, b, k)`, `walk(t)`. Arm = (swing forward, spread, elbow bend, forearm twist inward); leg = (hip forward, knee bend); head = (nod, turn).
 - Heads: `rook_head` (hat, brows, eyes, lower beak for lip sync, diving helmet), `human_head(skin, hair)`, `diver_head` (lamp). `Hand(skin, sleeve)` is a close-up hand prop with `grip(0..1)`.
 - Build each set inside `group(name, fn)` at its own origin so only one set renders per shot (`show(S, name)` returns a function that converts set-local to world coordinates).
-- Look: faceted low poly, strong coloured light, dark noir palette with Survra orange (#FF7A1A) accents. Rook: coat #566178, feathers #2F2B4D, amber eyes, hat with orange band.
+- Finish pass (`engine4/polish3d.py`, runs by itself after `build()`): every box gets rounded edges, every cylinder, cone and sphere is re-cut smooth, skies grade from horizon to zenith, the camera focuses on `S['camtgt']` with a shallow depth of field, and the compositor adds lens bloom to bright lights. So: keep cubes as real cubes sized with `scale`, keep `S['camtgt']` on the subject of the shot (it is what stays sharp), and use `vertices=3` or `4` only where a prism or pyramid is the intended shape (those are left faceted). Put objects whose mesh you animate by hand in `S['nopolish']`.
+- Render: 1280x720 (720x1280 for Shorts), 30 frames a second, AgX film tone curve. Never go back to faceted shading, 15 fps or the old 432-pixel frames.
+- Look: smooth stylized 3D with soft bevels, strong coloured light, dark noir palette with Survra orange (#FF7A1A) accents. Rook: coat #566178, feathers #2F2B4D, amber eyes, hat with orange band.
 
 ## Build and check
 ```
@@ -33,9 +35,9 @@ pip install -r requirements.txt bpy==5.3.0      # Python 3.13; needs ffmpeg and 
 python3 engine3/voice3.py episodes/<id>/script.json episodes/<id>/build       # needs models/ (see README)
 python3 engine4/kit3d.py episodes/<id> sheet && python3 engine4/sheet3d.py episodes/<id> /tmp/sheet.png
 #   ^ one low-res still per shot in about a minute: LOOK at it and fix staging before any full render
-./engine3/make_episode.sh episodes/<id>      # full render (resumable; about 8 s per frame on 2 cores) + QC gate
+./engine3/make_episode.sh episodes/<id>      # full render (resumable; slow on a laptop, the cloud run is the normal route) + QC gate
 ```
-On GitHub the same episode is rendered by six parallel jobs, so a full local render is optional: the contact sheet plus a few full frames is the minimum review. After a cloud run, a small review copy is on the branch `renders-<id>`.
+On GitHub the same episode is rendered by 16 parallel jobs, so a full local render is optional: the contact sheet plus a few full frames is the minimum review. After a cloud run, a small review copy is on the branch `renders-<id>`.
 
 QC gate (must pass, never loosen it): first shot 1.2 s or less with an impact sound in the first second, no shot over 2.0 s, mean 1.6 s or less, no shot type more than twice or twice in a row, no static 1.5 s stretch, Rook on screen and acting in at least 35% of shots, loudness and voice clarity, no recycled visuals.
 
