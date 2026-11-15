@@ -254,7 +254,7 @@ def rook_head(head):
     add('cone', '6A7088', (0, -0.3, -0.03), rot=(math.radians(96), 0, 0), radius1=0.1, radius2=0.0, depth=0.56, vertices=4, parent=jaw, rough=0.5)
     eyes, brows = [], []
     for s in (-1, 1):
-        eyes.append(add('cube', 'FFB000', (s * 0.14, -0.285, 0.06), rot=(0.2, s * 0.32, s * -0.25), scale=(0.15, 0.03, 0.07), size=1, parent=head, rough=0.4, emit=1.7))
+        eyes.append(add('cube', 'FFB000', (s * 0.14, -0.285, 0.06), rot=(0.2, s * 0.32, s * -0.25), scale=(0.15, 0.03, 0.07), size=1, parent=head, rough=0.4, emit=5.0))
         add('cube', '0E0D14', (s * 0.15, -0.305, 0.055), rot=(0.2, s * 0.32, s * -0.25), scale=(0.045, 0.02, 0.05), size=1, parent=head)
         brows.append(add('cube', '0E0D14', (s * 0.14, -0.29, 0.135), rot=(0.25, s * 0.5, s * -0.25), scale=(0.2, 0.05, 0.04), size=1, parent=head))
         for k in range(3):
@@ -405,6 +405,25 @@ def variant(S, alt):
     bpy.context.scene.camera.data.lens *= lm
 
 
+CAMFILL0 = float(os.environ.get('KIT3D_CAMFILL', 60))
+
+
+def camfill_setup(S):
+    """A soft fill that rides with the camera, the way a film crew puts a bounce or eye-light beside the lens: whatever
+    the camera looks at gets some light on the side facing us, so faces never read as eyes in a black blob."""
+    cf = light((0, 0, 0), 0, 'FFE6CC', size=2.5)
+    cf.parent = bpy.context.scene.camera
+    cf.location, cf.rotation_euler = (0.6, 0.5, 0.2), (0, 0, 0)     # camera space: beside and above the lens, aimed along the view
+    S['camfill'] = cf
+    return cf
+
+
+def camfill(S, Wm, kind):
+    """Per-shot level: world3d may define CAMFILL = {kind: watts, '*': default}. A shot can still override it."""
+    table = getattr(Wm, 'CAMFILL', {})
+    S['camfill'].data.energy = table.get(kind, table.get('*', CAMFILL0))
+
+
 def run(ep_dir, mode='all', w=RES[0], h=RES[1], samples=SAMPLES, part=None):
     """mode: all | sheet (one low-res still per shot) | stills. part=(i, n) renders every n-th frame (parallel jobs)."""
     from engine3 import render3 as R3
@@ -429,6 +448,7 @@ def run(ep_dir, mode='all', w=RES[0], h=RES[1], samples=SAMPLES, part=None):
     bpy.ops.wm.read_factory_settings(use_empty=True)
     _M.clear()
     S = Wm.build()
+    camfill_setup(S)
     setup(samples if mode == 'all' else 4)
     print('3d scene: built, rendering with', bpy.context.scene.render.engine, 'threads', bpy.context.scene.render.threads, flush=True)
     sc = bpy.context.scene
@@ -482,6 +502,7 @@ def run(ep_dir, mode='all', w=RES[0], h=RES[1], samples=SAMPLES, part=None):
         S['prm'] = sh.get('prm', {})
         _T[0] = t
         Wm.reset(S)
+        camfill(S, Wm, sh['kind'])
         Wm.SHOTS3D[sh['kind']](S, max(0.0, min(1.0, lt / d)), t, lt)
         Wm.finish(S, t)
         variant(S, S['prm'].get('alt'))

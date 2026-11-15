@@ -560,6 +560,7 @@ def rook_buoy(S, k, t, lt):
     bz = wave_h(0, -30, t, 1.5) * 0.7
     S['buoy'].location = (0, -30, bz)
     S['buoy'].rotation_euler = (0.09 * math.sin(t * 1.9), 0.07 * math.sin(t * 1.5), 0)
+    S['seakey'].data.energy = 9000          # Rook was a silhouette on the buoy
     S['rook'].place(A(-0.2, -30.2, bz + 0.66), -0.35, 0.09 * math.sin(t * 1.9))
     S['rook'].apply(P('stand', aL=(0.5, 1.35, 0.15), aR=(0.3, 0.3, 0.9), head=(0.05, 0.5 - 0.5 * ease((lt - 0.5) / 0.3)), lean=0.05))
     S['face']['rook'] = 'calm'
@@ -637,7 +638,7 @@ def pocket_wide(S, k, t, lt):
 
 
 def chest_water(S, k, t, lt):
-    A = cabin(S, True, 1.52, lerp(90, 30, k), lerp(260, 110, k))
+    A = cabin(S, True, 1.52, lerp(170, 110, k), lerp(480, 340, k))
     sh = 0.012 * math.sin(t * 43)
     S['okene'].place(A(0.1 + sh, 0.2, 0.0), 0.25)
     S['okene'].apply(P('cross', head=(0.2, 0.15 * math.sin(t * 0.9)), lean=0.06))
@@ -691,7 +692,7 @@ def rook_feathers(S, k, t, lt):
 
 
 def light_beam(S, k, t, lt):
-    A = cabin(S, True, 1.52, 14, 90)
+    A = cabin(S, True, 1.52, 60, 300)
     S['beam'].location = (2.6, lerp(-3.4, -1.2, k), 0.75)
     S['beam'].rotation_euler = (0.12, 0, lerp(-1.1, -1.9, ease(k)))
     S['okene'].place(A(-0.5, 0.5, 0.0), lerp(-0.2, 0.9, ease(k * 1.5)))
@@ -701,7 +702,7 @@ def light_beam(S, k, t, lt):
 
 
 def bang_wall(S, k, t, lt):
-    A = cabin(S, True, 1.52, 30, 170)
+    A = cabin(S, True, 1.52, 90, 380)
     S['beam'].location, S['beam'].rotation_euler = (1.5, -3.6, 0.7), (0.2, 0, -1.0)
     ph = (lt / 0.32) % 1
     hit = 1 - ease(ph / 0.35) if ph < 0.35 else ease((ph - 0.35) / 0.65)
@@ -725,8 +726,9 @@ def light_leaves(S, k, t, lt):
     S['hand_o'].place(A(0.42, lerp(-5.9, -5.2, ease(k * 2)), 1.22 + 0.03 * math.sin(t * 5)), (-0.2, -0.5, PI + 0.3))
     S['hand_o'].grip(0.05)
     S['hand_o'].root.scale = (1.3, 1.3, 1.3)
-    S['pov'].data.energy = 160
-    cam(S, A(0.1, -7.4, 1.75), A(0, 6, 1.45), lerp(34, 42, k))
+    S['pov'].data.energy = 420
+    bubbles(S, A(0.2, -5.6, 0.9), t, 14, 0.7, 1.6, 1.3, seed=5, size=0.8)
+    cam(S, A(0.1 + 0.22 * math.sin(t * 1.3), lerp(-7.4, -6.6, k), 1.75 + 0.08 * math.sin(t * 1.7)), A(0, 6, 1.45), lerp(34, 42, k), 0.05 * math.sin(t * 1.1))
 
 
 def light_back(S, k, t, lt):
@@ -742,7 +744,7 @@ def light_back(S, k, t, lt):
 
 
 def reach(S, k, t, lt):
-    A = cabin(S, True, 1.52, 10, 60)
+    A = cabin(S, True, 1.52, 45, 220)
     S['beam'].location, S['beam'].rotation_euler = (1.6, -1.6, 0.25), (0.35, 0, -0.75)
     e = ease(k)
     S['hand_o'].place(A(0.12, 0.0, lerp(2.15, 1.3, e)), (PI / 2 - 0.15, 0, 0.35))
@@ -754,7 +756,7 @@ def reach(S, k, t, lt):
 
 
 def the_grab(S, k, t, lt):
-    A = cabin(S, True, 1.52, 10, 60)
+    A = cabin(S, True, 1.52, 45, 220)
     S['beam'].location, S['beam'].rotation_euler = (1.6, -1.6, 0.25), (0.35, 0, -0.75)
     j = ease(lt / 0.08)
     sh = 0.03 * math.sin(t * 50) * max(0, 1 - lt / 0.5)
@@ -840,6 +842,10 @@ def photo_okene(S, k, t, lt):
     S['face']['okene'] = 'happy'
     cam(S, A(0.5, -2.2, 2.5), A(0, 2, 2.3), 60)
 
+
+# camera-side fill per shot (engine4/kit3d.py camfill): the flooded cabin needs the most
+CAMFILL = {'*': 60, 'chest_water': 260, 'light_beam': 200, 'bang_wall': 240, 'reach': 160, 'the_grab': 160,
+           'rook_buoy': 900, 'light_leaves': 90, 'bathroom': 80, 'flip': 120, 'sinking': 120}
 
 SHOTS3D = {f.__name__: f for f in (
     dive_search, hand_float, hand_grab, diver_shock, rook_office, rook_cu, door_go, tug_storm, rook_buoy, big_wave, capsize, bathroom,

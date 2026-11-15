@@ -19,7 +19,7 @@
   {
    "scene": "sink",
    "mood": "action",
-   "text": "May {2013|twenty thirteen}, off Nigeria. Just before five A M, a wave flips a tugboat. Twelve men on board."
+   "text": "May {2013|twenty thirteen}, off Nigeria. Just before {5 AM|five A M}, a wave flips a tugboat. Twelve men on board."
   },
   {
    "scene": "trap",

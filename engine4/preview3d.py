@@ -34,6 +34,7 @@ for sh in board:
 bpy.ops.wm.read_factory_settings(use_empty=True)
 K._M.clear()
 S = Wm.build()
+K.camfill_setup(S)
 K.setup()
 sc = bpy.context.scene
 sc.render.resolution_x, sc.render.resolution_y = w, h
@@ -49,6 +50,7 @@ for sh, a, b in spans:
         S['beak'], S['prm'] = 0.6, sh.get('prm', {})
         K._T[0] = tt
         Wm.reset(S)
+        K.camfill(S, Wm, sh['kind'])
         Wm.SHOTS3D[sh['kind']](S, k, tt, tt - a)
         Wm.finish(S, tt)
         K.variant(S, S['prm'].get('alt'))

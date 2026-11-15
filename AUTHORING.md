@@ -25,6 +25,7 @@ Read first: `character/ROOK.md` (host bible, never change his design) and `episo
 - `Rig(colours, head_fn, coat)`: jointed humanoid about 3 units tall, feet at the root, facing -Y. `rig.place(loc, yaw, pitch, roll)`, `rig.apply(pose)`.
 - Poses: `P('stand'|'point'|'hat'|'cross'|'shrug'|'up'|'reach'|'hips'|'sit'|'swim', **overrides)`, `blend(a, b, k)`, `walk(t)`. Arm = (swing forward, spread, elbow bend, forearm twist inward); leg = (hip forward, knee bend); head = (nod, turn).
 - Heads: `rook_head` (hat, brows, eyes, lower beak for lip sync, diving helmet), `human_head(skin, hair)`, `diver_head` (lamp). `Hand(skin, sleeve)` is a close-up hand prop with `grip(0..1)`.
+- Camera fill: the engine puts a soft light beside the lens (`camfill`). Set `CAMFILL = {kind: watts, '*': default}` in `world3d.py` (engine default 60); dark interiors usually need 150 to 300, far subjects more. A face that reads only as two eyes fails the checklist.
 - Build each set inside `group(name, fn)` at its own origin so only one set renders per shot (`show(S, name)` returns a function that converts set-local to world coordinates).
 - Look: faceted low poly, strong coloured light, dark noir palette with Survra orange (#FF7A1A) accents. Rook: coat #566178, feathers #2F2B4D, amber eyes, hat with orange band.
 

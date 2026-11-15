@@ -113,6 +113,13 @@ def build(build_dir, out_wav):
     mus = score(N, E['windows'], E.get('moods', {}), zlib.crc32(E.get('episode', 'x').encode()) & 0xFFFF)
     voice, vsr = sf.read(os.path.join(build_dir, 'voice.wav'))
     v = np.interp(np.arange(N) / SR, np.arange(len(voice)) / vsr, voice)
+    # per-mood narration level: quiet for sad/calm, forward for action, so the film breathes instead of sitting flat
+    VG = {'hook': 0.0, 'tense': -1.5, 'action': 1.5, 'calm': -3.0, 'wonder': -2.0, 'sad': -4.5, 'triumph': 1.0, 'end': -2.0}
+    g = np.ones(N)
+    for name, (a, b) in E['windows'].items():
+        i0, i1 = int(a * SR), min(N, int(b * SR))
+        g[i0:i1] = 10 ** (VG.get(E.get('moods', {}).get(name, 'calm'), 0.0) / 20)
+    v = v * A.sm(g, 0.25 * SR)
     vel = A.sm(np.abs(v), 0.15 * SR); duck = 1 - 0.8 * np.clip(vel / (vel.max() * 0.25 + 1e-9), 0, 1)
     bed = mus * 0.9 * duck + fx * 0.7 * (0.55 + 0.45 * duck)      # effects duck less than music: they are the action
     mix = v / (np.abs(v).max() + 1e-9) + bed * 0.4
@@ -120,7 +127,13 @@ def build(build_dir, out_wav):
     raw = out_wav.replace('.wav', '_raw.wav'); sf.write(raw, np.stack([mix, mix], 1).astype(np.float32), SR)
     sf.write(os.path.join(build_dir, 'stem_voice.wav'), (v / (np.abs(v).max() + 1e-9)).astype(np.float32), SR)
     sf.write(os.path.join(build_dir, 'stem_bed.wav'), (bed * 0.45).astype(np.float32), SR)
-    subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', raw, '-af', 'loudnorm=I=-14:TP=-2.0:LRA=9,alimiter=limit=0.75:level=disabled', '-ar', str(SR), out_wav], check=True)
+    # two-pass loudnorm in linear mode keeps the dynamics (one-pass dynamic mode squashed the range to about 2 LU)
+    r = subprocess.run(['ffmpeg', '-hide_banner', '-nostats', '-i', raw, '-af', 'loudnorm=I=-14:TP=-1.5:LRA=11:print_format=json', '-f', 'null', '-'],
+                       capture_output=True, text=True)
+    m = json.loads(r.stderr[r.stderr.rindex('{'):r.stderr.rindex('}') + 1])
+    ln = ('loudnorm=I=-14:TP=-1.5:LRA=11:linear=true:measured_I={input_i}:measured_TP={input_tp}:measured_LRA={input_lra}'
+          ':measured_thresh={input_thresh}:offset={target_offset}').format(**m)
+    subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', raw, '-af', ln + ',alimiter=limit=0.84:level=disabled', '-ar', str(SR), out_wav], check=True)
     print('audio ok', len(E['cues']), 'cues')
 
 if __name__ == '__main__':

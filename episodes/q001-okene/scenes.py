@@ -67,9 +67,9 @@ def board_ship(cv, c):
     cv.restore()
     k2 = min(1, max(0, (c.lt - 0.35) / 0.15))
     if k2 > 0:
-        cv.drawLine(520, 470, lerp(520, 800, k2), lerp(470, 1210, k2), P(h('E5392F'), 8))
+        cv.drawLine(520, 470, lerp(520, 330, k2), lerp(470, 420, k2), P(h('E5392F'), 8))
         cv.save()
-        cv.translate(800, 1330)
+        cv.translate(300, 330)
         cv.scale(1 + 0.5 * (1 - k2), 1 + 0.5 * (1 - k2))
         card(cv, 0, 0, 360, 260, 6, h('FFD866'))
         cv.rotate(6)
@@ -131,8 +131,8 @@ def board_true(cv, c):
         cv.drawRoundRect(skia.Rect.MakeLTRB(-300, -110, 300, 110), 20, 20, P(h('E5392F'), 22))
         Wd.text_card(cv, 'TRUE', 0, 62, 180, h('E5392F'), None)
         cv.restore()
-    card(cv, 300, 1500, 330, 210, -5, h('FFD866'))
-    Wd.text_card(cv, '60 HOURS', 300, 1530, 56, INK, None)
+    card(cv, 280, 300, 330, 210, -5, h('FFD866'))
+    Wd.text_card(cv, '60 HOURS', 280, 330, 56, INK, None)
 
 
 SHOTS = {f.__name__: f for f in (board_ship, blackout, air_gauge, board_true)}

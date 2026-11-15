@@ -1,5 +1,6 @@
 {
  "episode": "q001-okene",
  "parts": 14,
- "note": "Edit and push to render a test with this branch engine. Never uploads."
+ "note": "round 2: camera fill, brighter dark shots, captions clear of sticky notes, eye glow 5.0, per-mood voice level + linear loudnorm",
+ "round": 2
 }

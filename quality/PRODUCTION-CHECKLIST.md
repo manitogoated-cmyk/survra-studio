@@ -21,7 +21,7 @@ never the storyboard text.
 ## C. Preview stills (local Blender, before the cloud render)
 Run: `blender -b --factory-startup -P engine4/preview3d.py -- episodes/<id> <out> [kind@k,...] 720x1280`
 - [ ] **must** Every shot previewed at least at k=0.2 and k=0.8 and looked at. Fix staging before rendering.
-- [ ] **must** No blown-out (flat white) or crushed (flat black) frames where the story needs to be seen.
+- [ ] **must** No blown-out (flat white) or crushed (flat black) frames where the story needs to be seen. Dark scenes keep the subject lit with the camera fill (`CAMFILL` in `world3d.py`).
 - [ ] **must** Faces readable at phone size: shrink the still to 270x480 and check that the expression still reads.
 - [ ] **must** Rook on-model: hat, beak, coat, eye glow, palette.
 
