@@ -353,6 +353,46 @@
     "url": "https://youtu.be/jzJp2iU3Ra8",
     "video_id": "jzJp2iU3Ra8"
   },
+  "r013-bugorski-long": {
+    "captions": "ok",
+    "format": "long",
+    "playlist": "Rook's Case Files (Full Cases)",
+    "privacy": "private",
+    "publish_at": null,
+    "review": true,
+    "sha256": "c342397d40e1b57ba3b63d8a46fd55c48ade83e173b5abd70aea0413051d009d",
+    "thumbnail": "failed: thumbnail -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The authenticated user doesn't have permissions to upload and set custom video thumbnails.\",\n ",
+    "title": "The Man Who Put His Head in a Particle Accelerator: The Full Case of Anatoli Bugorski",
+    "uploaded_at": "2026-11-15T17:29:19Z",
+    "url": "https://youtu.be/kqmJR2GHWV8",
+    "video_id": "kqmJR2GHWV8"
+  },
+  "r014-weathers": {
+    "captions": "ok",
+    "format": "short",
+    "playlist": "Rook's Case Files (Shorts)",
+    "privacy": "private",
+    "publish_at": "2026-11-16T17:00:00Z",
+    "review": false,
+    "sha256": "1aad1e011b86c14f95a749c677959a91dfcdde2fd7f9b3bdd49e58fe8c516b39",
+    "title": "Left for Dead on Everest, He Walked Into Camp #shorts",
+    "uploaded_at": "2026-11-15T17:29:25Z",
+    "url": "https://youtu.be/EsvIPQ2bryw",
+    "video_id": "EsvIPQ2bryw"
+  },
+  "r015-hall": {
+    "captions": "ok",
+    "format": "short",
+    "playlist": "Rook's Case Files (Shorts)",
+    "privacy": "private",
+    "publish_at": "2026-11-16T20:00:00Z",
+    "review": false,
+    "sha256": "abce41a7e142396620a80dc0fbe68316916ea9a854dccc50618a4094e1d1af83",
+    "title": "Declared Dead on Everest. At Sunrise He Said Hello #shorts",
+    "uploaded_at": "2026-11-15T17:29:29Z",
+    "url": "https://youtu.be/fw9AFBVXqjE",
+    "video_id": "fw9AFBVXqjE"
+  },
   "s001-alvarenga": {
     "privacy": "private",
     "publish_at": null,
