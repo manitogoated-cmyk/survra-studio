@@ -159,13 +159,13 @@ def days_card(cv, c):
     cv.drawPath(poly([(-40, 1220), (220, 900), (360, 1010), (560, 760), (700, 930), (860, 840), (1120, 1180), (1120, 1960), (-40, 1960)]), P(Wd.mix(h('1E2A4E'), h('7E8AA6'), day)))
     cv.drawPath(poly([(560, 760), (640, 860), (590, 880), (540, 850), (490, 900), (470, 870)]), P(snow))
     cv.drawPath(poly([(-40, 1340), (300, 1250), (700, 1300), (1120, 1230), (1120, 1960), (-40, 1960)]), P(snow))
-    cv.drawPath(poly([(-40, 1560), (400, 1500), (800, 1560), (1120, 1520), (1120, 1960), (-40, 1960)]), P(Wd.mix(h('2A2C3A'), h('8A847C'), day)))
+    cv.drawPath(poly([(-40, 1660), (400, 1610), (800, 1650), (1120, 1600), (1120, 1960), (-40, 1960)]), P(Wd.mix(h('2A2C3A'), h('8A847C'), day)))
     n = 16
     for i in range(n):                                            # the track: off the ice, down onto the rocks
         if i / n > c.k * 1.15:
             break
         x = 150 + i * 52
-        y = 1300 + 16 * math.sin(i * 0.8) + (i / n) ** 2 * 300
+        y = 1455 + 14 * math.sin(i * 0.8) + (i / n) ** 2 * 250
         cv.drawCircle(x, y, 13, P(ORANGE))
     fit(cv, 'DAY AFTER DAY', 540, 420, 110, 900, 0xFFFFFFFF)
 
@@ -225,7 +225,7 @@ def both_card(cv, c):
     (sx, sy), (jx, jy) = cliff(cv, k)
     Wd.particles(cv, W, H, c.t, 40, 0x88F4F8FF, 5, size=(3, 7), drift=(-260, 200), wobble=26)
     tick(cv, jx - 190, jy - 30, 1.5, ease((c.lt - 0.3) / 0.12))
-    tick(cv, sx - 10, sy - 260, 1.5, ease((c.lt - 0.6) / 0.12))
+    tick(cv, sx - 200, sy - 40, 1.5, ease((c.lt - 0.6) / 0.12))
     if c.lt > 0.6:
         fit(cv, 'BOTH LIVED', 440, 300, 120, 760, AMBER)
 
@@ -260,7 +260,7 @@ SHOTS = {f.__name__: f for f in (days_card, pin_same, both_card, question)}
 # ------------------------------------------------------------------ overlays on 3D shots
 def blizzard(cv, c):
     """Snow driven flat across the cliff."""
-    Wd.particles(cv, W, H, c.t, 90, 0xCCF4F8FF, 7, size=(3, 8), drift=(-1100, 260), wobble=30)
+    Wd.particles(cv, W, H, c.t, 64, 0xCCF4F8FF, 7, size=(3, 8), drift=(-1100, 260), wobble=30)
     for j in range(8):
         ph = rn(j, 3)
         x = W + 450 - ((c.t * 2100 * (0.6 + ph)) + ph * 4000) % (W + 900)

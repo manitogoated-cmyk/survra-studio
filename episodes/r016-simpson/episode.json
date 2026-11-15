@@ -1,16 +1,77 @@
 {
  "id": "r016-simpson",
  "format": "short",
- "status": "draft",
+ "status": "approved",
  "synthetic": false,
  "host": "rook",
  "case": 16,
  "title": "His Partner Cut the Rope. He Crawled Back Alive #shorts",
+ "description": "Case 016. In 1985 the British climbers Joe Simpson and Simon Yates made the first ascent of the west face of Siula Grande, a 6,344-metre peak in the Peruvian Andes. On the way down Simpson fell from an ice cliff and broke his right leg. Yates began lowering him down the mountain on their two ropes tied together, in a worsening storm. In the dark he lowered him, without knowing it, over the edge of a cliff, and Simpson hung there in free space, unable to climb back up. Yates held his weight, by his own estimate for well over an hour, until the seat he had dug in the snow began to give way and he was being pulled off the mountain himself. He cut the rope. Simpson fell into a crevasse and landed on a ledge. He could not climb out past the overhanging ice, so he lowered himself deeper into the crevasse instead, found a snow slope that led back up to the glacier, and then crawled and hopped down the glacier and the moraine for days with no food and almost no water. He reached camp a few hours before Yates was due to leave. Simpson has always defended the decision and has said he would have done the same; he wrote the book Touching the Void about it. Rook didn't believe it either.\n\nSo: would you have cut the rope?\n\nAnimated reconstruction of a true story. The cliff, crevasse, glacier, mountain and camp in the film are generic low-poly sets, not models of the real places; the two climbers are simple figures and nobody's likeness is attempted; the cards on the case board are drawings made for the film. Sources differ on how long the crawl took (three days, or reaching camp four days later) and on how far he fell, so the film says 'for days' and gives no distance. The note on Rook's board, HE'D HAVE DONE THE SAME, is Rook's summary of what Simpson has said, not a quotation.",
+ "tags": [
+  "Joe Simpson",
+  "Simon Yates",
+  "Touching the Void",
+  "Siula Grande",
+  "cut the rope",
+  "crevasse",
+  "mountaineering",
+  "climbing",
+  "Peru",
+  "Andes",
+  "survival",
+  "true story",
+  "survival story",
+  "animated story",
+  "Rook",
+  "Survra"
+ ],
+ "hashtags": [
+  "#shorts",
+  "#truestory",
+  "#survival"
+ ],
  "playlist": "Rook's Case Files (Shorts)",
  "sources": [
   "https://en.wikipedia.org/wiki/Touching_the_Void_(book)",
-  "https://en.wikipedia.org/wiki/Joe_Simpson_(mountaineer)",
   "https://en.wikipedia.org/wiki/Simon_Yates_(mountaineer)",
+  "https://en.wikipedia.org/wiki/Joe_Simpson_(mountaineer)",
   "https://explorersweb.com/?p=114660"
- ]
+ ],
+ "story_score": {
+  "curiosity": 9,
+  "stakes": 9,
+  "freshness": 5,
+  "story": 9,
+  "visual": 9,
+  "audience_fit": 8,
+  "payoff": 8,
+  "packaging": 8,
+  "research": 8,
+  "repeatability": 6,
+  "total": 79
+ },
+ "title_options": [
+  "His Partner Cut the Rope. He Crawled Back Alive #shorts",
+  "The Rope Went Slack Over a Cliff. He Crawled Home #shorts",
+  "Would You Have Cut the Rope? #shorts",
+  "Left for Dead in a Crevasse, He Went Deeper to Get Out #shorts"
+ ],
+ "spine": "v2",
+ "experiments": {
+  "E1_E2": "spine v2: Rook doubts the story on the lip of the cliff, inside the scene, in one line (1.5 s of narration, 4.5 s to 6.1 s); no office, no cutaway. The story then runs forward from the hook; name, year and place appear only as on-screen labels (JOE SIMPSON, 1985 / SIULA GRANDE, PERU), not as narration. The partner's side of the story is held back and told as the reversal at 60% of the runtime.",
+  "E3": "batch Short 1 (odd): person close-up first frame - his gloved hands on the rope above his face in the head torch, swinging over the drop.",
+  "E4": "question ending: 'Would you have cut the rope?' (no 'Case closed.'; the sign-off card reads CASE 016 YOUR VERDICT?).",
+  "rook_action": "He picks up the cut end of the rope on the lip and inspects it (shots 6 and 7), then drops a lump of ice off the ledge to sound the crevasse and hears nothing (shots 12 and 13)."
+ },
+ "sound_plan": {
+  "first_frame": "No music hit on the first frame: one sharp 'hit' at 0.03 s for the rope jerking tight (the gate needs an impact in the first second; this is the story sound, not a boom), then wind from 0.25 s.",
+  "hook": "Rope creak under 'hanging off a cliff', a whoosh as the rope goes slack, a low tone as his lamp falls away.",
+  "music": "The engine's score follows the segment moods: hook, then tense for Rook's line, action from the fall, tense in the crevasse, wonder at the daylight, tense for the crawl, triumph at the camp, sad for the storm on the slope, calm, end. The engine does not let an episode delay the music's entry, so 'music enters only once the story moves forward' is approximated by the sparse hook mood rather than by silence.",
+  "voice": "Narration is ducked over the bed by the engine; the local rehearsal measured it (see quality_gate)."
+ },
+ "source_notes": "Read for this run (fetched 15 Nov 2026): Wikipedia 'Touching the Void (book)', Wikipedia 'Simon Yates (mountaineer)', Wikipedia 'Joe Simpson (mountaineer)' and ExplorersWeb, 'No Help Coming: Great Solo Self-Rescues in Mountaineering History'. Two more pages were tried and could not be read: the Sports Illustrated Vault article of 19 January 2004 (the proxy refused the long address) and a Red Bull interview with Simpson (the page returned no article text). Every narrated fact is in at least two of the pages read, and in ExplorersWeb as well as Wikipedia except where noted. Broken leg: all four (right leg; the book page and ExplorersWeb add that the tibia was driven into the knee, the Yates page says leg and heel; the film shows only a leg held stiff). Hanging off a cliff, in free space, unable to climb the rope: book page, Yates page, Simpson page, ExplorersWeb ('a hidden cliff edge'). In the dark, in a storm: book page ('storm worsening and darkness'), Yates page ('a worsening storm'; he spent 'the rest of the night' in a snow hole afterwards), ExplorersWeb ('in a storm'). The rope was cut by Yates: all four. He fell into a crevasse and landed on a ledge: book page ('a small ledge inside the crevasse'), Yates page ('onto a ledge within the crevasse'); ExplorersWeb calls it 'a fragile snow bridge'. He could not climb out because of the overhanging ice and his leg, and lowered himself deeper: book page ('his only choice was to abseil deeper into the crevasse'), ExplorersWeb ('chose to lower himself even deeper'). A snow slope led back out to daylight: book page (he 'climbed a steep snow slope back to the glacier'), ExplorersWeb ('a small exit hole at the bottom'). Crawling and hopping for days over the glacier and the moraine with no food and almost no water: book page ('three days without food and with almost no water, crawling and hopping five miles'), ExplorersWeb ('three to four days ... crawled, hopped, and slid across kilometers of unstable moraine with no food and almost no water'). Reached camp hours before his partner was due to leave: book page ('only a few hours before Yates and Richard Hawking ... intended to leave'), ExplorersWeb ('just as Yates was packing up to leave'). Yates had been lowering him down the mountain on the rope: book page, Yates page, Simpson page, ExplorersWeb. He held his weight until his seat in the snow gave way: book page (a seat dug in the snow with no anchors, which collapsed in small jerky steps; Yates's estimate 'in excess of one and a half hours'), Yates page (an unbelayed stance; he cut the rope to avoid being pulled off the mountain); ExplorersWeb gives the cut and its reason but not the seat, so the seat rests on the two Wikipedia pages. Simpson always defended him and said he would have done the same: Yates page ('has always vehemently defended Yates's actions, saying he would have done it himself had the roles been reversed'), ExplorersWeb ('later fiercely defended' it 'as the only way either of them could survive'). Name, year, mountain and country on the labels: all four. Conflicts kept out of the film: the fall is 'more than 200 feet' on the book page and about 50 feet to the crevasse plus a further drop on the Yates page, so no distance is given; the crawl is three days on the book page, 'four days later' on the Yates page and 'three to four' on ExplorersWeb, so the narration says 'for days' and the card says DAY AFTER DAY; the length of the hang is Yates's own estimate, so no time is narrated. Left out for length: the first ascent itself, the two ropes knotted together and the knot that had to be passed, Yates's night in a snow hole and his search of the crevasse the next morning, Richard Hawking at the camp (the man who comes out of the tent in the film is Yates), the six operations and Simpson's return to climbing (one page only), and the criticism Yates received. Staging choices that are not facts: the small blade (no page read names the tool; a cut rope needs one), the head torches, the single drop from the water bottle, the packed rucksacks standing for 'due to leave', the sleeping bag and mug at the camp, the old ice peg and karabiner on Rook's perch, and the time of day of each scene after the fall.",
+ "quality_gate": {
+  "method": "Reviewed in five rounds with fixes after each. Round 1 (low-res contact sheet of all 35 3D shot kinds, 36 stills): the rope ended in mid-air beside his hands in the opening; the shot of the rope going slack was unreadable (Rook's boot filled it); the fall into the crevasse and the look up at the slot were abstract streaks; the snow burst on the ledge hid him and Rook's feet hung into frame; Rook's hat flew off the top of the frame; the man in the snow seat held his hands by his ears, not on the rope; Rook was cropped at the rucksacks, in the storm close-up and at the camp; the flying seat lumps filled the lens; a boulder blocked the slide; the blade was not on the rope; three pixels of Rook in the widest shot did not justify listing it as a host shot, so he was taken out of it. Round 2 (second sheet): all of those re-staged; his head hung off the end of the ledge, the storm close-up cut the climber in half, the slide still had a rock in front of it and the blade was a white bar. Round 3 (third sheet of the nine changed shots): fixed; Rook slightly cropped in the slide. Round 4, a full-length low-resolution rehearsal (216x384, 4 samples, all 637 3D frames) composited with captions, HUD, overlays, inserts and sound, and looked at as composited stills of all 40 shots: the gate failed once on a static stretch (the water-bottle shot), so that shot was shortened and given a moving camera, Rook walking in and the arm dropping; the dotted track on the days card sat under the captions and was moved down; a tick on the two-climbers card sat on the lettering and was moved. Round 5: the changed shots re-rendered, the rehearsal re-composited, and eight frames checked at full resolution (432x768, 8 samples): the bottle was too small to read and was enlarged; the second view of the two men was mostly empty ground and was moved closer. The last rehearsal passed the automated gate locally: 40 shots, mean 1.12 s, longest 1.80 s, first shot 0.98 s with the rope hit at 0.03 s, Rook acting in 19 of 40 shots (48%), loudness -15.2 LUFS, voice 13.1 dB over the bed, closest match to any earlier episode 0.80 (shot 31 against r014-weathers; the limit is 0.93). The cloud render runs the real gate at full resolution.",
+  "checked": "Every 3D kind in the storyboard exists in world3d.SHOTS3D and HOST lists exactly the kinds in which Rook is placed (checked by script); shots follow the word timings; the doubt line is 1.48 s and is spoken on the lip of the cliff with the loose rope and the drop in the shot; no date, place or name is narrated before the reversal (they are HUD labels on shots 8 and 9); the first frame is the close-up of his hands and face; nothing graphic is shown (the leg is only held stiff; the fall ends in a burst of snow); Rook's one gag (the lump of ice, the gulp) comes before the descent and he is quiet from the crawl to the cut; no lettering, flag, emblem, brand, book cover or film still appears in the sets; no distance, number of days or length of time is stated because the sources differ; the note on the board is worded as Rook's summary, not as a quotation."
+ }
 }

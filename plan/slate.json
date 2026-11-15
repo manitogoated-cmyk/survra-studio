@@ -209,15 +209,15 @@
   {
    "case": 16,
    "day": 16,
-   "title": "He Cut the Rope. His Partner Crawled Back",
+   "title": "His Partner Cut the Rope. He Crawled Back Alive",
    "subject": "Joe Simpson",
    "year": 1985,
    "premise": "Climber with a broken leg crawls out of a crevasse and down a glacier",
    "world": "Siula Grande, crevasse",
    "est_score": 85,
    "long_form_candidate": true,
-   "status": "in progress",
-   "facts": "verify with 2+ sources at authoring; skip if they do not hold",
+   "status": "authored",
+   "facts": "verified (see episodes/r016-simpson/episode.json); four pages read (three Wikipedia articles and ExplorersWeb), two more could not be fetched; sources differ on the length of the crawl (three or four days) and of the fall, so the film says 'for days' and gives no distance",
    "claimed_at": "2026-11-15T18:21:15Z"
   },
   {
