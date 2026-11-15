@@ -234,13 +234,13 @@ def toe(cv, c):
     hit = ease((c.lt - 0.22) / 0.14)
     left(cv, 'STRIKE 1', 110, 190, 130, BOLT)
     left(cv, 'APRIL 1942', 110, 280, 64)
-    cv.drawOval(skia.Rect.MakeXYWH(210, 740, 640, 80), P(0x55000000))
-    boot(cv, 520, 580 + 300 * (1 - k), 250, hit)
+    cv.drawOval(skia.Rect.MakeXYWH(250, 760, 600, 70), P(0x55000000))
+    boot(cv, 540, 640 + 300 * (1 - k), 210, hit)
     if hit > 0:
-        bolt_icon(cv, 800, 330, 300, a=max(0.0, 1 - (c.lt - 0.22) / 0.5))
+        bolt_icon(cv, 800, 420, 280, a=max(0.0, 1 - (c.lt - 0.22) / 0.5))
         for i in range(4):
             u = (c.t * 0.9 + i * 0.25) % 1
-            cv.drawCircle(726 + 30 * math.sin(c.t * 3 + i), 600 - 240 * u, 18 + 42 * u, P(0xFFC8C8CC, a=0.5 * (1 - u)))
+            cv.drawCircle(712 + 30 * math.sin(c.t * 3 + i), 650 - 220 * u, 18 + 42 * u, P(0xFFC8C8CC, a=0.5 * (1 - u)))
     for i, (lab, val) in enumerate((('RIGHT LEG', 'BURNED'), ('BIG TOENAIL', 'GONE'), ('SHOE', 'A HOLE IN IT'))):
         if c.k > 0.3 + i * 0.17:
             y = 330 + i * 150
@@ -389,10 +389,10 @@ def board_true(cv, c):
     cv.rotate(2)
     photo(cv, 'roy', 0, 20, 690, 530, (0.5, 0.45))
     cv.restore()
-    note(cv, 1400, 250, 560, 170, -4, h('FFD866'), ['1942 - 1977'], 84)
-    note(cv, 1420, 500, 620, 170, 3, h('BFE0EC'), ['STRUCK 7 TIMES'], 76)
+    note(cv, 1400, 190, 560, 160, -4, h('FFD866'), ['1942 - 1977'], 84)
+    note(cv, 1420, 400, 620, 160, 3, h('BFE0EC'), ['STRUCK 7 TIMES'], 76)
     if c.lt > 0.3:
-        stamp(cv, 'TRUE', 1040, 640, -10, min(1, (c.lt - 0.3) / 0.12), 190)
+        stamp(cv, 'TRUE', 1400, 680, -8, min(1, (c.lt - 0.3) / 0.12), 190)
 
 
 def advice(cv, c):
@@ -440,7 +440,7 @@ def closed(cv, c):
     if c.lt > 0.55:
         k = min(1, (c.lt - 0.55) / 0.15)
         cv.save()
-        cv.translate(1400, 330)
+        cv.translate(560, 330)
         cv.scale(1.4 - 0.4 * k, 1.4 - 0.4 * k)
         Wd.text_card(cv, 'SURVRA', 0, 0, 170, AMBER, 0xFF000000)
         Wd.text_card(cv, 'CASE 011  CLOSED', 0, 96, 60, 0xFFFFFFFF, 0xFF000000)
@@ -466,5 +466,5 @@ def THUMB(cv, c):
     cv.drawRect(skia.Rect(0, 0, 1280, 720), skia.Paint(Shader=skia.GradientShader.MakeLinear(
         [(600, 0), (1280, 0)], [0x00000000, 0xE0000000])))
     Wd.text_card(cv, 'STRUCK', 975, 220, 128, 0xFFFFFFFF, 0xFF000000)
-    Wd.text_card(cv, '7 TIMES', 975, 400, 150, BOLT, 0xFF000000)
+    Wd.text_card(cv, '7 TIMES', 975, 398, 140, BOLT, 0xFF000000)
     Wd.text_card(cv, 'SURVIVED', 975, 560, 112, 0xFFFFFFFF, 0xFF000000)
