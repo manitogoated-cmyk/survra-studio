@@ -351,7 +351,8 @@ def leaf(cv, x, y, w_, h_, ang, top, big, small, col):
     cv.drawRect(skia.Rect.MakeXYWH(-w_ / 2, -h_ / 2, w_, h_ * 0.24), P(col))
     for sx in (-1, 1):
         cv.drawCircle(sx * w_ * 0.3, -h_ / 2 + 6, 13, P(h('1B1E26')))
-    fit(cv, top, 0, -h_ / 2 + h_ * 0.18, h_ * 0.15, w_ - 40, 0xFFFFFFFF, None)
+    if top:
+        fit(cv, top, 0, -h_ / 2 + h_ * 0.18, h_ * 0.15, w_ - 40, 0xFFFFFFFF, None)
     fit(cv, big, 0, h_ * 0.2, h_ * 0.42, w_ - 50, INK, None)
     if small:
         fit(cv, small, 0, h_ * 0.42, h_ * 0.1, w_ - 40, INK, None)
@@ -365,12 +366,12 @@ def dates(cv, c):
         k = ease((c.lt - 0.1) / 0.2)
         leaf(cv, 600, 430 - 60 * (1 - k), 600, 560, -4, 'JULY 1978', '13', None, RED)
         if c.lt > 0.6:
-            fit(cv, 'MOST ACCOUNTS', 600, 800, 70, 640, AMBER)
+            fit(cv, 'MOST ACCOUNTS', 600, 790, 70, 640, AMBER)
     if c.lt > 1.2:
         k = ease((c.lt - 1.2) / 0.2)
         leaf(cv, 1360, 460 - 60 * (1 - k), 480, 450, 5, 'JUNE 1978', '?', None, h('5A6670'))
         if c.lt > 1.6:
-            fit(cv, 'ONE ACCOUNT', 1360, 800, 70, 560, 0xFFFFFFFF)
+            fit(cv, 'ONE ACCOUNT', 1360, 790, 70, 560, 0xFFFFFFFF)
     if 0.5 < c.lt:
         fit(cv, 'OR', 1010, 470, 90, 200, 0xFFFFFFFF)
 
@@ -427,7 +428,10 @@ def body_shape(cx, cy, s):
 def narrow(cv, c):
     """Why he lived, as usually explained: the dose ran along one thin line through his head, not through his whole body."""
     blueprint(cv)
+    cv.save()
+    cv.clipRect(skia.Rect.MakeLTRB(0, 0, 1030, H))            # the drawn line stops short of the figure on the right
     beam_head(cv, c, 520, 420, 74, 0.1, 1.6)
+    cv.restore()
     if c.lt > 0.5:
         fit(cv, 'ONE THIN LINE', 520, 800, 84, 800, AMBER)
     if c.lt > 1.3:
@@ -580,7 +584,7 @@ OVER = dict(signoff=closed, rook_gate=snow, rook_door=snow, rook_wrong=snow, fla
 
 
 def THUMB(cv, c):
-    """1280x720: the 3D still (the drawn beam crossing the gap at his head, Rook throwing his arms up) and a hook on the right."""
+    """1280x720: the 3D still (the drawn beam crossing the gap at his head, Rook throwing his arms up) and a four-word hook on the right."""
     if 'thumb' not in _IMG:
         p = os.path.join(B3D, 'still_thumb.jpg')
         _IMG['thumb'] = skia.Image.open(p) if os.path.exists(p) else None
@@ -590,7 +594,6 @@ def THUMB(cv, c):
         cv.clear(h('0E1C34'))
     cv.drawRect(skia.Rect(0, 0, 1280, 720), skia.Paint(Shader=skia.GradientShader.MakeLinear(
         [(640, 0), (1280, 0)], [0x00000000, 0xE6000000])))
-    Wd.text_card(cv, 'BEAM', 985, 210, 150, BEAM, 0xFF000000)
-    Wd.text_card(cv, 'THROUGH', 985, 350, 104, 0xFFFFFFFF, 0xFF000000)
-    Wd.text_card(cv, 'HIS HEAD', 985, 480, 112, 0xFFFFFFFF, 0xFF000000)
-    Wd.text_card(cv, 'HE LIVED', 985, 630, 118, AMBER, 0xFF000000)
+    Wd.text_card(cv, 'BEAM', 970, 250, 170, BEAM, 0xFF000000)
+    Wd.text_card(cv, 'THROUGH', 970, 405, 104, 0xFFFFFFFF, 0xFF000000)
+    Wd.text_card(cv, 'HIS HEAD', 970, 550, 112, AMBER, 0xFF000000)

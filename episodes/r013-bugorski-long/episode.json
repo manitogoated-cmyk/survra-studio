@@ -7,8 +7,8 @@
  "synthetic": false,
  "host": "rook",
  "case": 13,
- "title": "The Man Who Put His Head in a Particle Accelerator (Full Case File)",
- "description": "Draft.",
+ "title": "The Man Who Put His Head in a Particle Accelerator: The Full Case of Anatoli Bugorski",
+ "description": "Case 013, the full case file. In 1978 Anatoli Bugorski was a physicist at the Institute for High Energy Physics in Protvino, home of the U-70 synchrotron, then the largest particle accelerator in the Soviet Union. He went to check a piece of equipment that was not working. A safety mechanism had failed (by one account, warning lights had been switched off for an earlier experiment and not switched back on) and the proton beam was still running when he leaned in. It went in at the back of his head and came out by the left side of his nose. He reportedly saw a flash 'brighter than a thousand suns' and felt no pain. He finished his work and at first told nobody. Then the left side of his face swelled up, and he was taken to a clinic in Moscow, where doctors expected him to die.\n\nHe lived. The usual explanation is that the beam was narrow, so the dose ran along one thin line through his head and not through his whole body. He lost the hearing in his left ear, the left half of his face became paralysed and he has had seizures, but he completed his doctorate and went back to work at the same institute, later coordinating experiments on the same accelerator. The story was not public for about a decade. In 1996 he applied for disability status and was turned down. Rook didn't believe it either.\n\nAbout the numbers: sources give different figures for the dose. The film quotes one set (about 2,000 gray where the beam entered and 3,000 where it left, against roughly 5 gray as a whole-body dose that can kill) and says so; other accounts give 200,000 to 300,000 roentgens, or simply 'hundreds of times a lethal dose'. Sources also differ on the date: most give 13 July 1978, one gives June.\n\nAnimated reconstruction of a true story. The road, gate, ring seen from the air, tunnel, corridor, control room, van, clinic, study and office in the film are generic low-poly sets, not models of the real places, machines or vehicles; the extra people (operators, doctors, a clerk) are stand-ins and not likenesses; and the cards, calendar leaves, gauge, form and diagrams are drawings made for it, not real documents or medical images. A proton beam inside an accelerator is not visible; the film draws it as a line of light so the story can be followed. His seizures are not depicted, only a man who has had to sit down. This is not safety guidance for any real facility.",
  "tags": [
   "Anatoli Bugorski",
   "particle accelerator",
@@ -24,11 +24,16 @@
   "survival story",
   "animated story",
   "Rook",
-  "Survra"
+  "Survra",
+  "full story",
+  "documentary",
+  "Institute for High Energy Physics",
+  "radiation dose"
  ],
  "hashtags": [
   "#truestory",
-  "#physics"
+  "#physics",
+  "#survival"
  ],
  "playlist": "Rook's Case Files (Full Cases)",
  "story_score": {
@@ -50,5 +55,12 @@
   "https://gizmodo.com/what-happens-when-you-stick-your-head-into-a-particle-a-1171981874",
   "https://en.wikipedia.org/wiki/Anatoli_Bugorski",
   "https://www.amusingplanet.com/2020/02/anatoli-bugorski-man-who-stuck-his-head.html"
+ ],
+ "title_options": [
+  "The Man Who Put His Head in a Particle Accelerator: The Full Case of Anatoli Bugorski",
+  "A Proton Beam Went Through His Head. Then He Finished His Shift's Work (Full Case)",
+  "Beam On: The Physicist Who Took a Particle Beam Through the Head and Lived",
+  "Doctors Expected Him to Die. He Went Back to the Same Accelerator",
+  "Why Didn't the Proton Beam Kill Anatoli Bugorski?"
  ]
 }

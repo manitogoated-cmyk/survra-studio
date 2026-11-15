@@ -1345,7 +1345,7 @@ def set_air(r):
         d = 12 + 44 * rnd(i, 74)
         a = rnd(i, 75) * 2 * PI
         add('cone', '2C5444', (d * math.sin(a), -d * math.cos(a), 4.0), radius1=2.6, radius2=0.0, depth=8.0, vertices=5, parent=r)
-    out['mark'] = mov(add('ico_sphere', 'D6E6FF', (0, -RA, 4.6), radius=1.6, subdivisions=1, parent=r, emit=30.0))
+    out['mark'] = mov(add('ico_sphere', 'D6E6FF', (0, -RA, 4.6), radius=3.2, subdivisions=1, parent=r, emit=30.0))
     return out
 
 
@@ -1408,8 +1408,8 @@ def set_road(r):
     for i in range(150):
         x = -110 + 250 * rnd(i, 81)
         y = (8.5 + 40 * rnd(i, 82)) * (1 if i % 2 else -1)
-        if abs(x - 30) < 5 and -9 < y < -4:
-            continue
+        if -20 < y < 0:
+            y -= 12
         pine(r, x, y, 1.0 + 0.9 * rnd(i, 83), i, snow=True)
     for j in range(9):
         x = -70 + j * 24
@@ -1473,7 +1473,7 @@ def set_wcor(r):
     w.rotation_euler = (-PI / 2, 0, 0)
     for x in (-9, 3, 13):
         box('FFF6E0', (x, 0, 6.95), (2.4, 0.6, 0.1), r, emit=4.0)
-        out['tops'].append(light((x, 0, 6.3), 520, 'F0F4FF', kind='POINT', parent=r))
+        out['tops'].append(light((x, 0, 6.3), 300, 'F0F4FF', kind='POINT', parent=r))
     box('8A6A4A', (4, -2.85, 1.02), (5.4, 1.2, 0.16), r)                                    # the bench
     box('8A6A4A', (4, -3.38, 1.9), (5.4, 0.14, 1.2), r)
     for x in (1.6, 6.4):
@@ -1502,10 +1502,10 @@ def set_office(r):
     for sy in (-1, 1):
         box('A8B0B4', (0, sy * 8, 4.7), (20, 0.3, 4.8), r)
         box('5A6670', (0, sy * 7.98, 1.2), (20, 0.34, 2.4), r)
-    box('7A5A3A', (0, 0.6, 1.15), (10, 1.5, 2.3), r)                                        # the counter
-    box('5A3E2A', (0, 0.5, 2.36), (10.4, 1.9, 0.14), r)
+    box('7A5A3A', (0, 0.6, 0.75), (10, 1.5, 1.5), r)                                        # the counter
+    box('5A3E2A', (0, 0.5, 1.56), (10.4, 1.9, 0.14), r)
     for x in (-5.0, 5.0):
-        box('5A3E2A', (x, 0.6, 4.3), (0.24, 0.24, 3.8), r)
+        box('5A3E2A', (x, 0.6, 3.85), (0.24, 0.24, 4.5), r)
     box('5A3E2A', (0, 0.6, 6.1), (10.3, 0.3, 0.3), r)
     for j in range(12):                                                                     # pigeonholes on the back wall
         for row in range(4):
@@ -1535,13 +1535,13 @@ def set_office(r):
         box('5A6670', (-6 + j * 1.9, -7.62, 1.9), (1.5, 0.14, 1.7), r)
     box('FFF6E0', (0, -1, 6.95), (4, 0.7, 0.1), r, emit=4.0)
     out['top'] = light((0, -1.5, 6.3), 900, 'FFF0DC', kind='POINT', parent=r)
-    add('cylinder', '22252C', (3.6, 0.6, 2.5), radius=0.34, depth=0.1, vertices=8, parent=r)   # a lamp on the counter
-    add('cylinder', '22252C', (3.6, 0.6, 3.0), radius=0.05, depth=1.0, vertices=6, parent=r)
-    add('cone', 'C89A3A', (3.5, 0.4, 3.6), rot=(0.3, 0, 0), radius1=0.5, radius2=0.2, depth=0.4, vertices=8, parent=r, emit=1.2)
-    out['lampl'] = light((3.4, 0.0, 3.3), 350, 'FFD9A0', kind='POINT', parent=r)
-    box('2A2E38', (-3.4, 0.7, 2.62), (1.3, 0.9, 0.4), r)                                    # a stamp pad and a stack of forms
+    add('cylinder', '22252C', (3.6, 0.6, 1.7), radius=0.34, depth=0.1, vertices=8, parent=r)   # a lamp on the counter
+    add('cylinder', '22252C', (3.6, 0.6, 2.2), radius=0.05, depth=1.0, vertices=6, parent=r)
+    add('cone', 'C89A3A', (3.5, 0.4, 2.8), rot=(0.3, 0, 0), radius1=0.5, radius2=0.2, depth=0.4, vertices=8, parent=r, emit=1.2)
+    out['lampl'] = light((3.4, 0.0, 2.5), 350, 'FFD9A0', kind='POINT', parent=r)
+    box('2A2E38', (-3.4, 0.7, 1.75), (1.3, 0.9, 0.24), r)                                    # a stamp pad and a stack of forms
     for j in range(4):
-        box('F0EEE4', (-1.6, 0.9, 2.46 + j * 0.04), (1.0, 1.3, 0.03), r, rot=(0, 0, 0.1 * (rnd(j, 93) - 0.5)))
+        box('F0EEE4', (-1.6, 0.9, 1.66 + j * 0.04), (1.0, 1.3, 0.03), r, rot=(0, 0, 0.1 * (rnd(j, 93) - 0.5)))
     return out
 
 
@@ -1575,14 +1575,15 @@ def ext_ctrl(r):
 
 def ext_xray(r):
     """A plinth beside the schematic head, so Rook can stand level with the line."""
-    box('14283E', (6.4, -6.6, -0.35), (2.6, 2.6, 3.2), r, emit=0.15)
+    pl = mov(empty((0, 0, -300), r))                                                        # parked below the set until a shot wants it
+    box('14283E', (6.4, -6.6, -0.35), (2.6, 2.6, 3.2), pl, emit=0.15)
     for sx in (-1, 1):
         for sy in (-1, 1):
-            box('49C8FF', (6.4 + sx * 1.3, -6.6 + sy * 1.3, -0.35), (0.05, 0.05, 3.2), r, emit=4.0)
+            box('49C8FF', (6.4 + sx * 1.3, -6.6 + sy * 1.3, -0.35), (0.05, 0.05, 3.2), pl, emit=4.0)
     for sx in (-1, 1):
-        box('49C8FF', (6.4 + sx * 1.3, -6.6, 1.25), (0.05, 2.6, 0.05), r, emit=4.0)
-        box('49C8FF', (6.4, -6.6 + sx * 1.3, 1.25), (2.6, 0.05, 0.05), r, emit=4.0)
-    return {}
+        box('49C8FF', (6.4 + sx * 1.3, -6.6, 1.25), (0.05, 2.6, 0.05), pl, emit=4.0)
+        box('49C8FF', (6.4, -6.6 + sx * 1.3, 1.25), (2.6, 0.05, 0.05), pl, emit=4.0)
+    return dict(plinth=pl)
 
 
 _build0, _reset0, _finish0 = build, reset, finish
@@ -1593,7 +1594,8 @@ def build():
     for name, fn in (('town', set_town), ('air', set_air), ('corr', set_corr), ('road', set_road), ('wcor', set_wcor), ('office', set_office)):
         S['colls'][name], S[name] = group(name, fn)
     S['ctrlx'] = extend(S, 'ctrl', ext_ctrl)
-    extend(S, 'xray', ext_xray)
+    mov(S['ring']['gapbeam'])                                                               # so the thumbnail can thin it and reset() puts it back
+    S['xrayx'] = extend(S, 'xray', ext_xray)
     S['doc2'] = K.Rig(DOC2, man_head('E0B898', '3A2A20', 'x'))
     add('cone', 'E4E8E2', (0, 0, -0.3), radius1=0.42, radius2=0.33, depth=0.8, vertices=8, parent=S['doc2'].body)
     S['clk'] = K.Rig(CLK, man_head('DDB090', '5A4030', 'x'))
@@ -1612,6 +1614,7 @@ def build():
 
 def reset(S):
     _reset0(S)
+    tint(S['ring']['gapbeam'].data.materials[0], 'D6E6FF', 60.0)
     for m in S['corr']['lampm']:
         tint(m, '3A1412', 0.0)
     S['corr']['tunl'].data.energy = 0
@@ -1621,7 +1624,7 @@ def reset(S):
     tint(W_['panem'], '1A2A4A', 0.6)
     W_['winl'].data.energy = 0
     for l in W_['tops']:
-        l.data.energy = 520
+        l.data.energy = 300
     O = S['office']
     O['top'].data.energy = 900
     O['lampl'].data.energy = 350
@@ -1680,7 +1683,7 @@ def ring_air(S, k, t, lt):
     """The whole ring from the air: a grassed bank in the forest. A bright dot goes round to show what it is for."""
     A = day(S, 'air', sun=3.6, fk=0.0)
     a0 = -0.5 + 0.5 * k if S['prm'].get('v') != 2 else 1.6 - 0.4 * k
-    d, hgt = (190, 105) if S['prm'].get('v') != 2 else (150, 60)
+    d, hgt = (150, 84) if S['prm'].get('v') != 2 else (130, 55)
     a = lt * 2.4
     S['air']['mark'].location = (70 * math.sin(a), -70 * math.cos(a), 4.6)
     cam(S, A(d * math.sin(a0), -d * math.cos(a0), lerp(hgt, hgt - 14, k)), A(0, -6, 0), 28)
@@ -1731,7 +1734,7 @@ def door_lamps(S, k, t, lt):
     else:
         S['rook'].apply(blend(P('reach', aR=(2.7, 0.35, 0.05), head=(-0.5, 0.5)), P('shrug', head=(0.0, 0.25 * math.sin(lt * 7))), look))
     S['face']['rook'] = 'deadpan'
-    cam(S, A(lerp(-1.6, -0.8, k), lerp(8.6, 9.8, k), lerp(1.7, 2.0, k)), A(0.9, 17.0, lerp(5.0, 5.3, k)), 26, fcol='FFF0DC')
+    cam(S, A(lerp(-1.6, -0.8, k), lerp(8.6, 9.8, k), lerp(1.7, 2.0, k)), A(0.9, 17.0, lerp(4.4, 4.7, k)), 26, fcol='FFF0DC')
 
 
 def switch_off(S, k, t, lt):
@@ -1747,8 +1750,8 @@ def switch_off(S, k, t, lt):
     op = (-7.9, -2.0, 0.0)
     S['op'].place(A(*op), -PI / 2)
     S['op'].apply(blend(P('stand', aR=(0.4, 0.1, 0.5)), P('stand', aR=(lerp(1.5, 1.2, flip), 0.0, 0.25), head=(0.0, 0.0)), (lt - 0.2) / 0.4))
-    rp = (-4.2, -4.6, 0.0)
-    S['rook'].place(A(*rp), facing(rp, (-9, -1.5, 0)))
+    rp = (-8.2, 1.5, 0.0)
+    S['rook'].place(A(*rp), facing(rp, (-7.0, -3.0, 0)))
     S['rook'].apply(P('cross', head=(0.0, 0.3 * ease((lt - 1.3) / 0.3))))
     S['face']['rook'] = 'deadpan'
     S['hat_tip'] = 0.5 * ease((lt - 1.3) / 0.3)
@@ -1759,11 +1762,11 @@ def switch_off(S, k, t, lt):
 def pipe_cu(S, k, t, lt):
     """Rook peers into the gap in the pipe. Nothing to see: the beam is invisible."""
     A = ring(S, 1.0, fk=2.6)
-    rp = (0.9, -2.0, 0.0)
-    S['rook'].place(A(*rp), PI + 0.35)
-    S['rook'].apply(P('stand', lean=0.5, aL=(0.5, 0.2, 0.6), aR=(1.2, 0.3, 1.9, 0.5), head=(-0.35, 0.5 * math.sin(lt * 2.2))))
+    rp = (-0.2, -1.7, 0.0)
+    S['rook'].place(A(*rp), PI)
+    S['rook'].apply(P('stand', lean=0.45, aL=(0.5, 0.2, 0.6), aR=(1.2, 0.3, 1.9, 0.5), head=(-0.3, 0.55 * math.sin(lt * 2.2))))
     S['face']['rook'] = 'deadpan'
-    cam(S, A(lerp(4.4, 3.6, k), lerp(-3.9, -3.3, k), lerp(2.9, 2.6, k)), A(0.2, -0.7, 2.3), 30, fcol='FFF0DC')
+    cam(S, A(lerp(-1.3, -0.5, k), lerp(2.3, 1.9, k), lerp(2.2, 2.4, k)), A(-0.1, -1.3, 2.75), 30, fcol='FFF0DC')
 
 
 def rook_draw(S, k, t, lt):
@@ -1771,12 +1774,12 @@ def rook_draw(S, k, t, lt):
     A = ring(S, 0.75, fk=2.4)
     front = lerp(-0.62, 0.62, ease((lt - 0.5) / 1.6))
     beam_to(S, A, front, 0.25)
-    rp = (-3.4, -3.6, 0.0)
+    rp = (5.0, -4.4, 0.0)
     sw = ease((lt - 0.4) / 1.5)
     S['rook'].place(A(*rp), PI + lerp(0.9, -0.9, sw))
     S['rook'].apply(P('point', aR=(1.5, 0.15, 0.05), head=(-0.05, 0.0)))
     S['face']['rook'] = 'calm'
-    cam(S, A(*arc(lerp(0.13, 0.1, k), lerp(8.2, 7.4, k), lerp(4.0, 3.4, k))), A(*arc(-0.05, 1.2, 2.3)), 22, fcol='FFF0DC')
+    cam(S, A(lerp(9.6, 9.0, k), lerp(-8.6, -8.0, k), lerp(3.4, 3.0, k)), A(1.6, -0.8, 2.5), 24, fcol='FFF0DC')
 
 
 def bug_tools(S, k, t, lt):
@@ -1837,7 +1840,7 @@ def ctrl_pass(S, k, t, lt):
     S['rook'].place(A(*rp), -PI / 2 + 0.2)
     S['rook'].apply({**walk(lt + 0.4, 1.6), 'aL': (0.3, 0.75, 1.5, -0.9), 'aR': (0.3, 0.75, 1.5, -0.9), 'head': (0.0, -0.9 * (0.5 + 0.5 * math.sin(lt * 3.5)))})
     S['face']['rook'] = 'shocked'
-    cam(S, A(lerp(-5.6, -6.6, k), lerp(-6.6, -6.0, k), lerp(3.4, 3.0, k)), A(lerp(2.0, 0.0, k), 1.6, 2.7), 24, fill=1.5, fcol='FFE8D0')
+    cam(S, A(lerp(-5.6, -6.6, k), lerp(-6.6, -6.0, k), lerp(3.4, 3.0, k)), A(lerp(2.0, 0.0, k), 1.6, 2.7), 31, fill=1.5, fcol='FFE8D0')
 
 
 def bug_coord(S, k, t, lt):
@@ -1856,7 +1859,7 @@ def bug_coord(S, k, t, lt):
     S['hat_off'] = 1.0
     S['rook'].apply(hat_hold(head=(0.0, 0.5)))
     S['face']['rook'] = 'warm'
-    cam(S, A(lerp(-1.0, 0.4, k), lerp(-4.4, -3.6, k), lerp(3.6, 3.2, k)), A(2.6, 4.6, 3.3), 26, fill=1.5, fcol='FFE8D0')
+    cam(S, A(lerp(-1.0, 0.4, k), lerp(-4.4, -3.6, k), lerp(3.6, 3.2, k)), A(2.6, 4.6, 3.3), 33, fill=1.5, fcol='FFE8D0')
 
 
 # ---------------------------------------------------------------- new shots: that night, the road, the wait
@@ -1867,7 +1870,7 @@ def swell_cu(S, k, t, lt):
     S['left']['bug'] = 'swollen'
     S['bug'].apply(P('sit', aL=(0.7, -0.1, 1.5, 1.0), aR=(0.6, 0.95, 2.3, 0.1), lean=0.12, head=(0.1, -0.25 + 0.1 * math.sin(lt * 1.5))))
     S['face']['bug'] = 'tired'
-    cam(S, A(lerp(1.0, 0.5, k), lerp(-3.4, -2.9, k), lerp(3.0, 2.85, k)), A(-0.4, 0.0, 2.75), 55, fcol='FFE0C0')
+    cam(S, A(lerp(1.0, 0.5, k), lerp(-3.4, -2.9, k), lerp(2.6, 2.5, k)), A(-0.4, 0.0, 2.42), 55, fcol='FFE0C0')
 
 
 def road(S):
@@ -1898,10 +1901,10 @@ def rook_road(S, k, t, lt):
 def wcor(S, dawn=0.0):
     A = env(S, 'wcor', fk=1.8)
     W_ = S['wcor']
-    tint(W_['panem'], '1A2A4A' if dawn < 0.5 else 'FFD9A0', lerp(0.6, 3.2, dawn))
-    W_['winl'].data.energy = 900 * dawn
+    tint(W_['panem'], '1A2A4A' if dawn < 0.5 else 'FFD9A0', lerp(0.6, 2.0, dawn))
+    W_['winl'].data.energy = 320 * dawn
     for l in W_['tops']:
-        l.data.energy = lerp(520, 260, dawn)
+        l.data.energy = lerp(300, 150, dawn)
     W_['hand'].rotation_euler = (0, S['time'] * 0.8, 0)
     return A
 
@@ -1933,7 +1936,7 @@ def rook_waits(S, k, t, lt):
     S['hat_off'] = 1.0
     S['rook'].apply(P('sit', aL=(0.75, -0.25, 1.75, 1.1), aR=(0.75, -0.25, 1.75, 1.1), head=(lerp(0.45, 0.1, ease((k - 0.6) / 0.3)), 0.0)))
     S['face']['rook'] = 'sad'
-    cam(S, A(lerp(1.0, 2.0, k), lerp(2.9, 2.5, k), lerp(2.3, 2.6, k)), A(4.5, -2.6, 2.7), 28, fill=1.4, fcol='E8F0FF')
+    cam(S, A(lerp(1.6, 2.6, k), lerp(2.2, 1.6, k), lerp(2.3, 2.6, k)), A(4.5, -2.6, 2.6), 28, fill=1.0, fcol='E8F0FF')
 
 
 def bug_sits(S, k, t, lt):
@@ -1954,7 +1957,7 @@ def bug_sits(S, k, t, lt):
     S['rook'].place(A(*rp), facing(rp, (0.5, 2.0, 0)))
     S['rook'].apply(P('stand', aR=(1.1, 0.25, 2.3, 0.5), aL=(0.3, 0.2, 0.5), head=(-0.1, 0.0)))
     S['face']['rook'] = 'calm'
-    cam(S, A(lerp(-1.4, -0.6, k), lerp(-6.4, -5.8, k), lerp(4.0, 3.6, k)), A(0.2, 1.4, 3.0), 28, fcol='FFE8C8')
+    cam(S, A(lerp(-3.4, -2.6, k), lerp(-4.8, -4.2, k), lerp(4.9, 4.5, k)), A(0.3, 1.7, 2.9), 28, fcol='FFE8C8')
 
 
 # ---------------------------------------------------------------- new shots: why he lived, and what it cost
@@ -1977,14 +1980,15 @@ def beam_thin(S, k, t, lt):
 def rook_xray(S, k, t, lt):
     """Rook on a plinth beside the schematic head, pointing along the line where it comes out."""
     S['time'] = t
-    A = xr(S, 2.4)
+    A = xr(S, 6.0)
+    S['xrayx']['plinth'].location = (0, 0, 0)
     rp = (6.4, -6.6, 1.25)
     S['rook'].place(A(*rp), facing(rp, (1.0, -7.5, 0)) + 0.5 * ease((lt - 1.2) / 0.4))
     tap = 0.5 + 0.5 * math.sin(lt * 9)
     S['rook'].apply(blend(P('point', aR=(1.5, 0.1, 0.05), head=(0.0, 0.0)), P('stand', aR=(1.1, 0.25, 2.25 + 0.2 * tap, 0.5), aL=(0.3, 0.2, 0.5), head=(-0.1, 0.3)),
                           (lt - 1.2) / 0.4))
     S['face']['rook'] = 'calm'
-    cam(S, A(lerp(12.5, 11.0, k), lerp(-15.5, -14.0, k), lerp(4.6, 4.2, k)), A(3.4, -4.0, 3.7), 30, fcol='BFE0FF')
+    cam(S, A(lerp(12.0, 10.8, k), lerp(-13.6, -12.6, k), lerp(4.2, 3.9, k)), A(4.2, -5.0, 3.6), 30, fill=1.5, fcol='DCEBFF')
 
 
 def bug_rest(S, k, t, lt):
@@ -1999,7 +2003,7 @@ def bug_rest(S, k, t, lt):
     S['hat_off'] = 1.0
     S['rook'].apply(hat_hold(head=(0.25, 0.35), lean=0.12))
     S['face']['rook'] = 'sad'
-    cam(S, A(lerp(-4.2, -3.4, k), lerp(-5.6, -5.0, k), lerp(3.6, 3.3, k)), A(0.8, 0.3, 2.6), 36, fcol='FFF0DC')
+    cam(S, A(lerp(-2.6, -2.0, k), lerp(-3.9, -3.4, k), lerp(3.2, 3.0, k)), A(0.9, 0.4, 2.5), 36, fcol='FFF0DC')
 
 
 # ---------------------------------------------------------------- new shots: the office
@@ -2007,7 +2011,7 @@ def office(S, dim=False):
     A = env(S, 'office', fk=2.2 if not dim else 1.2)
     O = S['office']
     if dim:
-        O['top'].data.energy = 160
+        O['top'].data.energy = 300
         O['winl'].data.energy = 90
         O['lampl'].data.energy = 700
     return A
@@ -2018,12 +2022,12 @@ def file_shut(S, k, t, lt):
     A = office(S, dim=True)
     shut = ease((lt - 0.35) / 0.35)
     S['office']['drawer'].location = (-7.4, lerp(1.9, 3.5, shut), 4.15)
-    rp = (-5.4, 0.4, 0.0)
+    rp = (-6.6, 0.7, 0.0)
     S['rook'].place(A(*rp), facing(rp, (-7.4, 3.0, 0)))
     pull = max(0.0, math.sin((lt - 0.9) * 7)) if lt > 0.9 else 0.0
     S['rook'].apply(blend(P('stand', head=(-0.2, 0.0)), P('stand', aR=(1.75, 0.0, 0.5 + 0.5 * pull), head=(-0.15, 0.0), lean=0.1 - 0.15 * pull), (lt - 0.7) / 0.25))
     S['face']['rook'] = 'deadpan'
-    cam(S, A(lerp(-1.6, -2.4, k), lerp(-3.4, -2.6, k), lerp(3.4, 3.7, k)), A(-6.6, 2.2, 3.5), 30, fill=1.6, fcol='FFE8D0')
+    cam(S, A(lerp(-4.2, -4.8, k), lerp(-5.4, -4.6, k), lerp(3.2, 3.5, k)), A(-7.0, 2.2, 3.3), 30, fill=1.6, fcol='FFE8D0')
 
 
 def office_claim(S, k, t, lt):
@@ -2032,8 +2036,8 @@ def office_claim(S, k, t, lt):
     bp = (-0.4, -1.3, 0.0)
     S['b96'].place(A(*bp), PI)
     push = ease((lt - 0.5) / 0.6)
-    S['b96'].apply(blend(P('stand', aR=(1.0, 0.0, 1.0)), P('stand', aR=(1.35, 0.0, 0.3), lean=0.12), push))
-    S['dossier'].location = A(0.1, lerp(-0.1, 0.75, push), 2.47)
+    S['b96'].apply(blend(P('stand', aR=(0.7, 0.0, 1.0)), P('stand', aR=(0.95, 0.0, 0.3), lean=0.2), push))
+    S['dossier'].location = A(0.1, lerp(-0.1, 0.75, push), 1.67)
     S['dossier'].rotation_euler = (0, 0, 0.1)
     S['clk'].place(A(0.6, 2.5, 0), 0.0)
     S['clk'].apply(P('stand', aL=(0.7, 0.0, 1.2), aR=(0.7, 0.0, 1.2), head=(0.3, 0.0)))
@@ -2052,26 +2056,26 @@ def clerk_no(S, k, t, lt):
     S['b96'].place(A(*bp), PI)
     S['b96'].apply(P('stand', aR=(0.6, 0.0, 0.6), head=(0.1, 0.0)))
     back = ease((lt - 0.9) / 0.6)
-    S['dossier'].location = A(0.1, lerp(0.75, -0.1, back), 2.47)
+    S['dossier'].location = A(0.1, lerp(0.75, -0.1, back), 1.67)
     S['dossier'].rotation_euler = (0, 0, 0.1)
     S['clk'].place(A(0.6, 2.5, 0), 0.0)
-    S['clk'].apply(blend(P('stand', aL=(0.7, 0.0, 1.2), aR=(0.7, 0.0, 1.2), head=(0.25, 0.4 * math.sin(lt * 6.5))), P('stand', aR=(1.35, 0.0, 0.3), aL=(0.7, 0.0, 1.2), lean=0.15,
+    S['clk'].apply(blend(P('stand', aL=(0.7, 0.0, 1.2), aR=(0.7, 0.0, 1.2), head=(0.25, 0.4 * math.sin(lt * 6.5))), P('stand', aR=(0.95, 0.0, 0.3), aL=(0.7, 0.0, 1.2), lean=0.2,
                          head=(0.2, 0.0)), back))
     S['face']['clk'] = 'tired'
-    cam(S, A(lerp(-2.6, -2.2, k), lerp(-4.4, -3.9, k), lerp(3.5, 3.3, k)), A(0.5, 2.2, 2.9), 34, fcol='FFF0DC')
+    cam(S, A(lerp(-2.8, -2.4, k), lerp(-4.6, -4.1, k), lerp(3.7, 3.5, k)), A(0.5, 2.2, 2.6), 34, fcol='FFF0DC')
 
 
 def rook_office(S, k, t, lt):
     """'I have no joke for that.' Rook alone at the counter with the returned papers, hat in hand."""
     A = office(S)
-    S['dossier'].location = A(0.1, -0.1, 2.47)
+    S['dossier'].location = A(0.1, -0.1, 1.67)
     S['dossier'].rotation_euler = (0, 0, 0.1)
     S['clk'].place(A(-3.4, 4.6, 0), PI)
     S['clk'].apply(P('stand', aL=(1.0, 0.0, 0.8), aR=(1.0, 0.0, 0.8)))
     rp = (1.0, -1.5, 0.0)
-    S['rook'].place(A(*rp), PI - 0.6 + 1.3 * ease((lt - 1.2) / 0.5))
+    S['rook'].place(A(*rp), lerp(PI - 0.6, 0.55, ease((lt - 0.7) / 0.6)))
     S['hat_off'] = 1.0
-    S['rook'].apply(hat_hold(head=(lerp(0.4, 0.1, ease((lt - 1.2) / 0.5)), 0.0)))
+    S['rook'].apply(hat_hold(head=(lerp(0.4, 0.1, ease((lt - 0.7) / 0.5)), 0.0)))
     S['face']['rook'] = 'sad'
     cam(S, A(lerp(4.4, 3.6, k), lerp(-5.4, -4.8, k), lerp(2.6, 2.8, k)), A(0.6, -0.9, 2.7), 34, fcol='FFF0DC')
 
@@ -2107,15 +2111,19 @@ SHOTS3D = {name: _orbit(f) for name, f in SHOTS3D.items()}
 
 def photo_thumb(S, k, t, lt):
     """Thumbnail picture: side on in the tunnel, the drawn beam crossing the gap at his head, Rook throwing his arms up."""
-    A = ring(S, 0.45, fk=2.6)
-    beam_to(S, A, 0.5, 0.5)
-    S['glow'].location = A(0.6, -1.6, 3.0)
+    A = ring(S, 0.3, fk=3.0)
+    beam_to(S, A, 0.5, 0.1)
+    g = S['ring']['gapbeam']
+    g.scale = (0.45, 0.45, 1.0)
+    tint(g.data.materials[0], 'D6E6FF', 14.0)
+    S['glow'].location = A(0.9, -1.4, 2.6)
     bug_in_gap(S, A, face='wide', nod=0.1)
-    rp = (-3.6, -2.4, 0.0)
-    S['rook'].place(A(*rp), 0.5)
-    S['rook'].apply(P('stand', **{**ALARM, 'head': (0.0, -0.3)}))
+    rp = (-1.7, -2.6, 0.0)
+    S['rook'].place(A(*rp), 0.45)
+    S['rook'].apply(P('stand', **{**ALARM, 'head': (0.0, -0.5)}))
     S['face']['rook'] = 'shocked'
-    cam(S, A(1.6, -8.4, 2.5), A(1.6, 0, 2.4), 30, fcol='E8F0FF')
+    S['hat_off'] = 0.0
+    cam(S, A(1.3, -8.6, 2.5), A(1.3, 0, 2.3), 30, fill=1.3, fcol='FFF0DC')
 
 
 STILLS['thumb'] = photo_thumb
