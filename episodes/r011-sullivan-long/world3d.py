@@ -2093,6 +2093,28 @@ SHOTS3D.update({f.__name__: f for f in (
     look_alone, rook_sits, look_odds, bench_empty, rook_sky, wash_wide, wash_hit, wash_after, office_wide, rook_file)})
 
 
+
+def _orbit(f):
+    """prm "orb": [degrees, dolly, rise] swings the camera round its own look-at point over the length of the shot
+    (and moves it in and up a little), so that a quiet shot is never a still picture."""
+    def g(S, k, t, lt):
+        f(S, k, t, lt)
+        o = S['prm'].get('orb')
+        if o:
+            deg, dolly, rise = (list(o) + [0, 0])[:3]
+            c, tg = S['camrig'].location, S['camtgt'].location
+            a = math.radians(deg) * (k - 0.5)
+            m = 1 - dolly * (k - 0.5)
+            dx, dy = c[0] - tg[0], c[1] - tg[1]
+            S['camrig'].location = (tg[0] + (dx * math.cos(a) - dy * math.sin(a)) * m, tg[1] + (dx * math.sin(a) + dy * math.cos(a)) * m,
+                                    c[2] + rise * (k - 0.5))
+    g.__name__ = f.__name__
+    return g
+
+
+SHOTS3D = {name: _orbit(f) for name, f in SHOTS3D.items()}
+
+
 def photo_thumb(S, k, t, lt):
     """Thumbnail picture: the bolt on his hat on the ridge trail, the tower behind, Rook ducking beside him."""
     A = mood(S, 'ridge', '1E2A44', 0.35, fk=4.5)

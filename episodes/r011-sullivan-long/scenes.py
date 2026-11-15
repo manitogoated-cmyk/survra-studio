@@ -332,6 +332,8 @@ def odds(cv, c):
     for j in range(rows_):
         for i in range(n):
             cv.drawRect(skia.Rect.MakeXYWH(x0 + i * dx, y0 + j * dy, 3.4, 4.6), pa)
+    sx = x0 + (c.t * 420) % (cols * dx)                                      # a slow scan across the field keeps it alive
+    cv.drawRect(skia.Rect.MakeXYWH(sx, y0, 70, rows_ * dy), P(0xFFBFD4FF, a=0.22))
     if c.k > 0.38:
         bx, by = x0 + 71 * dx, y0 + 33 * dy
         pulse = 1 + 0.25 * math.sin(c.t * 9)
@@ -378,7 +380,7 @@ def list7(cv, c):
     left(cv, 'DATES AND INJURIES AS REPORTED BY GUINNESS WORLD RECORDS. CARD DRAWN FOR THIS FILM.', -660, 368, 24, h('7A6A48'), None)
     cv.restore()
     if c.k > 0.66:
-        stamp(cv, '7 OF 7', 1560, 650, -10, min(1, (c.k - 0.66) / 0.1), 120, h('2E9A4A'))
+        stamp(cv, '7 OF 7', 1380, 668, -8, min(1, (c.k - 0.66) / 0.1), 66, h('2E9A4A'))
 
 
 def board_true(cv, c):
@@ -440,9 +442,9 @@ def closed(cv, c):
     if c.lt > 0.55:
         k = min(1, (c.lt - 0.55) / 0.15)
         cv.save()
-        cv.translate(560, 330)
+        cv.translate(400, 320)
         cv.scale(1.4 - 0.4 * k, 1.4 - 0.4 * k)
-        Wd.text_card(cv, 'SURVRA', 0, 0, 170, AMBER, 0xFF000000)
+        Wd.text_card(cv, 'SURVRA', 0, 0, 150, AMBER, 0xFF000000)
         Wd.text_card(cv, 'CASE 011  CLOSED', 0, 96, 60, 0xFFFFFFFF, 0xFF000000)
         cv.restore()
 
@@ -450,8 +452,8 @@ def closed(cv, c):
 OVER = dict(roy_steam=drizzle, water_can=drizzle, rook_can=drizzle, bolt_tower=rain, tower_wide=rain, roy_tower=drizzle, tower_hit=drizzle,
             roy_runs=rain, rook_gate=rain, rook_collar=rain, truck_drive=rain, bolt_truck=rain, rook_truck=drizzle, yard_wide=drizzle,
             yard_hit=rain, patrol_hit=drizzle, trail_hit=rain, roy_hop=drizzle, bolt_pond=rain, pond_wide=drizzle, pond_hit=rain,
-            roy_burns=drizzle, signoff=closed, tower_fire=rain, leg_cu=drizzle, cab_ride=rain, truck_out=rain, patrol_watch=drizzle,
-            yard_after=drizzle, pond_gone=drizzle, look_years=years, look_alone=drizzle, rook_sits=drizzle, wash_hit=rain, wash_after=drizzle)
+            roy_burns=rain, signoff=closed, tower_fire=rain, leg_cu=drizzle, cab_ride=rain, truck_out=rain, patrol_watch=drizzle,
+            yard_after=drizzle, pond_gone=rain, look_years=years, look_alone=drizzle, rook_sits=drizzle, wash_hit=rain, wash_after=rain)
 
 
 def THUMB(cv, c):
