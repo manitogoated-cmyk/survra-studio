@@ -1,0 +1,14 @@
+{
+  "id": "r015-hall", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9,
+  "segments": [
+    {"scene": "hook", "mood": "hook", "text": "Sunrise, near the top of Everest. A man sits in the snow. No hat. No gloves. He was declared dead last night."},
+    {"scene": "doubt", "mood": "calm", "text": "Dead men don't sit up. No chance. Let's go look."},
+    {"scene": "summit", "mood": "tense", "text": "{2006|Two thousand six}. Lincoln Hall, an Australian climber, reaches the summit. On the way down, altitude sickness drops him."},
+    {"scene": "dusk", "mood": "sad", "text": "His Sherpas fight for hours to save him. At dusk they are ordered down. His family is told he is dead."},
+    {"scene": "night", "mood": "tense", "text": "He spends the night alone. No oxygen. No sleeping bag."},
+    {"scene": "dawn", "mood": "wonder", "text": "At dawn, four climbers find him. He says: I imagine you are surprised to see me here."},
+    {"scene": "choice", "mood": "triumph", "text": "They give up their summit to stay with him. Sherpas climb up and bring him down."},
+    {"scene": "cost", "mood": "calm", "text": "He lost his fingertips and a toe. He called his book Dead Lucky."},
+    {"scene": "end", "mood": "end", "text": "Declared dead. Found making conversation. I was wrong. Case closed."}
+  ]
+}
