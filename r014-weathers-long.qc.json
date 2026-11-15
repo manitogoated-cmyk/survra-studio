@@ -1,0 +1,32 @@
+{
+ "pass": true,
+ "fails": [],
+ "warnings": [],
+ "notes": [
+  "84 shots, mean 2.21s, longest 6.69s",
+  "motion: mean frame change 3.71, 121 hard cuts detected",
+  "audio: -15.2 LUFS, peak -2.1 dBFS, voice 13.2 dB over bed",
+  "host: acts in 39/84 shots (46%)",
+  "originality: closest match to any earlier episode 0.85 (shot 26 vs r009-poonlim-long)"
+ ],
+ "rules": {
+  "first_shot_max": 4.0,
+  "hook_impact_by": 1.0,
+  "shot_max": 7.0,
+  "shot_mean_max": 3.8,
+  "kind_max_uses": 4,
+  "static_window": 3.5,
+  "static_motion_min": 0.8,
+  "cut_diff": 28.0,
+  "first_second_motion_min": 2.0,
+  "repeat_corr": 0.97,
+  "repeat_pairs_max": 3,
+  "lufs": -14.0,
+  "lufs_tol": 1.5,
+  "tp_max": -1.0,
+  "voice_over_bed_db": 6.0,
+  "dead_air_s": 0.8,
+  "dead_air_db": -45.0
+ },
+ "format": "long"
+}
