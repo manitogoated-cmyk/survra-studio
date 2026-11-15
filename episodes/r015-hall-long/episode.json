@@ -1,0 +1,20 @@
+{
+ "id": "r015-hall-long",
+ "format": "long",
+ "status": "draft",
+ "case_of": "r015-hall",
+ "claimed_at": "2026-11-15T21:54:06Z",
+ "synthetic": false,
+ "host": "rook",
+ "case": 15,
+ "title": "Declared Dead on Everest: The Full Case of Lincoln Hall",
+ "playlist": "Rook's Case Files (Full Cases)",
+ "sources": [
+  "https://en.wikipedia.org/wiki/Lincoln_Hall_(climber)",
+  "https://www.nbcnews.com/id/wbna13272568",
+  "https://publications.americanalpineclub.org/articles/12200743500",
+  "https://www.irishtimes.com/news/everest-climber-left-for-dead-returns-1.1009311",
+  "https://www.bangordailynews.com/2012/03/25/news/lincoln-hall-survivor-of-mount-everest-ordeal-dies-at-56/",
+  "https://www.sunjournal.com/2006/06/10/man-shares-story-everest-rescue/"
+ ]
+}
