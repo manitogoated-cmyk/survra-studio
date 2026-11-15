@@ -252,14 +252,14 @@ def tally(cv, c):
         new = i == n - 1
         k = min(1, c.lt / 0.14) if new else 1.0
         if on:
-            stamp(cv, s_, 860 if i < 2 else 930, y, -4 + 4 * i, k, 104 if i < 2 else 72)
+            stamp(cv, s_, 860 if i < 2 else 900, y, -4 + 4 * i, k, 104 if i < 2 else 58)
             fit(cv, str(i + 1), 330, y + 34, 130, 200, AMBER)
         else:
             cv.drawRoundRect(skia.Rect.MakeXYWH(420, y - 70, 880, 140), 18, 18, dashed(0x66FFFFFF, 6))
     if n == 3 and c.lt > 0.9:
         k = ease((c.lt - 0.9) / 0.3)
         for i, (s_, y) in enumerate(rows):
-            cv.drawLine(400, y + 6 * i, lerp(400, 1330, k), y - 14 + 6 * i, P(GREEN, 16))
+            cv.drawLine(450, y + 6 * i, lerp(450, 1330, k), y - 14 + 6 * i, P(GREEN, 14))
         if c.lt > 1.3:
             j = min(1, (c.lt - 1.3) / 0.14)
             fit(cv, 'WRONG', 1590, 380 + 30 * (1 - j), 96, 360, GREEN)
@@ -564,8 +564,8 @@ def clock(cv, c):
     """The hours going by while the shadow swings: a counter in the corner."""
     blow(cv, c)
     n = 1 + int(14.99 * ease(c.k))
-    Wd.text_card(cv, 'HOUR', 300, 190, 70, 0xFFFFFFFF, 0xFF000000)
-    Wd.text_card(cv, str(n), 300, 330, 190, AMBER, 0xFF000000)
+    Wd.text_card(cv, 'HOUR', 300, 120, 64, 0xFFFFFFFF, 0xFF000000)
+    Wd.text_card(cv, str(n), 300, 300, 170, AMBER, 0xFF000000)
 
 
 def closed(cv, c):

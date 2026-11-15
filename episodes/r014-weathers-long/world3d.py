@@ -1791,11 +1791,11 @@ def rook_up(S, k, t, lt):
     """Rook on the empty ledge, hat to his chest, looking up at where the leader went."""
     A = env(S, 'ridge', '465270', sun=0.7, sunc='C0CCF0', sdir=(-0.6, -0.3, 0.45), fk=3.0, skyk=0.8)
     S['ridge']['storm'].location = (0, lerp(-460, -420, k), -170)
-    S['rook'].place(A(0.4, 0.4, 0), PI + 0.25)
+    S['rook'].place(A(0.4, 0.6, 0), 0.3)
     S['hat_off'] = ease(lt / 0.5)
-    S['rook'].apply(blend(P('stand', head=(-0.3, 0.0)), hat_hold(head=(-0.34, 0.0)), lt / 0.5))
+    S['rook'].apply(blend(P('stand', head=(-0.3, 0.0)), hat_hold(head=(-0.36, 0.25)), lt / 0.5))
     S['face']['rook'] = 'sad'
-    cam(S, A(lerp(3.0, 2.4, k), lerp(5.6, 5.0, k), 5.0), A(0.4, 0.4, 2.3), 40, fcol='C8D4F0')
+    cam(S, A(lerp(2.6, 1.9, k), lerp(-5.2, -4.6, k), lerp(1.9, 2.2, k)), A(0.3, 0.6, 2.5), 40, fcol='C8D4F0')
 
 
 # ---------------------------------------------------------------- new shots: the night on the saddle
@@ -2058,9 +2058,11 @@ def face(S):
     return env(S, 'face', '6FA0E0', sun=2.6, sunc='FFF4E4', sdir=(0.55, -0.6, 0.5), fk=1.4, skyk=1.0)
 
 
-def party(S, A, d, lt, rook=False):
+def party(S, A, d, lt, low=True):
     """Three on the fixed rope coming down the fall line: a helper above, Weathers, a helper below."""
     for j, (who, dd, x) in enumerate((('c1', 2.3, 0.2), ('beck', 0.0, 0.4), ('c3', -2.5, 0.1))):
+        if who == 'c3' and not low:
+            continue
         p = fp(d + dd, x)
         S[who].place(A(*p), 0.0)
         w = walk(lt + 0.33 * j, 0.75)
@@ -2093,7 +2095,7 @@ def face_cu(S, k, t, lt):
     """Close, from below: his frozen arms held out in front of him, a hand on his pack, and Rook coming down beside him."""
     A = face(S)
     d = -12.0 - lt * 0.9
-    party(S, A, d, lt)
+    party(S, A, d, lt, low=False)
     rp_ = fp(d - 0.6, 2.6)
     S['rook'].place(A(*rp_), 0.3)
     w = walk(lt + 0.5, 0.75)
@@ -2188,8 +2190,8 @@ def ward(S, k, t, lt):
         ph = (j / 8 - t * 0.9) % 1
         o.location.z = 5.2 + (0.42 if 0.4 < ph < 0.5 else -0.2 if 0.5 <= ph < 0.58 else 0.0)
     b = S['beckh']
-    b.place(A(-1.5, 3.0, 2.1), 0.0, -PI / 2)
-    b.apply(P('stand', aL=(0.35, 0.25, 0.5, 0.3), aR=(0.35, 0.25, 0.5, 0.3), head=(0.25, -0.5 * ease(lt / 1.0))))
+    b.place(A(-1.5, 2.7, 1.95), 0.0, -PI / 2 + 0.42)
+    b.apply(P('stand', aL=(0.55, 0.25, 0.5, 0.3), aR=(0.55, 0.25, 0.5, 0.3), head=(0.35, -0.5 * ease(lt / 1.0))))
     S['face']['beckh'] = 'tired' if lt < 0.9 else 'warm'
     w = S['wife']
     w.place(A(1.0, 3.9, 0.72), -PI / 2 + 0.3)
@@ -2239,7 +2241,7 @@ def cairn_stone(S, k, t, lt):
     a, b = (3.9, -0.3, 2.2), (CAIRN[0] + 0.1, CAIRN[1] - 0.15, 4.72)
     S['stone'].location = A(*[lerp(a[i], b[i], put) for i in range(3)])
     S['stone'].rotation_euler = (0, 0, 0.8)
-    cam(S, A(lerp(7.4, 6.4, k), lerp(5.0, 4.2, k), lerp(2.0, 2.5, k)), A(1.6, 1.0, 3.0), 30, fcol='FFD8C8')
+    cam(S, A(lerp(9.0, 8.0, k), lerp(5.6, 4.8, k), lerp(2.2, 2.6, k)), A(3.0, 0.2, 2.7), 30, fcol='FFD8C8')
 
 
 def flags_cu(S, k, t, lt):
