@@ -1,0 +1,34 @@
+name: Survra channel audit (read-only)
+
+# Pulls the full analytics snapshot with publish/audit.py and hands it back as a short-lived artifact.
+# Read-only: no commits, no uploads, no channel changes. Logs print counts only (public repo).
+on:
+  push:
+    branches: [analytics-audit]
+    paths: [".github/workflows/audit.yml", "publish/audit.py"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    if: github.repository == 'manitogoated-cmyk/survra-studio'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install requests
+      - env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: python3 publish/audit.py audit.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: channel-audit
+          path: audit.json
+          retention-days: 1
