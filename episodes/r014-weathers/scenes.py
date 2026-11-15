@@ -131,7 +131,7 @@ def twice(cv, c):
     if c.k > 0.5:
         k2 = min(1, (c.k - 0.5) * c.d / 0.12)
         stamp(cv, 'LEFT FOR DEAD', 540, 900, 6, k2, 118)
-        fit(cv, 'TWICE', 540, 1180 + 40 * (1 - k2), 170, 800, AMBER)
+        fit(cv, 'TWICE', 540, 1150 + 40 * (1 - k2), 150, 800, AMBER)
 
 
 def board_no(cv, c):
@@ -197,25 +197,32 @@ def dashed(col, w_):
 def cost_card(cv, c):
     """Two drawn hands, backs towards us. The right one goes to a dotted outline, then the fingers of the left."""
     Wd.vgrad(cv, 0, 0, W, H, [(0, h('20304E')), (1, h('080C16'))])
-    flakes(cv, c.t, 40, 0x66F4F8FF, (-40, 120), (2, 5))
+    for i in range(6):                                            # slow bands of light drifting across, so the card is never still
+        x = ((c.t * 260 + i * 330) % (W + 700)) - 350
+        cv.drawPath(poly([(x, 0), (x + 200, 0), (x - 160, H), (x - 360, H)]), P(0xFF6F9CDC, a=0.1))
+    flakes(cv, c.t, 120, 0x99F4F8FF, (-160, 420), (3, 8))
+    z = 1.0 + 0.1 * c.k
+    cv.translate(540, 760)
+    cv.scale(z, z)
+    cv.translate(-540, -760)
     fit(cv, 'THE COST', 540, 300, 130, 900, 0xFFFFFFFF)
     s = 96
     k_r = ease((c.lt - 0.75) / 0.35)                              # "his right hand"
     k_l = ease((c.lt - 1.45) / 0.3)                               # "the fingers of his left"
     skin, line = h('E2B694'), h('F4F8FF')
     for side, cx in ((-1, 290), (1, 790)):                        # left hand on the left of the picture, right on the right
-        palm, fingers, thumb, wrist = hand_shape(cx, 760, s, flip=-side)
+        palm, fingers, thumb, wrist = hand_shape(cx, 700, s, flip=-side)
         gone = k_r if side == 1 else 0.0
         fg = k_r if side == 1 else k_l
         cv.drawRoundRect(wrist, 20, 20, P(skin))
-        for rect, kk in [(palm, gone), (thumb, gone if side == 1 else k_l)] + [(f, fg) for f in fingers]:
+        for rect, kk in [(palm, gone), (thumb, gone)] + [(f, fg) for f in fingers]:
             if kk < 1:
                 cv.drawRoundRect(rect, 26, 26, P(skin, a=1 - kk))
             if kk > 0:
                 cv.drawRoundRect(rect, 26, 26, dashed(line, 7))
                 cv.drawRoundRect(rect, 26, 26, P(ICE, a=0.12 * kk))
-        fit(cv, 'LEFT' if side == -1 else 'RIGHT', cx, 1240, 84, 400, AMBER if (side == 1 and k_r > 0) or (side == -1 and k_l > 0) else 0xFFFFFFFF)
-    cv.drawLine(540, 560, 540, 1260, P(0x33FFFFFF, 4))
+        fit(cv, 'LEFT' if side == -1 else 'RIGHT', cx, 1170, 84, 400, AMBER if (side == 1 and k_r > 0) or (side == -1 and k_l > 0) else 0xFFFFFFFF)
+    cv.drawLine(540, 500, 540, 1190, P(0x33FFFFFF, 4))
 
 
 def board_true(cv, c):
@@ -277,6 +284,7 @@ def haze(cv, c):
     for i in range(5):
         r = lerp(1500, 260, k) + i * 190
         pa = P(0xFFF4F6FA, 170, a=min(1.0, 0.16 + 0.5 * k))
+        pa.setMaskFilter(skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 70))
         cv.drawCircle(540 + 30 * math.sin(c.t * 3 + i), 800 + 24 * math.cos(c.t * 2.3 + i), r, pa)
     cv.drawRect(skia.Rect.MakeWH(W, H), P(0xFFF4F6FA, a=0.72 * k))
 

@@ -188,8 +188,8 @@
    "world": "Everest South Col in a storm",
    "est_score": 84,
    "long_form_candidate": true,
-   "status": "in progress",
-   "facts": "verify with 2+ sources at authoring; skip if they do not hold",
+   "status": "authored",
+   "facts": "verified (see episodes/r014-weathers/episode.json); six pages read; the hours in the snow differ between sources (15 to 18), the film uses his own figure of fifteen; no altitude or death toll is stated because the pages read disagree or only one gives a figure",
    "claimed_at": "2026-11-15T06:14:28Z"
   },
   {

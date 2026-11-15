@@ -153,8 +153,8 @@ def set_col(r):
             rot=(PI / 2, 0, 0.3 * rnd(j, 10)), radius=0.2, depth=1.3, vertices=6, parent=r, rough=0.4)
     out['camp'] = light((CAMP[0], CAMP[1] - 1, 3.5), 0, 'FFC27A', kind='POINT', parent=r)
     out['hollow'] = hw = mov(empty(FAR, r))                                                           # the empty shape he leaves in the snow
-    add('ico_sphere', '8FA2C4', (0, 1.35, 0.06), scale=(0.95, 2.1, 0.06), radius=1, subdivisions=2, parent=hw)
-    add('ico_sphere', '8FA2C4', (0, 3.0, 0.07), scale=(0.5, 0.5, 0.06), radius=1, subdivisions=2, parent=hw)
+    add('ico_sphere', '7088B4', (0, 1.35, 0.26), scale=(0.95, 2.1, 0.07), radius=1, subdivisions=2, parent=hw)
+    add('ico_sphere', '7088B4', (0, 3.0, 0.2), scale=(0.5, 0.5, 0.07), radius=1, subdivisions=2, parent=hw)
     for j in range(9):                                                                                # boot prints leading to the tents
         u = 0.07 + j * 0.035
         add('cube', '8FA2C4', (1.6 + CAMP[0] * u + (0.35 if j % 2 else -0.35), 2.5 + CAMP[1] * u, 0.06),
@@ -212,8 +212,8 @@ def set_tent(r):
     use(add('cube', 'D9772A', (0, 6.6, 2.6), scale=(9, 0.1, 5.4), size=1, parent=r), fm)
     add('cube', '8A4418', (0, 0, 4.98), scale=(0.16, 13.4, 0.16), size=1, parent=r)                     # ridge seam
     add('cylinder', 'B9C0CA', (0, 6.3, 2.5), radius=0.07, depth=5, vertices=6, parent=r, rough=0.3)
-    add('cylinder', '2F5FA8', (0.2, -0.75, 0.52), rot=(PI / 2, 0, 0), scale=(1.35, 1, 1.0), radius=0.62, depth=3.4, vertices=8, parent=r)   # sleeping bag
-    add('ico_sphere', '2F5FA8', (0.2, -2.45, 0.52), scale=(1.35, 0.8, 1.0), radius=0.62, subdivisions=1, parent=r)
+    add('cylinder', '2F5FA8', (0.2, -1.3, 0.5), rot=(PI / 2, 0, 0), scale=(1.25, 0.85, 1.0), radius=0.62, depth=2.5, vertices=8, parent=r)   # sleeping bag
+    add('ico_sphere', '2F5FA8', (0.2, -2.55, 0.5), scale=(1.25, 0.8, 0.85), radius=0.62, subdivisions=1, parent=r)
     add('cube', '3A6FC0', (0.2, 0.6, 0.3), scale=(1.5, 1.1, 0.3), size=1, parent=r)                     # the bag's hood, under his head
     add('ico_sphere', '6A2A2A', (2.9, 4.6, 0.8), scale=(1.0, 0.8, 1.2), radius=0.8, subdivisions=1, parent=r)   # a rucksack
     add('cylinder', 'FF7A1A', (-2.9, 4.8, 0.7), radius=0.24, depth=1.4, vertices=6, parent=r, rough=0.4)      # an oxygen bottle
@@ -295,7 +295,7 @@ def set_home(r):
             add('cube', 'E8E0D0', (x, 2.92, 4.6), scale=(4.0, 0.1, 0.16), size=1, parent=r)
             add('ico_sphere', '2A5236', (x, 1.9, 0.9), scale=(2.4, 1.0, 1.1), radius=1, subdivisions=1, parent=r)     # shrubs
     add('cube', 'E8E0D0', (0, 2.96, 5.75), scale=(3.4, 0.14, 0.3), size=1, parent=r)
-    add('cube', 'FFDDA8', (0, 2.99, 3.0), scale=(2.8, 0.06, 5.2), size=1, parent=r, emit=5.0)           # the lit hall behind the door
+    add('cube', 'FFDDA8', (0, 2.99, 3.0), scale=(2.8, 0.06, 5.2), size=1, parent=r, emit=1.8)           # the lit hall behind the door
     out['door'] = hinge = mov(empty((-1.4, 2.9, 0.5), r))
     add('cube', '6A3E2E', (1.4, 0, 2.55), scale=(2.8, 0.14, 5.1), size=1, parent=hinge)
     add('ico_sphere', 'FFC233', (2.5, -0.12, 2.5), radius=0.12, subdivisions=1, parent=hinge, rough=0.3)
@@ -339,11 +339,11 @@ def set_room(r):
         add('cube', '4E5E4A', (s * 1.45, 0.1, 1.45), scale=(0.5, 2.4, 1.3), size=1, parent=ch)
     add('cube', '5A3E2C', (-7.6, 3.0, 1.1), scale=(2.0, 2.6, 2.2), size=1, parent=r)                    # the telephone table
     add('cube', 'E4DCCC', (-7.5, 3.0, 2.35), scale=(1.0, 1.3, 0.3), size=1, parent=r, rough=0.5)        # the telephone
-    out['handset'] = mov(add('cube', 'E4DCCC', (-7.5, 3.0, 2.62), scale=(0.36, 1.5, 0.24), size=1, parent=r, rough=0.5))
+    out['handset'] = mov(add('cube', 'E4DCCC', (-7.5, 3.0, 2.62), scale=(0.24, 0.8, 0.2), size=1, parent=r, rough=0.5))
     add('cylinder', '8E7A4A', (-7.8, 4.9, 1.0), radius=0.14, depth=2.0, vertices=6, parent=r)           # a floor lamp behind the table
     add('cylinder', '8E7A4A', (-7.8, 4.9, 3.2), radius=0.08, depth=6.0, vertices=6, parent=r)
-    out['shadem'] = sm = own_mat('shade', 'FFD9A0', 0.6, 4.0)
-    use(add('cone', 'FFD9A0', (-7.8, 4.9, 6.3), radius1=0.95, radius2=0.5, depth=1.1, vertices=8, parent=r), sm)
+    out['shadem'] = sm = own_mat('shade', 'FFD9A0', 0.6, 1.6)
+    use(add('cone', 'FFD9A0', (-7.8, 4.9, 6.3), radius1=0.8, radius2=0.45, depth=0.9, vertices=8, parent=r), sm)
     out['lamp'] = light((-7.2, 4.4, 5.6), 0, 'FFC98A', kind='POINT', parent=r)
     out['top'] = light((0, 0, 8.2), 0, 'FFE8D0', kind='POINT', parent=r)
     add('cube', '5A3E2C', (8.3, 1.0, 3.5), scale=(1.2, 6.0, 7.0), size=1, parent=r)                     # bookshelf
@@ -425,10 +425,10 @@ def climber_head(skin, suit, hair='3A2E28'):
         mask = [add('cube', '8A90A0', (0, -0.3, -0.1), scale=(0.2, 0.14, 0.17), size=1, parent=head, rough=0.5),
                 add('cylinder', '3A3F4C', (0.1, -0.26, -0.26), rot=(0.4, 0, 0), radius=0.035, depth=0.3, vertices=5, parent=head)]
         ice = []
-        for j, (x, y, z, sc) in enumerate(((-0.12, -0.26, 0.15, 0.08), (0.11, -0.27, 0.16, 0.07), (0, -0.2, 0.3, 0.12), (-0.24, -0.16, 0.2, 0.1),
+        for j, (x, y, z, sc) in enumerate(((-0.13, -0.25, 0.2, 0.07), (0.12, -0.25, 0.21, 0.06), (0, -0.2, 0.3, 0.12), (-0.24, -0.16, 0.2, 0.1),
                                            (0.25, -0.15, 0.17, 0.09), (-0.2, -0.2, -0.12, 0.08), (0.2, -0.2, -0.14, 0.09), (0.02, -0.26, -0.2, 0.09),
                                            (-0.28, -0.1, 0.0, 0.08), (0.29, -0.1, 0.02, 0.07))):
-            ice.append(add('ico_sphere', 'EEF4FC', (x, y, z), scale=(1, 0.6, 0.8), radius=sc, subdivisions=1, parent=head, rough=0.25))
+            ice.append(add('ico_sphere', 'EEF4FC', (x, y, z), scale=(1, 0.6, 0.8), radius=sc * 0.7, subdivisions=1, parent=head, rough=0.25))
         frost = [add('cube', 'D8E2F2', (0, -0.292, -0.04), scale=(0.062, 0.05, 0.09), size=1, parent=head),
                  add('cube', 'D8E2F2', (-0.17, -0.24, -0.05), scale=(0.1, 0.03, 0.08), size=1, parent=head),
                  add('cube', 'D8E2F2', (0.17, -0.24, -0.05), scale=(0.1, 0.03, 0.08), size=1, parent=head)]
@@ -470,7 +470,7 @@ def build():
     S['rook'] = K.Rig(ROOK, K.rook_head, coat=True)
     S['beck'] = bk = K.Rig(dict(top=RED, pants=RED, hand='1E2026', boot='E3B02A'), climber_head(SKIN, RED))
     S['rhm'] = own_mat('righthand', '1E2026', 0.8)
-    use(bk.hands[1], S['rhm'])
+    use(bk.hands[0], S['rhm'])                 # his own right hand: a rig facing -Y has its right at -x (index 0, pose key aL)
     add('cube', '1E2026', (0, 0.3, 0.6), scale=(0.56, 0.3, 0.8), size=1, parent=bk.body)                             # his pack
     add('cylinder', 'FF7A1A', (0.12, 0.48, 0.7), radius=0.1, depth=0.9, vertices=6, parent=bk.body, rough=0.4)
     S['crust'] = []
@@ -487,7 +487,7 @@ def build():
     S['wife'] = wf = K.Rig(dict(top='7A4E8A', pants='7A4E8A', hand='E2B694', boot='3A2E34'), home_head('E2B694', '6A4A32', 'wife'))
     add('cone', '7A4E8A', (0, 0, -0.45), radius1=0.5, radius2=0.32, depth=1.1, vertices=8, parent=wf.body)             # her skirt
     S['beckh'] = bh = K.Rig(dict(top='4E6A8A', fore='F4F2EA', pants='3A3F4C', hand='F4F2EA', boot='2A2420'), home_head(SKIN, '6E6258', 'beck'))
-    bh.el[1].scale = (1, 1, 0.5)                                                                                    # his right arm now ends below the elbow
+    bh.el[0].scale = (1, 1, 0.5)                                                                                    # his right arm now ends below the elbow
     S['cast'] = [S['rook'], bk, S['c1'], S['c2'], S['c3'], wf, bh]
     S['fea'] = [mov(add('cone', '2F2B4D', FAR, radius1=0.07, radius2=0.0, depth=0.34, vertices=4)) for _ in range(3)]
     S['coin'] = mov(add('cylinder', 'FFC233', FAR, radius=0.11, depth=0.03, vertices=8, rough=0.25, emit=1.2))
@@ -574,7 +574,7 @@ def reset(S):
     S['home']['doorl'].data.energy = 0
     R = S['room']
     tint(R['panem'], 'CFE0FF', 3.0)
-    tint(R['shadem'], 'FFD9A0', 4.0)
+    tint(R['shadem'], 'FFD9A0', 1.6)
     R['win'].data.energy = 0
     R['lamp'].data.energy = 0
     R['top'].data.energy = 0
@@ -649,7 +649,8 @@ def hat_hold(**over):
 
 
 ALARM = dict(aL=(0.7, 1.15, 1.5, -0.7), aR=(0.7, 1.15, 1.5, -0.7), head=(-0.15, 0.0), lean=-0.12, lL=(-0.12, 0.0), lR=(-0.12, 0.0))
-LYING = P('stand', aL=(0.12, 0.4, 0.25), aR=(0.95, 0.15, 1.25, 0.4), lL=(0.05, 0.05), lR=(-0.03, 0.12), head=(-0.05, 0.12))
+LYING = P('stand', aR=(0.12, 0.4, 0.25), aL=(0.95, 0.15, 1.25, 0.4), lL=(0.05, 0.05), lR=(-0.03, 0.12), head=(-0.05, -0.12))
+LOW = P('stand', aR=(0.12, 0.4, 0.25), aL=(0.3, 0.55, 0.7, 0.3), lL=(0.05, 0.05), lR=(-0.03, 0.12), head=(-0.05, 0.0))
 KNEEL = P('stand', lL=(0.25, 1.55), lR=(1.35, 1.5), lift=-0.78, lean=0.45, aL=(0.5, 0.1, 0.6), aR=(1.0, 0.0, 0.5), head=(0.35, 0.0))
 BRACE = P('stand', lean=0.38, aL=(0.9, 0.25, 1.5, 0.6), aR=(0.9, 0.25, 1.5, 0.6), head=(0.3, 0.0), lL=(0.3, 0.2), lR=(-0.25, 0.3))
 
@@ -705,7 +706,7 @@ def ice_body(S, k, t, lt):
     A = col(S, 'grey')
     lie(S, A)
     e = ease(k)
-    cam(S, A(lerp(4.2, 2.0, e), lerp(-9.0, -2.4, e), lerp(1.0, 1.7, e)), A(0.0, 1.5, 0.55), 26, fcol='E4ECFF')
+    cam(S, A(lerp(2.3, 1.4, e), lerp(-3.8, -1.5, e), lerp(1.0, 1.9, e)), A(0.0, 1.5, 0.55), 26, fcol='E4ECFF')
 
 
 def col_wide(S, k, t, lt):
@@ -734,14 +735,14 @@ def left_walk(S, k, t, lt):
 def eyes_open(S, k, t, lt):
     v2 = S['prm'].get('v') == 2
     A = col(S, 'day' if v2 else 'grey')
-    op = k > (0.45 if v2 else 0.5)
-    lie(S, A, face='wide' if op else 'shut', pose=blend(LYING, P('stand', aL=(0.12, 0.4, 0.25), aR=(1.3, 0.1, 1.5, 0.3), head=(0.25, 0.1)),
-                                                        (k - 0.5) * 3 if v2 else 0))
+    op = k > (0.4 if v2 else 0.5)
+    arm = P('stand', aR=(0.12, 0.4, 0.25), aL=(1.25, 0.25, 1.35, 0.3), lL=(0.05, 0.05), lR=(-0.03, 0.12), head=(0.2, -0.1))
+    lie(S, A, face='calm' if op else 'shut', pose=blend(LOW, arm, (k - 0.45) * 2.5) if v2 else LOW)
     hp = headpos()
     if v2:
-        cam(S, A(lerp(-2.0, -1.5, k), lerp(0.6, 1.0, k), lerp(2.3, 1.9, k)), A(hp[0], hp[1] - 0.25, hp[2] + 0.1), 42, fcol='FFF0DC')
+        cam(S, A(lerp(1.9, 1.5, k), lerp(0.5, 0.8, k), lerp(2.2, 1.9, k)), A(hp[0] - 0.15, hp[1] - 0.45, hp[2] + 0.1), 40, fcol='FFF0DC')
     else:
-        cam(S, A(lerp(1.5, 1.1, k), lerp(0.9, 1.25, k), lerp(2.5, 2.0, k)), A(hp[0], hp[1] - 0.1, hp[2] + 0.05), 50, fcol='E4ECFF')
+        cam(S, A(lerp(0.45, 0.3, k), lerp(0.9, 1.25, k), lerp(3.1, 2.6, k)), A(hp[0], hp[1] - 0.05, hp[2]), 50, fcol='E4ECFF')
 
 
 def rook_jolt(S, k, t, lt):
@@ -749,7 +750,7 @@ def rook_jolt(S, k, t, lt):
     lie(S, A, face='wide')
     rp_ = (2.1, 1.6, 0.0)
     pop = ease(lt / 0.14)
-    S['rook'].place(A(*rp_), facing(rp_, (0, 2.4, 0)))
+    S['rook'].place(A(*rp_), facing(rp_, (-0.4, -1.2, 0)))
     S['rook'].apply(blend(P('hat', lean=0.2), P('stand', **ALARM), pop))
     S['face']['rook'] = 'shocked' if pop > 0.3 else 'deadpan'
     feather(S, A(rp_[0] + 0.3, rp_[1] - 0.3, 3.3), lt, 0.08)
@@ -759,9 +760,9 @@ def rook_jolt(S, k, t, lt):
 # ---------------------------------------------------------------- the cairn (Rook's start and sign-off)
 def base(S, dawn=False):
     if dawn:
-        A = env(S, 'base', 'D8A890', sun=2.0, sunc='FFC098', sdir=(0.8, -0.4, 0.22), fk=1.6, skyk=0.8)
+        A = env(S, 'base', 'D8A890', sun=2.0, sunc='FFC098', sdir=(0.8, -0.4, 0.22), fk=2.4, skyk=0.8)
     else:
-        A = env(S, 'base', '6E86B8', sun=1.4, sunc='DCE6FF', sdir=(-0.6, -0.5, 0.5), fk=2.0, skyk=0.8)
+        A = env(S, 'base', '6E86B8', sun=1.4, sunc='DCE6FF', sdir=(-0.6, -0.5, 0.5), fk=3.2, skyk=0.8)
     return A
 
 
@@ -773,11 +774,11 @@ def flutter(S, t):
 def rook_cairn(S, k, t, lt):
     A = base(S)
     flutter(S, t)
-    S['rook'].place(A(-0.8, -1.5, 0), 0.35)
+    S['rook'].place(A(-0.8, -1.5, 0), 0.3)
     S['rook'].apply(P('cross', head=(0.05, 0.4 * math.sin(lt * 9))))
     S['face']['rook'] = 'deadpan'
     S['hat_tip'] = 0.6
-    cam(S, A(lerp(-3.6, -3.0, k), lerp(-6.6, -5.6, k), 1.7), A(-0.3, -1.0, 2.8), 28, fcol='FFE4C8')
+    cam(S, A(lerp(1.6, 1.1, k), lerp(-7.4, -6.4, k), 1.7), A(0.2, -1.0, 2.75), 28, fcol='FFE4C8')
 
 
 def rook_go(S, k, t, lt):
@@ -803,23 +804,23 @@ def rook_wrong(S, k, t, lt):
 def signoff(S, k, t, lt):
     A = base(S, dawn=True)
     flutter(S, t)
-    rp_ = (1.2, -0.1, 0.0)
-    S['rook'].place(A(*rp_), facing(rp_, (CAIRN[0] + 0.3, CAIRN[1] + 3.0, 0)))
+    rp_ = (0.5, 0.7, 0.0)
+    S['rook'].place(A(*rp_), 0.45)
     grab = ease((lt - 0.12) / 0.25)
     away = ease((lt - 0.72) / 0.3)
-    S['rook'].apply(blend(blend(P('stand'), P('stand', aR=(1.5, 0.1, 0.5), head=(0.15, -0.3)), grab), P('hat'), away))
+    S['rook'].apply(blend(blend(P('stand'), P('stand', aR=(0.9, 1.0, 0.4), head=(0.1, 0.5)), grab), P('hat'), away))
     S['hat_tip'] = away
     S['face']['rook'] = 'warm' if away < 0.5 else 'deadpan'
     n = S['biner']
-    top = A(CAIRN[0] - 0.5, CAIRN[1] - 0.9, 3.75)
-    hand = A(1.75, 0.45, 3.1)
+    top = A(CAIRN[0] - 1.25, CAIRN[1] - 0.75, 3.45)
+    hand = A(1.2, 0.35, 2.7)
     u = ease((lt - 0.28) / 0.3)
     n.location = tuple(top[i] + (hand[i] - top[i]) * u for i in range(3))
     n.location.z += 0.45 * math.sin(PI * u)
     n.rotation_euler = (PI / 2 + lt * 5 * u, lt * 4 * u, 0.4)
     if lt > 0.72:
         n.location = FAR
-    cam(S, A(lerp(-1.4, -0.6, k), lerp(-7.6, -6.2, k), 2.3), A(1.7, 0.7, 2.9), 34, fcol='FFE0D0')
+    cam(S, A(lerp(-0.2, 0.4, k), lerp(-7.4, -6.0, k), 2.3), A(1.3, 0.9, 2.75), 32, fcol='FFE0D0')
 
 
 # ---------------------------------------------------------------- 10 May 1996, the ridge
@@ -846,7 +847,7 @@ def peak_wide(S, k, t, lt):
     climbers_up(S, A, lt, 34, gap=5.0)
     S['beck'].place(A(*rp(26 + lt * 0.9)), PI)
     S['beck'].apply(walk(lt, 1.2))
-    cam(S, A(lerp(-64, -58, k), lerp(-40, -30, k), lerp(4, 10, k)), A(0, lerp(60, 80, k), lerp(34, 58, k)), 26, fcol='FFE8D0')
+    cam(S, A(lerp(40, 34, k), lerp(-22, -14, k), lerp(26, 32, k)), A(0, lerp(50, 66, k), lerp(34, 50, k)), 26, fcol='FFE8D0')
 
 
 def beck_climb(S, k, t, lt):
@@ -855,11 +856,11 @@ def beck_climb(S, k, t, lt):
     S['beck'].place(A(*rp(d)), PI)
     S['beck'].apply(walk(lt, 1.2))
     vis(S['beck'].extra['gog'], True)
-    S['rook'].place(A(*rp(d - 3.2, -1.3)), PI)
+    S['rook'].place(A(*rp(d - 2.6, -2.0)), PI)
     S['rook'].apply(walk(lt + 0.4, 1.2))
     S['face']['rook'] = 'deadpan'
     c = rp(d + 6.5, 1.6)
-    b = rp(d - 0.6, -0.4)
+    b = rp(d - 0.6, -0.8)
     cam(S, A(c[0], c[1] - 0.6 * k, c[2] + 2.9), A(b[0], b[1], b[2] + 1.9), 30, fcol='FFE8D0')
 
 
@@ -904,8 +905,8 @@ def beck_wait(S, k, t, lt):
 # ---------------------------------------------------------------- the storm
 def descend(S, k, t, lt):
     A = ridge(S, 'turn')
-    S['ridge']['storm'].location = (0, lerp(-330, -230, k), lerp(-150, -95, k))
-    d = -13.0 - lt * 1.1
+    S['ridge']['storm'].location = (lerp(-330, -250, k), 40, lerp(-110, -60, k))
+    d = -44.0 - lt * 1.1
     g, b = rp(d - 3.0, 0.3), rp(d, -0.2)
     S['c3'].place(A(*g), 0.0)
     S['c3'].apply(walk(lt, 1.3))
@@ -922,11 +923,11 @@ def blizzard_hit(S, k, t, lt):
     A = col(S, 'dusk')
     ox, oy = 40.0, -24.0                                               # out on the saddle, away from where he will fall
     for j, who in enumerate(('c3', 'beck', 'c1')):
-        p = (ox - 0.7 + j * 0.9, oy + j * 2.1 - lt * 1.0, 0)
+        p = (ox - 1.5 + j * 0.8, oy + j * 2.1 - lt * 1.0, 0)
         S[who].place(A(*p), 0.1 * math.sin(lt * 3 + j))
         S[who].apply(wind_walk(lt + j * 0.3, 1.1))
     S['face']['beck'] = 'squint'
-    rp_ = (ox + 2.0, oy + 0.6 - lt * 0.8, 0)
+    rp_ = (ox + 2.5, oy - 0.4 - lt * 0.8, 0)
     grab = ease(lt / 0.25)
     S['rook'].place(A(*rp_), 0.25)
     S['rook'].apply(blend(walk(lt, 1.2), P('hat', lean=0.35, head=(0.3, 0.2), lL=(0.35, 0.1), lR=(-0.3, 0.3)), grab))
@@ -948,7 +949,7 @@ def lost_group(S, k, t, lt):
     S['glow'].location = A(cx, cy, 3.2)
     S['glow'].data.energy = 1500 + 500 * math.sin(lt * 9)
     S['glow'].data.color = K.hexc('CFE0FF')[:3]
-    cam(S, A(cx + lerp(-3.0, 1.0, k), cy - lerp(13, 11, k), lerp(15, 12, k)), A(cx + 1.5, cy + 2.5, 0.5), 26, fcol='9FB4F0')
+    cam(S, A(cx + lerp(-3.0, 1.0, k), cy - lerp(13, 11, k), lerp(15, 12, k)), A(cx + 0.8, cy + 1.5, 0.5), 32, fcol='9FB4F0')
 
 
 def rescuer(S, k, t, lt):
@@ -1015,7 +1016,7 @@ def doctor_kneel(S, k, t, lt):
     S['hat_off'] = 1.0
     S['rook'].apply(hat_hold(head=(0.3, 0.0)))
     S['face']['rook'] = 'sad'
-    cam(S, A(lerp(0.5, 0.1, k), lerp(-4.4, -3.7, k), lerp(2.5, 2.2, k)), A(-0.1, 2.4, 1.5), 30, fcol='FFD8C8')
+    cam(S, A(lerp(2.2, -0.6, k), lerp(-5.6, -3.4, k), lerp(3.3, 2.0, k)), A(-0.1, 2.4, lerp(1.7, 1.4, k)), 30, fcol='FFD8C8')
 
 
 def doctor_leave(S, k, t, lt):
@@ -1037,13 +1038,13 @@ def doctor_leave(S, k, t, lt):
 
 def room(S, night=True):
     R = S['room']
-    A = env(S, 'room', '000000', fk=1.2 if night else 1.6)
+    A = env(S, 'room', '000000', fk=2.6 if night else 1.8)
     if night:
         tint(R['panem'], '1A2A50', 0.6)
         R['lamp'].data.energy = 900
         R['top'].data.energy = 60
     else:
-        tint(R['panem'], 'FFE8C0', 5.0)
+        tint(R['panem'], 'FFE8C0', 2.6)
         tint(R['shadem'], 'C8B890', 0.0)
         R['win'].data.energy = 2600
         R['top'].data.energy = 500
@@ -1057,7 +1058,7 @@ def phone(S, k, t, lt):
     come = ease(lt / 0.4)
     lift = ease((lt - 0.4) / 0.25)
     drop = ease((lt - 1.05) / 0.4)
-    S['wife'].place(A(lerp(-3.6, wp[0], come), lerp(1.8, wp[1], come), 0), facing(wp, (-7.6, 3.0, 0)) + 1.9 * drop)
+    S['wife'].place(A(lerp(-3.6, wp[0], come), lerp(1.8, wp[1], come), 0), lerp(facing(wp, (-7.6, 3.0, 0)), facing(wp, (-3.0, -2.0, 0)), 0.55 * lift + 0.35 * drop))
     listen = P('stand', aR=(0.5, 0.25, 2.35, 0.2), head=(0.05, 0.0))
     S['wife'].apply(blend(blend(blend(walk(lt, 1.6), P('stand', aR=(1.0, 0.0, 0.4)), come), listen, lift),
                           P('stand', aR=(0.25, 0.15, 0.5), aL=(0.85, -0.2, 2.2, 0.9), head=(0.4, 0.0)), drop))
@@ -1066,7 +1067,7 @@ def phone(S, k, t, lt):
     if lift <= 0:
         hs.rotation_euler = (0, 0.12 * math.sin(lt * 60), 0.05 * math.sin(lt * 47))            # ringing
     else:
-        a, b, c = (-7.5, 3.0, 2.62), (-5.95, 2.72, 2.5), (-5.25, 2.55, 1.25)
+        a, b, c = (-7.5, 3.0, 2.62), (-6.0, 3.14, 2.45), (-5.25, 2.55, 1.25)
         hs.location = tuple(lerp(lerp(a[i], b[i], lift), c[i], drop) for i in range(3))
         hs.rotation_euler = (lerp(lerp(0, 1.45, lift), 0.3, drop), 0, lerp(0.2, 2.0, drop))
     cam(S, A(lerp(-2.4, -3.3, k), lerp(-2.6, -1.4, k), lerp(3.0, 2.85, k)), A(lerp(-6.3, -5.7, k), 3.1, 2.5), lerp(32, 38, k), fcol='FFE4C8')
@@ -1080,7 +1081,7 @@ def frozen_hand(S, k, t, lt):
     sh = 0.012 * math.sin(lt * 31)
     rise = ease(lt / 0.5)
     h.place(A(0.05 + sh, lerp(1.9, 1.45, rise), lerp(0.9, 1.72, rise)), (-2.29 + 0.15 * math.sin(lt * 2.0), 0.25 * (1 - rise), 0.12))
-    h.grip(0.45)
+    h.grip(0.12)
     cam(S, A(0.0, lerp(2.5, 2.6, k), lerp(0.75, 0.7, k)), A(0.0, -3.0, 5.4), 30, fcol='FFF4E4')
 
 
@@ -1089,8 +1090,8 @@ def beck_rise(S, k, t, lt):
     up = ease(k * 1.15)
     bp = (0.0, 1.2, 0.0)
     S['beck'].place(A(*bp), facing(bp, (4.2, -5.0, 0)) + 0.15 * math.sin(lt * 5) * up, lerp(-0.25, 0.0, up))
-    S['beck'].apply(blend(P('stand', lL=(0.3, 1.55), lR=(1.3, 1.5), lift=-0.8, lean=0.7, aL=(1.0, 0.3, 0.3), aR=(0.5, 0.2, 1.2), head=(0.3, 0)),
-                          P('stand', lean=0.18, aL=(0.3, 0.5, 0.4), aR=(0.5, 0.2, 1.2), lL=(0.2, 0.2), lR=(-0.15, 0.15), head=(-0.1, 0.0)), up))
+    S['beck'].apply(blend(P('stand', lL=(0.3, 1.55), lR=(1.3, 1.5), lift=-0.8, lean=0.7, aR=(1.0, 0.3, 0.3), aL=(0.5, 0.2, 1.2), head=(0.3, 0)),
+                          P('stand', lean=0.18, aR=(0.3, 0.5, 0.4), aL=(0.5, 0.2, 1.2), lL=(0.2, 0.2), lR=(-0.15, 0.15), head=(-0.1, 0.0)), up))
     x = S['beck'].extra
     vis(x['gog'], False)
     vis(x['frost'], True)
@@ -1098,12 +1099,12 @@ def beck_rise(S, k, t, lt):
     vis(S['crust'][:5], True)
     tint(S['rhm'], 'C2CEE2', 0.05)
     S['face']['beck'] = 'tired'
-    rp_ = (-2.4, 2.6, 0.0)
+    rp_ = (-2.7, 0.0, 0.0)
     S['rook'].place(A(*rp_), facing(rp_, (3.0, -4.0, 0)))
     S['rook'].apply(P('stand', **ALARM))
     S['face']['rook'] = 'shocked'
     feather(S, A(rp_[0] + 0.3, rp_[1] - 0.3, 3.3), lt, 0.15)
-    cam(S, A(lerp(4.6, 3.8, k), lerp(-5.4, -4.6, k), lerp(1.2, 1.7, k)), A(-0.6, 1.6, lerp(1.5, 2.1, k)), 28, fcol='FFF0DC')
+    cam(S, A(lerp(3.4, 2.8, k), lerp(-4.4, -3.8, k), lerp(1.2, 1.6, k)), A(-0.9, 0.9, lerp(1.5, 2.0, k)), 28, fcol='FFF0DC')
 
 
 def beck_walks(S, k, t, lt):
@@ -1113,7 +1114,7 @@ def beck_walks(S, k, t, lt):
     to = (cx - 3.0, cy - 3.0, 0)
     S['beck'].place(A(*bp), facing(bp, to) + 0.12 * math.sin(lt * 4))
     w = walk(lt, 0.9)
-    w.update(aR=(0.5, 0.2, 1.2, 0.0), aL=(0.25, 0.45, 0.4, 0.0), lean=0.2)
+    w.update(aL=(0.5, 0.2, 1.2, 0.0), aR=(0.25, 0.45, 0.4, 0.0), lean=0.2)
     S['beck'].apply(w)
     x = S['beck'].extra
     vis(x['gog'], False)
@@ -1127,18 +1128,18 @@ def beck_walks(S, k, t, lt):
     rw.update(head=(-0.1, -0.6), aR=(1.3, 0.4, 0.4))
     S['rook'].apply(rw)
     S['face']['rook'] = 'shocked'
-    for j, (who, p) in enumerate((('c1', (cx - 4.4, cy - 4.6, 0)), ('c3', (cx - 2.2, cy - 5.6, 0)))):
+    for j, (who, p) in enumerate((('c1', (cx - 6.3, cy - 4.9, 0)), ('c3', (cx - 2.6, cy - 7.3, 0)))):
         S[who].place(A(*p), facing(p, bp))
         S[who].apply(P('point', aR=(1.45, 0.1, 0.05)) if j == 0 else P('stand', **ALARM))
         vis(S[who].extra['gog'], False)
         S['face'][who] = 'wide'
-    cam(S, A(cx - lerp(0.2, 0.8, k), cy - lerp(0.6, 1.0, k), lerp(3.2, 2.9, k)), A(cx - 6.6, cy - 8.4, 1.9), 30, fcol='FFF0DC')
+    cam(S, A(cx + lerp(0.9, 0.3, k), cy + lerp(1.3, 0.8, k), lerp(3.6, 3.2, k)), A(cx - 6.4, cy - 8.2, 1.7), 30, fcol='FFF0DC')
 
 
 # ---------------------------------------------------------------- the night in the tent
 def tent(S, t, dawn=False):
     T = S['tent']
-    A = env(S, 'tent', '000000', fk=0.9 if dawn else 0.7)
+    A = env(S, 'tent', '000000', fk=0.9 if dawn else 2.2)
     for s, w in T['walls']:
         w.rotation_euler = (0, -s * 0.72 + (0.012 if dawn else 0.05) * math.sin(t * (9 if dawn else 13) + s), 0)
     if dawn:
@@ -1147,8 +1148,8 @@ def tent(S, t, dawn=False):
         T['lamp'].data.energy = 0
         T['day'].data.energy = 900
     else:
-        tint(T['fabm'], '7A4220', 0.03)
-        T['lamp'].data.energy = 140 + 30 * math.sin(t * 17)
+        tint(T['fabm'], '8A4A22', 0.08)
+        T['lamp'].data.energy = 700 + 120 * math.sin(t * 17)
     return A
 
 
@@ -1165,27 +1166,27 @@ def in_bag(S, A, face='shut', lift=0.0):
 def tent_night(S, k, t, lt):
     A = tent(S, t)
     in_bag(S, A)
-    rp_ = (-2.3, 0.2, 0.0)
-    S['rook'].place(A(rp_[0], rp_[1], 0.35), facing(rp_, (0.2, 0.6, 0)))
+    rp_ = (-1.7, 0.5, 0.0)
+    S['rook'].place(A(rp_[0], rp_[1], 0.35), facing(rp_, (2.6, -0.4, 0)))
     S['hat_off'] = 1.0
     S['rook'].apply(P('sit', aL=(0.75, -0.25, 1.75, 1.1), aR=(0.75, -0.25, 1.75, 1.1), head=(0.35, 0.0)))
     S['face']['rook'] = 'sad'
-    cam(S, A(lerp(1.9, 1.3, k), lerp(-5.9, -5.4, k), lerp(2.3, 2.6, k)), A(-0.7, 0.4, 1.35), 22, fill=0.6, fcol='FFC890')
+    cam(S, A(lerp(2.7, 2.5, k), lerp(-1.3, -0.5, k), lerp(1.5, 1.7, k)), A(-1.0, 0.55, 1.3), 20, fcol='FFC890')
 
 
 def tent_dawn(S, k, t, lt):
     A = tent(S, t, dawn=True)
     wake = ease((lt - 0.2) / 0.3)
     in_bag(S, A, 'calm' if wake > 0.4 else 'shut', 0.55 * wake)
-    rp_ = (-2.3, 0.2, 0.0)
+    rp_ = (-1.7, 0.5, 0.0)
     pop = ease((lt - 0.35) / 0.15)
-    S['rook'].place(A(rp_[0], rp_[1], 0.35), facing(rp_, (0.2, 0.6, 0)))
+    S['rook'].place(A(rp_[0], rp_[1], 0.35), facing(rp_, (2.6, -0.4, 0)))
     S['hat_off'] = 1.0 - pop
     S['rook'].apply(blend(P('sit', aL=(0.75, -0.25, 1.75, 1.1), aR=(0.75, -0.25, 1.75, 1.1), head=(0.35, 0.0)),
                           P('sit', aL=(0.7, 1.15, 1.5, -0.7), aR=(0.7, 1.15, 1.5, -0.7), head=(-0.1, 0.0), lean=0.0), pop))
     S['face']['rook'] = 'shocked' if pop > 0.3 else 'sad'
     feather(S, A(rp_[0] + 0.2, rp_[1] - 0.3, 3.0), lt, 0.4)
-    cam(S, A(lerp(-0.6, -0.2, k), lerp(-5.6, -4.9, k), lerp(3.3, 2.9, k)), A(-0.6, 0.5, 1.3), 22, fcol='FFD8A8')
+    cam(S, A(lerp(2.3, 2.5, k), lerp(-2.0, -1.5, k), lerp(2.3, 2.1, k)), A(-0.9, 0.6, 1.25), 20, fcol='FFD8A8')
 
 
 # ---------------------------------------------------------------- the helicopter
@@ -1205,9 +1206,9 @@ def heli(S, A, pos, t, yaw=0.0, pitch=0.0, roll=0.0):
 def heli_climb(S, k, t, lt):
     A = cwm(S)
     e = ease(k)
-    p = (lerp(-34, -8, e), lerp(210, 70, e), lerp(18, 26, e))
+    p = (lerp(-22, -4, e), lerp(120, 36, e), lerp(20, 13, e))
     heli(S, A, p, t, yaw=-0.15, pitch=0.1, roll=0.12 * math.sin(lt * 3))
-    cam(S, A(lerp(5, 3, k), -12, 1.6), A(p[0] * 0.6, p[1] * 0.75, p[2] - 4), lerp(34, 46, k), fcol='FFF4E4')
+    cam(S, A(lerp(5, 3, k), -12, 1.6), A(p[0] * 0.8, p[1] * 0.9, p[2] - 2.5), lerp(36, 44, k), fcol='FFF4E4')
 
 
 def heli_land(S, k, t, lt):
@@ -1246,29 +1247,29 @@ def beck_bandaged(S, k, t, lt):
     b.place(A(3.15, 3.75, 0.72), -0.35 + PI * 0 + 0.0)
     b.apply(P('sit', aL=(0.55, 0.0, 1.3, 0.5), aR=(0.55, 0.0, 1.3, 0.5), head=(0.1, 0.5 * ease(lt / 0.8)), lean=0.05))
     S['face']['beckh'] = 'warm'
-    rp_ = (-0.6, 2.4, 0.0)
+    rp_ = (0.2, 3.0, 0.0)
     S['rook'].place(A(*rp_), facing(rp_, (3.2, 3.6, 0)) + 0.9)
     S['hat_off'] = 1.0
     S['rook'].apply(hat_hold(head=(0.1, -0.7)))
     S['face']['rook'] = 'warm'
-    cam(S, A(lerp(-0.2, 0.5, k), lerp(-5.2, -4.6, k), lerp(3.1, 2.9, k)), A(1.5, 3.2, 2.35), 28, fcol='FFE8D0')
+    cam(S, A(lerp(0.6, 1.3, k), lerp(-3.6, -3.1, k), lerp(3.0, 2.85, k)), A(1.75, 3.3, 2.3), 28, fcol='FFE8D0')
 
 
 def home_door(S, k, t, lt):
     A = env(S, 'home', '5A4A7A', sun=0.7, sunc='FFA878', sdir=(-0.8, -0.5, 0.15), fk=3.0, skyk=0.8)
     op = ease(lt / 0.5)
     S['home']['door'].rotation_euler = (0, 0, 1.5 * op)
-    S['home']['doorl'].data.energy = 2600 * op
+    S['home']['doorl'].data.energy = 1100 * op
     b = S['beckh']
-    b.place(A(0.2, lerp(-5.5, -2.2, k), 0), PI)
+    b.place(A(0.6, lerp(-5.0, -2.4, k), 0), PI)
     wk = walk(lt, 1.0)
     wk.update(aL=(0.4, 0.1, 1.0), aR=(0.4, 0.1, 1.0))
     b.apply(wk)
-    out_ = ease((lt - 0.35) / 0.5)
-    S['wife'].place(A(-0.2, lerp(3.4, 1.2, out_), 0.5), 0.0)
+    out_ = ease((lt - 0.08) / 0.35)
+    S['wife'].place(A(-0.5, lerp(3.2, 0.9, out_), 0.5), 0.0)
     S['wife'].apply(blend(walk(lt, 1.6), P('stand', aL=(1.1, 0.7, 0.3), aR=(1.1, 0.7, 0.3)), out_))
     S['face']['wife'] = 'warm'
-    cam(S, A(lerp(-2.6, -2.0, k), lerp(-12.5, -10.5, k), lerp(1.7, 2.1, k)), A(0.0, 0.5, 3.0), 28, fcol='FFD8B8')
+    cam(S, A(lerp(-2.8, -2.2, k), lerp(-10.5, -9.0, k), lerp(1.8, 2.2, k)), A(0.0, 0.5, 2.9), 28, fcol='FFD8B8')
 
 
 def hollow(S, k, t, lt):
