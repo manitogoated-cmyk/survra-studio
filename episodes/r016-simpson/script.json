@@ -1,0 +1,15 @@
+{
+  "id": "r016-simpson", "spine": "v2", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9,
+  "segments": [
+    {"scene": "hook", "mood": "hook", "text": "His leg is broken. He's hanging off a cliff in the dark. Then the rope goes slack."},
+    {"scene": "doubt", "mood": "tense", "text": "Somebody cut that. No chance."},
+    {"scene": "fall", "mood": "action", "text": "He drops into a crevasse and lands on a ledge of ice."},
+    {"scene": "choice", "mood": "tense", "text": "He can't climb out. The ice overhangs, and his leg is useless. So he lowers himself deeper, into the dark."},
+    {"scene": "light", "mood": "wonder", "text": "Down there, a slope of snow leads up to daylight."},
+    {"scene": "crawl", "mood": "tense", "text": "Then he crawls and hops for days, across the glacier and the rocks below it. No food. Almost no water."},
+    {"scene": "camp", "mood": "triumph", "text": "He reaches camp hours before his partner was due to leave."},
+    {"scene": "partner", "mood": "sad", "text": "That partner, Simon Yates, had been lowering him down the mountain on a rope. In a storm he held his weight until his own seat in the snow gave way. Then he cut the rope."},
+    {"scene": "verdict", "mood": "calm", "text": "Joe Simpson always defended him. He said he would have done the same."},
+    {"scene": "end", "mood": "end", "text": "I was wrong. He lived, and so did the man who cut it. Would you have cut the rope?"}
+  ]
+}
