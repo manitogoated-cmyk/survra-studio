@@ -8,8 +8,8 @@ Runs once after an episode's build(), on every mesh however it was made, so sets
 Object transforms, parents, names and materials are untouched, so every shot function keeps working."""
 import math
 
-import bmesh
 import bpy
+import bmesh           # only importable once bpy is loaded
 
 SIDES = 40
 SHARP = math.radians(42)

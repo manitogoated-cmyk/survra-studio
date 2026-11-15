@@ -101,6 +101,7 @@ jobs:
           PART: ${{ matrix.part }}
         run: |
           nproc; free -g | head -2
+          set -o pipefail
           python3 -u engine4/kit3d.py "episodes/$EP" all "$PART" 16 2>&1 | grep --line-buffered -v -E "^Fra:|Fontconfig"
       - uses: actions/upload-artifact@v4
         with:

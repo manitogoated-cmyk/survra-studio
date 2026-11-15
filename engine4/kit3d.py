@@ -1,6 +1,6 @@
-"""Survra 3D kit (free: Blender bpy + Cycles on CPU). Faceted low-poly look.
+"""Survra 3D kit (free: Blender bpy + Cycles on CPU). Smooth, bevelled stylized look (see polish3d).
 Rig = jointed humanoid (shoulders, elbows, hips, knees, head, jaw). Episodes supply world3d.py with
-build(K) -> scene handles and SHOTS3D = {kind: f(S, k, t, lt)}; run() renders the 3D shots of a storyboard on twos."""
+build(K) -> scene handles and SHOTS3D = {kind: f(S, k, t, lt)}; run() renders the 3D shots of a storyboard, one render per video frame."""
 import importlib.util
 import json
 import math
@@ -8,8 +8,8 @@ import os
 import sys
 import time
 
-import bmesh
 import bpy
+import bmesh           # only importable once bpy is loaded
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
