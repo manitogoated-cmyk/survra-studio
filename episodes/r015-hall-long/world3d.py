@@ -1297,8 +1297,8 @@ def dome(r, x, y, col, s=1.0, yaw=0.0):
 # ---------------------------------------------------------------- 1984: a tent ledge under the summit
 def set_ledge(r):
     out = {}
-    th = 0.7
-    box('C4D0E6', (0, 45 * math.cos(th), 45 * math.sin(th) - 0.6), (220, 230, 1), r, rot=(th, 0, 0))            # the face
+    th = 0.5
+    box('C4D0E6', (0, 45 * math.cos(th), 45 * math.sin(th) - 0.6), (260, 250, 1), r, rot=(th, 0, 0))            # the face
     box(SNOWC, (0, -1.5, -3.0), (15, 7, 6), r)                                                                # the ledge
     for j in range(22):
         x = -7.5 + 15 * rn(j, 141)
@@ -1317,10 +1317,10 @@ def set_ledge(r):
     for j, (x, y) in enumerate(((4.6, 0.6), (5.0, 0.9), (5.4, 0.5))):                                         # ski poles and an axe stuck in the snow
         add('cylinder', 'C8CCD8' if j < 2 else 'FF7A1A', (x, y, 0.9), rot=(0.1 * j - 0.1, 0.08, 0), radius=0.03, depth=1.9, vertices=5, parent=r)
     box('2A2F3A', (3.6, 0.9, 0.4), (0.7, 0.5, 0.9), r, rot=(0.2, 0, 0.3))
-    add('cone', 'D2DBEC', (6, 150, 136), rot=(0, 0, 0.4), radius1=74, radius2=0, depth=92, vertices=5, parent=r)          # the summit above
-    add('cone', ROCKC, (20, 146, 124), rot=(0, 0, 1.0), radius1=70, radius2=0, depth=80, vertices=5, parent=r)
-    add('cone', SNOWL, (6, 150, 170), rot=(0, 0, 0.4), radius1=19, radius2=0, depth=24, vertices=5, parent=r)
-    out['plume'] = [keep(add('ico_sphere', 'F4F8FF', (6, 150, 184), scale=(1, 0.6, 0.5), radius=5, subdivisions=1, parent=r, alpha=0.7, emit=0.3))
+    add('cone', 'D2DBEC', (6, 138, 86), rot=(0, 0, 0.4), radius1=62, radius2=0, depth=72, vertices=5, parent=r)           # the summit above
+    add('cone', ROCKC, (20, 134, 78), rot=(0, 0, 1.0), radius1=58, radius2=0, depth=62, vertices=5, parent=r)
+    add('cone', SNOWL, (6, 138, 111.5), rot=(0, 0, 0.4), radius1=18, radius2=0, depth=21, vertices=5, parent=r)
+    out['plume'] = [keep(add('ico_sphere', 'F4F8FF', (6, 138, 124), scale=(1, 0.6, 0.5), radius=5, subdivisions=1, parent=r, alpha=0.7, emit=0.3))
                     for _ in range(5)]
     cloud_sea(r, -80, 60, 520, 151, 0)
     far_peaks(r, 9, -80, 161, 260, 460)
@@ -1541,13 +1541,13 @@ def top_two(S, k, t, lt):
         S[who].place(A(x, 0.3, 0), 0.25 * x)
         S[who].apply(blend(P('stand'), P('up', lift=0.06 * abs(math.sin(lt * 6 + ph * 5))), sm((lt - ph) / 0.4)))
     a = lerp(0.75, 0.35, k)
-    shoot(S, A(-0.4 + 10.5 * math.sin(a), 0.4 - 10.5 * math.cos(a), lerp(0.5, 1.1, k)), A(-0.3, 0.6, 2.8), 30, fcol='FFD0A0')
+    shoot(S, A(-0.4 + 6.6 * math.sin(a), 0.4 - 6.6 * math.cos(a), lerp(0.8, 1.2, k)), A(-0.2, 0.6, 2.5), 30, fcol='FFD0A0')
 
 
 def ledge_plume(S, t):
     for j, p in enumerate(S['ledge']['plume']):
         u = (t * 0.2 + j / 5) % 1
-        p.location = (14 + u * 90, 150, 184 + 8 * u + 3 * math.sin(t * 2 + j))
+        p.location = (14 + u * 90, 138, 124 + 8 * u + 3 * math.sin(t * 2 + j))
         s = 0.6 + 2.0 * u
         p.scale = (s * 1.6, s * 0.6, s * 0.55)
 
@@ -1566,7 +1566,7 @@ def ledge_look(S, k, t, lt):
     turn = sm((lt - 1.5) / 0.5)
     S['rook'].apply(P('cross', head=(lerp(-0.5, 0.05, turn), lerp(0.0, 1.0, turn))))
     S['face']['rook'] = 'calm' if turn < 0.5 else 'sad'
-    shoot(S, A(lerp(4.6, 3.8, k), lerp(-8.6, -7.4, k), lerp(1.3, 1.7, k)), A(1.2, 14, lerp(11.5, 13.5, k)), 24, fill=1.3)
+    shoot(S, A(lerp(4.8, 4.0, k), lerp(-8.8, -7.8, k), lerp(1.5, 1.8, k)), A(1.5, 14, lerp(7.6, 8.8, k)), 24, fill=1.3)
 
 
 # ---------------------------------------------------------------- 2006: back again
@@ -1614,8 +1614,8 @@ def halluc(S, k, t, lt):
     sp = (0.0, -0.5)
     S['s1'].place(A(sp[0], sp[1], 0), look_yaw(sp, (0.7, 1.0)))
     S['s1'].apply(P('stand', lean=0.15, aR=(1.2, 0.1, 0.4), aL=(1.0, 0.2, 0.6), head=(0.0, 0.0)))
-    rp = (-0.7, 2.8, 0.0)
-    S['rook'].place(A(*rp), look_yaw(rp, (6.0, -1.0)))
+    rp = (-0.5, 3.9, 0.0)
+    S['rook'].place(A(*rp), look_yaw(rp, (6.0, 1.0)))
     look = sm((lt - 0.5) / 0.4) * (1 - sm((lt - 1.5) / 0.3))
     S['rook'].apply(blend(P('stand', head=(0.0, 0.5)), P('hat', lean=0.3, head=(0.1, -0.7)), look))
     S['face']['rook'] = 'deadpan'
@@ -1634,13 +1634,13 @@ def hall_refuse(S, k, t, lt):
     sp = (0.5, -1.0)
     S['s1'].place(A(sp[0], sp[1] - 0.15 * pull, 0), look_yaw(sp, (0.2, 0.9)))
     S['s1'].apply(P('stand', lean=-0.1 - 0.2 * pull, aL=(1.1, 0.1, 0.4 + 0.4 * pull), aR=(1.1, 0.1, 0.4 + 0.4 * pull), lL=(0.3, 0.3), lR=(-0.25, 0.2)))
-    S['s2'].place(A(-0.7, 2.3, 0), look_yaw((-0.7, 2.3), (0.2, 0.9)))
+    S['s2'].place(A(-1.0, 2.3, 0), look_yaw((-1.0, 2.3), (0.2, 0.9)))
     S['s2'].apply(P('stand', lean=0.3, aL=(1.0, 0.2, 0.3), aR=(1.0, 0.2, 0.3), head=(0.25, 0.0)))
-    rp = (-1.25, -1.7, 0.0)
-    S['rook'].place(A(*rp), look_yaw(rp, (0.2, 0.9)))
+    rp = (-0.9, 4.2, 0.0)
+    S['rook'].place(A(*rp), look_yaw(rp, (3.0, 0.9)))
     S['rook'].apply(P('hips', head=(0.1, 0.2 * math.sin(lt * 1.6))))
     S['face']['rook'] = 'deadpan'
-    shoot(S, A(lerp(6.4, 5.6, k), lerp(-2.4, -1.2, k), lerp(1.2, 1.5, k)), A(0.0, 0.5, 1.5), 34, fcol='FFDDB0')
+    shoot(S, A(lerp(7.4, 6.6, k), lerp(0.2, 1.2, k), lerp(1.2, 1.5, k)), A(0.0, 1.3, 1.6), 34, fcol='FFDDB0')
 
 
 def drag_wide(S, k, t, lt):
@@ -1687,15 +1687,15 @@ def leader_order(S, k, t, lt):
     A, R = boss_tent(S, fl)
     R['needle'].rotation_euler = (0, 0.5 * math.sin(t * 13) + 0.3 * math.sin(t * 31), 0)
     b = S['boss']
-    b.place(A(0.5, 0.0, 0), PI + 0.5)
+    b.place(A(0.6, 0.0, 0), PI + 0.35)
     down = sm((lt - 1.2) / 0.5)
     b.apply(P('stand', lean=0.25 + 0.15 * down, aR=(lerp(1.15, 0.3, down), 0.25, lerp(2.0, 0.4, down), 0.5), aL=(1.0, 0.25, 0.25), head=(0.3 + 0.3 * down, 0.0)))
     S['face']['boss'] = 'sad'
     S['jaw']['boss'] = 0.25 * abs(math.sin(lt * 10)) * (1 - down)
     w = S['walkie']
-    w.location = A(lerp(0.52, 1.0, down), lerp(0.42, 0.55, down), lerp(2.62, 1.5, down))
+    w.location = A(lerp(0.28, 0.2, down), lerp(0.34, 0.5, down), lerp(2.5, 1.45, down))
     w.rotation_euler = (0.3, 0, 0.5)
-    shoot(S, A(lerp(-2.7, -2.2, k), lerp(-2.4, -1.8, k), lerp(2.6, 2.4, k)), A(0.2, 0.9, 2.3), 30, fill=0.5, fcol='FFC890')
+    shoot(S, A(lerp(-2.3, -1.9, k), lerp(2.75, 2.6, k), lerp(3.5, 3.3, k)), A(0.5, 0.1, 2.15), 28, fill=1.0, fcol='FFC890')
 
 
 def leader_hears(S, k, t, lt):
@@ -1711,9 +1711,9 @@ def leader_hears(S, k, t, lt):
     S['jaw']['boss'] = 0.3 * abs(math.sin(lt * 10)) * up
     S['crate'].location = A(0.3, -0.3, 0.37)
     w = S['walkie']
-    w.location = A(0.5, lerp(0.7, 0.55, up), lerp(2.2, 2.62, up))
+    w.location = A(-0.06, lerp(0.5, 0.3, up), lerp(2.1, 2.5, up))
     w.rotation_euler = (0.3, 0, -0.3)
-    shoot(S, A(lerp(1.9, 1.5, k), 2.85, lerp(2.5, 2.7, k)), A(0.2, 0.0, lerp(2.1, 2.5, up)), 22, fill=1.2, fcol='FFE0C0')
+    shoot(S, A(lerp(1.9, 1.6, k), 2.8, lerp(3.0, 3.1, k)), A(0.3, 0.1, lerp(2.0, 2.4, up)), 24, fill=1.6, fcol='FFE0C0')
 
 
 def phone_room(S, k, t, lt):
@@ -1737,7 +1737,7 @@ def phone_room(S, k, t, lt):
         b.apply(P('sit', lift=-0.42, lean=0.1 + 0.12 * down, head=(0.05, -0.75 - 0.12 * i), aL=(0.6, 0.1, 0.9, 0.5), aR=(0.6, 0.1, 0.9, 0.5), lL=(1.45, 1.5),
                   lR=(1.45, 1.5)))
         S['face'][who] = 'wide'
-    shoot(S, A(lerp(0.8, 0.5, k), lerp(-8.6, -7.2, k), lerp(2.5, 2.3, k)), A(0.6, 1.4, 1.9), 30, fill=0.7, fcol='FFD8B0')
+    shoot(S, A(lerp(0.8, 0.5, k), lerp(-7.4, -6.2, k), lerp(2.5, 2.3, k)), A(0.6, 1.4, 1.9), 36, fill=0.7, fcol='FFD8B0')
 
 
 # ---------------------------------------------------------------- the night
@@ -1751,9 +1751,9 @@ def night_wide(S, k, t, lt):
     S['rook'].apply(P('sit', lift=-0.62, head=(0.3, 0.0), lL=(1.3, 1.2), lR=(1.3, 1.2)))
     S['face']['rook'] = 'sad'
     S['lamps'][0].location = A(0.5, 0.0, 4.0)
-    S['lamps'][0].data.energy = 500
+    S['lamps'][0].data.energy = 2600
     S['lamps'][0].data.color = K.hexc('9DB8FF')[:3]
-    shoot(S, A(lerp(52, 44, k), lerp(-46, -40, k), lerp(5.0, 7.5, k)), A(0, 14, 7.0), 42, fill=0.0)
+    shoot(S, A(lerp(25, 21, k), lerp(-19, -16, k), lerp(4.0, 5.0, k)), A(0, 5, 3.6), 40, fill=0.0)
 
 
 def rook_watch(S, k, t, lt):
@@ -1764,16 +1764,14 @@ def rook_watch(S, k, t, lt):
     rp = (-0.9, -1.3, 0.0)
     S['rook'].place(A(*rp), look_yaw(rp, (2.2, -4.2)))
     up = sm((lt - 1.3) / 0.6)
-    S['rook'].apply(P('sit', lift=-0.62, lean=0.2, head=(lerp(0.3, -0.35, up), lerp(-0.9, 0.2, up)), lL=(1.3, 1.2), lR=(1.3, 1.2), aL=(0.7, 0.0, 1.3, 0.8),
+    S['rook'].apply(P('sit', lift=-0.62, lean=0.2, head=(lerp(0.3, -0.3, up), lerp(-0.55, 0.15, up)), lL=(1.3, 1.2), lR=(1.3, 1.2), aL=(0.7, 0.0, 1.3, 0.8),
                       aR=(0.7, 0.0, 1.3, 0.8)))
     S['face']['rook'] = 'sad'
     S['hat_tip'] = 0.3
-    for i, p in enumerate(S['puff']):
-        u = (lt * 0.7 + i * 0.33) % 1
-        p.location = A(-0.75 + 0.3 * u, -1.75 - 0.3 * u, 2.05 + 0.5 * u)
-        s = 0.3 + 0.6 * u
-        p.scale = (s, s, s)
-    shoot(S, A(lerp(1.9, 1.5, k), lerp(-4.6, -4.0, k), lerp(1.5, 1.7, k)), A(-0.6, -0.9, 1.75), 42, fill=2.0, fcol='9DB8FF')
+    S['lamps'][0].location = A(1.2, -3.2, 2.6)
+    S['lamps'][0].data.energy = 220
+    S['lamps'][0].data.color = K.hexc('9DB8FF')[:3]
+    shoot(S, A(lerp(1.9, 1.5, k), lerp(-4.6, -4.0, k), lerp(1.5, 1.7, k)), A(-0.6, -0.9, 1.75), 42, fill=3.0, fcol='9DB8FF')
 
 
 def first_light(S, k, t, lt):
@@ -1781,7 +1779,7 @@ def first_light(S, k, t, lt):
     A = crest(S, 'sunrise', lerp(0.0, 0.55, g), sun_at=(700, 150))
     seen(S['crest']['stars'], g < 0.55)
     seated(S, A, nod=lerp(0.6, 0.08, sm((lt - 0.9) / 0.9)), lean=lerp(0.45, 0.12, sm((lt - 0.9) / 0.9)), face='shut' if lt < 1.3 else 'tired')
-    rp = (-0.9, -1.6, 0.0)
+    rp = (-0.4, -3.0, 0.0)
     S['rook'].place(A(*rp), look_yaw(rp, (0.5, 0.0)))
     wake = sm((lt - 1.4) / 0.2)
     S['rook'].apply(blend(P('sit', lift=-0.62, head=(0.55, 0.0), lL=(1.3, 1.2), lR=(1.3, 1.2)),
@@ -1798,7 +1796,7 @@ def summit_way(S, k, t, lt):
     team(S, A, y0, lt)
     for i, who in enumerate(('m1', 'm2', 'm3', 'm4')):
         lamp(S, i, S[who], 22)
-    shoot(S, A(lerp(1.9, 1.5, k), y0 - 9.5, lerp(3.0, 3.4, k)), A(-0.1, 40, 12), 28, fcol='FFD0B0')
+    shoot(S, A(lerp(1.9, 1.5, k), y0 - 9.5, lerp(2.3, 2.6, k)), A(-0.1, y0 + 6, 3.6), 28, fcol='FFD0B0')
 
 
 NAME_AT = ((-0.2, -6.0), (0.55, -7.9), (-0.6, -9.8), (0.35, -11.7))
@@ -1807,12 +1805,13 @@ NAME_AT = ((-0.2, -6.0), (0.55, -7.9), (-0.6, -9.8), (0.35, -11.7))
 def _name(S, k, t, lt, side):
     A = crest(S, 'sunrise', 0.85)
     i = int(S['prm'].get('who', 0))
-    for j, w in enumerate(('m1', 'm2', 'm3', 'm4')):
+    order = [('m1', 'm2', 'm3', 'm4')[i]] + [w for j, w in enumerate(('m1', 'm2', 'm3', 'm4')) if j != i]
+    for j, w in enumerate(order):
         x, y = NAME_AT[j]
         S[w].place(A(x, y, 0), PI + 0.12 * side)
         S[w].apply(P('stand', lean=0.1, head=(0.05, 0.25 * math.sin(lt * 1.4 + j * 2)), aL=(0.2, 0.3, 0.4), aR=(0.2, 0.3, 0.4)))
-    who = ('m1', 'm2', 'm3', 'm4')[i]
-    x, y = NAME_AT[i]
+    who = order[0]
+    x, y = NAME_AT[0]
     u = sm(lt / 0.5)
     if i == 0:                                                    # the guide pushes his goggles up
         S[who].apply(blend(P('stand'), P('stand', aR=(0.2, 1.7, 1.75, -1.4), head=(-0.05, 0.0)), u))
@@ -1868,8 +1867,9 @@ def rook_note(S, k, t, lt):
     S['face']['rook'] = 'calm' if tap < 0.5 else 'warm'
     pd = S['pad']
     pd.parent = S['rook'].root
-    pd.location = (-0.3, -0.52, 1.72)
+    pd.location = (-0.26, -0.5, 1.62)
     pd.rotation_euler = (-0.9, 0, 0.2)
+    pd.scale = (0.75, 0.75, 0.75)
     shoot(S, A(cpos[0], cpos[1], 2.1), A(-0.6, -2.0, 2.3), 38, fill=1.5, fcol='FFD8B8')
 
 
@@ -1882,7 +1882,7 @@ def hall_dazed(S, k, t, lt):
     S['m1'].apply(P('stand', lean=0.3, aL=(0.4, 0.1, 0.6), aR=(1.2, 0.0, 0.25), head=(0.1, 0.0), **KNEEL))
     seen(S['m1'].extra['gog'], False)
     S['face']['m1'] = 'wide'
-    shoot(S, A(lerp(4.4, 3.8, k), lerp(-3.4, -2.6, k), lerp(1.9, 1.7, k)), A(0.75, -0.4, 1.7), 52, fcol='FFD8B8')
+    shoot(S, A(lerp(4.2, 3.7, k), lerp(2.2, 1.6, k), lerp(1.9, 1.7, k)), A(0.8, -0.4, 1.7), 50, fcol='FFD8B8')
 
 
 def boat_look(S, k, t, lt):
@@ -1907,15 +1907,15 @@ def four_think(S, k, t, lt):
                        aR=(0.3 + 0.5 * (i == 1), 0.3, 0.4 + 0.9 * (i == 1))))
         seen(S[who].extra['mask'], False)
     seen(S['m1'].extra['gog'], False)
-    a = lerp(-0.5, 0.0, k)
-    shoot(S, A(c[0] + 7.0 * math.sin(a), c[1] - 7.0 * math.cos(a), lerp(2.2, 2.6, k)), A(0.0, -3.6, 2.1), 30, fcol='FFD8B8')
+    a = lerp(1.9, 2.5, k)
+    shoot(S, A(c[0] + 6.0 * math.sin(a), c[1] - 6.0 * math.cos(a), lerp(2.3, 2.6, k)), A(0.0, -4.3, 2.1), 30, fcol='FFD8B8')
 
 
 def look_back(S, k, t, lt):
     A = crest(S, 'sunrise', 1.0)
     seated(S, A, turn=1.0, nod=0.05, face='tired')
     turn = sm((lt - 0.3) / 0.6)
-    S['m1'].place(A(-0.5, 5.2, 0), lerp(PI, 0.1, turn))
+    S['m1'].place(A(-1.3, 5.2, 0), lerp(PI, -0.25, turn))
     S['m1'].apply(P('stand', head=(lerp(-0.3, 0.25, turn), 0.0), aL=(0.2, 0.3, 0.4), aR=(0.2, 0.3, 0.4)))
     seen(S['m1'].extra['gog'], False)
     seen(S['m1'].extra['mask'], False)
@@ -1923,11 +1923,11 @@ def look_back(S, k, t, lt):
         S[who].place(A(x, y, 0), look_yaw((x, y), (0.5, 0.0)))
         S[who].apply(P('stand', lean=0.3, aL=(0.9, 0.2, 0.6), aR=(0.9, 0.2, 0.6), **KNEEL))
     rp = (-0.9, 1.7, 0.0)
-    S['rook'].place(A(*rp), look_yaw(rp, (-0.5, 5.2)))
+    S['rook'].place(A(*rp), look_yaw(rp, (-1.3, 5.2)))
     S['hat_off'] = 1.0
     S['rook'].apply(to_chest(head=(-0.1, 0.0)))
     S['face']['rook'] = 'sad'
-    shoot(S, A(lerp(-2.2, -1.7, k), lerp(8.6, 8.0, k), lerp(3.2, 3.0, k)), A(0.3, 0.6, 1.5), 30, fill=1.3, fcol='FFD8B8')
+    shoot(S, A(lerp(-0.4, 0.0, k), lerp(9.0, 8.4, k), lerp(3.5, 3.3, k)), A(0.3, 0.6, 1.3), 30, fill=1.3, fcol='FFD8B8')
 
 
 # ---------------------------------------------------------------- earlier that month (the alcove is shown empty)
@@ -1938,10 +1938,10 @@ def alcove(S, pre=0.0):
 
 def alcove_wide(S, k, t, lt):
     A = alcove(S)
-    S['lamps'][0].location = A(0, -1.0, 3.0)
-    S['lamps'][0].data.energy = 260
+    S['lamps'][0].location = A(0, -2.5, 4.5)
+    S['lamps'][0].data.energy = 2200
     S['lamps'][0].data.color = K.hexc('8FA4E8')[:3]
-    shoot(S, A(lerp(-5.0, -2.0, k), lerp(-13.5, -10.0, k), lerp(2.6, 2.0, k)), A(0, 3.0, 1.8), 30, fill=0.5, fcol='8FA4E8')
+    shoot(S, A(lerp(-5.0, -2.0, k), lerp(-13.5, -10.0, k), lerp(2.6, 2.0, k)), A(0, 3.0, 1.8), 30, fill=1.6, fcol='8FA4E8')
 
 
 def alcove_pass(S, k, t, lt):
@@ -2000,7 +2000,7 @@ def oxygen(S, k, t, lt):
     p4 = (-1.0, 1.4)
     S['m4'].place(A(p4[0], p4[1], 0), look_yaw(p4, (0.5, 0.0)))
     S['m4'].apply(P('stand', lean=0.35, aL=(1.0, 0.1, 0.7), aR=(1.0, 0.1, 0.7), head=(0.3, 0.0)))
-    shoot(S, A(lerp(4.0, 3.4, k), lerp(3.6, 3.0, k), lerp(1.5, 1.7, k)), A(0.8, 0.5, 1.65), 48, fcol='FFD8B8')
+    shoot(S, A(lerp(4.4, 3.9, k), lerp(-2.2, -1.6, k), lerp(1.5, 1.7, k)), A(0.9, 0.5, 1.65), 46, fcol='FFD8B8')
 
 
 def radio_call(S, k, t, lt):
@@ -2043,19 +2043,21 @@ def wait_four(S, k, t, lt):
 
 
 # ---------------------------------------------------------------- the way down
+def hicamp_ground(y):
+    return max(0.0, y * math.tan(0.5) - 0.8)
+
+
 def hicamp_go(S, k, t, lt):
-    A = env(S, 'hicamp', '8EB4EA', sun=3.0, sunc='FFF0DC', sdir=(0.6, -0.5, 0.5), fk=2.4)
-    th = 0.5
+    A = env(S, 'hicamp', '8EB4EA', sun=3.0, sunc='FFF0DC', sdir=(-0.6, -0.5, 0.5), fk=2.4)
     for i, who in enumerate(('s1', 's2', 's3')):
-        u = lerp(-1.0, 3.2, k) + 5.5 - i * 3.2
-        x = 1.6 + 0.12 * u - (i % 2) * 0.9
-        z = max(0.0, u * math.sin(th) - 1.4) if u > 2.8 else 0.0
-        S[who].place(A(x, u * math.cos(th) if u > 2.8 else u, z), PI - 0.1)
+        u = lerp(0.3, 0.52, k) - i * 0.17
+        x, y = lerp(-3.4, 3.6, u), lerp(-3.6, 12.0, u)
+        S[who].place(A(x - (i % 2) * 0.5, y, hicamp_ground(y)), look_yaw((0, 0), (7.0, 15.6)))
         w = walk(lt + i * 0.3, 1.35)
         w.update(lean=0.32, head=(-0.1, 0.0))
         S[who].apply(w)
         gear(S, who, gog=True, mask=False)
-    shoot(S, A(lerp(-3.4, -2.6, k), lerp(13.5, 12.5, k), lerp(7.6, 8.2, k)), A(1.4, 3.0, 2.2), 28)
+    shoot(S, A(lerp(-9.5, -8.5, k), lerp(-5.2, -4.6, k), lerp(1.3, 1.6, k)), A(0.6, 2.4, lerp(2.6, 3.2, k)), 28)
 
 
 def slope_down(S, k, t, lt):
@@ -2078,7 +2080,7 @@ def slope_down(S, k, t, lt):
     S['face']['rook'] = 'warm'
     for who in ('s1', 's2', 's3', 'm4'):
         gear(S, who, gog=True, mask=False)
-    shoot(S, A(lerp(27, 23, k), y0 - 8.5, (y0 - 8.5) * SLOPE + lerp(4.5, 3.6, k)), A(0.3, y0 + 0.5, (y0 + 0.5) * SLOPE + 2.2), 38)
+    shoot(S, A(lerp(20, 17, k), y0 - 7.5, (y0 - 7.5) * SLOPE + lerp(4.0, 3.2, k)), A(0.3, y0 + 0.5, (y0 + 0.5) * SLOPE + 2.2), 38)
 
 
 def camp_rest(S, k, t, lt):
@@ -2124,7 +2126,7 @@ def home_day(S, k, t, lt):
         b.place(A(-0.5 + i * 0.9, max(yy, y + 2.0 + i), 0.24 if yy > 0.6 else 0.0), 0.0)
         b.apply(walk(lt + i * 0.2, 2.3) if yy > y + 2.0 + i else P('up', aL=(1.6, 0.4, 0.3), aR=(1.6, 0.4, 0.3)))
         S['face'][who] = 'wide'
-    shoot(S, A(lerp(3.4, 2.6, k), lerp(-19.5, -17.5, k), lerp(2.0, 2.4, k)), A(0.3, -1.0, 2.3), 30, fill=0.8)
+    shoot(S, A(lerp(3.4, 2.6, k), lerp(-16.5, -14.5, k), lerp(2.0, 2.4, k)), A(0.3, -1.0, 2.3), 32, fill=0.8)
 
 
 def desk_empty(S, k, t, lt):
@@ -2165,7 +2167,7 @@ def four_down(S, k, t, lt):
     wr['head'] = (0.0, 2.4 * sm((lt - 0.8) / 0.4) * (1 - sm((lt - 1.8) / 0.4)))
     S['rook'].apply(wr)
     S['face']['rook'] = 'warm'
-    shoot(S, A(lerp(1.6, 1.2, k), y0 - 8.0, lerp(1.1, 1.4, k)), A(-0.1, y0 + 6, 4.6), 26)
+    shoot(S, A(lerp(3.6, 3.0, k), y0 - 5.0, lerp(1.2, 1.5, k)), A(-0.2, y0 + 4, 3.2), 26)
 
 
 def photo_thumb(S, k, t, lt):
@@ -2176,7 +2178,7 @@ def photo_thumb(S, k, t, lt):
     S['rook'].place(A(*rp), look_yaw(rp, (3.0, -4.0)))
     S['rook'].apply(P('stand', **STARTLE))
     S['face']['rook'] = 'shocked'
-    shoot(S, A(4.6, -5.0, 1.7), A(2.0, -1.0, 1.9), 34, fill=1.4, fcol='FFD8B8')
+    shoot(S, A(5.4, -5.2, 1.8), A(3.0, -1.5, 1.75), 34, fill=1.4, fcol='FFD8B8')
 
 
 HOST |= {'ledge_look', 'camp_arrive', 'rook_clap', 'halluc', 'hall_refuse', 'drag_wide', 'night_wide', 'rook_watch', 'first_light', 'sit_back', 'rook_note',

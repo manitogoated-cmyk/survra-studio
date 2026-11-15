@@ -8,6 +8,33 @@
  "host": "rook",
  "case": 15,
  "title": "Declared Dead on Everest: The Full Case of Lincoln Hall",
+ "description": "Case 015. In 1984 Lincoln Hall, an Australian climber and writer, was on the first Australian expedition to climb Mount Everest; two of his teammates reached the summit and he did not. Twenty-two years later, aged fifty, he went back, and on 25 May 2006 he stood on top. On the way down altitude sickness took hold: he became confused, began to see things and refused to move, then collapsed. His Sherpa guides worked for about nine hours to get him down the ridge. By evening he had stopped responding and appeared to be dead, the Sherpas were in danger themselves, and their expedition leader ordered them down by radio. He was declared dead, and his wife Barbara and their two sons were told. He spent the night alone near the top of the mountain without oxygen or a sleeping bag. A little after seven the next morning a party of four on their way to the summit, the American guide Dan Mazur, Andrew Brash from Canada, Myles Osborne from Britain and Jangbu Sherpa, found him sitting cross-legged beside the drop with no hat and no gloves. His first words to them were: \"I imagine you are surprised to see me here.\" He was confused and believed he was on a boat. Earlier that month, on the same route, the British climber David Sharp had died, and by most reports dozens of climbers passed him on their way to the top. Mazur's party gave up their own summit, gave Hall oxygen and hot tea, radioed his expedition and stayed with him for four hours while Sherpas climbed back up to bring him down. He lost the tips of his fingers and a toe to frostbite, went home to his family and wrote a book about it, Dead Lucky. He died of cancer in 2012, aged 56. Rook didn't believe it either.\n\nAnimated reconstruction of a true story. The mountain, ridge, camps, tents, house, living room and study in the film are generic low-poly sets, not models of the real places; every person shown is an anonymous stand-in, including the figures labelled with the four climbers' names, and nobody's likeness is attempted. The rock overhang in the passage about David Sharp is shown empty. The cards on the case board are drawings made for the film. Sources word Hall's greeting slightly differently (\"you are\", \"you're\", \"you guys are\"); the film uses the wording most of them give. Sources give the time he was found as 7 a.m., 7:20 and 7:30, so the film says \"a little after seven\".",
+ "tags": [
+  "Lincoln Hall",
+  "Mount Everest",
+  "Everest",
+  "Dan Mazur",
+  "declared dead",
+  "left for dead",
+  "Dead Lucky",
+  "David Sharp",
+  "Everest 2006",
+  "mountaineering",
+  "survival",
+  "frostbite",
+  "true story",
+  "survival story",
+  "full story",
+  "animated story",
+  "animated documentary",
+  "Rook",
+  "Survra"
+ ],
+ "hashtags": [
+  "#truestory",
+  "#everest",
+  "#survival"
+ ],
  "playlist": "Rook's Case Files (Full Cases)",
  "sources": [
   "https://en.wikipedia.org/wiki/Lincoln_Hall_(climber)",
@@ -15,6 +42,33 @@
   "https://publications.americanalpineclub.org/articles/12200743500",
   "https://www.irishtimes.com/news/everest-climber-left-for-dead-returns-1.1009311",
   "https://www.bangordailynews.com/2012/03/25/news/lincoln-hall-survivor-of-mount-everest-ordeal-dies-at-56/",
-  "https://www.sunjournal.com/2006/06/10/man-shares-story-everest-rescue/"
- ]
+  "https://www.sunjournal.com/2006/06/10/man-shares-story-everest-rescue/",
+  "https://publications.americanalpineclub.org/articles/12200743701/Everest-the-Rescue-of-Lincoln-Hall-Alex-Abramov-Response",
+  "https://himalayan-database.climbing-history.org/expedition/EVER06189/2006",
+  "https://www.australiangeographic.com.au/?p=13551",
+  "https://archive.seattletimes.com/archive/20060530/climber30m/olympia-guide-helped-save-life-of-everest-climber-left-for-dead",
+  "https://www.taipeitimes.com/News/editorials/archives/2006/07/24/2003320204",
+  "https://www.penguin.com.au/books/dead-lucky-9781741667363",
+  "https://en.wikipedia.org/wiki/Daniel_Mazur"
+ ],
+ "story_score": {
+  "curiosity": 9,
+  "stakes": 9,
+  "freshness": 5,
+  "story": 8,
+  "visual": 8,
+  "audience_fit": 8,
+  "payoff": 9,
+  "packaging": 8,
+  "research": 9,
+  "repeatability": 6,
+  "total": 79
+ },
+ "title_options": [
+  "Declared Dead on Everest: The Full Case of Lincoln Hall",
+  "Left for Dead Near the Top of Everest, He Said Hello at Sunrise",
+  "They Gave Up Everest's Summit to Save a Man Declared Dead"
+ ],
+ "sound_plan": "Wind alone under the first frame with one low boom on the first cut; the score comes in with the story (mood track from the script: hook, calm, tense, sad, wonder, triumph, end). No music sting on the collapse, the order, the family or the David Sharp passage: wind, a low tone and a heartbeat only. Ticks for the nine-hour clock and the four-hour wait. Narration stays above the bed throughout (the QC gate checks it).",
+ "source_notes": "HOW THIS RUN CHECKED ITS FACTS, AND ITS LIMIT. The session that made this long version could not open any of the source pages: its network policy blocked en.wikipedia.org, nbcnews.com, bangordailynews.com, americanalpineclub.org and every other site tried (15 Nov 2026). Only web search worked, and it returns short extracts of pages. So: (1) every fact that is also in the Short rests on the Short's run, which read six pages in full the same day (its notes follow at the end); (2) every fact ADDED for the long version was checked only against search extracts of the pages listed below, at least two pages each, and anything with one page or with conflicting pages was left out. Because the added facts were not read in full on the page, the episode is shipped as 'ready' (private) for the owner to look at, not 'approved'. ADDED FACTS AND THEIR PAGES. 1984, the first Australian expedition to climb Everest, two teammates on the summit (Tim Macartney-Snape and Greg Mortimer), Hall not: Australian Geographic obituary ('a key member of the 1984 Australian Everest Expedition that put the first two Aussies ... atop the world's highest mountain'), Wikipedia ('failed to summit' in 1984; summit 'on his second attempt in 2006'), publisher's page for his book White Limbo. The film does not name the two teammates. A writer: publisher's pages, Australian Geographic. Aged fifty in 2006: born 1955 (Himalayan Database climber record), died March 2012 aged 56 (Bangor Daily News, Australian Geographic). Twenty-two years: 1984 to 2006. 25 May 2006: Wikipedia, Himalayan Database, American Alpine Journal (AAJ). The summit time (9 a.m. in one page) is not stated. Hallucinating, confused, refused to move: Wikipedia ('caused him to hallucinate and become confused'), Taipei Times ('began hallucinating and refused to move'), Abramov as quoted in 2006 reports ('acute psychosis, a disorientation in space'). Nine hours: Reader's Digest ('after nine hours of struggling to get Hall down'), reports quoted by grough and the New Zealand Herald ('Sherpas spent nine hours dragging him down the mountain, managing to move him only about 100 m'), AAJ, Abramov's account (from about 10 a.m. until 7 p.m.). The number of Sherpas is given as three and as four, so the narration gives none; the film shows two, as the Short does. Stopped responding and looked dead: Reader's Digest ('went limp, appeared dead'), AAJ (the Sherpas radioed to report his death; 7:20 p.m. in the Himalayan Database, 7:30 in the AAJ, so the film gives no time). The order to descend: as in the Short. Wife Barbara and two sons: publisher's page ('lived in the Blue Mountains with his wife, Barbara, and their two sons'), Australian Geographic, Bangor Daily News. The sons are not named. A little after seven: 7 a.m. (Wikipedia), 7:20 (Himalayan Database, Mazur's statement of 9 June 2006), 7:30 (a newspaper account). The four and their countries: Wikipedia, Himalayan Database, NBC/AP, the Jewish Journal (one page spells the Sherpa's name Jongbu). Down suit open to the waist: Wikipedia (Osborne's account), NBC (Mazur). He believed he was on a boat: two pages read by the Short's run, and a 2006 report found in this run ('Are you guys on this boat too?'); the film does not quote the words. David Sharp, British, died on the same north-side route earlier in May 2006 (15 May in the AAJ and Wikipedia), reportedly passed by about forty climbers (thirty in one page): Wikipedia, Taipei Times, The Seattle Times ('Life and death at 28,000 feet'), AAJ. The narration says 'dozens' and 'by most reports'; nothing is shown in the alcove. Oxygen and hot tea: a 2006 wire report ('gave him hot tea and oxygen'), NBC/AP as read by the Short's run. Radioed his expedition, leader sent Sherpas back up: AAJ (Abramov), Wikipedia, 2006 reports; their number is given as ten, twelve, thirteen and 'about a dozen', so none is stated. Four hours: The Seattle Times / Wikipedia ('stayed four hours'), NBC/AP as read by the Short's run. Brought down: AAJ ('brought down to advanced base'), Reader's Digest. Died 2012 of cancer aged 56: Australian Geographic and others give mesothelioma; the Bangor Daily News headline gives the age; 20 March 2012. 'Nearly six more years': May 2006 to March 2012. LEFT OUT because only one page supported it in this run or pages conflicted: Mazur's line 'The summit is still there and we can go back. Lincoln only has one life' (found once, not confirmed by a second search), that the party tied him to the mountain to keep him from the edge (one page), that the party was two hours from the top (one page), the place names Mushroom Rock and Second Step, every altitude figure (8,550 m to 8,800 m in different pages), snow-blindness among the Sherpas, the cause of his cancer, and the later argument between the expedition leader and others about the rescue (the AAJ printed a response by Abramov; the film takes no side and says only what both accounts share). STAGING CHOICES THAT ARE NOT FACTS: the 1984 tent ledge and the two figures on the summit, the high camp, the living room and the telephone, the leader's tent, the crate and blanket at the camp, and the family meeting him at the house are invented settings for facts the sources state without describing a place. Rook's lines are his own. NOTES OF THE SHORT'S RUN (pages read in full): Read for this run (fetched 15 Nov 2026): Wikipedia ('Lincoln Hall (climber)'); NBC News / Associated Press, 'Everest climbers recall near-death experience' (June 2006, interviews with Hall and Dan Mazur); the American Alpine Journal 2007, Elizabeth Hawley, 'Everest, Deaths During the Spring'; The Irish Times, 'Everest climber left for dead returns' (29 May 2006); the Bangor Daily News obituary (25 March 2012); the Sun Journal's copy of the AP story (10 June 2006). Every narrated fact is in at least two of the pages read. 2006 and Everest: all. Australian: Wikipedia ('veteran Australian mountaineer'), Irish Times. Reached the summit: Wikipedia, NBC, Bangor Daily News. Collapsed with altitude sickness on the way down: Wikipedia ('a form of altitude sickness, probably cerebral edema'), Bangor Daily News ('a deadly form of altitude sickness'); NBC says 'oxygen deprivation', the Irish Times lists 'water on the brain' afterwards. Sherpas tried for hours: Wikipedia ('attempted to rescue him for hours'), Bangor Daily News ('spent hours trying to revive him'). Ordered down as night fell: Wikipedia (expedition leader Alexander Abramov ordered the guides to leave), Bangor Daily News (the leader radioed from base camp); NBC and the Irish Times say only that they were forced to leave to save themselves, and the Irish Times puts the declaration at sunset. Declared dead: NBC, Irish Times, Bangor Daily News, AAJ ('reported dead the day before'). Family told: Wikipedia, Bangor Daily News. Night alone with no oxygen and no sleeping bag: Wikipedia (Myles Osborne's account), NBC, Bangor Daily News, Irish Times ('nearly 12 hours without oxygen'). Found at dawn / sunrise the next morning by a party of four (Mazur, two clients and a Sherpa): Wikipedia (names all four), NBC, Sun Journal, Bangor Daily News. Sitting cross-legged, no hat, no gloves, arms out of his down suit: Wikipedia (Osborne), Bangor Daily News, NBC (Mazur: no gloves, no hat, jacket off). The greeting: all six pages; NBC, the Irish Times, the Bangor Daily News and the Sun Journal have 'I imagine you are surprised to see me here', Wikipedia has 'you're' and the AAJ 'you guys are'; the narration uses 'you are'. They gave up their summit: Wikipedia, NBC, AAJ, Bangor Daily News. Sherpas came up to bring him down: Wikipedia (twelve sent by Abramov), NBC ('some Sherpas showed up'), AAJ ('at least 15 Sherpas' for the whole evacuation); the numbers differ, so the film gives none. Lost fingertips and a toe: Wikipedia ('the tips of his fingers and a toe'), Bangor Daily News ('a toe and the tips of eight fingers'). The book Dead Lucky: Wikipedia, Bangor Daily News. Conflicts kept out of the film: the altitude where he lay is given as 8,600 m, 8,700 m, 8,800 m, 28,000 ft and 28,200 ft, so the narration only says 'near the top of Everest' and no figure appears on screen; the Irish Times has him dangling his legs over the edge while Wikipedia and the Bangor Daily News have him cross-legged, and the film follows the two. Left out for length: his confusion when found (two pages say he believed he was on a boat), the four hours the party spent with him giving him oxygen and tea (the cup in the film stands for this), that Mazur's party was two hours from the top (one source), the other deaths on Everest that season, and his death from mesothelioma in 2012 (in the description only). Staging choices that are not facts: the Sherpas who climb the ladder and the ladder itself are generic; the house, the radio tent and the study are invented settings for facts that the sources state without describing a place."
 }

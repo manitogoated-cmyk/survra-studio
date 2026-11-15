@@ -194,25 +194,25 @@ def stamp_dead(cv, c):
 
 def pin_no(cv, c):
     rope_board(cv, c.t)
-    pop_photo(cv, c, 'peak', 560, 470, 720, 500, -3, (0.5, 0.35))
-    fit(cv, '2006', 400, 880, 96, 400, WHITE, None)
-    fit(cv, 'EVEREST', 720, 880, 84, 420, WHITE, None)
+    pop_photo(cv, c, 'peak', 560, 420, 720, 480, -3, (0.5, 0.35))
+    fit(cv, '2006', 400, 830, 84, 400, WHITE, None)
+    fit(cv, 'EVEREST', 720, 830, 76, 420, WHITE, None)
     if c.lt > 0.1:
         cv.drawLine(960, 420, 1040, 420, P(ORANGE, 8))
         note(cv, 1400, 400, 760, 300, 3, h('FFD866'), ['DEAD MEN', "DON'T SIT UP"], 92)
     if c.k > 0.5:
-        stamp(cv, 'NO CHANCE', 1380, 700, -9, min(1, (c.k - 0.5) * c.d / 0.1), 128)
+        stamp(cv, 'NO CHANCE', 1380, 680, -9, min(1, (c.k - 0.5) * c.d / 0.1), 128)
 
 
 def pin_hall(cv, c):
     rope_board(cv, c.t)
-    pop_photo(cv, c, 'hall', 540, 500, 620, 640, 2, (0.5, 0.45))
+    pop_photo(cv, c, 'hall', 540, 450, 600, 580, 2, (0.5, 0.45))
     if c.lt > 0.15:
         cv.drawLine(880, 330, 1010, 330, P(ORANGE, 8))
-    pop_note(cv, c.lt, 0.15, 1400, 250, 760, 170, -2, PAPER, ['LINCOLN HALL'], 96)
-    pop_note(cv, c.lt, 1.25, 1330, 470, 620, 150, 3, h('FFD866'), ['AUSTRALIAN'], 84)
-    pop_note(cv, c.lt, 1.75, 1480, 650, 500, 150, -3, h('FFD866'), ['CLIMBER'], 84)
-    pop_note(cv, c.lt, 2.45, 1300, 830, 460, 150, 2, PAPER, ['WRITER'], 84)
+    pop_note(cv, c.lt, 0.15, 1400, 220, 760, 160, -2, PAPER, ['LINCOLN HALL'], 96)
+    pop_note(cv, c.lt, 1.25, 1330, 410, 600, 130, 3, h('FFD866'), ['AUSTRALIAN'], 80)
+    pop_note(cv, c.lt, 1.75, 1480, 570, 480, 130, -3, h('FFD866'), ['CLIMBER'], 80)
+    pop_note(cv, c.lt, 2.45, 1300, 730, 440, 130, 2, PAPER, ['WRITER'], 80)
 
 
 def peak_path():
@@ -311,9 +311,9 @@ def no_card(cv, c):
         if k > 0:
             for sx in (-1, 1):
                 cv.drawLine(cx - sx * w_, 190, cx - sx * w_ + sx * 2 * w_ * k, 190 + 460 * k, P(RED, 38))
-    fit(cv, 'NO OXYGEN', 560, 800, 96, 760, WHITE)
+    fit(cv, 'NO OXYGEN', 560, 745, 90, 760, WHITE)
     if c.lt > 0.95:
-        fit(cv, 'NO SLEEPING BAG', 1360, 800, 96, 860, WHITE)
+        fit(cv, 'NO SLEEPING BAG', 1360, 745, 90, 860, WHITE)
 
 
 def sharp_card(cv, c):
@@ -373,7 +373,7 @@ def cost_tips(cv, c):
                 cv.drawRoundRect(r, 22, 22, P(skin, a=1 - k_f))
             if k_f > 0:
                 cv.drawRoundRect(r, 22, 22, dashed(line, 6))
-    fit(cv, 'FINGERTIPS', 660, 790, 76, 800, AMBER if k_f > 0 else WHITE)
+    fit(cv, 'FINGERTIPS', 660, 780, 76, 800, AMBER if k_f > 0 else WHITE)
     fx, fy = 1460, 520
     cv.drawRoundRect(skia.Rect.MakeXYWH(fx - 130, fy - 60, 260, 210), 80, 80, P(skin))
     for i in range(5):
@@ -385,7 +385,7 @@ def cost_tips(cv, c):
             cv.drawRoundRect(r, 26, 26, P(skin, a=1 - gone))
         if gone > 0:
             cv.drawRoundRect(r, 26, 26, dashed(line, 6))
-    fit(cv, 'ONE TOE', 1460, 790, 76, 400, AMBER if k_t > 0 else WHITE)
+    fit(cv, 'ONE TOE', 1460, 780, 76, 400, AMBER if k_t > 0 else WHITE)
 
 
 def years_card(cv, c):
@@ -411,15 +411,15 @@ def years_card(cv, c):
 
 def pin_true(cv, c):
     rope_board(cv, c.t)
-    pop_photo(cv, c, 'sit', 560, 490, 700, 560, 3, (0.5, 0.5))
+    pop_photo(cv, c, 'sit', 560, 440, 700, 520, 3, (0.5, 0.5))
     if c.lt > 0.1:
         cv.drawLine(950, 360, 1030, 360, P(ORANGE, 8))
-        note(cv, 1400, 320, 760, 250, -3, h('FFD866'), ['SURPRISED', 'TO SEE ME?'], 84)
+        note(cv, 1400, 270, 760, 230, -3, h('FFD866'), ['SURPRISED', 'TO SEE ME?'], 80)
     for i, s_ in enumerate(('DECLARED DEAD', 'FOUND ALIVE')):
         if c.lt > 0.3 + i * 0.4:
-            fit(cv, s_, 1400, 600 + i * 110, 84, 760, WHITE if i == 0 else AMBER, None)
+            fit(cv, s_, 1400, 500 + i * 100, 80, 760, WHITE if i == 0 else AMBER, None)
     if c.lt > 1.2:
-        stamp(cv, 'TRUE', 1420, 830, -8, min(1, (c.lt - 1.2) / 0.12), 140, GREEN)
+        stamp(cv, 'TRUE', 1420, 740, -8, min(1, (c.lt - 1.2) / 0.12), 120, GREEN)
 
 
 SHOTS = {f.__name__: f for f in (stamp_dead, pin_no, pin_hall, card_1984, nine_hours, no_card, sharp_card, cost_tips, years_card, pin_true)}
@@ -510,7 +510,7 @@ def THUMB(cv, c):
     else:
         cv.clear(h('0E1C34'))
     cv.drawRect(skia.Rect(0, 0, 1280, 720), skia.Paint(Shader=skia.GradientShader.MakeLinear(
-        [(600, 0), (1280, 0)], [0x00000000, 0xE6000000])))
-    Wd.text_card(cv, 'DECLARED', 960, 220, 112, WHITE, 0xFF000000)
-    Wd.text_card(cv, 'DEAD', 960, 400, 200, RED, 0xFF000000)
-    Wd.text_card(cv, 'SAID HELLO', 960, 560, 104, AMBER, 0xFF000000)
+        [(640, 0), (1280, 0)], [0x00000000, 0xE6000000])))
+    Wd.text_card(cv, 'DECLARED', 990, 230, 100, WHITE, 0xFF000000)
+    Wd.text_card(cv, 'DEAD', 990, 400, 190, RED, 0xFF000000)
+    Wd.text_card(cv, 'SAID HELLO', 990, 560, 92, AMBER, 0xFF000000)
