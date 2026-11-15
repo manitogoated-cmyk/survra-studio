@@ -1,0 +1,15 @@
+{
+  "id": "r014-weathers", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9,
+  "segments": [
+    {"scene": "hook", "mood": "hook", "text": "Fifteen hours in the snow on Everest. His team has left him for dead. Twice. Then he opens his eyes."},
+    {"scene": "doubt", "mood": "calm", "text": "Dead twice? No chance. Let's go look."},
+    {"scene": "climb", "mood": "tense", "text": "{1996|Nineteen ninety six}. Beck Weathers, a pathologist from Dallas, is high on Everest when he can no longer see. He stops and waits."},
+    {"scene": "storm", "mood": "action", "text": "On the way down, a blizzard hits. His group gets lost near camp. Rescuers judge him beyond help."},
+    {"scene": "left", "mood": "sad", "text": "Next morning a doctor finds him still breathing, and has to leave him too. His wife is told he is dead."},
+    {"scene": "wake", "mood": "wonder", "text": "That afternoon he wakes, his right hand frozen solid. He stands up, and walks into camp."},
+    {"scene": "tent", "mood": "tense", "text": "They expect him to die that night. He doesn't."},
+    {"scene": "rescue", "mood": "triumph", "text": "Then one of the highest helicopter rescues ever flown lifts him off the mountain."},
+    {"scene": "cost", "mood": "calm", "text": "He lost his right hand, the fingers of his left, and his nose. He went home."},
+    {"scene": "end", "mood": "end", "text": "Left for dead twice. He got up. I was wrong. Case closed."}
+  ]
+}
