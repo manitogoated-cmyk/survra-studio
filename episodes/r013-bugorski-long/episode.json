@@ -1,0 +1,54 @@
+{
+ "id": "r013-bugorski-long",
+ "format": "long",
+ "status": "draft",
+ "case_of": "r013-bugorski",
+ "claimed_at": "2026-11-15T08:43:43Z",
+ "synthetic": false,
+ "host": "rook",
+ "case": 13,
+ "title": "The Man Who Put His Head in a Particle Accelerator (Full Case File)",
+ "description": "Draft.",
+ "tags": [
+  "Anatoli Bugorski",
+  "particle accelerator",
+  "proton beam",
+  "U-70 synchrotron",
+  "Protvino",
+  "Soviet Union",
+  "physics",
+  "radiation",
+  "survivor",
+  "science history",
+  "true story",
+  "survival story",
+  "animated story",
+  "Rook",
+  "Survra"
+ ],
+ "hashtags": [
+  "#truestory",
+  "#physics"
+ ],
+ "playlist": "Rook's Case Files (Full Cases)",
+ "story_score": {
+  "curiosity": 9,
+  "stakes": 8,
+  "freshness": 7,
+  "story": 7,
+  "visual": 8,
+  "audience_fit": 8,
+  "payoff": 8,
+  "packaging": 9,
+  "research": 8,
+  "repeatability": 7,
+  "total": 79
+ },
+ "sources": [
+  "https://www.discovermagazine.com/health/if-you-stuck-your-head-in-a-particle-accelerator",
+  "https://bigthink.com/hard-science/particle-accelerator/",
+  "https://gizmodo.com/what-happens-when-you-stick-your-head-into-a-particle-a-1171981874",
+  "https://en.wikipedia.org/wiki/Anatoli_Bugorski",
+  "https://www.amusingplanet.com/2020/02/anatoli-bugorski-man-who-stuck-his-head.html"
+ ]
+}
