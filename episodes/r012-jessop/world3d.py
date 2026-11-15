@@ -1044,20 +1044,21 @@ def oly_limp(S, k, t, lt):
 
 
 # ---------------------------------------------------------------- 1912: the ice
-def ice_night(S, t, y=0.0, z=0.0, pitch=0.0, x=7.5):
-    A = env(S, 'ice', NIGHT, sun=0.9, sunc='A8C0FF', sdir=(0.35, -0.55, 0.7), fk=1.2)
+def ice_night(S, t, y=0.0, z=0.0, pitch=0.0, x=7.5, sun=0.9, fk=1.2, skyk=1.0, seac='0A1A2A'):
+    A = env(S, 'ice', NIGHT, sun=sun, sunc='A8C0FF', sdir=(0.35, -0.55, 0.7), fk=fk, skyk=skyk)
     Sp = ship(S, A, x=x, y=y, z=z, pitch=pitch, lit=1.0)
-    sea(S, A, 0, -120, 1100, t, amp=0.45, col='0A1A2A')
+    sea(S, A, 0, -120, 1100, t, amp=0.45, col=seac)
     return A, Sp
 
 
 def tit_night(S, k, t, lt):
-    A, Sp = ice_night(S, t, y=lerp(-30, -62, k))
+    # moonlit and swept fast: at the old light level and camera speed the shot read as a still (QC static stretch)
+    A, Sp = ice_night(S, t, y=lerp(-30, -62, k), sun=5.0, fk=4.0, skyk=2.6, seac='1A3A56')
     funnel_smoke(S, Sp, t)
     for i in range(4):
         u = (t * 0.9 + i * 0.25) % 1
         puff(S, i, Sp((1 if i % 2 else -1) * (2 + 6 * u), -125 + 20 * u, 0.5), 1.6 + 2.6 * u, 0.4)
-    cam(S, A(lerp(-22, -8, k), lerp(-262, -228, k), lerp(2.5, 9.0, k)), A(lerp(12, 8, k), lerp(-185, -150, k), 16), 28, fcol='A8C0FF')
+    cam(S, A(lerp(-26, 0, k), lerp(-266, -220, k), lerp(2.0, 13.0, k)), A(lerp(13, 7, k), lerp(-188, -146, k), 16), 28, fcol='A8C0FF')
 
 
 def berg_scrape(S, k, t, lt):
