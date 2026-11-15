@@ -690,10 +690,10 @@ def beam_fire(S, k, t, lt):
         bug_in_gap(S, A)
         cam(S, A(*arc(front - 0.3, 2.4, 3.7)), A(*arc(front + 0.03, 0.0, 2.0)), 24, roll=0.04 * math.sin(lt * 20), fcol='BFD4FF')
         return
-    front = lerp(-0.75, -0.02, ease(k) * 0.6 + k * 0.4)
+    front = lerp(-0.5, 0.0, min(1.0, k / 0.8))
     beam_to(S, A, front, 1.2)
     bug_in_gap(S, A)
-    cam(S, A(*arc(lerp(0.105, 0.085, k), 4.4, lerp(1.2, 1.6, k))), A(*arc(-0.05, 0.0, 2.3)), 24, roll=-0.06, fcol='BFD4FF')
+    cam(S, A(*arc(lerp(0.05, 0.04, k), lerp(3.6, 3.2, k), lerp(1.3, 1.6, k))), A(*arc(-0.06, 0.0, 2.2)), 22, roll=-0.06, fcol='BFD4FF')
 
 
 def flash_side(S, k, t, lt):
@@ -1022,10 +1022,11 @@ def clinic(S, warm=False):
     A = env(S, 'clinic', fk=1.6)
     C = S['clinic']
     if warm:
-        C['win'].data.energy = 600
+        C['win'].data.energy = 380
+        C['top'].data.energy = 200
         S['fillk'] = 0.9
         C['win'].data.color = K.hexc('FFD9A0')[:3]
-        tint(C['panem'], 'FFE0B0', 3.5)
+        tint(C['panem'], 'FFE0B0', 2.4)
     u = (S['time'] * 0.9) % 1
     C['drop'].location = (2.05, 3.0, 4.05 - 0.9 * u * u)
     return A

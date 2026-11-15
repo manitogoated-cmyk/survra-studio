@@ -256,7 +256,8 @@ def dose(cv, c):
         cv.save()
         cv.translate(540, 1580)
         cv.scale(1.5 - 0.5 * k, 1.5 - 0.5 * k)
-        Wd.text_card(cv, 'HUNDREDS OF TIMES', 0, 0, 92, AMBER, 0xFF000000)
+        for i in range(3):
+            cv.drawPath(poly([(-150 + i * 150 - 50, 40), (-150 + i * 150, -50), (-150 + i * 150 + 50, 40)]), P(AMBER))       # three warning triangles
         cv.restore()
         cv.drawRect(skia.Rect.MakeWH(W, H), P(RED, a=0.12 * (0.5 + 0.5 * math.sin(c.t * 12))))
 
@@ -318,7 +319,7 @@ def ear_mute(cv, c):
     if c.lt < 0.3:
         return
     k = ease((c.lt - 0.3) / 0.2)
-    x, y = 760, 560
+    x, y = 770, 640
     for i in range(3):
         r = 90 + i * 62 + 10 * math.sin(c.t * 8 - i)
         p = skia.Path()
@@ -329,8 +330,8 @@ def ear_mute(cv, c):
             cv.drawPath(p, pa)
     if c.lt > 0.6:
         j = ease((c.lt - 0.6) / 0.12)
-        cv.drawLine(790, 400, lerp(790, 1030, j), lerp(400, 720, j), P(0xFF000000, 36))
-        cv.drawLine(790, 400, lerp(790, 1030, j), lerp(400, 720, j), P(RED, 22))
+        cv.drawLine(800, 480, lerp(800, 1040, j), lerp(480, 800, j), P(0xFF000000, 36))
+        cv.drawLine(800, 480, lerp(800, 1040, j), lerp(480, 800, j), P(RED, 22))
 
 
 OVER = dict(signoff=closed, rook_gate=snow, rook_door=snow, rook_wrong=snow, flash_side=whiteout, bug_flash=whiteout, bug_ear=ear_mute)

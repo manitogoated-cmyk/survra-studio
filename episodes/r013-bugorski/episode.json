@@ -1,7 +1,7 @@
 {
  "id": "r013-bugorski",
  "format": "short",
- "status": "draft",
+ "status": "approved",
  "synthetic": false,
  "host": "rook",
  "case": 13,
@@ -56,5 +56,9 @@
   "https://gizmodo.com/what-happens-when-you-stick-your-head-into-a-particle-a-1171981874",
   "https://en.wikipedia.org/wiki/Anatoli_Bugorski",
   "https://www.amusingplanet.com/2020/02/anatoli-bugorski-man-who-stuck-his-head.html"
- ]
+ ],
+ "quality_gate": {
+  "method": "3D contact sheet reviewed in five rounds with fixes after each. Round 1 (low-res sheet): the leaning pose swung the legs back so he looked as if he was crawling; the drawn beam was hidden inside solid magnets; Rook was out of frame in the flash, the lean and the lamp shots; the desk hid him in the study; the flash shots burned out; the yard was too dark. Round 2 (sheet): magnets rebuilt as C-shapes open to the aisle, poses and cameras fixed; the beam was still hidden inside its own pipe, a desk lamp and a chair blocked two study shots, the ride-along camera looked away from the beam. Round 3, a full-length low-resolution rehearsal composited with captions, HUD, overlays, inserts and sound: the automated gate failed two static stretches (the control room and the warning lamp), so both got real camera travel and Rook walks into each; the dose gauge and both boards were re-laid out so captions do not cover them; the swollen cheek was too faint to read; the schematic head was given shoulders and ears so it reads as a head. Round 4, second rehearsal: gate passed; the opening was re-staged closer so the beam reaches him inside the first second. Round 5: eighteen shots at higher resolution plus frames pulled from the rehearsal video. The last rehearsal (216x384, 4 samples, every 3D frame) passed the automated gate locally: 40 shots, mean 1.21 s, longest 1.97 s, Rook acting in 18 of 40 shots (45%), closest match to any earlier episode 0.83. The cloud render runs the real gate at full resolution.",
+  "checked": "Every 3D kind in the storyboard exists in world3d.SHOTS3D and every kind with Rook on screen is in HOST; shots follow the word timings; nothing graphic is shown (a bandage and a swollen cheek only); no lettering, emblem or real document appears in the sets."
+ }
 }

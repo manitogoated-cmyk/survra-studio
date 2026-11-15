@@ -167,15 +167,15 @@
   {
    "case": 13,
    "day": 13,
-   "title": "A Particle Beam Went Through His Head",
+   "title": "A Particle Beam Went Through His Head. He Went Back to Work",
    "subject": "Anatoli Bugorski",
    "year": 1978,
    "premise": "Physicist puts his head in a proton beam and lives",
    "world": "Soviet accelerator hall",
    "est_score": 83,
    "long_form_candidate": false,
-   "status": "in progress",
-   "facts": "verify with 2+ sources at authoring; skip if they do not hold",
+   "status": "authored",
+   "facts": "verified (see episodes/r013-bugorski/episode.json); five pages read; the accident date differs between sources (13 July or 3 June 1978), so the film gives only the year; dose figures differ, so the film shows none",
    "claimed_at": "2026-11-15T00:24:29Z"
   },
   {
