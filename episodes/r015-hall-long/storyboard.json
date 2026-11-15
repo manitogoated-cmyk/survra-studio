@@ -1,7 +1,7 @@
 {
  "id": "r015-hall-long",
  "shots": [
-  {"n": 1, "segment": "hook", "weight": 2.0, "kind": "sun_ridge", "action": "First light. The sun breaks over a sea of cloud behind a knife-edge snow crest; one small figure sits on it", "camera": "3D", "cam": [[1.0, 960, 540, 0], [1.07, 960, 530, 0]], "shake": 2, "transition": "cut", "sfx": [["boom", 0.03], ["wind", 0.1]], "hud": null, "prm": {}},
+  {"n": 1, "segment": "hook", "weight": 2.0, "kind": "sun_ridge", "action": "First light. The sun breaks over a sea of cloud behind a knife-edge snow crest; one small figure sits on it", "camera": "3D", "cam": [[1.0, 960, 540, 0], [1.07, 960, 530, 0]], "shake": 5, "transition": "cut", "sfx": [["boom", 0.03], ["wind", 0.1]], "hud": null, "prm": {}},
   {"n": 2, "segment": "hook", "weight": 2.7, "kind": "sit_close", "action": "He sits cross-legged on the lip above the drop, his down suit round his waist. Rook walks up behind him and leans in to look", "camera": "3D", "cam": [[1.0, 960, 540, 0], [1.07, 960, 530, 0]], "shake": 0, "transition": "cut", "sfx": [["wind", 0.0], ["tick", 0.6]], "hud": "CASE 015", "prm": {}},
   {"n": 3, "segment": "hook", "weight": 1.1, "kind": "bare_head", "action": "His bare head, frost in his hair", "camera": "3D", "cam": [[1.0, 960, 540, 0], [1.07, 960, 530, 0]], "shake": 0, "transition": "cut", "sfx": [["bloop", 0.15]], "hud": "NO HAT", "prm": {}},
   {"n": 4, "segment": "hook", "weight": 1.6, "kind": "bare_hands", "action": "His bare hands lift off his knees", "camera": "3D", "cam": [[1.0, 960, 540, 0], [1.07, 960, 530, 0]], "shake": 0, "transition": "cut", "sfx": [["bloop", 0.1], ["bloop", 0.6]], "hud": "NO GLOVES. NO OXYGEN.", "prm": {}},

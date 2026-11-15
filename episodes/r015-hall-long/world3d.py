@@ -2181,6 +2181,15 @@ def photo_thumb(S, k, t, lt):
     shoot(S, A(5.4, -5.2, 1.8), A(3.0, -1.5, 1.75), 34, fill=1.4, fcol='FFD8B8')
 
 
+def sun_ridge(S, k, t, lt):
+    """The long version opens on a faster move than the Short: the sun clears the horizon while the camera swings in along the crest."""
+    g = sm(lt / 1.3)
+    A = crest(S, 'sunrise', 0.15 + 0.85 * g, sun_at=(690, 250))
+    seated(S, A)
+    shoot(S, A(lerp(-19.0, -9.5, g) - 1.0 * k, lerp(-12.0, -4.6, g), lerp(0.5, 1.3, g)), A(0.3, 0.4, lerp(3.4, 1.9, g)), 34, fill=0.5, fcol='FFC8A0')
+
+
+SHOTS3D['sun_ridge'] = sun_ridge
 HOST |= {'ledge_look', 'camp_arrive', 'rook_clap', 'halluc', 'hall_refuse', 'drag_wide', 'night_wide', 'rook_watch', 'first_light', 'sit_back', 'rook_note',
          'boat_look', 'look_back', 'rook_alcove', 'kneel_round', 'wait_four', 'slope_down', 'camp_rest', 'rook_ridge', 'four_down'}
 SHOTS3D.update({f.__name__: f for f in (
