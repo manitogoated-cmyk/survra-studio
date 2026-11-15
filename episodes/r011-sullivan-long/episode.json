@@ -1,0 +1,18 @@
+{
+ "id": "r011-sullivan-long",
+ "format": "long",
+ "case_of": "r011-sullivan",
+ "status": "draft",
+ "claimed_at": "2026-11-15T02:54:40Z",
+ "synthetic": false,
+ "host": "rook",
+ "case": 11,
+ "title": "Struck by Lightning 7 Times: The Full Case of Ranger Roy Sullivan",
+ "playlist": "Rook's Case Files (Full Cases)",
+ "sources": [
+  "https://www.guinnessworldrecords.com/world-records/most-lightning-strikes-survived",
+  "https://en.wikipedia.org/wiki/Roy_Sullivan",
+  "https://nationalparkstraveler.org/2008/07/shenandoah-national-park-ranger-roy-sullivan-set-world-record-being-hit-lightning",
+  "https://www.theweathernetwork.com/en/news/weather/severe/this-day-in-weather-history-june-25-1977-human-lightning"
+ ]
+}
