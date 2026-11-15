@@ -1,15 +1,24 @@
 name: Survra channel audit (read-only)
 
-# Pulls the full analytics snapshot with publish/audit.py and hands it back as a short-lived artifact.
-# Read-only: no commits, no uploads, no channel changes. Logs print counts only (public repo).
+# Pulls a full analytics snapshot with publish/audit.py (read-only on YouTube: GET requests only).
+# On main (daily): appends it to the permanent database (analytics/video-performance.csv, analytics/channel-history.csv)
+#                  and commits only those two CSVs. The raw JSON (which includes comment text) is never committed.
+# On any other branch: hands the raw JSON back as a 1-day artifact for a one-off audit, commits nothing.
+# Logs print counts only, because the repo is public.
 on:
+  schedule:
+    - cron: "53 12 * * *"        # daily, after the Analytics API's overnight update
   push:
     branches: [analytics-audit]
     paths: [".github/workflows/audit.yml", "publish/audit.py"]
   workflow_dispatch:
 
+concurrency:
+  group: survra-audit
+  cancel-in-progress: false
+
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   audit:
@@ -26,8 +35,18 @@ jobs:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
-        run: python3 publish/audit.py audit.json
-      - uses: actions/upload-artifact@v4
+        run: python3 publish/audit.py "$RUNNER_TEMP/audit.json"
+      - name: Append to the performance database (main only)
+        if: github.ref == 'refs/heads/main'
+        run: |
+          python3 publish/audit_db.py "$RUNNER_TEMP/audit.json"
+          git config user.name "survra-bot"; git config user.email "survra-bot@users.noreply.github.com"
+          python3 publish/sync_commit.py "analytics: daily snapshot" analytics/video-performance.csv analytics/channel-history.csv
+      - name: Hand back the raw snapshot (other branches only)
+        if: github.ref != 'refs/heads/main'
+        run: cp "$RUNNER_TEMP/audit.json" audit.json
+      - if: github.ref != 'refs/heads/main'
+        uses: actions/upload-artifact@v4
         with:
           name: channel-audit
           path: audit.json
