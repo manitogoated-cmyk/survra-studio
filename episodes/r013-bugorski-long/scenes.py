@@ -206,7 +206,7 @@ def board_no(cv, c):
     cv.drawLine(1150, 532, 1460, 580, P(RED, 10))
     fit(cv, '1978', 1620, 640, 120, 300, INK, None)
     if c.k > 0.5:
-        stamp(cv, 'NO CHANCE', 900, 480, -12, min(1, (c.k - 0.5) / 0.16), 150)
+        stamp(cv, 'NO CHANCE', 640, 520, -12, min(1, (c.k - 0.5) / 0.16), 150)
 
 
 def suns(cv, c):
@@ -294,9 +294,9 @@ def board_true(cv, c):
         note(cv, 1400, 290, 760, 180, -3, h('FFD866'), ['BACK AT WORK'], 92)
     for i, s_ in enumerate(('1978', 'SAME ACCELERATOR')):
         if c.lt > 0.2 + i * 0.12:
-            fit(cv, s_, 1400, 520 + i * 110, 96 if i == 0 else 72, 760, INK, None)
+            fit(cv, s_, 1440, 520 + i * 110, 96 if i == 0 else 72, 700, INK, None)
     if c.lt > 0.5:
-        stamp(cv, 'TRUE', 820, 560, -10, min(1, (c.lt - 0.5) / 0.12), 170, GREEN)
+        stamp(cv, 'TRUE', 700, 640, -10, min(1, (c.lt - 0.5) / 0.12), 170, GREEN)
 
 
 def ring_drawing(cv, cx, cy, r, t, col=0xFF49C8FF):
@@ -437,14 +437,11 @@ def narrow(cv, c):
     if c.lt > 1.3:
         k = ease((c.lt - 1.3) / 0.3)
         cx, cy, s = 1400, 380, 92
-        cv.drawCircle(cx, cy - 2.75 * s, 0.72 * s, P(h('D8362A'), a=0.75 * k))
-        cv.drawPath(body_shape(cx, cy, s), P(h('D8362A'), a=0.75 * k))
+        cv.drawCircle(cx, cy - 2.75 * s, 0.72 * s, P(h('16365E'), a=k))                     # the rest of him, untouched: plain blue, no line
+        cv.drawPath(body_shape(cx, cy, s), P(h('16365E'), a=k))
         cv.drawCircle(cx, cy - 2.75 * s, 0.72 * s, P(h('49C8FF'), 6))
         cv.drawPath(body_shape(cx, cy, s), P(h('49C8FF'), 6))
         if c.lt > 1.7:
-            j = ease((c.lt - 1.7) / 0.15)
-            cv.drawLine(cx - 300, cy - 330, cx - 300 + 600 * j, cy - 330 + 700 * j, P(0xFF000000, 34))
-            cv.drawLine(cx - 300, cy - 330, cx - 300 + 600 * j, cy - 330 + 700 * j, P(0xFFFFFFFF, 20))
             fit(cv, 'NOT THE WHOLE BODY', 1400, 800, 76, 880, 0xFFFFFFFF)
 
 

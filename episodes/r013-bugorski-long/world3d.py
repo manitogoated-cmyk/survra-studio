@@ -1899,7 +1899,7 @@ def rook_road(S, k, t, lt):
 
 
 def wcor(S, dawn=0.0):
-    A = env(S, 'wcor', fk=1.8)
+    A = env(S, 'wcor', fk=1.0)
     W_ = S['wcor']
     tint(W_['panem'], '1A2A4A' if dawn < 0.5 else 'FFD9A0', lerp(0.6, 2.0, dawn))
     W_['winl'].data.energy = 320 * dawn
@@ -2077,7 +2077,7 @@ def rook_office(S, k, t, lt):
     S['hat_off'] = 1.0
     S['rook'].apply(hat_hold(head=(lerp(0.4, 0.1, ease((lt - 0.7) / 0.5)), 0.0)))
     S['face']['rook'] = 'sad'
-    cam(S, A(lerp(4.4, 3.6, k), lerp(-5.4, -4.8, k), lerp(2.6, 2.8, k)), A(0.6, -0.9, 2.7), 34, fcol='FFF0DC')
+    cam(S, A(lerp(4.4, 3.6, k), lerp(-5.4, -4.8, k), lerp(2.3, 2.5, k)), A(0.6, -0.9, 2.15), 34, fcol='FFF0DC')
 
 
 HOST |= {'town_wide', 'town_gate', 'corr_walk', 'door_lamps', 'switch_off', 'pipe_cu', 'rook_draw', 'bug_tools', 'rook_yell', 'ctrl_pass', 'bug_coord',
