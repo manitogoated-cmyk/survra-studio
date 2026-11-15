@@ -1,0 +1,29 @@
+{
+  "id": "r015-hall-long", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9, "spine": "v2",
+  "segments": [
+    {"scene": "hook", "mood": "hook", "text": "Sunrise, near the top of Everest. A man sits cross-legged in the snow, right beside the drop. No hat. No gloves. No oxygen. Last night, he was declared dead. His family has already been told. And when four climbers walk up to him, he says hello."},
+    {"scene": "doubt", "mood": "calm", "text": "Dead men don't sit up. And they don't make small talk. No chance. Let's go look."},
+    {"scene": "past", "mood": "calm", "text": "His name is Lincoln Hall. An Australian climber, and a writer. In {1984|nineteen eighty-four}, he was on the first Australian expedition to climb Everest. Two of his teammates stood on the summit. He did not."},
+    {"scene": "return", "mood": "tense", "text": "Twenty-two years later, he comes back for it. He is fifty years old."},
+    {"scene": "summit", "mood": "triumph", "text": "And on the twenty-fifth of May, {2006|two thousand six}, he stands on top of the world. I'll admit it. I clapped. Slowly."},
+    {"scene": "down", "mood": "tense", "text": "But the top is only halfway. On the way down, altitude sickness gets into his head. He starts seeing things that aren't there. He stops making sense. Then he refuses to move."},
+    {"scene": "collapse", "mood": "tense", "text": "And then he goes down in the snow, and he stays there."},
+    {"scene": "sherpas", "mood": "sad", "text": "His Sherpas do not leave him. For nine hours, they fight to get him down the ridge. By evening, they have hardly moved him at all."},
+    {"scene": "order", "mood": "sad", "text": "Now he has stopped responding. He looks dead. And the Sherpas are in danger themselves. Over the radio, their expedition leader orders them down."},
+    {"scene": "news", "mood": "sad", "text": "He is declared dead. Far away in Australia, his wife Barbara, and their two sons, are told that he has died."},
+    {"scene": "night", "mood": "tense", "text": "So he spends the night up there, alone. No oxygen. No sleeping bag. Near the top of Everest, in the dark, in the cold. I sat with him. I did not expect a morning."},
+    {"scene": "dawn", "mood": "wonder", "text": "Morning comes anyway. A little after seven, four climbers come up the ridge, on their way to the summit. An American guide, Dan Mazur. Andrew Brash, from Canada. Myles Osborne, from Britain. And Jangbu Sherpa."},
+    {"scene": "found", "mood": "wonder", "text": "And there he is. Sitting cross-legged, beside the drop. His down suit pulled open to the waist. No hat. No gloves."},
+    {"scene": "hello", "mood": "wonder", "text": "He looks up at them, and he says: I imagine you are surprised to see me here."},
+    {"scene": "line", "mood": "calm", "text": "I have been a detective for a long time. That is the best opening line I have ever heard."},
+    {"scene": "boat", "mood": "calm", "text": "He is alive. But he is not well. He is confused. He thinks he is on a boat."},
+    {"scene": "choice", "mood": "tense", "text": "And now the four of them have a problem. The summit is right there above them. It is what they came for. And staying with him means giving it up."},
+    {"scene": "sharp", "mood": "sad", "text": "Here is why that matters. Earlier that same month, on the same route, a British climber named David Sharp lay dying. By most reports, dozens of climbers passed him on their way to the top. He did not come down."},
+    {"scene": "stay", "mood": "triumph", "text": "These four don't pass. They give up their summit. They give him oxygen, and hot tea. They get on the radio. And they stay with him for four hours."},
+    {"scene": "rescue", "mood": "action", "text": "Down below, his expedition leader hears the impossible. He's alive. Sherpas are sent back up the mountain to get him. And step by step, they bring him down."},
+    {"scene": "cost", "mood": "calm", "text": "The mountain keeps a little. The tips of his fingers, and one toe. That is the whole bill, for a night that should have killed him."},
+    {"scene": "book", "mood": "calm", "text": "He goes home to his family. He writes it all down. And he calls the book Dead Lucky."},
+    {"scene": "after", "mood": "sad", "text": "Lincoln Hall died in {2012|twenty twelve}, of cancer. He was fifty-six. That is nearly six more years than anyone on that ridge thought he had."},
+    {"scene": "end", "mood": "end", "text": "I came to prove that dead men don't sit up. This one sat up, and said hello. And four people gave up the top of the world to stay with a stranger. I was wrong. Case closed."}
+  ]
+}
