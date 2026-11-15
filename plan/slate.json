@@ -174,8 +174,9 @@
    "world": "Soviet accelerator hall",
    "est_score": 83,
    "long_form_candidate": false,
-   "status": "idea",
-   "facts": "verify with 2+ sources at authoring; skip if they do not hold"
+   "status": "in progress",
+   "facts": "verify with 2+ sources at authoring; skip if they do not hold",
+   "claimed_at": "2026-11-15T00:24:29Z"
   },
   {
    "case": 14,
