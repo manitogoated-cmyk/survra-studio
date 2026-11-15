@@ -26,7 +26,7 @@ from engine3 import cast as CAST  # noqa: E402
 from engine3 import world as Wd  # noqa: E402
 from engine3.voice3 import LipSync  # noqa: E402
 
-FPS = 30
+FPS = int(os.environ.get('RENDER_FPS', 60))      # 60 fps output (owner's standard since 2026-11-15)
 FORMATS = {'short': (1080, 1920), 'long': (1920, 1080)}
 TF = skia.Typeface('Inter', skia.FontStyle(900, 5, skia.FontStyle.kUpright_Slant))
 
@@ -177,11 +177,11 @@ _F3 = {}
 
 def manifest3d(build):
     p = os.path.join(build, '3d', 'manifest.json')
-    return json.load(open(p)) if os.path.exists(p) else dict(fps=15, kinds=[], host=[])
+    return json.load(open(p)) if os.path.exists(p) else dict(fps=60, kinds=[], host=[])
 
 
 def frame3d(build, sh, t, fps3):
-    """The rendered 3D frame for time t of this shot (held on twos); nearest existing one while a render is partial."""
+    """The rendered 3D frame for time t of this shot; nearest existing one while a render is partial."""
     i0, i1 = int(math.floor(sh['a'] * fps3)), int(math.ceil(sh['b'] * fps3))
     i = max(i0, min(i1 - 1, int(t * fps3 + 1e-6)))
     for j in sorted(range(i0, i1), key=lambda x: abs(x - i)):
@@ -200,10 +200,10 @@ def camera3d(cv, sh, t, impacts, W, H):
     tr = sh['transition']
     z = 1.0
     if tr == 'cut':
-        z *= 1 + 0.06 * (1 - ease_out(lt / 0.18))
+        z *= 1 + 0.025 * (1 - ease_out(lt / 0.22))
     if tr in ('zoom', 'flare'):
         z *= 1 + 0.5 * (1 - ease_out(lt / 0.25))
-    z *= 1 + 0.035 * min(1.0, lt / max(0.2, sh['b'] - sh['a']))      # slow push-in at full frame rate keeps held frames alive
+    z *= 1 + 0.012 * min(1.0, lt / max(0.2, sh['b'] - sh['a']))      # every 3D frame is rendered now: only a hint of push
     amp = sh.get('shake', 0) * 0.7
     for it in impacts:
         if 0 <= t - it < 0.3:
@@ -265,7 +265,19 @@ def captions(cv, words, t, W, H, fmt):
     widths = [f.measureText(s) for s in txt]
     gap = size * 0.28
     total = sum(widths) + gap * (len(txt) - 1)
+    safe = W * (0.84 if fmt == 'short' else 0.7)
+    if total > safe:                                  # "HARRISON REACHES" ran off both edges of the frame
+        fit = safe / total
+        size *= fit
+        f = skia.Font(TF, size)
+        widths = [f.measureText(s) for s in txt]
+        gap = size * 0.28
+        total = sum(widths) + gap * (len(txt) - 1)
     x = W / 2 - total / 2
+    pad = size * 0.32                                 # backdrop: captions collided with sticky notes and gauges
+    back = skia.Paint(AntiAlias=True, Color=0xFF000000)
+    back.setAlphaf(0.42)
+    cv.drawRoundRect(skia.Rect.MakeLTRB(x - pad, cy - size * 0.62, x + total + pad, cy + size * 0.58), size * 0.3, size * 0.3, back)
     for g, s, w in zip(group, txt, widths):
         age = t - g['start']
         pop = 1 + 0.25 * (1 - ease_out(age / 0.12)) if age >= 0 else 1
@@ -296,6 +308,37 @@ def hud(cv, text, age, W, H, fmt):
     cv.restore()
 
 
+def hook_title(cv, text, t, W, H, fmt):
+    """storyboard.json "hook_text": two to five words shown for the first 1.8 s, so a viewer who has the sound off
+    still knows in one glance what the video promises. Pops in, holds, fades."""
+    if not text or t > 1.8:
+        return
+    lines = text.upper().split('|')
+    size = 132 if fmt == 'short' else 96
+    f = skia.Font(TF, size)
+    widest = max(f.measureText(l) for l in lines)
+    if widest > W * 0.86:
+        size = int(size * W * 0.86 / widest)
+        f = skia.Font(TF, size)
+    k = ease_out(t / 0.14)
+    a = 1.0 if t < 1.5 else max(0.0, 1 - (t - 1.5) / 0.3)
+    cv.save()
+    cv.translate(W / 2, H * (0.17 if fmt == 'short' else 0.2))
+    cv.scale(1.35 - 0.35 * k, 1.35 - 0.35 * k)
+    for i, l in enumerate(lines):
+        w = f.measureText(l)
+        y = i * size * 1.08
+        edge = K.P(0xFF000000, size * 0.16)
+        edge.setStrokeJoin(skia.Paint.kRound_Join)
+        edge.setAlphaf(a)
+        fill = K.P(0xFFFFB000 if i == len(lines) - 1 else 0xFFFFFFFF)
+        fill.setAlphaf(a)
+        blob = skia.TextBlob(l, f)
+        cv.drawTextBlob(blob, -w / 2, y, edge)
+        cv.drawTextBlob(blob, -w / 2, y, fill)
+    cv.restore()
+
+
 def progress(cv, t, total, W, H):
     cv.drawRect(skia.Rect(0, H - 12, W, H), K.P(0x55000000))
     cv.drawRect(skia.Rect(0, H - 12, W * t / total, H), K.P(0xFFFFB000))
@@ -315,7 +358,7 @@ def render(ep_dir, out_path, only=None, fmt=None, clean=False):
     missing = sorted({sh['kind'] for sh in shots} - set(scenes.SHOTS) - k3)
     if missing:
         raise SystemExit(f'storyboard uses shots defined neither in world3d.py (rendered) nor scenes.py: {missing}')
-    json.dump({'shots': [{k: sh.get(k) for k in ('n', 'kind', 'segment', 'a', 'b', 'transition', 'action', 'camera')} for sh in shots],
+    json.dump({'shots': [{k: sh.get(k) for k in ('n', 'kind', 'segment', 'a', 'b', 'transition', 'action', 'camera', 'hush')} for sh in shots],
                'cues': cues, 'impacts': impacts, 'windows': win, 'moods': moods, 'duration': tl['duration'],
                'format': fmt, 'episode': ep['id']}, open(os.path.join(build, 'edl.json'), 'w'), indent=1)
     audio, sr = sf.read(os.path.join(build, 'voice.wav'))
@@ -327,7 +370,8 @@ def render(ep_dir, out_path, only=None, fmt=None, clean=False):
     ff = None
     if only is None:
         ff = subprocess.Popen(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'rawvideo', '-pix_fmt', 'bgra', '-s', f'{W}x{H}', '-r', str(FPS),
-                               '-i', '-', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '18', '-pix_fmt', 'yuv420p', out_path],
+                               '-i', '-', '-c:v', 'libx264', '-preset', 'medium', '-crf', '16', '-g', str(FPS), '-pix_fmt', 'yuv420p',
+                               '-movflags', '+faststart', out_path],
                               stdin=subprocess.PIPE)
     surf = skia.Surface(W, H)
     cv = surf.getCanvas()
@@ -366,6 +410,7 @@ def render(ep_dir, out_path, only=None, fmt=None, clean=False):
             last_hud, hud_t = h, t
         hud(cv, h, t - hud_t, W, H, fmt)
         captions(cv, words, t, W, H, fmt)
+        hook_title(cv, board.get('hook_text'), t, W, H, fmt)
         if fmt == 'short':
             progress(cv, t, total, W, H)
         img = surf.makeImageSnapshot()

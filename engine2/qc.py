@@ -11,10 +11,10 @@ Usage: python3 qc.py <build_dir> <video.mp4>   -> prints report, writes build/qc
 import json, os, subprocess, sys, re
 import numpy as np, soundfile as sf
 
-RULES = dict(first_shot_max=1.2, hook_impact_by=1.0, shot_max=2.0, shot_mean_max=1.6, kind_max_uses=2,
+RULES = dict(first_shot_max=1.6, hook_impact_by=1.0, shot_max=3.5, shot_mean_max=2.4, kind_max_uses=2,   # 2026-11-15: a 2.0 s cap left no time to act
              static_window=1.5, static_motion_min=1.2, cut_diff=28.0, first_second_motion_min=2.0,
              repeat_corr=0.97, repeat_pairs_max=1, lufs=-14.0, lufs_tol=1.5, tp_max=-1.0,
-             voice_over_bed_db=6.0, dead_air_s=0.8, dead_air_db=-45.0)
+             voice_over_bed_db=9.0, dead_air_s=1.5, dead_air_db=-45.0)   # deliberate silence up to 1.5 s is allowed
 
 def frames_gray(video, w=54, h=96, fps=30):
     raw = subprocess.run(['ffmpeg', '-loglevel', 'error', '-i', video, '-vf', f'scale={w}:{h},format=gray', '-r', str(fps),

@@ -5,9 +5,17 @@ Survra is a 3D animated channel. Everything is free and open: Blender as a Pytho
 Read first: `character/ROOK.md` (host bible, never change his design) and `episodes/r001-okene/` (reference episode: copy its structure, never its sets or shots).
 
 ## Rules
+- **Mandatory: `quality/PRODUCTION-CHECKLIST.md`.** Every episode passes it before `approved`; record it in `episode.json` → `checklist` and `review`. Use the owner's Animation Quality Director skill for the final review. Preview stills locally with `engine4/preview3d.py` in Blender before the cloud render. The engine renders true 60 fps at 720x1280; never lower those to save time without the owner's OK.
 - Follow the owner's animation-studio skill if it is available (its "2D only" line was replaced by the owner's later instruction: 3D, free tools only). Story gate: score 10 criteria out of 10 each, produce only ideas at 75/100 or more with curiosity, story potential and payoff at 6 or more. Write the scores and source notes into `episode.json`. Never ship a boring story: if the cold open would not stop a stranger scrolling, pick another story.
 - True stories only, verified with web sources listed in `episode.json` (`sources`, `source_notes` for conflicts). No invented facts or quotes.
 - Rook is a sceptical crow detective. Each video is a case. **Spine v2 (from the 2026-11-15 audit, see `analytics/creative-patterns.md`):** cold open on the most unbelievable moment, naming one physical image rather than a number → Rook is already *inside the scene* and voices his doubt in one line of at most 1.5 s, with the danger still in frame (no cutaway to his office; v1's office doubt beat lost about 30% of viewers) → the story keeps moving **forward** from the hook moment; date, place and name appear as a 1-second on-screen case-file label, not a narrated sentence (v1's jump back to background lost another ~21%) → escalation, one reversal, payoff. Give Rook one detective action inside the story world per Short (point at a clue, measure, test). End with "Case closed." or, where the story has a real decision or open point, one specific question for viewers. Jokes stop for the tragic beats. Set `"spine": "v2"` in `script.json`.
+- **Retention kit (2026-11-15, every episode):**
+  1. `storyboard.json` → `"hook_text"`: two to five words, `|` for a line break, true to the story (no bait). It shows for the first 1.8 s so the first frame works with the sound off. The first shot must already show the subject close and in the danger.
+  2. One **re-hook** between 40% and 60% of the runtime: a new question, a reversal or a visible change of stakes, written into the script, not an editing trick.
+  3. One `"hush": true` shot: the music drops out for the breath before the payoff. Use it once; twice at most in long-form.
+  4. Hold a shot until its action lands (up to 3.5 s). Do not cut to hit a quota; do add a development (action, reveal, camera move, new prop) at least every 1.5 s inside a held shot.
+  5. Shorts end on the payoff with `"tail": 0.5` or less, and loop seamlessly (owner's `seamless-loop-ending` skill): after the payoff and sign-off, the last shot returns to the opening shot's framing, the last line runs into the first line as one sentence, the music ends at the opening's level, and there is no end card or black. No "like and subscribe".
+  6. The camera is never frozen (`camlife` is automatic; `"prm": {"still": true}` only for graphics). Dark scenes use `CAMFILL` so faces stay readable.
 - First frame and experiments: follow `analytics/next-batch-creative-brief.md` for the current batch (it sets which Shorts open on a person close-up vs a wide shot, and which end on a question). Record the sound plan in `episode.json`.
 - The character stays, the whole world changes. Every story gets brand-new sets in its own `world3d.py`. Never import or copy another episode's sets. The originality gate fails shots that match earlier episodes.
 - Do not change `publish/config.json` (`review_mode`, `paused`). Videos now go public, so review the contact sheet at least three times before approving an episode. Never commit secrets, mp4, wav, png, jpg or models.
@@ -15,7 +23,7 @@ Read first: `character/ROOK.md` (host bible, never change his design) and `episo
 ## Files in `episodes/<id>/` (id like `r002-short-name`)
 - `episode.json`: id, format `short` (9:16, 40 to 50 s) or `long` (16:9), status `approved` (public posting was approved by the owner on 12 Nov 2026: the workflow schedules it into the next slot after the QC gate passes) or `ready` (uploads as private for the owner) when you are not confident in it, title (Shorts end with #shorts), description, tags, hashtags, playlist, sources, story_score.
 - `script.json`: voice `am_fenrir`, speed 1.12, gap 0.14, lead 0.1, tail 0.9, segments `{scene, mood, text}`. Moods: hook, tense, action, calm, wonder, sad, triumph, end. Numbers as `{2013|twenty thirteen}`.
-- `storyboard.json`: shots `{n, segment, weight, kind, action, camera, cam, shake, transition (cut|whip|zoom|flash), sfx:[[name,frac]], hud, prm}`. `cam` is only used by flat 2D inserts; 3D shots move the Blender camera. Mark the sign-off shot `"brand": true`.
+- `storyboard.json`: top-level `hook_text`; shots `{n, segment, weight, kind, action, camera, cam, shake, transition (cut|whip|zoom|flash), sfx:[[name,frac]], hud, hush, prm}`. `cam` is only used by flat 2D inserts; 3D shots move the Blender camera. Mark the sign-off shot `"brand": true`.
 - `world3d.py`: the story in 3D. `build()` returns the scene dict `S`; `reset(S)` parks everything; `SHOTS3D = {kind: f(S, k, t, lt)}` poses the cast and camera for one frame (`k` 0..1 progress, `t` global time, `lt` time in shot); `finish(S, t)` applies faces and lip sync; `HOST = {kinds where Rook is on screen}`; optional `STILLS = {name: f}` for photos on the case board.
 - `scenes.py`: flat inserts `SHOTS = {kind: f(cv, c)}` (case board, graphics) and `OVER = {kind: f(cv, c)}` overlays drawn on top of a 3D shot (rain, stamps, numbers) on a 1080x1920 canvas (1920x1080 for long).
 
@@ -24,6 +32,7 @@ Read first: `character/ROOK.md` (host bible, never change his design) and `episo
 - `Rig(colours, head_fn, coat)`: jointed humanoid about 3 units tall, feet at the root, facing -Y. `rig.place(loc, yaw, pitch, roll)`, `rig.apply(pose)`.
 - Poses: `P('stand'|'point'|'hat'|'cross'|'shrug'|'up'|'reach'|'hips'|'sit'|'swim', **overrides)`, `blend(a, b, k)`, `walk(t)`. Arm = (swing forward, spread, elbow bend, forearm twist inward); leg = (hip forward, knee bend); head = (nod, turn).
 - Heads: `rook_head` (hat, brows, eyes, lower beak for lip sync, diving helmet), `human_head(skin, hair)`, `diver_head` (lamp). `Hand(skin, sleeve)` is a close-up hand prop with `grip(0..1)`.
+- Camera fill: the engine puts a soft light beside the lens (`camfill`). Set `CAMFILL = {kind: watts, '*': default}` in `world3d.py` (engine default 60); dark interiors usually need 150 to 300, far subjects more. A face that reads only as two eyes fails the checklist.
 - Build each set inside `group(name, fn)` at its own origin so only one set renders per shot (`show(S, name)` returns a function that converts set-local to world coordinates).
 - Look: faceted low poly, strong coloured light, dark noir palette with Survra orange (#FF7A1A) accents. Rook: coat #566178, feathers #2F2B4D, amber eyes, hat with orange band.
 
@@ -35,9 +44,9 @@ python3 engine4/kit3d.py episodes/<id> sheet && python3 engine4/sheet3d.py episo
 #   ^ one low-res still per shot in about a minute: LOOK at it and fix staging before any full render
 ./engine3/make_episode.sh episodes/<id>      # full render (resumable; about 8 s per frame on 2 cores) + QC gate
 ```
-On GitHub the same episode is rendered by six parallel jobs, so a full local render is optional: the contact sheet plus a few full frames is the minimum review. After a cloud run, a small review copy is on the branch `renders-<id>`.
+On GitHub the same episode is rendered by 16 parallel jobs at 60 fps (about 1 h 45 min for a 49 s Short), so a full local render is optional: the contact sheet plus a few full frames is the minimum review. After a cloud run, a small review copy is on the branch `renders-<id>`.
 
-QC gate (must pass, never loosen it): first shot 1.2 s or less with an impact sound in the first second, no shot over 2.0 s, mean 1.6 s or less, no shot type more than twice or twice in a row, no static 1.5 s stretch, Rook on screen and acting in at least 35% of shots, loudness and voice clarity, no recycled visuals.
+QC gate (must pass, never loosen it): first shot 1.6 s or less with an impact sound in the first second, no shot over 3.5 s, mean 2.4 s or less, no shot type more than twice or twice in a row, no static 1.5 s stretch, Rook on screen and acting in at least 35% of shots, loudness and voice clarity, no recycled visuals.
 
 ## Lessons from Case 001 (read before staging)
 - Objects parented to a set root use set-local coordinates; un-parented ones use world coordinates.
