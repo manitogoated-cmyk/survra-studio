@@ -1,6 +1,6 @@
 # Survra production dashboard
 
-Updated 2026-11-15 21:21 UTC by the publish workflow. Daily target: 3 long-form + 4 Shorts. Review mode: **off**. Paused: **no**.
+Updated 2026-11-15 23:45 UTC by the publish workflow. Daily target: 1 long-form + 4 Shorts. Review mode: **off**. Paused: **no**.
 
 A stage shows `done` only when its output file exists; QC shows `done` only after the automated gate passed on the rendered video.
 
@@ -9,6 +9,7 @@ A stage shows `done` only when its output file exists; QC shows `done` only afte
 | f001-trail-suitcase | short | approved | done | done | done | done | done | done | n/a | done | done | public | https://youtu.be/ZxPZT5xc9Uk |
 | k001-koepcke | short | draft | done | done | done | done | - | - | n/a | - | - | - | - |
 | m001-wow-signal | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-13T23:00:00Z | https://youtu.be/2kB8RSshxuY |
+| q001-okene | short | draft | done | done | done | done | - | - | n/a | - | - | - | - |
 | r001-okene-long | long | approved | done | done | done | done | done | done | - | done | done | scheduled 2026-11-13T15:00:00Z | https://youtu.be/ePBtSD8gWH8 |
 | r001-okene | short | approved | done | done | done | done | done | done | n/a | done | done | public | https://youtu.be/oHuAGeKrDQ8 |
 | r002-grimes-long | long | approved | done | done | done | done | done | done | - | done | done | scheduled 2026-11-13T19:00:00Z | https://youtu.be/rKTxeED8Hjc |
@@ -31,11 +32,12 @@ A stage shows `done` only when its output file exists; QC shows `done` only afte
 | r010-yamaguchi | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-15T20:00:00Z | https://youtu.be/z_eLKEkA44M |
 | r011-sullivan-long | long | approved | done | done | done | done | done | done | - | done | done | scheduled 2026-11-16T21:30:00Z | https://youtu.be/2mZTn-vnlCo |
 | r011-sullivan | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-15T23:00:00Z | https://youtu.be/JSVSTR955O8 |
-| r012-jessop | short | approved | done | done | done | done | - | done | n/a | done | - | - | - |
+| r012-jessop | short | approved | done | done | done | done | - | done | n/a | FAIL | - | - | - |
 | r013-bugorski-long | long | ready | done | done | done | done | done | done | - | done | done | private (review) | https://youtu.be/kqmJR2GHWV8 |
 | r013-bugorski | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-16T02:00:00Z | https://youtu.be/jzJp2iU3Ra8 |
-| r014-weathers-long | long | draft | done | done | done | done | - | - | - | - | - | - | - |
+| r014-weathers-long | long | approved | done | done | done | done | done | done | done | done | done | scheduled 2026-11-17T15:00:00Z | https://youtu.be/QlKCFooxAD4 |
 | r014-weathers | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-16T17:00:00Z | https://youtu.be/EsvIPQ2bryw |
+| r015-hall-long | long | ready | done | done | done | done | - | - | - | - | - | - | - |
 | r015-hall | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-16T20:00:00Z | https://youtu.be/fw9AFBVXqjE |
-| r016-simpson | short | approved | done | done | done | done | - | - | n/a | - | - | - | - |
+| r016-simpson | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-16T23:00:00Z | https://youtu.be/6ZLO3VlvIhs |
 | s001-alvarenga | short | draft | done | done | done | done | done | done | n/a | done | done | private (review) | https://youtu.be/FZZ4SOnRhYU |

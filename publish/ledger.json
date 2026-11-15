@@ -380,6 +380,20 @@
     "url": "https://youtu.be/EsvIPQ2bryw",
     "video_id": "EsvIPQ2bryw"
   },
+  "r014-weathers-long": {
+    "captions": "ok",
+    "format": "long",
+    "playlist": "Rook's Case Files (Full Cases)",
+    "privacy": "private",
+    "publish_at": "2026-11-17T15:00:00Z",
+    "review": false,
+    "sha256": "5df9c46627c583f98cbdd8b67f07d5389552672074355b6ae4d88f3d4c79e8b1",
+    "thumbnail": "failed: thumbnail -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The authenticated user doesn't have permissions to upload and set custom video thumbnails.\",\n ",
+    "title": "Left for Dead Twice on Everest: The Full Case of Beck Weathers",
+    "uploaded_at": "2026-11-15T23:45:02Z",
+    "url": "https://youtu.be/QlKCFooxAD4",
+    "video_id": "QlKCFooxAD4"
+  },
   "r015-hall": {
     "captions": "ok",
     "format": "short",
@@ -392,6 +406,19 @@
     "uploaded_at": "2026-11-15T17:29:29Z",
     "url": "https://youtu.be/fw9AFBVXqjE",
     "video_id": "fw9AFBVXqjE"
+  },
+  "r016-simpson": {
+    "captions": "ok",
+    "format": "short",
+    "playlist": "Rook's Case Files (Shorts)",
+    "privacy": "private",
+    "publish_at": "2026-11-16T23:00:00Z",
+    "review": false,
+    "sha256": "9145c81c74a5adecf3d2df334a62fb9d7b18cc3a8a75f97b182c79e22e3579a2",
+    "title": "His Partner Cut the Rope. He Crawled Back Alive #shorts",
+    "uploaded_at": "2026-11-15T23:45:04Z",
+    "url": "https://youtu.be/6ZLO3VlvIhs",
+    "video_id": "6ZLO3VlvIhs"
   },
   "s001-alvarenga": {
     "privacy": "private",
