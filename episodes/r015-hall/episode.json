@@ -1,11 +1,65 @@
 {
  "id": "r015-hall",
  "format": "short",
- "status": "draft",
+ "status": "approved",
  "synthetic": false,
  "host": "rook",
  "case": 15,
  "title": "Declared Dead on Everest. At Sunrise He Said Hello #shorts",
+ "description": "Case 015. On 25 May 2006 the Australian mountaineer Lincoln Hall reached the summit of Mount Everest. On the way down he collapsed with altitude sickness. His Sherpa guides worked for hours to save him; as night fell their expedition leader ordered them down, he was declared dead, and his family was told. He spent the night alone near the top of the mountain without oxygen or a sleeping bag. At sunrise the next morning a party of four on their way to the summit, the American guide Dan Mazur, Andrew Brash, Myles Osborne and Jangbu Sherpa, found him sitting cross-legged on the ridge with no hat and no gloves. His first words to them were: \"I imagine you are surprised to see me here.\" They gave up their own summit to stay with him, and Sherpas climbed up from below to bring him down. He lost the tips of his fingers and a toe to frostbite, and wrote a book about it, Dead Lucky. He died in 2012. Rook didn't believe it either.\n\nAnimated reconstruction of a true story. The mountain, ridge, camp, tent, house and study in the film are generic low-poly sets, not models of the real places; the other climbers are anonymous figures, and the cards on the case board are drawings made for the film. Sources word his greeting slightly differently (\"you are\", \"you're\", \"you guys are\"); the film uses the wording most of them give.",
+ "tags": [
+  "Lincoln Hall",
+  "Mount Everest",
+  "Everest",
+  "Dan Mazur",
+  "declared dead",
+  "left for dead",
+  "Dead Lucky",
+  "mountaineering",
+  "survival",
+  "frostbite",
+  "true story",
+  "survival story",
+  "animated story",
+  "Rook",
+  "Survra"
+ ],
+ "hashtags": [
+  "#shorts",
+  "#truestory",
+  "#everest"
+ ],
  "playlist": "Rook's Case Files (Shorts)",
- "sources": []
+ "sources": [
+  "https://en.wikipedia.org/wiki/Lincoln_Hall_(climber)",
+  "https://www.nbcnews.com/id/wbna13272568",
+  "https://publications.americanalpineclub.org/articles/12200743500",
+  "https://www.irishtimes.com/news/everest-climber-left-for-dead-returns-1.1009311",
+  "https://www.bangordailynews.com/2012/03/25/news/lincoln-hall-survivor-of-mount-everest-ordeal-dies-at-56/",
+  "https://www.sunjournal.com/2006/06/10/man-shares-story-everest-rescue/"
+ ],
+ "story_score": {
+  "curiosity": 9,
+  "stakes": 9,
+  "freshness": 5,
+  "story": 8,
+  "visual": 8,
+  "audience_fit": 8,
+  "payoff": 9,
+  "packaging": 8,
+  "research": 9,
+  "repeatability": 6,
+  "total": 79
+ },
+ "title_options": [
+  "Declared Dead on Everest. At Sunrise He Said Hello #shorts",
+  "His Family Was Told He Died on Everest. He Was Sitting Up at Dawn #shorts",
+  "\"Surprised to See Me Here?\" The Dead Man on Everest #shorts",
+  "Left for Dead on Everest, Found Sitting Cross-Legged at Sunrise #shorts"
+ ],
+ "source_notes": "Read for this run (fetched 15 Nov 2026): Wikipedia ('Lincoln Hall (climber)'); NBC News / Associated Press, 'Everest climbers recall near-death experience' (June 2006, interviews with Hall and Dan Mazur); the American Alpine Journal 2007, Elizabeth Hawley, 'Everest, Deaths During the Spring'; The Irish Times, 'Everest climber left for dead returns' (29 May 2006); the Bangor Daily News obituary (25 March 2012); the Sun Journal's copy of the AP story (10 June 2006). Every narrated fact is in at least two of the pages read. 2006 and Everest: all. Australian: Wikipedia ('veteran Australian mountaineer'), Irish Times. Reached the summit: Wikipedia, NBC, Bangor Daily News. Collapsed with altitude sickness on the way down: Wikipedia ('a form of altitude sickness, probably cerebral edema'), Bangor Daily News ('a deadly form of altitude sickness'); NBC says 'oxygen deprivation', the Irish Times lists 'water on the brain' afterwards. Sherpas tried for hours: Wikipedia ('attempted to rescue him for hours'), Bangor Daily News ('spent hours trying to revive him'). Ordered down as night fell: Wikipedia (expedition leader Alexander Abramov ordered the guides to leave), Bangor Daily News (the leader radioed from base camp); NBC and the Irish Times say only that they were forced to leave to save themselves, and the Irish Times puts the declaration at sunset. Declared dead: NBC, Irish Times, Bangor Daily News, AAJ ('reported dead the day before'). Family told: Wikipedia, Bangor Daily News. Night alone with no oxygen and no sleeping bag: Wikipedia (Myles Osborne's account), NBC, Bangor Daily News, Irish Times ('nearly 12 hours without oxygen'). Found at dawn / sunrise the next morning by a party of four (Mazur, two clients and a Sherpa): Wikipedia (names all four), NBC, Sun Journal, Bangor Daily News. Sitting cross-legged, no hat, no gloves, arms out of his down suit: Wikipedia (Osborne), Bangor Daily News, NBC (Mazur: no gloves, no hat, jacket off). The greeting: all six pages; NBC, the Irish Times, the Bangor Daily News and the Sun Journal have 'I imagine you are surprised to see me here', Wikipedia has 'you're' and the AAJ 'you guys are'; the narration uses 'you are'. They gave up their summit: Wikipedia, NBC, AAJ, Bangor Daily News. Sherpas came up to bring him down: Wikipedia (twelve sent by Abramov), NBC ('some Sherpas showed up'), AAJ ('at least 15 Sherpas' for the whole evacuation); the numbers differ, so the film gives none. Lost fingertips and a toe: Wikipedia ('the tips of his fingers and a toe'), Bangor Daily News ('a toe and the tips of eight fingers'). The book Dead Lucky: Wikipedia, Bangor Daily News. Conflicts kept out of the film: the altitude where he lay is given as 8,600 m, 8,700 m, 8,800 m, 28,000 ft and 28,200 ft, so the narration only says 'near the top of Everest' and no figure appears on screen; the Irish Times has him dangling his legs over the edge while Wikipedia and the Bangor Daily News have him cross-legged, and the film follows the two. Left out for length: his confusion when found (two pages say he believed he was on a boat), the four hours the party spent with him giving him oxygen and tea (the cup in the film stands for this), that Mazur's party was two hours from the top (one source), the other deaths on Everest that season, and his death from mesothelioma in 2012 (in the description only). Staging choices that are not facts: the Sherpas who climb the ladder and the ladder itself are generic; the house, the radio tent and the study are invented settings for facts that the sources state without describing a place.",
+ "quality_gate": {
+  "method": "Reviewed in five rounds with fixes after each. Round 1 (low-res contact sheet of all 34 3D shots): the sun was out of frame in the opening and the sunset; the close-up of his hands showed his back; the frost on his hair was the size of snowballs; Rook was hidden in the walk down and out of frame when the Sherpas leave; the close-up of his face at night showed his boots; the leader's arm filled the corner of the shot over his shoulder; Rook stood exactly behind his head when he speaks, so his hat looked like Hall's; the four climbers were cropped; the desk shot was dark and far away. Round 2 (second sheet): all of those re-staged; a Sherpa's legs still crossed the lens in the collapse, the night close-up was still unreadable and Rook was cropped at the desk and when Hall speaks. Round 3 (third sheet): those fixed; the night close-up moved again. Round 4, a full-length low-resolution rehearsal (216x384, 4 samples, every 3D frame) composited with captions, HUD, overlays, inserts and sound, plus eight shots at higher resolution: the crossed-out oxygen bottle and the drawn foot sat under the captions and were moved up; the night close-up became a straight top-down portrait, which finally reads; a hat that the party puts on him was removed because no page read states it. Round 5: the changed shots re-rendered, the rehearsal re-composited and six frames checked. The last rehearsal passed the automated gate locally: 40 shots, mean 1.11 s, longest 1.81 s, Rook acting in 17 of 40 shots (42%), voice 12.4 dB over the bed, closest match to any earlier episode 0.68. The cloud render runs the real gate at full resolution.",
+  "checked": "Every 3D kind in the storyboard exists in world3d.SHOTS3D and HOST lists exactly the kinds in which Rook is placed; shots follow the word timings; Rook makes no joke from the collapse to the night alone (hat to his chest when the Sherpas leave, absent from the house); nothing graphic is shown (frost and, at the desk, white fingertips only); no lettering, national flag, emblem, book cover or real document appears in the sets; the streamers on the summit pole are plain colours; no altitude or number of rescuers is stated because the sources disagree."
+ }
 }

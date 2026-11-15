@@ -1033,7 +1033,7 @@ def night_face(S, k, t, lt):
         p.location = A(-0.4 + 0.08 * math.sin(i + u * 4), 2.75 - 0.15 * u, 0.75 + 0.8 * u)
         s = 0.25 + 0.5 * u
         p.scale = (s, s, s)
-    shoot(S, A(lerp(2.3, 1.8, k), lerp(2.2, 2.6, k), lerp(0.9, 1.25, k)), A(-0.35, 2.75, 0.6), 46, fill=1.6, fcol='9DB8FF')
+    shoot(S, A(-0.36, lerp(2.2, 2.35, k), lerp(4.6, 3.9, k)), A(-0.38, lerp(2.4, 2.5, k), 0.5), 50, roll=lerp(-0.12, 0.05, k), fill=1.9, fcol='9DB8FF')
 
 
 # ---------------------------------------------------------------- dawn: the four climbers
@@ -1112,7 +1112,7 @@ def summit_near(S, k, t, lt):
 
 def tea(S, k, t, lt):
     A = crest(S, 'sunrise', 1.0)
-    seated(S, A, turn=-0.5, nod=0.15, face='calm', hat=True, aR=(1.0, 0.1, 1.5, 0.3))
+    seated(S, A, turn=-0.5, nod=0.15, face='calm', aR=(1.0, 0.1, 1.5, 0.3))
     p1 = (1.3, -1.5)
     S['m1'].place(A(p1[0], p1[1], 0), look_yaw(p1, (0.6, 0.0)))
     S['m1'].apply(P('stand', lL=(0.2, 1.5), lR=(1.3, 1.45), lift=-0.76, lean=0.3, aL=(0.4, 0.1, 0.6), aR=(1.25, 0.0, 0.3), head=(0.1, 0.0)))
@@ -1156,7 +1156,6 @@ def carry_down(S, k, t, lt):
     w['aL'], w['aR'], w['lean'], w['head'] = (0.5, 1.2, 0.3), (0.5, 1.2, 0.3), 0.2, (0.3, 0.0)
     f.apply(w)
     S['face']['found'] = 'tired'
-    S['hat'].hide_render = False
     for who, x, dy, ph in (('s1', -0.95, 0.1, 0.2), ('s2', 0.95, 0.1, 0.5), ('m4', 0.2, -2.6, 0.7)):
         S[who].place(A(x, y + dy, 0), 0.0)
         ww = walk(lt + ph, 1.0)
@@ -1183,14 +1182,14 @@ def book_desk(S, k, t, lt):
     S['face']['home'] = 'warm'
     St['pen'].location = (-0.36 + wr * 0.5, -0.86, 1.83)
     St['pen'].rotation_euler = (0.5, 0.3, 0)
-    rp = (2.3, 0.5, 0.0)
-    S['rook'].place(A(*rp), 0.45)
+    rp = (1.5, 0.55, 0.0)
+    S['rook'].place(A(*rp), 0.4)
     S['rook'].apply(P('stand', aL=(1.1, -0.15, 1.3, 0.6), aR=(1.1, -0.15, 1.3, 0.6), head=(0.4, 0.0)))
     S['face']['rook'] = 'warm' if lt > 0.9 else 'calm'
-    S['book'].location = A(2.5, 0.05, 2.05)
-    S['book'].rotation_euler = (1.0, 0, 0.45)
+    S['book'].location = A(1.68, 0.1, 2.05)
+    S['book'].rotation_euler = (1.0, 0, 0.4)
     a = lerp(-0.1, 0.25, k)
-    shoot(S, A(1.0 + 6.4 * math.sin(a), -0.4 - 6.4 * math.cos(a), lerp(3.1, 2.8, k)), A(1.0, -0.2, 2.5), 34, fill=2.2, fcol='FFE8D0')
+    shoot(S, A(0.7 + 6.0 * math.sin(a), -0.4 - 6.0 * math.cos(a), lerp(3.1, 2.8, k)), A(0.7, -0.2, 2.45), 40, fill=2.2, fcol='FFE8D0')
 
 
 def empty_crest(S, k, t, lt):

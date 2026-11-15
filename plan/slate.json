@@ -202,8 +202,8 @@
    "world": "Everest north ridge at sunrise",
    "est_score": 82,
    "long_form_candidate": false,
-   "status": "in progress",
-   "facts": "verify with 2+ sources at authoring; skip if they do not hold",
+   "status": "authored",
+   "facts": "verified (see episodes/r015-hall/episode.json); six pages read; his greeting is worded three ways across them, the film uses 'I imagine you are surprised to see me here' (four of six); no altitude or number of rescuing Sherpas is stated because the pages disagree",
    "claimed_at": "2026-11-15T11:38:44Z"
   },
   {

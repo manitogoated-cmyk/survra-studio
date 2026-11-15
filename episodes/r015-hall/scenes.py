@@ -199,8 +199,8 @@ def no_card(cv, c):
     twinkle(cv, c.t, 60, 1900, 9)
     z = 1.0 + 0.1 * c.k
     cv.save()
-    cv.translate(540, 760)
-    cv.scale(z, z)
+    cv.translate(540, 660)
+    cv.scale(z * 0.86, z * 0.86)
     cv.rotate(-14)
     cv.drawRoundRect(skia.Rect.MakeXYWH(-130, -330, 260, 700), 120, 120, P(ORANGE))
     cv.drawRoundRect(skia.Rect.MakeXYWH(-130, -330, 90, 700), 60, 60, P(0xFFFFA050, a=0.6))
@@ -212,8 +212,8 @@ def no_card(cv, c):
     k = min(1, max(0.0, c.lt - 0.08) / 0.1)
     if k > 0:
         for sx in (-1, 1):
-            cv.drawLine(540 - sx * 330, 400, 540 - sx * 330 + sx * 660 * k, 400 + 720 * k, P(RED, 44))
-    fit(cv, 'NO OXYGEN', 540, 1250, 150, 940, 0xFFFFFFFF)
+            cv.drawLine(540 - sx * 300, 330, 540 - sx * 300 + sx * 600 * k, 330 + 660 * k, P(RED, 44))
+    fit(cv, 'NO OXYGEN', 540, 1160, 150, 940, 0xFFFFFFFF)
 
 
 def finger(cx, top, w_, len_):
@@ -237,13 +237,13 @@ def cost_tips(cv, c):
     cv.translate(540, 760)
     cv.scale(z, z)
     cv.translate(-540, -760)
-    fit(cv, 'THE COST', 540, 250, 120, 900, 0xFFFFFFFF)
+    fit(cv, 'THE COST', 540, 230, 120, 900, 0xFFFFFFFF)
     skin, line = h('E2B694'), h('F4F8FF')
     k_f = ease((c.lt - 0.55) / 0.35)                              # "his fingertips"
     k_t = ease((c.lt - 1.2) / 0.3)                                # "and a toe"
     s = 78
     for side, cx in ((-1, 290), (1, 790)):
-        cy = 640
+        cy = 560
         cv.drawRoundRect(skia.Rect.MakeXYWH(cx - 0.95 * s, cy + 2.2 * s, 1.9 * s, 1.2 * s), 18, 18, P(skin))
         cv.drawRoundRect(skia.Rect.MakeXYWH(cx - 1.25 * s, cy - 0.2 * s, 2.5 * s, 2.5 * s), 24, 24, P(skin))
         rects = []
@@ -260,9 +260,9 @@ def cost_tips(cv, c):
                 cv.drawRoundRect(r, 22, 22, P(skin, a=1 - k_f))
             if k_f > 0:
                 cv.drawRoundRect(r, 22, 22, dashed(line, 6))
-    fit(cv, 'FINGERTIPS', 540, 990, 84, 800, AMBER if k_f > 0 else 0xFFFFFFFF)
+    fit(cv, 'FINGERTIPS', 540, 905, 84, 800, AMBER if k_f > 0 else 0xFFFFFFFF)
     # the foot, seen from above, toes up
-    fx, fy = 540, 1190
+    fx, fy = 540, 1090
     cv.drawRoundRect(skia.Rect.MakeXYWH(fx - 120, fy - 60, 240, 150), 70, 70, P(skin))
     for i in range(5):
         w_ = 62 - i * 7
@@ -273,7 +273,7 @@ def cost_tips(cv, c):
             cv.drawRoundRect(r, 26, 26, P(skin, a=1 - gone))
         if gone > 0:
             cv.drawRoundRect(r, 26, 26, dashed(line, 6))
-    fit(cv, 'ONE TOE', 800, 1200, 70, 300, AMBER if k_t > 0 else 0xFFFFFFFF)
+    fit(cv, 'ONE TOE', 800, 1100, 70, 300, AMBER if k_t > 0 else 0xFFFFFFFF)
 
 
 def pin_true(cv, c):
