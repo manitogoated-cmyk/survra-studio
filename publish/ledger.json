@@ -272,6 +272,20 @@
     "url": "https://youtu.be/kSJeT-fs4BM",
     "video_id": "kSJeT-fs4BM"
   },
+  "r009-poonlim-long": {
+    "captions": "ok",
+    "format": "long",
+    "playlist": "Rook's Case Files (Full Cases)",
+    "privacy": "private",
+    "publish_at": "2026-11-16T15:00:00Z",
+    "review": false,
+    "sha256": "02d80e5e2349dc20a9803bedab34559afadc98a5ebd64cbb2be1d6f0fc1b41fd",
+    "thumbnail": "failed: thumbnail -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The authenticated user doesn't have permissions to upload and set custom video thumbnails.\",\n ",
+    "title": "His Ship Sank in 2 Minutes. He Survived 133 Days Alone on a Raft",
+    "uploaded_at": "2026-11-15T07:59:16Z",
+    "url": "https://youtu.be/qnPDm9wUkDc",
+    "video_id": "qnPDm9wUkDc"
+  },
   "r010-yamaguchi": {
     "captions": "ok",
     "format": "short",
@@ -285,6 +299,20 @@
     "url": "https://youtu.be/z_eLKEkA44M",
     "video_id": "z_eLKEkA44M"
   },
+  "r010-yamaguchi-long": {
+    "captions": "ok",
+    "format": "long",
+    "playlist": "Rook's Case Files (Full Cases)",
+    "privacy": "private",
+    "publish_at": "2026-11-16T19:00:00Z",
+    "review": false,
+    "sha256": "9e07acd9d9e19d12040225ea71927a3c949bbc82ac79c6732b3a06ef4b2add61",
+    "thumbnail": "failed: thumbnail -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The authenticated user doesn't have permissions to upload and set custom video thumbnails.\",\n ",
+    "title": "He Survived Hiroshima. Then He Took the Train Home to Nagasaki",
+    "uploaded_at": "2026-11-15T07:59:28Z",
+    "url": "https://youtu.be/9Vv5aZJMMSI",
+    "video_id": "9Vv5aZJMMSI"
+  },
   "r011-sullivan": {
     "captions": "ok",
     "format": "short",
@@ -297,6 +325,33 @@
     "uploaded_at": "2026-11-14T17:13:45Z",
     "url": "https://youtu.be/JSVSTR955O8",
     "video_id": "JSVSTR955O8"
+  },
+  "r011-sullivan-long": {
+    "captions": "ok",
+    "format": "long",
+    "playlist": "Rook's Case Files (Full Cases)",
+    "privacy": "private",
+    "publish_at": "2026-11-16T21:30:00Z",
+    "review": false,
+    "sha256": "fc5596c267cf70cf2f5af94c61131fe348fe790aa23609fc1f75b0ac23315e7e",
+    "thumbnail": "failed: thumbnail -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The authenticated user doesn't have permissions to upload and set custom video thumbnails.\",\n ",
+    "title": "Struck by Lightning 7 Times: The Full Case of Ranger Roy Sullivan",
+    "uploaded_at": "2026-11-15T07:59:41Z",
+    "url": "https://youtu.be/2mZTn-vnlCo",
+    "video_id": "2mZTn-vnlCo"
+  },
+  "r013-bugorski": {
+    "captions": "ok",
+    "format": "short",
+    "playlist": "Rook's Case Files (Shorts)",
+    "privacy": "private",
+    "publish_at": "2026-11-16T02:00:00Z",
+    "review": false,
+    "sha256": "5881a2229a97033c816db1125792a56043f81f72af1c3b29f376a1d7ff9a8d49",
+    "title": "A Particle Beam Went Through His Head. He Went Back to Work #shorts",
+    "uploaded_at": "2026-11-15T07:59:47Z",
+    "url": "https://youtu.be/jzJp2iU3Ra8",
+    "video_id": "jzJp2iU3Ra8"
   },
   "s001-alvarenga": {
     "privacy": "private",
