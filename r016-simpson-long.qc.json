@@ -1,0 +1,32 @@
+{
+ "pass": true,
+ "fails": [],
+ "warnings": [],
+ "notes": [
+  "94 shots, mean 2.10s, longest 3.01s",
+  "motion: mean frame change 3.68, 163 hard cuts detected",
+  "audio: -14.6 LUFS, peak -1.2 dBFS, voice 15.0 dB over bed",
+  "host: acts in 45/94 shots (48%)",
+  "originality: closest match to any earlier episode 0.84 (shot 48 vs r014-weathers-long)"
+ ],
+ "rules": {
+  "first_shot_max": 4.0,
+  "hook_impact_by": 1.0,
+  "shot_max": 7.0,
+  "shot_mean_max": 3.8,
+  "kind_max_uses": 4,
+  "static_window": 3.5,
+  "static_motion_min": 0.8,
+  "cut_diff": 28.0,
+  "first_second_motion_min": 2.0,
+  "repeat_corr": 0.97,
+  "repeat_pairs_max": 3,
+  "lufs": -14.0,
+  "lufs_tol": 1.5,
+  "tp_max": -1.0,
+  "voice_over_bed_db": 9.0,
+  "dead_air_s": 1.5,
+  "dead_air_db": -45.0
+ },
+ "format": "long"
+}
