@@ -2612,4 +2612,28 @@ SHOTS3D.update({f.__name__: f for f in (
     look_face, two_look, face_wide, face_climb, hawking_wave, rook_coin, summit, ridge_down, ice_step, step_fall, leg_sit, yates_sees, ridge_two, bivi_stove,
     stove_out, rook_can, snowhole, knot, seat_dig, lower_side, lower_far, rook_watch, over_edge, hands_slip, pack_knife, yates_after, dawn_descend, crev_look,
     walk_alone, seat_dawn, rook_think, rook_go, alive, rope_dark, glac_far, night_rocks, embrace, mule, hosp_bed, hosp_close, crag_climb, yates_sit, desk_write)})
+
+
+def cam_orbit(S, k):
+    """prm "orb": [degrees, dolly, rise] swings the camera round its own look-at point over the shot."""
+    o = S['prm'].get('orb')
+    if not o:
+        return
+    deg, dolly, rise = (list(o) + [0, 0])[:3]
+    c, tg = S['camrig'].location, S['camtgt'].location
+    a = math.radians(deg) * (k - 0.5)
+    m = 1 - dolly * (k - 0.5)
+    dx, dy = c[0] - tg[0], c[1] - tg[1]
+    S['camrig'].location = (tg[0] + (dx * math.cos(a) - dy * math.sin(a)) * m, tg[1] + (dx * math.sin(a) + dy * math.cos(a)) * m, c[2] + rise * (k - 0.5))
+
+
+def _with_orbit(f):
+    def g(S, k, t, lt):
+        f(S, k, t, lt)
+        cam_orbit(S, k)
+    g.__name__ = f.__name__
+    return g
+
+
+SHOTS3D = {name: _with_orbit(f) for name, f in SHOTS3D.items()}
 STILLS.update(two=photo_two, simon=photo_simon, thumb=photo_thumb)
