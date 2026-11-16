@@ -1,0 +1,18 @@
+{
+ "id": "r016-simpson-long",
+ "format": "long",
+ "status": "draft",
+ "case_of": "r016-simpson",
+ "claimed_at": "2026-11-16T02:54:20Z",
+ "synthetic": false,
+ "host": "rook",
+ "case": 16,
+ "title": "His Partner Cut the Rope: The Full Case of Joe Simpson",
+ "playlist": "Rook's Case Files (Full Cases)",
+ "sources": [
+  "https://en.wikipedia.org/wiki/Touching_the_Void_(book)",
+  "https://en.wikipedia.org/wiki/Simon_Yates_(mountaineer)",
+  "https://en.wikipedia.org/wiki/Joe_Simpson_(mountaineer)",
+  "https://explorersweb.com/?p=114660"
+ ]
+}
