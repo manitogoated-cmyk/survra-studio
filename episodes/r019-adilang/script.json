@@ -1,0 +1,13 @@
+{
+  "id": "r019-adilang", "spine": "v2", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.4,
+  "segments": [
+    {"scene": "hook", "mood": "hook", "text": "The rope snaps on a floating fishing hut, and the ocean takes the teenager inside."},
+    {"scene": "doubt", "mood": "tense", "text": "A hut isn't a boat."},
+    {"scene": "drift", "mood": "tense", "text": "No engine, no paddle, food for a few days. Land is {125|a hundred and twenty-five} kilometres away."},
+    {"scene": "survive", "mood": "calm", "text": "So he catches fish, and burns the hut's own fence to cook them. For water, he sips the sea through his clothes."},
+    {"scene": "rehook", "mood": "tense", "text": "Then, a ship. He waves. It sails past. So do more than {10|ten} others. He says he cried often."},
+    {"scene": "radio", "mood": "action", "text": "Day {49|forty-nine}. Another one passes, so he grabs his radio and calls for help. This one turns around."},
+    {"scene": "rescue", "mood": "triumph", "text": "The waves are too high to come alongside. So he jumps in, and the crew haul him aboard, alive. Nineteen years old, thousands of kilometres from home."},
+    {"scene": "end", "mood": "end", "text": "I was wrong. Ship after ship passed him. Would you have kept waving? It starts when"}
+  ]
+}
