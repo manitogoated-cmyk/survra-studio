@@ -283,8 +283,8 @@
    "world": "mine refuge, rescue capsule",
    "est_score": 80,
    "long_form_candidate": true,
-   "status": "in progress", "claimed_at": "2026-11-16T11:38:32Z",
-   "facts": "verify with 2+ sources at authoring; skip if they do not hold"
+   "status": "authored",
+   "facts": "verified (see episodes/r021-sanjose/episode.json)"
   },
   {
    "case": 22,

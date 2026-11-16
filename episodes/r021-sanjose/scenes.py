@@ -220,7 +220,8 @@ def miss_card(cv, c):
     if k8 > 0:
         cv.drawLine(540, 330, lerp(540, rx - 40, k8), lerp(330, ry - 50, k8), P(0xFF000000, 14))
         cv.drawLine(540, 330, lerp(540, rx - 40, k8), lerp(330, ry - 50, k8), P(GREEN, 8))
-    fit(cv, f'{min(7, int(n))} MISSED', 540, 560, 150, 900, 0xFFFFFFFF)
+    if n >= 1:
+        fit(cv, f'{min(7, int(n))} MISSED', 540, 560, 150, 900, 0xFFFFFFFF)
     if k8 >= 1:
         fit(cv, 'DAY 17', 540, 1650, 110, 800, GREEN)
     else:
@@ -323,9 +324,9 @@ def days69(cv, c):
     if c.lt > 0.35:
         k = min(1, (c.lt - 0.35) / 0.15)
         cv.save()
-        cv.translate(540, 420)
-        cv.scale(1.5 - 0.5 * k, 1.5 - 0.5 * k)
-        Wd.text_card(cv, '69 DAYS', 0, 0, 210, AMBER, 0xFF000000)
+        cv.translate(540, 560)
+        cv.scale(1.4 - 0.4 * k, 1.4 - 0.4 * k)
+        Wd.text_card(cv, '69 DAYS', 0, 0, 170, AMBER, 0xFF000000)
         cv.restore()
 
 

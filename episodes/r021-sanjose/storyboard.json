@@ -1,6 +1,6 @@
 {
  "id": "r021-sanjose",
- "hook_text": "A NOTE FROM|UNDERGROUND",
+ "hook_text": "NOTE FROM|BELOW",
  "shots": [
   {"n": 1, "segment": "hook", "weight": 0.95, "kind": "tie_note", "action": "A miner's dusty hands wind a rubber band round a note on the drill pipe, just above the bit; his face is behind it in a lamp's beam, squinting. Grit falls from the roof. The pipe jerks and starts to rise; he lets go and looks up", "camera": "Close at eye level, pushing in", "cam": [[1.0, 540, 960, 0], [1.08, 540, 960, 0]], "shake": 0, "transition": "cut", "sfx": [["hit", 0.03], ["clunk", 0.25], ["scratch", 0.5]], "hud": null, "prm": {}},
   {"n": 2, "segment": "hook", "weight": 1.1, "kind": "drill_up", "action": "The pipe goes back up into the roof with the note on it. Three miners under it throw their arms up and shout after it; stones rattle down", "camera": "Low, looking up past them", "cam": [[1.0, 540, 960, 0], [1.08, 540, 960, 0]], "shake": 2, "transition": "cut", "sfx": [["scratch", 0.1], ["shout", 0.4], ["clunk", 0.7]], "hud": null, "prm": {}},

@@ -290,6 +290,7 @@ def make_drill():
     add('cube', PAPER, (0.2, -0.1, -0.02), rot=(0, 0, -0.5), scale=(0.34, 0.02, 0.44), size=1, parent=note, rough=0.8)   # its loose corner
     for z in (-0.12, 0.0, 0.12):
         add('cube', RED, (0.2, -0.115, z - 0.02), rot=(0, 0, -0.5), scale=(0.24, 0.012, 0.035), size=1, parent=note, emit=0.6)
+        add('cube', RED, (0.207, -0.087, z - 0.02), rot=(0, 0, -0.5), scale=(0.24, 0.012, 0.035), size=1, parent=note, emit=0.6)
     bands = [add('torus', 'E07A1E', (0, 0, z), major_radius=0.16, minor_radius=0.025, major_segments=10, minor_segments=4, parent=note) for z in (-0.2, 0.2)]
     return d, note, bands
 
@@ -622,10 +623,10 @@ def tie_note(S, k, t, lt):
     go = sm((kk - 0.7) / 0.2)
     tying = P('stand', aL=(1.3, -0.3, 0.8, 0.5), aR=(1.3, -0.3, 0.8, 0.5), head=(0.26, 0.0), lean=0.12)
     m.apply(tying)
-    hl, hr = world_of(m.hands[0], (0, -0.1, -0.1)), world_of(m.hands[1], (0, -0.1, -0.1))
-    px, py, pz = (hl[0] + hr[0]) / 2, (hl[1] + hr[1]) / 2 - 0.12, (hl[2] + hr[2]) / 2 - 1.25
+    hl, hr = world_of(m.hands[0]), world_of(m.hands[1])
+    px, py, pz = (hl[0] + hr[0]) / 2, (hl[1] + hr[1]) / 2, (hl[2] + hr[2]) / 2 - 1.25
     S['drill'].location = (px, py, pz + rise + 0.012 * math.sin(t * 40))
-    S['drill'].rotation_euler = (0, 0, 2.5)
+    S['drill'].rotation_euler = (0, 0, -1.6)
     m.apply(blend(P('stand', aL=(1.3 + 0.07 * wind, -0.3, 0.8, 0.5), aR=(1.3 - 0.07 * wind, -0.3, 0.8, 0.5), head=(0.26, 0.0), lean=0.12),
                   P('stand', aL=(1.0, 0.3, 0.5), aR=(1.0, 0.3, 0.5), head=(-0.3, 0.0)), go))
     m.face = 'wide' if go > 0.4 else 'squint'
