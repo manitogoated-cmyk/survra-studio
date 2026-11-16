@@ -30,6 +30,7 @@ CAMFILL = {'*': 170, 'mouth_wide': 60, 'bikes': 90, 'stretcher_out': 120, 'pump_
            'walk_in': 260, 'rain_gush': 200}
 ROOKC = dict(top='566178', belt='3E4658', lap='6B7690', pants='2A2742', hand='2F2B4D', boot='8A90A6')
 ROCK, ROCKD, ROCKL, MUD, MUDL, MUDD = '5C6258', '353B36', '7E8676', '6B4E34', '8A6A48', '3E2C1E'
+LIME, LIMED, LIMEL = '9A9C88', '6E7264', 'BCBEA8'
 WATER, LEAF, LEAFL, LINE = '0B2A30', '2B5A32', '4A8A44', 'F0DC5A'
 SHIRTS = ('B8322E', '2F6FB0', 'E4DFD0', '2E8A5A', 'D8A22A', '7A3FA0')
 SKINS = ('C8946A', 'B88458', 'D2A070')
@@ -162,32 +163,32 @@ def bike(r, x, y, col, lean, turn):
 
 def set_mouth(r):
     out = {}
-    add('cube', '4A4030', (0, -30, -0.5), scale=(400, 160, 1), size=1, parent=r)                        # wet ground
-    add('cube', '6E5E46', (0, -8, 0.0), scale=(5.5, 46, 0.06), size=1, parent=r)                        # the path
+    add('cube', '6A5C44', (0, -30, -0.5), scale=(400, 160, 1), size=1, parent=r)                        # wet ground
+    add('cube', '9A8460', (0, -8, 0.0), scale=(5.5, 46, 0.06), size=1, parent=r)                        # the path
     for sd in (-1, 1):                                                                                 # the cliff either side of the mouth
-        add('cube', ROCK, (sd * 36, 30, 28), scale=(60, 32, 60), size=1, parent=r)
-    add('cube', ROCK, (0, 30, 34), scale=(14, 32, 48), size=1, parent=r)                                # the rock over the mouth
+        add('cube', LIME, (sd * 36, 30, 11), scale=(60, 32, 26), size=1, parent=r)
+    add('cube', LIME, (0, 30, 17), scale=(14, 32, 14), size=1, parent=r)
+    lumps(r, 30, 100, lambda j: (-60 + 120 * rn(j, 101), 16 + 10 * rn(j, 102), 24.5), cols=(LEAF, LEAFL, '1F4428'), s0=2.5, s1=3.0, flat=0.8)                                # the rock over the mouth
     add('cube', '020304', (0, 46, 2), scale=(14, 1, 18), size=1, parent=r)                              # the dark inside
     for j in range(9):                                                                                 # the floor going down into the cave
         add('cube', MUDD if j % 2 else MUD, (0, 16 + 3.2 * j, mz(16 + 3.2 * j) - 0.5), rot=(-0.09, 0, 0), scale=(12.4, 3.4, 1), size=1, parent=r)
     for j in range(22):                                                                                # the rim of the mouth: an arch of boulders
         a = PI * j / 21
         s = 1.2 + 1.0 * rn(j, 1)
-        add('ico_sphere', (ROCKL, ROCK, ROCKD)[j % 3], (6.6 * math.cos(a), 13.6 - 0.6 * rn(j, 2), 0.4 + 8.2 * math.sin(a)), rot=(rn(j, 3), rn(j, 4), j),
+        add('ico_sphere', (LIMEL, LIME, LIMED)[j % 3], (6.6 * math.cos(a), 13.6 - 0.6 * rn(j, 2), 0.4 + 8.2 * math.sin(a)), rot=(rn(j, 3), rn(j, 4), j),
             scale=(s, s * 0.9, s * 1.2), radius=1, subdivisions=1, parent=r)
-    lumps(r, 60, 5, lambda j: None if abs(-50 + 100 * rn(j, 6)) < 8.5 and 34 * rn(j, 7) < 10.5 else (-50 + 100 * rn(j, 6), 13.6, 34 * rn(j, 7)),
-          s0=1.2, s1=2.6)
-    lumps(r, 34, 8, lambda j: (-50 + 100 * rn(j, 9), 13.2, 3 + 30 * rn(j, 10)) if abs(-50 + 100 * rn(j, 9)) > 8 or 3 + 30 * rn(j, 10) > 12 else None,
+    lumps(r, 60, 5, lambda j: None if abs(-50 + 100 * rn(j, 6)) < 8.5 and 24 * rn(j, 7) < 10.5 else (-50 + 100 * rn(j, 6), 13.6, 24 * rn(j, 7)),
+          cols=(LIME, LIMED, LIMEL), s0=1.2, s1=2.6)
+    lumps(r, 30, 8, lambda j: (-50 + 100 * rn(j, 9), 13.2, 3 + 20 * rn(j, 10)) if abs(-50 + 100 * rn(j, 9)) > 9 or 3 + 20 * rn(j, 10) > 13 else None,
           cols=(LEAF, LEAFL, '1F4428'), s0=1.0, s1=2.0, flat=0.8)
+    lumps(r, 26, 110, lambda j: (-8 + 16 * rn(j, 111), 13.7, 10.5 + 13 * rn(j, 112)), cols=(LIME, LIMED, LIMEL, LEAF), s0=1.3, s1=2.0)
     for j in range(12):                                                                                # creepers hanging over the mouth
         x = -5.6 + 11.2 * rn(j, 11)
         d = 1.2 + 2.6 * rn(j, 12)
         add('cylinder', LEAF if j % 2 else '1F4428', (x, 13.0, 8.6 - d / 2 + 1.5 * (1 - (x / 6.2) ** 2)), radius=0.05, depth=d, vertices=4, parent=r)
     for j in range(26):                                                                                # jungle either side of the path
         sd = -1 if j % 2 else 1
-        x, y = sd * (9 + 34 * rn(j, 13)), -34 + 44 * rn(j, 14)
-        if x < -3 and -16 < y < -6 and x > -13:
-            continue
+        x, y = sd * (15 + 30 * rn(j, 13)), -34 + 44 * rn(j, 14)
         hgt = 5 + 6 * rn(j, 15)
         add('cylinder', '3E3226', (x, y, hgt / 2), radius=0.28, depth=hgt, vertices=6, parent=r)
         for q in range(3):
@@ -220,7 +221,7 @@ def set_mouth(r):
     kit += out['hose'] + [tube(r, '2C4E8A', a, b, 0.22) for a, b in zip(hose2, hose2[1:])]
     out['floodm'] = newmat('flood', 'FFF2D0', 0.4, 0.0)
     out['floods'] = []
-    for x, y in ((-7.5, 6.0), (7.2, 8.5)):
+    for x, y in ((-7.5, 6.0), (11.5, 9.5)):
         kit.append(add('cylinder', '3A3F4C', (x, y, 2.2), radius=0.07, depth=4.4, vertices=5, parent=r))
         kit.append(wear(add('cube', 'FFF2D0', (x, y + 0.1, 4.5), rot=(0.5, 0, 0), scale=(1.1, 0.2, 0.7), size=1, parent=r), out['floodm']))
         out['floods'].append(light((x * 0.8, y + 1.0, 4.4), 0, 'FFE8C0', kind='POINT', parent=r))
@@ -248,9 +249,9 @@ def set_tun(r):
         add('cone', ROCKL if j % 3 else ROCK, (x, y, 7.6 - d / 2), rot=(PI, 0, 0), radius1=0.25 + 0.3 * rn(j, 41), radius2=0, depth=d, vertices=5, parent=r)
     for sd in (-1, 1):                                                                                 # the low arch: the way out
         add('cube', ROCK, (sd * 5.6, 19.5, 4), scale=(6.4, 3, 8), size=1, parent=r)
-    add('cube', ROCK, (0, 19.5, 5.3), scale=(5, 3, 5.6), size=1, parent=r)
+    add('cube', ROCK, (0, 19.5, 4.9), scale=(5, 3, 6.4), size=1, parent=r)
     add('cube', '010203', (0, 21.5, 1.2), scale=(5, 0.4, 2.6), size=1, parent=r)
-    lumps(r, 16, 42, lambda j: (-3.4 + 6.8 * rn(j, 43), 17.9, 2.5 + 1.2 * rn(j, 44) + 1.5 * abs(-1 + 2 * rn(j, 43))), s0=0.6, s1=0.6)
+    lumps(r, 16, 42, lambda j: (-3.4 + 6.8 * rn(j, 43), 17.9, 1.9 + 1.2 * rn(j, 44) + 1.5 * abs(-1 + 2 * rn(j, 43))), s0=0.6, s1=0.6)
     add('ico_sphere', ROCKL, (BOULDER[0], BOULDER[1], 1.0), scale=(1.6, 1.5, 1.75), radius=1, subdivisions=1, parent=r)   # Rook's rock
     add('ico_sphere', ROCK, (BOULDER[0] + 1.3, BOULDER[1] + 1.0, 0.7), scale=(1.4, 1.2, 1.3), radius=1, subdivisions=1, parent=r)
     lumps(r, 14, 45, lambda j: (-4.6 + 9.2 * rn(j, 46), -20 + 34 * rn(j, 47), 0.2) if abs(-4.6 + 9.2 * rn(j, 46)) > 2.6 else None, s0=0.4, s1=0.6, flat=0.7)
@@ -386,7 +387,7 @@ def build():
                          fore=SKINS[i % 3]), K.human_head(SKINS[i % 3], '17131A'))
         rig.sc = 1.0 if coach else 0.70 + 0.045 * ((i * 5) % 5)
         S['team'].append(rig)
-    S['pat'] = K.Rig(dict(top='171A20', pants='171A20', hand=SKINS[1], boot='171A20'), K.human_head(SKINS[1], '14161C'))   # a boy in a wetsuit
+    S['pat'] = K.Rig(dict(top='2A4E8A', pants='1E2A44', hand=SKINS[1], boot='171A20'), K.human_head(SKINS[1], '14161C'))   # a boy in a wetsuit
     S['pat'].sc = 0.8
     S['divers'] = []
     for helm in ('C8372D', 'E4DFD0'):
@@ -416,8 +417,9 @@ def build():
     S['fea'] = [keep(add('cone', '2F2B4D', AWAY, radius1=0.07, radius2=0.0, depth=0.34, vertices=4)) for _ in range(2)]
     S['foam'] = [keep(add('ico_sphere', 'DCE8EC', AWAY, radius=0.2, subdivisions=1, rough=0.3)) for _ in range(14)]
     S['drops'] = [keep(add('ico_sphere', 'CFE8FF', AWAY, radius=0.05, subdivisions=1, emit=1.2)) for _ in range(8)]
-    S['rings'] = [keep(add('torus', 'CFEFFF', AWAY, major_radius=1.0, minor_radius=0.05, major_segments=14, minor_segments=4, emit=0.6)) for _ in range(3)]
-    S['streams'] = [keep(add('cube', '8FA8B4', AWAY, scale=(2.4, 3.4, 0.1), size=1, rough=0.08, emit=0.15)) for _ in range(7)]
+    S['rings'] = [keep(add('torus', '9FD0E0', AWAY, major_radius=1.0, minor_radius=0.03, major_segments=16, minor_segments=4, emit=0.25)) for _ in range(3)]
+    S['streamm'] = newmat('stream', '8FA8B4', 0.08, 0.15)
+    S['streams'] = [keep(wear(add('cube', '8FA8B4', AWAY, scale=(2.4, 3.4, 0.1), size=1), S['streamm'])) for _ in range(7)]
     S['ropes'] = [keep(add('cylinder', LINE, AWAY, radius=0.5, depth=1, vertices=5, rough=0.7, emit=0.5)) for _ in range(3)]
     S['weight'] = keep(add('cone', 'B8BCC8', AWAY, rot=(PI, 0, 0), radius1=0.09, radius2=0.02, depth=0.3, vertices=5, rough=0.3))
     S['hands'] = [K.Hand('101216', '1B1E26', 1.0) for _ in range(2)]
@@ -503,8 +505,10 @@ def reset(S):
     M['pump'].rotation_euler = (0, 0, 0)
     M['wheel'].rotation_euler = (0, 0, 0)
     paint(S['ledge']['glowm'], 'BFF2FF', 0.0)
+    S['ledge']['glow'].hide_render = True
     S['ledge']['glowl'].data.energy = 0
     paint(S['fpm'], 'FFF2D0', 0.0)
+    paint(S['streamm'], '8FA8B4', 0.15)
     for l in S['lamps']:
         l.location = AWAY
         l.data.energy = 0
@@ -566,24 +570,22 @@ def env(S, name, skyc='000000', sun=0.0, sunc='FFFFFF', sdir=(-0.4, -0.6, 0.7), 
 
 def rain_eve(S, flash=0.0):
     """The cave mouth in the monsoon, late in the day."""
-    return env(S, 'mouth', lerp_hex('46545E', 'E8F0FF', flash), sun=1.5 + 6 * flash, sunc='A8B8D0', sdir=(-0.3, -0.7, 0.6), fk=1.8, skyk=0.8 + 2.5 * flash)
+    return env(S, 'mouth', lerp_hex('6E808E', 'E8F0FF', flash), sun=2.6 + 8 * flash, sunc='B8C8E0', sdir=(-0.3, -0.7, 0.6), fk=2.2, skyk=2.0 + 3.0 * flash)
 
 
 def rescue_dusk(S):
     """The same mouth during the rescue: pumps, hoses and work lights."""
-    A = env(S, 'mouth', '1C2640', sun=0.7, sunc='8FA8E0', sdir=(0.4, -0.6, 0.6), fk=2.0)
+    A = env(S, 'mouth', '3A4A78', sun=1.6, sunc='9FB4F0', sdir=(0.4, -0.6, 0.6), fk=2.4, skyk=1.6)
     M = S['mouth']
     seen(M['kit'], True)
     paint(M['floodm'], 'FFF2D0', 9.0)
     for l in M['floods']:
-        l.data.energy = 2600
+        l.data.energy = 9000
     return A
 
 
 def morning(S):
-    A = env(S, 'mouth', '9CC4DC', sun=3.0, sunc='FFE8C8', sdir=(0.5, -0.7, 0.5), fk=1.6, skyk=0.9)
-    seen(S['mouth']['kit'], True)
-    return A
+    return env(S, 'mouth', '9CC4DC', sun=4.5, sunc='FFE8C8', sdir=(0.5, -0.7, 0.5), fk=2.0, skyk=2.2)
 
 
 def passage(S, wl=0.0):
@@ -683,8 +685,11 @@ def seat_team(S, A, t, face='tired', turn=0.0, nod=0.3, skip=()):
         if i in skip:
             continue
         rig.place(A(*lp(x, y)), 0.2 * math.sin(i * 2.1))
-        hug = i % 3 == 0
-        d = dict(HUG) if hug else {}
+        d = dict(HUG)
+        if i % 3 == 1:
+            d.update(aL=(0.9, 0.15, 0.5), aR=(0.9, 0.15, 0.5))
+        elif i % 3 == 2:
+            d.update(aL=(0.5, 0.3, 1.2, 0.8), aR=(1.1, 0.1, 2.0, 0.6))
         d['head'] = (nod + 0.05 * math.sin(t * 1.3 + i), turn + 0.25 * math.sin(i * 1.7) * (1 - abs(turn)))
         rig.apply(P('sit', **d))
         rig.face = face
@@ -726,12 +731,13 @@ def mouth_wide(S, k, t, lt):
         o.rotation_euler = (-0.09 if y > 14 else 0, 0, 0.2 * math.sin(j + y * 0.3))
     T = S['team']
     for i, rig in enumerate((T[12], T[3], T[7])):
-        y = 9.5 + 2.6 * (2 - i) + 2.2 * kk
+        y = 2.0 + 2.6 * (2 - i) + 2.6 * kk
         rig.place(A(-1.2 + 1.2 * i, y, mz(y)), PI + 0.1 * (i - 1))
         rig.apply(walk(t + i * 0.3, 1.7))
-    torch(S, 0, T[3], 1.0, li=0, watts=200)
+    torch(S, 0, T[3], 1.0, li=0, watts=300)
+    lampat(S, 1, A(0, 9, 5), 500, 'DCE8F4')
     S['mouth']['wheel'].rotation_euler = (t * 2.2, 0, 0)
-    shoot(S, A(lerp(-7.6, -6.9, kk), lerp(-21.5, -19.6, kk), lerp(1.5, 1.9, kk)), A(-1.5, 6.0, 4.4), 25, fill=0.6)
+    shoot(S, A(lerp(-6.4, -5.9, kk), lerp(-17.6, -16.2, kk), lerp(1.5, 1.8, kk)), A(-2.2, 4.0, 4.6), 22, fill=0.8)
 
 
 def walk_in(S, k, t, lt):
@@ -758,41 +764,46 @@ def bikes(S, k, t, lt):
     A = rain_eve(S)
     S['mouth']['wheel'].rotation_euler = (t * 2.6, 0, 0)
     rk = S['rook']
-    rp = (-5.6, -11.0, 1.2)
-    rk.place(A(*rp), look_yaw(rp, (0, 14)) + lerp(0.0, 2.3, sm((lt - 0.45) / 0.3)))
+    rp = (-5.2, -11.0, 1.2)
+    rk.place(A(*rp), look_yaw(rp, (0, 14)) + lerp(0.0, 2.6, sm((lt - 0.45) / 0.3)))
     rk.apply(P('cross', head=(0.1, 0.0), lean=0.05))
     S['rface'] = 'deadpan'
     drips(S, world_of(rk.head, (0, -0.5, 0.25)), t, 4, 0.45, 1.6)
     for j, o in enumerate(S['streams'][:5]):
         y = -24 + ((j * 6.0 + t * 15) % 40)
         o.location = A(0.7 * math.sin(j * 1.9 + y * 0.2), y, 0.1)
-    shoot(S, A(lerp(-2.4, -3.0, k), lerp(-17.6, -17.0, k), lerp(1.2, 1.45, k)), A(-6.6, -11.6, 1.75), 30, fill=0.9)
+    lampat(S, 0, A(-3.5, -14.5, 3.6), 260, 'FFC890')
+    shoot(S, A(lerp(-2.2, -2.8, k), lerp(-18.6, -18.0, k), lerp(1.3, 1.6, k)), A(-6.0, -11.4, 2.3), 24, fill=1.0)
 
 
 def rain_gush(S, k, t, lt):
     A = rain_eve(S)
+    paint(S['streamm'], '4E86AC', 0.5)
     for j, o in enumerate(S['streams']):
-        y = 8 + ((j * 2.6 + t * 13) % 18)
-        o.location = A(-2.6 + 0.75 * j + 0.3 * math.sin(t * 5 + j), y, mz(y) + 0.14 + 0.1 * math.sin(t * 9 + j))
-        o.scale = (1.6, 3.0, 0.16)
+        y = 12 + ((j * 1.9 + t * 11) % 11)
+        o.location = A(-3.9 + 1.3 * j + 0.3 * math.sin(t * 5 + j), y, mz(y) + 0.2 + 0.12 * math.sin(t * 9 + j))
+        o.scale = (2.2, 3.4, 0.4)
         o.rotation_euler = (-0.09 if y > 14 else 0, 0, 0.25 * math.sin(j * 1.3))
-    foam(S, [A(-3.5 + 7 * rn(i, 80), 15 + ((i * 1.3 + t * 12) % 10), mz(20) + 0.25 + 0.5 * abs(math.sin(t * 8 + i))) for i in range(14)], 1.3)
-    lampat(S, 0, A(0, 22, 3), 160, 'BFD4E8')
-    shoot(S, A(lerp(1.8, 1.2, k), lerp(27.5, 26.4, k), mz(27) + lerp(0.8, 1.1, k)), A(0.0, 16.0, 0.7), 22, roll=0.05 * math.sin(t * 3), fill=0.9)
+    foam(S, [A(-4.2 + 8.4 * rn(i, 80), 15.0 + ((i * 1.3 + t * 9) % 6.5), mz(18) + 0.4 + 0.8 * abs(math.sin(t * 8 + i))) for i in range(14)], 2.0)
+    lampat(S, 0, A(0, 19, 4), 1500, 'BFD4E8')
+    shoot(S, A(lerp(1.6, 1.0, k), lerp(23.6, 22.6, k), mz(23) + lerp(1.0, 1.3, k)), A(0.0, 14.0, 0.9), 20, roll=0.05 * math.sin(t * 3), fill=1.2)
 
 
 def fill(S, k, t, lt):
-    wl = lerp(0.5, 3.6, sm(k * 1.05))
+    wl = lerp(0.35, 1.5, sm(k * 1.05))
     A = passage(S, wl)
     T = S['team']
     rigs = (T[1], T[6], T[10])
-    pts = [(-1.6 + 1.6 * i, 3.0 - 2.5 * i - 6.0 * k, 0.0) for i in range(3)]
+    pts = [(-1.7 + 1.7 * i, 6.0 - 2.2 * i - 5.0 * k, 0.0) for i in range(3)]
     wade(S, A, rigs, pts, t, 0.0, 'wide', 0.12)
-    torch(S, 0, rigs[0], 1.0, li=0, watts=320)
-    torch(S, 1, rigs[2], 1.0, li=1, watts=260)
-    foam(S, [A(-4.5 + 9 * rn(i, 81), 15.5 - 16 * k * rn(i, 82) - 2 * rn(i, 83), wl + 0.1 + 0.3 * abs(math.sin(t * 7 + i))) for i in range(14)], 1.5)
-    lampat(S, 2, A(0, 12, 5.5), 500, 'A8D8E8')
-    shoot(S, A(lerp(0.6, 0.2, k), lerp(-7.5, -10.5, k), lerp(2.2, 2.9, k)), A(0.0, 8.0, 2.0), 24, roll=0.03 * math.sin(t * 4), fill=1.2)
+    torch(S, 0, rigs[0], 1.0, li=0, watts=500)
+    torch(S, 1, rigs[2], 1.0, li=1, watts=500)
+    surge = sm(k * 1.2)
+    foam(S, [A(-3.6 + 7.2 * rn(i, 81), 17.4 - 9 * surge * rn(i, 82), wl + 0.2 + (1.6 - 1.2 * rn(i, 82)) * surge * (0.6 + 0.4 * abs(math.sin(t * 7 + i))))
+             for i in range(14)], 2.2)
+    lampat(S, 2, A(0, 11, 5.0), 2600, 'A8D8E8')
+    lampat(S, 3, A(1.5, -3 - 5 * k, 3.5), 700, 'FFD8B0')
+    shoot(S, A(lerp(0.9, 0.5, k), lerp(-3.2, -7.4, k), lerp(2.0, 2.5, k)), A(0.0, lerp(8.0, 5.0, k), 1.9), 24, roll=0.03 * math.sin(t * 4), fill=1.4)
 
 
 # ---------------------------------------------------------------- Rook, in the flood
@@ -809,15 +820,15 @@ def flood_run(S, A, t, wl):
 def rook_rock(S, k, t, lt):
     wl = 2.1 + 0.06 * math.sin(t * 3)
     A = passage(S, wl)
-    sh = max(0.0, 1 - lt / 0.5)
+    sh = max(0.0, 1 - lt / 0.3)
     rk = rook_on_rock(S, A, t, sh)
-    rk.apply(blend(P('shrug', head=(0.1, 0.25), lean=0.1), P('cross', head=(0.05, 0.5)), (lt - 0.45) / 0.35))
+    rk.apply(blend(P('shrug', head=(0.1, 0.25), lean=0.1), P('cross', head=(0.05, 0.5)), (lt - 0.2) / 0.3))
     S['rface'] = 'deadpan'
     flood_run(S, A, t, wl)
     drips(S, world_of(rk.head, (0, -0.4, 0.3)), t, 5, 0.5, 2.2, 1.6)
-    lampat(S, 0, A(0.5, -1.5, 5.6), 420, 'FFC890')
-    lampat(S, 1, A(0, 12, 5.5), 420, 'A8D8E8')
-    shoot(S, A(lerp(-2.6, -2.0, k), lerp(-5.4, -4.6, k), lerp(4.2, 4.5, k)), A(2.6, 3.2, 4.4), 27, fill=1.2)
+    lampat(S, 0, A(1.0, -1.0, 5.8), 900, 'FFC890')
+    lampat(S, 1, A(0, 12, 5.5), 2200, 'A8D8E8')
+    shoot(S, A(lerp(-1.0, -0.5, k), lerp(-3.6, -3.0, k), lerp(4.0, 4.3, k)), A(3.0, 2.3, 4.25), 35, fill=1.4)
 
 
 def rook_drip(S, k, t, lt):
@@ -825,7 +836,7 @@ def rook_drip(S, k, t, lt):
     A = passage(S, wl)
     rk = rook_on_rock(S, A, t, 0.0)
     tap = 0.5 + 0.5 * math.sin(lt * 15)
-    rk.apply(blend(P('cross', head=(0.05, 0.5)), P('tap', aR=(1.25 + 0.12 * tap, -0.25, 2.2, 0.6), head=(0.2, 0.5)), lt / 0.25))
+    rk.apply(blend(P('cross', head=(0.05, 0.5)), P('tap', aR=(1.25 + 0.12 * tap, -0.25, 2.2, 0.6), head=(0.2, 0.5)), lt / 0.18))
     S['rface'] = 'deadpan'
     S['hat_tip'] = 0.6
     flood_run(S, A, t, wl)
@@ -837,45 +848,49 @@ def rook_drip(S, k, t, lt):
 
 # ---------------------------------------------------------------- deeper, and up onto the mud
 def chase(S, k, t, lt):
-    wl = 1.0 + 0.1 * math.sin(t * 5)
+    wl = 0.95 + 0.08 * math.sin(t * 5)
     A = passage(S, wl)
     T = S['team']
     rigs = (T[12], T[0], T[8], T[4], T[11])
-    pts = [(-0.9 + 0.9 * (i % 3), 11.0 - 2.3 * i - 5.5 * k, 0.0) for i in range(5)]
+    y0 = 12.0 - 5.0 * k
+    pts = [((-1.5, 0.2, 1.6, -0.8, 1.0)[i], y0 - 1.5 * i, 0.0) for i in range(5)]
     wade(S, A, rigs, pts, t, 0.0, 'wide', 0.1)
-    rigs[0].apply(blend(walk(t, 1.9), P('point', aR=(1.6, 0.4, 0.2), head=(0.0, 0.9)), 0.8))       # the coach waves them on
-    torch(S, 0, rigs[1], 1.0, li=0, watts=300)
-    torch(S, 1, rigs[3], 1.0, li=1, watts=300)
-    foam(S, [A(-4.5 + 9 * rn(i, 85), 17 - 7 * k - 5 * rn(i, 86), wl + 0.25 + 0.5 * abs(math.sin(t * 8 + i))) for i in range(14)], 1.8)
-    lampat(S, 2, A(0, 14, 5.5), 500, 'A8D8E8')
-    shoot(S, A(lerp(-4.3, -4.0, k), lerp(-1.0, -4.2, k), lerp(3.0, 2.7, k)), A(0.0, lerp(7.5, 2.5, k), 2.0), 24, fill=1.3)
+    rigs[0].place(A(-1.5, y0 + 0.6, 0.0), 2.4)
+    rigs[0].apply(P('stand', aR=(1.9, 0.5, 0.4 + 0.4 * math.sin(t * 9)), aL=(0.3, 0.4, 0.6), head=(0.0, -0.3), lean=0.1))       # the coach waves them on
+    rigs[0].jawv = 0.8
+    torch(S, 0, rigs[1], 1.0, li=0, watts=500)
+    torch(S, 1, rigs[3], 1.0, li=1, watts=500)
+    foam(S, [A(-4.0 + 8 * rn(i, 85), y0 + 2.2 + 3.5 * rn(i, 86), wl + 0.3 + 0.9 * rn(i, 87) * abs(math.sin(t * 8 + i))) for i in range(14)], 2.0)
+    lampat(S, 2, A(0, y0 + 3, 5.5), 1800, 'A8D8E8')
+    lampat(S, 3, A(2.5, y0 - 9, 3.6), 900, 'FFD8B0')
+    shoot(S, A(lerp(1.5, 1.2, k), y0 - lerp(10.6, 9.8, k), lerp(2.9, 2.6, k)), A(0.0, y0 - 2.5, 1.9), 26, fill=1.4)
 
 
 def scramble(S, k, t, lt):
     A = chamber(S)
     T = S['team']
     for i, rig in enumerate((T[2], T[5], T[9], T[1])):
-        y = 0.9 + 1.5 * i + 1.6 * k
-        x = (-1.4, 0.6, -0.4, 1.9)[i]
-        rig.place(A(*lp(x, y)), PI + 0.2 * (i - 1.5), -0.5)
+        y = 1.0 + 1.4 * i + 1.6 * k
+        x = (-1.6, 0.2, -0.8, 1.3)[i]
+        rig.place(A(*lp(x, y)), PI + 0.2 * (i - 1.5), 0.75)
         s = math.sin(t * 7 + i * 1.7)
         rig.apply(P('stand', aL=(2.2 + 0.5 * s, 0.3, 0.6), aR=(2.2 - 0.5 * s, 0.3, 0.6), lL=(0.9 + 0.5 * s, 1.2), lR=(0.9 - 0.5 * s, 1.2), head=(-0.5, 0.0)))
         rig.face = 'wide'
     co = T[12]                                                         # the coach, last out of the water, pushes the smallest up
-    co.place(A(-1.0, 0.1 + 0.8 * k, -0.9 + 0.3 * k), PI - 0.1, -0.25)
+    co.place(A(-1.2, 0.0 + 0.8 * k, -0.9 + 0.3 * k), PI - 0.1, 0.3)
     co.apply(P('stand', aL=(1.7, 0.2, 0.3), aR=(1.7, 0.2, 0.3), lL=(0.5, 0.5), lR=(-0.2, 0.3), head=(-0.3, 0.0)))
-    torch(S, 0, T[9], 1.0, li=0, watts=320)
+    torch(S, 0, T[9], 1.0, li=0, watts=500)
     rk = S['rook']
     hop = abs(math.sin(lt * 6.5))
-    rp = lp(3.9, 1.6 + 1.3 * k, 0.5 * hop)
-    rk.place(A(*rp), PI - 0.5, 0.0, 0.0)
+    rp = lp(2.5, 1.6 + 1.3 * k, 0.5 * hop)
+    rk.place(A(*rp), PI - 2.0, 0.0, 0.0)
     fl = math.sin(lt * 22)
     rk.apply(P('stand', aL=(0.3, 1.3 + 0.4 * fl, 0.4), aR=(0.3, 1.3 + 0.4 * fl, 0.4), lL=(0.5 * hop, 0.6 * hop), lR=(0.3 * hop, 0.5 * hop), head=(0.0, 0.5)))
     S['rface'] = 'shocked'
-    foam(S, [A(-5 + 10 * rn(i, 87), -0.4 - 2.5 * rn(i, 88), 0.1 + 0.25 * abs(math.sin(t * 7 + i))) for i in range(14)], 1.3)
-    lampat(S, 1, A(3.0, -1.5, 3.6), 320, 'FFC890')
-    lampat(S, 2, A(-3, -2, 4.5), 380, 'A8D8E8')
-    shoot(S, A(lerp(5.8, 5.2, k), lerp(-4.6, -3.8, k), lerp(1.3, 1.7, k)), A(0.8, 2.4, 1.9), 26, fill=1.3)
+    foam(S, [A(-5 + 10 * rn(i, 87), -0.6 - 3.5 * rn(i, 88), 0.05 + 0.15 * abs(math.sin(t * 7 + i))) for i in range(14)], 0.6)
+    lampat(S, 1, A(3.6, -2.5, 3.6), 900, 'FFC890')
+    lampat(S, 2, A(-2, -3, 4.5), 1400, 'A8D8E8')
+    shoot(S, A(lerp(1.4, 1.0, k), lerp(-4.6, -3.9, k), lerp(1.3, 1.7, k)), A(0.3, 2.8, 2.1), 24, fill=1.4)
 
 
 def ledge_wide(S, k, t, lt):
@@ -885,7 +900,7 @@ def ledge_wide(S, k, t, lt):
     torch(S, 1, S['team'][9], 0.8, li=1, watts=420)
     lampat(S, 2, A(0, 4.5, 6.5), 900, 'FFD8A8')
     lampat(S, 3, A(0, -12, 5), 500, '7FB8D0')
-    shoot(S, A(lerp(-3.0, -2.2, k), lerp(-17.5, -15.5, k), lerp(1.4, 1.8, k)), A(0.0, 3.8, 3.0), 30, fill=1.0)
+    shoot(S, A(lerp(-3.0, -2.2, k), lerp(-13.5, -11.8, k), lerp(1.4, 1.8, k)), A(0.0, 3.8, 3.0), 26, fill=1.0)
 
 
 # ---------------------------------------------------------------- nine nights
@@ -895,13 +910,13 @@ def huddle(S, k, t, lt):
     dim = lerp(1.0, 0.35, k) * (0.85 + 0.15 * math.sin(t * 23))
     torch(S, 0, S['team'][1], dim, li=0, watts=420)
     rk = S['rook']
-    rp = lp(-5.3, 2.9)
+    rp = lp(-5.0, 2.2)
     rk.place(A(*rp), 0.5)
     rk.apply(P('sit', **dict(HUG, head=(0.35, -0.5 + 0.3 * sm((lt - 0.5) / 0.4)))))
     S['rface'] = 'sad'
-    lampat(S, 1, A(-5.0, 0.6, 3.4), 160, 'FFC890')
+    lampat(S, 1, A(-4.6, -0.4, 3.4), 420, 'FFC890')
     lampat(S, 2, A(1, 3, 6.0), 260 * dim, 'FFD8A8')
-    shoot(S, A(lerp(-1.6, -2.2, k), lerp(-1.6, -1.1, k), lerp(2.2, 2.4, k)), A(-2.4, 3.4, 2.15), 30, fill=1.1, fcol='FFE0C0')
+    shoot(S, A(lerp(-1.9, -2.4, k), lerp(-2.7, -2.3, k), lerp(2.0, 2.2, k)), A(-3.5, 2.7, 1.9), 27, fill=1.1, fcol='FFE0C0')
 
 
 def torch_dies(S, k, t, lt):
@@ -938,20 +953,22 @@ def divers_fight(S, k, t, lt):
     pull = math.sin(t * 5)
     d.apply(P('stand', aL=(2.75 + 0.3 * pull, 0.1, 0.2 - 0.2 * pull), aR=(2.75 - 0.3 * pull, 0.1, 0.2 + 0.2 * pull), lL=(0.4 * math.sin(t * 9), 0.3),
               lR=(-0.4 * math.sin(t * 9), 0.3), head=(-1.0, 0.0)))
-    dlamp(S, d, 5000, True)
+    dlamp(S, d, 2500, False)
     bubbles(S, world_of(d.head, (0, 0, 0.2)), t, 6)
-    foam_s = S['foam'][6:]
-    for i, o in enumerate(foam_s):                                    # silt and debris racing past on the current
-        yy = 12 - ((i * 3.1 + t * 13) % 20)
-        o.location = A(-2 + 4 * rn(i, 89), yy, -1.6 + 3.2 * rn(i, 90))
-        o.scale = (0.12, 0.5, 0.12)
-    shoot(S, A(lerp(1.5, 1.2, k), lerp(-1.6, -1.0, k), lerp(0.5, 0.3, k)), A(-0.4, 2.6, -0.2), 22, roll=0.06 * math.sin(t * 2.2), fill=1.5, fcol='BFE8D8')
+    for i, o in enumerate(S['foam'][6:]):                             # silt and debris racing past on the current
+        yy = y + 3 - ((i * 3.1 + t * 13) % 7)
+        o.location = A(-1.6 + 3.2 * rn(i, 89), yy, -1.4 + 2.8 * rn(i, 90))
+        o.scale = (0.1, 0.45, 0.1)
+    lampat(S, 0, A(1.2, y - 4.4, 1.0), 500, 'DFF6F0')
+    shoot(S, A(lerp(1.0, 0.85, k), y - lerp(5.6, 5.1, k), lerp(1.3, 1.15, k)), A(p[0] + 0.25, y - 1.9, p[2] + 0.6), 30, roll=0.06 * math.sin(t * 2.2), fill=1.5,
+          fcol='BFE8D8')
 
 
 # ---------------------------------------------------------------- found
 def glow_k(S, A, e, r=2.5):
     L = S['ledge']
-    paint(L['glowm'], 'BFF2FF', 9 * e)
+    paint(L['glowm'], '9FE0F4', 3.5 * e)
+    L['glow'].hide_render = e <= 0.01
     L['glow'].scale = (r, r, 1)
     L['glowl'].data.energy = 1800 * e
 
@@ -960,9 +977,9 @@ def glow(S, k, t, lt):
     A = chamber(S)
     e = sm(k * 1.15)
     seat_team(S, A, t, face='wide' if e > 0.45 else 'tired', nod=lerp(0.4, 0.15, e))
-    glow_k(S, A, e, lerp(0.6, 3.4, e))
+    glow_k(S, A, e, lerp(0.8, 4.2, e))
     rk = S['rook']
-    rp = lp(4.9, 5.2)
+    rp = lp(3.4, 6.2)
     rk.place(A(*rp), 0.25)
     rk.apply(blend(P('sit', **HUG), P('stand', lean=0.45, head=(0.3, 0.0), aL=(0.4, 0.5, 0.4), aR=(0.4, 0.5, 0.4)), (lt - 0.3) / 0.4))
     S['rface'] = 'shocked' if e > 0.5 else 'sad'
@@ -975,10 +992,10 @@ def glow(S, k, t, lt):
 def surface(S, k, t, lt):
     A = chamber(S)
     up = sm(lt / 0.5)
-    glow_k(S, A, 1.0 - 0.6 * up, 3.4)
+    S['ledge']['glowl'].data.energy = 500 * (1 - 0.5 * up)
     d = S['divers'][0]
     d.place(A(0.0, -3.2, lerp(-3.0, -1.55, up) + 0.04 * math.sin(t * 4)), look_yaw((0, -3.2), (2.0, 4.0)))
-    d.apply(P('stand', aL=(0.4, 0.6, 0.5), aR=(lerp(0.4, 1.9, sm((lt - 0.55) / 0.3)), 0.5, 0.4), head=(-0.15, 0.0)))
+    d.apply(P('stand', aL=(0.3, 0.3, 0.5), aR=(lerp(0.3, 2.3, sm((lt - 0.55) / 0.3)), 0.3, 0.4), head=(-0.15, 0.0)))
     dlamp(S, d, 7000, True)
     d2 = S['divers'][1]
     up2 = sm((lt - 0.35) / 0.5)
@@ -993,8 +1010,8 @@ def surface(S, k, t, lt):
     for i, o in enumerate(S['drops']):
         u = max(0.0, lt - 0.15)
         o.location = A(0.9 * math.cos(i * 0.8) * (0.4 + 1.6 * u), -3.2 + 0.9 * math.sin(i * 0.8) * (0.4 + 1.6 * u), 0.3 + 3.0 * u - 4.5 * u * u)
-        o.scale = (2.2, 2.2, 2.2)
-    lampat(S, 0, A(3.0, 0.5, 2.6), 260, 'FFD8A8')
+        o.scale = (1.4, 1.4, 1.4)
+    lampat(S, 0, A(3.0, 0.5, 2.6), 500, 'FFD8A8')
     shoot(S, A(lerp(3.0, 2.6, k), lerp(0.2, -0.2, k), lerp(0.7, 0.95, k)), A(-0.2, -3.3, lerp(0.3, 0.75, up)), 30, fill=1.0)
 
 
@@ -1046,23 +1063,22 @@ def way_out(S, k, t, lt):
     A = chamber(S)
     seat_team(S, A, t, face='calm', nod=0.2, skip=(12,))
     d = S['divers'][0]
-    dp = (0.6, -1.0)
-    d.place(A(dp[0], dp[1], -1.45), look_yaw(dp, (-0.8, 1.6)))
-    pt = sm((lt - 0.25) / 0.35)
-    d.apply(blend(P('stand', aL=(0.4, 0.5, 0.5), aR=(0.4, 0.5, 0.5)), P('stand', aR=(-0.9, 0.9, 0.1), aL=(0.4, 0.5, 0.5), head=(0.0, -0.9)), pt))
-    dlamp(S, d, 2600, False)
+    dp = (0.9, -1.3)
+    d.place(A(dp[0], dp[1], -1.45), look_yaw(dp, (-1.0, 1.4)))
+    pt = sm((lt - 0.2) / 0.35)
+    d.apply(blend(P('stand', aL=(0.4, 0.5, 0.5), aR=(0.4, 0.5, 0.5)), P('stand', aR=(-1.0, 1.1, 0.1), aL=(0.4, 0.5, 0.5), head=(0.0, -1.0)), pt))
+    dlamp(S, d, 1200, False)
     co = S['team'][12]
-    cp = lp(-0.9, 1.3)
+    cp = lp(-1.0, 1.25)
     co.place(A(*cp), look_yaw(cp, dp))
     co.apply(dict(KNEE, head=(0.25, 0.0)))
     co.face = 'calm'
-    rope(S, 0, A(1.6, 0.9, 0.35), A(2.6, -6.0, -0.4))
-    add_stake = A(1.6, 0.9, 0.2)
-    S['weight'].location = add_stake
+    rope(S, 0, A(2.2, 0.9, 0.35), A(3.4, -7.0, -0.3))
+    S['weight'].location = A(2.2, 0.9, 0.2)
     S['weight'].scale = (2, 2, 2)
-    lampat(S, 0, A(-2.5, -0.5, 3.0), 700, 'E8F6FF')
-    lampat(S, 1, A(3, -8, 2.5), 500, '7FD0E0')
-    shoot(S, A(lerp(-4.2, -3.6, k), lerp(2.8, 2.2, k), lerp(2.4, 2.1, k)), A(0.6, lerp(-0.8, -2.2, k), 0.9), 26, fill=1.2)
+    lampat(S, 0, A(-1.5, -3.5, 3.0), 1200, 'E8F6FF')
+    lampat(S, 1, A(4, -8, 2.5), 900, '7FD0E0')
+    shoot(S, A(lerp(-3.8, -3.3, k), lerp(-4.2, -3.6, k), lerp(1.3, 1.5, k)), A(0.3, lerp(-0.2, -0.6, k), 1.25), 27, fill=1.3)
 
 
 def sump_long(S, k, t, lt):
@@ -1072,9 +1088,9 @@ def sump_long(S, k, t, lt):
         yy = y + 1.5 + ((i * 2.3 + 7) % 14)
         o.location = A(-2 + 4 * rn(i, 91), yy, -1.6 + 3.2 * rn(i, 92) + 0.1 * math.sin(t * 2 + i))
         o.scale = (0.12, 0.12, 0.12)
-    lampat(S, 0, A(0.4, y + 2.5, 0.6), 700, 'DFF6F0')
-    lampat(S, 1, A(-0.4, y + 9, 0.2), 500, 'BFE8D8')
-    shoot(S, A(0.35 + 0.25 * math.sin(t * 1.4), y, 0.25 + 0.15 * math.sin(t * 1.9)), A(0.0, y + 9.0, -0.35), 20, roll=0.07 * math.sin(t * 1.3), fill=0.8,
+    lampat(S, 0, A(0.4, y + 2.5, 0.6), 320, 'DFF6F0')
+    lampat(S, 1, A(-0.4, y + 9, 0.2), 260, 'BFE8D8')
+    shoot(S, A(0.35 + 0.25 * math.sin(t * 1.4), y, 0.25 + 0.15 * math.sin(t * 1.9)), A(0.0, y + 9.0, -0.35), 20, roll=0.07 * math.sin(t * 1.3), fill=0.45,
           fcol='BFE8D8')
 
 
@@ -1103,10 +1119,10 @@ def toe_dip(S, k, t, lt):
     for i, o in enumerate(S['rings'][:2]):
         u = (lt * 0.9 + 0.5 * i) % 1
         o.location = (bob[0], bob[1], A(0, 0, 0.03)[2])
-        o.scale = (0.2 + 0.9 * u, 0.2 + 0.9 * u, 1)
-    lampat(S, 0, A(1.5, -2.6, 2.6), 700, 'E8F6FF')
-    lampat(S, 1, A(4.5, 0.0, 3.2), 260, 'FFC890')
-    shoot(S, A(lerp(4.6, 4.1, k), lerp(-3.0, -2.6, k), lerp(1.0, 1.25, k)), A(1.1, 1.0, 1.7), 27, fill=1.2)
+        o.scale = (0.15 + 0.5 * u, 0.15 + 0.5 * u, 1)
+    lampat(S, 0, A(-0.5, -2.6, 2.6), 900, 'E8F6FF')
+    lampat(S, 1, A(3.5, -1.5, 3.2), 420, 'FFC890')
+    shoot(S, A(lerp(-2.6, -2.2, k), lerp(-2.9, -2.5, k), lerp(1.0, 1.25, k)), A(1.2, 1.0, 1.75), 26, fill=1.2)
 
 
 def rook_sound(S, k, t, lt):
@@ -1137,23 +1153,48 @@ def tank_row(S, A, n=4):
     rope(S, 1, A(-4.2, 5, 1.2), A(-3.6, 16, 0.9))
 
 
+def tank_carry(S, k, t, lt):
+    A = passage(S, 0.5)
+    tank_row(S, A, 2)
+    d = S['divers'][1]
+    y = lerp(-2.5, 3.2, k)
+    d.place(A(-2.3, y, 0.0), PI + 0.1 * math.sin(t * 4))
+    w = walk(t, 1.5)
+    d.apply(dict(w, aL=(1.0, -0.1, 1.2, 0.5), aR=(1.0, -0.1, 1.2, 0.5), head=(0.1, 0.35 * math.sin(t * 2.5))))
+    tk = S['tanks'][3]
+    tk.location = world_of(d.body, (0.0, -0.5, 0.75))
+    tk.rotation_euler = (0.0, PI / 2 - 0.15, PI + 0.1)
+    dlamp(S, d, 6000, True)
+    foam(S, [world_of(d.root, (0.5 * math.cos(i * 1.3), 0.6 * math.sin(i * 1.3) + 0.5, 0.55 + 0.2 * abs(math.sin(t * 9 + i)))) for i in range(6)], 0.45)
+    lampat(S, 0, A(0.5, y + 4.5, 3.0), 1500, 'FFE8C8')
+    lampat(S, 1, A(0, 14, 5), 1200, '7FB8D0')
+    shoot(S, A(lerp(1.4, 0.6, k), y + lerp(5.6, 4.6, k), lerp(1.5, 1.9, k)), A(-2.2, y + 0.3, 1.9), 26, roll=0.03 * math.sin(t * 3), fill=1.3)
+
+
 def tanks(S, k, t, lt):
     A = passage(S, 0.12)
     tank_row(S, A, 3)
     d = S['divers'][1]
     dp = (-2.5, 7.2)
     d.place(A(dp[0], dp[1], 0.0), look_yaw(dp, (-4.4, 7.4)))
-    put = sm(lt / 0.8)
-    d.apply(dict(KNEE, aL=(1.2 - 0.3 * put, 0.1, 0.5), aR=(1.2 - 0.3 * put, 0.1, 0.5), head=(0.35, 0.0)))
+    put = sm(lt / 0.55)
+    look = sm((lt - 0.7) / 0.3)
+    d.apply(dict(KNEE, aL=(1.2 - 0.3 * put, 0.1, 0.5), aR=(1.2 - 0.3 * put, 0.1, 0.5), head=(0.35 - 0.3 * look, -0.9 * look)))
     tk = S['tanks'][3]
     hp = world_of(d.hands[1], (0.15, -0.2, 0.2))
     tk.location = (lerp(hp[0], A(-3.85, 7.3, 0.55)[0], put), lerp(hp[1], A(-3.85, 7.3, 0.55)[1], put), lerp(hp[2] + 0.3, A(0, 0, 0.55)[2], put))
     tk.rotation_euler = (0.12, 0.0, 1.2)
-    dim = 1 - 0.75 * sm((k - 0.6) / 0.4)
+    for i, o in enumerate(S['rings'][:2]):
+        u = max(0.0, lt - 0.5 - 0.25 * i)
+        if u > 0:
+            o.location = A(-3.85, 7.3, 0.14)
+            o.scale = (0.3 + 1.5 * u, 0.3 + 1.5 * u, 1)
+    drips(S, A(-1.6, 5.2, 4.4), t, 5, 1.6, 4.0, 0.9)
+    dim = 1 - 0.8 * sm((k - 0.55) / 0.45)
     dlamp(S, d, 3500 * dim, False)
-    lampat(S, 0, A(-1.0, 3.0, 3.2), 420 * dim, 'FFE8C8')
-    lampat(S, 1, A(0, 14, 5), 160, '7FB8D0')
-    shoot(S, A(lerp(1.6, 1.0, k), lerp(0.2, 1.0, k), lerp(1.6, 1.4, k)), A(-3.2, 6.2, 1.1), 28, fill=0.9 * dim + 0.15)
+    lampat(S, 0, A(-1.2, 4.0, 3.0), 2200 * dim + 150, 'FFE8C8')
+    lampat(S, 1, A(0, 14, 5), 900, '7FB8D0')
+    shoot(S, A(lerp(1.6, -0.6, k), lerp(1.2, 3.4, k), lerp(2.3, 1.3, k)), A(-3.1, 6.8, 1.2), 28, fill=1.3 * dim + 0.3)
 
 
 def rook_vigil(S, k, t, lt):
@@ -1161,17 +1202,25 @@ def rook_vigil(S, k, t, lt):
     tank_row(S, A, 4)
     rk = S['rook']
     rp = (-1.9, 6.6, 0.0)
-    rk.place(A(*rp), look_yaw(rp, (-4.2, 7.0)) * lerp(1.0, 0.45, sm(k)))
-    S['hat_off'] = sm(lt / 0.5)
-    rk.apply(blend(P('stand', head=(0.2, 0.0)), to_chest(), lt / 0.5))
+    walk_in = sm(lt / 0.45)
+    rk.place(A(rp[0] + 1.6 * (1 - walk_in), rp[1] - 1.4 * (1 - walk_in), 0.0), look_yaw(rp, (-4.2, 7.0)) * lerp(1.0, 0.6, sm(k)))
+    S['hat_off'] = sm((lt - 0.35) / 0.5)
+    rk.apply(blend(walk(t, 1.3) if walk_in < 1 else P('stand', head=(0.2, 0.0)), to_chest(), (lt - 0.35) / 0.5))
     S['rface'] = 'sad'
     obj, m = S['torch'][0]                                              # one small light left burning by the tanks
     obj.location = A(-3.2, 6.0, 0.25)
     obj.rotation_euler = (0, 0, 0)
-    paint(m, 'FFD8A0', 10 + 2 * math.sin(t * 9))
-    lampat(S, 0, A(-3.1, 5.6, 1.0), 220 + 30 * math.sin(t * 9), 'FFC890')
-    lampat(S, 1, A(0, 14, 5), 120, '7FB8D0')
-    shoot(S, A(lerp(-0.9, -1.3, k), lerp(1.2, 1.9, k), lerp(1.5, 1.9, k)), A(-2.3, 6.6, 2.2), 36, fill=0.7, fcol='FFE0C0')
+    fl = 0.75 + 0.25 * math.sin(t * 11) * math.sin(t * 3.3)
+    paint(m, 'FFD8A0', 12 * fl)
+    lampat(S, 0, A(-3.1, 5.6, 1.0), 700 * fl, 'FFC890')
+    lampat(S, 1, A(0, 14, 5), 900, '7FB8D0')
+    lampat(S, 2, A(-0.5, 3.5, 3.6), 500, 'FFE0C0')
+    drips(S, A(-2.6, 5.0, 4.6), t, 5, 1.4, 4.2, 0.9)
+    for i, o in enumerate(S['rings'][:3]):
+        u = (lt * 0.8 + i / 3) % 1
+        o.location = A(-2.6 + 1.4 * math.cos(i * 2.4), 5.0 + 0.7 * math.sin(i * 2.4), 0.14)
+        o.scale = (0.2 + 0.9 * u, 0.2 + 0.9 * u, 1)
+    shoot(S, A(lerp(0.9, -1.9, k), lerp(0.6, 2.2, k), lerp(1.3, 2.3, k)), A(-2.4, 6.5, lerp(1.9, 2.3, k)), 34, fill=1.0, fcol='FFE0C0')
 
 
 # ---------------------------------------------------------------- sedated, masked, carried
@@ -1204,7 +1253,7 @@ def sleep(S, k, t, lt):
     lampat(S, 0, A(1.0, -1.0, 3.4), 900, 'E8F6FF')
     lampat(S, 1, A(-3, 1, 3.0), 300, 'FFC890')
     hd = world_of(p.head)
-    shoot(S, A(lerp(3.3, 2.7, k), lerp(-1.3, -0.7, k), lerp(2.6, 2.9, k)), (lerp(hd[0], hd[0] - 0.2, k), hd[1] - 0.9, hd[2] + 0.2), 30, fill=1.2)
+    shoot(S, A(lerp(3.3, 2.7, k), lerp(-2.0, -1.4, k), lerp(2.6, 2.9, k)), (hd[0] + lerp(0.5, 0.3, k), hd[1] - 0.7, hd[2] + 0.3), 27, fill=1.2)
 
 
 def mask_on(S, k, t, lt):
@@ -1257,10 +1306,10 @@ def carry_in(S, k, t, lt):
     rope(S, 0, A(1.6, 0.9, 0.35), A(1.0, -9.0, -0.6))
     lampat(S, 0, A(1.5, -0.5, 3.0), 800, 'E8F6FF')
     lampat(S, 1, A(4.6, -0.6, 3.4), 300, 'FFC890')
-    shoot(S, A(lerp(-3.9, -3.2, k), lerp(-5.6, -5.0, k), lerp(1.5, 1.2, k)), A(0.6, -1.2, 0.9), 25, fill=1.2)
+    shoot(S, A(lerp(-3.4, -2.9, k), lerp(-5.9, -5.4, k), lerp(1.7, 1.4, k)), A(0.7, -1.4, 0.9), 27, fill=1.2)
 
 
-def carried(S, A, y, t, x=None, z=None, lead=0.0):
+def carried(S, A, y, t, x=None, z=None, lead=0.0, dz=-0.62):
     """A diver swimming along the line with the sleeping boy held under his chest. Returns the diver."""
     p0 = line_pt(S, y)
     x = p0[0] + 0.5 if x is None else x
@@ -1269,7 +1318,7 @@ def carried(S, A, y, t, x=None, z=None, lead=0.0):
     d.place(A(x, y, z + 0.06 * math.sin(t * 3)), PI, PI / 2)
     d.apply(swim_pose(t, 1.1, True))
     p = S['pat']
-    p.place(A(x + 0.05, y - 0.55 + lead, z - 0.62 + 0.06 * math.sin(t * 3)), PI, PI / 2)
+    p.place(A(x + 0.05, y - 0.55 + lead, z + dz + 0.06 * math.sin(t * 3)), PI, PI / 2)
     p.apply(limp_pose())
     p.face = 'shut'
     wear_mask(S, p)
@@ -1279,21 +1328,21 @@ def carried(S, A, y, t, x=None, z=None, lead=0.0):
 def carry_dark(S, k, t, lt):
     A = sump(S)
     y = lerp(2.0, 6.5, k)
-    d = carried(S, A, y, t)
+    d = carried(S, A, y, t, x=-0.7, z=0.2)
     dlamp(S, d, 5200, True)
     bubbles(S, world_of(d.head, (0, 0.2, 0.3)), t, 5)
     bubbles(S, world_of(S['pat'].head, (0, 0.2, 0.3)), t + 0.4, 4, 5, 1.0)
     for i, o in enumerate(S['foam'][9:]):
         o.location = A(-2 + 4 * rn(i, 93), y + 1 + 2.2 * i, -1.5 + 3 * rn(i, 94))
         o.scale = (0.1, 0.1, 0.1)
-    lampat(S, 0, A(1.6, y + 2.2, 0.6), 420, 'DFF6F0')
-    shoot(S, A(lerp(2.2, 2.0, k), y + lerp(4.8, 4.2, k), lerp(-0.7, -0.4, k)), A(-0.2, y + 1.4, -0.1), 21, roll=0.05 * math.sin(t * 1.6), fill=1.3, fcol='BFE8D8')
+    lampat(S, 0, A(1.0, y + 2.6, 0.6), 420, 'DFF6F0')
+    shoot(S, A(lerp(1.15, 1.0, k), y + lerp(4.6, 4.0, k), lerp(-0.9, -0.6, k)), A(-0.6, y + 1.2, -0.1), 18, roll=0.05 * math.sin(t * 1.6), fill=1.3, fcol='BFE8D8')
 
 
 def squeeze(S, k, t, lt):
     A = sump(S)
     y = lerp(15.6, 18.3, sm(k))
-    d = carried(S, A, y, t, x=0.0, z=0.45, lead=-0.5 - 1.2 * sm(k))
+    d = carried(S, A, y, t, x=0.0, z=0.45, lead=-0.6 - 1.4 * sm(k), dz=-0.3)
     dlamp(S, d, 2600, False)
     bubbles(S, world_of(S['pat'].head, (0, 0.2, 0.3)), t, 5, 0, 1.0)
     lampat(S, 0, A(0.9, 23.2, 0.9), 360, 'DFF6F0')
@@ -1304,7 +1353,7 @@ def squeeze(S, k, t, lt):
 # ---------------------------------------------------------------- out
 def stretcher_out(S, k, t, lt):
     A = rescue_dusk(S)
-    y = lerp(13.5, 6.0, k)
+    y = lerp(12.5, 7.0, k)
     st = S['stretcher']
     bob = 0.05 * math.sin(t * 9)
     st.location = A(-0.4, y, mz(y) + 1.35 + bob)
@@ -1315,14 +1364,14 @@ def stretcher_out(S, k, t, lt):
         rr.face = 'warm'
     rk = S['rook']
     fl = math.sin(lt * 20)
-    rp = (-3.2, y - 1.2, 1.3 + 0.35 * math.sin(lt * 5))
+    rp = (-2.0, y - 2.9, 1.0 + 0.35 * math.sin(lt * 5))
     rk.place(A(*rp), -0.5, 0.25)
     rk.apply(P('stand', aL=(0.2, 1.35 + 0.5 * fl, 0.25), aR=(0.2, 1.35 + 0.5 * fl, 0.25), lL=(0.5, 0.9), lR=(0.3, 0.8), head=(-0.1, -0.5)))
     S['rface'] = 'warm'
     pulse = 1 + 0.03 * math.sin(t * 30)
     S['mouth']['pump'].scale = (pulse, pulse, pulse)
-    lampat(S, 0, A(-2.5, y - 4.5, 3.4), 500, 'FFC890')
-    shoot(S, A(lerp(3.4, 2.6, k), lerp(-6.5, -5.4, k), lerp(1.5, 1.8, k)), A(-0.6, lerp(9.0, 6.0, k), 2.3), 24, fill=1.0, fcol='FFE8D0')
+    lampat(S, 0, A(-1.0, y - 6.0, 3.4), 1500, 'FFC890')
+    shoot(S, A(lerp(2.6, 2.2, k), y - lerp(9.6, 8.8, k), lerp(1.5, 1.8, k)), A(-0.8, y - 0.5, 2.2), 24, fill=1.2, fcol='FFE8D0')
 
 
 def pump_fail(S, k, t, lt):
@@ -1335,19 +1384,19 @@ def pump_fail(S, k, t, lt):
         u = (t * 1.4 + i / 5) % 1
         o = S['foam'][i]
         o.location = A(PUMP[0] - 0.55 + 0.3 * u, PUMP[1], 2.0 + 1.6 * u) if run > 0.15 else AWAY
-        o.scale = (0.5 + 0.9 * u,) * 3
+        o.scale = (0.3 + 0.6 * u,) * 3
     rk = S['rook']
-    rp = (PUMP[0] - 2.3, PUMP[1] - 1.1, 0.0)
-    rk.place(A(*rp), look_yaw(rp, PUMP))
+    rp = (PUMP[0] - 2.3, PUMP[1] + 0.5, 0.0)
+    rk.place(A(*rp), look_yaw(rp, (PUMP[0] - 0.4, PUMP[1] - 3.0)))
     j = sm((lt - 0.85) / 0.25)
-    rk.apply(blend(P('cross', head=(0.1, -0.2)), P('point', aR=(1.2, 0.0, 0.25), head=(0.2, -0.1), lean=0.15), j))
+    rk.apply(blend(P('cross', head=(0.1, 0.5)), P('point', aL=(1.1, 0.5, 0.25), aR=(0.1, 0.2, 0.2), head=(0.2, 0.6), lean=0.1), j))
     S['rface'] = 'calm' if j < 0.5 else 'shocked'
-    lampat(S, 0, A(PUMP[0] - 2.5, PUMP[1] - 4.0, 2.8), 360, 'FFC890')
-    shoot(S, A(lerp(4.6, 5.0, k), lerp(-5.2, -4.4, k), lerp(1.5, 1.7, k)), A(PUMP[0] - 0.9, PUMP[1], 1.5), 29, fill=1.0, fcol='FFE8D0')
+    lampat(S, 0, A(PUMP[0] - 1.0, PUMP[1] - 4.5, 2.8), 1200, 'FFC890')
+    shoot(S, A(PUMP[0] + lerp(0.2, 0.6, k), PUMP[1] - lerp(7.0, 6.4, k), lerp(1.6, 1.8, k)), A(PUMP[0] - 1.2, PUMP[1] - 0.3, 1.6), 27, fill=1.2, fcol='FFE8D0')
 
 
 def reflood(S, k, t, lt):
-    wl = lerp(0.3, 4.2, sm(k))
+    wl = lerp(0.3, 3.4, sm(k))
     A = passage(S, wl)
     tank_row(S, A, 4)
     fp = S['flood_prop']
@@ -1357,16 +1406,16 @@ def reflood(S, k, t, lt):
     on = 1.0 if k < 0.62 else (0.5 + 0.5 * math.sin(t * 60)) * max(0.0, 1 - (k - 0.62) / 0.15)
     paint(S['fpm'], 'FFF2D0', 12 * on)
     lampat(S, 0, A(0.6, 3.2, 2.8), 1500 * on + 60, 'FFE8C0')
-    lampat(S, 1, A(0, 14, 5.5), 420, 'A8D8E8')
+    lampat(S, 1, A(0, 12, 5.5), 2000, 'A8D8E8')
     foam(S, [A(-4.5 + 9 * rn(i, 95), 17 - 18 * sm(k) * rn(i, 96) - 2 * rn(i, 97), wl + 0.15 + 0.4 * abs(math.sin(t * 8 + i))) for i in range(14)], 1.8)
     rk = S['rook']
     fl = math.sin(lt * 22)
-    rp = (lerp(-1.0, -3.2, k), lerp(2.0, -3.5, k), lerp(1.2, 5.0, sm(k)))
+    rp = (lerp(1.8, 0.6, k), lerp(3.0, -1.5, k), lerp(1.2, 4.2, sm(k)))
     rk.place(A(*rp), 0.3, 0.3)
     rk.apply(P('stand', aL=(0.2, 1.35 + 0.5 * fl, 0.25), aR=(0.2, 1.35 + 0.5 * fl, 0.25), lL=(0.6, 1.0), lR=(0.4, 0.9), head=(0.3, 0.0)))
     S['rface'] = 'shocked'
-    lampat(S, 2, A(rp[0] - 0.5, rp[1] - 2.5, rp[2] + 2.5), 260, 'FFC890')
-    shoot(S, A(lerp(-4.2, -3.9, k), lerp(-7.0, -9.5, k), lerp(5.6, 6.4, k)), A(0.0, 6.0, lerp(1.0, 2.6, k)), 22, roll=0.04 * math.sin(t * 3), fill=1.1)
+    lampat(S, 2, A(rp[0] - 0.5, rp[1] - 2.5, rp[2] + 2.5), 700, 'FFC890')
+    shoot(S, A(lerp(-2.0, -1.6, k), lerp(-6.0, -8.5, k), lerp(4.6, 5.4, k)), A(0.0, 6.0, lerp(1.0, 2.6, k)), 22, roll=0.04 * math.sin(t * 3), fill=1.3)
 
 
 # ---------------------------------------------------------------- afterwards
@@ -1420,6 +1469,6 @@ def photo_ledge(S, k, t, lt):
 
 SHOTS3D = {f.__name__: f for f in (
     mouth_wide, walk_in, bikes, rain_gush, fill, rook_rock, rook_drip, chase, scramble, ledge_wide, huddle, torch_dies, divers_fight, glow, surface,
-    faces_lit, rook_count, way_out, sump_long, toe_dip, rook_sound, tanks, rook_vigil, sleep, mask_on, carry_in, carry_dark, squeeze, stretcher_out,
+    faces_lit, rook_count, way_out, sump_long, toe_dip, rook_sound, tank_carry, tanks, rook_vigil, sleep, mask_on, carry_in, carry_dark, squeeze, stretcher_out,
     pump_fail, reflood, rook_wrong, signoff)}
 STILLS = dict(ledge=photo_ledge)

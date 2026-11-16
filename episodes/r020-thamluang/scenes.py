@@ -210,9 +210,6 @@ def pin_13(cv, c):
     for x in (180, 900):
         cv.drawCircle(x, 300, 26, P(h('D8DCE4')))
         cv.drawCircle(x, 300, 26, P(INK, 5))
-    if c.lt > 0.15:
-        cv.drawLine(540, 1040, 540, 1090, P(ORANGE, 8))
-        card(cv, 540, 1140, 820, 110, 2, h('FFD866'))
     if c.lt > 0.3:
         fit(cv, 'THIRTEEN IN', 540, 1610, 110, 900, 0xFFFFFFFF)
     if c.lt > 0.55:

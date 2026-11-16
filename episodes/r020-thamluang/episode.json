@@ -6,8 +6,26 @@
  "host": "rook",
  "case": 20,
  "title": "12 Boys Trapped in a Flooded Cave. Then a Light Came Up #shorts",
- "description": "draft",
- "tags": [],
+ "description": "Case 020. On 23 June 2018 twelve boys from a junior football team and their assistant coach walked into the Tham Luang cave in Chiang Rai province, northern Thailand. Heavy rain flooded the passages behind them; their bicycles were found at the entrance that evening. Driven deeper by the rising water, the thirteen ended up on a slope of mud far inside the cave, in the dark, while outside a search grew to thousands of people and divers fought the flooded passages. On 2 July, after nine nights, the British cave divers Rick Stanton and John Volanthen surfaced in a chamber and found all thirteen alive. Getting them out was the harder part: the way out lay through flooded tunnels and some of the boys could not swim. On 6 July a Thai rescuer, the former navy diver Saman Kunan, died while placing air tanks in the cave. Between 8 and 10 July the boys and their coach were sedated, fitted with full-face masks and carried out underwater by divers, one at a time, and all thirteen came out alive. A few hours after the last of them was out, the pumping failed and the water rose again. Rook didn't believe it either.\n\nAnimated reconstruction of a true story. The cave mouth, the passages, the chamber and the flooded tunnel in the film are generic low-poly sets, not a survey of the real cave; the thirteen, the divers and the rescuers are simple figures and nobody's likeness is attempted; shirts, gear and helmets are plain and carry no badge or brand. The cross-section card is a diagram of the idea, not a map, and shows no distances, because sources differ on how far inside the group was found. The film does not show how the rescuer died: a lamp dims and Rook takes his hat off. Staging details such as the torches, the brass torch Rook keeps, the tally marks and the work light are reconstruction, not record.",
+ "tags": [
+  "Tham Luang",
+  "Thai cave rescue",
+  "Wild Boars",
+  "cave rescue",
+  "cave diving",
+  "Rick Stanton",
+  "John Volanthen",
+  "Saman Kunan",
+  "Thailand",
+  "2018",
+  "survival",
+  "true story",
+  "survival story",
+  "rescue",
+  "animated story",
+  "Rook",
+  "Survra"
+ ],
  "hashtags": [
   "#shorts",
   "#truestory",
@@ -15,6 +33,64 @@
  ],
  "playlist": "Rook's Case Files (Shorts)",
  "sources": [
-  "https://en.wikipedia.org/wiki/Tham_Luang_cave_rescue"
- ]
+  "https://en.wikipedia.org/wiki/Tham_Luang_cave_rescue",
+  "https://sg.news.yahoo.com/timeline-thai-cave-rescue-transfixed-123325942.html",
+  "https://itv.com/news/2018-07-10/how-the-thailand-cave-ordeal-unfolded",
+  "https://www.goodmorningamerica.com/news/story/odds-rescuers-pulled-off-miracle-thai-cave-mission-56509114",
+  "https://www.thailandcaves.shepton.org.uk/node/209",
+  "https://www.abc15.com/news/world/boys-rescued-from-cave-in-thailand-were-sedated-with-ketamine",
+  "https://www.thenewdaily.com.au/news/world/2019/04/06/thai-boys-drugged-with-ketamine"
+ ],
+ "story_score": {
+  "curiosity": 8,
+  "stakes": 10,
+  "freshness": 4,
+  "story": 9,
+  "visual": 8,
+  "audience_fit": 8,
+  "payoff": 9,
+  "packaging": 8,
+  "research": 9,
+  "repeatability": 6,
+  "total": 79
+ },
+ "title_options": [
+  "12 Boys Trapped in a Flooded Cave. Then a Light Came Up #shorts",
+  "Trapped in a Flooded Cave for Nine Nights. All 13 Lived #shorts",
+  "Finding Them Was the Easy Part: the Thai Cave Rescue #shorts",
+  "They Were Carried Out Asleep, Underwater, One by One #shorts",
+  "The Cave Flooded Behind Them. Then It Flooded Again #shorts"
+ ],
+ "spine": "v2",
+ "shown_moments": {
+  "walk into a cave": "shots 1 and 2 (the last of them going in; the file of boys and the coach coming down into the dark)",
+  "the rain comes, and the way out fills with water": "shots 3 to 5 (rain on the bicycles, water pouring in over the lip, the low arch going under)",
+  "the water chases them deeper, up onto a slope of mud": "shots 8 to 10 (wading, the climb out of the water, the thirteen on the slope)",
+  "no daylight": "shot 12 (the torch going out)",
+  "divers fight the flood for nine nights": "shots 13 and 14 (the diver on the line against the current; nine marks on the rock)",
+  "a light comes up out of the water": "shots 15 and 16 (the glow under the surface; the helmet breaking the surface)",
+  "all thirteen are alive": "shots 17 and 18 (the faces in the light; Rook's count to thirteen)",
+  "the way out is underwater": "shots 19 to 21 (the diver pointing down the line; the flooded tunnel; the cross-section)",
+  "some of these boys can't even swim": "shot 22 (the foot pulled back out of the water)",
+  "Saman Kunan dies carrying air tanks into the cave": "shots 24 and 25 (a diver standing a tank by the line, his lamp dimming; Rook's hat off). The death itself is not shown.",
+  "sedate each boy, fit a full face mask, carry him out underwater": "shots 26 to 30",
+  "all thirteen come out alive": "shots 31 and 32 (the stretcher at the cave mouth; thirteen ticks)",
+  "the pumps fail and the water rises again": "shots 33 and 34"
+ },
+ "experiments": {
+  "E1_E2": "spine v2: Rook doubts the story standing on a boulder in the flooded passage, the water racing past in the same shot, in one line of 1.1 s (5.7 s to 6.8 s); no office, no cutaway. The story then runs forward from the hook; date and place appear only as on-screen labels (23 JUNE 2018, THAM LUANG, THAILAND, 2 JULY 2018, 8-10 JULY 2018). The only name narrated is Saman Kunan's, at the beat that is about him.",
+  "E3": "batch Short 2 (even): wide first frame - the cave mouth in the rain with the bicycles in the foreground. This follows the brief; the production checklist's 'first shot shows the subject close' is met by the bicycles and the three figures on the path rather than by a face.",
+  "E4": "'Case closed.' ending (the brief's choice for this case: a rescuer died, so no question is put to viewers).",
+  "E7": "hook_text is set (TRAPPED IN / A FLOODED CAVE). AUTHORING.md makes it mandatory for every episode while the experiment log wants half the batch without it; the mandatory rule was followed. Short 1 (r016) has none, so the two can still be compared.",
+  "E8": "tail 0.4 s; the last line ('And it began the day') runs into the first ('Twelve boys and their coach walk into a cave'), and the last shot is the opening shot played back to its first frame, lightning included.",
+  "rook_action": "He counts the thirteen along the ledge with a wingtip (shot 18) and sounds the water with a weighted line that finds no bottom (shots 22 and 23). Mannerisms: beak tap (shot 7), hat jump and shed feather (shot 23), hat to chest (shot 25), pocketing the shiny thing and the brim pulled down (shot 37)."
+ },
+ "sound_plan": {
+  "first_frame": "One 'hit' at 0.03 s with the lightning flash that lights the first frame (the gate needs an impact in the first second; here it is the thunderclap, a story sound), thunder rolling from 0.1 s over rain.",
+  "hook": "Rain throughout; a wave and a splash as the water comes in over the lip; splashes and a shout as the arch goes under.",
+  "music": "The engine's score follows the segment moods: hook, tense for Rook's line, action for the flight, tense for the wait, wonder for the light, tense for the re-hook, sad for Saman Kunan (the sad mood carries no drum loop), tense for the dive out, triumph, calm, end. The engine cannot delay the music's entry, so 'music enters once the story moves' is approximated by the sparse hook mood.",
+  "hush": "Shot 30 (the squeeze): the music drops out for the breath before 'all thirteen come out alive'.",
+  "voice": "Narration is ducked over the bed by the engine; measured in the local rehearsal (see quality_gate)."
+ },
+ "source_notes": "Read for this run (fetched 16 Nov 2026): Wikipedia 'Tham Luang cave rescue' (first part of the article read in full; later sections only in summary and not relied on); Reuters, 'Timeline: Thai cave rescue that transfixed the world for 17 days' (24 June 2019, read on Yahoo News); ITV News, 'How the Thailand cave ordeal unfolded' (10 July 2018); ABC News / Good Morning America, 'With all odds against them, how rescuers pulled off miracle Thai cave mission' (12 July 2018); Shepton Mallet Caving Club, 'A summary of the Tham Luang Rescue' (a caver's day-by-day timeline); CNN Newsource via ABC15, 'Boys rescued from cave in Thailand were sedated with ketamine' (4 April 2019, reporting the rescuers' letter in the New England Journal of Medicine); The New Daily (6 April 2019) on the same letter. Pages that could not be read: BBC, The Guardian, Reuters' own site, AP, NPR, CNN's own site, Britannica, National Geographic, Smithsonian, ABC Australia, History, SBS, the British Cave Rescue Council and the Australian of the Year page (blocked, refused or errors). Every narrated fact is in at least two of the pages read. Twelve boys and their coach went into the cave on 23 June 2018: Wikipedia, Reuters, ITV, ABC News. Rain flooded the cave and trapped them: Wikipedia ('stranded in the tunnels by sudden and continuous rainfall'), Reuters ('rising flood water after heavy rain would soon trap them'), ITV. Bicycles at the entrance: Wikipedia ('abandoned bicycles and bags near the entrance'), ITV ('bikes are found parked and locked at the cave entrance'), ABC News, Shepton. Driven deeper by the water onto a slope of mud: Wikipedia (they fled rising water; found on 'a narrow rock shelf', also called an 'elevated rock'), Reuters ('on a muddy slope'), ABC News ('a small beach'); the film uses the muddy slope. Nine nights: Reuters ('nine nights inside the cave complex'), Wikipedia (found nine days after entering); ABC News counts 'ten days after the group went missing', which is the same span counted inclusively. Divers working against the flood meanwhile: ITV ('flooding underground passages faster than water can be pumped out'), Reuters, Shepton. Found on 2 July by the British divers Rick Stanton and John Volanthen, all thirteen alive: all five timeline sources. The way out was through flooded passages and some of the boys could not swim: Wikipedia ('It was believed that some of the group could not swim'; teaching them to dive was judged too risky), ABC News ('most of them did not know how to swim'); the film says 'some', which both support. Saman Kunan, a former Thai navy diver, died on 6 July while placing air tanks: Wikipedia, Reuters, ABC News ('delivering extra air tanks'), ITV (unnamed), Shepton ('to stage cylinders'). Sedated, in full-face masks, carried out by divers one at a time: Wikipedia (ketamine given by the anaesthetist Richard Harris; 'positive pressure full-face mask'), CNN Newsource ('given unspecified doses of ketamine', 'full-face masks supplying oxygen', 'while we were carrying them out'), The New Daily, ABC News ('normally one diver per boy'). Out over three days, 8 to 10 July, four, four and five: Wikipedia, Reuters, ITV, ABC News. Hours after the last of them was out the pumping failed and the water rose: ABC News ('Just two hours after the last rescue was made ... the pumps ... broke down'), Shepton (at 21:10, after the last boy reached the entrance at 18:53, 'a water pipe coupling breaks causing the water to rise rapidly'), Wikipedia ('a water pipe burst and the main pump stopped working'). Conflicts and things kept out of the film. Distance: Wikipedia's lead says about 2 km from the entrance, ABC News 2.9 miles, Shepton about 4 km plus 750 m, so no distance is narrated or drawn and the cross-section card says NOT TO SCALE. What they sat on: rock shelf, muddy slope or small beach, see above. Kunan's age and rank differ between pages (37 or 38; petty officer, later promoted), so neither is given. The cause of the water rising at the end is a failed pump in two sources and a broken pipe coupling in the third; the narration says 'the pumps fail', which two support, and the description says 'the pumping failed'. The exchange usually quoted from the divers' video ('How many of you?' 'Thirteen.' 'Brilliant.') was found verbatim in only one page read, so it is not quoted: Rook counts instead. 'Almost no food' and the coach leading meditation were each confirmed in only one page read and were cut from the script. Whether the boys were fully unconscious differs (Wikipedia 'fully unconscious'; the journal reports say sedated), so the film says 'sedate'. The first script draft said 'the only way out is underwater' and 'the cave floods again'; both were softened to 'the way out is underwater' and 'the water rises again' because drilling and waiting were also considered and the sources describe water rising in the inner chambers, not the whole cave. Left out for length: the thousands of volunteers and soldiers, the pumping operation and the water diverted on the mountain, the falling oxygen in the chamber, the navy divers and the army doctor who stayed with the group, the order in which the boys came out (disputed), the boys' ages and names, and the later lives of those involved. Staging choices that are not facts: the number of bicycles (five are shown), the boys' torches and the torch that goes out, the low arch and the boulder, the tally marks, the silver blanket, the stretcher under a foil blanket, the work lights, the small brass torch Rook keeps, the colours of shirts and helmets, and the time of day of each scene."
 }
