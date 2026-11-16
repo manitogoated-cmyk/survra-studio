@@ -1068,25 +1068,36 @@ def find_pov(S, k, t, lt):
 def hall_talks(S, k, t, lt):
     A = crest(S, 'sunrise', 1.0)
     wave = sm((lt - 0.5) / 0.3)
-    seated(S, A, turn=lerp(-0.2, -1.15, sm(lt / 0.4)), nod=0.0, face='calm', aL=(0.62 + 0.5 * wave, 0.3 + 0.5 * wave, 0.75 + 0.9 * wave, 0.25))
+    beat = 0.12 * math.sin(lt * 5.0) * wave                    # the raised hand keeps moving while he talks
+    seated(S, A, turn=lerp(-0.2, -1.15, sm(lt / 0.4)), nod=0.06 * math.sin(lt * 3.1) * wave, face='calm',
+           aL=(0.62 + 0.5 * wave + beat, 0.3 + 0.5 * wave, 0.75 + 0.9 * wave - beat, 0.25))
     S['jaw']['found'] = 0.28 * abs(math.sin(lt * 11)) if lt > 0.45 else 0.0
-    rp = (0.6, 2.6, 0.0)
+    jolt = sm((lt - 0.95) / 0.22)                              # Rook hears him speak: jolts back, hands up...
+    peer = sm((lt - 1.6) / 0.5)                                # ...then leans in to check he heard right
+    rp = (0.6 + 0.1 * jolt, 2.6 + 0.55 * jolt - 0.35 * peer, 0.0)
     S['rook'].place(A(*rp), look_yaw(rp, (0.5, 0.0)))
-    S['rook'].apply(P('stand', lean=-0.1, aL=(0.3, 0.5, 0.6), aR=(0.3, 0.5, 0.6), head=(0.1, 0.0)))
-    S['face']['rook'] = 'shocked'
-    shoot(S, A(lerp(3.2, 2.6, k), lerp(-4.8, -4.0, k), lerp(1.5, 1.7, k)), A(0.3, 0.6, 1.75), 40, fcol='FFD8B8')
+    still = P('stand', lean=-0.1, aL=(0.3, 0.5, 0.6), aR=(0.3, 0.5, 0.6), head=(0.1, 0.0))
+    back = P('stand', lean=-0.2, aL=(0.9, 0.9, 1.3), aR=(0.9, 0.9, 1.3), head=(0.1, 0.0))
+    lean_in = P('stand', lean=0.12, aL=(0.2, 0.35, 0.4), aR=(0.5, 0.3, 1.5), head=(0.1, 0.0))
+    S['rook'].apply(blend(blend(still, back, jolt), lean_in, peer))
+    S['face']['rook'] = 'shocked' if lt > 0.95 else 'deadpan'
+    shoot(S, A(lerp(4.4, 2.7, k), lerp(-5.6, -3.9, k), lerp(1.3, 1.9, k)), A(0.3, 0.6, lerp(1.7, 1.55, k)), 40, fcol='FFD8B8')
 
 
 def team_stare(S, k, t, lt):
     A = crest(S, 'sunrise', 1.0)
+    halt = sm(lt / 0.55)                                       # the three behind are still walking in and pile up
     for i, (who, x, y) in enumerate((('m1', -0.3, -4.2), ('m2', 0.75, -5.3), ('m3', -1.1, -5.9), ('m4', 0.3, -6.9))):
-        S[who].place(A(x, y, 0), PI + 0.12 * x)
-        S[who].apply(P('stand', lean=-0.08 if i == 0 else 0.15 * i, aL=(0.25, 0.4, 0.5), aR=(0.25, 0.4, 0.5), head=(0.0, 0.15 * x)))
+        late = sm((lt - 0.12 * i) / 0.55)
+        side = 0.45 * sm((lt - 0.6 - 0.12 * i) / 0.4) * (1 if x > 0 else -1) if i else 0.0     # each steps out to see past the leader
+        S[who].place(A(x + side, y - (0.9 + 0.3 * i) * (1 - late) if i else y, 0), PI + 0.12 * x)
+        stop = P('stand', lean=-0.08 if i == 0 else 0.15 * i, aL=(0.25, 0.4, 0.5), aR=(0.25, 0.4, 0.5), head=(0.0, 0.15 * x - 0.5 * side))
+        S[who].apply(blend(walk(lt + i * 0.27, 0.95), stop, late) if i else stop)
     lift = sm((lt - 0.2) / 0.2)
     S['m1'].apply(blend(P('stand', lean=-0.08), P('stand', lean=-0.08, aR=(0.2, 1.7, 1.75, -1.4)), lift))
     seen(S['m1'].extra['gog'], lift < 0.6)
     S['face']['m1'] = 'wide'
-    shoot(S, A(lerp(0.9, 0.6, k), lerp(1.6, 0.8, k), lerp(1.6, 1.8, k)), A(-0.1, -5.0, 2.1), 28, fcol='FFD8B8')
+    shoot(S, A(lerp(1.7, 0.3, k), lerp(2.6, 0.4, k), lerp(1.4, 2.0, k)), A(-0.1, -5.0, 2.1), 28, fcol='FFD8B8')
 
 
 def rook_drop(S, k, t, lt):
