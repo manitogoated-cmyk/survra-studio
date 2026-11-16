@@ -1,0 +1,16 @@
+{
+  "id": "r020-thamluang", "spine": "v2", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.4,
+  "segments": [
+    {"scene": "hook", "mood": "hook", "text": "Twelve boys and their coach walk into a cave. Then the rain comes, and the way out fills with water."},
+    {"scene": "doubt", "mood": "tense", "text": "Nobody's alive in here. No chance."},
+    {"scene": "climb", "mood": "action", "text": "The water chases them deeper, up onto a ledge of mud in the dark."},
+    {"scene": "wait", "mood": "tense", "text": "Almost no food. No daylight. Outside, divers fight the flood for nine nights."},
+    {"scene": "found", "mood": "wonder", "text": "Then a light comes up out of the water. Two British divers. All thirteen are alive."},
+    {"scene": "rehook", "mood": "tense", "text": "But finding them was the easy part. The only way out is underwater, and some of these boys can't even swim."},
+    {"scene": "loss", "mood": "sad", "text": "One rescuer, Saman Kunan, dies carrying air tanks into the cave."},
+    {"scene": "plan", "mood": "tense", "text": "So the divers sedate each boy, fit a full face mask, and carry him out underwater, one by one."},
+    {"scene": "out", "mood": "triumph", "text": "Over three days, all thirteen come out alive."},
+    {"scene": "pumps", "mood": "calm", "text": "Hours later, the pumps fail and the cave floods again."},
+    {"scene": "end", "mood": "end", "text": "I was wrong. Thirteen in, thirteen out. Case closed. And it began the day"}
+  ]
+}
