@@ -25,7 +25,7 @@ SETS = dict(mouth=(0, 0, 0), tun=(4000, 0, 0), ledge=(8000, 0, 0), sump=(12000, 
 AWAY = (0, 0, -3000)
 HOST = {'bikes', 'rook_rock', 'rook_drip', 'scramble', 'huddle', 'glow', 'rook_count', 'toe_dip', 'rook_sound', 'rook_vigil',
         'carry_in', 'stretcher_out', 'pump_fail', 'reflood', 'rook_wrong', 'signoff'}
-CAMFILL = {'*': 170, 'mouth_wide': 60, 'bikes': 90, 'stretcher_out': 120, 'pump_fail': 110, 'rook_wrong': 50, 'signoff': 60,
+CAMFILL = {'*': 170, 'mouth_wide': 60, 'bikes': 220, 'stretcher_out': 120, 'pump_fail': 200, 'rook_wrong': 50, 'signoff': 60,
            'ledge_wide': 420, 'glow': 120, 'sump_long': 260, 'carry_dark': 260, 'squeeze': 200, 'divers_fight': 260, 'faces_lit': 260,
            'walk_in': 260, 'rain_gush': 200}
 ROOKC = dict(top='566178', belt='3E4658', lap='6B7690', pants='2A2742', hand='2F2B4D', boot='8A90A6')
@@ -230,8 +230,8 @@ def set_mouth(r):
                        parent=r))
     kit.append(add('torus', LINE, (-5.0, 3.6, 0.2), major_radius=0.55, minor_radius=0.12, major_segments=12, minor_segments=5, parent=r))
     out['kit'] = kit
-    out['puddles'] = [add('cylinder', '8FA4B0', (-2 + 4 * rn(j, 27), -20 + 26 * rn(j, 28), 0.04), scale=(1.4, 1.0, 1), radius=0.9, depth=0.02, vertices=8, parent=r,
-                          rough=0.08) for j in range(8)]
+    out['puddles'] = [add('cylinder', '8FA4B0', (-2 + 4 * rn(j, 27), -20 + 26 * rn(j, 28), 0.04 + 0.012 * j), scale=(1.4, 1.0, 1), radius=0.9, depth=0.02, vertices=8, parent=r,
+                          rough=0.42) for j in range(8)]
     return out
 
 
@@ -491,6 +491,8 @@ def reset(S):
     for o, par, lc, rot, scl in _KEEP:
         o.parent = par
         o.location, o.rotation_euler, o.scale = lc, rot, scl
+    for hnd in S['hands'] + [S['bhand']]:                              # the close-up hands were built at the origin: park them out of sight
+        hnd.root.location = AWAY
     for d in S['divers']:
         d.extra['lamp'].data.energy = 0
         d.extra['cone'].hide_render = True
@@ -772,7 +774,7 @@ def bikes(S, k, t, lt):
     for j, o in enumerate(S['streams'][:5]):
         y = -24 + ((j * 6.0 + t * 15) % 40)
         o.location = A(0.7 * math.sin(j * 1.9 + y * 0.2), y, 0.1)
-    lampat(S, 0, A(-3.5, -14.5, 3.6), 260, 'FFC890')
+    lampat(S, 0, A(-3.9, -14.0, 3.3), 900, 'FFC890')
     shoot(S, A(lerp(-2.2, -2.8, k), lerp(-18.6, -18.0, k), lerp(1.3, 1.6, k)), A(-6.0, -11.4, 2.3), 24, fill=1.0)
 
 
@@ -967,7 +969,7 @@ def divers_fight(S, k, t, lt):
 # ---------------------------------------------------------------- found
 def glow_k(S, A, e, r=2.5):
     L = S['ledge']
-    paint(L['glowm'], '9FE0F4', 3.5 * e)
+    paint(L['glowm'], '2FA8C8', 0.5 * e)
     L['glow'].hide_render = e <= 0.01
     L['glow'].scale = (r, r, 1)
     L['glowl'].data.energy = 1800 * e
@@ -977,7 +979,7 @@ def glow(S, k, t, lt):
     A = chamber(S)
     e = sm(k * 1.15)
     seat_team(S, A, t, face='wide' if e > 0.45 else 'tired', nod=lerp(0.4, 0.15, e))
-    glow_k(S, A, e, lerp(0.8, 4.2, e))
+    glow_k(S, A, e, lerp(0.8, 3.0, e))
     rk = S['rook']
     rp = lp(3.4, 6.2)
     rk.place(A(*rp), 0.25)
@@ -1044,7 +1046,7 @@ def rook_count(S, k, t, lt):
     x = lerp(-4.4, 3.2, sm(k / 0.8))
     rp = lp(x, 1.25)
     end = sm((k - 0.8) / 0.12)
-    rk.place(A(*rp), PI + lerp(0.5, -0.5, k))
+    rk.place(A(*rp), lerp(look_yaw(rp, (rp[0] + 1.0, rp[1] + 0.7)), look_yaw(rp, (rp[0] + 2.0, rp[1] - 2.2)), end))
     jab = 0.25 * abs(math.sin(lt * 15))
     rk.apply(blend(blend(walk(t, 1.5), P('point', aR=(1.45 + jab, -0.1, 0.1), head=(-0.05, 0.0)), 0.75), P('point', aR=(1.7, -0.2, 0.05), head=(-0.3, 0.0)), end))
     S['rface'] = 'shocked' if end > 0.3 else 'calm'
@@ -1055,7 +1057,7 @@ def rook_count(S, k, t, lt):
     dlamp(S, d, 5000, False)
     lampat(S, 0, A(0, -2.6, 3.0), 1500, 'E8F6FF')
     lampat(S, 1, A(x, -1.6, 3.4), 260, 'FFC890')
-    shoot(S, A(x + lerp(3.3, 2.4, k), lerp(-3.6, -3.0, k), lerp(2.3, 2.6, k)), A(x * 0.72, 3.0, 2.3), 25, fill=1.2)
+    shoot(S, A(x + lerp(4.6, 2.6, k), lerp(-2.4, -3.0, k), lerp(2.3, 2.6, k)), A(x * 0.8, 2.6, 2.3), 25, fill=1.2)
 
 
 # ---------------------------------------------------------------- the easy part is over
@@ -1364,9 +1366,9 @@ def stretcher_out(S, k, t, lt):
         rr.face = 'warm'
     rk = S['rook']
     fl = math.sin(lt * 20)
-    rp = (-2.0, y - 2.9, 1.0 + 0.35 * math.sin(lt * 5))
-    rk.place(A(*rp), -0.5, 0.25)
-    rk.apply(P('stand', aL=(0.2, 1.35 + 0.5 * fl, 0.25), aR=(0.2, 1.35 + 0.5 * fl, 0.25), lL=(0.5, 0.9), lR=(0.3, 0.8), head=(-0.1, -0.5)))
+    rp = (1.4, y - 1.2, 0.9 + 0.3 * math.sin(lt * 5))
+    rk.place(A(*rp), 0.3, 0.2)
+    rk.apply(P('stand', aL=(0.2, 1.35 + 0.5 * fl, 0.25), aR=(0.2, 1.35 + 0.5 * fl, 0.25), lL=(0.5, 0.9), lR=(0.3, 0.8), head=(-0.1, 0.5)))
     S['rface'] = 'warm'
     pulse = 1 + 0.03 * math.sin(t * 30)
     S['mouth']['pump'].scale = (pulse, pulse, pulse)
@@ -1392,6 +1394,7 @@ def pump_fail(S, k, t, lt):
     rk.apply(blend(P('cross', head=(0.1, 0.5)), P('point', aL=(1.1, 0.5, 0.25), aR=(0.1, 0.2, 0.2), head=(0.2, 0.6), lean=0.1), j))
     S['rface'] = 'calm' if j < 0.5 else 'shocked'
     lampat(S, 0, A(PUMP[0] - 1.0, PUMP[1] - 4.5, 2.8), 1200, 'FFC890')
+    lampat(S, 1, A(PUMP[0] - 1.9, PUMP[1] - 2.2, 1.9), 420, 'FFD8B0')
     shoot(S, A(PUMP[0] + lerp(0.2, 0.6, k), PUMP[1] - lerp(7.0, 6.4, k), lerp(1.6, 1.8, k)), A(PUMP[0] - 1.2, PUMP[1] - 0.3, 1.6), 27, fill=1.2, fcol='FFE8D0')
 
 
@@ -1428,7 +1431,7 @@ def rook_wrong(S, k, t, lt):
     rk.place(A(*rp), lerp(PI, look_yaw(rp, cam), turn))
     rk.apply(blend(P('hips', head=(-0.2, 0.0)), P('shrug', head=(0.05, 0.0)), turn))
     S['rface'] = 'warm' if turn > 0.5 else 'calm'
-    shoot(S, A(*cam), A(-0.4, 2.4, 2.45), 30, fill=1.0, fcol='FFE8D0')
+    shoot(S, A(*cam), A(-0.4, 2.4, 2.3), 38, fill=1.0, fcol='FFE8D0')
 
 
 def signoff(S, k, t, lt):

@@ -6,7 +6,7 @@
     {"scene": "climb", "mood": "action", "text": "The water chases them deeper, up onto a slope of mud in the dark."},
     {"scene": "wait", "mood": "tense", "text": "No daylight. No way back. Outside, divers fight the flood for nine nights."},
     {"scene": "found", "mood": "wonder", "text": "Then a light comes up out of the water. Two British divers. All thirteen are alive."},
-    {"scene": "rehook", "mood": "tense", "text": "But finding them was the easy part. The way out is underwater, and some of these boys can't even swim."},
+    {"scene": "rehook", "mood": "tense", "text": "But finding them was the easy part. The way out is underwater, through tight, twisting tunnels in a strong current."},
     {"scene": "loss", "mood": "sad", "text": "One rescuer, Saman Kunan, dies carrying air tanks into the cave."},
     {"scene": "plan", "mood": "tense", "text": "So the divers sedate each boy, fit a full face mask, and carry him out underwater, one by one."},
     {"scene": "out", "mood": "triumph", "text": "Over three days, all thirteen come out alive."},
