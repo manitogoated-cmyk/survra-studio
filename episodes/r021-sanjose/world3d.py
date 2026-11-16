@@ -367,7 +367,7 @@ def build():
     S['coin'] = keep(add('cylinder', 'FFC233', AWAY, radius=0.11, depth=0.025, vertices=10, rough=0.25, emit=0.4))
     S['tooth'] = keep(add('cone', 'D8DCE4', AWAY, radius1=0.12, radius2=0.03, depth=0.26, vertices=6, rough=0.15, emit=0.25))
     S['fea'] = [keep(add('cone', '2F2B4D', AWAY, radius1=0.07, radius2=0.0, depth=0.34, vertices=4)) for _ in range(2)]
-    S['dust'] = [keep(add('ico_sphere', 'C8A880', AWAY, radius=0.2, subdivisions=1, rough=1.0)) for _ in range(14)]
+    S['dust'] = [keep(add('ico_sphere', 'E8D4B4', AWAY, radius=0.2, subdivisions=1, rough=1.0)) for _ in range(14)]
     S['grit'] = [keep(add('ico_sphere', ORE, AWAY, radius=0.12, subdivisions=1)) for _ in range(10)]
     S['sparks'] = [keep(add('ico_sphere', 'FFD070', AWAY, radius=0.045, subdivisions=1, emit=14.0)) for _ in range(8)]
     S['ropes'] = [keep(add('cylinder', '2A2E38', AWAY, radius=0.5, depth=1, vertices=5, rough=0.5)) for _ in range(2)]
@@ -570,13 +570,17 @@ def sit(rig, A, x, y, yaw=0.0, nod=0.3, turn=0.0, z=0.78, hug=False):
         rig.apply(P('sit', head=(nod, turn), lean=0.2))
 
 
-def crowd(S, A, t, face='tired', nod=0.32, look=None):
+def crowd(S, A, t, face='tired', nod=0.32, look=None, row_only=False):
     """The men in the shelter: six on the bench, three on the floor in front, three standing."""
     M = S['men']
     for i in range(6):
         x, y = BENCH[i]
         tr = 0.0 if look is None else max(-0.9, min(0.9, look_yaw((x, y), look)))
         sit(M[i + 1], A, x, y, 0.0, nod + 0.06 * math.sin(t * 0.8 + i), tr)
+    for rig in M[1:]:
+        rig.face = face
+    if row_only:
+        return
     for j, (x, y) in enumerate(((6.4, 2.0), (8.4, 1.7), (10.0, 2.3))):
         tr = 0.0 if look is None else max(-0.9, min(0.9, look_yaw((x, y), look)))
         sit(M[7 + j], A, x, y, 0.15 * (j - 1), nod, tr, hug=True)
@@ -584,8 +588,6 @@ def crowd(S, A, t, face='tired', nod=0.32, look=None):
         rig = (M[10], M[11])[j]
         rig.place(A(x, y, 0), yw if look is None else look_yaw((x, y), look))
         rig.apply(P('cross', head=(0.15, 0.0)))
-    for rig in M[1:]:
-        rig.face = face
 
 
 def drill_at(S, A, z, x=PROBE[0], y=PROBE[1], spin=0.0):
@@ -612,27 +614,32 @@ def tie_note(S, k, t, lt):
     kk = 1 - k if loop else k
     A = mine(S)
     rise = 0.5 * sm((kk - 0.72) / 0.28)
-    drill_at(S, A, 1.25 + rise + 0.012 * math.sin(t * 40))
     S['bands'][1].location.z = lerp(0.42, 0.2, sm(kk / 0.5))
     m = S['men'][3]
     mp = (0.42, 1.78)
-    m.place(A(mp[0], mp[1], 0), look_yaw(mp, (0.05, 0.6)))
+    m.place(A(mp[0], mp[1], 0), look_yaw(mp, (0.3, -2.0)))
     wind = math.sin(lt * 13)
     go = sm((kk - 0.7) / 0.2)
-    m.apply(blend(P('stand', aL=(1.32 + 0.07 * wind, -0.28, 0.75, 0.5), aR=(1.3 - 0.07 * wind, -0.22, 0.8, 0.5), head=(0.26, 0.1), lean=0.12),
-                  P('stand', aL=(1.0, 0.25, 0.5), aR=(1.0, 0.3, 0.5), head=(-0.25, 0.05)), go))
+    tying = P('stand', aL=(1.3, -0.3, 0.8, 0.5), aR=(1.3, -0.3, 0.8, 0.5), head=(0.26, 0.0), lean=0.12)
+    m.apply(tying)
+    hl, hr = world_of(m.hands[0], (0, -0.1, -0.1)), world_of(m.hands[1], (0, -0.1, -0.1))
+    px, py, pz = (hl[0] + hr[0]) / 2, (hl[1] + hr[1]) / 2 - 0.12, (hl[2] + hr[2]) / 2 - 1.25
+    S['drill'].location = (px, py, pz + rise + 0.012 * math.sin(t * 40))
+    S['drill'].rotation_euler = (0, 0, 2.5)
+    m.apply(blend(P('stand', aL=(1.3 + 0.07 * wind, -0.3, 0.8, 0.5), aR=(1.3 - 0.07 * wind, -0.3, 0.8, 0.5), head=(0.26, 0.0), lean=0.12),
+                  P('stand', aL=(1.0, 0.3, 0.5), aR=(1.0, 0.3, 0.5), head=(-0.3, 0.0)), go))
     m.face = 'wide' if go > 0.4 else 'squint'
     m.jawv = 0.5 * go
     o = S['men'][5]
-    o.place(A(-1.9, 3.1, 0), look_yaw((-1.9, 3.1), (0, 1)))
-    o.apply(P('stand', aR=(1.5, -0.2, 0.3), head=(-0.2, 0.0)))
+    o.place(A(-1.5, 3.3, 0), look_yaw((-1.5, 3.3), (0.4, 0.8)))
+    o.apply(P('stand', aR=(1.5, -0.2, 0.3), head=(-0.1, 0.0)))
     o.face = 'wide'
     grit(S, A(0.1, 0.9, 6.4), t, 8, 0.7, 5.5, 0.8)
     fl = 1.0 + 0.12 * math.sin(t * 23)
-    lampat(S, 0, A(-1.2, -0.6, 3.3), 520 * fl, 'FFE2B0')
+    lampat(S, 0, A(1.6, -0.8, 3.3), 520 * fl, 'FFE2B0')
     lampat(S, 1, A(2.2, 3.4, 4.4), 380, 'FFB870')
     lampat(S, 2, A(0.3, 0.3, 1.4), 60, 'FFE8C0')
-    shoot(S, A(lerp(1.75, 1.45, kk), lerp(-2.25, -1.85, kk), lerp(2.3, 2.45, kk)), A(0.12, 1.15, 2.25 + 0.5 * rise), 48, fill=1.3)
+    shoot(S, A(lerp(1.5, 1.25, kk), lerp(-2.2, -1.8, kk), lerp(2.3, 2.4, kk)), (px + 0.05, py + 0.3, pz + 1.3 + 0.5 * rise), 48, fill=1.3)
 
 
 def drill_up(S, k, t, lt):
@@ -642,7 +649,7 @@ def drill_up(S, k, t, lt):
     M = S['men']
     for j, (rig, x, y) in enumerate(((M[3], 0.9, 1.9), (M[5], -1.5, 2.4), (M[2], 0.2, 3.3))):
         rig.place(A(x, y, 0.15 * abs(math.sin(t * 6 + j * 2))), look_yaw((x, y), (0, -1.5)))
-        rig.apply(P('up', aL=(2.6 + 0.2 * math.sin(t * 9 + j), 0.35, 0.2), aR=(2.7, 0.3, 0.15), head=(-0.5, 0.0)))
+        rig.apply(P('up', aL=(2.6 + 0.2 * math.sin(t * 9 + j), -0.45, 0.2), aR=(2.7, -0.4, 0.2), head=(-0.5, 0.0)))
         rig.face, rig.jawv = 'wide', 0.6
     grit(S, A(0, 1, 6.6), t, 10, 0.6, 6.0, 1.1)
     lampat(S, 0, A(-2.0, -1.5, 3.0), 1500, 'FFE2B0')
@@ -668,7 +675,7 @@ def rig_night(S, k, t, lt):
     C[1].place(A(2.0, -2.2, 0), look_yaw((2.0, -2.2), HOLE))
     C[1].apply(P('hips', head=(-0.35, 0.0)))
     rig_floods(S, A)
-    shoot(S, A(lerp(-9.5, -8.4, k), lerp(-13.0, -12.0, k), lerp(1.6, 2.2, k)), A(0.3, -2.0, 5.4), 22, fill=0.7, fcol='C8D8FF')
+    shoot(S, A(lerp(-6.4, -5.6, k), lerp(-10.6, -9.8, k), lerp(1.3, 1.7, k)), A(0.2, -2.2, 4.6), 22, fill=0.9, fcol='C8D8FF')
 
 
 def bit_out(S, k, t, lt):
@@ -698,8 +705,8 @@ def rook_rig(S, k, t, lt):
     A = night(S)
     drill_at(S, A, 1.45 + 0.02 * math.sin(t * 5), HOLE[0], HOLE[1], spin=0.25 * math.sin(t * 1.5))
     rk = S['rook']
-    rp = (1.35, -1.75)
-    rk.place(A(rp[0], rp[1], 0.4), look_yaw(rp, (-0.6, -6.5)))
+    rp = (1.75, -3.9)
+    rk.place(A(rp[0], rp[1], 0.0), look_yaw(rp, (-0.2, -8.5)))
     rk.apply(blend(P('cross', head=(0.3, 0.25), lean=0.22), P('point', aR=(1.25, 0.55, 0.3), head=(0.0, -0.1)), (lt - 0.1) / 0.3))
     S['rface'] = 'deadpan'
     c = S['crew'][0]
@@ -707,8 +714,8 @@ def rook_rig(S, k, t, lt):
     c.apply(P('stand', aR=(1.5, -0.15, 0.3), aL=(1.3, 0.0, 0.5), head=(0.0, 0.0), lean=0.15))
     c.face = 'wide'
     rig_floods(S, A, 0.6)
-    lampat(S, 0, A(0.0, -5.2, 3.2), 520, 'FFE2B0')
-    shoot(S, A(lerp(-0.9, -0.6, k), lerp(-6.6, -6.1, k), lerp(2.5, 2.7, k)), A(0.75, -2.2, 2.75), 40, fill=1.2)
+    lampat(S, 0, A(0.4, -6.6, 3.2), 620, 'FFE2B0')
+    shoot(S, A(lerp(-0.5, -0.2, k), lerp(-9.0, -8.5, k), lerp(2.3, 2.5, k)), A(0.9, -3.2, 2.45), 40, fill=1.2)
 
 
 def rook_peer(S, k, t, lt):
@@ -716,15 +723,16 @@ def rook_peer(S, k, t, lt):
     A = night(S)
     drill_at(S, A, 1.45, HOLE[0], HOLE[1])
     rk = S['rook']
-    rp = (1.05, -2.2)
-    rk.place(A(rp[0], rp[1], 0.0), look_yaw(rp, (-0.5, -4.6)))
+    rp = (1.15, -3.2)
+    rk.place(A(rp[0], rp[1], 0.0), look_yaw(rp, (-0.3, -5.6)))
     tap = 0.5 + 0.5 * math.sin(lt * 16)
     rk.apply(blend(P('cross', head=(0.2, 0.5), lean=0.3), P('tap', aR=(1.25 + 0.12 * tap, -0.25, 2.2, 0.6), head=(0.22, 0.55), lean=0.32), lt / 0.2))
     S['rface'] = 'deadpan'
-    S['hat_tip'] = 0.5
+    S['hat_tip'] = 0.15
     rig_floods(S, A, 0.4)
-    lampat(S, 0, A(-0.3, -4.4, 3.2), 300, 'FFE2B0')
-    shoot(S, A(lerp(-0.75, -0.6, k), lerp(-5.0, -4.7, k), 2.75), A(0.5, -2.4, 2.72), 52, fill=1.3)
+    lampat(S, 0, A(-0.3, -5.4, 3.2), 300, 'FFE2B0')
+    hd = world_of(rk.head, (0, -0.2, 0.05))
+    shoot(S, A(lerp(-0.85, -0.7, k), lerp(-6.3, -6.0, k), 2.05), ((hd[0] + A(0.1, 0, 0)[0]) / 2 + 0.1, hd[1], hd[2] - 0.1), 50, fill=1.3)
 
 
 # ---------------------------------------------------------------- what it says
@@ -735,12 +743,12 @@ def unfold(S, k, t, lt):
     cp = (-0.2, -5.2)
     c.place(A(cp[0], cp[1], 0), 0.0)
     op = sm(lt / 0.35)
-    c.apply(P('stand', aL=(1.1, lerp(-0.2, 0.25, op), 1.15, 0.2), aR=(1.1, lerp(-0.2, 0.25, op), 1.15, -0.2), head=(0.42, 0.0)))
+    c.apply(P('stand', aL=(0.75, lerp(-0.2, 0.1, op), 1.2, 0.2), aR=(0.75, lerp(-0.2, 0.1, op), 1.2, -0.2), head=(0.45, 0.0)))
     c.face = 'wide'
     c.jawv = 0.6 * sm((lt - 0.4) / 0.2)
-    S['sheet'].location = A(cp[0], cp[1] - 0.72, 2.02 + 0.01 * math.sin(t * 9))
-    S['sheet'].rotation_euler = (-0.35, 0, 0.03 * math.sin(t * 5))
-    S['sheet'].scale = (lerp(0.35, 1.0, op), 1, 1)
+    S['sheet'].location = A(cp[0], cp[1] - 0.74, 1.72 + 0.01 * math.sin(t * 9))
+    S['sheet'].rotation_euler = (-0.45, 0, 0.03 * math.sin(t * 5))
+    S['sheet'].scale = (lerp(0.25, 0.68, op), 0.68, 0.68)
     rk = S['rook']
     rp = (1.25, -4.55)
     rk.place(A(rp[0], rp[1], 0), look_yaw(rp, (0.0, -6.4)))
@@ -757,21 +765,21 @@ def cheer(S, k, t, lt):
     """The men at the rig throw their arms up. Rook's hat leaves his head."""
     A = night(S)
     drill_at(S, A, 1.45, HOLE[0], HOLE[1])
-    for j, (rig, x, y) in enumerate(((S['crew'][0], -2.3, -5.4), (S['crew'][1], 0.0, -4.6), (S['crew'][2], 2.2, -5.6))):
+    for j, (rig, x, y) in enumerate(((S['crew'][0], -1.7, -5.2), (S['crew'][1], -0.2, -4.3), (S['crew'][2], 1.0, -5.4))):
         hop = abs(math.sin(t * 7 + j * 1.3))
         rig.place(A(x, y, 0.35 * hop), 0.25 * (1 - j))
-        rig.apply(P('up', aL=(2.7 + 0.2 * math.sin(t * 11 + j), 0.4, 0.15), aR=(2.8, 0.35, 0.2), head=(-0.3, 0.0)))
+        rig.apply(P('up', aL=(2.6 + 0.2 * math.sin(t * 11 + j), -0.45, 0.2), aR=(2.7, -0.4, 0.2), head=(-0.2, 0.0)))
         rig.face, rig.jawv = 'warm', 0.8
     rk = S['rook']
-    rp = (3.9, -6.6)
-    rk.place(A(rp[0], rp[1], 0), look_yaw(rp, (2.0, -11)))
+    rp = (2.3, -7.2)
+    rk.place(A(rp[0], rp[1], 0), look_yaw(rp, (1.0, -12)))
     rk.apply(blend(P('cross', head=(0.0, -0.4)), P('scream', head=(-0.15, -0.2)), lt / 0.2))
     S['rface'] = 'shocked'
     S['hat_jump'] = 0.5 * max(0.0, math.sin(min(1.0, lt / 0.5) * PI))
     feather(S, world_of(rk.head, (0.3, 0, 0.3)), lt, 0.1)
     rig_floods(S, A, 0.8)
     lampat(S, 0, A(1.0, -10.0, 3.0), 1500, 'FFF0D8')
-    shoot(S, A(lerp(1.6, 1.2, k), lerp(-12.4, -11.8, k), lerp(1.2, 1.4, k)), A(0.9, -5.2, 2.7), 28, fill=1.2)
+    shoot(S, A(lerp(1.0, 0.7, k), lerp(-12.6, -12.0, k), lerp(1.2, 1.4, k)), A(0.4, -5.6, 2.6), 24, fill=1.2)
 
 
 # ---------------------------------------------------------------- seven hundred metres down
@@ -786,44 +794,42 @@ def refuge_wide(S, k, t, lt):
     A = mine(S)
     crowd(S, A, t)
     shelter_light(S, A)
-    shoot(S, A(lerp(6.4, 7.4, k), lerp(-10.5, -9.6, k), lerp(4.4, 3.8, k)), A(9.0, 3.4, 1.9), 24, fill=1.3)
+    shoot(S, A(lerp(6.6, 7.6, k), lerp(-9.6, -8.8, k), lerp(4.2, 3.6, k)), A(8.9, 3.2, 1.7), 30, fill=1.3)
 
 
 def faces(S, k, t, lt):
     """Along the bench: tired faces under helmet lamps. Rook sits at the end and looks along the row."""
     A = mine(S)
-    crowd(S, A, t, nod=0.36)
+    crowd(S, A, t, nod=0.36, row_only=True)
     rk = S['rook']
-    sit(rk, A, 4.6, 3.6, 0.3, 0.2, lerp(0.2, -0.75, sm((k - 0.2) / 0.4)), hug=True)
-    rk.place(A(4.6, 3.3, 0.0), 0.35)
+    sit(rk, A, 4.5, 3.3, -0.25, 0.2, lerp(0.1, 0.8, sm((k - 0.2) / 0.4)), hug=True)
     S['rface'] = 'sad'
     shelter_light(S, A, 0.8)
-    lampat(S, 3, A(lerp(5.0, 8.0, k), 0.4, 2.2), 240, 'FFE8C8')
-    x = lerp(4.2, 7.6, k)
-    shoot(S, A(x - 0.6, -0.4, 1.75), A(x + 1.9, 3.7, 1.95), 30, fill=1.3)
+    lampat(S, 3, A(4.6, 0.6, 2.4), 260, 'FFE8C8')
+    shoot(S, A(lerp(2.9, 3.5, k), lerp(0.5, 0.9, k), 1.7), A(7.4, 3.9, 1.75), 30, fill=1.3)
 
 
 def tents(S, k, t, lt):
     """The camp above: families by their lamps, looking towards the rig. Rook flips a coin and waits."""
     A = night(S)
     cx, cy = CAMP
-    for j, (rig, x, y) in enumerate(((S['civ'][0], -3.0, -2.6), (S['civ'][1], -1.2, -2.2), (S['civ'][2], 0.8, -2.8))):
+    for j, (rig, x, y) in enumerate(((S['civ'][0], -1.3, -2.6), (S['civ'][1], -0.1, -2.2), (S['civ'][2], 1.1, -2.8))):
         rig.place(A(cx + x, cy + y, 0), look_yaw((x, y), (0.5, -12)) + 0.15 * (j - 1))
         rig.apply(P('stand', aL=(0.75, -0.25, 1.75, 1.1), aR=(0.75, -0.25, 1.75, 1.1), head=(0.22 + 0.05 * math.sin(t + j), 0.2 * (1 - j))))
         rig.face = 'sad'
     rk = S['rook']
-    rp = (cx + 3.2, cy - 3.6)
-    rk.place(A(rp[0], rp[1], 0), look_yaw(rp, (cx + 1.0, cy - 12)))
+    rp = (cx + 1.7, cy - 4.2)
+    rk.place(A(rp[0], rp[1], 0), look_yaw(rp, (cx + 0.6, cy - 12)))
     u = (lt * 1.5) % 1
     rk.apply(P('stand', aR=(0.9 + 0.3 * max(0, math.sin(u * PI)), 0.1, 1.2, 0.2), head=(lerp(-0.1, 0.25, u), 0.35)))
     hand = world_of(rk.hands[1], (0, -0.1, -0.05))
     S['coin'].location = (hand[0], hand[1], hand[2] + 0.15 + 1.5 * math.sin(u * PI))
     S['coin'].rotation_euler = (u * 4 * PI, 0.3, 0)
     S['rface'] = 'calm'
-    lampat(S, 0, A(cx - 0.5, cy - 4.4, 1.0), 320, 'FFC880')
-    lampat(S, 1, A(cx + 2.4, cy - 7.0, 2.6), 420, 'FFE2C0')
+    lampat(S, 0, A(cx - 1.4, cy - 5.6, 1.8), 2600, 'FFC880')
+    lampat(S, 1, A(cx + 2.4, cy - 7.4, 2.8), 1500, 'FFE2C0')
     lampat(S, 4, A(-5.6, -4.6, 6.4), 9000, 'FFF0D0')
-    shoot(S, A(cx + lerp(0.4, 1.0, k), cy + lerp(-11.4, -10.8, k), lerp(1.7, 1.9, k)), A(cx + 0.4, cy - 1.6, 2.6), 26, fill=1.2, fcol='FFD8B0')
+    shoot(S, A(cx + lerp(-0.1, 0.4, k), cy + lerp(-11.0, -10.4, k), lerp(1.7, 1.9, k)), A(cx + 0.3, cy - 2.6, 2.2), 34, fill=1.3, fcol='FFD8B0')
 
 
 # ---------------------------------------------------------------- two spoonfuls
@@ -839,8 +845,8 @@ def cabinet(S, k, t, lt):
     A = mine(S)
     stock(S, A)
     m = S['men'][0]
-    mp = (12.75, -0.25)
-    m.place(A(mp[0], mp[1], 0), look_yaw(mp, (13.4, 1.6)))
+    mp = (12.25, 0.75)
+    m.place(A(mp[0], mp[1], 0), look_yaw(mp, (13.6, 0.45)))
     r = sm((lt - 0.1) / 0.4)
     back = sm((lt - 0.65) / 0.35)
     m.apply(blend(blend(P('stand', head=(0.1, 0.0)), P('stand', aR=(1.5, -0.1, 0.1), head=(0.1, 0.0), lean=0.12), r), P('stand', aR=(1.0, 0.0, 1.3), head=(0.4, 0.0)), back))
@@ -849,7 +855,7 @@ def cabinet(S, k, t, lt):
         S['tins'][0].location = world_of(m.hands[1], (0, -0.14, -0.08))
     lampat(S, 0, A(12.0, -1.6, 3.6), 900, 'FFE2B0')
     lampat(S, 1, A(13.6, 0.2, 2.6), 160, 'FFF4E0')
-    shoot(S, A(lerp(11.2, 11.6, k), lerp(-3.4, -2.9, k), lerp(2.3, 2.1, k)), A(13.3, 1.2, 1.7), 36, fill=1.2)
+    shoot(S, A(lerp(12.5, 12.8, k), lerp(-3.6, -3.1, k), lerp(2.2, 2.0, k)), A(13.1, 1.1, 1.75), 34, fill=1.2)
 
 
 def spoon(S, k, t, lt):
@@ -857,9 +863,9 @@ def spoon(S, k, t, lt):
     A = mine(S)
     tb = (10.6, 0.6, 1.05)
     S['tins'][0].location = A(tb[0] - 0.25, tb[1] - 0.1, tb[2] + 0.08)
-    S['tins'][0].scale = (1.6, 1.6, 1.6)
-    S['tuna'].location = A(tb[0] - 0.25, tb[1] - 0.1, tb[2] + 0.2)
-    S['tuna'].scale = (1.6, 1.6, 1.0)
+    S['tins'][0].scale = (1.2, 1.2, 1.5)
+    S['tuna'].location = A(tb[0] - 0.25, tb[1] - 0.1, tb[2] + 0.205)
+    S['tuna'].scale = (1.2, 1.2, 1.0)
     for j in range(3):
         S['cups'][j].location = A(tb[0] + 0.3 + 0.3 * j, tb[1] + 0.05 + 0.12 * (j % 2), tb[2] + 0.09)
     dip = sm(lt / 0.3) * (1 - sm((lt - 0.35) / 0.25))
@@ -874,7 +880,7 @@ def spoon(S, k, t, lt):
     S['hand'].grip(0.85)
     lampat(S, 0, A(9.6, -1.2, 3.0), 420, 'FFE2B0')
     lampat(S, 1, A(11.6, 1.6, 2.4), 120, 'B8D0FF')
-    shoot(S, A(lerp(10.0, 10.2, k), lerp(-1.75, -1.6, k), lerp(2.0, 1.9, k)), A(tb[0] + 0.1, tb[1], tb[2] + 0.3), 50, fill=1.2)
+    shoot(S, A(lerp(10.3, 10.5, k), lerp(-2.0, -1.8, k), lerp(1.95, 1.85, k)), A(tb[0] + 0.4, tb[1], tb[2] + 0.3), 34, fill=1.2)
 
 
 def line_up(S, k, t, lt):
@@ -903,7 +909,7 @@ def line_up(S, k, t, lt):
     S['hat_tip'] = 0.4 * look
     shelter_light(S, A, 0.9)
     lampat(S, 3, A(6.0, -3.0, 3.0), 500, 'FFE8C8')
-    shoot(S, A(lerp(6.8, 6.3, k), lerp(-6.6, -6.0, k), lerp(2.2, 2.4, k)), A(7.6, 1.2, 2.2), 30, fill=1.3)
+    shoot(S, A(lerp(6.2, 5.8, k), lerp(-6.6, -6.0, k), lerp(2.2, 2.4, k)), A(7.0, 1.2, 2.2), 30, fill=1.3)
 
 
 # ---------------------------------------------------------------- a note is not a way out
@@ -912,17 +918,17 @@ def hole_measure(S, k, t, lt):
     A = day(S, False)
     drill_at(S, A, -80, HOLE[0], HOLE[1])
     rk = S['rook']
-    rp = (0.95, -3.35)
-    rk.place(A(rp[0], rp[1], 0), look_yaw(rp, (HOLE[0] - 0.4, HOLE[1] - 0.6)))
+    rp = (0.3, -1.75)
+    rk.place(A(rp[0], rp[1], 0), look_yaw(rp, (-0.2, -6.0)))
     lay = sm((lt - 0.15) / 0.35)
     up = sm((lt - 1.0) / 0.3)
-    rk.apply(blend(blend(KNEEL, P('stand', lL=(0.2, 1.5), lR=(1.3, 1.45), lift=-0.76, lean=0.62, aR=(1.25, 0.2, 0.2), aL=(0.7, 0.1, 0.7), head=(0.5, 0.0)), lay),
-                   P('stand', lL=(0.2, 1.5), lR=(1.3, 1.45), lift=-0.76, lean=0.2, aL=(0.3, 0.75, 1.5, -0.9), aR=(0.3, 0.75, 1.5, -0.9), head=(-0.05, 0.5)), up))
+    rk.apply(blend(blend(KNEEL, P('stand', lL=(0.2, 1.5), lR=(1.3, 1.45), lift=-0.76, lean=0.42, aR=(1.25, 0.1, 0.2), aL=(0.7, 0.1, 0.7), head=(0.4, 0.0)), lay),
+                   P('stand', lL=(0.2, 1.5), lR=(1.3, 1.45), lift=-0.76, lean=0.2, aL=(0.3, 0.75, 1.5, -0.9), aR=(0.3, 0.75, 1.5, -0.9), head=(-0.05, 0.1)), up))
     S['rface'] = 'deadpan' if up > 0.5 else 'calm'
-    S['ruler'].location = A(HOLE[0] + lerp(0.9, 0.05, lay), HOLE[1] - lerp(0.5, 0.0, lay), lerp(0.7, 0.27, lay))
+    S['ruler'].location = A(HOLE[0] + lerp(0.7, 0.05, lay), HOLE[1] + lerp(0.5, 0.0, lay), lerp(0.9, 0.27, lay))
     S['ruler'].rotation_euler = (0, 0, lerp(0.9, 0.15, lay))
     rope(S, 0, A(HOLE[0], HOLE[1], 0.2), A(HOLE[0] - 0.2, HOLE[1] + 1.0, 4.0), 0.025)
-    shoot(S, A(lerp(-1.3, -1.0, k), lerp(-6.4, -5.9, k), lerp(1.5, 1.7, k)), A(0.45, -2.9, 1.2), 36, fill=0.8)
+    shoot(S, A(lerp(-0.9, -0.6, k), lerp(-6.9, -6.3, k), lerp(1.0, 1.2, k)), A(0.15, -2.3, 1.2), 36, fill=0.9)
 
 
 def big_drill(S, k, t, lt):
@@ -932,17 +938,17 @@ def big_drill(S, k, t, lt):
     S['bigbit'].location = A(sx, sy, -3.0 - 0.5 * k)
     S['bigbit'].rotation_euler = (0, 0, t * 5)
     S['surf']['wheel'].rotation_euler = (t * 2, PI / 2, 0)
-    puffs(S, A(sx, sy, 0.3), t, 12, 3.2, 3.0, 1.3)
+    puffs(S, A(sx, sy, 0.2), t, 12, 2.6, 2.0, 1.3)
     c = S['crew'][2]
     c.place(A(sx - 3.4, sy - 2.2, 0), look_yaw((sx - 3.4, sy - 2.2), SITE))
     c.apply(P('hips', head=(-0.2, 0.0)))
     rk = S['rook']
     rp = (sx - 2.8, sy - 8.4)
     turn = sm((lt - 0.6) / 0.3)
-    rk.place(A(rp[0], rp[1], 0), lerp(PI - 0.5, look_yaw(rp, (sx - 5.2, sy - 14)), turn))
-    rk.apply(P('cross', head=(-0.15 * (1 - turn), 0.0)))
+    rk.place(A(rp[0], rp[1], 0), look_yaw(rp, (sx - 7.5, sy - 14)))
+    rk.apply(P('cross', head=(-0.1 * (1 - turn), lerp(-1.0, 0.25, turn))))
     S['rface'] = 'deadpan'
-    shoot(S, A(sx + lerp(-6.4, -5.6, k), sy + lerp(-14.2, -13.4, k), lerp(1.5, 1.8, k)), A(sx - 0.6, sy - 1.0, 4.8), 22, fill=0.7)
+    shoot(S, A(sx + lerp(-5.4, -4.8, k), sy + lerp(-12.6, -11.9, k), lerp(1.5, 1.8, k)), A(sx - 0.8, sy - 1.0, 4.4), 22, fill=0.7)
 
 
 def break_through(S, k, t, lt):
@@ -1023,14 +1029,14 @@ def capsule_arrive(S, k, t, lt):
     cap_at(S, A, dx, dy, z, spin=0.2 * math.sin(t * 1.5))
     rope(S, 0, A(dx, dy, z + 4.6), A(dx, dy, ROOF + 0.4), 0.03)
     M = S['men']
-    for j, (rig, x, y) in enumerate(((M[1], -3.2, 1.6), (M[4], -2.7, -1.0), (M[6], -4.6, 3.2), (M[0], -10.4, 1.6), (M[8], -9.6, 3.0))):
+    for j, (rig, x, y) in enumerate(((M[1], -2.6, 2.8), (M[4], -2.7, -1.0), (M[6], -5.2, 3.4), (M[0], -10.4, 1.6), (M[8], -9.6, 3.0))):
         rig.place(A(x, y, 0), look_yaw((x, y), DROP))
         rig.apply(P('stand', aR=(0.9, 0.3, 1.6, 0.4) if j % 2 else (0.05, 0.12, 0.15), head=(lerp(-0.6, -0.1, k), 0.0)))
         rig.face = 'wide'
     rk = S['rook']
-    rp = (-4.2, -2.6)
-    rk.place(A(rp[0], rp[1], 0), look_yaw(rp, (dx + 1.0, dy)) + PI * 0.12)
-    rk.apply(P('hat', head=(lerp(-0.45, -0.1, k), -0.5)))
+    rp = (-4.3, 1.1)
+    rk.place(A(rp[0], rp[1], 0), look_yaw(rp, (dx + 0.6, dy - 2.5)))
+    rk.apply(P('hat', head=(lerp(-0.45, -0.1, k), 0.5)))
     S['rface'] = 'shocked'
     grit(S, A(dx, dy, 6.5), t, 6, 1.0, 6.0, 0.8)
     gallery_light(S, A)
@@ -1084,7 +1090,7 @@ def shaft_ride(S, k, t, lt):
     lampat(S, 0, A(-1.6, -2.4, z + 2.4), 700, 'FFE2B0')
     lampat(S, 1, A(0.2, 0.3, z + 9.0), 1500 + 1500 * k, 'FFF8E8')
     lampat(S, 2, A(1.2, -1.0, z - 3.0), 240, 'B8D0FF')
-    shoot(S, A(lerp(-1.3, -0.7, k), lerp(-8.6, -7.6, k), z + lerp(-1.6, 0.2, k)), A(0.0, 0.3, z + 2.6), 26, roll=0.05, fill=1.2)
+    shoot(S, A(lerp(-0.5, -0.1, k), lerp(-8.2, -7.2, k), z + lerp(-1.6, 0.2, k)), A(0.0, 0.3, z + 2.6), 30, roll=0.05, fill=1.2)
 
 
 def ride_face(S, k, t, lt):
@@ -1093,18 +1099,18 @@ def ride_face(S, k, t, lt):
     A, z = ride(S, t, m, 0.15)
     m.face = 'squint' if k > 0.5 else 'wide'
     m.jawv = 0.3
-    lampat(S, 0, A(-0.9, -2.0, z + 2.6), 120, 'FFE2B0')
+    lampat(S, 0, A(-0.9, -2.0, z + 2.4), 220, 'FFE2B0')
     lampat(S, 1, A(0.1, -0.5, z + 5.2), lerp(200, 2600, k * k), 'FFF8E8')
-    shoot(S, A(lerp(-0.75, -0.45, k), lerp(-2.9, -2.5, k), z + lerp(2.5, 2.7, k)), A(0.0, 0.2, z + 2.82), 50, fill=1.2)
+    shoot(S, A(lerp(-0.75, -0.45, k), lerp(-2.9, -2.5, k), z + lerp(2.15, 2.3, k)), A(0.0, 0.2, z + 2.5), 50, fill=1.2)
 
 
 # ---------------------------------------------------------------- out
 def welcome(S, A, t, k=1.0):
     sx, sy = SITE
-    for j, (rig, x, y) in enumerate(((S['crew'][0], -2.6, -1.4), (S['crew'][2], 2.6, -0.4), (S['civ'][1], 3.6, -2.8), (S['civ'][2], -4.0, -2.6))):
+    for j, (rig, x, y) in enumerate(((S['crew'][0], -2.6, -1.4), (S['crew'][2], 3.4, 0.6), (S['civ'][1], 4.2, -2.6), (S['civ'][2], -3.8, -2.6))):
         hop = abs(math.sin(t * 6 + j * 1.7)) * k
         rig.place(A(sx + x, sy + y, 0.3 * hop), look_yaw((x, y), (0, 0)))
-        rig.apply(blend(P('stand', head=(0.2, 0.0)), P('up', aL=(2.7 + 0.2 * math.sin(t * 10 + j), 0.4, 0.15), aR=(2.8, 0.35, 0.2), head=(-0.2, 0.0)), k))
+        rig.apply(blend(P('stand', head=(0.2, 0.0)), P('up', aL=(2.6 + 0.2 * math.sin(t * 10 + j), -0.45, 0.2), aR=(2.7, -0.4, 0.2), head=(-0.2, 0.0)), k))
         rig.face, rig.jawv = 'warm', 0.7 * k
 
 
@@ -1120,14 +1126,14 @@ def emerge(S, k, t, lt):
     S['surf']['wheel'].rotation_euler = (z * 1.2, PI / 2, 0)
     welcome(S, A, t, sm((k - 0.3) / 0.3))
     rk = S['rook']
-    rp = (sx + 1.7, sy - 3.4)
+    rp = (sx + 2.6, sy - 2.2)
     fl = math.sin(t * 16)
     rk.place(A(rp[0], rp[1], 0.3 + 0.25 * abs(fl)), look_yaw(rp, (sx - 1, sy - 10)))
     rk.apply(P('stand', aL=(0.2, 1.3 + 0.5 * fl, 0.3), aR=(0.2, 1.3 + 0.5 * fl, 0.3), head=(-0.2, -0.6), lL=(0.3, 0.5), lR=(0.1, 0.4)))
     S['rface'] = 'shocked'
     rig_floods(S, A, 1.0, True)
     lampat(S, 0, A(sx - 0.5, sy - 6.0, 3.0), 2200, 'FFF0D8')
-    shoot(S, A(sx + lerp(1.4, 0.8, k), sy + lerp(-10.6, -9.8, k), lerp(1.2, 1.5, k)), A(sx + 0.2, sy - 0.4, lerp(2.4, 3.0, k)), 26, fill=1.1, fcol='DCE4FF')
+    shoot(S, A(sx + lerp(0.6, 0.2, k), sy + lerp(-9.6, -8.8, k), lerp(1.2, 1.5, k)), A(sx + 0.3, sy - 0.4, lerp(2.4, 3.0, k)), 26, fill=1.1, fcol='DCE4FF')
 
 
 def hug(S, k, t, lt):
@@ -1154,14 +1160,14 @@ def hug(S, k, t, lt):
         rig.apply(P('stand', aL=(1.1, -0.1 - 0.25 * cp, 1.3, 0.5), aR=(1.1, -0.1 - 0.25 * cp, 1.3, 0.5), head=(0.0, 0.0)))
         rig.face = 'warm'
     rk = S['rook']
-    rp = (sx + 1.3, sy - 4.4)
-    rk.place(A(rp[0], rp[1], 0), look_yaw(rp, (sx - 1.2, sy - 10)))
+    rp = (sx + 1.25, sy - 3.3)
+    rk.place(A(rp[0], rp[1], 0), look_yaw(rp, (sx - 0.6, sy - 10)))
     rk.apply(blend(P('stand', head=(0.0, 0.6)), P('reach', aR=(2.6, 0.3, 0.2), head=(-0.15, 0.4)), lt / 0.3))
     S['rface'] = 'warm'
     S['hat_jump'] = 0.45 * abs(math.sin(min(1.0, lt / 0.8) * PI))
     rig_floods(S, A, 1.0, True)
     lampat(S, 0, A(sx - 1.0, sy - 7.5, 3.0), 1800, 'FFF0D8')
-    shoot(S, A(sx + lerp(-0.6, -0.2, k), sy + lerp(-9.4, -8.8, k), lerp(1.9, 2.1, k)), A(sx - 0.1, sy - 2.6, 2.3), 34, fill=1.2, fcol='FFE8D0')
+    shoot(S, A(sx + lerp(-0.4, 0.0, k), sy + lerp(-9.6, -9.0, k), lerp(1.9, 2.1, k)), A(sx + 0.15, sy - 2.6, 2.3), 34, fill=1.2, fcol='FFE8D0')
 
 
 # ---------------------------------------------------------------- the end
@@ -1202,7 +1208,7 @@ def last_up(S, k, t, lt):
     lampat(S, 0, A(-4.6, -3.0, 3.4), 1500, 'FFE2B0')
     lampat(S, 1, A(dx, dy, 6.0), 1200, 'FFF8E8')
     lampat(S, 2, A(9.0, 1.0, 4.0), 260 * (1 - sm(lt / 0.6)), 'FFD8A0')
-    shoot(S, A(lerp(-12.4, -11.6, k), lerp(-5.6, -5.0, k), lerp(2.0, 2.4, k)), A(-5.6, 0.2, 2.6 + 0.4 * (z - 0.25)), 28, fill=1.3)
+    shoot(S, A(lerp(-12.4, -11.6, k), lerp(-5.6, -5.0, k), lerp(2.0, 2.4, k)), A(-5.8, 0.2, 2.6 + 0.4 * (z - 0.25)), 34, fill=1.3)
 
 
 def signoff(S, k, t, lt):
@@ -1211,11 +1217,11 @@ def signoff(S, k, t, lt):
     sx, sy = SITE
     cap_at(S, A, sx, sy, 0.35)
     rk = S['rook']
-    rp = (sx - 6.4, sy - 7.6, 0.0)
+    rp = (sx - 8.5, sy - 9.0, 0.0)
     rk.place(A(*rp), 0.4)
     grab = sm((lt - 0.05) / 0.22)
     up = sm((lt - 0.3) / 0.22)
-    away = sm((lt - 0.72) / 0.25)
+    away = sm((lt - 0.58) / 0.22)
     low = P('stand', aR=(0.9, 0.2, 0.2), head=(0.55, 0.3), lean=0.75, lL=(0.5, 0.9), lR=(0.5, 0.9), lift=-0.35)
     hold = P('stand', aR=(1.15, 0.25, 1.3, 0.3), head=(0.25, 0.35))
     rk.apply(blend(blend(blend(P('stand'), low, grab), hold, up), P('hat'), away))
@@ -1227,7 +1233,7 @@ def signoff(S, k, t, lt):
     S['tooth'].location = tuple(ground[i] + (hand[i] - ground[i]) * u for i in range(3))
     S['tooth'].rotation_euler = (lerp(0.0, 2.6, up) + t * 3 * up * (1 - away), 0.3, 0.6)
     S['tooth'].scale = (1.5, 1.5, 1.5)
-    if lt > 0.8:
+    if lt > 0.66:
         S['tooth'].location = AWAY
     shoot(S, A(rp[0] + lerp(1.9, 1.5, k), rp[1] + lerp(-5.6, -4.8, k), lerp(1.9, 2.3, k)), A(rp[0] + 0.2, rp[1], 2.3), 32, fill=0.9)
 
