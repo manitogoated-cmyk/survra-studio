@@ -256,9 +256,8 @@
    "world": "rompong hut at sea, passing ships",
    "est_score": 82,
    "long_form_candidate": false,
-   "status": "in progress",
-   "facts": "verify with 2+ sources at authoring; skip if they do not hold",
-   "claimed_at": "2026-11-16T18:20:28Z"
+   "status": "authored",
+   "facts": "verified (see episodes/r019-adilang/episode.json)"
   },
   {
    "case": 20,

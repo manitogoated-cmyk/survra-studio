@@ -24,7 +24,7 @@ AWAY = (0, 0, -3000)
 SKYZ = 0.45                        # how high above the horizon the sky reaches its zenith colour
 HOST = {'boy_face', 'rook_roof', 'no_engine', 'fishing', 'cook', 'wave_cloth', 'sail_past', 'cry', 'call', 'turn', 'jump', 'alive',
         'rook_wrong', 'signoff'}
-CAMFILL = {'*': 90, 'call': 220, 'wait': 220, 'day49': 160, 'alive': 260, 'rook_wrong': 240, 'signoff': 240, 'snap_wide': 320, 'rope_close': 200, 'drift_off': 500, 'boy_face': 160, 'rook_roof': 220, 'supplies': 220,
+CAMFILL = {'*': 90, 'no_engine': 220, 'call': 220, 'wait': 220, 'day49': 160, 'alive': 260, 'rook_wrong': 240, 'signoff': 240, 'snap_wide': 320, 'rope_close': 200, 'drift_off': 500, 'boy_face': 160, 'rook_roof': 220, 'supplies': 220,
            'grab_radio': 160, 'cry': 260, 'cook': 200, 'dawn_empty': 0, 'ship_away': 60, 'turn': 200}
 ROOKC = dict(top='566178', belt='3E4658', lap='6B7690', pants='2A2742', hand='2F2B4D', boot='8A90A6')
 WOOD, WOODD, WOODL = '8E6B43', '5E4428', 'B08A58'
@@ -592,7 +592,7 @@ def boy_face(S, k, t, lt):
     rk.apply(blend(P('up', aL=(1.5, 1.2 + 0.4 * fl, 0.2), aR=(1.5, 1.2 + 0.4 * fl, 0.2), lL=(0.3, 0.5), lR=(0.3, 0.5)), P('cross', head=(0.3, 0.0)), (lt - 0.5) / 0.25))
     S['rface'] = 'deadpan'
     hd = world_of(b.head)
-    shoot(S, D(S, lerp(2.7, 2.4, k), lerp(-7.2, -6.8, k), 2.2), (hd[0] - 0.25, hd[1], hd[2] + 1.35), 38, fill=1.3, fcol='FFE8D0')
+    shoot(S, D(S, lerp(2.7, 2.4, k), lerp(-7.2, -6.8, k), 2.2), (hd[0] - 0.25, hd[1], hd[2] + 0.45), 32, fill=1.3, fcol='FFE8D0')
 
 
 def rook_roof(S, k, t, lt):
@@ -883,7 +883,7 @@ def call(S, k, t, lt):
     fence(S, 9)
     b = S['boy']
     bp = (0.6, -2.3)
-    cam = (lerp(1.7, 1.5, k), lerp(-6.6, -6.1, k), 2.45)
+    cam = (lerp(1.7, 1.5, k), lerp(-6.6, -6.1, k), 2.1)
     on(S, b, bp[0], bp[1], look_yaw(bp, cam) + 0.25)
     b.apply(P('stand', aR=(0.95, -0.2, 1.9, 0.4), aL=(0.4, 0.3, 0.6), head=(-0.05, -0.2), lean=0.1))
     b.face, b.jawv = 'wide', 0.45 + 0.45 * math.sin(lt * 17)
@@ -897,7 +897,7 @@ def call(S, k, t, lt):
     rk.apply(blend(P('stand', head=(0.1, 0.5), lean=0.15), P('point', aR=(1.3, -0.45, 0.25), head=(0.1, 0.5), lean=0.2), lt / 0.3))
     S['rface'] = 'shocked' if lt > 0.3 else 'calm'
     S['hat_jump'] = 0.18 * math.sin(min(1.0, max(0.0, lt - 0.3) / 0.35) * PI)
-    shoot(S, D(S, *cam), D(S, 1.4, -2.1, 2.75), 30, fill=1.1, fcol='FFD8B0')
+    shoot(S, D(S, *cam), D(S, 1.4, -2.1, 1.95), 30, fill=1.1, fcol='FFD8B0')
 
 
 def wait(S, k, t, lt):
@@ -915,7 +915,7 @@ def wait(S, k, t, lt):
     S['radio'].rotation_euler = (0.1, 0.1, 0.5)
     S['radio'].scale = (1.15, 1.15, 1.15)
     S['led'].hide_render = (lt * 5) % 1 > 0.5
-    shoot(S, D(S, lerp(3.6, 3.4, k), lerp(-2.6, -2.2, k), lerp(2.5, 2.6, k)), D(S, 0.8, 4.2, 3.0), 40, fill=1.2, fcol='FFD8B0')
+    shoot(S, D(S, lerp(3.6, 3.4, k), lerp(-2.6, -2.2, k), lerp(2.3, 2.4, k)), D(S, 0.8, 4.2, 2.0), 40, fill=1.2, fcol='FFD8B0')
 
 
 def turn(S, k, t, lt):
@@ -953,7 +953,7 @@ def high_waves(S, k, t, lt):
     bp = (1.8, 2.6)
     on(S, b, bp[0], bp[1], PI)
     b.apply(P('up', aL=(2.7, 0.4 + 0.3 * math.sin(lt * 10), 0.2), aR=(2.7, 0.4 - 0.3 * math.sin(lt * 10), 0.2), head=(-0.45, 0.0)))
-    shoot(S, (lerp(-8.0, -7.0, k), lerp(-13.0, -12.0, k), lerp(2.7, 3.1, k)), (3.0, 9.0, 8.4), 22, fill=1.0, roll=0.05 * math.sin(t * 1.1))
+    shoot(S, (lerp(-8.0, -7.0, k), lerp(-13.0, -12.0, k), lerp(2.7, 3.1, k)), (3.0, 9.0, 5.2), 22, fill=1.0, roll=0.05 * math.sin(t * 1.1))
 
 
 def rope_throw(S, k, t, lt):
@@ -1006,7 +1006,7 @@ def jump(S, k, t, lt):
     S['rface'] = 'shocked'
     S['hat_jump'] = 0.3 * hop
     feather(S, world_of(rk.head, (0.3, 0, 0.3)), lt, 0.35)
-    shoot(S, D(S, lerp(10.0, 9.4, k), lerp(1.0, 1.6, k), lerp(1.0, 1.3, k)), D(S, 0.6, 4.0, 3.3), 25, fill=1.1)
+    shoot(S, D(S, lerp(10.0, 9.4, k), lerp(1.0, 1.6, k), lerp(1.0, 1.3, k)), D(S, 0.6, 4.0, 2.2), 25, fill=1.1)
 
 
 def haul(S, k, t, lt):

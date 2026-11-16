@@ -160,7 +160,7 @@ def ten_card(cv, c):
     """'So do more than ten others.' Ship after ship crosses and is struck through; the count climbs past ten."""
     Wd.vgrad(cv, 0, 0, W, 1000, [(0, h('7EBCE6')), (1, h('CFE6F2'))])
     Wd.vgrad(cv, 0, 1000, W, H, [(0, h('1C6E94')), (1, h('0A2E48'))])
-    n = c.k * 12.5
+    n = c.k * 17.0
     cnt = min(10, int(n))
     for i in range(11):
         k = n - i
@@ -179,9 +179,9 @@ def ten_card(cv, c):
     hut_mark(cv, 0, 0, 0.9, lamp=False)
     cv.restore()
     if cnt >= 1:
-        fit(cv, f'{cnt}+ SHIPS' if n >= 10.6 else f'{cnt}', 540, 480, 230 if n < 10.6 else 190, 960, AMBER)
+        fit(cv, f'{cnt}+ SHIPS' if n >= 10.6 else f'{cnt}', 540, 480, 230 if n < 10.6 else 170, 840, AMBER)
     if n >= 11.2:
-        fit(cv, 'NONE STOPPED', 540, 1660, 110, 940, 0xFFFFFFFF)
+        fit(cv, 'NONE STOPPED', 540, 1660, 104, 880, 0xFFFFFFFF)
 
 
 def board(cv, c):

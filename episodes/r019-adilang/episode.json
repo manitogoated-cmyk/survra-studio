@@ -1,12 +1,12 @@
 {
  "id": "r019-adilang",
  "format": "short",
- "status": "draft",
+ "status": "approved",
  "synthetic": false,
  "host": "rook",
  "case": 19,
  "title": "The Rope Snapped. His Fishing Hut Drifted Out to Sea for 49 Days #shorts",
- "description": "",
+ "description": "Case 019. In July 2018 Aldi Novel Adilang, 19, was working alone as the lamp keeper of a rompong, a floating fish trap shaped like a small hut, moored by a long rope about 125 kilometres off North Sulawesi, Indonesia. On 14 July the rope parted in high wind and the hut, which had no engine and no paddle, was blown out to sea with only a few days of supplies on it. He caught fish, burned wood from the hut's own fence to cook them once his gas ran out, and sipped seawater through his clothes. More than ten ships passed without seeing him. On 31 August, in waters off Guam, he called the passing bulk carrier MV Arpeggio on his radio; it turned round, and because the waves were too high for it to come alongside he went into the sea and the crew pulled him aboard. He was reported in good health and was back home in early September. Rook didn't believe it either.\n\nAnimated reconstruction of a true story. The hut, the sea and the ship are generic low-poly sets, not models of the real rompong or the real MV Arpeggio; no name, flag or logo appears on them. The young man and the crew are simple figures and nobody's likeness is attempted. The chart is a diagram with an invented coastline and is not to scale. Staging details such as the time of day when the rope parted, the hand line, the rail broken over a knee, the fire in a tin, the shape of the radio, the rope ladder, the towel and the cup, and the fish hook Rook keeps are reconstruction, not record. Drinking seawater is dangerous; the film shows what the reports say he did, not advice. Narration is a synthetic voice (Kokoro).",
  "tags": [
   "Aldi Novel Adilang",
   "rompong",
@@ -50,5 +50,104 @@
   "research": 8,
   "repeatability": 6,
   "total": 77
+ },
+ "title_options": [
+  "The Rope Snapped. His Fishing Hut Drifted Out to Sea for 49 Days #shorts",
+  "His Floating Hut Broke Loose With Him Inside #shorts",
+  "Ten Ships Sailed Past Him. Then He Picked Up His Radio #shorts",
+  "He Burned His Own Fence to Stay Alive at Sea #shorts",
+  "49 Days Adrift in a Hut With No Engine and No Paddle #shorts"
+ ],
+ "spine": "v2",
+ "shown_moments": {
+  "the rope snaps on a floating fishing hut": "shots 1 and 2 (the rope bar-tight off the corner, then parting and whipping; the frayed end on the post and the rest sliding into the sea)",
+  "the ocean takes the teenager inside": "shots 3 and 4 (the hut sliding away from the other huts' lamps; his face at the rail)",
+  "no engine, no paddle": "shot 6 (Rook leaning over the side and pointing at bare water)",
+  "food for a few days": "shot 7 (the jug tipped: two drops)",
+  "land is 125 kilometres away": "shots 8 and 9 (the chart counting to 125 KM; the hut alone at dawn)",
+  "he catches fish": "shot 10 (the hand line and the fish)",
+  "burns the hut's own fence to cook them": "shots 11 and 12 (the rail broken over his knee; the fire in the tin with the fish over it)",
+  "he sips the sea through his clothes": "shot 13 (the wet cloth at his mouth)",
+  "then, a ship. He waves. It sails past": "shots 15 to 17 (the ship on the horizon; the cloth; the hull going on and his arms coming down)",
+  "so do more than ten others": "shot 18 (the ships struck through, 10+ SHIPS, NONE STOPPED)",
+  "he says he cried often": "shot 19 (he sits with his head down at night; Rook beside him, silent)",
+  "day forty-nine, another one passes": "shot 20 (DAY 49, the ship crossing at dawn)",
+  "he grabs his radio and calls for help": "shots 21 and 22 (the hand on the radio; the radio at his mouth)",
+  "this one turns around": "shots 23 and 24 (the stern still going away; then the ship leaning into its turn)",
+  "the waves are too high to come alongside": "shots 25 and 26 (the hull over the hut in a heavy swell; the line falling short)",
+  "so he jumps in": "shot 27 (the dive and the splash)",
+  "the crew haul him aboard, alive": "shots 28 and 29 (the ladder and the crewman's hand; the towel and the cup on deck)",
+  "thousands of kilometres from home": "shot 30 (the ship carrying him off, the hut left behind, 49 DAYS)"
+ },
+ "experiments": {
+  "E1_E2": "spine v2: Rook lands on the hut's roof during the hook (shot 4) and doubts the story from the ridge with the black swell behind him, in one line of under a second ('A hut isn't a boat.'); no office, no cutaway. The story then runs forward from the rope parting. Date, place, name and age are on-screen labels only (14 JULY 2018, NORTH SULAWESI, INDONESIA, ALDI NOVEL ADILANG, 19, 31 AUGUST 2018, OFF GUAM, MV ARPEGGIO).",
+  "E3": "batch Short 4 (even): wide first frame, as the brief assigns: the whole hut on a heaving night sea under its lamps, the rope tight off the corner and the young man braced beside it.",
+  "E4": "question ending, as the brief assigns to this Short, but not the brief's question. The brief proposed 'Ships kept sailing past. How would you get one to stop?'; the film itself answers that (the radio), so the question used is 'Ship after ship passed him. Would you have kept waving?'",
+  "E7": "hook_text THE ROPE / SNAPPED.",
+  "E8": "tail 0.4 s; the last line ('It starts when') runs into the first ('The rope snaps on a floating fishing hut...'), and the last shot is the opening shot played back to its first frame.",
+  "rook_action": "He leans over the side to look for an engine and points at bare water (shot 6, his detective action) and waves a rag of his own at the ship (shot 16, the brief's Rook moment). Mannerisms: hat brim low (shots 5 and 17), hat jump (shots 10, 22, 24), beak tap (shot 12), shed feather (shot 27), pocketing the shiny fish hook and pulling the brim down (shot 33). He is silent and still in the crying shot (19)."
+ },
+ "sound_plan": {
+  "first_frame": "One 'hit' at 0.03 s as a wave slapping the raft (the gate needs an impact in the first second; here it is a story sound), a wave, then the rope ('cord') as it parts. The hook mood is sparse.",
+  "hook": "Rope and splash at the post, a shout and a low tone as the hut slides away, wing flaps as Rook lands.",
+  "music": "The engine's score follows the segment moods: hook, tense for Rook's line and the drift, calm for how he lived, tense for the ships and the crying, action for the radio, triumph for the rescue, end. The engine cannot delay the music's entry.",
+  "hush": "Shot 23 (the radio at his chin, the ship still going away): the music drops out for the breath before 'This one turns around'.",
+  "tragic_beat": "Shot 19 (he cried often) carries only a heartbeat and a low tone; Rook has no joke or gesture in it.",
+  "voice": "Narration is ducked over the bed by the engine; measured in the local rehearsal (see quality_gate), not listened to."
+ },
+ "source_notes": "Read for this run on 16 Nov 2026 (four pages, through a fetch tool). Pages that could not be read: BBC, the Guardian's own page (fetch refused; the Irish Times page is the Guardian's article, syndicated) and Wikipedia. Every narrated fact is on at least two of the pages read. Aldi Novel Adilang, 19, lamp keeper of a rompong (a floating fish trap shaped like a hut, on buoys, anchored to the seabed by a long rope) off North Sulawesi: Jakarta Post, NPR (via KPBS), Irish Times/Guardian, Global News. 125 km out: Jakarta Post and Irish Times; NPR says 'more than 77 miles' (about 125 km); Global News alone says about 175 km, so 125 is used. The rope parted in high wind on 14 July 2018: NPR ('the line anchoring the hut snapped in high winds on July 14'), Global News ('snapped on July 14'), Jakarta Post (a hard wind on July 14; the rope 'had torn'); Irish Times says mid-July. The time of day is not given on any page: the night setting is staging. No engine, no paddle: Jakarta Post (the consul general: it 'did not have any paddle or engine'); NPR says he had no way to steer or power the raft. Supplies for only a few days: Jakarta Post, Irish Times, Global News (NPR: meant to last a week). He caught fish and, when the cooking gas ran out, burned wood from the rompong's fence: Jakarta Post, NPR, Irish Times; Global News has the fence fires. How he caught the fish is not stated: the hand line is staging. He sipped seawater through his clothes: all four pages. More than ten ships passed without stopping or seeing him: all four pages (quoting the diplomat Fajar Firdaus). 'He says he cried often': all four pages quote Firdaus: 'Aldi said he had been scared and often cried while adrift.' Rescued on 31 August 2018 in waters off Guam by the Panama-flagged bulk carrier MV Arpeggio: all four pages. '49 days' is the figure all four give for 14 July to 31 August. He first waved (a cloth, per the Irish Times) and was not seen, then used his radio: Jakarta Post (he tuned it to a frequency a friend had told him to use; the captain caught the signal and turned round), NPR (his message, heard in a crew member's video, was 'Help Help Help'; the captain ordered a change of course), Irish Times ('sent an emergency radio signal'), Global News. The words of the call are on one page only and are not narrated or shown; the friend's advice is on one page only and is left out. Waves too high for the ship to get close: Jakarta Post, Global News. He went into the sea: Jakarta Post (he jumped in to reach a rope that fell short; the crew caught his hand), Global News (he had to swim to the ship; the crew threw a rope). NPR describes a life preserver and a ladder after four passes. The film shows a line falling short, the jump, a rope ladder and a crewman's hand; the life preserver and the number of passes are left out. 'Thousands of kilometres from home': Jakarta Post and Global News. Things kept out. His thoughts of suicide and his Bible are on one page only (Irish Times/Guardian) and are not used; the film says only that he cried, and treats that beat quietly. His earlier drifts, his pay and the date he got home (8 or 9 September, pages differ) are not narrated; the description says 'early September'. The ship's officers' names (NPR only) are not used. Staging choices that are not facts: the layout and look of the hut, raft, lamps and generator; the other huts' lamps in shot 3; his dark shirt (NPR mentions a black T-shirt; no logo is drawn); the jug, sack and gas bottle; the fire in a tin; the rail broken over a knee; which ships passed and how near; the look of the ship, its ladder and its crew in orange; the towel and cup (Jakarta Post: a towel and a snack; NPR: a blanket, water and bread); sky and weather in every shot; and the fish hook Rook keeps.",
+ "authoring": {
+  "claimed_at": "2026-11-16T18:20:28Z",
+  "run": "scheduled short run, 16 Nov 2026; brief order (Short 4 of the batch, slate case 19)"
+ },
+ "quality_gate": {
+  "method": "One run, six rounds. Rounds 1 to 3: low-res contact sheets of all 30 3D shots. Found and fixed: night shots too dark to read (sky, moon and lamps raised; a graded sky replaced the flat one); a lamp pole standing in front of the subject in four shots (the pole was moved to the back of the raft and a lamp hung under the eave); fence posts in front of faces (posts now go when their rails are burned); the ship hidden behind the hut or out of frame in three shots; the young man with his back to the camera or hidden behind Rook in three shots; crew facing the wrong way at the rail; the radio hand filling the frame; the cloth covering his face in the sipping shot; the deck scene showing only backs. Round 4: preview stills of every 3D kind at 12% and 88% of the shot (60 stills at 270x480, the phone-size check). Found and fixed: the camera under a wave in the rescue wide; Rook covering the jump; the hut cut off in the last wide; the rescue swell too flat. Round 5: full-length rehearsal (216x384, 4 samples, 12 fps, all 3D frames) composited with captions, labels, overlays, inserts and sound, reviewed as a 4-frames-per-second sheet of the whole video (175 frames). Found and fixed: faces under the caption band in four shots (4, 22, 23, 27) and the hut under it in shot 25; the ship count reaching '10+ SHIPS, NONE STOPPED' only in the card's last frames. Round 6: second rehearsal with the gate, twelve frames pulled at larger size (first, last and the re-framed shots) and six stills at 720x1280 (opening frame, shots 4, 10, 19, 22, 29); '10+ SHIPS' touched both edges and was narrowed. The final rehearsal passed the automated gate locally: 34 shots, mean 1.29 s, longest 1.68 s, Rook acting in 14 of 34 shots (41%), -14.5 LUFS, peak -1.2 dBFS, voice 13.6 dB over the bed, closest match to any earlier episode 0.82 (shot 9, the hut alone at dawn, against k001-koepcke; the limit is 0.93). Duration 43.7 s. The cloud render runs the real gate at 720x1280 and 60 fps.",
+  "checked": "Every 3D kind in the storyboard exists in world3d.SHOTS3D and every other kind in scenes.SHOTS (checked by script); HOST lists the 14 kinds in which Rook is placed; snap_wide is the only kind used twice (first and last shot, for the loop). The doubt line is 0.94 s and is spoken on the roof with the swell behind him. The re-hook ('Then, a ship') starts at 17.8 s of 43.7 s (41%). One hush shot (23). Tail 0.4 s; the last frame was compared with the first side by side: same framing, the rope tight again; the swell is at a different phase, so the match is close, not exact. On-screen dates, names and figures (14 JULY 2018, 125 KM FROM LAND, NORTH SULAWESI, INDONESIA, ALDI NOVEL ADILANG, 19, 14 JULY TO 31 AUGUST 2018, 10+ SHIPS, NONE STOPPED, 31 AUGUST 2018, DAY 49, OFF GUAM, MV ARPEGGIO, 49 DAYS) were checked against the sources. Nothing graphic is shown and nobody dies in this story; the crying beat has no joke, and his thoughts of suicide, reported on one page, are not mentioned. No flag, emblem, logo or likeness appears.",
+  "not_met": "Loudness range measures 2.5 LU (ffmpeg ebur128) against the checklist's 4 LU; this is the engine's mix and the earlier approved Shorts measure about the same. The audio was measured, not listened to. Preview stills of every shot were looked at at 270x480, not at full resolution; six stills were checked at 720x1280. The cloud render is the first full-resolution, 60 fps pass. The 13-category score was given from stills and the rehearsal sheets, not from playback. The first frame is wide by the brief's E3 assignment, so the young man is small in it (about a seventh of the frame height); the close view follows at 1.1 s."
+ },
+ "checklist": {
+  "A_story": "done: score 77/100 with curiosity 8, story 8, payoff 8; spine v2; shown_moments lists every narrated moment",
+  "B_storyboard": "done: every shot has action, expression, camera and sound cue; Rook's mannerisms are the hat brim (5, 17), hat jump (10, 22, 24), beak tap (12), shed feather (27), pocketing the fish hook and brim down (33); detective action is the look over the side for an engine (6), plus waving his own rag (16); no neutral poses under action lines",
+  "B2_retention": "done: hook_text set; first frame is the hut in the swell with the rope tight and the young man braced (wide, as the brief's E3 assigns); re-hook at 41%; one hush; tail 0.4 s with the loop",
+  "C_previews": "done at 270x480 (12% and 88% of every 3D shot) and looked at; six stills at 720x1280; no blown-out or crushed frame where the story has to be seen; Rook on-model",
+  "D_render": "engine defaults untouched (60 fps, 720x1280, 16 jobs in the workflow); the local rehearsal used low settings only for review",
+  "E_sound": "voice am_fenrir; the crying beat has only a heartbeat and a low tone; voice 13.6 dB over the bed; loudness range 2.5 LU is under the 4 LU item, see quality_gate.not_met",
+  "F_captions": "done: captions inside the frame; the four cards keep the caption band clear; faces moved out of the caption band in five shots; on-screen dates, names and figures checked against sources",
+  "G_final": "rehearsal reviewed as a 4 fps sheet of the whole video and larger frames; local gate PASS; the full-resolution render and the real gate happen in the workflow"
+ },
+ "review": {
+  "notes": [
+   "0.0 s: the hut in the swell, rope tight off the corner, hook text inside the frame",
+   "0.5 s: the rope parts; 1.1 to 2.2 s: the frayed end on the post, his lunge",
+   "3.4 to 4.6 s: his face at the rail, Rook landing on the roof behind",
+   "4.67 to 5.6 s: Rook on the ridge, 'A hut isn't a boat.'",
+   "5.75 to 7.3 s: Rook leans over the side, points at bare water, shrugs",
+   "8.6 to 10.2 s: chart counts to 125 KM, the wind takes the hut off the sheet",
+   "11.5 to 12.8 s: the fish comes out of the water, Rook's hat hops",
+   "15.2 to 16.6 s: the wet cloth at his mouth",
+   "17.8 s: re-hook, a ship on the horizon; 21.2 to 22.3 s: ten ships struck through",
+   "22.3 to 23.6 s: he sits with his head down, Rook silent beside him",
+   "24.7 to 27.3 s: the hand on the radio, the call",
+   "27.3 to 28.3 s: hush, the stern still going away; 28.3 to 29.7 s: the turn",
+   "32.6 to 34.0 s: the jump and the splash; 34.0 to 35.5 s: the ladder and the hand",
+   "35.5 to 37.2 s: the towel and the cup on deck",
+   "42.7 to 43.7 s: back to the opening framing"
+  ],
+  "scores_13": {
+   "story": 4,
+   "hook": 4,
+   "character_acting": 3,
+   "animation": 3,
+   "art_direction": 4,
+   "lighting": 4,
+   "camera": 3,
+   "pacing": 4,
+   "editing": 4,
+   "narration": 3,
+   "sound": 3,
+   "captions_graphics": 4,
+   "respect_accuracy": 5
+  },
+  "weakest": "The opening is wide, so the young man is small in the first second; shots 15, 17 and 20 show him from behind; the radio hand (21) is a plain shape; the swell in the rescue is modest for 'too high'; narration and sound were measured, not heard."
  }
 }
