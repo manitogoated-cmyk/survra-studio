@@ -420,6 +420,20 @@
     "url": "https://youtu.be/6ZLO3VlvIhs",
     "video_id": "6ZLO3VlvIhs"
   },
+  "r016-simpson-long": {
+    "captions": "failed: captions -> 404: {\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"The video identified by the \\u003ccode\\u003evideoId\\u003c/code\\u003e parameter could not be fou",
+    "format": "long",
+    "playlist": "Rook's Case Files (Full Cases)",
+    "privacy": "private",
+    "publish_at": null,
+    "review": true,
+    "sha256": "5cd8c9ae8beafaade96f538eb487d24666b81290b8de8b63e84059fb7de2dce4",
+    "thumbnail": "failed: thumbnail -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The thumbnail can't be set for the specified video. The request might not be properly authoriz",
+    "title": "His Partner Cut the Rope: The Full Case of Joe Simpson",
+    "uploaded_at": "2026-11-16T14:17:58Z",
+    "url": "https://youtu.be/FY_52abpoyw",
+    "video_id": "FY_52abpoyw"
+  },
   "s001-alvarenga": {
     "privacy": "private",
     "publish_at": null,
