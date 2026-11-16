@@ -21,10 +21,11 @@ from engine4.kit3d import P, add, blend, empty, lerp, light, walk
 
 PI = math.pi
 AWAY = (0, 0, -3000)
+SKYZ = 0.45                        # how high above the horizon the sky reaches its zenith colour
 HOST = {'boy_face', 'rook_roof', 'no_engine', 'fishing', 'cook', 'wave_cloth', 'sail_past', 'cry', 'call', 'turn', 'jump', 'alive',
         'rook_wrong', 'signoff'}
-CAMFILL = {'*': 90, 'snap_wide': 320, 'rope_close': 200, 'drift_off': 500, 'boy_face': 160, 'rook_roof': 220, 'supplies': 220,
-           'grab_radio': 160, 'cry': 150, 'cook': 90, 'dawn_empty': 0, 'ship_away': 0, 'turn': 60}
+CAMFILL = {'*': 90, 'call': 220, 'wait': 220, 'day49': 160, 'alive': 260, 'rook_wrong': 240, 'signoff': 240, 'snap_wide': 320, 'rope_close': 200, 'drift_off': 500, 'boy_face': 160, 'rook_roof': 220, 'supplies': 220,
+           'grab_radio': 160, 'cry': 260, 'cook': 200, 'dawn_empty': 0, 'ship_away': 60, 'turn': 200}
 ROOKC = dict(top='566178', belt='3E4658', lap='6B7690', pants='2A2742', hand='2F2B4D', boot='8A90A6')
 WOOD, WOODD, WOODL = '8E6B43', '5E4428', 'B08A58'
 BAMBOO, THATCH, THATCHD = 'B89E5E', 'C9AB62', '8C6E36'
@@ -34,14 +35,15 @@ DZ = 0.5                          # the deck's height above the still sea
 CLEAT = (2.9, -2.95)              # the mooring post, front right corner of the raft
 PERCH = (-2.35, 1.6, 4.5)         # the roof ridge
 FIRE = (1.7, 0.3)
+LAMPS = ((-4.3, -3.0, 3.6), (4.3, 3.0, 3.6), (-0.45, -0.1, 2.75))     # two on poles, one under the eave
 SHELF = (-2.4, 2.75, 1.75)
 MODES = dict(                      # sky, sky strength, sun watts, sun colour, sun direction, sea colour, wave height, fill
-    storm=('1A2C58', 1.5, 1.7, 'A8BCF8', (0.5, -0.5, 0.6), '143A64', 1.0, 2.6),
-    night=('16244C', 1.4, 1.5, 'A8BCF8', (-0.4, -0.5, 0.7), '143660', 0.35, 2.4),
-    dawn=('F6BC92', 1.3, 3.4, 'FFC896', (0.8, 0.45, 0.2), '23608C', 0.4, 1.6),
-    day=('8CC8F0', 2.0, 4.6, 'FFF2D8', (-0.4, -0.6, 0.7), '1C6E94', 0.45, 1.4),
-    grey=('9AA8B8', 1.6, 2.4, 'E8ECF4', (-0.3, -0.6, 0.7), '2A5870', 0.9, 1.6),
-    dusk=('F2A070', 1.25, 3.2, 'FFA468', (0.75, 0.6, 0.17), '24507E', 0.4, 1.9))
+    storm=(('2E4680', '0A1432'), 1.3, 1.7, 'A8BCF8', (0.5, -0.5, 0.6), '143A64', 1.0, 2.6),
+    night=(('2A4078', '080F2A'), 1.3, 1.5, 'A8BCF8', (-0.4, -0.5, 0.7), '143660', 0.35, 2.4),
+    dawn=(('FFC690', '5C86C4'), 1.5, 3.2, 'FFC896', (0.45, 0.88, 0.13), '1E5E8E', 0.4, 2.4),
+    day=(('C4E4F6', '4A9CE0'), 2.0, 4.6, 'FFF2D8', (-0.4, -0.6, 0.7), '1C6E94', 0.45, 1.4),
+    grey=(('BCC6D0', '7C8A9C'), 1.6, 2.4, 'E8ECF4', (-0.3, -0.6, 0.7), '2A5870', 0.9, 1.6),
+    dusk=(('FF9C5C', '46589C'), 1.5, 3.0, 'FFA468', (0.5, 0.85, 0.11), '1E4C80', 0.4, 2.6))
 _KEEP = []
 
 
@@ -163,23 +165,25 @@ def make_raft(S):
     pts = [(4.4, -3.1), (4.4, -1.0), (4.4, 1.1), (4.4, 3.1), (2.2, 3.1), (0.0, 3.1), (-2.2, 3.1), (-4.4, 3.1), (-4.4, 1.0), (-4.4, -1.1),
            (-4.4, -3.1), (-2.6, -3.1), (-0.8, -3.1), (1.0, -3.1)]
     rails = []
+    posts = []
     for j, (x, y) in enumerate(pts):
-        add('cylinder', WOODL, (x, y, 0.62), radius=0.07, depth=1.24, vertices=6, parent=r)
+        posts.append(add('cylinder', WOODL, (x, y, 0.62), radius=0.07, depth=1.24, vertices=6, parent=r))
         if j + 1 < len(pts):
             b = pts[j + 1]
             rails.append([tube(r, WOODL, (x, y, z), (b[0], b[1], z), 0.045) for z in (0.5, 1.1)])
     # lamps on poles at the corners, the generator, the mooring post
     bulbs = []
-    for (x, y) in ((4.3, -3.0), (-4.3, -3.0), (4.3, 3.0)):
-        tube(r, BAMBOO, (x, y, 0), (x, y, 3.7), 0.06)
-        add('cone', '3A3F4C', (x, y, 3.86), radius1=0.34, radius2=0.05, depth=0.26, vertices=8, parent=r)
-        bulbs.append(add('ico_sphere', 'FFE9A8', (x, y, 3.62), radius=0.17, subdivisions=1, parent=r, emit=9.0))
+    for (x, y, z) in LAMPS:
+        if z > 3.5:
+            tube(r, BAMBOO, (x, y, 0), (x, y, z + 0.1), 0.06)
+        add('cone', '3A3F4C', (x, y, z + 0.26), radius1=0.34, radius2=0.05, depth=0.26, vertices=8, parent=r)
+        bulbs.append(add('ico_sphere', 'FFE9A8', (x, y, z), radius=0.17, subdivisions=1, parent=r, emit=9.0))
     add('cube', 'B8402C', (3.2, 2.2, 0.42), scale=(1.3, 0.8, 0.84), size=1, parent=r, rough=0.5)
     add('cylinder', '2A2E38', (3.5, 2.2, 0.96), radius=0.16, depth=0.26, vertices=7, parent=r)
     add('cube', '2A2E38', (2.85, 2.2, 0.9), scale=(0.34, 0.5, 0.12), size=1, parent=r)
     add('cylinder', WOODD, (CLEAT[0], CLEAT[1], 0.3), radius=0.16, depth=0.6, vertices=7, parent=r)
     add('cube', WOODD, (CLEAT[0], CLEAT[1], 0.5), scale=(0.7, 0.14, 0.12), size=1, parent=r)
-    S.update(raft=r, rails=rails, bulbs=bulbs)
+    S.update(raft=r, rails=rails, posts=posts, bulbs=bulbs)
 
 
 def hardhat_head(skin, hat='F2F2EC'):
@@ -236,8 +240,6 @@ def build():
     make_sea(S)
     make_raft(S)
     make_ship(S)
-    S['clouds'] = [add('ico_sphere', 'F8F4EE', (1500 * math.cos(j * 0.7 + 0.3), 1500 * math.sin(j * 0.7 + 0.3), 260 + 160 * rn(j, 3)),
-                       scale=(170 + 120 * rn(j, 1), 90 + 60 * rn(j, 2), 16 + 10 * rn(j, 4)), radius=1, subdivisions=2, rough=1.0) for j in range(9)]
     S['sunball'] = add('ico_sphere', 'FFE2A8', AWAY, radius=230, subdivisions=3, emit=7.0)
     S['rook'] = K.Rig(ROOKC, K.rook_head, coat=True)
     S['rook'].sc = 1.0
@@ -310,7 +312,16 @@ def build():
     w = bpy.data.worlds.new('w')
     w.use_nodes = True
     sc.world = w
-    S['bg'] = w.node_tree.nodes['Background']
+    nt = w.node_tree
+    S['bg'] = nt.nodes['Background']
+    tc, sep, mr, mx = (nt.nodes.new(n) for n in ('ShaderNodeTexCoord', 'ShaderNodeSeparateXYZ', 'ShaderNodeMapRange', 'ShaderNodeMix'))
+    mx.data_type = 'RGBA'
+    mr.inputs[1].default_value, mr.inputs[2].default_value = 0.0, SKYZ
+    nt.links.new(tc.outputs['Generated'], sep.inputs[0])
+    nt.links.new(sep.outputs[2], mr.inputs[0])
+    nt.links.new(mr.outputs[0], mx.inputs[0])
+    nt.links.new(mx.outputs[2], S['bg'].inputs[0])
+    S['skymix'] = mx
     reset(S)
     return S
 
@@ -328,6 +339,7 @@ def reset(S):
     S['hand'].grip(0.2)
     for pair in S['rails']:
         seen(pair, True)
+    seen(S['posts'], True)
     seen(S['bulbs'], True)
     seen(S['wake'], True)
     S['tin'].location = AWAY
@@ -381,7 +393,8 @@ def sea(S, mode, t, amp=None, lamps=False):
     """Sky, sun and the sea for this frame; the raft rides the swell at the origin."""
     skyc, skyk, sun, sunc, sdir, seac, a, fk = MODES[mode]
     a = a if amp is None else amp
-    S['bg'].inputs[0].default_value = K.hexc(skyc)
+    S['skymix'].inputs[6].default_value = K.hexc(skyc[0])
+    S['skymix'].inputs[7].default_value = K.hexc(skyc[1])
     S['bg'].inputs[1].default_value = skyk
     S['suntgt'].location = (0, 0, 0)
     S['sun'].location = (sdir[0] * 500, sdir[1] * 500, sdir[2] * 500)
@@ -390,7 +403,6 @@ def sea(S, mode, t, amp=None, lamps=False):
     paint(S['seam'], seac)
     sea_at(S, t, a)
     S['fillk'], S['amp'] = fk, a
-    seen(S['clouds'], mode not in ('storm', 'night'))
     S['sunball'].location = (sdir[0] * 4200, sdir[1] * 4200, sdir[2] * 4200) if mode in ('dawn', 'dusk') else AWAY
     b = wave(0, 0, t, a)
     S['bob'] = b
@@ -399,8 +411,8 @@ def sea(S, mode, t, amp=None, lamps=False):
     seen(S['bulbs'], lamps)
     if lamps:
         fl = 1.0 + 0.08 * math.sin(t * 19)
-        for i, (x, y) in enumerate(((4.3, -3.0), (-4.3, -3.0), (4.3, 3.0))):
-            S['lamps'][i].location = (x * 0.92, y * 0.92, DZ + b + 3.4)
+        for i, (x, y, z) in enumerate(LAMPS):
+            S['lamps'][i].location = (x * 0.9, y - 0.35, DZ + b + z - 0.3)
             S['lamps'][i].data.energy = 1500 * fl
 
 
@@ -452,8 +464,13 @@ ORDER = (12, 11, 0, 1, 2, 10, 3, 4, 5, 6, 9, 8, 7)
 
 def fence(S, gone):
     """Take out `gone` pairs of rails, in the order he burns them (the front ones first)."""
-    for j in ORDER[:gone]:
+    out = set(ORDER[:gone])
+    for j in out:
         seen(S['rails'][j], False)
+    for j, p in enumerate(S['posts']):                 # a post goes once the rails on both sides of it are gone
+        left = j - 1 in out if j > 0 else True
+        right = j in out if j < 13 else True
+        p.hide_render = left and right and j not in (0, 13) or (j == 13 and 12 in out)
 
 
 def splash(S, pos, u, n=10, r=1.6, h=2.2, i0=0, s=1.0):
@@ -531,10 +548,10 @@ def rope_close(S, k, t, lt):
     sea(S, 'storm', t, lamps=True)
     c = world_of(S['raft'], (CLEAT[0], CLEAT[1], 0.52))
     wh = (c[0] + 0.7 * math.cos(lt * 15) * (1 - 0.6 * k), c[1] - 0.8, c[2] + 0.25 + 0.5 * abs(math.sin(lt * 12)) * (1 - 0.6 * k))
-    rope(S, 0, c, wh, 0.07)
+    rope(S, 0, c, wh, 0.05)
     S['fray'].location = wh
     S['fray'].rotation_euler = (lt * 8, 0.6, lt * 5)
-    S['fray'].scale = (1.6, 1.6, 1.6)
+    S['fray'].scale = (1.1, 1.1, 1.1)
     e0 = (lerp(4.2, 7.5, k), lerp(-4.2, -6.5, k), lerp(0.7, -0.8, sm(k * 1.6)))
     rope(S, 1, e0, (e0[0] + 4, e0[1] - 3, e0[2] - 1.6), 0.07)
     splash(S, (5.0, -4.9, 0.1), (lt - 0.25) * 1.5, 8, 1.2, 1.3, s=0.8)
@@ -599,14 +616,14 @@ def no_engine(S, k, t, lt):
     """Grey morning. Rook leans out over the edge of the raft, looks down at bare water, straightens and shrugs at the boy."""
     sea(S, 'grey', t, 0.6)
     rk = S['rook']
-    rp = (4.0, -0.9)
-    turn = sm((lt - 0.55) / 0.3)
+    rp = (4.0, -1.6)
+    turn = sm((lt - 0.7) / 0.3)
     rk.root.parent = S['raft']
     rk.place((rp[0], rp[1], 0), lerp(look_yaw(rp, (12, -2.5)), look_yaw(rp, (9.5, -7.0)), turn))
     rk.apply(blend(P('point', aR=(0.75, 0.2, 0.1), lean=0.5, head=(0.5, 0.0)), P('shrug', head=(0.0, 0.0)), turn))
     S['rface'] = 'deadpan' if turn > 0.5 else 'calm'
     b = S['boy']
-    on(S, b, 1.3, -1.9, look_yaw((1.3, -1.9), (9.5, -5.0)))
+    on(S, b, 3.1, 0.9, look_yaw((3.1, 0.9), (9.5, -5.0)))
     b.apply(P('hips', head=(0.15, 0.0)))
     b.face = 'tired'
     shoot(S, D(S, lerp(10.4, 9.8, k), lerp(-7.4, -6.8, k), lerp(1.9, 2.2, k)), D(S, 3.3, -0.3, 2.2), 36, fill=1.0)
@@ -674,8 +691,8 @@ def fence_break(S, k, t, lt):
     sea(S, 'day', t)
     fence(S, 4)
     b = S['boy']
-    bp = (3.0, -2.0)
-    on(S, b, bp[0], bp[1], look_yaw(bp, (8.6, -4.6)))
+    bp = (2.6, -1.6)
+    on(S, b, bp[0], bp[1], look_yaw(bp, (-1.5, -7.5)))
     br = sm((lt - 0.5) / 0.12)
     b.apply(blend(P('stand', aL=(1.9, 0.5, 0.4), aR=(1.9, 0.5, 0.4), head=(-0.1, 0.0), lean=-0.1),
                   P('stand', aL=(0.7, 0.45, 0.5), aR=(0.7, 0.45, 0.5), lR=(1.25, 1.5), lean=0.25, head=(0.35, 0.0)), sm((lt - 0.25) / 0.25)))
@@ -690,7 +707,7 @@ def fence_break(S, k, t, lt):
         p.rotation_euler = (0, s * 0.6 * br, ang)
         p.scale = (0.95, 0.1, 0.1)
     splash(S, (mid[0], mid[1], mid[2]), (lt - 0.5) * 0.9 if br > 0 else 0, 5, 0.9, 0.7, s=0.35)
-    shoot(S, D(S, lerp(9.0, 8.6, k), lerp(-4.7, -4.4, k), lerp(1.8, 2.0, k)), D(S, 3.0, -2.0, 1.95), 40, fill=1.0)
+    shoot(S, D(S, lerp(-1.9, -1.5, k), lerp(-7.9, -7.4, k), lerp(1.8, 2.0, k)), D(S, 2.6, -1.6, 1.95), 40, fill=1.0)
 
 
 def cook(S, k, t, lt):
@@ -747,13 +764,13 @@ def ship_appears(S, k, t, lt):
     """A ship on the horizon. He jumps up at the rail and points."""
     sea(S, 'day', t)
     fence(S, 6)
-    ship_at(S, lerp(470, 440, k), lerp(150, 60, k), -PI / 2 - 0.2)
+    ship_at(S, lerp(400, 350, k), lerp(380, 300, k), -PI / 2 - 0.5)
     b = S['boy']
     bp = (3.8, -1.6)
-    on(S, b, bp[0], bp[1], look_yaw(bp, (60, 2)), 0.25 * abs(math.sin(lt * 7)) * sm((lt - 0.3) / 0.2))
+    on(S, b, bp[0], bp[1], look_yaw(bp, (60, 48)), 0.25 * abs(math.sin(lt * 7)) * sm((lt - 0.3) / 0.2))
     b.apply(blend(P('stand', head=(-0.1, 0.0)), P('point', aR=(1.5, -0.1, 0.05), aL=(1.9, 0.5, 0.3), head=(-0.15, 0.0)), (lt - 0.2) / 0.3))
     b.face, b.jawv = 'wide', 0.6
-    shoot(S, D(S, lerp(0.2, 0.8, k), lerp(-8.8, -8.2, k), lerp(2.2, 2.4, k)), D(S, 6.6, -0.8, 2.9), 30, fill=1.0)
+    shoot(S, D(S, lerp(0.2, 0.8, k), lerp(-8.8, -8.2, k), lerp(2.2, 2.4, k)), D(S, 6.3, 0.3, 2.9), 30, fill=1.0)
 
 
 def wave_cloth(S, k, t, lt):
@@ -811,7 +828,7 @@ def cry(S, k, t, lt):
     b = S['boy']
     on(S, b, 0.7, -1.2, 0.15)
     sob = 0.03 * math.sin(lt * 9)
-    b.apply(P('sit', head=(0.62 + sob, 0.0), **dict(HUG, lean=0.42 + sob)))
+    b.apply(P('sit', head=(0.42 + sob, 0.0), **dict(HUG, lean=0.4 + sob)))
     b.face = 'shut'
     rk = S['rook']
     on(S, rk, 2.5, -1.0, -0.2)
@@ -917,7 +934,7 @@ def turn(S, k, t, lt):
     bp = (1.6, 2.6)
     on(S, b, bp[0], bp[1], look_yaw(bp, (10, 80)), 0.3 * abs(math.sin(lt * 8)) * sm((lt - 0.5) / 0.2))
     b.apply(blend(P('stand', aR=(1.0, -0.2, 1.7, 0.4)), P('up'), (lt - 0.5) / 0.25))
-    shoot(S, D(S, lerp(2.2, 1.6, k), lerp(-11.5, -10.5, k), lerp(8.6, 9.0, k)), (lerp(2, -1, k), 80, 6.5), 30, fill=1.2, fcol='FFD8B0')
+    shoot(S, D(S, lerp(2.2, 1.6, k), lerp(-11.5, -10.5, k), lerp(8.6, 9.0, k)), (lerp(-12, -15, k), 80, 6.5), 30, fill=1.2, fcol='FFD8B0')
 
 
 # ---------------------------------------------------------------- the rescue
@@ -926,7 +943,7 @@ SHIPY = 26.0
 
 def high_waves(S, k, t, lt):
     """The hull stands over the hut like a wall, and the swell between them heaves. The crew are small figures at the rail."""
-    sea(S, 'grey', t, 1.15)
+    sea(S, 'grey', t, 2.0)
     fence(S, 9)
     ship_at(S, lerp(34, 24, k), SHIPY + 4 + 2.5 * math.sin(t * 0.8), 0.0, 0.5 * math.sin(t * 0.9))
     for j, c in enumerate(S['crew']):
@@ -936,12 +953,12 @@ def high_waves(S, k, t, lt):
     bp = (1.8, 2.6)
     on(S, b, bp[0], bp[1], PI)
     b.apply(P('up', aL=(2.7, 0.4 + 0.3 * math.sin(lt * 10), 0.2), aR=(2.7, 0.4 - 0.3 * math.sin(lt * 10), 0.2), head=(-0.45, 0.0)))
-    shoot(S, D(S, lerp(-8.0, -7.0, k), lerp(-13.0, -12.0, k), lerp(0.2, 0.5, k)), (3.0, 9.0, 8.2), 22, fill=1.0, roll=0.05 * math.sin(t * 1.1))
+    shoot(S, (lerp(-8.0, -7.0, k), lerp(-13.0, -12.0, k), lerp(2.7, 3.1, k)), (3.0, 9.0, 8.4), 22, fill=1.0, roll=0.05 * math.sin(t * 1.1))
 
 
 def rope_throw(S, k, t, lt):
     """From the ship's deck: a crewman heaves a line. It uncoils through the air and drops into the water short of the hut."""
-    sea(S, 'grey', t, 1.1)
+    sea(S, 'grey', t, 1.7)
     fence(S, 9)
     sx, sy = 3.0, SHIPY + 4
     ship_at(S, sx, sy)
@@ -960,15 +977,15 @@ def rope_throw(S, k, t, lt):
     end = (lerp(h[0], 1.5, fly), lerp(h[1], 9.5, fly), lerp(h[2], 0.0, fly) + 5.0 * math.sin(fly * PI) * (1 - 0.4 * fly))
     mid = ((h[0] + end[0]) / 2, (h[1] + end[1]) / 2, (h[2] + end[2]) / 2 + 1.5 * math.sin(fly * PI) - 2.5 * fly)
     if lt > 0.28:
-        rope(S, 0, h, mid, 0.06)
-        rope(S, 1, mid, end, 0.06)
+        rope(S, 0, h, mid, 0.13)
+        rope(S, 1, mid, end, 0.13)
     splash(S, (1.5, 9.5, 0.0), (lt - 0.78) * 1.5, 9, 1.6, 1.6)
     shoot(S, (sx - 3.0 + lerp(0.6, 0.0, k), sy - lerp(4.6, 5.2, k), lerp(18.2, 17.8, k)), (sx - 3.0, sy - 24.0, 3.0), 24, fill=1.1)
 
 
 def jump(S, k, t, lt):
     """He goes off the edge of the raft towards the line, arms out. Rook flaps up off the deck and loses a feather."""
-    sea(S, 'grey', t, 1.0)
+    sea(S, 'grey', t, 1.5)
     fence(S, 9)
     ship_at(S, 8.0, SHIPY + 6)
     u = sm((lt - 0.35) / 0.6)
@@ -980,21 +997,21 @@ def jump(S, k, t, lt):
     b.apply(blend(P('brace'), P('swim', lL=(-0.2, 0.3), lR=(0.3, 0.6)), (lt - 0.25) / 0.25))
     b.face, b.jawv = 'wide', 0.5
     splash(S, (1.6, 8.1, 0.2), (lt - 0.92) * 1.5, 12, 2.0, 2.0, s=1.2)
-    rope(S, 0, (2.2, 9.6, 0.1), (5.0, 22.0, 13.0), 0.05)
+    rope(S, 0, (1.2, 9.6, 0.1), (3.0, 21.0, 13.0), 0.08)
     rk = S['rook']
     hop = sm((lt - 0.25) / 0.3)
-    on(S, rk, -0.4, 2.0, look_yaw((-0.4, 2.0), (9, -3)), 0.9 * hop * (1 - 0.3 * math.sin(lt * 12)))
+    on(S, rk, PERCH[0], PERCH[1], look_yaw(PERCH, (9.7, -3.0)), PERCH[2] + 0.7 * hop * (1 - 0.3 * math.sin(lt * 12)))
     fl = math.sin(lt * 24)
-    rk.apply(blend(P('stand', head=(0.0, -0.6)), P('up', aL=(1.5, 1.2 + 0.4 * fl, 0.2), aR=(1.5, 1.2 + 0.4 * fl, 0.2), lL=(0.3, 0.5), lR=(0.3, 0.5), head=(0.0, -0.6)), hop))
+    rk.apply(blend(P('stand', head=(0.0, 0.7)), P('up', aL=(1.5, 1.2 + 0.4 * fl, 0.2), aR=(1.5, 1.2 + 0.4 * fl, 0.2), lL=(0.3, 0.5), lR=(0.3, 0.5), head=(0.0, 0.5)), hop))
     S['rface'] = 'shocked'
     S['hat_jump'] = 0.3 * hop
     feather(S, world_of(rk.head, (0.3, 0, 0.3)), lt, 0.35)
-    shoot(S, D(S, lerp(10.5, 9.8, k), lerp(-1.6, -1.0, k), lerp(1.0, 1.3, k)), D(S, 1.0, 4.6, 2.1), 28, fill=1.1)
+    shoot(S, D(S, lerp(10.0, 9.4, k), lerp(1.0, 1.6, k), lerp(1.0, 1.3, k)), D(S, 0.6, 4.0, 3.3), 25, fill=1.1)
 
 
 def haul(S, k, t, lt):
     """At the ship's side: he is on the rope ladder, spray round him; a crewman hangs over the rail and catches his hand."""
-    sea(S, 'grey', t, 1.0)
+    sea(S, 'grey', t, 1.4)
     sx, sy = 0.0, 60.0
     ship_at(S, sx, sy)
     S['raft'].location = (30, 20, -40)
@@ -1032,21 +1049,21 @@ def alive(S, k, t, lt):
     tw.parent = b.body
     tw.location, tw.rotation_euler, tw.scale = (0, 0.02, 0.7), (0, 0, 0), (1, 1, 1)
     c = S['crew'][1]
-    aboard(S, c, -8.4, -9.3, look_yaw((-8.4, -9.3), (-10.0, -7.3)))
+    aboard(S, c, -11.05, -8.5, look_yaw((-11.05, -8.5), (-9.6, -8.3)))
     c.apply(P('stand', aR=(1.2, 0.0, 0.6), head=(0.25, 0.0), **dict(CROUCH, lean=0.25)))
     c.face = 'warm'
     h = world_of(c.hands[1], (0, -0.1, -0.12)) if lift < 0.5 else world_of(b.hands[1], (0, -0.1, -0.12))
     S['cup'].location = h
     c3 = S['crew'][2]
-    aboard(S, c3, -12.3, -8.3, look_yaw((-12.3, -8.3), (-9.0, -13.0)))
-    c3.apply(P('stand', aR=(1.1, -0.5, 0.5), head=(0.35, -0.5)))
+    aboard(S, c3, -9.1, -5.4, 0.0, 13.95)
+    c3.apply(P('hips', head=(0.4, 0.0)))
     c3.face = 'warm'
     rk = S['rook']
-    aboard(S, rk, -7.4, -7.35, 0.25, 13.95 - 0.5)
+    aboard(S, rk, -8.1, -7.35, 0.2, 13.95 - 0.5)
     rk.apply(P('sit', head=(0.15, 0.6), lL=(1.45, 1.5), lR=(1.45, 1.5), aL=(0.5, -0.05, 1.7, 1.3), aR=(0.42, -0.05, 1.8, 1.3), lift=-0.5, lean=0.1))
     S['rface'] = 'warm'
     lampat(S, 3, (sx - 9.0, sy - 12.5, 16.5), 1500, 'FFE8D0')
-    shoot(S, (sx + lerp(-8.4, -8.7, k), sy - lerp(14.4, 13.8, k), lerp(15.0, 15.2, k)), (sx - 9.3, sy - 7.6, 15.0), 30, fill=1.5, fcol='FFD8B8')
+    shoot(S, (sx + lerp(-8.6, -8.9, k), sy - lerp(14.6, 14.0, k), lerp(15.0, 15.2, k)), (sx - 9.0, sy - 7.6, 15.0), 28, fill=1.5, fcol='FFD8B8')
 
 
 def ship_away(S, k, t, lt):
@@ -1054,8 +1071,10 @@ def ship_away(S, k, t, lt):
     sea(S, 'dusk', t)
     fence(S, 9)
     S['raft'].rotation_euler = (S['raft'].rotation_euler[0], S['raft'].rotation_euler[1], 0.25 + 0.2 * k)
-    ship_at(S, lerp(70, 130, k), lerp(170, 290, k), 1.15)
-    shoot(S, D(S, lerp(-9.0, -10.5, k), lerp(-12.0, -13.5, k), lerp(3.0, 4.2, k)), (14, 30, 5.0), 30, fill=0.6)
+    ship_at(S, lerp(200, 290, k), lerp(95, 140, k), 0.5)
+    S['sunball'].location = (3700, 2050, 420)
+    S['sun'].location = (370, 205, 50)
+    shoot(S, D(S, lerp(-12.0, -13.5, k), lerp(-16.0, -17.5, k), lerp(4.4, 5.6, k)), (29, 20, 5.0), 25, fill=0.8)
 
 
 # ---------------------------------------------------------------- the end
