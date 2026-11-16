@@ -252,11 +252,11 @@ def days3(cv, c):
     n = min(3, int(c.k * 3.3) + 1)
     for i in range(3):
         on = i < n
-        cx, cy = 250, 330 + i * 170
+        cx, cy = 170, 300 + i * 170
         cv.drawCircle(cx, cy, 58, P(h('FFD070') if on else h('3A4A6E')))
         if on:
             Wd.glow(cv, cx, cy, 100, h('FFD070'), 0.35)
-        fit(cv, f'DAY {i + 1}', cx + 30, cy + 22, 60, 220, INK if on else h('7E8AA6'), None)
+        fit(cv, f'DAY {i + 1}', cx + 190, cy + 24, 70, 220, WHITE if on else h('5A6C98'))
     k = min(1.0, c.k * 1.1)
     a, b = (700, 850), (1010, 215)
     m = 26
@@ -397,7 +397,7 @@ def days_card(cv, c):
         if i / n > c.k * 1.12:
             break
         cv.drawCircle(260 + i * 56, 790 + 10 * math.sin(i * 0.8), 11, P(ORANGE))
-    fit(cv, 'THREE DAYS', 520, 230, 150, 900)
+    fit(cv, 'THREE DAYS', 600, 230, 140, 820)
     d = min(3, int(c.k * turns) + 1)
     fit(cv, f'DAY {d}', 1560, 230, 96, 400, AMBER)
 
@@ -448,7 +448,7 @@ def pin_same(cv, c):
         if c.lt > 0.5 + i * 0.3:
             fit(cv, s_, 1390, 520 + i * 100, 78, 800, WHITE if i == 0 else AMBER, None)
     if c.lt > 1.2:
-        stamp(cv, 'TRUE', 1560, 720, -10, min(1, (c.lt - 1.2) / 0.12), 120, GREEN)
+        stamp(cv, 'TRUE', 1640, 775, -8, min(1, (c.lt - 1.2) / 0.12), 96, GREEN)
 
 
 def book_card(cv, c):
@@ -465,7 +465,7 @@ def book_card(cv, c):
     cv.drawRect(skia.Rect.MakeXYWH(-232, -640, 34, 640), P(h('C9CCC0')))
     cv.drawRect(skia.Rect.MakeXYWH(-200, -640, 440, 640), P(h('22335E')))
     cv.drawRect(skia.Rect.MakeXYWH(-200, -640, 440, 640), P(INK, 8))
-    cv.drawLine(-140, -150, 180, -520, P(ORANGE, 10))                         # one orange line: a rope
+    cv.drawLine(-150, -90, 190, -170, P(ORANGE, 10))                          # one orange line: a rope
     cv.drawRect(skia.Rect.MakeXYWH(-160, -600, 360, 8), P(h('7FB0E0')))
     cv.drawRect(skia.Rect.MakeXYWH(-160, -60, 360, 8), P(h('7FB0E0')))
     for i, s_ in enumerate(('TOUCHING', 'THE', 'VOID')):
@@ -508,7 +508,7 @@ def both_card(cv, c):
     tick(cv, jx - 190, jy - 30, 1.3, ease((c.lt - 0.9) / 0.12))
     tick(cv, sx + 230, sy - 20, 1.3, ease((c.lt - 1.5) / 0.12))
     if c.lt > 1.5:
-        fit(cv, 'BOTH LIVED', 380, 260, 120, 660, AMBER)
+        fit(cv, 'BOTH LIVED', 440, 260, 110, 600, AMBER)
 
 
 SHOTS = {f.__name__: f for f in (card_1985, pin_two, days3, nogas, drop_card, plan_card, days_card, six_card, pin_blame, pin_same, book_card, both_card)}
@@ -595,7 +595,7 @@ for _fn, _kinds in (
 
 
 def THUMB(cv, c):
-    """1280x720: the 3D still (he hangs on the rope under the lip in the storm; Rook looks down from above) and a four-word hook on the left."""
+    """1280x720: the 3D still (he hangs on the rope under the lip in the storm; Rook looks down from above) and the hook on the left."""
     if 'thumb' not in _IMG:
         p = os.path.join(B3D, 'still_thumb.jpg')
         _IMG['thumb'] = skia.Image.open(p) if os.path.exists(p) else None
@@ -605,6 +605,6 @@ def THUMB(cv, c):
         cv.clear(h('0E1C34'))
     cv.drawRect(skia.Rect(0, 0, 1280, 720), skia.Paint(Shader=skia.GradientShader.MakeLinear(
         [(640, 0), (0, 0)], [0x00000000, 0xE6000000])))
-    Wd.text_card(cv, 'HE CUT', 300, 250, 150, WHITE, 0xFF000000)
-    Wd.text_card(cv, 'THE ROPE', 300, 420, 132, RED, 0xFF000000)
-    Wd.text_card(cv, 'BOTH LIVED', 300, 570, 88, AMBER, 0xFF000000)
+    Wd.text_card(cv, 'HE CUT', 310, 270, 140, WHITE, 0xFF000000)
+    Wd.text_card(cv, 'THE ROPE', 310, 420, 118, RED, 0xFF000000)
+    Wd.text_card(cv, 'BOTH LIVED', 310, 560, 84, AMBER, 0xFF000000)
