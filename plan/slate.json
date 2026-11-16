@@ -269,7 +269,7 @@
    "world": "cave chambers, flooded sumps",
    "est_score": 84,
    "long_form_candidate": true,
-   "status": "in progress",
+   "status": "authored",
    "facts": "verify with 2+ sources at authoring; skip if they do not hold",
    "claimed_at": "2026-11-16T06:15:25Z"
   },
