@@ -1557,7 +1557,7 @@ def set_ward(r):
     box('2E323A', (D, 2.1, 1.52), (1.7, 1.2, 0.44), r, rough=0.4)                                             # a typewriter
     box('1E2026', (D, 2.6, 1.42), (1.5, 0.5, 0.2), r, rough=0.4)
     add('cylinder', '14161C', (D, 1.6, 1.8), rot=(0, PI / 2, 0), radius=0.13, depth=2.0, vertices=8, parent=r, rough=0.4)
-    out['sheet'] = keep(box('F4F0E2', (D, 1.52, 2.05), (1.3, 0.03, 0.7), r, rot=(0.15, 0, 0)))
+    out['sheet'] = keep(box('F4F0E2', (D, 1.52, 1.9), (1.2, 0.03, 0.4), r, rot=(0.15, 0, 0)))
     for j in range(7):                                                # typed pages, and a mug
         box('F4F0E2' if j % 2 else 'E8E2D0', (D - 2.1, 1.5, 1.33 + 0.045 * j), (1.2, 1.6, 0.04), r, rot=(0, 0, 0.12 * rn(j, 131) - 0.06))
     add('cylinder', 'FF7A1A', (D + 1.7, 1.0, 1.46), radius=0.16, depth=0.32, vertices=8, parent=r, rough=0.4)
@@ -1780,7 +1780,7 @@ def two_look(S, k, t, lt):
     A = daysky(S, 'west', sdir=(-0.5, 0.5, 0.6))
     j, si, rk = face_people(S, A, lt + 2.0)
     slide_ = sm((lt - 0.6) / 0.5)
-    rk.apply(blend(P('stand', head=(-0.75, 0.0), lean=-0.15), P('stand', aL=(0.3, 0.95, 0.5), aR=(0.3, 0.95, 0.5), head=(-0.85, 0.0), lean=-0.3), slide_))
+    rk.apply(blend(P('stand', head=(-0.5, 0.0), lean=-0.1), P('stand', aL=(0.3, 0.95, 0.5), aR=(0.3, 0.95, 0.5), head=(-0.6, 0.0), lean=-0.2), slide_))
     S['hat_jump'] = 0.05 * slide_
     setface(S, rook='shocked' if slide_ > 0.5 else 'deadpan', joe='warm', simon='warm')
     shoot(S, A(lerp(0.2, 1.0, k), FP + lerp(6.4, 5.6, k), lerp(1.3, 1.5, k)), A(0.9, FP, 2.45), 30, fill=1.6)
@@ -2061,7 +2061,7 @@ def snowhole(S, k, t, lt):
     si, rk = S['simon'], S['rook']
     sp = (-1.7, 0.9)
     si.place(A(sp[0], sp[1], 0.0), 0.5)
-    si.apply(P('sit', lL=(1.75, 1.9), lR=(1.75, 1.9), aL=(1.35, -0.25, 1.0), aR=(1.35, -0.25, 1.0), head=(lerp(0.75, 0.35, sm((lt - 1.4) / 0.5)), 0.0), lean=0.45))
+    si.apply(P('sit', lL=(1.75, 1.9), lR=(1.75, 1.9), aL=(0.95, -0.1, 1.45, 1.0), aR=(0.95, -0.1, 1.45, 1.0), head=(lerp(0.75, 0.35, sm((lt - 1.4) / 0.5)), 0.0), lean=0.45))
     setface(S, simon='shut' if lt < 1.6 else 'sad', rook='sad')
     lamp(S, 0, si, 26)
     rp = (2.1, 1.0)
@@ -2452,8 +2452,8 @@ def mule(S, k, t, lt):
     m.location, m.rotation_euler = A(x, y, bobz), (0, 0, -PI / 2)
     for i, lg in enumerate(S['mlegs']):
         lg.rotation_euler = (0.4 * math.sin(lt * 5.2 + (0 if i in (0, 3) else PI)), 0, 0)
-    j.place(A(x + 0.2, y, 1.72 + bobz), -PI / 2)
-    j.apply(P('stand', lL=(0.5, 0.9), lR=(1.05, 0.0), aL=(0.9, 0.0, 0.8), aR=(0.9, 0.0, 0.8), head=(0.3, 0.0), lean=0.2))
+    j.place(A(x + 0.2, y, 1.22 + bobz), -PI / 2)
+    j.apply(P('stand', lL=(0.2, 0.3), lR=(1.15, 0.0), aL=(0.9, 0.0, 0.8), aR=(0.9, 0.0, 0.8), head=(0.3, 0.0), lean=0.2))
     stiff(j, 0.55)
     ar.place(A(x - 4.0, y - 0.6, 0.0), -PI / 2)
     ar.apply(dict(walk(lt, 1.3), aL=(-0.6, 0.2, 0.4)))
@@ -2531,7 +2531,7 @@ def yates_sit(S, k, t, lt):
     si, rk = S['simon'], S['rook']
     sp = (-12.0, -8.0)
     si.place(A(sp[0], sp[1], 0.0), 1.0)
-    si.apply(P('sit', lL=(1.75, 1.9), lR=(1.75, 1.8), aL=(1.3, -0.2, 0.9), aR=(1.3, -0.2, 0.9), head=(lerp(0.6, 0.2, sm((lt - 1.6) / 0.4)), 0.0), lean=0.4))
+    si.apply(P('sit', lL=(1.75, 1.9), lR=(1.75, 1.8), aL=(0.95, -0.1, 1.45, 1.0), aR=(0.95, -0.1, 1.45, 1.0), head=(lerp(0.6, 0.2, sm((lt - 1.6) / 0.4)), 0.0), lean=0.4))
     S['face']['simon'] = 'sad'
     arr = sm(lt / 0.7)
     rp = (sp[0] + lerp(6.0, 2.6, arr), sp[1] + 1.2, 0.0)
@@ -2554,16 +2554,16 @@ def desk_write(S, k, t, lt):
     jl.apply(P('sit', lL=(1.5, 1.5), lR=(1.5, 1.5), aL=(1.05 + 0.08 * ty * (1 - stop), -0.1, 0.9), aR=(1.05 - 0.08 * ty * (1 - stop), -0.1, 0.9),
                head=(lerp(0.45, 0.0, stop), 0.0), lean=0.25, lift=-0.5))
     S['face']['jlater'] = 'squint' if stop < 0.5 else 'calm'
-    S['ward']['sheet'].location.z = 2.0 + 0.1 * (lt % 1.0)
-    rp = (DESK - 3.4, 2.2, 0.0)
-    rk.place(A(*rp), look_yaw(rp, (DESK - 9, -8)) + 0.9)
+    S['ward']['sheet'].location.z = 1.86 + 0.08 * (lt % 1.0)
+    rp = (DESK - 3.0, 4.3, 0.0)
+    rk.place(A(*rp), look_yaw(rp, (DESK - 4, -8)))
     tap = 0.5 + 0.5 * math.sin(lt * 8)
     rk.apply(P('stand', aR=(1.2, 0.0, 1.5, 0.4), aL=(1.25, -0.25, 2.2 - 0.2 * tap, -0.6), head=(0.4, -0.2)))
     S['page'].location = world_of(rk.hands[1], (-0.1, -0.3, -0.1))
-    S['page'].rotation_euler = (0.5, 0, look_yaw(rp, (DESK - 9, -8)) + 0.9)
+    S['page'].rotation_euler = (0.5, 0, look_yaw(rp, (DESK - 4, -8)))
     S['face']['rook'] = 'calm'
-    rooklight(S, A(DESK - 4.5, -1.5, 3.6), 220)
-    shoot(S, A(DESK - lerp(3.2, 2.4, k), lerp(-4.4, -3.9, k), lerp(2.9, 2.7, k)), A(DESK - 1.2, 2.6, 2.25), 32, fill=1.5, fcol='FFE0C0')
+    rooklight(S, A(DESK - 4.5, 0.5, 3.6), 220)
+    shoot(S, A(DESK - lerp(3.4, 2.8, k), lerp(-2.6, -2.1, k), lerp(2.7, 2.6, k)), A(DESK - 1.0, 3.2, 2.2), 34, fill=1.5, fcol='FFE0C0')
 
 
 def photo_two(S, k, t, lt):
