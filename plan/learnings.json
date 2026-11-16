@@ -1,5 +1,96 @@
 {
- "updated": "2026-11-12",
- "best": null,
- "learnings": []
+ "updated": "2026-11-16",
+ "best": "r001-okene",
+ "learnings": [
+  {
+   "episode": "f001-trail-suitcase",
+   "signal": "Views without subscribers",
+   "action": "Make Rook's sign-off promise the next case more concretely."
+  },
+  {
+   "episode": "m001-wow-signal",
+   "signal": "Short watched 17% on average (target 70%+)",
+   "action": "Tighten the first three seconds and cut the slowest middle beat in the next scripts."
+  },
+  {
+   "episode": "m001-wow-signal",
+   "signal": "Views without subscribers",
+   "action": "Make Rook's sign-off promise the next case more concretely."
+  },
+  {
+   "episode": "r001-okene",
+   "signal": "Short watched 56% on average (target 70%+)",
+   "action": "Tighten the first three seconds and cut the slowest middle beat in the next scripts."
+  },
+  {
+   "episode": "r001-okene-long",
+   "signal": "Long-form watched 10% on average (target 40%+)",
+   "action": "Add a stronger mid-video reversal and shorten the setup."
+  },
+  {
+   "episode": "r002-grimes",
+   "signal": "Short watched 63% on average (target 70%+)",
+   "action": "Tighten the first three seconds and cut the slowest middle beat in the next scripts."
+  },
+  {
+   "episode": "r002-grimes-long",
+   "signal": "Long-form watched 12% on average (target 40%+)",
+   "action": "Add a stronger mid-video reversal and shorten the setup."
+  },
+  {
+   "episode": "r004-packard",
+   "signal": "Short watched 47% on average (target 70%+)",
+   "action": "Tighten the first three seconds and cut the slowest middle beat in the next scripts."
+  },
+  {
+   "episode": "r004-packard-long",
+   "signal": "Long-form watched 14% on average (target 40%+)",
+   "action": "Add a stronger mid-video reversal and shorten the setup."
+  },
+  {
+   "episode": "r005-vulovic",
+   "signal": "Short watched 53% on average (target 70%+)",
+   "action": "Tighten the first three seconds and cut the slowest middle beat in the next scripts."
+  },
+  {
+   "episode": "r005-vulovic",
+   "signal": "Views without subscribers",
+   "action": "Make Rook's sign-off promise the next case more concretely."
+  },
+  {
+   "episode": "r005-vulovic-long",
+   "signal": "Long-form watched 21% on average (target 40%+)",
+   "action": "Add a stronger mid-video reversal and shorten the setup."
+  },
+  {
+   "episode": "r006-wisnierska",
+   "signal": "Short watched 31% on average (target 70%+)",
+   "action": "Tighten the first three seconds and cut the slowest middle beat in the next scripts."
+  },
+  {
+   "episode": "r006-wisnierska-long",
+   "signal": "Long-form watched 15% on average (target 40%+)",
+   "action": "Add a stronger mid-video reversal and shorten the setup."
+  },
+  {
+   "episode": "r007-rankin",
+   "signal": "Short watched 15% on average (target 70%+)",
+   "action": "Tighten the first three seconds and cut the slowest middle beat in the next scripts."
+  },
+  {
+   "episode": "r007-rankin",
+   "signal": "Views without subscribers",
+   "action": "Make Rook's sign-off promise the next case more concretely."
+  },
+  {
+   "episode": "r008-prosperi",
+   "signal": "Short watched 65% on average (target 70%+)",
+   "action": "Tighten the first three seconds and cut the slowest middle beat in the next scripts."
+  },
+  {
+   "episode": "r008-prosperi",
+   "signal": "Views without subscribers",
+   "action": "Make Rook's sign-off promise the next case more concretely."
+  }
+ ]
 }
