@@ -1457,9 +1457,9 @@ def job_wide(S, k, t, lt):
     b = S['boy']
     on(S, b, 1.0, -3.25, 0.0, -0.42)
     b.apply(P('sit', aL=(0.5, 0.2, 0.4), aR=(0.5, 0.2, 0.4), head=(0.05, 0.5 * math.sin(lt * 1.2)), lean=0.1, lL=(1.45 + 0.2 * math.sin(lt * 3), 1.4), lR=(1.45 - 0.2 * math.sin(lt * 3), 1.4)))
-    a = lerp(-0.75, -0.3, sm(k))
-    R = lerp(21.0, 16.0, k)
-    shoot(S, (R * math.sin(a) + 1.0, -R * math.cos(a), lerp(6.5, 4.2, k)), (0.3, 0.0, 2.2), 30, fill=0.8)
+    a = lerp(-1.05, 0.3, k)
+    R = lerp(20.0, 13.0, k)
+    shoot(S, (R * math.sin(a) + 1.0, -R * math.cos(a), lerp(7.5, 3.4, k)), (0.3, 0.0, 2.2), 30, fill=0.8)
 
 
 def rook_coin(S, k, t, lt):
@@ -1470,16 +1470,19 @@ def rook_coin(S, k, t, lt):
     on(S, b, 3.4, -3.25, -0.2, -0.42)
     b.apply(P('sit', aL=(0.5, 0.2, 0.4), aR=(0.5, 0.2, 0.4), head=(0.0, -0.3), lean=0.05))
     rk = S['rook']
-    rp = (0.9, -2.0)
-    cam = (lerp(3.2, 2.6, k), lerp(-8.4, -7.6, k), lerp(2.0, 2.3, k))
-    on(S, rk, rp[0], rp[1], look_yaw(rp, cam) - 0.3)
+    rx = lerp(-1.8, 1.5, k)
+    cam = (lerp(1.2, 5.8, k), lerp(-9.8, -8.2, k), lerp(2.0, 2.5, k))
+    on(S, rk, rx, -2.0, look_yaw((rx, -2.0), cam) + 0.5)
     ph = (lt * 1.4) % 1
-    rk.apply(P('stand', aR=(0.75, 0.15, 1.35 - 0.5 * math.sin(ph * PI)), aL=(0.1, 0.2, 0.3), head=(0.1 - 0.3 * math.sin(ph * PI), 0.45)))
+    pose = walk(lt, 1.1)
+    pose['aR'] = (0.75, 0.15, 1.35 - 0.5 * math.sin(ph * PI), 0.0)
+    pose['head'] = (0.1 - 0.3 * math.sin(ph * PI), 0.35)
+    rk.apply(pose)
     S['rface'] = 'deadpan'
     h = world_of(rk.hands[1], (0, -0.1, -0.12))
     S['coin'].location = (h[0], h[1], h[2] + 0.1 + 1.5 * math.sin(ph * PI))
     S['coin'].rotation_euler = (lt * 30, 0.4, 0)
-    shoot(S, D(S, cam[0] + 0.8, cam[1] - 1.2, cam[2] + 0.3), D(S, 2.0, -2.4, 1.6), 32, fill=1.0)
+    shoot(S, D(S, *cam), D(S, rx + 0.9, -2.4, 1.7), 32, fill=1.0)
 
 
 def moored(S, k, t, lt):
@@ -1788,8 +1791,8 @@ def shark_top(S, k, t, lt):
     rk.apply(P('stand', aL=(0.5, 0.5, 0.9), aR=(0.5, 0.5, 0.9), lean=0.25, head=(0.5, 0.0)))
     S['rface'] = 'shocked'
     feather(S, world_of(rk.head, (0.3, 0, 0.3)), lt, 0.3)
-    lampat(S, 4, (0, -3, 14), 5000, 'E8F0FF')
-    shoot(S, (lerp(1.5, 0.5, k), lerp(-7.0, -5.5, k), lerp(19, 17, k)), (0.5, 0.0, 0.0), 30, fill=1.2)
+    lampat(S, 4, (0, -3, 15), 16000, 'E8F0FF')
+    shoot(S, (lerp(1.5, 0.5, k), lerp(-7.0, -5.5, k), lerp(16, 14, k)), (0.5, 0.0, 0.0), 30, fill=1.2)
 
 
 def bible(S, k, t, lt):
@@ -1882,7 +1885,7 @@ def alone_wide(S, k, t, lt):
     S['rface'] = 'sad'
     a = lerp(0.3, 0.75, k)
     R, hgt = lerp(20, 34, sm(k)), lerp(10, 20, sm(k))
-    lampat(S, 4, (0, -6, 14), 7000, 'B8CCFF')
+    lampat(S, 4, (0, -6, 16), 22000, 'B8CCFF')
     shoot(S, (R * math.sin(a), -R * math.cos(a), hgt), (0, 0, 1.0), 34, fill=0.0)
 
 
@@ -2144,10 +2147,10 @@ def walk_inland(S, k, t, lt):
     b.face = 'warm'
     rk = S['rook']
     tn = sm((lt - 1.4) / 0.5)
-    put(rk, A(4.6, 5.0 - 2.5 * sm((lt - 1.9) / 1.5), 0.0), lerp(PI, 0.1, tn))
+    put(rk, A(1.6, 6.0 - 2.5 * sm((lt - 1.9) / 1.5), 0.0), lerp(PI, 0.1, tn))
     rk.apply(blend(P('hips', head=(-0.05, 0.0)), walk(lt, 1.3), sm((lt - 1.8) / 0.3)))
     S['rface'] = 'calm'
-    shoot(S, A(lerp(-3.0, -2.6, k), by - lerp(7.5, 6.0, k), lerp(1.6, 1.9, k)), A(0.3, by + 1.0, 2.3), 34, fill=1.1)
+    shoot(S, A(8.0, by + lerp(-2.5, 2.0, k), lerp(1.6, 2.0, k)), A(-0.8, by - 0.3, 2.2), 34, fill=1.1)
 
 
 def rook_shore(S, k, t, lt):
@@ -2204,3 +2207,32 @@ def _reframed(f, dz, mul):
 
 for _k, (_dz, _mul) in REFRAME.items():
     SHOTS3D[_k] = _reframed(SHOTS3D[_k], _dz, _mul)
+
+# Long shots on a calm sea barely change from frame to frame, and the gate (rightly) fails a stretch where nothing moves. Every shot
+# therefore swings a little round its own look-at point and eases in, at a rate per second; prm "orb": [degrees, dolly, rise] overrides it.
+ORB = dict(job_wide=0.0, rook_coin=0.0, walk_inland=0.0, snap_wide=4.0, rope_close=3.0, alone_wide=16.0, ship_away=14.0, fifty_huts=10.0, night_ship=9.0, shark_top=18.0, wave_cloth=14.0,
+           rook_shore=22.0, wait=12.0, haircut=14.0, signoff=12.0, fence_break=14.0, cry=8.0, dawn_empty=13.0, carrier_pass=7.0, circle=9.0,
+           dock=8.0, home_rook=9.0, bible=8.0, rook_quiet=8.0, wring=8.0, rook_tip=8.0, wait_boat=9.0, gas_out=7.0, cook=8.0,
+           lamp_signal=8.0, sail_past=8.0, call=8.0, bridge=5.0, supplies=3.0, grab_radio=3.0, fish_glow=10.0, rook_quip=8.0, walkie=7.0,
+           dock_meet=7.0, turn=4.0, rope_throw=4.0, haul=5.0, alive=7.0, day49=7.0, fishing=8.0, high_waves=5.0, sip=6.0)
+
+
+def _moving(f, name):
+    sign = 1 if sum(map(ord, name)) % 2 else -1
+    rate = ORB.get(name, 6.0)
+
+    def g(S, k, t, lt):
+        f(S, k, t, lt)
+        d = lt / k if k > 0.02 else 2.5
+        o = S['prm'].get('orb')
+        deg, dolly, rise = (list(o) + [0, 0])[:3] if o else (sign * rate * d, min(0.3, 0.045 * d) if rate else 0.0, 0.0)
+        c, tg = S['camrig'].location, S['camtgt'].location
+        a = math.radians(deg) * (k - 0.5)
+        m = 1 - dolly * (k - 0.5)
+        dx, dy = c[0] - tg[0], c[1] - tg[1]
+        S['camrig'].location = (tg[0] + (dx * math.cos(a) - dy * math.sin(a)) * m, tg[1] + (dx * math.sin(a) + dy * math.cos(a)) * m, c[2] + rise * (k - 0.5))
+    g.__name__ = f.__name__
+    return g
+
+
+SHOTS3D = {name: _moving(f, name) for name, f in SHOTS3D.items()}

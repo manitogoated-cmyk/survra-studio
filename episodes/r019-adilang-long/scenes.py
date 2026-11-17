@@ -101,6 +101,10 @@ def chart(cv, c, top='1A5A80', low='0C2C48'):
         cv.drawLine(0, 90 * i, W, 90 * i, P(0xFFFFFFFF, 2, a=0.07))
     for i in range(16):
         cv.drawLine(130 * i, 0, 130 * i, H, P(0xFFFFFFFF, 2, a=0.07))
+    for i in range(26):                                            # the sea keeps moving under the chart
+        yy = 40 + 40 * i
+        xx = (rn(i, 31) * W + c.t * (90 + 80 * rn(i, 32))) % (W + 300) - 300
+        cv.drawLine(xx, yy, xx + 160 + 140 * rn(i, 33), yy, P(0xFFFFFFFF, 7, a=0.24))
 
 
 def land(cv, pts, seed=1):
@@ -148,6 +152,7 @@ def pay_card(cv, c):
         yy = 650 + 30 * i
         xx = (rn(i, 4) * W + c.t * (30 + 20 * rn(i, 5))) % W
         cv.drawLine(xx, yy, xx + 110 + 80 * rn(i, 6), yy, P(0xFFFFFFFF, 4, a=0.14))
+        cv.drawLine((xx * 1.7 + c.t * 120) % W, yy + 15, (xx * 1.7 + c.t * 120) % W + 150, yy + 15, P(0xFFFFFFFF, 4, a=0.1))
     Wd.glow(cv, 1460, 560, 330, h('FFE2A0'), 0.5)
     cv.save()
     cv.translate(1400, 640 + 8 * math.sin(c.t * 2.2))
@@ -316,6 +321,10 @@ def ten_card(cv, c):
     """'More than ten ships pass that hut. Not one of them stops.' Ship after ship crosses and is struck through."""
     Wd.vgrad(cv, 0, 0, W, 560, [(0, h('7EBCE6')), (1, h('CFE6F2'))])
     Wd.vgrad(cv, 0, 560, W, H, [(0, h('1C6E94')), (1, h('0A2E48'))])
+    for i in range(16):
+        yy = 590 + 30 * i
+        xx = (rn(i, 41) * W + c.t * (110 + 90 * rn(i, 42))) % (W + 300) - 300
+        cv.drawLine(xx, yy, xx + 170 + 120 * rn(i, 43), yy, P(0xFFFFFFFF, 7, a=0.28))
     n = c.k * 15.0
     cnt = min(10, int(n))
     for i in range(11):
