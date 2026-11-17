@@ -1,0 +1,13 @@
+{
+  "id": "r024-alkemade", "spine": "v2", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.4,
+  "segments": [
+    {"scene": "hook", "mood": "hook", "text": "his bomber is on fire, his parachute is burning, and he jumps anyway."},
+    {"scene": "doubt", "mood": "tense", "text": "No parachute? No chance."},
+    {"scene": "fall", "mood": "action", "text": "A night fighter has ripped the bomber open, five and a half kilometres up. Burn, or jump. He picks the quick way down."},
+    {"scene": "land", "mood": "wonder", "text": "He wakes up in deep snow, under a hole smashed through the pine trees. Nothing is broken. Just a twisted knee."},
+    {"scene": "rehook", "mood": "tense", "text": "But now he's a prisoner, and the Gestapo don't believe a word. No parachute? Then he's a spy, and he buried it."},
+    {"scene": "proof", "mood": "tense", "text": "So he tells them: go and look. They search the wood, and the wreck. The harness straps: still folded. His parachute never left the plane."},
+    {"scene": "payoff", "mood": "triumph", "text": "So the Germans put it in writing. He fell {18,000|eighteen thousand} feet with no parachute. True in all respects."},
+    {"scene": "end", "mood": "sad", "text": "Four of his crew never came home. I was wrong. Case closed. It all began the night"}
+  ]
+}
