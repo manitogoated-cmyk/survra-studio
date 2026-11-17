@@ -1,0 +1,21 @@
+{
+ "id": "r019-adilang-long",
+ "format": "long",
+ "status": "draft",
+ "synthetic": false,
+ "host": "rook",
+ "case": 19,
+ "case_of": "r019-adilang",
+ "title": "Case 019: 49 Days Adrift in a Floating Fishing Hut (Full Case File)",
+ "playlist": "Rook's Case Files (Full Cases)",
+ "sources": [
+  "https://www.thejakartapost.com/news/2018/09/23/indonesian-teenager-survives-49-days-adrift-in-guam-waters.html",
+  "https://www.kpbs.org/news/2018/09/24/19-year-old-survives-49-days-at-sea-after",
+  "https://www.irishtimes.com/news/world/asia-pacific/indonesian-teenager-survives-49-days-adrift-at-sea-in-fishing-hut-1.3639807",
+  "https://globalnews.ca/news/4480785/indonesian-teenager-lost-at-sea"
+ ],
+ "authoring": {
+  "claimed_at": "2026-11-17T02:54:26Z",
+  "run": "scheduled long run, 17 Nov 2026"
+ }
+}
