@@ -323,8 +323,9 @@
    "world": "Lancaster turret, forest in snow",
    "est_score": 84,
    "long_form_candidate": false,
-   "status": "idea",
-   "facts": "verify with 2+ sources at authoring; skip if they do not hold"
+   "status": "in progress",
+   "facts": "verify with 2+ sources at authoring; skip if they do not hold",
+   "claimed_at": "2026-11-17T11:38:42Z"
   },
   {
    "case": 25,
