@@ -2149,12 +2149,14 @@ def sealed(S, k, t, lt):
     sx, sy = SITE
     S['lid'].location = A(sx, sy, 0)
     S['lid'].scale = (1.3, 1.3, 1.3)
-    puffs(S, A(sx - 6.0 + 9.0 * ((t * 0.25) % 1), sy - 1.0, 0.3), t, 6, 2.0, 0.5, 0.7)
+    puffs(S, A(sx - 6.0 + 9.0 * ((t * 0.25) % 1), sy - 1.0, 0.3), t, 6, 2.6, 0.7, 0.8)
+    puffs(S, A(sx + 5.0 - 9.0 * ((t * 0.2) % 1), sy + 2.5, 0.3), t + 0.5, 6, 2.6, 0.7, 0.8, 6)
     rk = S['rook']
     rp = (sx - 1.9, sy - 2.3)
     look = sm((lt - 1.6) / 0.5)
-    rk.place(A(rp[0], rp[1], 0), look_yaw(rp, (sx - 3.0, sy - 9.0)))
-    rk.apply(blend(P('hat', head=(0.45, -0.45)), P('stand', aL=(0.3, 0.1, 0.4), aR=(0.3, 0.1, 0.4), head=(-0.2, 0.5)), look))
+    come = sm(lt / 1.3)
+    rk.place(A(lerp(rp[0] - 3.4, rp[0], come), lerp(rp[1] - 1.2, rp[1], come), 0), lerp(look_yaw((0, 0), (1, 0.35)), look_yaw(rp, (sx - 3.0, sy - 9.0)), come))
+    rk.apply(blend(blend(walk(t, 1.5), P('hat', head=(0.45, -0.45)), come), P('stand', aL=(0.3, 0.1, 0.4), aR=(0.3, 0.1, 0.4), head=(-0.2, 0.5)), look))
     S['rface'] = 'calm'
     S['hat_tip'] = 0.5 * (1 - look)
     shoot(S, A(sx + lerp(-5.6, -4.8, k), sy + lerp(-7.2, -6.6, k), lerp(1.5, 1.9, k)), A(sx - 0.9, sy - 1.0, 1.6), 34, fill=0.8)
@@ -2175,7 +2177,8 @@ def photo_thumb(S, k, t, lt):
 def shift(S, k, t, lt):
     """An ordinary shift: the pickup rolls down the access road with its lamps on, two miners walking beside it. Rook rides in the back with his arms folded, looking about him."""
     A = env(S, 'ramp', '000000', fk=2.3)
-    x = lerp(-6.0, -1.0, k)
+    past = S['prm'].get('pass')                      # the second use: the camera stands still and the truck drives up to it and past
+    x = lerp(-10.0, 0.5, k) if past else lerp(-6.0, -1.0, k)
     truck_at(S, A(x, 1.2, 0.02 * abs(math.sin(t * 19))), PI / 2)
     for j, (rig, dx_, y) in enumerate(((S['men'][1], 4.4, -0.7), (S['men'][5], 6.0, 0.9))):
         rig.place(A(x + dx_, y, 0), PI / 2)
@@ -2188,7 +2191,10 @@ def shift(S, k, t, lt):
     lampat(S, 0, A(x + 4.5, 1.2, 1.4), 1700, 'FFF4D0')
     lampat(S, 1, A(x - 1.0, -3.0, 4.4), 1500, 'FFE2B0')
     lampat(S, 2, A(x - 8.0, 0.0, 3.5), 500, 'B8D0FF')
-    shoot(S, A(lerp(-9.5, -5.5, k), lerp(-4.3, -4.0, k), lerp(1.7, 2.0, k)), A(x - 0.6, 0.6, 2.1), 30, fill=1.2)
+    if past:
+        shoot(S, A(4.4, -2.5, lerp(1.4, 1.7, k)), A(lerp(-3.0, 0.5, k), 0.9, 2.0), 30, fill=1.2)
+    else:
+        shoot(S, A(lerp(-9.5, -5.5, k), lerp(-4.3, -4.0, k), lerp(1.7, 2.0, k)), A(x - 0.6, 0.6, 2.1), 30, fill=1.2)
 
 
 HOST |= {'shift', 'dust_blind', 'block_wall', 'ladder_end', 'vote', 'battery', 'heat', 'listen', 'vigil', 'three_rigs', 'dove', 'muck', 'workshop', 'first_down',
@@ -2213,7 +2219,7 @@ for _k in ('emerge', 'hug'):
 
 # A wide frame held for three or four seconds needs more than a slow push: every shot also swings a little round its own subject.
 # The rate is degrees per second; prm "orb": [degrees, dolly, rise] sets it for one shot.
-SWING = dict(three_rigs=6.0, lights_out=6.0, vigil=7.0, shaft_ride=0.0, ride_face=0.0, tie_note=4.0, spoon=6.0, sealed=11.0, rook_wrong=10.0, signoff=9.0, rig_night=12.0,
+SWING = dict(three_rigs=6.0, lights_out=3.0, vigil=7.0, shaft_ride=0.0, ride_face=0.0, tie_note=4.0, spoon=6.0, sealed=16.0, rook_wrong=10.0, signoff=9.0, rig_night=12.0,
              big_drill=10.0, tents=10.0, refuge_wide=10.0, capsule_top=10.0, cabinet=9.0, hole_measure=9.0, heat=9.0, letter=9.0)
 
 

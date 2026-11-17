@@ -1,7 +1,7 @@
 {
  "id": "r021-sanjose-long",
  "format": "long",
- "status": "draft",
+ "status": "ready",
  "synthetic": false,
  "host": "rook",
  "case": 21,
@@ -89,5 +89,121 @@
   "17 Days Buried, Then a Note in Red Ink: The Chilean Mine Rescue",
   "700 Metres Down for 69 Days: How 33 Miners Got Out"
  ],
- "source_notes": "IMPORTANT LIMIT OF THIS RUN (17 Nov 2026): the session's network policy refused every page fetch (e-mj.com, wral.com, npr.org, deseret.com, britannica.com and others: host not resolvable), so no page could be opened and read. Only web search worked. The facts the Short already narrates were read on thirteen pages by the Short's run on 16 Nov 2026 and stand on its notes (episodes/r021-sanjose/episode.json). Every fact ADDED here was checked only against what the search tool reported from at least two outlets; it was not read on the page. For that reason this episode is 'ready' (private), not 'approved': the owner or a later run with page access should read the pages before it goes public. Added facts and the outlets the search results gave for them. Mine in operation since 1889 ('more than a century'): Wikipedia, Britannica Kids. Dust blinding the men for hours: Britannica and Wikipedia say up to six hours; the film says 'for hours'. Ventilation shaft, ladder: Britannica ('the ladders required by safety codes were missing'), The World and Interesting Engineering (the owners never finished the ladder; the men got about a third of the way); the film says the ladder 'was never finished' and shows it stopping part-way. Voting: Luis Urzúa, 'Everything was voted on ... 16 plus one was a majority', and Mario Sepúlveda's 'one-man, one-vote' (Wikipedia and pages quoting them); who set the ration is told differently (Urzúa on some pages, Sepúlveda on others), so the film says only that they voted. A sip of milk and a bite of cracker with the tuna: NBC/AP and the Irish Times, from the Short's notes. Heat and damp: figures differ (29 to 35 °C, humidity up to 98% on one page), so the film gives no figure. Water drained from radiators and lamps run from truck batteries: AP via CBS News and Deseret; Maclean's and Wikipedia for the batteries. Camp Hope at the mine gate: The World, PBS NewsHour. Seven misses and the eighth hole near the shelter: the Short's notes. First estimate of up to four months: AP via Fox and HeraldNet. Supply tubes called palomas (doves), first loads glucose gel, rehydration tablets and medicine, then food, letters and a video camera: AP via Washington Times, Scotsman, Fox. Plans A, B and C and the Plan B breakthrough at 8:05 a.m. on 9 October: AP via Washington Times, CNN fast facts, Interesting Engineering, Britannica. Miners clearing the drill cuttings in shifts: Interesting Engineering and trade press; the half-tonne-an-hour figure is on Wikipedia only and is not used. Shaft length 622 to 625 m ('more than six hundred metres') and width 66 to 71 cm; 'about as wide as a bicycle wheel' is this film's comparison, not a quotation. Capsule built by the Chilean navy, 54 cm (21 in) wide: phys.org/AFP, Smithsonian, ABS. Manuel González first rescuer down and last up: Good Morning America, a BBC-derived report, Al Jazeera. First miner (Florencio Ávalos, not named in the film) out at about 12:10 a.m. on 13 October: NPR 12:11, others 'shortly after midnight'; the film says he starts up 'around midnight' and steps out 'just after midnight'. Dark glasses: AP, CNN. The second man up (Mario Sepúlveda, not named) brought rocks as souvenirs: Democracy Now; the LA Times is reported as describing a rock signed by his comrades; the film says 'rocks from the mine, as souvenirs', and the sack is staging. About 22 hours: Al Jazeera 'just 22 hours', Deseret/AP '22½-hour'. Last miner Luis Urzúa: the Short's notes. A lid on the shaft: one page says the president placed a cover on it, NBC mentions 'the lid of the emergency shaft'; its look here is invented. Prosecutors closed the investigation on 1 August 2013 without charges: Irish Times, RTÉ. Left out because one source, or sources differ: the time of day of the collapse, the 50 m² shelter and 2 km of tunnel, weight lost, who wrote the note, what Urzúa said to the president, the number of rescuers who went down, the length of one ride, the television audience, the 2023 compensation ruling, earlier accidents at the mine, the men's names other than Urzúa and González. Not claimed in narration but shown as staging: the men hearing a drill pass (Wikipedia: 'for days the miners had heard drills approaching') and hammering on the bit (Wikipedia: 'tapped on the drill'; one page in the Short's notes)."
+ "source_notes": "IMPORTANT LIMIT OF THIS RUN (17 Nov 2026): the session's network policy refused every page fetch (e-mj.com, wral.com, npr.org, deseret.com, britannica.com and others: host not resolvable), so no page could be opened and read. Only web search worked. The facts the Short already narrates were read on thirteen pages by the Short's run on 16 Nov 2026 and stand on its notes (episodes/r021-sanjose/episode.json). Every fact ADDED here was checked only against what the search tool reported from at least two outlets; it was not read on the page. For that reason this episode is 'ready' (private), not 'approved': the owner or a later run with page access should read the pages before it goes public. Added facts and the outlets the search results gave for them. Mine in operation since 1889 ('more than a century'): Wikipedia, Britannica Kids. Dust blinding the men for hours: Britannica and Wikipedia say up to six hours; the film says 'for hours'. Ventilation shaft, ladder: Britannica ('the ladders required by safety codes were missing'), The World and Interesting Engineering (the owners never finished the ladder; the men got about a third of the way); the film says the ladder 'was never finished' and shows it stopping part-way. Voting: Luis Urzúa, 'Everything was voted on ... 16 plus one was a majority', and Mario Sepúlveda's 'one-man, one-vote' (Wikipedia and pages quoting them); who set the ration is told differently (Urzúa on some pages, Sepúlveda on others), so the film says only that they voted. A sip of milk and a bite of cracker with the tuna: NBC/AP and the Irish Times, from the Short's notes. Heat and damp: figures differ (29 to 35 °C, humidity up to 98% on one page), so the film gives no figure. Water drained from radiators and lamps run from truck batteries: AP via CBS News and Deseret; Maclean's and Wikipedia for the batteries. Camp Hope at the mine gate: The World, PBS NewsHour. Seven misses and the eighth hole near the shelter: the Short's notes. First estimate of up to four months: AP via Fox and HeraldNet. Supply tubes called palomas (doves), first loads glucose gel, rehydration tablets and medicine, then food, letters and a video camera: AP via Washington Times, Scotsman, Fox. Plans A, B and C and the Plan B breakthrough at 8:05 a.m. on 9 October: AP via Washington Times, CNN fast facts, Interesting Engineering, Britannica. Miners clearing the drill cuttings in shifts: Interesting Engineering and trade press; the half-tonne-an-hour figure is on Wikipedia only and is not used. Shaft length 622 to 625 m ('more than six hundred metres') and width 66 to 71 cm; 'about as wide as a bicycle wheel' is this film's comparison, not a quotation. Capsule built by the Chilean navy, 54 cm (21 in) wide: phys.org/AFP, Smithsonian, ABS. Manuel González first rescuer down and last up: Good Morning America, a BBC-derived report, Al Jazeera. First miner (Florencio Ávalos, not named in the film) out at about 12:10 a.m. on 13 October: NPR 12:11, others 'shortly after midnight'; the film says he starts up 'around midnight' and steps out 'just after midnight'. Dark glasses: AP, CNN. The second man up (Mario Sepúlveda, not named) brought rocks as souvenirs: Democracy Now; the LA Times is reported as describing a rock signed by his comrades; the film says 'rocks from the mine, as souvenirs', and the sack is staging. About 22 hours: Al Jazeera 'just 22 hours', Deseret/AP '22½-hour'. Last miner Luis Urzúa: the Short's notes. A lid on the shaft: one page says the president placed a cover on it, NBC mentions 'the lid of the emergency shaft'; its look here is invented. Prosecutors closed the investigation on 1 August 2013 without charges: Irish Times, RTÉ. Left out because one source, or sources differ: the time of day of the collapse, the 50 m² shelter and 2 km of tunnel, weight lost, who wrote the note, what Urzúa said to the president, the number of rescuers who went down, the length of one ride, the television audience, the 2023 compensation ruling, earlier accidents at the mine, the men's names other than Urzúa and González. Not claimed in narration but shown as staging: the men hearing a drill pass (Wikipedia: 'for days the miners had heard drills approaching') and hammering on the bit (Wikipedia: 'tapped on the drill'; one page in the Short's notes).",
+ "authoring": {
+  "claimed_at": "2026-11-17T08:49:08Z",
+  "run": "scheduled long run, 17 Nov 2026",
+  "status_choice": "ready (private), not approved: the session could not open any web page, so the facts added for the long form were checked only against search results from two or more outlets, not read on the pages. See source_notes."
+ },
+ "shown_moments": {
+  "a drill comes back up with a note tied to it": "shots 1 to 3",
+  "in red ink, it says ...": "shots 6 and 7 (the rescuer unfolding it; the note card)",
+  "thirty-three men deep inside, on their shift": "shots 8 to 10 (the pickup on the access road; the case file)",
+  "the mountain comes down; rock seals the only road out": "shots 11 and 12 (rock and dust down the tunnel; the block from wall to wall)",
+  "dust so thick the men can barely see": "shot 13",
+  "a ventilation shaft; the ladder was never finished": "shots 14 to 16 (the climb; the cross-section; the last rung)",
+  "the emergency shelter, seven hundred metres under the desert": "shots 17 and 18",
+  "they open the food locker; food for about two days": "shot 19",
+  "they vote": "shot 20",
+  "two spoonfuls of tuna ... every other day": "shots 21 to 23",
+  "hot and wet; water drained from the machines; lamps off truck batteries": "shots 24 and 25 (the drum is a stand-in for the water; the pickup with its bonnet up)",
+  "families camp at the mine gate; Camp Hope": "shots 27 and 28",
+  "the drills start down; seven holes miss": "shots 29 and 30",
+  "nobody on the surface knows if anyone is alive": "shot 31 (the men below, listening)",
+  "the eighth drill comes through the roof; the men tie a note to it": "shots 32 to 34",
+  "the whole camp goes wild": "shots 35 and 36",
+  "that hole fits a note, not a man": "shots 37 and 38",
+  "the first estimate is four months": "shot 39 (label on the big rig)",
+  "tubes the rescuers call doves; glucose, medicine, food, letters, a camera": "shots 40 to 42",
+  "three drills race each other down": "shots 43 and 44",
+  "the miners clear the rock that falls": "shot 45",
+  "Plan B breaks through; the shaft": "shots 46 to 48",
+  "a steel capsule, fifty-four centimetres across": "shots 49 to 51",
+  "a rescuer goes down alone": "shots 52 to 54",
+  "the first miner starts up": "shots 55 to 57",
+  "he steps out in dark glasses": "shots 58 to 60",
+  "the second man brings rocks": "shot 61",
+  "one at a time; thirty-three out of thirty-three": "shots 62 to 64",
+  "the last miner out is the foreman": "shot 65",
+  "the rescuers ride up; the mine is empty": "shot 67",
+  "a lid goes over the shaft": "shot 68"
+ },
+ "experiments": {
+  "spine": "v2 kept from the Short: cold open on the note, Rook's doubt on the rig deck with the note in shot, then the story. The long form goes back seventeen days after the note is read (13.6 s), because the collapse, the ladder and the shelter are what the Short had no room for; the label '17 DAYS EARLIER' carries the jump.",
+  "rehook": "At 49%: 'But now comes the hard part. That hole fits a note. It does not fit a man.' with Rook's rule across the borehole.",
+  "rook": "Mannerisms: beak tap (5), hat jump (6, 25, 36), coin flip (27), brim down (16, 22, 28, 31), feather (25, 36, 51), hat squashed (45, 51), pocketing the drill tooth (71). Detective actions in the world: raps on the block and listens (12), measures the borehole (37), touches the battery terminal (25), measures the capsule (49), holds the rock to the light (61). No joke in the camp and listening shots (27 to 31).",
+  "ending": "'Case closed.' (the Short ends on a question; the long form closes the file)."
+ },
+ "sound_plan": {
+  "first_frame": "One 'hit' at 0.05 s as a clank on the drill pipe, then a clunk and the scratch of the band; the hook mood is sparse.",
+  "music": "The engine's score follows the segment moods: hook, tense (doubt), wonder (note), calm (the shift), tense (collapse, ladder, shelter), calm (food, life below), sad (camp, the misses), action (day 17), triumph (alive), tense (re-hook), calm (doves), action (the drills, the breakthrough), calm (capsule), tense (rescuer down), wonder (the ride), triumph (out, the count), calm, end.",
+  "hush": "The music is pulled out under shot 57 (his face in the cage, the light growing).",
+  "tragic_beats": "Nobody dies in this story. The camp and the misses (66 to 83 s) are 'sad' segments: no pulse, a low tone and a heartbeat; Rook is still, with his brim down.",
+  "effects": "Clunks for steel on steel (drill, capsule, ladder), scratches for grit and paper, shouts and gasps only where mouths open, ticks for counted things, engine for the rigs and the pickup, wind on the last site shot. No effect without a visible cause.",
+  "voice": "Narration is ducked over the bed by the engine; the rehearsal measured it, it was not listened to."
+ },
+ "thumbnail": {
+  "hook": "17 DAYS TRAPPED. A NOTE.",
+  "still": "world3d.STILLS['thumb']: a miner's hands on the note tied to the drill pipe, his face beside it, a second miner behind",
+  "checked": "1280x720: the words are inside the frame on the left, off both faces and the note; faces, note and red lines read"
+ },
+ "quality_gate": {
+  "access": "What was inspected: a low-res contact sheet of every 3D shot (round 1), the composited cards, captions and labels (round 1), the thumbnail at full size (three versions), and full-length rehearsals (three complete renders and three partial re-renders, six gate runs; 384x216, 4 samples, 6 fps 3D frames composited at 12 fps with captions, labels, overlays, inserts and sound), each reviewed as a 2-frames-per-second sheet of the whole video (384 frames). Not done: no playback at speed; the audio was measured, not listened to; no frame was rendered at 1280x720 locally. The cloud render is the first full-resolution, 60 fps pass.",
+  "method": "Round 1 (contact sheet, 59 3D stills; composited cards). Found and fixed: Rook with his back to the camera or hiding the action in the muck, workshop, dove and first-rescuer shots; the cave-in too wide and dim; a dust cloud in front of the lens; the battery shot blown out white; the three rigs too far away; the rescuer hiding Rook in the second note shot; the lid a speck; the empty gallery too dark to see the capsule; the Short's cut-away shaft small in a wide frame; a label over the road in the cross-section; the thumbnail's subject under its own words. Round 2 (first full rehearsal): the gate FAILED locally on four static stretches (the case-file card, the count card, the lid shot, the board) and a slow first second. Fixed in the film, not in the gate: the cards push in and sway with moving light and dust, the opening swings round the note and shakes, Rook walks up to the lid, every 3D shot swings round its subject. Also fixed: a miner's back filling the frame in the pickup shot, an arch post across the lens on day 17, the hook words over the miners' helmets. Round 3 (second rehearsal, gate PASS): the thumbnail's words ran off the left edge and the face was behind the pipe; the walking miners walked into the lens in the second pickup shot; Rook hidden behind the capsule on the trestles; a date label clipped on the count card. Round 4 (third rehearsal, gate PASS): the camera passed through the tunnel wall at the end of the second pickup shot and through the locker at the start of the empty-gallery shot; both fixed, more movement given to the lid shot and the second derrick shot (the two thinnest margins), and those four shots rendered and gated again. Round 5: that gate run FAILED on the second pickup shot (22 to 26 s), which the fix had left too still; it was restaged as a drive-past (the camera stands in the road, the miners and the truck come up and pass), its first second was then found to start behind a wall rock, the camera was moved clear, and the last rehearsal was composited and gated from the final files.",
+  "gate_result": "Last rehearsal, composited from the final files: local gate PASS. 71 shots, mean 2.70 s, longest 4.75 s, first shot 1.85 s; Rook acting in 37 of 71 shots (52%); -14.5 LUFS, peak -1.2 dBFS, voice 14.9 dB over the bed; closest match to any earlier episode 0.72 (shot 7, the note card, against r005-vulovic-long; the limit is 0.93); mean frame change 2.46; first second 2.65 (floor 2.0); lowest 3.5 s stretches without a detected cut: 1.02 at 165.8 s (the count card), 1.10 at 176.2 s (the empty gallery), 1.13 at 72.7 s (the derrick at night), 1.29 at 108.7 s and 180.7 s (floor 0.8). Duration 191.8 s (3 min 12 s). 606 words in 25 segments. The rehearsal's fingerprint file was deleted, not committed; the cloud render runs the real gate at 1280x720 and 60 fps.",
+  "checked": "Every kind in the storyboard exists in world3d.SHOTS3D or scenes.SHOTS (the compositor refuses to run otherwise); HOST lists every kind in which Rook is placed (37 of 71 shots, 52%); no kind is used more than twice and none twice in a row. Re-hook at 49%. One hush shot (57). On-screen dates, names and figures against the sources: 22 AUGUST 2010, SAN JOSÉ MINE, CHILE, 5 AUGUST 2010, ATACAMA DESERT, COPPER AND GOLD, 33 MEN, 700 M, 2 SPOONFULS, EVERY OTHER DAY, CAMP HOPE, 7 MISSED, DAY 17, 33 ALIVE, FIRST ESTIMATE: 4 MONTHS, THE DOVES, GLUCOSE, MEDICINE, FOOD, PLAN A/B/C, 9 OCTOBER 2010, 620 M +, 54 CM ACROSS, MANUEL GONZÁLEZ, RESCUER, 13 OCTOBER 2010, AROUND MIDNIGHT, JUST AFTER MIDNIGHT, 33 OF 33, 69 DAYS, LUIS URZÚA, SHIFT FOREMAN, and the four dates on the 69-day line (9 October is day 65). The cross-sections are marked DIAGRAM, NOT TO SCALE. Nobody dies in this story and nothing graphic is shown. No flag, emblem, logo, lettering or likeness appears on any set or person.",
+  "not_met": "Fact checking: no web page could be opened in this session (network policy), so the added facts rest on search results from two or more outlets and were not read on the page; this is why the status is 'ready'. No playback and no listening. No local frame at 1280x720. The 13-category score is from stills and rehearsal sheets. The gate's margin on movement is thin in the rehearsal on a few held shots (see gate_result), and rehearsal frames are noisier than the cloud render, so the real gate could still fail there; if it does, the fix is more movement in those shots, not a change to the gate. A dark frame at the start of the ventilation-shaft shot in the 2 fps sheets is the engine's whip transition, not a missing picture (the 3D frame was looked at)."
+ },
+ "checklist": {
+  "A_story": "done: the Short's score stands (77/100, curiosity 8, story 8, payoff 9); spine v2; shown_moments lists every narrated moment",
+  "B_storyboard": "done: every shot has action, expression, camera and sound cue; mannerisms and detective actions are listed in experiments; no neutral poses under action lines",
+  "B2_retention": "done: hook_text A NOTE FROM / 700 M DOWN; first frame is the hands on the note with the face beside it; re-hook at 49%; one hush; long-form tail 0.9 s (the loop rule is for Shorts)",
+  "C_previews": "done at 384x216 for every 3D shot (one contact sheet and three full rehearsals); no blown-out or crushed frame where the story has to be seen after the fixes; Rook on-model. Not done at full size.",
+  "D_render": "engine defaults untouched (60 fps, 1280x720, the workflow's parallel jobs); the local rehearsals used low settings only for review",
+  "E_sound": "voice am_fenrir; sad segments carry no pulse; voice measured over the bed (see gate_result); loudness range not measured",
+  "F_captions": "done: captions inside the frame; the cards keep the caption band and the label corner clear; on-screen dates, names and figures checked against the sources as far as this run could (see not_met)",
+  "G_final": "rehearsals reviewed as 2 fps sheets of the whole video; local gate PASS on the last rehearsal; the full-resolution render and the real gate happen in the workflow"
+ },
+ "review": {
+  "notes": [
+   "0.0 s: hands on the note, face beside it, hook words above the helmets",
+   "4 to 9.5 s: the bit out of the hole, Rook on the deck, 'No chance. Let's go look.'",
+   "11.5 to 13.5 s: the note card writes itself in red",
+   "13.5 to 26 s: the pickup on the access road, the case file, 33 MEN ON SHIFT",
+   "26.5 to 33 s: the cave-in, the block, the dust",
+   "33 to 40.5 s: the climb, the cross-section, the last rung with Rook on the ledge",
+   "48 to 57.5 s: the vote, the spoon, the queue, the calendar",
+   "58 to 66 s: the water drum, the pickup's battery and the spark, Rook at the end of the bench",
+   "66.5 to 76 s: Camp Hope, candles, the derrick",
+   "76.5 to 83 s: seven misses; the men listening",
+   "83 to 88.5 s: day 17, the bit through the roof, the note tied on, the pipe going up",
+   "94 to 101 s: re-hook, the rule on the borehole, the scale card, FIRST ESTIMATE: 4 MONTHS",
+   "101.5 to 111.5 s: the dove going down, arriving, the letter and the camera",
+   "112 to 121.5 s: three rigs, the race card, the shovels and the stone on Rook's hat",
+   "129.5 to 137.5 s: the capsule on trestles, over the shaft, Rook stuck in it",
+   "138 to 144.5 s: the rescuer down and greeted",
+   "148.5 to 150 s: hush, his face in the cage",
+   "150 to 160 s: out, dark glasses, the embrace, the rocks",
+   "165 to 169.5 s: 33 OF 33, 69 DAYS",
+   "169.5 to 179.5 s: the foreman, the 69-day line, the empty gallery",
+   "180 to 188 s: the lid, the board",
+   "188.5 to 191.8 s: 'I was wrong. Case closed.', the drill tooth, SURVRA CASE 021"
+  ],
+  "scores_13": {
+   "story": 4,
+   "hook": 4,
+   "character_acting": 3,
+   "animation": 3,
+   "art_direction": 3,
+   "lighting": 3,
+   "camera": 3,
+   "pacing": 4,
+   "editing": 4,
+   "narration": 3,
+   "sound": 3,
+   "captions_graphics": 4,
+   "respect_accuracy": 3
+  },
+  "weakest": "The ventilation shaft and the cut-away shaft have black on both sides of a wide frame. The dust in the cave-in is low-poly lumps and reads as boulders as much as dust. The vote is filmed from far enough that the raised hands are small. The supply tube is thin and easy to miss on the surface. Several gallery shots share one look. Figures' hands cannot hold things convincingly (shovels, hammer, letter). respect_accuracy is 3 only because of how the added facts were checked. Narration and sound were measured, not heard."
+ }
 }
