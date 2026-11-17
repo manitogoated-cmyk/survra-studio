@@ -4,7 +4,7 @@ mother found herself in the water, held on to a piece of the wreckage through th
 was picked up by the crew of the boat Sima Com 2. She was the only survivor: 152 people died.
 
 Built for this story only: an open sea under four skies with a field of floating debris, a torn piece of
-fuselage skin with a row of window holes, a small white passenger boat, a far island with a harbour, and a
+fuselage skin with a row of window holes, a small white passenger boat, and a
 hospital room.
 
 Everything is a generic low-poly reconstruction. The wreckage is a plain white panel with no livery, name or
@@ -25,14 +25,14 @@ HOST = {'rook_lands', 'rook_doubt', 'dark_look', 'rook_quiet', 'climb_try', 'hol
         'sailor_swim', 'blanket', 'look_back', 'her_face', 'rook_wrong', 'signoff'}
 CAMFILL = {'*': 140, 'wide_night': 420, 'girl_close': 200, 'hands_grip': 160, 'plane_piece': 240, 'rook_lands': 260, 'rook_doubt': 240,
            'in_water': 380, 'voices': 180, 'dark_look': 300, 'rook_quiet': 200, 'big_wave': 300, 'climb_try': 260, 'hold_on': 200,
-           'face_tired': 160, 'dawn_break': 160, 'sea_after': 0, 'harbour': 0, 'boat_far': 120, 'hospital_wait': 120, 'hospital_tell': 120,
+           'face_tired': 160, 'dawn_break': 160, 'sea_after': 0, 'boat_far': 120, 'hospital_wait': 120, 'hospital_tell': 120,
            'her_face': 100, 'empty_chair': 100, 'rook_wrong': 120}
 ROOKC = dict(top='566178', belt='3E4658', lap='6B7690', pants='2A2742', hand='2F2B4D', boot='8A90A6')
 SKIN, HAIR = '8A5A3C', '15121A'
 SKINW = 'E6E8EC'                   # the wreckage skin
 GP = (0.3, -1.78)                  # where she hangs on, in the wreckage's own coordinates
 RP = (2.6, -3.6)                   # Rook's own bit of floor panel, in the world
-RW = (1.55, -0.62)                 # Rook's place on the wreckage beside her
+RW = (-1.0, -0.7)                  # Rook's place on the wreckage beside her
 BOAT = (0.5, 9.8)                  # the boat when it has stopped beside her (its near side is y = 7.3)
 DECK = 1.45
 ROOM = (0.0, 0.0, 600.0)           # the hospital room hangs far above the sea
@@ -195,19 +195,10 @@ def make_boat(S):
     S.update(boat=b, rails=rails, foam=foam)
 
 
-def make_island(S):
-    g = keep(empty(FAR))
-    for (x, y, r, hgt, c) in ((0, 0, 520, 250, '1C2436'), (-430, 60, 300, 110, '222C40'), (380, -40, 260, 90, '222C40')):
-        add('cone', c, (x, y, hgt / 2 - 4), radius1=r, radius2=r * 0.12, depth=hgt, vertices=9, parent=g, rough=1.0)
-    for i in range(14):
-        add('ico_sphere', 'FFD890', (-150 + 24 * i + 9 * rnd(i, 4), -500 - 12 * rnd(i, 5), 3 + 9 * rnd(i, 6)), radius=2.2, subdivisions=1, parent=g, emit=12.0)
-    add('cube', '2A3040', (0, -505, 1.0), scale=(190, 9, 2.4), size=1, parent=g)                                    # the quay
-    S['isle'] = g
-
-
 def make_room(S):
     r = keep(empty(ROOM))
     add('cube', '8FA6A8', (0, 0, -0.05), scale=(9, 8, 0.1), size=1, parent=r)                                        # floor
+    add('cube', 'E4E8E6', (0, 0, 4.15), scale=(9, 8, 0.1), size=1, parent=r)                                         # ceiling
     add('cube', 'C9D6D2', (0, 3.6, 2.0), scale=(9, 0.12, 4.2), size=1, parent=r)                                     # back wall
     add('cube', 'BFCDCB', (4.4, 0, 2.0), scale=(0.12, 8, 4.2), size=1, parent=r)                                     # right wall
     for (y, sy, z, sz) in ((-2.2, 3.6, 2.0, 4.2), (3.0, 1.2, 2.0, 4.2), (1.2, 2.6, 0.5, 1.0), (1.2, 2.6, 3.6, 1.0)):   # left wall with a window gap
@@ -225,19 +216,19 @@ def make_room(S):
     for (x, y) in ((-0.4, 3.4), (1.6, 3.4), (-0.4, 0.0), (1.6, 0.0)):
         add('cylinder', '7A848C', (x, y, 0.2), radius=0.06, depth=0.4, vertices=6, parent=r)
     add('cube', 'FFFFFF', (0.6, 3.05, 1.35), rot=(-0.5, 0, 0), scale=(1.5, 0.3, 1.0), size=1, parent=r, rough=1.0)   # pillows propped up
-    S['cover'] = add('cube', '6FA8B0', (0.6, 1.25, 0.98), scale=(2.0, 2.6, 0.26), size=1, parent=r, rough=1.0)
+    S['cover'] = add('cube', '6FA8B0', (0.6, 1.2, 1.04), scale=(2.0, 2.7, 0.56), size=1, parent=r, rough=1.0)
     add('cylinder', 'A8B0B8', (2.5, 3.0, 1.3), radius=0.035, depth=2.6, vertices=5, parent=r)                         # drip stand
     add('cube', 'DCEBF2', (2.5, 2.9, 2.4), scale=(0.3, 0.1, 0.5), size=1, parent=r, rough=0.3)
     add('cube', 'D8D4C8', (2.6, 3.2, 0.6), scale=(1.0, 0.7, 1.2), size=1, parent=r)                                  # bedside cabinet
     add('cube', '20242C', (2.6, 3.2, 1.55), scale=(0.7, 0.3, 0.6), size=1, parent=r)
     S['blip'] = add('cube', '6AFF8A', (2.5, 3.04, 1.6), scale=(0.1, 0.02, 0.06), size=1, parent=r, emit=8.0)
     # a chair on the window side of the bed
-    c = empty((-1.5, 1.5, 0), r)
+    c = empty((-1.25, 1.9, 0), r)
     add('cube', '4E6E8E', (0, 0, 0.75), scale=(0.9, 0.9, 0.12), size=1, parent=c)
     add('cube', '4E6E8E', (-0.4, 0, 1.4), scale=(0.1, 0.9, 1.2), size=1, parent=c)
     for (x, y) in ((-0.38, -0.38), (0.38, -0.38), (-0.38, 0.38), (0.38, 0.38)):
         add('cylinder', '2E3440', (x, y, 0.36), radius=0.04, depth=0.72, vertices=5, parent=c)
-    S['roomlamp'] = light((0.4, 0.6, 3.9), 0, 'FFE8D0', 4.0, parent=r)
+    S['roomlamp'] = light((0.4, 0.6, 3.8), 0, 'FFE8D0', 4.0, parent=r)
     S['roomlamp'].rotation_euler = (0, 0, 0)
     S['winlamp'] = light((-3.6, 1.15, 2.2), 0, 'FFB070', 2.2, parent=r)
     S['winlamp'].rotation_euler = (0, -PI / 2, 0)
@@ -265,9 +256,8 @@ def build():
     make_sea(S)
     make_wreck(S)
     make_boat(S)
-    make_island(S)
     make_room(S)
-    S['sunball'] = add('ico_sphere', 'FFDCA0', FAR, radius=210, subdivisions=3, emit=7.0)
+    S['sunball'] = add('ico_sphere', 'FFDCA0', FAR, radius=130, subdivisions=3, emit=7.0)
     S['rook'] = K.Rig(ROOKC, K.rook_head, coat=True)
     S['rook'].sc = 1.0
     S['girl'] = K.Rig(dict(top='E0705A', pants='2E3E66', hand=SKIN, boot=SKIN, fore=SKIN), girl_head)
@@ -354,8 +344,8 @@ def finish(S, t):
         r['brows'][i].rotation_euler = (0.25, s * 0.5 + s * tilt, s * -0.25)
         r['brows'][i].location.z = 0.135 + (0.07 if e == 'shocked' else 0.0)
     tip, off = S['hat_tip'], sm(S['hat_off'])
-    r['hat'].rotation_euler = (lerp(-0.2 + tip * 0.35, 1.3, off), 0.07 * (1 - off), 0)
-    r['hat'].location = (0.0, lerp(0.0, -0.5, off), lerp(0.27 + S['hat_jump'] + tip * 0.1, -0.85, off))
+    r['hat'].rotation_euler = (lerp(-0.2 + tip * 0.35, 0.15, off), lerp(0.07, 1.3, off), 0)
+    r['hat'].location = (lerp(0.0, 0.72, off), lerp(0.0, -0.12, off), lerp(0.27 + S['hat_jump'] + tip * 0.1, -1.5, off))
     talk = S['beak']
     r['jaw'].rotation_euler = (talk * 0.17 + (0.35 if e == 'shocked' else 0.0), 0, 0)
     hd = S['rook'].head.rotation_euler
@@ -402,7 +392,8 @@ def sea(S, mode, t, amp=None, to=None, k=0.0, rook=None):
     shape_sea(S, t, a)
     S['amp'], S['mode'] = a, mode
     low = mode in ('dawn', 'dusk') or to == 'dawn'
-    S['sunball'].location = (d[0] * 4200, d[1] * 4200, d[2] * 4200 - (1 - k) * 900 * (1 if to else 0)) if low else FAR
+    sd = SKIES[to][5] if to else d
+    S['sunball'].location = (sd[0] * 4200, sd[1] * 4200, sd[2] * 4200 - 560 - (1 - k) * 420 * (1 if to else 0)) if low else FAR
     S['wreck'].location = (0, 0, swell(0, 0, t, a))
     S['wreck'].rotation_euler = (0.09 * a * math.sin(1.25 * t + 0.6), 0.07 * a * math.sin(0.95 * t + 2.1), 0.04 * math.sin(0.3 * t))
     S['panel'].location = (RP[0], RP[1], swell(RP[0], RP[1], t, a))
@@ -416,7 +407,7 @@ def hang(S, pose=None, x=GP[0], rise=0.0, yaw=PI, y=GP[1]):
     """She is in the water up to her chest, at the wreckage's near edge, both arms over it."""
     g = S['girl']
     g.root.parent = S['wreck']
-    g.place((x, y, -1.28 + rise), yaw)
+    g.place((x, y, -1.12 + rise), yaw)
     g.apply(pose or HOLD())
     return g
 
@@ -517,7 +508,7 @@ def girl_close(S, k, t, lt):
     g.face, g.jawv = 'wide', 0.25 + 0.25 * abs(math.sin(kk * 9))
     burst(S, (1.9, -1.5, 0.2), kk * 0.9 + 0.05, 8, 1.3, 1.5)
     hd = ghead(S)
-    shoot(S, (lerp(2.5, 2.15, kk), lerp(-0.35, -0.5, kk), lerp(0.95, 0.85, kk)), (hd[0], hd[1] + 0.1, hd[2] - 0.12), 44, fill=1.4, fcol=NIGHTC)
+    shoot(S, (lerp(1.75, 1.5, kk), lerp(0.1, -0.05, kk), lerp(0.95, 0.88, kk)), (hd[0] + 0.05, hd[1] + 0.2, hd[2] - 0.12), 52, fill=1.4, fcol=NIGHTC)
 
 
 def hands_grip(S, k, t, lt):
@@ -528,7 +519,7 @@ def hands_grip(S, k, t, lt):
     g.face, g.jawv = 'wide', 0.5 * slip
     burst(S, (-0.6, -1.5, 0.15), lt - 0.3, 6, 0.9, 1.1, s=0.7)
     h = wpos(g.hands[1], (0, 0, -0.5))
-    shoot(S, (lerp(-0.75, -0.55, k), lerp(-0.25, -0.4, k), lerp(0.85, 0.75, k)), (h[0] - 0.1, h[1], h[2] + 0.05), 50, fill=1.3, fcol=NIGHTC)
+    shoot(S, (lerp(2.0, 1.75, k), lerp(-2.5, -2.3, k), lerp(0.75, 0.65, k)), (h[0], h[1] - 0.15, h[2] + 0.12), 52, fill=1.3, fcol=NIGHTC)
 
 
 def wide_night(S, k, t, lt):
@@ -536,7 +527,7 @@ def wide_night(S, k, t, lt):
     sea(S, 'night', t)
     g = hang(S, HOLD(nod=-0.3, turn=0.5 * math.sin(lt * 2.5)))
     g.face = 'wide'
-    shoot(S, (lerp(-7.5, -9.5, k), lerp(-10.0, -12.5, k), lerp(8.0, 11.0, k)), (0.5, 0.0, 0.0), 26, fill=1.6, fcol=NIGHTC)
+    shoot(S, (lerp(-5.5, -7.5, k), lerp(-8.0, -10.5, k), lerp(6.0, 8.5, k)), (0.5, -0.5, 0.0), 26, fill=2.2, fcol=NIGHTC)
 
 
 def plane_piece(S, k, t, lt):
@@ -544,7 +535,7 @@ def plane_piece(S, k, t, lt):
     sea(S, 'night', t)
     g = hang(S, HOLD(nod=-0.1, turn=-0.5), x=1.3)
     g.face = 'wide'
-    shoot(S, (lerp(-5.6, -4.2, k), lerp(-3.3, -3.0, k), lerp(1.5, 1.25, k)), (lerp(-1.0, 0.4, k), -0.7, 0.3), 34, fill=1.6, fcol=NIGHTC)
+    shoot(S, (lerp(-5.4, -4.2, k), lerp(-3.4, -3.1, k), lerp(2.7, 2.4, k)), (lerp(-1.0, 0.2, k), -0.7, 0.2), 34, fill=1.6, fcol=NIGHTC)
 
 
 def rook_lands(S, k, t, lt):
@@ -565,13 +556,13 @@ def rook_lands(S, k, t, lt):
 def rook_doubt(S, k, t, lt):
     """Rook crouched on his panel, low on the black water, the girl at the wreckage behind him: 'All night? At twelve?'"""
     sea(S, 'night', t)
-    cam = (lerp(5.6, 5.2, k), lerp(-5.0, -4.7, k), lerp(1.7, 1.8, k))
+    cam = (lerp(6.0, 5.6, k), lerp(-2.5, -2.7, k), lerp(1.7, 1.8, k))
     rk = rook_on_panel(S, blend(P('stand', head=(0.25, 0.0), **PERCH), P('cross', head=(0.0, 0.0), **PERCH), lt / 0.3), facing(RP, cam))
     S['rface'] = 'low'
     S['hat_tip'] = 0.5
     g = hang(S, HOLD(nod=-0.2, turn=0.3))
     g.face = 'wide'
-    shoot(S, cam, (RP[0] - 0.45, RP[1] + 0.3, 1.75), 34, fill=1.5)
+    shoot(S, cam, (RP[0] - 0.3, RP[1] + 0.7, 1.6), 32, fill=1.5)
 
 
 # ---------------------------------------------------------------- voices in the dark
@@ -606,12 +597,12 @@ def dark_look(S, k, t, lt):
 def rook_quiet(S, k, t, lt):
     """Close on Rook: he lowers the wing, looks across at her, and his hat brim comes down. He says nothing."""
     sea(S, 'night', t)
-    cam = (lerp(4.6, 4.3, k), lerp(-5.6, -5.3, k), lerp(2.3, 2.2, k))
+    cam = (lerp(5.2, 4.8, k), lerp(-6.0, -5.6, k), lerp(1.35, 1.45, k))
     drop = sm((lt - 0.2) / 0.4)
     rk = rook_on_panel(S, blend(P('hat', aR=(0.3, 1.7, 1.9, -1.2), head=(-0.1, 0.5), **PERCH), P('stand', head=(0.3, 0.55), **PERCH), drop), facing(RP, cam))
     S['rface'] = 'sad'
     S['hat_tip'] = 0.7 * drop
-    shoot(S, cam, (RP[0], RP[1], 2.0), 58, fill=1.4)
+    shoot(S, cam, (RP[0], RP[1], 1.95), 50, fill=1.4)
 
 
 # ---------------------------------------------------------------- holding on
@@ -635,18 +626,18 @@ def climb_try(S, k, t, lt):
     rk = rook_on_panel(S, blend(P('stand', head=(0.1, 0.0), **PERCH), P('stand', aL=(0.9, 0.5, 0.4), aR=(0.9, 0.5, 0.4), lL=(0.9, 1.3), lR=(0.9, 1.3), lift=-0.35, lean=0.5), up),
                        facing(RP, (0.3, -1.7)))
     S['rface'] = 'shocked' if up > 0.4 else 'calm'
-    shoot(S, (lerp(-3.5, -3.1, k), lerp(-4.6, -4.2, k), lerp(1.0, 1.25, k)), (1.0, -2.3, 0.75), 28, fill=1.6, fcol=NIGHTC)
+    shoot(S, (lerp(-2.9, -2.5, k), lerp(-4.3, -3.9, k), lerp(1.0, 1.25, k)), (1.0, -2.4, 0.95), 25, fill=1.6, fcol=NIGHTC)
 
 
 def hold_on(S, k, t, lt):
     """Her cheek goes down on her arm. Rook has crossed to the wreckage: he crouches at the edge beside her and puts a wing on it, next to her hands."""
     sea(S, 'night', t)
-    g = hang(S, HOLD(nod=lerp(-0.1, 0.3, sm(lt / 0.6)), turn=-0.35, slip=0.1))
+    g = hang(S, HOLD(nod=lerp(-0.1, 0.3, sm(lt / 0.6)), turn=0.35, slip=0.1), rise=0.12)
     g.face = 'tired'
-    rk = rook_on_wreck(S, blend(P('stand', head=(0.3, 0.3), **PERCH), P('stand', aR=(1.05, 0.25, 0.3), head=(0.35, 0.3), **PERCH), (lt - 0.2) / 0.4), -PI / 2 - 0.5)
+    rk = rook_on_wreck(S, blend(P('stand', head=(0.3, 0.3), **PERCH), P('stand', aL=(1.05, 0.25, 0.3), head=(0.35, -0.3), **PERCH), (lt - 0.2) / 0.4), facing(RW, (0.3, -2.4)))
     S['rface'] = 'sad'
     hd = ghead(S)
-    shoot(S, (lerp(-1.35, -1.05, k), lerp(1.75, 1.5, k), lerp(1.45, 1.3, k)), (hd[0] + 0.55, hd[1] + 0.3, hd[2] + 0.3), 36, fill=1.5, fcol=NIGHTC)
+    shoot(S, (lerp(0.9, 0.7, k), lerp(3.4, 3.0, k), lerp(1.05, 1.15, k)), (hd[0] - 0.6, hd[1] + 0.5, hd[2] + 0.6), 33, fill=1.5, fcol=NIGHTC)
 
 
 def face_tired(S, k, t, lt):
@@ -664,7 +655,7 @@ def dawn_break(S, k, t, lt):
     sea(S, 'night', t, to='dawn', k=sm(k * 1.15))
     g = hang(S, HOLD(nod=0.2, slip=0.1))
     g.face = 'tired'
-    rk = rook_on_wreck(S, P('stand', aR=(1.05, 0.25, 0.3), head=(0.2, 0.2), **PERCH), -PI / 2 - 0.5)
+    rk = rook_on_wreck(S, P('stand', aL=(1.05, 0.25, 0.3), head=(0.2, -0.2), **PERCH), facing(RW, (0.3, -2.4)))
     S['rface'] = 'sad'
     shoot(S, (lerp(-6.6, -5.6, k), lerp(-5.6, -5.0, k), lerp(0.9, 1.2, k)), (0.6, -0.8, 1.0), 30, fill=1.2)
 
@@ -674,9 +665,9 @@ def morning(S, k, t, lt):
     sea(S, 'grey', t)
     g = hang(S, HOLD(nod=-0.2, turn=0.9 - 1.2 * sm(lt / 0.8)))
     g.face = 'tired'
-    rk = rook_on_wreck(S, P('stand', aR=(1.05, 0.25, 0.3), head=(0.1, 0.9 - 0.9 * sm(lt / 0.7)), **PERCH), -PI / 2 - 0.5)
+    rk = rook_on_wreck(S, P('stand', aL=(1.05, 0.25, 0.3), head=(0.1, 0.9 - 0.9 * sm(lt / 0.7)), **PERCH), facing(RW, (4.4, -0.6)))
     S['rface'] = 'soft'
-    shoot(S, (lerp(4.4, 3.9, k), lerp(0.9, 0.6, k), lerp(1.7, 1.5, k)), (0.8, -1.3, 0.75), 36, fill=1.0)
+    shoot(S, (lerp(4.4, 3.9, k), lerp(0.9, 0.6, k), lerp(1.7, 1.5, k)), (0.6, -1.3, 1.05), 33, fill=1.0)
 
 
 # ---------------------------------------------------------------- the re-hook: a boat, and a life ring she cannot reach
@@ -690,13 +681,13 @@ def boat_far(S, k, t, lt):
     rk = rook_on_wreck(S, blend(P('stand', **PERCH), P('point', aR=(1.5, 0.15, 0.05), head=(-0.1, 0.0)), up), facing(RW, (-18, 62)))
     S['rface'] = 'shocked'
     S['hat_jump'] = 0.18 * math.sin(min(1.0, lt / 0.4) * PI)
-    shoot(S, (lerp(1.5, 1.2, k), lerp(-5.2, -4.6, k), lerp(1.9, 2.1, k)), (-0.6, 3.0, 1.9), 30, fill=1.1)
+    shoot(S, (lerp(1.6, 1.3, k), lerp(-5.6, -5.0, k), lerp(1.5, 1.7, k)), (-1.0, 3.0, 1.9), 30, fill=1.1)
 
 
 def boat_near(S, k, t, lt):
     """The boat comes on, bow up, foam at the stem. Two crewmen at the rail lean out and point down at her."""
     sea(S, 'grey', t)
-    bx, by = lerp(-9, -4.5, k), lerp(27, 19, k)
+    bx, by = lerp(-6, -3.5, k), lerp(17, 12.5, k)
     boat_at(S, bx, by, -1.05, t, 1.6)
     for i, (x, y) in enumerate(((4.6, -2.0), (3.2, -2.05))):
         c = S['crew'][i]
@@ -705,7 +696,7 @@ def boat_near(S, k, t, lt):
         c.face, c.jawv = 'wide', 0.5 + 0.3 * math.sin(lt * 9 + i)
     g = hang(S, HOLD(nod=-0.4))
     g.face = 'wide'
-    shoot(S, (lerp(2.6, 2.2, k), lerp(4.2, 4.6, k), lerp(0.8, 1.0, k)), (bx + 1.5, by - 2.5, 2.2), 30, roll=0.06 * math.sin(lt * 2), fill=1.0)
+    shoot(S, (lerp(2.6, 2.2, k), lerp(4.2, 4.6, k), lerp(1.5, 1.7, k)), (bx + 1.5, by - 2.0, 2.0), 28, roll=0.06 * math.sin(lt * 2), fill=1.0)
 
 
 def crew_at_rail(S, t, lean=0.3):
@@ -752,7 +743,7 @@ def ring_miss(S, k, t, lt):
     burst(S, (0.9, 2.9, 0.1), lt + 0.05, 8, 1.3, 1.4)
     g = hang(S, HOLD(nod=-0.3, aR=(1.75, -0.2, 0.05)), y=-1.55, rise=0.2)
     g.face, g.jawv = 'wide', 0.4
-    shoot(S, (lerp(-4.6, -4.0, k), lerp(2.6, 2.9, k), lerp(0.45, 0.7, k)), (lerp(0.8, 2.0, k), 2.4, 0.5), 28, roll=0.12 * math.sin(lt * 2.5), fill=1.0)
+    shoot(S, (lerp(-4.2, -3.7, k), lerp(0.7, 1.0, k), lerp(1.9, 1.7, k)), (lerp(1.2, 2.2, k), 3.2, 0.3), 28, roll=0.12 * math.sin(lt * 2.5), fill=1.0)
 
 
 def reach_fail(S, k, t, lt):
@@ -761,14 +752,14 @@ def reach_fail(S, k, t, lt):
     st = sm(lt / 0.35)
     g = hang(S, blend(HOLD(), HOLD(aR=(1.85, -0.15, 0.0), nod=-0.45, lean=0.5), st), y=-1.5, rise=0.25 * st)
     g.face, g.jawv = 'wide', 0.5
-    rk = rook_on_wreck(S, blend(P('stand', **PERCH), P('stand', aR=(1.6, 0.0, 0.0), head=(-0.15, 0.0), lL=(1.25, 1.95), lR=(1.25, 1.95), lift=-0.58, lean=0.75), st), PI, x=1.5, y=-0.75)
+    rk = rook_on_wreck(S, blend(P('stand', **PERCH), P('stand', aR=(1.6, 0.0, 0.0), head=(-0.15, 0.0), lL=(1.25, 1.95), lR=(1.25, 1.95), lift=-0.58, lean=0.75), st), PI, x=1.9, y=-0.8)
     S['rface'] = 'shocked'
-    x, y = lerp(0.9, 2.6, k), lerp(1.75, 2.4, k)
+    x, y = lerp(0.5, 1.7, k), lerp(1.75, 2.3, k)
     S['ring'].location = (x, y, swell(x, y, t, S['amp']) + 0.12)
     S['ring'].rotation_euler = (0.15 * math.sin(lt * 5), 0.1, lt)
     line(S, 0, (x, y, 0.2), (x + 0.5, y + 5.2, 2.6))
     hd = ghead(S)
-    shoot(S, (lerp(-1.3, -1.0, k), lerp(2.6, 2.4, k), lerp(1.5, 1.35, k)), (hd[0] + 0.5, hd[1] + 0.8, hd[2] + 0.1), 34, fill=1.1)
+    shoot(S, (lerp(0.4, 0.6, k), lerp(4.3, 4.0, k), lerp(2.3, 2.15, k)), (hd[0] + 0.45, hd[1] + 1.1, hd[2] + 0.1), 34, fill=1.1)
 
 
 # ---------------------------------------------------------------- the rescue
@@ -805,7 +796,7 @@ def sailor_swim(S, k, t, lt):
     g = hang(S, blend(HOLD(nod=-0.3, turn=-0.7), P('stand', aL=(1.2, 0.3, 0.5), aR=(0.9, 0.5, 0.8), head=(-0.2, -0.9), lean=0.1), go))
     g.face = 'wide'
     burst(S, (x + 0.5, y, 0.0), lt * 0.7, 8, 1.0, 0.9, s=0.8)
-    rk = rook_on_wreck(S, P('stand', head=(0.45, 0.0), aL=(0.6, 0.4, 0.5), aR=(0.6, 0.4, 0.5), lL=(1.25, 1.95), lR=(1.25, 1.95), lift=-0.58, lean=0.55), PI - 0.3, x=0.6, y=-0.5)
+    rk = rook_on_wreck(S, P('stand', head=(0.45, 0.0), aL=(0.6, 0.4, 0.5), aR=(0.6, 0.4, 0.5), lL=(1.25, 1.95), lR=(1.25, 1.95), lift=-0.58, lean=0.55), PI + 0.5, x=-1.7, y=-0.3)
     S['rface'] = 'soft'
     shoot(S, (lerp(2.4, 2.0, k), lerp(-5.4, -5.0, k), lerp(4.4, 3.8, k)), (0.8, -1.5, 0.4), 32, fill=1.1)
 
@@ -837,14 +828,14 @@ def on_deck(S, t, sip=0.0, turn=0.0, sea_mode='grey'):
     sea(S, sea_mode, t, 0.6)
     boat_at(S, 0, 40, 0.0, t, 0.6)
     g = S['girl']
-    aboard(S, g, 2.6, 0.75, 0.25, DECK + 0.62 - 0.55 * 0.72)
+    aboard(S, g, 2.6, 0.75, PI / 2 - 0.3, DECK + 0.62 - 0.55 * 0.72)
     g.apply(P('sit', aL=(0.6, -0.1, 1.4, 0.8), aR=(lerp(0.6, 1.0, sip), -0.15, lerp(1.4, 2.0, sip), 0.6), head=(lerp(0.2, -0.05, sip), turn), lean=0.15, lift=-0.5))
     S['wrap'].parent = g.body
     S['wrap'].location, S['wrap'].rotation_euler, S['wrap'].scale = (0, 0.02, 0.55), (0, 0, 0), (1.25, 1.25, 1.25)
     S['wrap2'].parent = g.body
     S['wrap2'].location, S['wrap2'].rotation_euler, S['wrap2'].scale = (0, -0.05, 1.13), (0.1, 0, 0), (1.3, 0.75, 0.24)
     c = S['crew'][1]
-    aboard(S, c, 3.6, -0.9, facing((3.6, -0.9), (2.6, 0.75)))
+    aboard(S, c, 3.7, -0.75, facing((3.7, -0.75), (2.6, 0.75)))
     c.apply(P('stand', lL=(0.2, 1.5), lR=(1.3, 1.45), lift=-0.76, lean=0.3, aR=(1.2, 0.0, 0.5), aL=(0.4, 0.2, 0.6), head=(-0.1, 0.0)))
     c.face = 'warm'
     return g, c
@@ -864,7 +855,7 @@ def blanket(S, k, t, lt):
     rk.apply(P('sit', head=(0.15, 0.0)))
     S['rface'] = 'soft'
     b = S['boat'].location
-    shoot(S, (b[0] + lerp(6.6, 6.0, k), b[1] + lerp(-1.3, -1.1, k), DECK + lerp(1.7, 1.55, k)), (b[0] + 2.3, b[1] + 0.2, DECK + 1.2), 28, fill=1.6, fcol='FFE0C0')
+    shoot(S, (b[0] + lerp(6.9, 6.3, k), b[1] + lerp(1.9, 1.6, k), DECK + lerp(1.8, 1.65, k)), (b[0] + 2.5, b[1] + 0.1, DECK + 1.15), 28, fill=1.6, fcol='FFE0C0')
 
 
 def alive(S, k, t, lt):
@@ -875,7 +866,7 @@ def alive(S, k, t, lt):
     S['cup'].location = wpos(g.hands[1], (0, -0.5, -0.9))
     S['cup'].rotation_euler = (0.7 * sip, 0, 0)
     hd = ghead(S)
-    shoot(S, (hd[0] + lerp(1.9, 1.6, k), hd[1] - lerp(2.3, 2.0, k), hd[2] + 0.25), (hd[0], hd[1], hd[2] - 0.12), 52, fill=1.5, fcol='FFE0C0')
+    shoot(S, (hd[0] + lerp(2.7, 2.3, k), hd[1] + lerp(0.5, 0.35, k), hd[2] + 0.25), (hd[0], hd[1], hd[2] - 0.15), 50, fill=1.5, fcol='FFE0C0')
 
 
 # ---------------------------------------------------------------- what she believed
@@ -936,32 +927,32 @@ def hospital_wait(S, k, t, lt):
 def hospital_tell(S, k, t, lt):
     """A woman in a white coat sits by the bed, leans in and puts a hand on the girl's hand. The girl looks at her, eyes wide."""
     g = room(S, t)
-    g.apply(P('stand', head=(0.05, 0.75), **BED))
+    g.apply(P('stand', head=(0.05, -0.75), **BED))
     g.face = 'wide' if lt > 0.9 else 'calm'
     w = S['woman']
     w.root.parent = S['room']
-    w.place((-1.5, 1.5, 0.81 - 0.5), -PI / 2 - 0.25)
+    w.place((-1.25, 1.9, 0.81 - 0.5), -PI / 2 - 0.25)
     lean = sm((lt - 0.2) / 0.6)
     w.apply(P('sit', aR=(lerp(0.7, 1.35, lean), 0.0, lerp(1.4, 0.35, lean)), lean=lerp(0.15, 0.5, lean), head=(lerp(0.1, -0.15, lean), 0.0)))
     w.face, w.jawv = 'sad', 0.25 + 0.25 * math.sin(lt * 8) ** 2
-    shoot(S, RM(lerp(-0.6, -0.3, k), lerp(-2.6, -2.2, k), lerp(1.9, 1.8, k)), RM(-0.2, 2.0, 1.5), 34, fill=0.8)
+    shoot(S, RM(lerp(0.5, 0.2, k), lerp(-2.9, -2.5, k), lerp(2.0, 1.9, k)), RM(-0.95, 2.1, 1.45), 29, fill=0.8)
 
 
 def her_face(S, k, t, lt):
-    """Close on her: her eyes go from wide to shut and her head goes down. At the window behind her Rook takes his hat off and holds it to his chest."""
+    """Close on her: her eyes go from wide to shut and her head goes down. At the window behind her Rook takes his hat off and holds it at his side."""
     g = room(S, t)
     dn = sm((lt - 0.45) / 0.5)
     g.apply(P('stand', head=(lerp(0.0, 0.5, dn), lerp(0.6, 0.1, dn)), **BED))
     g.face = 'shut' if dn > 0.6 else 'wide'
     rk = S['rook']
     rk.root.parent = S['room']
-    rk.place((-2.9, 3.0, 0.0), facing((-2.9, 3.0), (1.6, -2.0)))
+    rk.place((-1.5, 3.1, 0.0), facing((-1.5, 3.1), (1.6, -2.0)))
     off = sm((lt - 0.3) / 0.5)
-    rk.apply(blend(P('stand'), P('stand', aR=(0.85, -0.35, 2.05, 1.0), head=(0.35, 0.0)), off))
+    rk.apply(blend(P('stand'), P('stand', aR=(0.15, 0.3, 0.25), head=(0.35, 0.0)), off))
     S['rface'] = 'sad'
     S['hat_off'] = off
     hd = ghead(S)
-    shoot(S, (hd[0] + lerp(1.5, 1.25, k), hd[1] - lerp(2.6, 2.3, k), hd[2] + 0.2), (hd[0] - 0.45, hd[1], hd[2] + 0.05), 44, fill=0.8)
+    shoot(S, (hd[0] + lerp(1.5, 1.25, k), hd[1] - lerp(2.6, 2.3, k), hd[2] + 0.2), (hd[0] - 0.6, hd[1], hd[2] + 0.25), 34, fill=0.8)
 
 
 def empty_chair(S, k, t, lt):
@@ -969,30 +960,25 @@ def empty_chair(S, k, t, lt):
     g = room(S, t)
     g.apply(P('stand', head=(0.5, 0.3), **BED))
     g.face = 'shut'
-    shoot(S, RM(lerp(2.4, 2.0, k), lerp(0.2, 0.5, k), lerp(1.75, 1.6, k)), RM(-1.3, 1.6, 0.95), 40, fill=0.6)
+    shoot(S, RM(lerp(1.3, 0.9, k), lerp(-2.0, -1.7, k), lerp(2.2, 2.0, k)), RM(-0.9, 1.9, 1.0), 34, fill=0.6)
 
 
 def rook_wrong(S, k, t, lt):
-    """Rook at the window, hat held to his chest, head bowed, the evening behind him: 'I was wrong.'"""
+    """Rook at the window, hat held at his side, head bowed, the evening behind him: 'I was wrong.'"""
     g = room(S, t)
     g.apply(P('stand', head=(0.5, 0.1), **BED))
     g.face = 'shut'
     rk = S['rook']
     rk.root.parent = S['room']
-    cam = RM(lerp(-0.9, -1.2, k), lerp(0.2, 0.5, k), lerp(2.35, 2.3, k))
-    rk.place((-3.0, 2.2, 0.0), facing((-3.0, 2.2), (-0.9, 0.2)))
-    rk.apply(P('stand', aR=(0.85, -0.35, 2.05, 1.0), head=(lerp(0.4, 0.15, sm(lt / 0.5)), 0.0)))
+    cam = RM(lerp(-0.5, -0.8, k), lerp(-1.9, -1.6, k), lerp(1.9, 1.95, k))
+    rk.place((-3.3, 0.6, 0.0), facing((-3.3, 0.6), (-0.5, -1.9)))
+    rk.apply(P('stand', aR=(0.15, 0.3, 0.25), head=(lerp(0.4, 0.15, sm(lt / 0.5)), 0.0)))
     S['rface'] = 'sad'
     S['hat_off'] = 1.0
-    shoot(S, cam, RM(-2.9, 2.2, 2.2), 46, fill=0.9)
+    shoot(S, cam, RM(-3.2, 0.6, 1.95), 40, fill=0.9)
 
 
 # ---------------------------------------------------------------- the sea afterwards, and the sign-off
-def harbour(S, k, t, lt):
-    sea(S, 'dusk', t)
-    S['isle'].location = (900, 650, 0)
-
-
 def sea_after(S, k, t, lt):
     """Morning, from high up: the piece of wreckage alone on a wide, empty sea, small pieces of debris round it. No one."""
     sea(S, 'grey', t, 0.7)
@@ -1000,12 +986,12 @@ def sea_after(S, k, t, lt):
 
 
 def signoff(S, k, t, lt):
-    """Dusk. Rook on his floating panel, the hat in his hand; he puts it back on and pulls the brim down."""
+    """Dusk. Rook on his floating panel, the hat in his hand at his side; he puts it back on and pulls the brim down."""
     sea(S, 'dusk', t)
     cam = (lerp(5.3, 4.9, k), lerp(-6.4, -6.0, k), lerp(2.0, 2.1, k))
     on_ = sm((lt - 0.25) / 0.4)
-    rk = rook_on_panel(S, blend(P('stand', aR=(0.85, -0.35, 2.05, 1.0), head=(0.3, 0.0)), P('hat', head=(0.2, 0.0)), on_), facing(RP, cam))
-    rk.apply(blend(P('stand', aR=(0.85, -0.35, 2.05, 1.0), head=(0.3, 0.0)), blend(P('hat', head=(0.2, 0.0)), P('stand', head=(0.25, 0.0)), (lt - 0.75) / 0.3), on_))
+    rk = rook_on_panel(S, blend(P('stand', aR=(0.15, 0.3, 0.25), head=(0.3, 0.0)), P('hat', head=(0.2, 0.0)), on_), facing(RP, cam))
+    rk.apply(blend(P('stand', aR=(0.15, 0.3, 0.25), head=(0.3, 0.0)), blend(P('hat', head=(0.2, 0.0)), P('stand', head=(0.25, 0.0)), (lt - 0.75) / 0.3), on_))
     S['rface'] = 'sad'
     S['hat_off'] = 1 - on_
     S['hat_tip'] = 0.8 * sm((lt - 0.6) / 0.3)
