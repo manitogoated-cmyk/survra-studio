@@ -1,0 +1,31 @@
+{
+  "id": "r019-adilang-long", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9, "spine": "v2",
+  "segments": [
+    {"scene": "hook", "mood": "hook", "text": "The rope snaps on a floating fishing hut, at night, in a hard wind. There's a teenager on board. And the hut has no engine, no paddle, and no way to steer."},
+    {"scene": "doubt", "mood": "tense", "text": "A hut isn't a boat. Nobody crosses an ocean in one. No chance. Let's go look."},
+    {"scene": "job", "mood": "calm", "text": "July, {2018|twenty eighteen}. Aldi Novel Adilang is nineteen, and he has one of the loneliest jobs on earth. He lives by himself on a rompong: a fish trap shaped like a hut, floating a hundred and twenty-five kilometres off the coast of Indonesia."},
+    {"scene": "lamps", "mood": "calm", "text": "Every night he starts a generator and lights the lamps, to draw the fish in. He has done this since he was sixteen. The pay is about a hundred and thirty dollars a month."},
+    {"scene": "weekly", "mood": "calm", "text": "Once a week, a boat comes for the fish, and leaves him food, water and fuel. The rest of the time he has a walkie-talkie, and the sea. His boss owns about fifty of these huts. I've had worse jobs. Not many."},
+    {"scene": "snap", "mood": "tense", "text": "Then, on the fourteenth of July, the wind gets up. And the one rope holding him to the seabed breaks."},
+    {"scene": "before", "mood": "tense", "text": "Here's the thing. This has happened to him before. Twice. Both times, the owner's boat came out and found him. So he waits for the boat."},
+    {"scene": "noboat", "mood": "tense", "text": "This time, no boat comes. The wind carries him north, away from every other hut, and out into open ocean."},
+    {"scene": "gas", "mood": "tense", "text": "His supplies were meant to last about a week. They don't. Then the cooking gas runs out."},
+    {"scene": "fence", "mood": "calm", "text": "So he catches fish. And to cook them, he starts burning the hut's own fence, one rail at a time. He is making dinner on his handrail."},
+    {"scene": "water", "mood": "tense", "text": "Water is harder. When it rains, he drinks. When it doesn't, he soaks his clothes in the sea, wrings them out, and drinks that. It is still seawater. Don't try it."},
+    {"scene": "shark", "mood": "tense", "text": "He says a shark followed the hut. He had nothing to fight it with. All he could do was pray that it went away."},
+    {"scene": "bible", "mood": "sad", "text": "There's a Bible on board, and he reads it every day. He has said he thought he would never see his parents again. I stopped making jokes about then."},
+    {"scene": "rehook", "mood": "tense", "text": "Then, a ship. He waves his clothes. He lights a lamp. It sails straight past."},
+    {"scene": "ten", "mood": "tense", "text": "Then another. And another. More than ten ships pass that hut. Not one of them stops. Not one of them even sees him."},
+    {"scene": "cry", "mood": "sad", "text": "He told the diplomats afterwards that he was scared, and that he cried often. Seven weeks. Alone."},
+    {"scene": "day49", "mood": "tense", "text": "The thirty-first of August. Day forty-nine. He is in the waters off Guam now, thousands of kilometres from home. And a bulk carrier called the Arpeggio is going past."},
+    {"scene": "radio", "mood": "action", "text": "He waves. Nothing. So he grabs his radio, and tries a frequency a friend once told him to use if he was ever blown away. And he calls for help."},
+    {"scene": "turn", "mood": "wonder", "text": "On the ship, somebody hears him. And the ship turns around."},
+    {"scene": "circle", "mood": "tense", "text": "But the waves are high, and a ship that size can't just pull up beside a raft. It circles him four times. The crew throw a rope. It falls short."},
+    {"scene": "jump", "mood": "triumph", "text": "So he jumps into the sea, and goes for it. And a crewman catches his hand."},
+    {"scene": "aboard", "mood": "calm", "text": "They give him a towel, food, and dry clothes. And the ship's cook cuts his hair. Seven weeks of it."},
+    {"scene": "japan", "mood": "calm", "text": "The captain calls the coast guard on Guam, and they tell him to keep going. The ship is bound for Japan. So that's where Aldi goes. Six days later, at the port of Tokuyama, Indonesian diplomats come to meet him."},
+    {"scene": "home", "mood": "triumph", "text": "On the ninth of September, he is home in North Sulawesi, with his parents. In good health."},
+    {"scene": "after", "mood": "calm", "text": "And the job? He says he's finished with the sea. He wants to work on land. For once, I've got no argument."},
+    {"scene": "end", "mood": "end", "text": "I came out here sure that a hut couldn't cross an ocean. This one did, with a teenager on it who waved at every ship that passed. I was wrong. Case closed."}
+  ]
+}
