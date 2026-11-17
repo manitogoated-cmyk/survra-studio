@@ -1,0 +1,26 @@
+{
+  "id": "r020-thamluang-long", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9, "spine": "v2",
+  "segments": [
+    {"scene": "hook", "mood": "hook", "text": "A boy lies asleep in black water, deep inside a mountain. A diver fits a mask over his face, takes hold of him, and pulls him under. This is the rescue plan. It is the best one they have."},
+    {"scene": "doubt", "mood": "tense", "text": "Put a child to sleep and swim him out through a flooded cave? No chance. Let's go look."},
+    {"scene": "start", "mood": "calm", "text": "The twenty-third of June, {2018|twenty eighteen}. Northern Thailand. Twelve boys from a junior football team and their coach leave their bicycles at the mouth of a cave called Tham Luang, and walk in."},
+    {"scene": "rain", "mood": "tense", "text": "Then the monsoon rain comes, and the passage behind them fills with water. That evening the bicycles are still at the entrance, locked. Their owners are not."},
+    {"scene": "climb", "mood": "action", "text": "Inside, the water keeps coming. It chases them deeper, until they are sitting on a slope of mud above it, in the dark."},
+    {"scene": "search", "mood": "tense", "text": "Outside, the search grows to thousands of people. Divers go in against the current. Pumps are brought in, and for days the rain floods the passages faster than they can empty them."},
+    {"scene": "farmers", "mood": "calm", "text": "And the water they pump out has to go somewhere. It goes onto the rice fields below the mountain. The farmers let it."},
+    {"scene": "nights", "mood": "tense", "text": "Nine nights go by, with no word from inside."},
+    {"scene": "found", "mood": "wonder", "text": "Then, on the second of July, two British cave divers, Rick Stanton and John Volanthen, come up in a flooded chamber, and their lamps find faces. Thirteen of them. All alive."},
+    {"scene": "stay", "mood": "calm", "text": "Now they have company. Thai navy divers and an army doctor stay with them on the mud. Divers carry letters out. The boys tell their parents not to worry. The coach writes that he is sorry."},
+    {"scene": "rehook", "mood": "tense", "text": "But finding them was the easy part. The way out is underwater, through tight, twisting tunnels in a strong current. And the oxygen in their chamber is running down."},
+    {"scene": "options", "mood": "tense", "text": "So what do you do? Wait for the water to drop, with more rain on the way. Drill down from above. Or teach the boys to dive, which is judged too risky."},
+    {"scene": "loss", "mood": "sad", "text": "Then, on the sixth of July, a rescuer dies. Saman Kunan, a former Thai navy diver who came back as a volunteer, was placing air tanks along the route."},
+    {"scene": "respect", "mood": "sad", "text": "I took my hat off. I had no joke for that, and I still don't."},
+    {"scene": "plan", "mood": "tense", "text": "And this is where the plan from the start comes in. One of the cave divers, an Australian named Richard Harris, is also an anaesthetist. Each boy will be sedated, fitted with a full face mask, and carried out underwater."},
+    {"scene": "carry", "mood": "action", "text": "On the eighth of July, they begin. One diver to each boy, along the guide line, through the dark, the current, and the narrow places."},
+    {"scene": "out", "mood": "triumph", "text": "Four boys come out that day. Four more the next. And on the tenth of July, the last four boys and their coach. Thirteen out of thirteen."},
+    {"scene": "pumps", "mood": "tense", "text": "And then, a few hours after the last of them is out, with rescue workers still inside, the main pump fails, and the water starts to rise again. Every one of them gets out."},
+    {"scene": "after", "mood": "calm", "text": "Seventeen days after they walked in, the team is in hospital. About a week later, they walk out of it."},
+    {"scene": "novices", "mood": "sad", "text": "And later that month, boys from the team are ordained as Buddhist novices, in honour of the rescuer who died."},
+    {"scene": "end", "mood": "end", "text": "I came here sure that nobody was alive in that cave, and surer that nobody could be carried out of it asleep. Thousands of people proved me wrong. Thirteen in, thirteen out. Case closed."}
+  ]
+}
