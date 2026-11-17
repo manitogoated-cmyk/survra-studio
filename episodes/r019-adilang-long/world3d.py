@@ -1211,6 +1211,13 @@ def set_bridge():
     box('E8E0C8', (-4.6, -3.1, 1.02), (2.4, 1.1, 0.03), r)
     for x in (-5.2, 5.6):
         add('cylinder', '8E2C26', (x, -3.6, 1.6), radius=0.14, depth=0.6, vertices=7, parent=r)
+    for j, (x, c) in enumerate(((-1.6, '4AD8A0'), (0.2, 'F0B050'), (2.0, '5AA8F0'))):          # the back wall: panels, a door, a ring buoy
+        box('14181E', (x, -3.86, 2.2), (1.4, 0.08, 0.9), r)
+        box(c, (x, -3.8, 2.2), (1.2, 0.03, 0.7), r, emit=1.6)
+    box('1C222C', (4.4, -3.86, 1.2), (1.3, 0.08, 2.4), r)
+    box('3E4A5C', (4.4, -3.8, 1.2), (1.1, 0.04, 2.2), r)
+    add('torus', 'FF7A1A', (-3.4, -3.8, 2.3), rot=(PI / 2, 0, 0), major_radius=0.42, minor_radius=0.1, major_segments=12, minor_segments=5, parent=r)
+    box('8A7250', (2.6, -3.3, 0.45), (2.2, 0.9, 0.9), r)
     lt = light((BR[0] + 1.0, BR[1] - 0.5, 3.2), 0, 'FFF0DC', size=5.0)
     day = light((BR[0] - 1.0, BR[1] + 7.0, 4.0), 0, 'DCEBFF', size=8.0)
     aim = empty((BR[0], BR[1] + 1.5, 1.8))
@@ -1933,7 +1940,7 @@ def bridge(S, k, t, lt):
     hear = sm((lt - 0.2) / 0.25)
     tn = sm((lt - 0.65) / 0.3)
     put(m, A(-1.3, 1.5), PI + 0.15)
-    m.apply(blend(blend(P('stand', aR=(1.0, 0.1, 0.9), aL=(0.9, 0.1, 0.8), head=(0.35, 0.0), lean=0.2), P('stand', aR=(1.0, 0.1, 0.9), aL=(1.5, 0.6, 2.0), head=(-0.1, 0.3)), hear),
+    m.apply(blend(blend(P('stand', aR=(1.0, 0.1, 0.9), aL=(0.9, 0.1, 0.8), head=(0.35, 0.0), lean=0.2), P('stand', aR=(1.0, 0.1, 0.9), aL=(0.5, 1.15, 2.35), head=(-0.1, 0.3)), hear),
                   P('point', aR=(1.5, 0.15, 0.05), aL=(0.4, 0.3, 0.5), head=(0.0, -0.9)), tn))
     m.face, m.jawv = ('wide' if hear > 0.5 else 'calm'), 0.6 * tn * abs(math.sin(lt * 12))
     cy = lerp(-1.8, 1.0, sm((lt - 0.5) / 0.6))
@@ -2214,7 +2221,7 @@ ORB = dict(job_wide=0.0, rook_coin=0.0, walk_inland=0.0, snap_wide=4.0, rope_clo
            rook_shore=22.0, wait=12.0, haircut=14.0, signoff=12.0, fence_break=14.0, cry=8.0, dawn_empty=13.0, carrier_pass=7.0, circle=9.0,
            dock=8.0, home_rook=9.0, bible=8.0, rook_quiet=8.0, wring=8.0, rook_tip=8.0, wait_boat=9.0, gas_out=7.0, cook=8.0,
            lamp_signal=8.0, sail_past=8.0, call=8.0, bridge=5.0, supplies=3.0, grab_radio=3.0, fish_glow=10.0, rook_quip=8.0, walkie=7.0,
-           dock_meet=7.0, turn=4.0, rope_throw=4.0, haul=5.0, alive=7.0, day49=7.0, fishing=8.0, high_waves=5.0, sip=6.0)
+           dock_meet=7.0, turn=4.0, rope_throw=4.0, haul=5.0, alive=7.0, day49=15.0, fishing=8.0, high_waves=5.0, sip=6.0)
 
 
 def _moving(f, name):
