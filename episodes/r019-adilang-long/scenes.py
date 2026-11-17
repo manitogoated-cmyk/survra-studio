@@ -109,7 +109,7 @@ def land(cv, pts, seed=1):
 
 
 def note(cv):
-    fit(cv, 'DIAGRAM, NOT TO SCALE', 1650, 1050, 30, 500, 0x99FFFFFF, None)
+    fit(cv, 'DIAGRAM, NOT TO SCALE', 1650, 1036, 30, 500, 0x99FFFFFF, None)
 
 
 COAST = [(-20, 140), (190, 170), (330, 300), (300, 450), (400, 560), (330, 700), (380, 820), (250, 1000), (120, 1100), (-20, 1100)]
@@ -134,7 +134,7 @@ def map_card(cv, c):
     cv.drawLine(xe + 150, y0 + 40, xe + 190, y0 + 240, P(h('D8C8A0'), 6))            # the one rope, down to the seabed
     fit(cv, f'{int(round(125 * k))} KM', 900, 330, 190, 800, AMBER)
     fit(cv, 'FROM LAND', 900, 430, 70, 700, 0xFFFFFFFF)
-    fit(cv, 'NORTH SULAWESI', 170, 640, 40, 300, 0xFFFFFFFF)
+    fit(cv, 'NORTH SULAWESI', 200, 640, 32, 300, 0xFFFFFFFF)
     note(cv)
 
 
@@ -155,7 +155,7 @@ def pay_card(cv, c):
     hut_mark(cv, 0, 0, 2.0)
     cv.restore()
     k1 = ease(c.lt / 0.3)
-    fit(cv, 'SINCE HE WAS', 620, 250, 80, 900, 0xFFFFFFFF)
+    fit(cv, 'SINCE HE WAS', 620, 210, 80, 900, 0xFFFFFFFF)
     cv.save()
     cv.translate(620, 420)
     cv.scale(1.3 - 0.3 * k1, 1.3 - 0.3 * k1)
@@ -224,7 +224,7 @@ def north_card(cv, c):
     """'This time, no boat comes. The wind carries him north, away from every other hut, and out into open ocean.'"""
     chart(cv, c)
     land(cv, SUL)
-    fit(cv, 'NORTH SULAWESI', 210, 900, 40, 380, 0xFFFFFFFF)
+    fit(cv, 'NORTH SULAWESI', 245, 850, 36, 380, 0xFFFFFFFF)
     for i in range(16):                                            # the other huts, still on their ropes
         x, y = 420 + 330 * rn(i, 21), 560 + 200 * rn(i, 22)
         cv.drawCircle(x, y, 9, P(h('FFE9A8'), a=0.9))
@@ -251,7 +251,7 @@ def guam_card(cv, c):
     """'He is in the waters off Guam now, thousands of kilometres from home.' The track of the hut across the chart, to a small island."""
     chart(cv, c)
     land(cv, SUL)
-    fit(cv, 'NORTH SULAWESI', 210, 900, 40, 380, 0xFFFFFFFF)
+    fit(cv, 'NORTH SULAWESI', 245, 850, 36, 380, 0xFFFFFFFF)
     cv.drawPath(poly([(1600, 250), (1640, 215), (1672, 240), (1655, 300), (1615, 310)]), P(LAND))
     fit(cv, 'GUAM', 1640, 190, 54, 300, 0xFFFFFFFF)
     k = ease(c.k / 0.7)
@@ -263,7 +263,7 @@ def guam_card(cv, c):
     fit(cv, '14 JULY', 560, 640, 46, 400, 0xFFFFFFFF)
     if k > 0.95:
         fit(cv, '31 AUGUST', 1380, 420, 46, 400, 0xFFFFFFFF)
-    fit(cv, 'DAY 49', 900, 700, 170, 900, AMBER)
+    fit(cv, 'DAY 49', 1180, 760, 150, 900, AMBER)
     note(cv)
 
 

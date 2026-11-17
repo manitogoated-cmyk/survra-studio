@@ -2,20 +2,77 @@
  "id": "r019-adilang-long",
  "format": "long",
  "status": "draft",
+ "case_of": "r019-adilang",
+ "claimed_at": "2026-11-17T02:54:26Z",
  "synthetic": false,
  "host": "rook",
  "case": 19,
- "case_of": "r019-adilang",
- "title": "Case 019: 49 Days Adrift in a Floating Fishing Hut (Full Case File)",
+ "title": "49 Days Adrift in a Floating Fishing Hut: The Full Case of Aldi Adilang",
+ "description": "Case 019, the full case file. In July 2018 Aldi Novel Adilang, 19, was working alone as the lamp keeper of a rompong, a floating fish trap shaped like a small hut, moored by a long rope about 125 kilometres off North Sulawesi, Indonesia. He had done the job since he was 16, for about 130 US dollars a month: every night he ran a generator to light the lamps that draw fish in, and about once a week someone came out to collect the fish and bring him food, water, cooking gas and fuel. The rest of the time he had a walkie-talkie. His employer was reported to have about 50 such huts. On 14 July the rope parted in high wind. It was the third time his hut had drifted; the first two times, after a week and after two days, the owner's boat had found him. This time the wind carried the hut, which had no engine and no paddle, north into open ocean. His supplies ran out, then his cooking gas. He caught fish and burned wood from the hut's own fence to cook them; he drank rain when it fell and, when it did not, soaked his clothes in the sea, wrung them out and drank that. He has said a shark followed the hut at one point, that he read the Bible he had on board every day, and that he thought he would never see his parents again. More than ten ships passed without seeing him. On 31 August, in waters off Guam, he waved at the passing bulk carrier MV Arpeggio, was not seen, and called it on his radio on a frequency a friend had once told him to use. The ship turned round and, in high waves, circled him four times; a rope thrown from it fell short, so he jumped into the sea and a crewman caught his hand. The crew gave him a towel, food and clothes, and the ship's cook cut his hair. On the advice of the coast guard on Guam the ship carried him on to its destination in Japan, where Indonesian diplomats met him at the port of Tokuyama on 6 September. He was home in North Sulawesi on 9 September, reported in good health, and has said he does not want to go back to work at sea. Rook didn't believe it either.\n\nAnimated reconstruction of a true story. The hut, the supply boat, the sea, the ship, its bridge, the quay and the beach are generic low-poly sets, not models of the real rompong, the real MV Arpeggio, Tokuyama or his home village; no name, flag or logo appears on any of them. The young man, the boatman, the ship's officers and cook, the officials and his parents are simple figures and nobody's likeness is attempted. The charts are diagrams with invented coastlines and are not to scale. Staging details are reconstruction, not record: the time of day and the weather in each shot, how he caught fish, the fire in a tin, the stove, the jug held up in the rain, the cup, the look of the shark and where it swam, where on the raft he read, the lantern, the shape of the radio, who on the ship's bridge heard the call, the ship's ring round the raft, the rope ladder, the scissors, the gangway, the family's meeting on a beach, and the fish hook Rook keeps. Reports differ on his age (19 in most, 18 in some) and on the date he reached home (8 or 9 September). Drinking seawater is dangerous; the film shows what the reports say he did, not advice. Narration is a synthetic voice (Kokoro).",
+ "tags": [
+  "Aldi Novel Adilang",
+  "Aldi Adilang",
+  "rompong",
+  "lost at sea",
+  "adrift",
+  "49 days adrift",
+  "North Sulawesi",
+  "Indonesia",
+  "Guam",
+  "MV Arpeggio",
+  "Tokuyama",
+  "2018",
+  "survival",
+  "true story",
+  "survival story",
+  "full story",
+  "rescue",
+  "animated story",
+  "animated documentary",
+  "Rook",
+  "Survra"
+ ],
+ "hashtags": [
+  "#truestory",
+  "#survival",
+  "#lostatsea"
+ ],
  "playlist": "Rook's Case Files (Full Cases)",
  "sources": [
   "https://www.thejakartapost.com/news/2018/09/23/indonesian-teenager-survives-49-days-adrift-in-guam-waters.html",
+  "https://www.thejakartapost.com/news/2018/09/27/indonesias-pi-patel-wants-to-stay-on-land.html",
+  "https://www.dawn.com/news/1434806",
   "https://www.kpbs.org/news/2018/09/24/19-year-old-survives-49-days-at-sea-after",
   "https://www.irishtimes.com/news/world/asia-pacific/indonesian-teenager-survives-49-days-adrift-at-sea-in-fishing-hut-1.3639807",
-  "https://globalnews.ca/news/4480785/indonesian-teenager-lost-at-sea"
+  "https://www.nbcnews.com/news/world/teen-survives-49-days-adrift-pacific-rescued-guam-n912441",
+  "https://amp.cnn.com/cnn/2018/09/24/asia/indonesian-teen-rescued-intl",
+  "https://globalnews.ca/news/4480785/indonesian-teenager-lost-at-sea",
+  "https://weather.com/news/news/2018-09-25-teen-survives-49-days-at-sea-indonesia",
+  "https://time.com/5405430/aldi-novel-adilang-indonesian-teenager-rescued",
+  "https://www.sciencealert.com/this-indonesian-teenager-survived-almost-50-days-adrift-sea-floating-wooden-hut-rompong-aldi-novel-adilang",
+  "https://en.wikipedia.org/wiki/Aldi_Adilang"
  ],
+ "story_score": {
+  "curiosity": 8,
+  "stakes": 8,
+  "freshness": 7,
+  "story": 8,
+  "visual": 8,
+  "audience_fit": 8,
+  "payoff": 8,
+  "packaging": 8,
+  "research": 8,
+  "repeatability": 6,
+  "total": 77
+ },
+ "title_options": [
+  "49 Days Adrift in a Floating Fishing Hut: The Full Case of Aldi Adilang",
+  "Ten Ships Sailed Past Him. Then He Picked Up His Radio: The Full Story",
+  "His Fishing Hut Broke Loose for the Third Time. This Time Nobody Came"
+ ],
+ "spine": "v2",
  "authoring": {
   "claimed_at": "2026-11-17T02:54:26Z",
-  "run": "scheduled long run, 17 Nov 2026"
+  "run": "scheduled long run, 17 Nov 2026; the oldest case in the ledger with a public or scheduled Short, a world3d.py and no long version"
  }
 }

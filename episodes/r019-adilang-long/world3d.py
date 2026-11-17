@@ -1616,8 +1616,8 @@ def rope_strain(S, k, t, lt):
     far_ = (c[0] + 1.6, c[1] - 6.5, c[2] - 2.2)
     j = 0.05 * math.sin(t * 60) * (0.4 + k)
     mid = (c[0] + 0.3 + j, c[1] - 1.2, c[2] - 0.4 + j)
-    rope(S, 0, c, mid, 0.085)
-    rope(S, 1, mid, far_, 0.085)
+    rope(S, 0, c, mid, 0.13)
+    rope(S, 1, mid, far_, 0.13)
     S['fray'].location = mid
     S['fray'].rotation_euler = (0.4 + t * 3, 1.2, 0.3)
     s = 0.3 + 1.6 * sm(k)
@@ -1626,7 +1626,7 @@ def rope_strain(S, k, t, lt):
     on(S, b, 1.5, -2.2, look_yaw((1.5, -2.2), (CLEAT[0] + 1.5, CLEAT[1] - 1.2)))
     b.apply(P('stand', aL=(0.9, 0.3, 0.5), aR=(1.2, 0.1, 0.3 + 0.2 * math.sin(lt * 9)), head=(0.35, 0.0), **dict(CROUCH, lean=0.5)))
     b.face, b.jawv = 'wide', 0.3
-    shoot(S, D(S, lerp(6.0, 5.4, k), lerp(-4.9, -4.5, k), lerp(0.9, 1.2, k)), D(S, 2.9, -2.9, 1.15), 38, fill=1.5, fcol='D8E4FF')
+    shoot(S, D(S, lerp(5.4, 5.0, k), lerp(-5.9, -5.5, k), lerp(1.5, 1.7, k)), D(S, 2.7, -3.1, 1.0), 40, fill=1.5, fcol='D8E4FF')
 
 
 def wait_boat(S, k, t, lt):
@@ -1846,7 +1846,7 @@ def lamp_signal(S, k, t, lt):
     S['lant'].location = (h[0], h[1], h[2] + 0.2)
     S['lant'].scale = (1.3, 1.3, 1.3)
     lampat(S, 3, (h[0] + 0.5, h[1] + 0.6, h[2] - 0.3), 700, 'FFDCA0')
-    shoot(S, D(S, *cam), D(S, 3.4, 0.4, 3.0), 40, fill=1.3, fcol='FFD0A0')
+    shoot(S, D(S, *cam), D(S, 3.5, 0.4, 2.4), 34, fill=1.3, fcol='FFD0A0')
 
 
 def night_ship(S, k, t, lt):
@@ -1901,7 +1901,7 @@ def carrier_pass(S, k, t, lt):
     S['rag'].location = (hl[0] + 0.4, hl[1], hl[2] + 0.3)
     S['rag'].rotation_euler = (0.2 * w, 0.5 * w, 0.0)
     S['rag'].scale = (0.9 * 1.6, 0.03, 0.6 * 1.6)
-    shoot(S, (lerp(40, 30, k), lerp(78, 75, k), lerp(31, 28, k)), (lerp(6, 2, k), 12, 2.0), 32, fill=0.6, fcol='FFD8B0')
+    shoot(S, (lerp(40, 30, k), lerp(78, 75, k), lerp(31, 28, k)), (lerp(6, 2, k), 12, 2.0), 44, fill=0.6, fcol='FFD8B0')
 
 
 # ---------------------------------------------------------------- on the ship
@@ -1922,14 +1922,14 @@ def bridge(S, k, t, lt):
         S['radio'].location = (h[0], h[1], h[2] - 0.12)
         S['radio'].rotation_euler = (0.2, 0, PI + 0.5)
         S['radio'].scale = (0.6, 0.6, 0.6)
-        put(m, A(1.9, 1.0), PI + 0.8)
+        put(m, A(1.0, 0.5), PI + 0.8)
         m.apply(P('hips', head=(0.05, 0.4 * math.sin(lt * 1.5))))
         m.face = 'warm'
-        shoot(S, A(lerp(1.6, 1.1, k), 3.75, lerp(2.3, 2.4, k)), A(-0.1, 1.4, 2.2), 32, fill=1.3)
+        shoot(S, A(lerp(0.7, 0.3, k), 3.75, lerp(2.4, 2.5, k)), A(0.0, 1.2, 2.45), 25, fill=1.3)
         return
     hear = sm((lt - 0.2) / 0.25)
     tn = sm((lt - 0.65) / 0.3)
-    put(m, A(-1.5, 1.9), PI + 0.15)
+    put(m, A(-1.3, 1.5), PI + 0.15)
     m.apply(blend(blend(P('stand', aR=(1.0, 0.1, 0.9), aL=(0.9, 0.1, 0.8), head=(0.35, 0.0), lean=0.2), P('stand', aR=(1.0, 0.1, 0.9), aL=(1.5, 0.6, 2.0), head=(-0.1, 0.3)), hear),
                   P('point', aR=(1.5, 0.15, 0.05), aL=(0.4, 0.3, 0.5), head=(0.0, -0.9)), tn))
     m.face, m.jawv = ('wide' if hear > 0.5 else 'calm'), 0.6 * tn * abs(math.sin(lt * 12))
@@ -1937,7 +1937,7 @@ def bridge(S, k, t, lt):
     put(c, A(0.9, cy), PI + 0.2)
     c.apply(blend(walk(lt, 1.6), P('stand', aL=(0.9, 0.3, 0.6), aR=(0.9, 0.3, 0.6), lean=0.15, head=(-0.05, 0.0)), sm((lt - 1.0) / 0.2)))
     c.face = 'wide' if tn > 0.5 else 'calm'
-    shoot(S, A(lerp(1.2, 0.7, k), 3.75, lerp(2.35, 2.45, k)), A(-0.5, 1.2, 2.2), 32, fill=1.3)
+    shoot(S, A(lerp(0.5, 0.1, k), 3.75, lerp(2.4, 2.5, k)), A(-0.2, 1.0, 2.45), 25, fill=1.3)
 
 
 def circle(S, k, t, lt):
@@ -1996,7 +1996,7 @@ def swim(S, k, t, lt):
     rope(S, 1, (2.6, 21.0, 6.0), (3.0, 21.2, 13.0), 0.1)
     rk = S['rook']
     fl = math.sin(lt * 22)
-    put(rk, (0.2, by + 2.6, 2.9 + 0.25 * fl), PI - 0.6, -0.5)
+    put(rk, (0.2, by + 2.6, 1.9 + 0.25 * fl), PI - 0.6, -0.5)
     rk.apply(P('up', aL=(1.5, 1.2 + 0.5 * fl, 0.2), aR=(1.5, 1.2 + 0.5 * fl, 0.2), lL=(0.3, 0.5), lR=(0.3, 0.5), head=(0.4, 0.3)))
     S['rface'] = 'shocked'
     shoot(S, (lerp(9.0, 8.0, k), lerp(8.0, 10.5, k), lerp(1.3, 1.6, k)), (1.8, by + 2.2, 1.7), 30, fill=1.2)
@@ -2144,7 +2144,7 @@ def walk_inland(S, k, t, lt):
     b.face = 'warm'
     rk = S['rook']
     tn = sm((lt - 1.4) / 0.5)
-    put(rk, A(2.4, 6.2 - 2.0 * sm((lt - 1.9) / 1.5), 0.0), lerp(PI, 0.1, tn))
+    put(rk, A(4.6, 5.0 - 2.5 * sm((lt - 1.9) / 1.5), 0.0), lerp(PI, 0.1, tn))
     rk.apply(blend(P('hips', head=(-0.05, 0.0)), walk(lt, 1.3), sm((lt - 1.8) / 0.3)))
     S['rface'] = 'calm'
     shoot(S, A(lerp(-3.0, -2.6, k), by - lerp(7.5, 6.0, k), lerp(1.6, 1.9, k)), A(0.3, by + 1.0, 2.3), 34, fill=1.1)
@@ -2167,18 +2167,18 @@ def photo_thumb(S, k, t, lt):
     """Thumbnail picture: he waves the cloth with both arms at the corner of the raft, mouth open, while a huge hull goes past behind him without turning."""
     sea(S, 'day', 3.1, 0.7)
     fence(S, 6)
-    ship_at(S, 95, 120, 0.12)
+    ship_at(S, 20, 125, 0.12)
     b = S['boy']
     bp = (3.6, -2.2)
-    cam = (9.6, -8.6, 2.3)
+    cam = (7.4, -6.6, 2.5)
     on(S, b, bp[0], bp[1], look_yaw(bp, cam) + 0.25)
     b.apply(P('up', aL=(2.75, 0.55, 0.15), aR=(2.75, 0.1, 0.15), head=(-0.15, -0.2)))
     b.face, b.jawv = 'wide', 0.9
     hl, hr = world_of(b.hands[0], (0, 0, -0.2)), world_of(b.hands[1], (0, 0, -0.2))
     S['rag'].location = ((hl[0] + hr[0]) / 2, (hl[1] + hr[1]) / 2, (hl[2] + hr[2]) / 2 + 0.35)
     S['rag'].rotation_euler = (0.2, 0.5, look_yaw(bp, cam))
-    S['rag'].scale = (1.5, 0.03, 0.95)
-    shoot(S, D(S, *cam), D(S, 1.6, -1.2, 2.9), 30, fill=1.6)
+    S['rag'].scale = (1.15, 0.03, 0.7)
+    shoot(S, D(S, *cam), D(S, 2.2, -1.4, 3.0), 30, fill=1.6)
 
 
 HOST |= {'rook_coin', 'lamps_on', 'supply_boat', 'rook_quip', 'wait_boat', 'rain', 'rook_tip', 'shark_top', 'bible', 'rook_quiet', 'alone_wide', 'decide', 'swim',
@@ -2189,7 +2189,7 @@ SHOTS3D.update({f.__name__: f for f in (
     home_rook, walk_inland, rook_shore)})
 STILLS.update(thumb=photo_thumb)
 
-REFRAME = dict(boy_face=(1.5, 1.3))                 # the Short's portrait framing cut Rook off the top of a wide frame: (lift the aim, pull back)
+REFRAME = dict(boy_face=(1.5, 1.6), alive=(-0.35, 1.0))                 # the Short's portrait framing cut Rook off the top of a wide frame: (lift the aim, pull back)
 
 
 def _reframed(f, dz, mul):
