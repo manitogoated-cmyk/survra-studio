@@ -1978,11 +1978,11 @@ def workshop(S, k, t, lt):
     c1.place(A(kp[0], kp[1], 0), look_yaw(kp, (sx + 0.3, sy)))
     c1.apply(KNEEL)
     rk = S['rook']
-    rp = (sx - 3.5, sy + 1.2)
+    rp = (sx - 3.7, sy - 0.9)
     cam = (sx + lerp(1.6, 2.4, k), sy + lerp(-7.0, -6.4, k), lerp(1.9, 2.1, k))
     lay = sm((lt - 0.2) / 0.4)
     look = sm((lt - 1.4) / 0.3)
-    rk.place(A(rp[0], rp[1], 0), lerp(look_yaw(rp, (sx - 2.4, sy)), look_yaw(rp, cam), 0.6 * look))
+    rk.place(A(rp[0], rp[1], 0), lerp(look_yaw(rp, (sx - 2.0, sy - 0.5)), look_yaw(rp, cam), 0.6 * look))
     rk.apply(blend(P('stand', aR=(0.6, 0.1, 0.9), head=(0.2, 0.0)), P('stand', aR=(1.45, -0.05, 0.2), head=(0.3 - 0.3 * look, 0.0), lean=0.15), lay))
     S['ruler'].location = A(sx - 2.5, sy - lerp(1.2, 0.0, lay), lerp(1.4, 1.83, lay))
     S['ruler'].rotation_euler = (0, 0, PI / 2)
@@ -2169,7 +2169,7 @@ def photo_thumb(S, k, t, lt):
     m.face, m.jawv = 'wide', 0.5
     d = S['drill'].location
     lampat(S, 3, (d[0] + 0.2, d[1] - 2.2, d[2] + 2.4), 420, 'FFE8C8')
-    shoot(S, (d[0] + 0.4, d[1] - 3.3, d[2] + 1.8), (d[0] - 1.05, d[1] + 0.3, d[2] + 1.45), 40, fill=1.8)
+    shoot(S, (d[0] + 1.7, d[1] - 3.0, d[2] + 1.85), (d[0] - 0.75, d[1] + 0.3, d[2] + 1.45), 40, fill=1.8)
 
 
 def shift(S, k, t, lt):
@@ -2213,18 +2213,19 @@ for _k in ('emerge', 'hug'):
 
 # A wide frame held for three or four seconds needs more than a slow push: every shot also swings a little round its own subject.
 # The rate is degrees per second; prm "orb": [degrees, dolly, rise] sets it for one shot.
-SWING = dict(three_rigs=3.0, lights_out=4.0, vigil=5.0, shaft_ride=0.0, ride_face=0.0, tie_note=4.0, spoon=5.0, sealed=11.0, rook_wrong=10.0, signoff=9.0)
+SWING = dict(three_rigs=6.0, lights_out=6.0, vigil=7.0, shaft_ride=0.0, ride_face=0.0, tie_note=4.0, spoon=6.0, sealed=11.0, rook_wrong=10.0, signoff=9.0, rig_night=12.0,
+             big_drill=10.0, tents=10.0, refuge_wide=10.0, capsule_top=10.0, cabinet=9.0, hole_measure=9.0, heat=9.0, letter=9.0)
 
 
 def _swung(f, name):
     sign = 1 if sum(map(ord, name)) % 2 else -1
-    rate = SWING.get(name, 6.0)
+    rate = SWING.get(name, 8.0)
 
     def g(S, k, t, lt):
         f(S, k, t, lt)
         d = lt / k if k > 0.02 else 3.0
         o = S['prm'].get('orb')
-        deg, dolly, rise = (list(o) + [0, 0])[:3] if o else (sign * rate * d, min(0.25, 0.04 * d) if rate else 0.0, 0.0)
+        deg, dolly, rise = (list(o) + [0, 0])[:3] if o else (sign * rate * d, min(0.3, 0.05 * d) if rate else 0.0, 0.0)
         c, tg = S['camrig'].location, S['camtgt'].location
         a = math.radians(deg) * (k - 0.5)
         m = 1 - dolly * (k - 0.5)
@@ -2257,5 +2258,5 @@ def _lower(f, dz, mul):
     return g
 
 
-SHOTS3D['tie_note'] = _lower(SHOTS3D['tie_note'], 0.5, 1.2)
+SHOTS3D['tie_note'] = _lower(SHOTS3D['tie_note'], 0.95, 1.25)
 SHOTS3D = {name: _swung(f, name) for name, f in SHOTS3D.items()}

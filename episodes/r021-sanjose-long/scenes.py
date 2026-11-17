@@ -129,7 +129,7 @@ def push(cv, c, amount=0.1, sway=0.0):
     cv.translate(W / 2, H / 2)
     cv.scale(z, z)
     cv.rotate(sway * math.sin(c.t * 1.3))
-    cv.translate(-W / 2 + 14 * math.sin(c.t * 0.9), -H / 2 + 8 * math.sin(c.t * 1.4))
+    cv.translate(-W / 2 + 26 * math.sin(c.t * 0.9), -H / 2 + 14 * math.sin(c.t * 1.4))
 
 
 def line2(cv, a, b, col, w_=8):
@@ -178,7 +178,7 @@ FILE = ('5 AUGUST 2010', 'SAN JOSÉ MINE', 'ATACAMA DESERT, CHILE', 'COPPER AND 
 def file_card(cv, c):
     """Rook's case file for the day it began: four lines on the steel plate, typed in one after another."""
     cv.save()
-    push(cv, c, 0.14, 0.5)
+    push(cv, c, 0.3, 0.8)
     plate(cv, 9, 0.6)
     card(cv, 400, 400, 420, 520, -3)
     cv.save()
@@ -418,13 +418,13 @@ def count33(cv, c):
     Wd.vgrad(cv, 0, 0, W, H, [(0, h('10183A')), (0.6, h('2A2A5A')), (1, h('0C1024'))])
     Wd.glow(cv, 960 + 500 * math.sin(c.t * 0.8), 460, 900, h('FFC890'), 0.3)
     cv.save()
-    push(cv, c, 0.1, 0.4)
-    left(cv, '13 OCTOBER 2010', 90, 110, 56, 0xFFFFFFFF)
+    push(cv, c, 0.16, 0.6)
+    left(cv, '13 OCTOBER 2010', 220, 150, 56, 0xFFFFFFFF)
     n = c.k * 44
     for i in range(33):
         col, row = i % 11, i // 11
         x = 960 + (col - 5) * 150
-        y = 300 + row * 150 + 10 * math.sin(c.t * 3 + i * 0.6)
+        y = 320 + row * 140 + 16 * math.sin(c.t * 3 + i * 0.6)
         helmet(cv, x, y, 0.86, h('F2F2EC') if i == 32 else h(HELMC[i % 3]))
         tick(cv, x + 34, y + 28, 0.95, min(1.0, max(0.0, n - i)))
     if c.k > 0.78:
@@ -465,7 +465,7 @@ def timeline_card(cv, c):
 def board(cv, c):
     """Rook's board: the capsule at the surface, and the count."""
     cv.save()
-    push(cv, c, 0.14, 0.5)
+    push(cv, c, 0.26, 0.8)
     plate(cv, 5, 0.7)
     k = min(1, c.lt / 0.16)
     s = 0.74 + 0.26 * (1 - (1 - k) ** 3) + 0.02 * c.k
@@ -556,6 +556,6 @@ def THUMB(cv, c):
     else:
         cv.clear(h('3E2F28'))
     cv.drawRect(skia.Rect(0, 0, 1280, 720), skia.Paint(Shader=skia.GradientShader.MakeLinear([(640, 0), (0, 0)], [0x00000000, 0xE0000000])))
-    Wd.text_card(cv, '17 DAYS', 310, 250, 132, 0xFFFFFFFF, 0xFF000000)
-    Wd.text_card(cv, 'TRAPPED.', 310, 395, 132, 0xFFFFFFFF, 0xFF000000)
-    Wd.text_card(cv, 'A NOTE.', 310, 540, 132, RED, 0xFF000000)
+    Wd.text_card(cv, '17 DAYS', 300, 250, 112, 0xFFFFFFFF, 0xFF000000)
+    Wd.text_card(cv, 'TRAPPED.', 300, 385, 112, 0xFFFFFFFF, 0xFF000000)
+    Wd.text_card(cv, 'A NOTE.', 300, 520, 112, RED, 0xFF000000)
