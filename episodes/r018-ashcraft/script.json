@@ -1,0 +1,13 @@
+{
+  "id": "r018-ashcraft", "spine": "v2", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.4,
+  "segments": [
+    {"scene": "hook", "mood": "hook", "text": "she wakes up on the floor of a wrecked yacht, and her fiancé is gone."},
+    {"scene": "doubt", "mood": "tense", "text": "No masts? No chance."},
+    {"scene": "wreck", "mood": "sad", "text": "A hurricane flipped the boat. She was out cold for {27|twenty-seven} hours. His safety line is still tied on. Nobody is on the end of it."},
+    {"scene": "work", "mood": "action", "text": "The engine is dead. So she pumps out the cabin, and hangs one small sail on a broken pole."},
+    {"scene": "rehook", "mood": "tense", "text": "Then a plane flies right over her, low. It doesn't see her. Neither do two ships."},
+    {"scene": "steer", "mood": "wonder", "text": "So she aims for Hawaii, {1,500|fifteen hundred} miles away, with a sextant, and a watch she finds in the bilge."},
+    {"scene": "payoff", "mood": "triumph", "text": "On day {41|forty-one}, a ship finds her just outside the harbour at Hilo, Hawaii. She steered that wreck there herself."},
+    {"scene": "end", "mood": "sad", "text": "Richard Sharp was lost in the storm. She went back to sea. I was wrong. Case closed. It all began when"}
+  ]
+}

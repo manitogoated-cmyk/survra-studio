@@ -1,0 +1,23 @@
+{
+ "id": "r018-ashcraft",
+ "format": "short",
+ "status": "draft",
+ "synthetic": false,
+ "host": "rook",
+ "case": 18,
+ "title": "She Woke Up Alone on a Wrecked Yacht #shorts",
+ "playlist": "Rook's Case Files (Shorts)",
+ "sources": [
+  "https://en.wikipedia.org/wiki/Tami_Oldham_Ashcraft",
+  "https://rnli.org/magazine/magazine-featured-list/2019/april/adrift-tami-oldham-ashcraft",
+  "https://explorersweb.com/a-survival-classic-tami-oldham-ashcrafts-41-days-alone-at-sea/",
+  "https://www.outsideonline.com/culture/books-media/tami-ashcraft-surviving-41-days-adrift-shailene-woodley",
+  "https://www.stylist.co.uk/long-reads/shipwreck-beach-sea-boats-sailing-weather-hurricane-disaster-fiance-relationship-love-adrift-film/239602",
+  "https://allthatsinteresting.com/tami-oldham-ashcraft"
+ ],
+ "spine": "v2",
+ "authoring": {
+  "claimed_at": "2026-11-17T18:21:30Z",
+  "run": "scheduled short run, 17 Nov 2026; brief order (Short 7 of the batch, slate case 18)"
+ }
+}
