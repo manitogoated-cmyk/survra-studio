@@ -1,0 +1,2646 @@
+{
+ "id": "r020-thamluang-long",
+ "hook_text": "CARRIED OUT|ASLEEP",
+ "shots": [
+  {
+   "n": 1,
+   "segment": "hook",
+   "weight": 0.95,
+   "kind": "take_under",
+   "action": "Black water in a cave. A boy in a wetsuit and a full-face mask floats face down, asleep; a diver, chest-deep beside him, takes hold of him with both arms and sinks, pulling him under. Rings spread, bubbles come up",
+   "camera": "At water level, close, pushing in and sinking",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 2,
+   "transition": "cut",
+   "sfx": [
+    [
+     "hit",
+     0.03
+    ],
+    [
+     "splash",
+     0.55
+    ],
+    [
+     "bubbles",
+     0.8
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 2,
+   "segment": "hook",
+   "weight": 0.8,
+   "kind": "mask_on",
+   "action": "Two gloved hands lower the full-face mask onto the sleeping boy's face; his eyes stay shut",
+   "camera": "From above, close, drifting",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.6
+    ],
+    [
+     "bubbles",
+     0.85
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 3,
+   "segment": "hook",
+   "weight": 1.1,
+   "kind": "carry_in",
+   "action": "The diver wades out with the masked boy floating beside him and takes him under. The coach watches from the edge, hands clasped, grief on his face; Rook stands by with a wing at his beak, the rest of the team sitting behind",
+   "camera": "From out on the water, low",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "splash",
+     0.5
+    ],
+    [
+     "bubbles",
+     0.75
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 4,
+   "segment": "hook",
+   "weight": 1.15,
+   "kind": "carry_dark",
+   "action": "Under water: the diver swims along the yellow guide line with the limp boy held under his chest, lamp cutting the murk, bubbles rising from both",
+   "camera": "Ahead of them and to the side, rolling",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "swim",
+     0.1
+    ],
+    [
+     "bubbles",
+     0.5
+    ]
+   ],
+   "hud": "THE PLAN",
+   "prm": {}
+  },
+  {
+   "n": 5,
+   "segment": "doubt",
+   "weight": 1.3,
+   "kind": "rook_edge",
+   "action": "Rook at the water's edge points a wing at the bubbles where they went under, beak open; then turns to us, folds his arms and goes flat-eyed",
+   "camera": "From the water, pushing in on him",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "zoom",
+   "sfx": [
+    [
+     "bloop",
+     0.15
+    ],
+    [
+     "flap",
+     0.5
+    ]
+   ],
+   "hud": "CASE 020",
+   "prm": {}
+  },
+  {
+   "n": 6,
+   "segment": "doubt",
+   "weight": 1.0,
+   "kind": "rook_drip",
+   "action": "Close: water runs off his hat brim. He taps his beak, unimpressed",
+   "camera": "Close on his face",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": "CASE 020",
+   "prm": {}
+  },
+  {
+   "n": 7,
+   "segment": "start",
+   "weight": 1.1,
+   "kind": "arrive",
+   "action": "A grey afternoon before the rain. Seven of the team walk up the path past their bicycles at the rail, talking, one laughing; a wheel is still turning. Rook, on the rail, watches them go by with his wings on his hips",
+   "camera": "Side-on from across the path, tracking with them",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "birdcall",
+     0.1
+    ],
+    [
+     "tick",
+     0.45
+    ],
+    [
+     "jungle",
+     0.0
+    ]
+   ],
+   "hud": "23 JUNE 2018",
+   "prm": {}
+  },
+  {
+   "n": 8,
+   "segment": "start",
+   "weight": 1.0,
+   "kind": "mouth_wide",
+   "action": "The cave mouth in the cliff as the rain starts, water running down the path into it; the last three of the team walk into the dark with a torch",
+   "camera": "Wide and low from beside the bicycles, creeping in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 2,
+   "transition": "cut",
+   "sfx": [
+    [
+     "thunder",
+     0.3
+    ],
+    [
+     "rain",
+     0.0
+    ]
+   ],
+   "hud": "THAM LUANG, THAILAND",
+   "prm": {}
+  },
+  {
+   "n": 9,
+   "segment": "start",
+   "weight": 1.0,
+   "kind": "walk_in",
+   "action": "From inside: boys in football shirts and their coach walk down into the dark towards us, torches on, smiling, the grey rain behind them",
+   "camera": "Inside the mouth, looking out, drifting back",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "rain",
+     0.0
+    ],
+    [
+     "tick",
+     0.4
+    ]
+   ],
+   "hud": "THAM LUANG, THAILAND",
+   "prm": {}
+  },
+  {
+   "n": 10,
+   "segment": "rain",
+   "weight": 1.0,
+   "kind": "rain_gush",
+   "action": "Brown water pours in over the lip of the cave and down the slope past the lens",
+   "camera": "Inside, at floor level, looking out",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 4,
+   "transition": "whip",
+   "sfx": [
+    [
+     "wave",
+     0.05
+    ],
+    [
+     "splash",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 11,
+   "segment": "rain",
+   "weight": 1.1,
+   "kind": "fill",
+   "action": "The low arch they came in through goes under, the water climbing to its roof; three boys run from it, wide-eyed, mouths open, torches swinging",
+   "camera": "Low, backing away in front of them",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 4,
+   "transition": "cut",
+   "sfx": [
+    [
+     "splash",
+     0.1
+    ],
+    [
+     "wave",
+     0.4
+    ],
+    [
+     "shout",
+     0.6
+    ]
+   ],
+   "hud": "THE WAY OUT",
+   "prm": {}
+  },
+  {
+   "n": 12,
+   "segment": "rain",
+   "weight": 1.0,
+   "kind": "bikes",
+   "action": "The bicycles in the rain at the rail. Rook stands on the rail, arms folded, and turns his head to the cave, flat-eyed",
+   "camera": "Close and low, sliding along the rail",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "rain",
+     0.0
+    ],
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "flap",
+     0.6
+    ]
+   ],
+   "hud": "THAT EVENING",
+   "prm": {}
+  },
+  {
+   "n": 13,
+   "segment": "rain",
+   "weight": 1.15,
+   "kind": "locked_bikes",
+   "action": "Night. A rescue worker's torch beam sweeps along the bicycles and stops on a lock still on a wheel; he bends to it, eyes wide, and points. A second worker comes up the path behind him",
+   "camera": "From behind the rail, low, easing in on the lock",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "rain",
+     0.0
+    ],
+    [
+     "tick",
+     0.35
+    ],
+    [
+     "clunk",
+     0.75
+    ]
+   ],
+   "hud": "THAT EVENING",
+   "prm": {}
+  },
+  {
+   "n": 14,
+   "segment": "climb",
+   "weight": 1.0,
+   "kind": "chase",
+   "action": "Five of them wade waist-deep along the passage, foam piling up behind; the coach turns and waves the others on, shouting",
+   "camera": "From the side, tracking with them",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 3,
+   "transition": "flash",
+   "sfx": [
+    [
+     "splash",
+     0.1
+    ],
+    [
+     "swim",
+     0.4
+    ],
+    [
+     "shout",
+     0.7
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 15,
+   "segment": "climb",
+   "weight": 1.1,
+   "kind": "scramble",
+   "action": "A slope of mud rises out of black water. Boys claw up it on hands and knees, the coach pushing from below; Rook hops up beside them, flapping, beak open",
+   "camera": "Low from the water's edge",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 2,
+   "transition": "cut",
+   "sfx": [
+    [
+     "splash",
+     0.1
+    ],
+    [
+     "scratch",
+     0.45
+    ],
+    [
+     "flap",
+     0.7
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 16,
+   "segment": "climb",
+   "weight": 1.0,
+   "kind": "ledge_wide",
+   "action": "The whole chamber: thirteen small figures huddled on the mud above the water, two torches between them, the roof hung with stone",
+   "camera": "Wide from out over the water, rising",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "low",
+     0.2
+    ],
+    [
+     "bloop",
+     0.6
+    ]
+   ],
+   "hud": "IN THE DARK",
+   "prm": {}
+  },
+  {
+   "n": 17,
+   "segment": "search",
+   "weight": 1.2,
+   "kind": "camp_wide",
+   "action": "Dusk and rain at the foot of the mountain: canopies, lamps on poles, a crowd in helmets, workers bent over a map, two carrying air tanks across, pumps shaking. Rook, on a crate, looks it over and puts a wing to his chin",
+   "camera": "High and wide, swinging round and coming down",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "shout",
+     0.2
+    ],
+    [
+     "engine_start",
+     0.5
+    ],
+    [
+     "rain",
+     0.0
+    ]
+   ],
+   "hud": "OUTSIDE",
+   "prm": {}
+  },
+  {
+   "n": 18,
+   "segment": "search",
+   "weight": 1.0,
+   "kind": "divers_fight",
+   "action": "A flooded tunnel: a diver drags himself along the guide line against the current, silt and bubbles streaming past him",
+   "camera": "In front of him, low, rolling",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 3,
+   "transition": "cut",
+   "sfx": [
+    [
+     "bubbles",
+     0.1
+    ],
+    [
+     "swim",
+     0.5
+    ]
+   ],
+   "hud": "AGAINST THE CURRENT",
+   "prm": {}
+  },
+  {
+   "n": 19,
+   "segment": "search",
+   "weight": 1.1,
+   "kind": "pumps_row",
+   "action": "A row of pumps shudders and puffs, hoses running off into the dark; a worker kneels at one with a tool. Rook walks along the row, stops and taps his beak",
+   "camera": "Low, three-quarter along the row",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "sputter",
+     0.1
+    ],
+    [
+     "sputter",
+     0.5
+    ],
+    [
+     "tick",
+     0.8
+    ]
+   ],
+   "hud": "THE PUMPS",
+   "prm": {}
+  },
+  {
+   "n": 20,
+   "segment": "search",
+   "weight": 1.0,
+   "kind": "rook_rock",
+   "action": "Rook on a boulder in the flooded passage, the water racing past below him; he shakes the wet off and folds his arms",
+   "camera": "Three-quarter from across the water",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "wave",
+     0.0
+    ],
+    [
+     "flap",
+     0.3
+    ]
+   ],
+   "hud": "THE RAIN WINS",
+   "prm": {}
+  },
+  {
+   "n": 21,
+   "segment": "farmers",
+   "weight": 1.0,
+   "kind": "pipe_out",
+   "action": "The end of a big blue pipe: brown water roars out of it and spreads, foaming, into a rice field",
+   "camera": "Low beside the outlet, rolling a little",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 2,
+   "transition": "whip",
+   "sfx": [
+    [
+     "stream",
+     0.0
+    ],
+    [
+     "splash",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 22,
+   "segment": "farmers",
+   "weight": 1.1,
+   "kind": "fields_flood",
+   "action": "From above: the green plots go under one after another as the brown water spreads from the pipe, a wooded ridge behind; a farmer in a straw hat stands on the bank with his hands on his hips",
+   "camera": "High, swinging round and sinking",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "stream",
+     0.0
+    ],
+    [
+     "wave",
+     0.5
+    ]
+   ],
+   "hud": "THE RICE FIELDS",
+   "prm": {}
+  },
+  {
+   "n": 23,
+   "segment": "farmers",
+   "weight": 1.2,
+   "kind": "farmer",
+   "action": "The farmer on the bank, water over his fields behind him. He turns to us and nods, a small smile. Rook, beside him, tips his hat to him",
+   "camera": "Three-quarter, pushing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "stream",
+     0.0
+    ],
+    [
+     "tick",
+     0.5
+    ],
+    [
+     "flap",
+     0.8
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 24,
+   "segment": "nights",
+   "weight": 1.0,
+   "kind": "nights_card",
+   "action": "A card: nine marks scratched on wet rock, one after another, a small moon under each",
+   "camera": "Flat insert",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "scratch",
+     0.1
+    ],
+    [
+     "scratch",
+     0.35
+    ],
+    [
+     "scratch",
+     0.6
+    ],
+    [
+     "scratch",
+     0.85
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 25,
+   "segment": "found",
+   "weight": 1.1,
+   "kind": "glow",
+   "action": "Over the boys' heads from the top of the slope: the black water below begins to glow. Heads lift. Rook gets to his feet",
+   "camera": "High behind them, sinking",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.1
+    ],
+    [
+     "riser",
+     0.4
+    ],
+    [
+     "bubbles",
+     0.7
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 26,
+   "segment": "found",
+   "weight": 1.0,
+   "kind": "surface",
+   "action": "A diver's helmet breaks the surface in a ring of ripples, lamps blazing; a second comes up behind him. He raises a hand",
+   "camera": "At water level",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 3,
+   "transition": "cut",
+   "sfx": [
+    [
+     "splash",
+     0.25
+    ],
+    [
+     "bubbles",
+     0.5
+    ]
+   ],
+   "hud": "2 JULY 2018",
+   "prm": {}
+  },
+  {
+   "n": 27,
+   "segment": "found",
+   "weight": 1.0,
+   "kind": "faces_lit",
+   "action": "The diver's light falls on the boys: hands up against the glare, then they are on their feet, arms in the air, mouths open",
+   "camera": "From the water, pushing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "gasp",
+     0.15
+    ],
+    [
+     "shout",
+     0.4
+    ]
+   ],
+   "hud": "2 JULY 2018",
+   "prm": {}
+  },
+  {
+   "n": 28,
+   "segment": "found",
+   "weight": 1.2,
+   "kind": "rook_count",
+   "action": "Rook walks along the front row counting them off with a wingtip, a number ticking up beside him. He reaches the coach: thirteen. His hat jumps",
+   "camera": "Tracking with him along the row",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.1
+    ],
+    [
+     "tick",
+     0.25
+    ],
+    [
+     "tick",
+     0.4
+    ],
+    [
+     "tick",
+     0.55
+    ],
+    [
+     "pop",
+     0.82
+    ]
+   ],
+   "hud": "ALL ALIVE",
+   "prm": {}
+  },
+  {
+   "n": 29,
+   "segment": "stay",
+   "weight": 1.2,
+   "kind": "doctor_stay",
+   "action": "On the mud: two navy divers and a doctor among the boys, four of them wrapped in silver blankets. One diver kneels and tucks a blanket round a boy, the other holds a torch; the doctor kneels with a hand on a boy's shoulder, the boy looking up at him",
+   "camera": "From the water, moving in and up",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "bloop",
+     0.2
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": "THEY STAY",
+   "prm": {}
+  },
+  {
+   "n": 30,
+   "segment": "stay",
+   "weight": 1.0,
+   "kind": "letters",
+   "action": "Close: a boy's hand with a pencil moves across a pad on his knee by torchlight, line after line",
+   "camera": "Close over the pad, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.15
+    ],
+    [
+     "scratch",
+     0.45
+    ],
+    [
+     "scratch",
+     0.75
+    ]
+   ],
+   "hud": "LETTERS",
+   "prm": {}
+  },
+  {
+   "n": 31,
+   "segment": "stay",
+   "weight": 1.2,
+   "kind": "letter_out",
+   "action": "At the water's edge a boy kneels and holds out an orange pouch; a diver, chest-deep, takes it, turns and sinks away along the line. Rook, arms folded, unfolds one wing and waves him off",
+   "camera": "Low from the side, over the water",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "bloop",
+     0.3
+    ],
+    [
+     "splash",
+     0.7
+    ],
+    [
+     "bubbles",
+     0.85
+    ]
+   ],
+   "hud": "\"DON'T WORRY\"",
+   "prm": {}
+  },
+  {
+   "n": 32,
+   "segment": "stay",
+   "weight": 1.1,
+   "kind": "coach_sorry",
+   "action": "At the back of the slope the coach sits apart with a pad on his knees, head bowed, writing slowly; the boys sleep in front of him. Rook, sitting nearby, looks at him, then looks away and lets his hat brim drop",
+   "camera": "From among the sleeping boys, drifting",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.3
+    ],
+    [
+     "low",
+     0.6
+    ]
+   ],
+   "hud": "\"I AM SORRY\"",
+   "prm": {}
+  },
+  {
+   "n": 33,
+   "segment": "rehook",
+   "weight": 1.0,
+   "kind": "way_out",
+   "action": "The diver, chest-deep at the edge, points back the way he came: the guide line runs down into the black water. The coach kneels at the edge, listening, brows drawn",
+   "camera": "Over the coach's shoulder",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "bloop",
+     0.3
+    ],
+    [
+     "low",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 34,
+   "segment": "rehook",
+   "weight": 1.0,
+   "kind": "sump_long",
+   "action": "Under the surface: a rock tunnel full of murky water, the guide line running away into it towards a narrow gap",
+   "camera": "Moving forward along the line, rolling",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "bubbles",
+     0.1
+    ],
+    [
+     "low",
+     0.5
+    ]
+   ],
+   "hud": "THE WAY OUT",
+   "prm": {}
+  },
+  {
+   "n": 35,
+   "segment": "rehook",
+   "weight": 1.2,
+   "kind": "map_card",
+   "action": "A card: a drawn cross-section of a mountain. The mouth on the left, thirteen dots on a ledge on the right, and the tunnel between them filling with water",
+   "camera": "Flat insert",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wave",
+     0.1
+    ],
+    [
+     "bloop",
+     0.45
+    ],
+    [
+     "hit",
+     0.65
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 36,
+   "segment": "rehook",
+   "weight": 1.0,
+   "kind": "air_card",
+   "action": "A card: the chamber drawn as a pocket in the rock with thirteen dots in it; the band of good air above them thins from the top down",
+   "camera": "Flat insert",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.1
+    ],
+    [
+     "heartbeat",
+     0.4
+    ],
+    [
+     "heartbeat",
+     0.75
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 37,
+   "segment": "options",
+   "weight": 1.0,
+   "kind": "search_map",
+   "action": "Under a canopy, workers lean over a map on a table, one tracing a line on it, one pointing, one with a hand at his chin. Rook stands at the end of the table and taps his beak",
+   "camera": "Over the table, sliding",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "tick",
+     0.6
+    ],
+    [
+     "rain",
+     0.0
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 38,
+   "segment": "options",
+   "weight": 0.9,
+   "kind": "camp_wide",
+   "action": "The camp again from the far side, rain coming down harder on the canopies and the crowd; the pumps shake",
+   "camera": "Low and wide from the other side, drifting",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "thunder",
+     0.2
+    ],
+    [
+     "rain",
+     0.0
+    ]
+   ],
+   "hud": "MORE RAIN COMING",
+   "prm": {
+    "alt": [
+     58,
+     0.85,
+     -2.2
+    ]
+   }
+  },
+  {
+   "n": 39,
+   "segment": "options",
+   "weight": 1.3,
+   "kind": "options_card",
+   "action": "A card with three drawings, lit one after another: a rain cloud over a water line, a drill coming down through rock, a small diving mask. The third is struck through",
+   "camera": "Flat insert",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.1
+    ],
+    [
+     "tick",
+     0.4
+    ],
+    [
+     "tick",
+     0.65
+    ],
+    [
+     "hit",
+     0.85
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 40,
+   "segment": "options",
+   "weight": 1.1,
+   "kind": "toe_dip",
+   "action": "A small boy at the water's edge puts one foot in and pulls it straight back, arms wrapped round himself. Beside him Rook lowers a weighted line into the water to sound it",
+   "camera": "Low from the water",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "bloop",
+     0.3
+    ],
+    [
+     "gasp",
+     0.6
+    ],
+    [
+     "tick",
+     0.85
+    ]
+   ],
+   "hud": "TOO RISKY",
+   "prm": {}
+  },
+  {
+   "n": 41,
+   "segment": "loss",
+   "weight": 1.0,
+   "kind": "tank_carry",
+   "action": "A dim passage, ankle-deep. A diver wades along the guide line with an air tank in his arms, his lamp sweeping the wall",
+   "camera": "In front of him, backing away",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "swim",
+     0.1
+    ],
+    [
+     "splash",
+     0.5
+    ],
+    [
+     "low",
+     0.7
+    ]
+   ],
+   "hud": "6 JULY 2018",
+   "prm": {}
+  },
+  {
+   "n": 42,
+   "segment": "loss",
+   "weight": 1.2,
+   "kind": "tanks",
+   "action": "He kneels and stands the tank beside the guide line, next to three others, then looks back over his shoulder. His lamp slowly dims; water drips from the roof",
+   "camera": "Moving round and down towards him",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.4
+    ],
+    [
+     "bloop",
+     0.6
+    ],
+    [
+     "low",
+     0.75
+    ]
+   ],
+   "hud": "SAMAN KUNAN",
+   "prm": {}
+  },
+  {
+   "n": 43,
+   "segment": "loss",
+   "weight": 1.0,
+   "kind": "still_water",
+   "action": "The row of tanks and the line, nobody there. One small light beside them flickers and goes out; drips ring the still water",
+   "camera": "Sinking slowly towards the water",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "bloop",
+     0.2
+    ],
+    [
+     "bloop",
+     0.6
+    ],
+    [
+     "low",
+     0.4
+    ]
+   ],
+   "hud": "SAMAN KUNAN",
+   "prm": {}
+  },
+  {
+   "n": 44,
+   "segment": "respect",
+   "weight": 1.0,
+   "kind": "rook_vigil",
+   "action": "Rook walks up to the tanks, takes his hat off, holds it to his chest and bows his head; drips ring the water",
+   "camera": "Circling him slowly, rising",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.1
+    ],
+    [
+     "flap",
+     0.4
+    ],
+    [
+     "bloop",
+     0.7
+    ]
+   ],
+   "hud": "SAMAN KUNAN",
+   "prm": {}
+  },
+  {
+   "n": 45,
+   "segment": "plan",
+   "weight": 1.0,
+   "kind": "team_watch",
+   "action": "The boys on the mud, wide-eyed, all looking down at the water; the coach stands at the edge with his hands clasped. Rook sits among them, hugging his knees, and turns his head to look where they look",
+   "camera": "High from the side over the water, moving in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "heartbeat",
+     0.2
+    ],
+    [
+     "bloop",
+     0.7
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 46,
+   "segment": "plan",
+   "weight": 1.2,
+   "kind": "doc_kit",
+   "action": "A diver kneels on the mud beside a boy in a wetsuit sitting on a silver blanket, and opens a small case of vials; the coach kneels on the other side with a hand out to the boy, who looks up at the diver",
+   "camera": "Low from the water's edge, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.35
+    ],
+    [
+     "tick",
+     0.7
+    ]
+   ],
+   "hud": "DIVER AND ANAESTHETIST",
+   "prm": {}
+  },
+  {
+   "n": 47,
+   "segment": "plan",
+   "weight": 1.0,
+   "kind": "sleep",
+   "action": "The boy lies back on the blanket. The diver kneels over him, a hand on his arm, the coach on the other side. The boy's eyes close",
+   "camera": "Over the diver's shoulder, moving in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "bloop",
+     0.3
+    ],
+    [
+     "low",
+     0.7
+    ]
+   ],
+   "hud": "SEDATED",
+   "prm": {}
+  },
+  {
+   "n": 48,
+   "segment": "plan",
+   "weight": 0.9,
+   "kind": "mask_on",
+   "action": "The gloved hands lower the mask onto his face, seen from the other side",
+   "camera": "From above and behind, close",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.6
+    ],
+    [
+     "bubbles",
+     0.85
+    ]
+   ],
+   "hud": "FULL-FACE MASK",
+   "prm": {
+    "alt": [
+     150,
+     1.15,
+     0.2
+    ]
+   }
+  },
+  {
+   "n": 49,
+   "segment": "plan",
+   "weight": 1.0,
+   "kind": "carry_in",
+   "action": "The diver wades out with the sleeping boy and takes him under, seen from along the bank: the coach and Rook stand at the edge and watch him go",
+   "camera": "From along the water's edge, higher",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "splash",
+     0.5
+    ],
+    [
+     "bubbles",
+     0.75
+    ]
+   ],
+   "hud": "CARRIED OUT",
+   "prm": {
+    "alt": [
+     -64,
+     1.15,
+     0.9
+    ]
+   }
+  },
+  {
+   "n": 50,
+   "segment": "carry",
+   "weight": 1.0,
+   "kind": "relay",
+   "action": "Under water: the diver with the boy comes along the line towards us; a second diver holds station beside a spare tank on the tunnel floor, lamp on them, and waves them through",
+   "camera": "From ahead and above, backing off, rolling",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "swim",
+     0.1
+    ],
+    [
+     "bubbles",
+     0.5
+    ]
+   ],
+   "hud": "8 JULY 2018",
+   "prm": {}
+  },
+  {
+   "n": 51,
+   "segment": "carry",
+   "weight": 1.0,
+   "kind": "carry_dark",
+   "action": "The diver and the boy from further off and above, small in the tunnel, the lamp a cone in the silt",
+   "camera": "Higher and further back, rolling",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "swim",
+     0.2
+    ],
+    [
+     "bubbles",
+     0.6
+    ]
+   ],
+   "hud": "ONE DIVER TO EACH BOY",
+   "prm": {
+    "alt": [
+     10,
+     0.7,
+     0.25
+    ]
+   }
+  },
+  {
+   "n": 52,
+   "segment": "carry",
+   "weight": 1.0,
+   "kind": "squeeze",
+   "action": "The narrow gap, from the far side: light in the slot, then the boy's masked face comes through first, eased ahead by the diver behind him",
+   "camera": "Low, facing the gap",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.3
+    ],
+    [
+     "bubbles",
+     0.6
+    ]
+   ],
+   "hud": "THE NARROW PLACES",
+   "prm": {},
+   "hush": true
+  },
+  {
+   "n": 53,
+   "segment": "out",
+   "weight": 1.1,
+   "kind": "stretcher_out",
+   "action": "Dusk at the cave mouth under work lights, hoses running into the dark: two rescuers carry a stretcher out with a small shape under a foil blanket. Rook flaps along beside them, eyes warm",
+   "camera": "Low, backing away in front of them",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "flash",
+   "sfx": [
+    [
+     "shout",
+     0.2
+    ],
+    [
+     "flap",
+     0.4
+    ],
+    [
+     "flap",
+     0.7
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 54,
+   "segment": "out",
+   "weight": 1.2,
+   "kind": "days_card",
+   "action": "A card: three dates in a row, 8 July, 9 July, 10 July, with four, four and five small figures lighting up under them",
+   "camera": "Flat insert",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.15
+    ],
+    [
+     "tick",
+     0.45
+    ],
+    [
+     "tick",
+     0.75
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 55,
+   "segment": "out",
+   "weight": 1.0,
+   "kind": "cheer",
+   "action": "Night in the camp: every arm goes up, workers jumping and shouting under the lamps. Rook's arms unfold and go up too; his hat jumps off his head",
+   "camera": "Low among them, pushing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "shout",
+     0.25
+    ],
+    [
+     "shout",
+     0.5
+    ],
+    [
+     "pop",
+     0.45
+    ]
+   ],
+   "hud": "10 JULY 2018",
+   "prm": {}
+  },
+  {
+   "n": 56,
+   "segment": "out",
+   "weight": 1.1,
+   "kind": "thirteen_card",
+   "action": "A card: thirteen small figures, twelve boys and their coach, ticked off one after another. 13 OF 13",
+   "camera": "Flat insert",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.1
+    ],
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "tick",
+     0.5
+    ],
+    [
+     "tick",
+     0.7
+    ],
+    [
+     "hit",
+     0.85
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 57,
+   "segment": "pumps",
+   "weight": 1.1,
+   "kind": "pump_fail",
+   "action": "A pump by the cave mouth shudders and puffs, then stops dead. Rook, beside it, unfolds his arms and prods it, eyes wide",
+   "camera": "Close, three-quarter",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 2,
+   "transition": "cut",
+   "sfx": [
+    [
+     "sputter",
+     0.1
+    ],
+    [
+     "clunk",
+     0.62
+    ],
+    [
+     "tick",
+     0.9
+    ]
+   ],
+   "hud": "HOURS LATER",
+   "prm": {}
+  },
+  {
+   "n": 58,
+   "segment": "pumps",
+   "weight": 1.1,
+   "kind": "reflood",
+   "action": "Inside: the water comes back up the passage, over the tanks and the line. A work light on a stand topples, flickers and goes out. Rook flaps up out of the way",
+   "camera": "High, backing off",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 4,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wave",
+     0.1
+    ],
+    [
+     "splash",
+     0.5
+    ],
+    [
+     "flap",
+     0.6
+    ],
+    [
+     "crash",
+     0.7
+    ]
+   ],
+   "hud": "HOURS LATER",
+   "prm": {}
+  },
+  {
+   "n": 59,
+   "segment": "pumps",
+   "weight": 1.1,
+   "kind": "get_out",
+   "action": "Four rescue workers wade hard down the passage towards us, waist-deep and rising, torches swinging, mouths open, foam chasing them. Rook flies ahead of them, looking back",
+   "camera": "High from the side, backing away fast",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 3,
+   "transition": "cut",
+   "sfx": [
+    [
+     "splash",
+     0.1
+    ],
+    [
+     "shout",
+     0.4
+    ],
+    [
+     "flap",
+     0.6
+    ]
+   ],
+   "hud": "STILL INSIDE",
+   "prm": {}
+  },
+  {
+   "n": 60,
+   "segment": "pumps",
+   "weight": 1.0,
+   "kind": "out_mouth",
+   "action": "The cave mouth at night under the work lights: the last workers and the navy divers walk out of the dark, one by one raising a fist. Rook flies out over their heads",
+   "camera": "Low beside the path, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "shout",
+     0.3
+    ],
+    [
+     "flap",
+     0.5
+    ]
+   ],
+   "hud": "ALL OUT",
+   "prm": {}
+  },
+  {
+   "n": 61,
+   "segment": "after",
+   "weight": 1.1,
+   "kind": "ward",
+   "action": "A bright hospital ward: four boys in pale gowns sit up in a row of beds and wave, one after another, grinning. Rook, on a bedside locker, unfolds a wing and waves back",
+   "camera": "From the foot of the ward, moving in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "birdcall",
+     0.6
+    ]
+   ],
+   "hud": "IN HOSPITAL",
+   "prm": {}
+  },
+  {
+   "n": 62,
+   "segment": "after",
+   "weight": 1.0,
+   "kind": "walk_home",
+   "action": "The team in their football shirts walk down the ward in a line towards a doorway full of daylight, the coach last. Rook touches his hat brim as they pass",
+   "camera": "From behind them, following",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.2
+    ],
+    [
+     "tick",
+     0.5
+    ],
+    [
+     "tick",
+     0.8
+    ]
+   ],
+   "hud": "18 JULY 2018",
+   "prm": {}
+  },
+  {
+   "n": 63,
+   "segment": "novices",
+   "weight": 1.0,
+   "kind": "novices",
+   "action": "Evening in a temple hall: five boys in orange robes kneel in a row with their hands together and heads bowed, in front of a long table of candles and flowers; the flames shiver",
+   "camera": "Low from the side, along the row",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "low",
+     0.2
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": "LATER THAT MONTH",
+   "prm": {}
+  },
+  {
+   "n": 64,
+   "segment": "novices",
+   "weight": 1.1,
+   "kind": "candles",
+   "action": "Past the candles: Rook stands at the end of the table, takes his hat off, holds it to his chest and bows his head; the boys kneel beyond him",
+   "camera": "Close past the candle flames, drifting",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.2
+    ],
+    [
+     "flap",
+     0.45
+    ]
+   ],
+   "hud": "FOR SAMAN KUNAN",
+   "prm": {}
+  },
+  {
+   "n": 65,
+   "segment": "end",
+   "weight": 1.1,
+   "kind": "rook_wrong",
+   "action": "Morning, the rain gone. Rook stands in front of the cave mouth, turns to us and shrugs, eyes warm",
+   "camera": "Three-quarter, drifting in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "birdcall",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 66,
+   "segment": "end",
+   "weight": 0.9,
+   "kind": "camp_wide",
+   "action": "The camp from high up: the canopies, the lamps and the crowd, small under the mountain",
+   "camera": "Higher and further back, swinging round",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "shout",
+     0.3
+    ],
+    [
+     "low",
+     0.6
+    ]
+   ],
+   "hud": "THOUSANDS OF PEOPLE",
+   "prm": {
+    "alt": [
+     -42,
+     1.25,
+     2.6
+    ]
+   }
+  },
+  {
+   "n": 67,
+   "segment": "end",
+   "weight": 1.1,
+   "kind": "pin_13",
+   "action": "Rook's case board, a slab of wet limestone: a photograph of the thirteen on the ledge, THIRTEEN IN, THIRTEEN OUT, stamped TRUE",
+   "camera": "Flat insert",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "bloop",
+     0.1
+    ],
+    [
+     "hit",
+     0.8
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 68,
+   "segment": "end",
+   "weight": 1.3,
+   "kind": "signoff",
+   "action": "By the path he picks a small brass torch out of the mud, clicks it on, pockets it and pulls his hat brim down",
+   "camera": "Three-quarter, pushing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.15
+    ],
+    [
+     "tick",
+     0.5
+    ],
+    [
+     "pop",
+     0.75
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "brand": true
+  }
+ ]
+}
