@@ -1257,3 +1257,979 @@ SHOTS3D = {f.__name__: f for f in (
     tie_note, drill_up, rig_night, bit_out, rook_rig, rook_peer, unfold, cheer, refuge_wide, faces, tents, cabinet, spoon, line_up, hole_measure, big_drill,
     break_through, capsule_top, rook_stuck, capsule_arrive, step_in, shaft_ride, ride_face, emerge, hug, rook_wrong, last_up, signoff)}
 STILLS = dict(capsule=photo_capsule)
+
+
+# ================================================================ long-form extension (16:9 full case file)
+# Same mine, same desert, more of the 69 days. New sets, each at its own origin: the mine's access road sealed by one
+# huge block of rock, and a ventilation raise whose ladder stops part-way up. New on the Short's sets: the vote, the
+# truck batteries, the water drum, the drills heard going past, the hammering on the bit, the supply tubes, the
+# letters, the three rigs, the capsule on trestles, the rescuer who rode down first, the dark glasses, the bag of
+# rocks, the empty gallery and the capped shaft. Still generic: no name, flag, logo or lettering anywhere, none of
+# the sets or machines is a model of the real ones, and nobody's likeness is attempted.
+SETS.update(ramp=(15000, 0, 0), chim=(20000, 0, 0))
+RIGA, RIGC = (-10.0, 17.0), (38.0, 20.0)
+CAMFILL.update(shift=220, cave_in=200, dust_blind=260, block_wall=240, chimney=260, ladder_end=260, vote=380, battery=200, heat=260, listen=300, bang_bit=300,
+               vigil=160, three_rigs=30, dove=40, dove_arrive=300, letter=260, muck=300, workshop=40, first_down=180, greet=300, shades=160,
+               gift=200, lights_out=120, sealed=50)
+
+
+def box(col, loc, scale, parent=None, rot=(0, 0, 0), **kw):
+    return add('cube', col, loc, rot=rot, scale=scale, size=1, parent=parent, **kw)
+
+
+def set_ramp(r):
+    """The access road, a tunnel in ore rock. Its far (+x) end is shut by one grey block as big as the tunnel."""
+    add('plane', ORED, (0, 0, 0), size=70, parent=r)
+    box(ORED, (0, 0, 6.9), (70, 13, 1.2), r)
+    for sy in (-1, 1):
+        box(ORE, (0, sy * 6.0, 3.4), (70, 1.2, 8), r)
+        chunks(r, 26, 41 + sy, lambda j, sy=sy: (-22 + j * 1.5, sy * (5.2 + 0.3 * rn(j, 43)), 0.5 + 5.6 * rn(j, 44 + sy)), (ORE, OREL, ORED, OREG), 0.8, 1.7)
+    chunks(r, 18, 47, lambda j: (-20 + j * 2.0 + rn(j, 48), -4.5 + 9 * rn(j, 49), 6.45), (ORE, ORED, OREL), 0.6, 1.4, 0.45)
+    chunks(r, 20, 51, lambda j: (-18 + 34 * rn(j, 52), -4.6 + 9.2 * rn(j, 53), 0.03), (ORED, '2A201C', ORE), 0.1, 0.3, 0.5)
+    box('8E877C', (15.6, 0, 3.3), (7.5, 13, 8.0), r, rot=(0.04, 0.1, 0.14))
+    box('7A746A', (13.0, -2.6, 1.6), (3.0, 4.0, 3.6), r, rot=(0.3, 0.2, 0.5))
+    chunks(r, 14, 55, lambda j: (10.4 + 1.6 * rn(j, 56), -4.6 + 9.2 * j / 13, 0.35), ('8E877C', '6E685E', ORE), 0.5, 1.1, 0.7)
+    tube(r, '3A6A8A', (-30, 5.2, 4.6), (11.6, 5.2, 4.6), 0.12)
+    for x in (-12, -4, 4):
+        box(YEL, (x, -5.0, 0.6), (0.12, 0.12, 1.2), r)
+        box('FFE8B0', (x, -5.0, 1.25), (0.16, 0.16, 0.12), r, emit=2.0)
+    return {}
+
+
+def set_chim(r):
+    """A ventilation raise, cut away on the near side. The ladder on its back wall stops at a ledge; above it there are only brackets."""
+    add('plane', ORED, (0, 0, 0), size=14, parent=r)
+    for lv in range(18):
+        z = -1.5 + lv * 3.0
+        for i in range(8):
+            a = (i + 0.5) / 8 * PI
+            col = (ORE, OREL, ORED, OREG, '5A4438')[int(rn(lv + 40, i) * 5)]
+            add('cube', col, (3.0 * math.cos(a), 3.0 * math.sin(a), z), rot=(0, 0, a + PI / 2), scale=(1.3, 0.6 + 0.3 * rn(lv, i + 50), 3.02), size=1, parent=r)
+    chunks(r, 10, 61, lambda j: (-2.2 + 4.4 * rn(j, 62), 0.3 + 1.8 * rn(j, 63), 0.2), (ORED, ORE, OREL), 0.3, 0.7, 0.6)
+    for sx in (-0.38, 0.38):
+        tube(r, YEL, (sx, 2.3, 0), (sx, 2.3, 15.3), 0.05)
+    for j in range(30):
+        tube(r, STEEL, (-0.38, 2.3, 0.5 + 0.5 * j), (0.38, 2.3, 0.5 + 0.5 * j), 0.035)
+    tube(r, YEL, (0.38, 2.3, 15.3), (0.95, 1.7, 16.2), 0.05)
+    tube(r, YEL, (-0.38, 2.3, 15.3), (-0.5, 2.0, 15.9), 0.05)
+    for j in range(7):
+        box('2A201C', (0, 2.45, 17.5 + 3 * j), (1.0, 0.1, 0.14), r)
+    box(ORE, (-1.9, 1.5, 13.0), (1.7, 1.9, 0.35), r)
+    chunks(r, 4, 65, lambda j: (-2.5 + 0.4 * j, 1.9 + 0.2 * rn(j, 66), 12.75), (ORED, OREL), 0.4, 0.7, 0.6)
+    add('cylinder', 'BFD4FF', (0, 1.0, 50.5), radius=2.6, depth=0.1, vertices=12, parent=r, emit=2.5)
+    return {}
+
+
+def make_rig(pos, h, w, col, cabin):
+    """Another drilling rig: a lattice mast over a turning pipe, a cabin beside it."""
+    r = empty((pos[0], pos[1], 0))
+    box(STEELD, (0, 0, 0.2), (2 * w + 1.6, 2 * w + 1.6, 0.4), r)
+    cs = [(sx * w, sy * w) for sx in (-1, 1) for sy in (-1, 1)]
+    for (x, y) in cs:
+        tube(r, col, (x, y, 0), (x * 0.3, y * 0.3, h), 0.09)
+    for lv in range(int(h // 3)):
+        z0, z1 = 1.5 + lv * 3.0, 4.5 + lv * 3.0
+        f0, f1 = 1 - 0.7 * z0 / h, 1 - 0.7 * min(z1, h) / h
+        for i in range(4):
+            a, b = cs[(0, 1, 3, 2)[i]], cs[(1, 3, 2, 0)[i]]
+            tube(r, col, (a[0] * f0, a[1] * f0, z0), (b[0] * f0, b[1] * f0, z0), 0.04)
+            tube(r, col, (a[0] * f0, a[1] * f0, z0), (b[0] * f1, b[1] * f1, min(z1, h)), 0.04)
+    box(YEL, (0, 0, h + 0.4), (w * 0.9, w * 0.9, 0.8), r)
+    box('FFE8B0', (0, 0, h - 0.2), (0.5, 0.5, 0.12), r, emit=5.0)
+    pipe = add('cylinder', STEEL, (0, 0, h / 2), radius=0.22, depth=h, vertices=8, parent=r, rough=0.35)
+    for j in range(4):
+        box(YEL, (0.2, 0, 2.0 + j * h / 5), (0.2, 0.34, 0.5), pipe)
+    box(cabin, (w + 2.4, 0.6, 1.3), (3.4, 2.6, 2.6), r)
+    box('2A2E38', (w + 2.0, -0.72, 1.5), (1.6, 0.05, 0.9), r)
+    add('cylinder', '3A3F4C', (-w - 1.6, 0.4, 1.0), radius=0.7, depth=2.0, vertices=8, parent=r)
+    return r, pipe
+
+
+def make_truck():
+    """A mine pickup, facing local -Y. The bonnet opens on the battery."""
+    tr = keep(empty(AWAY))
+    box('D8D4C8', (0, 0.2, 1.35), (2.0, 1.7, 1.1), tr, rough=0.5)
+    box('1C222C', (0, -0.66, 1.52), (1.8, 0.05, 0.6), tr, rough=0.3)
+    box('D8D4C8', (0, -1.4, 0.95), (2.0, 1.5, 0.55), tr, rough=0.5)
+    box('B8B4A8', (0, 2.1, 0.95), (2.0, 2.2, 0.5), tr)
+    box('2A2E38', (0, 0.3, 0.55), (1.9, 4.9, 0.3), tr)
+    for sx in (-1, 1):
+        for y in (-1.5, 1.9):
+            add('cylinder', '16181E', (sx * 1.02, y, 0.45), rot=(0, PI / 2, 0), radius=0.45, depth=0.34, vertices=10, parent=tr)
+        box('FFF4D0', (sx * 0.68, -2.16, 0.98), (0.36, 0.04, 0.22), tr, emit=9.0)
+    box('E07A1E', (0, 0.2, 1.97), (0.5, 0.3, 0.14), tr, emit=3.0)
+    box('2A2E38', (0.52, -1.3, 1.34), (0.5, 0.36, 0.26), tr)
+    for sx in (-0.14, 0.14):
+        box('C8CCD4', (0.52 + sx, -1.3, 1.5), (0.08, 0.08, 0.08), tr, rough=0.2)
+    hood = empty((0, -0.68, 1.26), tr)
+    box('D8D4C8', (0, -0.74, 0.02), (1.96, 1.48, 0.06), hood, rough=0.5)
+    return tr, hood
+
+
+_build0, _reset0 = build, reset
+
+
+def build():
+    S = _build0()
+    for name, fn in (('ramp', set_ramp), ('chim', set_chim)):
+        S['colls'][name], S[name] = stage(name, fn)
+    S['rigA'], S['pipeA'] = make_rig(RIGA, 17.0, 1.5, 'C8CCD4', 'D8DCE4')
+    S['rigC'], S['pipeC'] = make_rig(RIGC, 24.0, 2.3, 'B8322E', '6E84A0')
+    S['truck'], S['hood'] = make_truck()
+    S['clouds'] = [keep(add('ico_sphere', ('C2A888', 'B09878', 'D0B898')[j % 3], AWAY, radius=1, subdivisions=1, rough=1.0)) for j in range(12)]
+    S['bouls'] = [keep(add('ico_sphere', (ORE, OREL, ORED)[j % 3], AWAY, radius=0.5, subdivisions=1)) for j in range(8)]
+    S['hammer'] = hm = keep(empty(AWAY))
+    tube(hm, '7A5A3A', (0, 0, 0), (0, 0, 0.7), 0.04)
+    box(STEELD, (0, 0, 0.72), (0.34, 0.14, 0.14), hm)
+    S['candles'] = []
+    for j in range(4):
+        c = keep(add('cylinder', 'F4EEDC', AWAY, radius=0.05, depth=0.22, vertices=6))
+        add('ico_sphere', 'FFC860', (0, 0, 0.17), scale=(0.8, 0.8, 1.5), radius=0.06, subdivisions=1, parent=c, emit=16.0)
+        S['candles'].append(c)
+    S['dove'] = dv = keep(empty(AWAY))
+    add('cylinder', 'E8E8E4', (0, 0, 1.2), radius=0.1, depth=2.4, vertices=8, parent=dv, rough=0.4)
+    for z in (0.07, 2.33):
+        add('cylinder', '2A4EA0', (0, 0, z), radius=0.115, depth=0.16, vertices=8, parent=dv, rough=0.4)
+    add('torus', STEELD, (0, 0, 2.48), rot=(PI / 2, 0, 0), major_radius=0.07, minor_radius=0.02, major_segments=8, minor_segments=4, parent=dv)
+    S['bottle'] = keep(add('cylinder', '9AD0F0', AWAY, radius=0.07, depth=0.3, vertices=7, rough=0.2, emit=0.3))
+    S['shovels'] = []
+    for j in range(4):
+        s = keep(empty(AWAY))
+        tube(s, '7A5A3A', (0, 0, -0.3), (0, 0, 1.0), 0.035)
+        box(STEEL, (0, 0, -0.5), (0.3, 0.04, 0.42), s, rough=0.4)
+        S['shovels'].append(s)
+    S['barrow'] = bw = keep(empty(AWAY))
+    box('C8372D', (0, 0, 0.72), (0.9, 1.4, 0.4), bw)
+    add('cylinder', '16181E', (0, -0.95, 0.3), rot=(0, PI / 2, 0), radius=0.3, depth=0.14, vertices=9, parent=bw)
+    for sx in (-0.4, 0.4):
+        tube(bw, STEELD, (sx, 0.5, 0.6), (sx, 1.5, 0.85), 0.03)
+        tube(bw, STEELD, (sx, 0.5, 0.55), (sx, 0.5, 0.0), 0.03)
+    for j in range(4):
+        add('ico_sphere', (ORE, OREL)[j % 2], (0.25 * (j % 2) - 0.12, -0.4 + 0.3 * j, 1.0), radius=0.22, subdivisions=1, parent=bw)
+    S['trestles'] = []
+    for j in range(2):
+        tr = keep(empty(AWAY))
+        box('7A5A3A', (0, 0, 0.98), (0.2, 1.9, 0.14), tr)
+        for sy in (-0.8, 0.8):
+            box('5A4230', (0, sy, 0.48), (0.14, 0.14, 0.96), tr, rot=(0.25 * (1 if sy > 0 else -1), 0, 0))
+        S['trestles'].append(tr)
+    S['glasses'] = {i: box('0A0A0E', (0, -0.3, 0.042), (0.34, 0.04, 0.09), S['men'][i].head, rough=0.2) for i in (4, 6)}
+    S['sack'] = keep(add('ico_sphere', 'C8B070', AWAY, scale=(0.3, 0.25, 0.38), radius=1, subdivisions=1, rough=1.0))
+    S['rocks'] = [keep(add('ico_sphere', 'D8B040', AWAY, radius=0.11, subdivisions=1, rough=0.2, emit=0.6)) for _ in range(3)]
+    S['lid'] = ld = keep(empty(AWAY))
+    add('cylinder', 'C8CCD4', (0, 0, 0.16), radius=1.15, depth=0.32, vertices=14, parent=ld)
+    add('cylinder', '8A909C', (0, 0, 0.37), radius=1.3, depth=0.12, vertices=14, parent=ld, rough=0.4)
+    for j in range(6):
+        add('cylinder', '3A3F4C', (1.12 * math.cos(j * PI / 3), 1.12 * math.sin(j * PI / 3), 0.46), radius=0.08, depth=0.08, vertices=6, parent=ld)
+    S['vcam'] = vc = keep(empty(AWAY))
+    box('22262E', (0, 0, 0), (0.24, 0.4, 0.2), vc)
+    add('cylinder', '0A0A0E', (0, -0.24, 0), rot=(PI / 2, 0, 0), radius=0.07, depth=0.1, vertices=8, parent=vc)
+    box('FF3020', (0.08, -0.2, 0.08), (0.03, 0.02, 0.03), vc, emit=10.0)
+    reset(S)
+    return S
+
+
+def reset(S):
+    _reset0(S)
+    if 'rigA' not in S:
+        return
+    for rr in (S['rigA'], S['rigC']):
+        seen(tree_of(rr), False)
+    seen(tree_of(S['note']), True)
+    S['hood'].rotation_euler = (0, 0, 0)
+    for g in S['glasses'].values():
+        g.hide_render = True
+    for o in S['grit'] + S['clouds'] + S['bouls']:
+        o.scale = (1, 1, 1)
+
+
+# ---------------------------------------------------------------- helpers for the new shots
+def truck_at(S, pos, yaw, hood=0.0):
+    S['truck'].location = pos
+    S['truck'].rotation_euler = (0, 0, yaw)
+    S['hood'].rotation_euler = (-hood, 0, 0)
+
+
+def roll_dust(S, A, x0, x1, t, k, n=12, grow=(1.4, 3.4), y=4.2, z=(0.8, 5.0)):
+    """A wall of dust that rolls along the tunnel from x0 to x1."""
+    for i in range(n):
+        o = S['clouds'][i]
+        u = max(0.0, min(1.0, k * 1.25 - 0.25 * rn(i, 81)))
+        o.location = A(lerp(x0, x1, u) + 2.0 * rn(i, 82), (rn(i, 83) - 0.5) * 2 * y, lerp(z[0], z[1], rn(i, 84)) + 0.3 * math.sin(t * 2 + i))
+        q = lerp(grow[0], grow[1], u) * (0.7 + 0.6 * rn(i, 85))
+        o.scale = (q, q, q * 0.8)
+        o.rotation_euler = (t * 0.6 + i, i, t * 0.4)
+
+
+def hang_dust(S, A, cx, cy, t, n=12, rx=7.0, ry=3.6):
+    """Dust that hangs in the air and turns slowly."""
+    for i in range(n):
+        o = S['clouds'][i]
+        a = i * 2.4 + 0.12 * t
+        o.location = A(cx + rx * (rn(i, 86) - 0.5) * 2 + 0.5 * math.sin(a), cy + ry * (rn(i, 87) - 0.5) * 2, 0.6 + 4.6 * rn(i, 88) + 0.25 * math.sin(t * 0.9 + i))
+        q = 1.0 + 1.4 * rn(i, 89)
+        o.scale = (q, q, q * 0.75)
+        o.rotation_euler = (0.2 * t + i, i, 0.15 * t)
+
+
+def facing(yaw):
+    return (math.sin(yaw), -math.cos(yaw))
+
+
+def hold(S, o, rig, hand=1, off=(0, -0.14, -0.04), rot=None):
+    o.location = world_of(rig.hands[hand], off)
+    if rot is not None:
+        o.rotation_euler = rot
+
+
+# ---------------------------------------------------------------- 5 August: the mountain gives way
+def cave_in(S, k, t, lt):
+    """The access road. The lamps along the wall flicker, rock comes off the roof, and a wall of dust rolls down the tunnel at three men and a pickup."""
+    A = env(S, 'ramp', '000000', fk=2.3)
+    go = sm((lt - 0.35) / 0.5)
+    truck_at(S, A(lerp(4.0, 1.2, sm(k)), 1.9 + 0.03 * math.sin(t * 31), 0.03 * abs(math.sin(t * 23))), -PI / 2)
+    for j, (rig, x, y) in enumerate(((S['men'][1], 6.2, -1.0), (S['men'][5], 7.6, -3.0), (S['men'][9], 9.4, -0.4))):
+        xx = x - 5.5 * go * k - 0.6 * j * go * k
+        rig.place(A(xx, y, 0), lerp(PI / 2, -PI / 2, sm((lt - 0.2 - 0.1 * j) / 0.25)))
+        rig.apply(blend(P('stand', head=(-0.35, 0.0), aR=(1.4, 0.3, 0.6)), walk(t + j * 0.3, 2.6), go))
+        rig.face, rig.jawv = 'wide', 0.7 * go
+    roll_dust(S, A, 15.0, 2.5, t, sm((lt - 0.25) / 2.2))
+    for i, o in enumerate(S['bouls']):
+        u = max(0.0, (lt - 0.15 - 0.16 * i) * 0.9) % 1.4
+        o.location = A(7.5 + 5.0 * rn(i, 91), (rn(i, 92) - 0.5) * 7, max(0.3, 6.3 - 9.0 * u * u))
+        s = 0.6 + 1.2 * rn(i, 93)
+        o.scale = (s, s, s * 0.8)
+        o.rotation_euler = (u * 6, i, u * 4)
+    grit(S, A(5.0, 0.0, 6.2), t, 10, 3.0, 6.0, 1.6)
+    fl = 0.5 + 0.5 * math.sin(t * 37) * math.sin(t * 13)
+    lampat(S, 0, A(-1.5, 1.9, 1.6), 1600, 'FFF4D0')
+    lampat(S, 1, A(5.0, -2.0, 4.6), 1500 * (1 - 0.8 * go) * (0.4 + 0.6 * fl), 'FFE2B0')
+    lampat(S, 2, A(11.0, 0.0, 3.0), 2600, 'FFB870')
+    shoot(S, A(lerp(-9.5, -8.0, k), -3.3, lerp(1.4, 1.7, k)), A(4.5, 0.2, 2.5), 26, fill=1.2)
+
+
+def dust_blind(S, k, t, lt):
+    """Afterwards: dust so thick the lamps are only glows. Three men feel their way with their arms out; Rook has a wing over his beak."""
+    A = env(S, 'ramp', '2A2018', fk=1.6, skyk=0.6)
+    hang_dust(S, A, 0.5, 0.0, t)
+    for j, (rig, x, y) in enumerate(((S['men'][1], 1.6, 0.6), (S['men'][5], -0.6, 2.2), (S['men'][9], 3.4, 2.6))):
+        rig.place(A(x - 0.5 * k, y, 0), -PI / 2 + 0.5 * math.sin(t * 0.7 + j * 2))
+        w = walk(t * 0.35 + j, 1.0)
+        w.update(aL=_arm_((1.3 + 0.15 * math.sin(t * 2 + j), 0.5, 0.2)), aR=_arm_((1.4, -0.1 + 0.3 * math.sin(t * 1.6 + j), 0.2)), head=(0.15, 0.4 * math.sin(t * 1.1 + j)))
+        rig.apply(w)
+        rig.face = 'squint'
+    rk = S['rook']
+    rp = (-2.2, -1.3)
+    cough = max(0.0, math.sin(lt * 7)) ** 4
+    rk.place(A(rp[0], rp[1], 0), look_yaw(rp, (-7.5, -4.5)))
+    rk.apply(P('tap', aR=(1.3, -0.3, 2.3, 0.6), head=(0.25 + 0.2 * cough, 0.15), lean=0.2 + 0.2 * cough))
+    S['rface'] = 'sad'
+    S['hat_tip'] = 0.3
+    lampat(S, 0, A(-3.5, -3.0, 2.6), 500, 'E8B880')
+    lampat(S, 1, A(2.0, 1.5, 3.0), 600, 'FFC890')
+    lampat(S, 2, A(6.0, 0.0, 2.5), 900, 'C89A60')
+    shoot(S, A(lerp(-7.6, -6.8, k), lerp(-4.4, -4.0, k), 1.9), A(-0.6, 0.0, 2.1), 32, fill=1.0, fcol='E8C8A0')
+
+
+def block_wall(S, k, t, lt):
+    """The way out: one block of rock from wall to wall and floor to roof. Three lamps move over it. Rook raps on it, puts the side of his head to it, and hears nothing."""
+    A = env(S, 'ramp', '000000', fk=2.3)
+    M = S['men']
+    for j, (rig, x, y) in enumerate(((M[0], 8.6, 1.6), (M[1], 9.6, -0.3), (M[5], 10.6, 2.9))):
+        rig.place(A(x, y, 0), PI / 2 + 0.15 * (j - 1))
+        rig.apply(P('stand', aR=(1.5, 0.0, 0.1) if j == 2 else (0.05, 0.12, 0.15), head=(-0.45 + 0.15 * math.sin(t * 0.8 + j * 2), 0.3 * math.sin(t * 0.5 + j))))
+        rig.face = 'wide' if j == 1 else 'tired'
+    rk = S['rook']
+    rp = (10.3, -2.6)
+    knock = (1 - sm((lt - 0.9) / 0.2)) * abs(math.sin(lt * 14))
+    ear = sm((lt - 1.0) / 0.4)
+    turn = sm((lt - 2.2) / 0.4)
+    rk.place(A(rp[0], rp[1], 0), lerp(PI / 2, look_yaw(rp, (3.5, -3.6)), 0.75 * turn))
+    rk.apply(blend(blend(P('stand', aR=(1.35 + 0.3 * knock, 0.0, 0.5 + 0.5 * knock), head=(-0.1, 0.0)), P('stand', aR=(1.2, 0.3, 0.3), head=(0.1, 0.95), lean=0.32), ear),
+                   P('stand', head=(0.3, 0.0), aL=(0.05, 0.3, 0.2), aR=(0.05, 0.3, 0.2)), turn))
+    S['rface'] = 'sad' if ear > 0.5 else 'calm'
+    S['hat_tip'] = 0.5 * turn
+    sw = math.sin(t * 0.9)
+    lampat(S, 0, A(8.0, 1.0 + 2.5 * sw, 3.6), 2600, 'FFE2B0')
+    lampat(S, 1, A(8.5, -3.6, 1.6), 500, 'B8D0FF')
+    lampat(S, 2, A(10.5, -1.0, 5.4), 500, 'FFF0D0')
+    shoot(S, A(lerp(3.4, 4.4, k), lerp(-3.8, -3.5, k), lerp(1.2, 1.4, k)), A(11.2, -0.5, lerp(3.4, 3.8, k)), 24, fill=1.3)
+
+
+def _arm_(v):
+    return tuple(v) + (0.0,) * (4 - len(v))
+
+
+def climber(S, A, z, t, reach=0.0, nod=-0.5):
+    m = S['men'][2]
+    m.place(A(0.0, 1.78, z), PI)
+    s = math.sin(t * 5)
+    m.apply(blend(P('stand', aL=(2.3 + 0.5 * s, 0.05, 0.7 - 0.4 * s), aR=(2.3 - 0.5 * s, 0.05, 0.7 + 0.4 * s), lL=(0.8 + 0.5 * s, 1.1 + 0.4 * s), lR=(0.8 - 0.5 * s, 1.1 - 0.4 * s),
+                          head=(nod, 0.0), lean=0.1),
+                  P('stand', aL=(2.0, 0.05, 0.9), aR=(3.0, 0.1, 0.05), lL=(0.9, 1.3), lR=(0.3, 0.4), head=(nod, 0.0), lean=0.05), reach))
+    return m
+
+
+def chimney(S, k, t, lt):
+    """The escape route: a ventilation raise with a ladder up its wall. One man climbs; two below light his way."""
+    A = env(S, 'chim', '000000', fk=2.2)
+    z = lerp(1.6, 7.4, k)
+    m = climber(S, A, z, t)
+    m.face = 'squint'
+    M = S['men']
+    for j, (rig, x, y, pose) in enumerate(((M[0], -1.5, 0.5, P('point', aR=(2.3, 0.2, 0.1), head=(-0.6, 0.0))), (M[5], 1.5, 0.9, P('stand', aL=(1.4, 0.2, 0.3), head=(-0.6, 0.0))))):
+        rig.place(A(x, y, 0), look_yaw((x, y), (0, 2.3)))
+        rig.apply(pose)
+        rig.face = 'wide'
+    grit(S, A(0.3, 1.6, z + 6.0), t, 8, 0.8, 7.0, 0.9)
+    lampat(S, 0, A(-1.6, -1.6, z + 1.0), 900, 'FFE2B0')
+    lampat(S, 1, A(0.2, 0.6, z + 7.0), 400, 'BFD4FF')
+    lampat(S, 2, A(1.2, -1.2, 2.2), 600, 'FFE8C8')
+    shoot(S, A(lerp(-1.9, -1.5, k), lerp(-3.9, -3.5, k), lerp(0.9, 1.6, k)), A(0.0, 1.7, z + 2.6), 20, fill=1.3)
+
+
+def ladder_end(S, k, t, lt):
+    """Part-way up, the ladder stops. He reaches for a rung that is not there. On the ledge beside him, Rook looks up the bare wall, then at us."""
+    A = env(S, 'chim', '000000', fk=2.3)
+    give = sm((lt - 1.3) / 0.4)
+    m = climber(S, A, 12.9, t * 0.15, 1.0 - 0.7 * give, lerp(-0.6, 0.35, give))
+    m.face = 'tired' if give > 0.5 else 'wide'
+    rk = S['rook']
+    rp = (-1.85, 1.3)
+    look = sm((lt - 1.5) / 0.35)
+    rk.place(A(rp[0], rp[1], 13.18), lerp(look_yaw(rp, (0.4, -2.0)), look_yaw(rp, (1.4, -4.2)), look))
+    rk.apply(blend(P('hips', head=(-0.7, -0.5)), P('cross', head=(0.1, 0.0)), look))
+    S['rface'] = 'deadpan' if look > 0.5 else 'calm'
+    S['hat_tip'] = 0.45 * look
+    grit(S, A(0.2, 1.7, 21.0), t, 8, 0.8, 9.0, 0.7)
+    lampat(S, 0, A(-0.6, -1.9, 15.0), 800, 'FFE2B0')
+    lampat(S, 1, A(0.3, 0.6, 20.0), 500, 'BFD4FF')
+    lampat(S, 2, A(-2.4, -0.6, 14.0), 260, 'FFE8C8')
+    shoot(S, A(lerp(1.9, 1.5, k), lerp(-4.4, -4.0, k), lerp(13.4, 14.0, k)), A(-0.6, 1.8, lerp(15.0, 15.4, k)), 28, fill=1.3)
+
+
+# ---------------------------------------------------------------- seventeen days in the shelter
+def vote(S, k, t, lt):
+    """The shelter. The foreman stands in front of the men and puts it to a vote; hands go up along the bench, one after another. At the end of the row Rook looks about him and raises a wing."""
+    A = mine(S)
+    M = S['men']
+    fp = (8.7, 0.3)
+    for i in range(6):
+        x, y = BENCH[i]
+        up = sm((lt - 0.35 - 0.14 * i) / 0.3)
+        tr = max(-0.7, min(0.7, look_yaw((x, y), fp)))
+        sit(M[i + 1], A, x, y, 0.0, 0.05, tr)
+        M[i + 1].apply(blend(P('sit', head=(0.05, tr), lean=0.2), P('sit', aR=(2.7, 0.15, 0.25), head=(-0.08, tr), lean=0.14), up))
+        M[i + 1].face = 'calm'
+    for j, (x, y) in enumerate(((6.4, 2.0), (10.9, 2.2))):
+        up = sm((lt - 0.7 - 0.2 * j) / 0.3)
+        rig = M[7 + j]
+        rig.place(A(x, y, 0.0), 0.2 * (1 - 2 * j))
+        rig.apply(P('sit', lL=(1.75, 2.1), lR=(1.75, 2.1), aL=(1.2, -0.2, 1.2, 0.6), aR=_arm_((lerp(1.2, 2.6, up), lerp(-0.2, 0.1, up), lerp(1.2, 0.2, up))), lift=-0.62, lean=0.36, head=(0.0, 0.0)))
+        rig.face = 'calm'
+    f = M[0]
+    f.place(A(fp[0], fp[1], 0), PI + 0.35 * math.sin(lt * 1.3))
+    f.apply(P('point', aR=(1.45, 0.25 * math.sin(lt * 2.6), 0.1), aL=(0.9, 0.1, 1.5), head=(0.0, 0.0)))
+    f.jawv = 0.3 + 0.3 * math.sin(lt * 9)
+    rk = S['rook']
+    rp = (13.0, 2.9)
+    up = sm((lt - 1.5) / 0.3)
+    rk.place(A(rp[0], rp[1], 0), look_yaw(rp, (9.5, -3.5)))
+    rk.apply(blend(P('cross', head=(0.1, lerp(0.9, -0.6, sm((lt - 0.6) / 0.6)))), P('reach', aR=(2.7, 0.1, 0.2), head=(0.0, 0.2)), up))
+    S['rface'] = 'calm'
+    shelter_light(S, A)
+    lampat(S, 3, A(8.0, -2.5, 3.2), 700, 'FFE8C8')
+    shoot(S, A(lerp(6.2, 7.0, k), lerp(-6.6, -6.0, k), lerp(3.1, 2.8, k)), A(9.3, 2.6, 1.9), 28, fill=1.3)
+
+
+def battery(S, k, t, lt):
+    """A pickup stands in the gallery with its bonnet up and its lamps burning. A miner holds his helmet lamp to a cable from the battery. Rook touches the other clamp: a spark, and his hat jumps."""
+    A = mine(S)
+    tp = (-3.2, 2.9)
+    yaw = look_yaw(tp, (-7.5, -2.5))
+    truck_at(S, A(tp[0], tp[1], 0), yaw, 0.95)
+    fx, fy = facing(yaw)
+    front = (tp[0] + fx * 2.4, tp[1] + fy * 2.4)
+    side = (-fy, fx)
+    bat = A(tp[0] + fx * 1.3 - side[0] * 0.52, tp[1] + fy * 1.3 - side[1] * 0.52, 1.5)
+    m = S['men'][7]
+    mp = (front[0] - side[0] * 1.5 + fx * 0.2, front[1] - side[1] * 1.5 + fy * 0.2)
+    m.place(A(mp[0], mp[1], 0), look_yaw(mp, (tp[0] + fx * 1.3, tp[1] + fy * 1.3)))
+    m.apply(P('stand', aR=(1.1, 0.0, 0.9), aL=(1.0, 0.1, 1.1), head=(0.4, 0.0), lean=0.2))
+    m.face = 'squint'
+    hand = world_of(m.hands[1], (0, -0.12, -0.05))
+    rope(S, 0, bat, hand, 0.02)
+    glow = 0.6 + 0.4 * math.sin(t * 5)
+    lampat(S, 3, (hand[0], hand[1], hand[2] + 0.3), 160 * glow, 'FFF2C0')
+    m2 = S['men'][9]
+    p2 = (front[0] + side[0] * 0.2 + fx * 1.6, front[1] + side[1] * 0.2 + fy * 1.6)
+    m2.place(A(p2[0], p2[1], 0), look_yaw(p2, front) + 0.3)
+    m2.apply(KNEEL)
+    m2.face = 'tired'
+    rk = S['rook']
+    rp = (front[0] + side[0] * 1.55 + fx * 0.1, front[1] + side[1] * 1.55 + fy * 0.1)
+    zap = sm((lt - 1.3) / 0.08)
+    rk.place(A(rp[0], rp[1], 0), look_yaw(rp, (tp[0] + fx * 1.3, tp[1] + fy * 1.3)))
+    rk.apply(blend(P('stand', aR=(1.2, -0.1, 0.5), head=(0.45, 0.0), lean=0.35), P('scream', head=(-0.1, 0.5), lean=-0.2), zap))
+    S['rface'] = 'shocked' if zap > 0.5 else 'calm'
+    S['hat_jump'] = 0.45 * max(0.0, math.sin(min(1.0, max(0.0, lt - 1.3) / 0.5) * PI))
+    if 1.3 < lt < 1.75:
+        for i, sp in enumerate(S['sparks']):
+            u = (lt - 1.3) / 0.45
+            a = i * 0.8
+            sp.location = (bat[0] + 0.9 * u * math.cos(a), bat[1] + 0.9 * u * math.sin(a), bat[2] + 0.1 + 0.9 * u - 1.6 * u * u)
+            sp.scale = (1.6 * (1 - u),) * 3
+        feather(S, world_of(rk.head, (0.3, 0, 0.3)), lt, 1.35)
+    lampat(S, 0, A(front[0] + fx * 2.0, front[1] + fy * 2.0, 1.2), 1700, 'FFF4D0')
+    lampat(S, 1, A(tp[0] - 2.0, tp[1] - 3.5, 3.6), 900, 'FFE2B0')
+    lampat(S, 2, A(4.6, -1.5, 3.4), 400, 'B8D0FF')
+    shoot(S, A(lerp(-9.2, -8.4, k), lerp(-4.6, -4.0, k), lerp(1.7, 2.0, k)), A(front[0] + 0.5, front[1] + 0.6, 1.7), 30, fill=1.2)
+
+
+def heat(S, k, t, lt):
+    """By the water drum: one man fills a cup and drinks, pulling a face; another sits against the wall and drags a forearm across his brow. Rook pants with his beak open and wipes his own."""
+    A = mine(S)
+    m = S['men'][8]
+    mp = (5.7, 3.6)
+    m.place(A(mp[0], mp[1], 0), look_yaw(mp, (6.3, 5.0)) - 0.9 * sm((lt - 0.9) / 0.4))
+    drink = sm((lt - 0.9) / 0.4)
+    m.apply(blend(P('stand', aR=(1.2, -0.1, 0.4), head=(0.35, 0.0), lean=0.2), P('stand', aR=(1.1, -0.2, 2.2, 0.4), head=(-0.25, 0.0)), drink))
+    m.face = 'squint' if drink > 0.6 else 'tired'
+    hold(S, S['cups'][0], m, 1, (0, -0.14, -0.02))
+    m2 = S['men'][10]
+    m2.place(A(4.4, 4.2, 0), 0.5)
+    wipe = 0.5 + 0.5 * math.sin(lt * 2.4)
+    m2.apply(P('sit', lL=(1.5, 1.9), lR=(1.2, 1.5), aL=_arm_((1.6, -0.4 + 0.3 * wipe, 2.1)), aR=(0.5, 0.1, 0.6), lift=-0.62, lean=0.3, head=(0.1, 0.1)))
+    m2.face = 'shut' if wipe > 0.5 else 'tired'
+    rk = S['rook']
+    rp = (7.9, 3.3)
+    rk.place(A(rp[0], rp[1], 0), look_yaw(rp, (7.0, -1.5)))
+    pant = 0.5 + 0.5 * math.sin(lt * 9)
+    rk.apply(P('hat', aR=_arm_((0.3, 1.7, 1.75 + 0.2 * math.sin(lt * 3), -1.4)), head=(0.15 + 0.05 * pant, 0.25), lean=0.12))
+    S['rface'] = 'shocked'
+    S['hat_tip'] = 0.25
+    shelter_light(S, A, 0.9)
+    lampat(S, 3, A(6.6, 1.2, 2.6), 500, 'FFA860')
+    shoot(S, A(lerp(6.2, 6.8, k), lerp(-1.6, -1.0, k), lerp(1.9, 2.0, k)), A(6.4, 4.0, 1.9), 34, fill=1.2, fcol='FFD0A0')
+
+
+def listen(S, k, t, lt):
+    """The gallery. Four men stand with their faces turned up as grit trickles from the roof in a line that travels across and away: a drill, passing them in the rock. Rook listens with the side of his head to the wall. The sound fades; the heads go down."""
+    A = mine(S)
+    sx = lerp(-7.0, 9.0, k)
+    gone = sm((k - 0.72) / 0.2)
+    M = S['men']
+    for j, (rig, x, y) in enumerate(((M[1], -2.0, 1.8), (M[4], 0.5, 2.8), (M[6], 2.2, 0.8), (M[9], -0.5, -0.3))):
+        yw = look_yaw((x, y), (sx, 6.0))
+        rig.place(A(x, y, 0), lerp(yw, yw * 0.6, gone))
+        rig.apply(blend(P('stand', aR=(1.3, 0.5, 2.4) if j == 1 else (0.05, 0.12, 0.15), head=(-0.5, 0.0)), P('stand', head=(0.4, 0.0), lean=0.1), gone))
+        rig.face = 'sad' if gone > 0.5 else 'wide'
+    rk = S['rook']
+    rp = (4.0, 3.9)
+    rk.place(A(rp[0], rp[1], 0), PI * 0.75)
+    rk.apply(blend(P('stand', aR=(1.2, 0.5, 2.3), head=(-0.2, -0.6), lean=0.1), P('stand', head=(0.4, -0.2)), gone))
+    S['rface'] = 'sad' if gone > 0.5 else 'calm'
+    S['hat_tip'] = 0.4 * gone
+    grit(S, A(sx, 3.6, 6.7), t, 10, 0.5, 6.5, 1.5)
+    lampat(S, 0, A(-2.5, -2.6, 3.2), 1500 * (1 - 0.35 * gone), 'FFE2B0')
+    lampat(S, 1, A(sx, 3.2, 5.6), 420, 'BFD4FF')
+    lampat(S, 2, A(4.2, 1.6, 3.0), 320, 'FFE8C8')
+    shoot(S, A(lerp(-1.2, 0.2, k), lerp(-7.2, -6.6, k), lerp(1.4, 1.7, k)), A(0.9, 2.2, 3.1), 24, fill=1.3)
+
+
+def bang_bit(S, k, t, lt):
+    """Day seventeen. A drill bit comes down through the gallery roof in a shower of grit. Men run to it; one beats on the steel with a hammer, sparks flying, while the others shout up the hole."""
+    A = mine(S)
+    seen(tree_of(S['note']), False)
+    z = lerp(6.6, 3.0, sm(lt / 0.7))
+    drill_at(S, A, z + 0.02 * math.sin(t * 40), spin=t * 4 * (1 - sm(lt / 0.9)))
+    M = S['men']
+    run = sm((lt - 0.3) / 0.6)
+    m = M[3]
+    mp = (lerp(3.4, 0.75, run), lerp(2.4, 1.5, run))
+    m.place(A(mp[0], mp[1], 0), look_yaw(mp, PROBE))
+    hit = abs(math.sin(lt * 9)) if lt > 1.0 else 0.0
+    m.apply(blend(walk(t, 2.4), P('stand', aR=(2.1 - 0.9 * hit, -0.1, 0.9 - 0.5 * hit), aL=(0.6, 0.2, 0.8), head=(-0.3, 0.0), lean=0.1), run))
+    m.face, m.jawv = 'wide', 0.6
+    hold(S, S['hammer'], m, 1, (0, -0.1, -0.1), (1.9 - 1.2 * hit, 0, look_yaw(mp, PROBE)))
+    for j, (rig, x0, y0, x1, y1) in enumerate(((M[5], -5.0, 3.0, -1.5, 2.3), (M[2], 2.0, 5.0, 0.2, 3.2), (M[0], 6.5, 1.0, 2.2, 0.4))):
+        r2 = sm((lt - 0.2 - 0.2 * j) / 0.8)
+        p = (lerp(x0, x1, r2), lerp(y0, y1, r2))
+        rig.place(A(p[0], p[1], 0.18 * r2 * abs(math.sin(t * 7 + j))), look_yaw(p, PROBE))
+        rig.apply(blend(walk(t + j, 2.4), P('up', aL=(2.6 + 0.2 * math.sin(t * 9 + j), -0.4, 0.2), aR=(2.7, -0.4, 0.2), head=(-0.55, 0.0)), r2))
+        rig.face, rig.jawv = 'wide', 0.7
+    if hit > 0.8:
+        c = A(PROBE[0], PROBE[1] - 0.1, z + 1.0)
+        for i, sp in enumerate(S['sparks']):
+            sp.location = (c[0] + 0.4 * math.cos(i * 0.8 + t * 30), c[1] - 0.2 + 0.3 * math.sin(i * 2.1), c[2] + 0.3 * math.sin(i + t * 20))
+    grit(S, A(0, 1, 6.7), t, 10, 0.7, 6.0, 1.4)
+    lampat(S, 0, A(2.6, -2.0, 3.0), 1700, 'FFE2B0')
+    lampat(S, 1, A(0.2, 0.2, 6.0), 600, 'FFF4D8')
+    lampat(S, 2, A(-3.0, 1.0, 2.6), 400, 'B8D0FF')
+    shoot(S, A(lerp(3.8, 3.0, k), lerp(-4.8, -4.2, k), lerp(1.5, 1.8, k)), A(0.1, 1.3, lerp(3.6, 3.3, k)), 24, fill=1.3)
+
+
+# ---------------------------------------------------------------- the camp, the lifeline, the three drills
+def vigil(S, k, t, lt):
+    """Night at the camp by the mine gate: three people stand close together with candles, the light on their faces, the tents behind. Rook stands a little apart with his head down and his hat brim low."""
+    A = night(S)
+    cx, cy = CAMP
+    for j, (rig, x, y) in enumerate(((S['civ'][0], -1.5, -3.0), (S['civ'][1], -0.3, -2.7), (S['civ'][2], 0.9, -3.1))):
+        rig.place(A(cx + x, cy + y, 0), 0.12 * (j - 1))
+        rig.apply(P('stand', aL=(0.8, -0.28, 1.7, 1.0), aR=(0.8, -0.28, 1.7, 1.0), head=(0.3 + 0.05 * math.sin(t * 0.8 + j), 0.15 * (1 - j))))
+        rig.face = 'sad'
+        hl, hr = world_of(rig.hands[0]), world_of(rig.hands[1])
+        c = ((hl[0] + hr[0]) / 2, (hl[1] + hr[1]) / 2 - 0.1, (hl[2] + hr[2]) / 2 + 0.12)
+        S['candles'][j].location = c
+        lampat(S, j, (c[0], c[1] - 0.3, c[2] + 0.35), 55 * (1 + 0.2 * math.sin(t * 11 + j * 2)), 'FFC070')
+    rk = S['rook']
+    rp = (cx + 2.9, cy - 2.6)
+    rk.place(A(rp[0], rp[1], 0), -0.25)
+    rk.apply(P('stand', aL=(0.6, -0.2, 1.4, 0.9), aR=(0.6, -0.2, 1.4, 0.9), head=(0.38, 0.2)))
+    S['rface'] = 'sad'
+    S['hat_tip'] = 0.5
+    S['candles'][3].location = world_of(rk.hands[1], (-0.15, -0.16, 0.05))
+    lampat(S, 3, A(cx + 2.9, cy - 3.3, 1.9), 50, 'FFC070')
+    lampat(S, 4, A(cx - 6.0, cy + 1.0, 5.0), 2500, 'DCE8FF')
+    shoot(S, A(cx + lerp(-2.4, -1.4, k), cy + lerp(-8.2, -7.6, k), lerp(2.0, 2.15, k)), A(cx + 0.5, cy - 2.9, 2.3), 44, fill=1.0, fcol='FFD8B0')
+
+
+def three_rigs(S, k, t, lt):
+    """Daylight. Three drilling rigs stand across the hillside, each over its own hole, each in its own dust. In front, Rook looks from one to the next to the next, then at us."""
+    A = day(S)
+    seen(tree_of(S['rigA']), True)
+    seen(tree_of(S['rigC']), True)
+    S['pipeA'].rotation_euler = (0, 0, t * 4)
+    S['pipeC'].rotation_euler = (0, 0, -t * 3)
+    sx, sy = SITE
+    S['bigbit'].location = A(sx, sy, -3.0)
+    S['bigbit'].rotation_euler = (0, 0, t * 5)
+    S['surf']['wheel'].rotation_euler = (t * 2, PI / 2, 0)
+    drill_at(S, A, -80, HOLE[0], HOLE[1])
+    puffs(S, A(RIGA[0], RIGA[1], 0.3), t, 5, 3.0, 2.4, 1.6, 0)
+    puffs(S, A(sx, sy, 0.3), t + 0.4, 5, 3.0, 2.4, 1.6, 5)
+    puffs(S, A(RIGC[0], RIGC[1], 0.3), t + 0.8, 4, 3.4, 2.8, 2.0, 10)
+    rk = S['rook']
+    rp = (10.5, -22.5)
+    cam = (lerp(8.6, 7.6, k), lerp(-31.0, -30.0, k), lerp(2.6, 3.0, k))
+    u = lt / 0.7
+    hd = 1.2 if u < 1 else 0.0 if u < 2 else -1.2 if u < 3 else 0.0
+    hd2 = (1.2, 0.0, -1.2, 0.0)[min(3, int(u) + 1)] if u < 3 else 0.0
+    turn = lerp(hd, hd2, sm((u % 1 - 0.7) / 0.3)) if u < 3 else 0.0
+    done = sm((lt - 2.2) / 0.3)
+    rk.place(A(rp[0], rp[1], 0), lerp(look_yaw(rp, (14, 5)), look_yaw(rp, cam), done))
+    rk.apply(blend(P('hips', head=(-0.15, turn)), P('shrug', head=(0.0, 0.0)), done))
+    S['rface'] = 'calm'
+    c = S['crew'][2]
+    c.place(A(3.5, -15.0, 0), look_yaw((3.5, -15.0), SITE))
+    c.apply(P('point', aR=(1.5, 0.2, 0.1), head=(-0.2, 0.0)))
+    shoot(S, A(*cam), A(13.0, 2.0, 7.6), 22, fill=0.6)
+
+
+def dove(S, k, t, lt):
+    """Daylight at the narrow borehole: two rescuers lower a long thin tube into it on a cable, hand over hand. Rook, on one knee at the collar, bends to watch it go down."""
+    A = day(S, False)
+    drill_at(S, A, -80, HOLE[0], HOLE[1])
+    z = lerp(2.7, -2.2, sm((lt - 0.3) / 1.8))
+    S['dove'].location = A(HOLE[0], HOLE[1], z)
+    S['dove'].rotation_euler = (0, 0, t * 0.8)
+    rope(S, 0, A(HOLE[0], HOLE[1], z + 2.5), A(HOLE[0], HOLE[1], 12.6), 0.02)
+    c = S['crew'][0]
+    cp = (-1.2, -3.2)
+    c.place(A(cp[0], cp[1], 0), look_yaw(cp, HOLE))
+    pay = math.sin(lt * 5)
+    c.apply(P('stand', aR=(1.5 + 0.25 * pay, -0.15, 0.4), aL=(1.3 - 0.25 * pay, 0.05, 0.6), head=(lerp(-0.1, 0.4, k), 0.0), lean=0.15))
+    c2 = S['crew'][2]
+    c2.place(A(1.3, -4.0, 0), look_yaw((1.3, -4.0), HOLE))
+    c2.apply(P('stand', aR=(1.2, 0.2, 0.5), head=(lerp(0.0, 0.35, k), 0.0)))
+    rk = S['rook']
+    rp = (1.25, -1.85)
+    rk.place(A(rp[0], rp[1], 0), look_yaw(rp, (-0.5, -5.0)))
+    peer = sm((lt - 0.8) / 0.5)
+    rk.apply(blend(KNEEL, P('stand', lL=(0.2, 1.5), lR=(1.3, 1.45), lift=-0.76, lean=0.7, aR=(1.0, 0.4, 0.3), aL=(0.9, 0.3, 0.4), head=(0.5, 0.5)), peer))
+    S['rface'] = 'calm'
+    shoot(S, A(lerp(-2.9, -2.3, k), lerp(-7.6, -7.0, k), lerp(1.3, 1.6, k)), A(0.1, -2.6, lerp(2.2, 1.6, k)), 34, fill=0.9)
+
+
+def dove_arrive(S, k, t, lt):
+    """Below: the tube comes down out of the roof on its cable. Two miners reach up and take it; one pulls out a bottle and holds it up, and the others close in."""
+    A = mine(S)
+    drill_at(S, A, 80)
+    z = lerp(6.9, 2.0, sm(lt / 1.1))
+    S['dove'].location = A(PROBE[0], PROBE[1], z)
+    S['dove'].rotation_euler = (0, 0, 0.6 * math.sin(t * 1.5))
+    rope(S, 0, A(PROBE[0], PROBE[1], z + 2.5), A(PROBE[0], PROBE[1], ROOF + 0.3), 0.02)
+    M = S['men']
+    got = sm((lt - 1.3) / 0.4)
+    a = M[7]
+    ap = (-0.85, 0.5)
+    a.place(A(ap[0], ap[1], 0), look_yaw(ap, PROBE))
+    a.apply(blend(P('up', aL=(2.4, -0.2, 0.3), aR=(2.5, -0.2, 0.3), head=(-0.5, 0.0)), P('reach', aR=(2.7, 0.2, 0.2), aL=(1.2, 0.0, 0.8), head=(-0.3, 0.3)), got))
+    a.face, a.jawv = 'warm', 0.5 * got
+    if got > 0.3:
+        hold(S, S['bottle'], a, 1, (0, -0.1, -0.2))
+    b = M[11]
+    bp = (0.9, 0.35)
+    b.place(A(bp[0], bp[1], 0), look_yaw(bp, PROBE))
+    b.apply(P('stand', aL=(1.5, -0.1, 0.5), aR=(1.4, -0.2, 0.6), head=(lerp(-0.5, 0.0, got), 0.0)))
+    b.face = 'warm'
+    for j, (rig, x0, y0, x1, y1) in enumerate(((M[1], -5.5, 2.6, -2.2, 1.9), (M[2], 4.6, 3.4, 2.0, 2.2), (M[6], 2.0, 5.5, 0.2, 3.1))):
+        r2 = sm((lt - 0.4 - 0.2 * j) / 1.0)
+        p = (lerp(x0, x1, r2), lerp(y0, y1, r2))
+        rig.place(A(p[0], p[1], 0), look_yaw(p, PROBE))
+        rig.apply(blend(walk(t + j, 1.8), P('stand', aR=(1.2, 0.3, 0.9), head=(-0.2, 0.0)), r2))
+        rig.face = 'warm'
+    lampat(S, 0, A(-2.6, -2.2, 3.2), 1700, 'FFE2B0')
+    lampat(S, 1, A(0.3, 0.2, 6.0), 700, 'FFF4D8')
+    lampat(S, 2, A(3.4, 0.0, 2.6), 400, 'B8D0FF')
+    shoot(S, A(lerp(-3.6, -2.9, k), lerp(-4.4, -3.9, k), lerp(1.6, 1.9, k)), A(0.0, 1.0, lerp(3.4, 2.7, k)), 30, fill=1.3)
+
+
+def letter(S, k, t, lt):
+    """On the bench: a miner reads a sheet of paper held in both hands, and wipes an eye with the back of his wrist. The men either side lean in. A fourth holds up a small camera; a fifth waves into it."""
+    A = mine(S)
+    crowd(S, A, t, face='calm', nod=0.2, row_only=True)
+    M = S['men']
+    x, y = BENCH[2]
+    wipe = sm((lt - 1.4) / 0.3) * (1 - sm((lt - 2.3) / 0.3))
+    sit(M[3], A, x, y, 0.0, 0.45, 0.0)
+    M[3].apply(P('sit', aL=_arm_((lerp(0.9, 1.5, wipe), -0.2, lerp(1.2, 2.2, wipe), 0.3)), aR=(0.9, -0.2, 1.2, 0.3), head=(0.45 - 0.2 * wipe, 0.0), lean=0.22))
+    M[3].face = 'warm'
+    S['sheet'].location = world_of(M[3].hands[1], (-0.2, -0.2, 0.06))
+    S['sheet'].rotation_euler = (-0.6, 0, 0.04 * math.sin(t * 4))
+    S['sheet'].scale = (0.36, 0.36, 0.36)
+    for i, tr in ((2, -0.7), (4, 0.7)):
+        xx, yy = BENCH[i - 1]
+        sit(M[i], A, xx, yy, 0.0, 0.3, tr)
+        M[i].face = 'warm'
+    c = M[9]
+    cp = (10.6, 1.9)
+    c.place(A(cp[0], cp[1], 0), look_yaw(cp, (9.6, 3.9)))
+    c.apply(P('stand', aR=(1.5, 0.0, 0.9), aL=(1.4, 0.2, 1.0), head=(0.1, 0.0)))
+    hold(S, S['vcam'], c, 1, (0, -0.2, 0.0), (0, 0, look_yaw(cp, (9.6, 3.9))))
+    w = M[5]
+    sit(w, A, BENCH[4][0], BENCH[4][1], 0.0, 0.0, 0.5)
+    w.apply(P('sit', aR=_arm_((2.5, 0.3 + 0.35 * math.sin(lt * 8), 0.4)), head=(0.0, 0.5), lean=0.15))
+    w.face, w.jawv = 'warm', 0.5
+    shelter_light(S, A, 0.9)
+    lampat(S, 3, A(7.4, 1.4, 2.6), 380, 'FFE8C8')
+    shoot(S, A(lerp(6.6, 7.3, k), lerp(-1.0, -0.5, k), lerp(1.9, 2.0, k)), A(x + 0.6, 3.6, 1.8), 36, fill=1.3)
+
+
+def muck(S, k, t, lt):
+    """Under the new shaft, rock rattles down out of the roof onto a growing heap. Three miners shovel it into a barrow. Rook has a shovel too, until a stone bounces off his hat."""
+    A = mine(S)
+    seen(S['mine']['drop'], True)
+    seen(S['mine']['pile'], True)
+    dx, dy = DROP
+    for i, o in enumerate(S['grit']):
+        u = (t * 1.3 + rn(i, 71)) % 1
+        o.location = A(dx + 0.8 * (rn(i, 72) - 0.5) * 2, dy + 0.8 * (rn(i, 73) - 0.5) * 2, 6.8 - 6.4 * u * u)
+        s = 1.2 + 1.6 * rn(i, 74)
+        o.scale = (s, s, s)
+    puffs(S, A(dx, dy, 0.3), t, 6, 2.0, 1.2, 0.8)
+    M = S['men']
+    for j, (rig, x, y) in enumerate(((M[1], -4.9, 1.7), (M[6], -5.2, -1.7), (M[8], -8.9, 1.6))):
+        yw = look_yaw((x, y), DROP)
+        dig = 0.5 + 0.5 * math.sin(t * 4 + j * 2.1)
+        rig.place(A(x, y, 0), yw)
+        rig.apply(P('stand', aL=(0.9 + 0.5 * dig, -0.2, 0.5), aR=(1.2 + 0.5 * dig, -0.3, 0.4), lean=0.55 - 0.3 * dig, lL=(0.3, 0.4), lR=(-0.1, 0.2), lift=-0.08, head=(0.2, 0.0)))
+        rig.face = 'squint'
+        hold(S, S['shovels'][j], rig, 1, (0, -0.1, 0.0), (2.0 - 0.7 * dig, 0, yw))
+    S['barrow'].location = A(-3.9, -0.2, 0)
+    S['barrow'].rotation_euler = (0, 0, 2.2)
+    rk = S['rook']
+    rp = (-9.4, -2.0)
+    bonk = sm((lt - 1.5) / 0.08)
+    yw = look_yaw(rp, DROP)
+    dig = (0.5 + 0.5 * math.sin(t * 4)) * (1 - bonk)
+    rk.place(A(rp[0], rp[1], 0), lerp(yw, look_yaw(rp, (-11.6, -6.4)), sm((lt - 1.8) / 0.3)))
+    rk.apply(blend(P('stand', aL=(0.9 + 0.5 * dig, -0.2, 0.5), aR=(1.2 + 0.5 * dig, -0.3, 0.4), lean=0.5 - 0.3 * dig, head=(0.2, 0.0)), P('stand', aR=(0.6, 0.2, 0.8), head=(0.05, 0.0)), bonk))
+    hold(S, S['shovels'][3], rk, 1, (0, -0.1, 0.0), (lerp(2.0 - 0.7 * dig, 0.5, bonk), 0, yw))
+    S['rface'] = 'deadpan' if bonk > 0.5 else 'calm'
+    S['hat_sq'] = bonk * (1 - sm((lt - 2.6) / 0.3))
+    hd = world_of(rk.head, (0, 0, 0.75))
+    u = max(0.0, lt - 1.1)
+    S['bouls'][0].location = (hd[0] + (1.4 - 3.5 * u if u < 0.4 else 1.3 * (u - 0.4)), hd[1], hd[2] + (3.2 - 20 * u * u if u < 0.4 else 1.5 * (u - 0.4) - 6 * (u - 0.4) ** 2))
+    S['bouls'][0].scale = (0.45,) * 3
+    gallery_light(S, A)
+    shoot(S, A(lerp(-12.4, -11.6, k), lerp(-6.8, -6.2, k), lerp(1.7, 1.9, k)), A(-7.3, -0.3, 2.5), 26, fill=1.3)
+
+
+def workshop(S, k, t, lt):
+    """Daylight: the capsule lies on two trestles. One rescuer tightens something at its head, sparks at his hands; another kneels at the wheels. Rook holds his orange rule across the end of it, reads it, and looks at us."""
+    A = day(S)
+    sx, sy = SITE[0] - 9.0, SITE[1] - 7.0
+    S['cap'].location = A(sx - 2.35, sy, 1.83)
+    S['cap'].rotation_euler = (0, PI / 2, 0)
+    for j, tr in enumerate(S['trestles']):
+        tr.location = A(sx - 1.4 + 2.8 * j, sy, 0)
+    c = S['crew'][0]
+    cp = (sx + 2.9, sy + 0.5)
+    c.place(A(cp[0], cp[1], 0), look_yaw(cp, (sx + 2.0, sy)))
+    wr = math.sin(lt * 8)
+    c.apply(P('stand', aR=(1.3 + 0.15 * wr, -0.1, 0.6), aL=(1.2, 0.1, 0.7), head=(0.3, 0.0), lean=0.2))
+    for i, sp in enumerate(S['sparks']):
+        u = (t * 2.4 + i / 8) % 1
+        sp.location = A(sx + 2.4 + 0.7 * u * math.cos(i * 0.9), sy - 0.2 - 0.5 * u, 2.3 + 0.5 * u - 1.6 * u * u)
+        sp.scale = (1.5 * (1 - u),) * 3
+    c1 = S['crew'][1]
+    kp = (sx + 0.3, sy + 1.6)
+    c1.place(A(kp[0], kp[1], 0), look_yaw(kp, (sx + 0.3, sy)))
+    c1.apply(KNEEL)
+    rk = S['rook']
+    rp = (sx - 3.2, sy - 1.0)
+    cam = (sx + lerp(-5.4, -4.6, k), sy + lerp(-6.6, -6.0, k), lerp(1.9, 2.1, k))
+    lay = sm((lt - 0.2) / 0.4)
+    look = sm((lt - 1.4) / 0.3)
+    rk.place(A(rp[0], rp[1], 0), lerp(look_yaw(rp, (sx - 2.4, sy)), look_yaw(rp, cam), 0.6 * look))
+    rk.apply(blend(P('stand', aR=(0.6, 0.1, 0.9), head=(0.2, 0.0)), P('stand', aR=(1.45, -0.05, 0.2), head=(0.3 - 0.3 * look, 0.0), lean=0.15), lay))
+    S['ruler'].location = A(sx - 2.5, sy - lerp(1.2, 0.0, lay), lerp(1.4, 1.83, lay))
+    S['ruler'].rotation_euler = (0, 0, PI / 2)
+    S['rface'] = 'deadpan' if look > 0.5 else 'calm'
+    S['hat_tip'] = 0.3 * look
+    shoot(S, A(*cam), A(sx - 0.6, sy, 1.75), 32, fill=0.8)
+
+
+def first_down(S, k, t, lt):
+    """Night at the shaft. A rescuer stands in the cage, raises one hand to the men round him, and the capsule sinks out of the floodlights. Rook touches his brim to him."""
+    A = night(S, True)
+    sx, sy = SITE
+    z = lerp(0.4, -4.2, sm((lt - 1.1) / 1.6))
+    c = S['crew'][1]
+    wave = sm((lt - 0.2) / 0.3)
+    cap_at(S, A, sx, sy, z, c, 0.25, P('stand', aL=(0.05, 0.02, 0.2), aR=_arm_((lerp(0.1, 1.5, wave), 0.5, lerp(0.2, 1.9, wave))), head=(0.0, 0.2)))
+    c.face = 'calm'
+    cable_top(S, A, sx, sy, z)
+    S['surf']['wheel'].rotation_euler = (z * 1.2, PI / 2, 0)
+    for j, (rig, x, y) in enumerate(((S['crew'][0], -2.5, -1.2), (S['crew'][2], 2.6, 0.2), (S['civ'][2], -3.9, -2.4))):
+        rig.place(A(sx + x, sy + y, 0), look_yaw((x, y), (0, 0)))
+        cp = 0.5 + 0.5 * math.sin(t * 13 + j)
+        rig.apply(P('stand', aL=(1.1, -0.1 - 0.25 * cp, 1.3, 0.5), aR=(1.1, -0.1 - 0.25 * cp, 1.3, 0.5), head=(lerp(-0.1, 0.35, sm((lt - 1.1) / 1.4)), 0.0)))
+        rig.face = 'calm'
+    rk = S['rook']
+    rp = (sx + 2.3, sy - 2.6)
+    rk.place(A(rp[0], rp[1], 0), look_yaw(rp, (sx - 2.0, sy - 9.0)))
+    rk.apply(P('hat', head=(lerp(0.0, 0.35, sm((lt - 1.1) / 1.4)), 0.7)))
+    S['rface'] = 'calm'
+    S['hat_tip'] = 0.3
+    rig_floods(S, A, 1.0, True)
+    lampat(S, 0, A(sx + 1.0, sy - 5.5, 3.0), 1700, 'FFF0D8')
+    shoot(S, A(sx + lerp(3.4, 2.6, k), sy + lerp(-8.0, -7.4, k), lerp(2.1, 2.4, k)), A(sx + 0.2, sy - 0.2, lerp(2.8, 2.0, k)), 32, fill=1.1, fcol='DCE4FF')
+
+
+def greet(S, k, t, lt):
+    """Below: the capsule stands in the rubble and the rescuer steps out of it. The miners close round him; one takes him by both shoulders, the others have their arms in the air. Rook lifts his hat."""
+    A = mine(S)
+    seen(S['mine']['drop'], True)
+    seen(S['mine']['pile'], True)
+    dx, dy = DROP
+    cap_at(S, A, dx, dy, 0.25)
+    rope(S, 0, A(dx, dy, 4.85), A(dx, dy, ROOF + 0.4), 0.03)
+    out = sm(lt / 0.7)
+    c = S['crew'][1]
+    cp = (lerp(dx, dx + 1.5, out), lerp(dy, dy - 1.5, out))
+    c.root.scale = (lerp(0.84, 1.0, out),) * 3
+    c.place(A(cp[0], cp[1], 0.7 * (1 - out)), look_yaw(cp, (dx + 4, dy - 4)))
+    c.apply(blend(P('stand'), P('stand', aL=(1.1, 0.5, 0.5), aR=(1.1, 0.5, 0.5), head=(0.0, 0.0)), out))
+    c.face, c.jawv = 'warm', 0.4
+    M = S['men']
+    hugp = (dx + 2.3, dy - 2.2)
+    h = M[1]
+    hx = lerp(dx + 4.5, hugp[0], out)
+    h.place(A(hx, lerp(dy - 3.4, hugp[1], out), 0), look_yaw((hx, hugp[1]), cp))
+    h.apply(blend(walk(t, 2.2), P('stand', aL=(1.4, -0.2, 0.5), aR=(1.4, -0.2, 0.5), head=(-0.1, 0.0), lean=0.15), out))
+    h.face, h.jawv = 'warm', 0.6
+    for j, (rig, x, y) in enumerate(((M[4], -4.4, 2.2), (M[6], -9.4, 1.9), (M[0], -8.6, -1.9), (M[8], -3.6, -2.9))):
+        rig.place(A(x, y, 0.22 * abs(math.sin(t * 6 + j * 1.4))), look_yaw((x, y), cp))
+        rig.apply(P('up', aL=(2.6 + 0.2 * math.sin(t * 10 + j), -0.4, 0.2), aR=(2.7, -0.4, 0.2), head=(-0.15, 0.0)))
+        rig.face, rig.jawv = 'warm', 0.7
+    rk = S['rook']
+    rp = (dx + 4.3, dy + 1.4)
+    rk.place(A(rp[0], rp[1], 0), look_yaw(rp, (dx + 2.0, dy - 6.0)))
+    rk.apply(P('hat', head=(0.05, 0.5)))
+    S['rface'] = 'warm'
+    S['hat_jump'] = 0.3 * sm((lt - 0.8) / 0.3)
+    gallery_light(S, A)
+    shoot(S, A(dx + lerp(5.6, 4.8, k), lerp(-7.4, -6.8, k), lerp(1.6, 1.9, k)), A(dx + 0.9, -0.6, 2.4), 28, fill=1.3)
+
+
+# ---------------------------------------------------------------- 13 October
+def shades(S, k, t, lt):
+    """Close: the first man up, in dark glasses against the floodlights, the cage behind him. He turns his face up to the night sky, breathes out, and his fists go up."""
+    A = night(S, True)
+    sx, sy = SITE
+    cap_at(S, A, sx, sy, 0.35)
+    cable_top(S, A, sx, sy, 0.35)
+    m = S['men'][4]
+    S['glasses'][4].hide_render = False
+    mp = (sx - 0.5, sy - 2.2)
+    m.place(A(mp[0], mp[1], 0), look_yaw(mp, (sx - 1.6, sy - 9.0)))
+    up = sm((lt - 0.9) / 0.35)
+    m.apply(blend(P('stand', head=(lerp(0.1, -0.45, sm(lt / 0.6)), 0.0)), P('up', aL=(2.5, 0.3, 0.6), aR=(2.5, 0.3, 0.6), head=(-0.3, 0.0)), up))
+    m.face, m.jawv = 'warm', 0.3 + 0.4 * up
+    welcome(S, A, t, 1.0)
+    S['crew'][0].place(A(sx - 3.4, sy - 0.6, 0), 0.4)
+    rig_floods(S, A, 1.0, True)
+    lampat(S, 0, A(sx - 1.4, sy - 5.6, 3.2), 1200, 'FFF0D8')
+    hd = world_of(m.head)
+    shoot(S, A(sx + lerp(-2.0, -1.5, k), sy + lerp(-6.0, -5.4, k), lerp(2.3, 2.5, k)), (hd[0] + 0.5, hd[1], hd[2] + 0.15), 50, fill=1.2, fcol='FFE8D0')
+
+
+def gift(S, k, t, lt):
+    """The second man up, in dark glasses, has a sack with him. He takes out a lump of rock and presses it into a rescuer's hands, then one into Rook's. Rook holds it up to the floodlight: it glitters."""
+    A = night(S, True)
+    sx, sy = SITE
+    cap_at(S, A, sx, sy, 0.35)
+    cable_top(S, A, sx, sy, 0.35)
+    m = S['men'][6]
+    S['glasses'][6].hide_render = False
+    mp = (sx - 0.3, sy - 2.9)
+    c = S['crew'][0]
+    cp = (sx - 1.9, sy - 3.4)
+    rk = S['rook']
+    rp = (sx + 1.35, sy - 3.5)
+    g1 = sm((lt - 0.3) / 0.3)
+    g2 = sm((lt - 1.2) / 0.3)
+    m.place(A(mp[0], mp[1], 0), lerp(look_yaw(mp, cp), look_yaw(mp, rp), g2))
+    m.apply(P('stand', aR=_arm_((1.35, -0.1, 0.4 + 0.3 * math.sin(lt * 6))), aL=(0.4, 0.2, 0.9), head=(0.05, 0.0)))
+    m.face, m.jawv = 'warm', 0.6
+    S['sack'].location = world_of(m.hands[0], (0, -0.1, -0.35))
+    c.place(A(cp[0], cp[1], 0), look_yaw(cp, mp))
+    c.apply(blend(P('stand'), P('stand', aL=(1.1, -0.2, 0.9), aR=(1.1, -0.2, 0.9), head=(0.35, 0.0)), g1))
+    c.face = 'warm'
+    if g1 > 0.6:
+        hold(S, S['rocks'][0], c, 1, (-0.15, -0.16, 0.02))
+    up = sm((lt - 1.8) / 0.35)
+    rk.place(A(rp[0], rp[1], 0), lerp(look_yaw(rp, mp), look_yaw(rp, (sx + 0.4, sy - 9.5)), 0.7 * up))
+    rk.apply(blend(blend(P('stand', head=(0.1, 0.0)), P('stand', aR=(1.2, -0.1, 0.8), head=(0.3, 0.0)), g2), P('reach', aR=(2.5, 0.15, 0.5), head=(-0.4, -0.15)), up))
+    S['rface'] = 'shocked' if up > 0.4 else 'calm'
+    S['hat_jump'] = 0.2 * up
+    if g2 > 0.6:
+        hold(S, S['rocks'][1], rk, 1, (0, -0.14, -0.06))
+        S['rocks'][1].scale = (1.3,) * 3
+        hp = world_of(rk.hands[1])
+        lampat(S, 3, (hp[0], hp[1] - 0.5, hp[2] + 0.2), 40 * up * (1 + 0.5 * math.sin(t * 14)), 'FFE080')
+    else:
+        hold(S, S['rocks'][1], m, 1, (0, -0.14, -0.06))
+    for j, (rig, x, y) in enumerate(((S['crew'][2], 3.4, -1.2), (S['civ'][1], -3.6, -1.4))):
+        rig.place(A(sx + x, sy + y, 0), look_yaw((x, y), (-0.3, -2.9)))
+        cl = 0.5 + 0.5 * math.sin(t * 13 + j)
+        rig.apply(P('stand', aL=(1.1, -0.1 - 0.25 * cl, 1.3, 0.5), aR=(1.1, -0.1 - 0.25 * cl, 1.3, 0.5)))
+        rig.face = 'warm'
+    rig_floods(S, A, 1.0, True)
+    lampat(S, 0, A(sx - 0.6, sy - 7.5, 3.0), 1800, 'FFF0D8')
+    shoot(S, A(sx + lerp(0.2, -0.2, k), sy + lerp(-9.4, -8.8, k), lerp(1.9, 2.1, k)), A(sx - 0.2, sy - 3.1, 2.3), 36, fill=1.2, fcol='FFE8D0')
+
+
+def lights_out(S, k, t, lt):
+    """The gallery from the shelter end: a table with cups left on it, the bench bare. Far down the tunnel the capsule rises into the roof with the last rescuer in it, and the lamps go down behind him."""
+    A = mine(S)
+    seen(S['mine']['drop'], True)
+    seen(S['mine']['pile'], True)
+    dx, dy = DROP
+    z = lerp(0.25, 7.6, sm((lt - 0.4) / 2.4))
+    c = S['crew'][1]
+    cap_at(S, A, dx, dy, z, c, -0.6)
+    rope(S, 0, A(dx, dy, z + 4.6), A(dx, dy, ROOF + 0.4), 0.03)
+    for j in range(5):
+        S['cups'][j].location = A(10.0 + 0.3 * j, 0.45 + 0.2 * (j % 2), 1.14)
+    S['tins'][0].location = A(11.2, 0.8, 1.13)
+    dim = 1 - 0.85 * sm((lt - 1.2) / 1.8)
+    lampat(S, 0, A(-4.0, -3.4, 3.6), 2400 * dim, 'FFE2B0')
+    lampat(S, 1, A(dx, dy, 6.2), 1400, 'FFF8E8')
+    lampat(S, 2, A(9.0, 0.6, 4.6), 900 * dim, 'FFD8A0')
+    shoot(S, A(lerp(13.6, 12.6, k), lerp(-4.6, -4.2, k), lerp(2.2, 2.5, k)), A(-3.0, 0.6, 2.6), 26, fill=1.0 * dim)
+
+
+def sealed(S, k, t, lt):
+    """Day. The rigs and the tower are gone; a steel lid is bolted over the shaft. Dust blows across it. Rook stands over it with his hat brim down, then looks up at the hills."""
+    A = day(S, False)
+    drill_at(S, A, -80, HOLE[0], HOLE[1])
+    sx, sy = SITE
+    S['lid'].location = A(sx, sy, 0)
+    puffs(S, A(sx - 6.0 + 9.0 * ((t * 0.25) % 1), sy - 1.0, 0.3), t, 6, 2.0, 0.5, 0.7)
+    rk = S['rook']
+    rp = (sx - 1.9, sy - 2.3)
+    look = sm((lt - 1.6) / 0.5)
+    rk.place(A(rp[0], rp[1], 0), look_yaw(rp, (sx - 3.0, sy - 9.0)))
+    rk.apply(blend(P('hat', head=(0.45, -0.45)), P('stand', aL=(0.3, 0.1, 0.4), aR=(0.3, 0.1, 0.4), head=(-0.2, 0.5)), look))
+    S['rface'] = 'calm'
+    S['hat_tip'] = 0.5 * (1 - look)
+    shoot(S, A(sx + lerp(-7.6, -6.6, k), sy + lerp(-9.6, -9.0, k), lerp(1.7, 2.1, k)), A(sx - 0.9, sy - 1.0, 1.7), 30, fill=0.8)
+
+
+# ---------------------------------------------------------------- the thumbnail picture
+def photo_thumb(S, k, t, lt):
+    """Close in the lamp light: a miner's hands on the note tied to the drill, his face behind it, eyes wide."""
+    S['prm'] = {}
+    tie_note(S, 0.55, 1.0, 0.5)
+    m = S['men'][3]
+    m.face, m.jawv = 'wide', 0.5
+    d = S['drill'].location
+    shoot(S, (d[0] + 1.75, d[1] - 2.6, d[2] + 1.9), (d[0] + 0.75, d[1] + 0.25, d[2] + 1.5), 40, fill=1.6)
+
+
+def shift(S, k, t, lt):
+    """An ordinary shift: the pickup rolls down the access road with its lamps on, two miners walking beside it. Rook rides in the back with his arms folded, looking about him."""
+    A = env(S, 'ramp', '000000', fk=2.3)
+    x = lerp(-6.0, -1.0, k)
+    truck_at(S, A(x, 1.2, 0.02 * abs(math.sin(t * 19))), PI / 2)
+    for j, (rig, dx_, y) in enumerate(((S['men'][1], 1.6, -1.6), (S['men'][5], -1.6, -2.6))):
+        rig.place(A(x + dx_, y, 0), PI / 2)
+        rig.apply(walk(t + j * 0.4, 1.5))
+        rig.face = 'calm'
+    rk = S['rook']
+    rk.place(A(x - 2.1, 1.2, 1.2), look_yaw((0, 0), (0.3, -1)))
+    rk.apply(P('cross', head=(-0.1 + 0.1 * math.sin(lt * 2), 0.7 * math.sin(lt * 1.6))))
+    S['rface'] = 'deadpan'
+    lampat(S, 0, A(x + 4.5, 1.2, 1.4), 1700, 'FFF4D0')
+    lampat(S, 1, A(x - 1.0, -3.0, 4.4), 1500, 'FFE2B0')
+    lampat(S, 2, A(x - 8.0, 0.0, 3.5), 500, 'B8D0FF')
+    shoot(S, A(lerp(-9.5, -5.5, k), lerp(-4.3, -4.0, k), lerp(1.7, 2.0, k)), A(x - 0.6, 0.6, 2.1), 30, fill=1.2)
+
+
+HOST |= {'shift', 'dust_blind', 'block_wall', 'ladder_end', 'vote', 'battery', 'heat', 'listen', 'vigil', 'three_rigs', 'dove', 'muck', 'workshop', 'first_down',
+         'greet', 'gift', 'sealed'}
+SHOTS3D.update({f.__name__: f for f in (
+    shift, cave_in, dust_blind, block_wall, chimney, ladder_end, vote, battery, heat, listen, bang_bit, vigil, three_rigs, dove, dove_arrive, letter, muck,
+    workshop, first_down, greet, shades, gift, lights_out, sealed)})
+STILLS.update(thumb=photo_thumb)
+
+
+def _shaded(f, who):
+    """The men wore dark glasses when they came up into the light: put them on in the Short's shots at the surface too."""
+    def g(S, k, t, lt):
+        f(S, k, t, lt)
+        S['glasses'][who].hide_render = False
+    g.__name__ = f.__name__
+    return g
+
+
+for _k in ('emerge', 'hug'):
+    SHOTS3D[_k] = _shaded(SHOTS3D[_k], 4)
+
+# A wide frame held for three or four seconds needs more than a slow push: every shot also swings a little round its own subject.
+# The rate is degrees per second; prm "orb": [degrees, dolly, rise] sets it for one shot.
+SWING = dict(three_rigs=3.0, lights_out=3.0, vigil=5.0, shaft_ride=0.0, ride_face=0.0, tie_note=4.0, spoon=5.0)
+
+
+def _swung(f, name):
+    sign = 1 if sum(map(ord, name)) % 2 else -1
+    rate = SWING.get(name, 6.0)
+
+    def g(S, k, t, lt):
+        f(S, k, t, lt)
+        d = lt / k if k > 0.02 else 3.0
+        o = S['prm'].get('orb')
+        deg, dolly, rise = (list(o) + [0, 0])[:3] if o else (sign * rate * d, min(0.25, 0.04 * d) if rate else 0.0, 0.0)
+        c, tg = S['camrig'].location, S['camtgt'].location
+        a = math.radians(deg) * (k - 0.5)
+        m = 1 - dolly * (k - 0.5)
+        dx, dy = c[0] - tg[0], c[1] - tg[1]
+        S['camrig'].location = (tg[0] + (dx * math.cos(a) - dy * math.sin(a)) * m, tg[1] + (dx * math.sin(a) + dy * math.cos(a)) * m, c[2] + rise * (k - 0.5))
+    g.__name__ = f.__name__
+    return g
+
+
+SHOTS3D = {name: _swung(f, name) for name, f in SHOTS3D.items()}
