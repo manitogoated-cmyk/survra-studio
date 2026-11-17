@@ -29,19 +29,20 @@ ROOM = (0.0, 4000.0, 0.0)           # the interrogation room
 YARD = (-4000.0, 0.0, 0.0)          # four headstones
 HOST = {'rook_fall', 'rook_maths', 'rook_gives_up', 'hole_up', 'rook_measure', 'knee', 'room_wide', 'rook_room', 'he_points',
         'search_wood', 'harness', 'officer_writes', 'rook_hat', 'four_stones', 'signoff'}
-CAMFILL = {'*': 160, 'bomber_wide': 900, 'turret_fire': 90, 'chute_burn': 60, 'backflip': 300, 'rook_fall': 320, 'fighter': 2500,
-           'wing_fire': 700, 'fall_wide': 500, 'rook_maths': 260, 'fall_close': 220, 'rook_gives_up': 260, 'trees_rush': 0,
-           'crash_branches': 500, 'snow_hole': 300, 'hole_up': 260, 'rook_measure': 300, 'limbs': 260, 'knee': 300, 'lantern': 200,
-           'room_wide': 120, 'gestapo_laugh': 60, 'rook_room': 160, 'spy_point': 80, 'he_points': 70, 'officer_writes': 80,
-           'man_smile': 60, 'rook_hat': 120, 'search_wood': 0, 'harness': 0, 'wreck': 0, 'chute_pack': 40, 'four_stones': 40, 'signoff': 60}
+CAMFILL = {'*': 200, 'bomber_wide': 6000, 'turret_fire': 110, 'chute_burn': 70, 'backflip': 500, 'rook_fall': 420, 'fighter': 9000,
+           'wing_fire': 5000, 'fall_wide': 500, 'rook_maths': 320, 'fall_close': 260, 'rook_gives_up': 320, 'trees_rush': 0,
+           'crash_branches': 900, 'snow_hole': 400, 'hole_up': 500, 'rook_measure': 700, 'limbs': 320, 'knee': 600, 'lantern': 260,
+           'room_wide': 500, 'gestapo_laugh': 120, 'rook_room': 220, 'spy_point': 260, 'he_points': 160, 'officer_writes': 320,
+           'man_smile': 120, 'rook_hat': 200, 'search_wood': 0, 'harness': 60, 'wreck': 0, 'chute_pack': 40, 'four_stones': 500, 'signoff': 80}
 ROOKC = dict(top='566178', belt='3E4658', lap='6B7690', pants='2A2742', hand='2F2B4D', boot='8A90A6')
 SKIN = 'E2B48C'
 JACKET, HELMET = '6E5434', '4A3422'
 SKIES = dict(                       # horizon, zenith, strength, sun watts, sun colour, sun direction
-    night=('1A3552', '050A18', 0.7, 1.6, 'A8C8F0', (-0.45, -0.35, 0.82)),
-    wood=('223E5E', '060C1C', 0.9, 2.2, 'B4D0F4', (-0.35, -0.5, 0.8)),
+    night=('1E3C5E', '060C1C', 0.9, 4.0, 'A8C8F0', (-0.45, -0.35, 0.82)),
+    wood=('2A4A70', '0A1428', 1.1, 3.0, 'B4D0F4', (-0.35, -0.5, 0.8)),
     day=('D6DEE6', '94A6BC', 1.5, 2.6, 'F6F2EA', (0.35, -0.5, 0.78)),
     dawn=('F4B88E', '4C6E9E', 1.3, 2.6, 'FFC8A0', (0.75, -0.55, 0.22)),
+    up=('3A5E8C', '14284A', 1.4, 3.0, 'B4D0F4', (-0.35, -0.5, 0.8)),
     room=('0C0E14', '06070A', 0.25, 0.0, 'FFFFFF', (0, 0, 1)))
 _KEEP = []
 
@@ -92,7 +93,7 @@ def make_bomber(S):
     """A four-engined heavy bomber with twin fins, nose towards -Y. No markings. The rear turret is an open frame:
     its glazing has been shot away."""
     b = keep(empty(SKYO))
-    G, U, D = '2F3B2C', '14161A', '1B222A'
+    G, U, D = '4A5A44', '1E2228', '26323E'
     add('cube', G, (0, 0, 0.4), scale=(3.0, 30, 2.6), size=1, parent=b)
     add('cube', U, (0, 0, -1.0), scale=(3.05, 30.05, 1.4), size=1, parent=b)
     add('cube', G, (0, -16.2, 0.1), scale=(2.5, 3.0, 2.6), size=1, parent=b)
@@ -108,7 +109,8 @@ def make_bomber(S):
         for x in (7.0, 14.0):
             add('cylinder', U, (s * x, -6.6, 0.0), rot=(PI / 2, 0, 0), radius=1.15, depth=6.4, vertices=8, parent=b)
             add('cone', '50545C', (s * x, -10.3, 0.0), rot=(PI / 2, 0, 0), radius1=0.5, radius2=0.0, depth=1.0, vertices=6, parent=b)
-            add('cylinder', 'AAB4C0', (s * x, -10.0, 0.0), rot=(PI / 2, 0, 0), radius=3.1, depth=0.05, vertices=14, parent=b, alpha=0.16)
+            for j in range(3):
+                add('cube', '15171B', (s * x, -10.05, 0.0), rot=(0, j * PI / 3, 0), scale=(5.4, 0.08, 0.34), size=1, parent=b)
     # the rear turret: rings, uprights, four guns, a seat
     T = (0, 16.3, 0)
     for z in (-1.25, 1.25):
@@ -131,7 +133,7 @@ def make_bomber(S):
 def make_fighter(S):
     """A twin-engined night fighter, nose towards -Y, dark and unmarked."""
     f = keep(empty(FAR))
-    C = '20262E'
+    C = '3A4654'
     add('cube', C, (0, 0, 0), scale=(1.5, 16, 1.7), size=1, parent=f)
     add('cube', '2C3640', (0, -5.5, 0.9), scale=(1.2, 4, 0.8), size=1, parent=f, rough=0.3)
     add('cube', C, (0, -1.5, -0.1), scale=(24, 4.2, 0.35), size=1, parent=f)
@@ -139,7 +141,8 @@ def make_fighter(S):
     add('cube', C, (0, 7.4, 1.6), scale=(0.25, 2.6, 2.6), size=1, parent=f)
     for s in (-1, 1):
         add('cylinder', '15181C', (s * 3.6, -3.4, -0.2), rot=(PI / 2, 0, 0), radius=0.9, depth=5.0, vertices=8, parent=f)
-        add('cylinder', 'AAB4C0', (s * 3.6, -6.1, -0.2), rot=(PI / 2, 0, 0), radius=2.4, depth=0.05, vertices=12, parent=f, alpha=0.16)
+        for j in range(3):
+            add('cube', '15171B', (s * 3.6, -6.1, -0.2), rot=(0, j * PI / 3, 0), scale=(4.4, 0.08, 0.3), size=1, parent=f)
     S['fighter'] = f
 
 
@@ -149,7 +152,7 @@ def make_air(S):
     ld = keep(empty(FAR))
     add('cube', '0C1719', (0, 0, 0), scale=(9000, 9000, 1), size=1, parent=ld, rough=1.0)
     for i in range(46):
-        col = ('2B3B48', '16282A', '3A4A58')[i % 3]
+        col = ('16262C', '0F1E1E', '1B2C34')[i % 3]
         add('cube', col, ((rnd(i, 4) - 0.5) * 2600, (rnd(i, 5) - 0.5) * 2600, 1), rot=(0, 0, rnd(i, 6) * 3),
             scale=(90 + 260 * rnd(i, 7), 60 + 200 * rnd(i, 8), 1), size=1, parent=ld, rough=1.0)
     S['land'] = ld
@@ -162,8 +165,8 @@ def make_air(S):
         add('ico_sphere', 'F4F6FF', (1700 * r * math.cos(a), 1700 * r * math.sin(a), 1700 * z), scale=(s, s, s), radius=1, subdivisions=1,
             parent=st, emit=9.0)
     S['stars'] = st
-    S['fl'] = [keep(add('cone', ('FF7A1A', 'FFC040', 'FF4A10')[i % 3], FAR, radius1=0.55, radius2=0.0, depth=2.2, vertices=5,
-                        emit=(9.0, 14.0, 7.0)[i % 3])) for i in range(30)]
+    S['fl'] = [keep(add('cone', ('FF5A00', 'FF9A10', 'FF3800')[i % 3], FAR, radius1=0.55, radius2=0.0, depth=2.2, vertices=5,
+                        emit=(2.4, 3.2, 2.0)[i % 3])) for i in range(30)]
     S['flamp'] = [light(FAR, 0, 'FF8A30', kind='POINT') for _ in range(3)]
     S['tracers'] = [keep(add('cylinder', 'FFE890', FAR, radius=0.5, depth=1, vertices=5, emit=20.0)) for _ in range(7)]
     S['bits'] = [keep(add('cube', ('2F3B2C', '4A3424', '1F4034', '50565E')[i % 4], FAR, scale=(0.5, 0.16, 0.12), size=1)) for i in range(12)]
@@ -205,7 +208,7 @@ def pine(par, x, y, h, s=1.0, snow=True):
         z, rad = h * (0.36 + 0.185 * i), s * (2.5 - 0.55 * i)
         add('cone', '1F4034', (0, 0, z), radius1=rad, radius2=0.0, depth=h * 0.32, vertices=7, parent=r, rough=1.0)
         if snow:
-            add('cone', 'DDE8F4', (0, 0, z + 0.03 * h), radius1=rad * 0.82, radius2=0.0, depth=h * 0.29, vertices=7, parent=r, rough=1.0)
+            add('cone', 'DDE8F4', (0, 0, z + 0.075 * h), radius1=rad * 0.84, radius2=0.0, depth=h * 0.3, vertices=7, parent=r, rough=1.0)
     return r
 
 
@@ -339,7 +342,7 @@ def make_room(S):
         add('cube', '3A2A1C', (0, 0.5, 1.25), scale=(0.95, 0.1, 1.5), size=1, parent=c)
         for (px, py) in ((-0.4, -0.35), (0.4, -0.35), (-0.4, 0.45), (0.4, 0.45)):
             add('cylinder', '2A1E14', (px, py, 0.24), radius=0.045, depth=0.5, vertices=5, parent=c)
-    S['paper'] = keep(add('cube', 'F2EAD2', FAR, scale=(0.62, 0.86, 0.015), size=1, rough=1.0))
+    S['paper'] = keep(add('cube', 'F2EAD2', FAR, scale=(0.5, 0.7, 0.015), size=1, rough=1.0))
     S['pen'] = keep(bar(None, '1E1E22', FAR, (FAR[0], FAR[1], FAR[2] + 0.4), 0.025))
     S['stamp'] = keep(add('cylinder', '6A2A22', FAR, radius=0.09, depth=0.3, vertices=8))
     bar(r, '1E1E22', (0, 0.2, 4.8), (0, 0.2, 3.9), 0.02)
@@ -357,7 +360,7 @@ def make_yard(S):
     for i in range(4):
         x = -2.4 + 1.6 * i
         add('cube', 'F1EFE8', (x, 0, 0.6), scale=(0.95, 0.2, 1.2), size=1, parent=y, rough=0.8)
-        add('cylinder', 'F1EFE8', (x, 0, 1.2), rot=(PI / 2, 0, 0), radius=0.475, depth=0.2, vertices=12, parent=y, rough=0.8)
+        add('cube', 'F1EFE8', (x, 0, 1.27), scale=(0.7, 0.2, 0.16), size=1, parent=y, rough=0.8)
         add('cube', '6A4E36', (x, -0.5, 0.03), scale=(1.0, 0.8, 0.06), size=1, parent=y, rough=1.0)
     add('cube', '2C4A30', (0, 6, 0.9), scale=(60, 1.4, 1.8), size=1, parent=y, rough=1.0)
     for i in range(7):
@@ -416,7 +419,7 @@ def build():
         S['strap'].append(add('cube', 'C9CED6', (s * 0.24, -0.4, 0.62), scale=(0.1, 0.04, 0.12), size=1, parent=m.body, rough=0.3))   # the two chest hooks
     S['strap'].append(add('cube', 'D8CCA4', (0, -0.36, 0.3), scale=(0.72, 0.03, 0.1), size=1, parent=m.body, rough=1.0))
     add('cube', 'C8B890', (0, -0.3, 1.02), scale=(0.5, 0.2, 0.16), size=1, parent=m.body, rough=1.0)                # fleece collar
-    S['band'] = add('cube', 'F2F0EA', (0, -0.02, 0.2), scale=(0.62, 0.66, 0.1), size=1, parent=m.head, rough=1.0)   # a dressing, later
+    S['band'] = add('cube', 'F2F0EA', (0, 0.0, 0.215), scale=(0.6, 0.64, 0.07), size=1, parent=m.head, rough=1.0)   # a dressing, later
     S['agents'] = [K.Rig(dict(top=c, pants='1E1E24', hand='D8B494', boot='121216', fore=c), hat_head('D8B494', h_, '1C1C22'))
                    for c, h_ in (('2A2A32', '5A4630'), ('33302C', '2A2420'))]
     S['men'] = [K.Rig(dict(top='5C6658', pants='4A5246', hand='3A3A36', boot='1A1A1C', fore='5C6658'), cap_head(sk, hr, '4E584A'))
@@ -528,7 +531,7 @@ def shoot(S, o, pos, look, lens=40, roll=0.0):
     S['stars'].location = p if S['starson'] else FAR
 
 
-def air(S, c, t, v, land=-900.0, box=(150.0, 150.0, 110.0)):
+def air(S, c, t, v, land=-900.0, box=(150.0, 150.0, 110.0), top=None):
     """Cloud layers streaming past the point c with velocity v, and the dark country far below."""
     for i, o in enumerate(S['clouds']):
         p = []
@@ -537,6 +540,8 @@ def air(S, c, t, v, land=-900.0, box=(150.0, 150.0, 110.0)):
             p.append(q)
         if abs(p[0]) < 26:
             p[0] = 26 * (1 if i % 2 else -1) + p[0] * 0.5
+        if top is not None:
+            p[2] = top - 8 - abs(p[2]) * 0.6
         o.location = (c[0] + p[0], c[1] + p[1], c[2] + p[2])
     S['land'].location = (c[0], c[1], c[2] + land)
     S['land'].rotation_euler = (0, 0, 0.3)
@@ -654,7 +659,7 @@ def rhead(S):
     return wpos(S['rook'].head)
 
 
-def no_harness(S, band=True):
+def no_harness(S, band=False):
     for o in S['strap']:
         o.hide_render = True
     S['band'].hide_render = not band
@@ -665,20 +670,21 @@ def bomber_wide(S, k, t, lt):
     """The burning bomber from behind and above its tail; a small figure rolls out of the rear turret and drops away. First and last shot."""
     kk = 1 - k if S['prm'].get('loop') else k
     sky(S, 'night', True)
-    air(S, SKYO, t, (0, 85, 0))
-    burning(S, t, 2.6)
+    air(S, SKYO, t, (0, 85, 0), top=-6)
+    burning(S, t, 2.4)
     u = sm(kk / 0.9)
     m = S['man']
-    m.place((0.3 * u, 17.4 + 6.5 * u, 0.3 + 1.0 * math.sin(PI * min(1, u * 2)) * (1 - u) - 9.0 * u * u), PI, -2.6 * u, 0.3 * u)
-    m.apply(P('stand', aL=(1.6, 0.7, 0.5), aR=(1.9, 0.6, 0.4), lL=(1.2 - 0.6 * u, 1.3 - 0.8 * u), lR=(1.0 - 0.6 * u, 1.4 - 0.6 * u)))
+    m.root.scale = (1.5, 1.5, 1.5)
+    m.place((0.3 * u, 17.6 + 5.0 * u, 0.6 + 1.6 * math.sin(PI * min(1, u * 2)) * (1 - u) - 6.0 * u * u), PI, -2.6 * u, 0.3 * u)
+    m.apply(P('stand', aL=(1.6, 0.9, 0.5), aR=(1.9, 0.8, 0.4), lL=(1.2 - 0.6 * u, 1.3 - 0.8 * u), lR=(1.0 - 0.9 * u, 1.4 - 0.6 * u)))
     m.face = 'wide'
-    shoot(S, SKYO, (lerp(-8.5, -7.0, kk), lerp(31, 28.5, kk), lerp(4.6, 3.6, kk)), (0.0, 15.5, lerp(0.2, -2.2, kk)), 25)
+    shoot(S, SKYO, (lerp(-6.0, -5.0, kk), lerp(31, 29, kk), lerp(9.5, 8.2, kk)), (-0.6, 8.0, lerp(3.4, 2.2, kk)), 25)
 
 
 def turret_fire(S, k, t, lt):
     """Close on the gunner in the open frame of the turret: fire in the fuselage behind him, he looks back at it and then out at the night."""
     sky(S, 'night', True)
-    air(S, SKYO, t, (0, 85, 0))
+    air(S, SKYO, t, (0, 85, 0), top=-6)
     b = burning(S, t, 2.2, 5)
     fire(S, [(0.7, 14.5, 0.2), (-0.7, 14.4, 0.8), (0.1, 14.3, 1.5), (-1.9, 15.2, 0.6), (1.9, 15.0, 0.9), (0.0, 14.6, -0.6)], t, 1.0, (0, 1, 0.7), i0=12, par=b)
     glow(S, 2, at(SKYO, 0.3, 15.2, 1.2), 2600, t)
@@ -697,29 +703,32 @@ def chute_burn(S, k, t, lt):
     g = sm(k * 1.4)
     for o in S['scorch']:
         o.hide_render = False
-        o.scale = (1 + 2 * g, 0.2, 1 + 2 * g)
-    fire(S, [(-0.5, -0.25, 2.0), (0.25, -0.3, 2.1), (0.7, -0.15, 1.8), (-0.95, -0.15, 1.5), (0.0, -0.35, 1.5), (-2.4, 0.3, 1.2), (-3.2, 0.2, 2.3),
-             (2.6, 0.4, 0.6), (-1.8, 0.2, 0.5)], t, lerp(0.55, 0.95, g), (0.25, 0, 1), o=BAY)
-    glow(S, 0, at(BAY, -0.6, -1.2, 2.0), 900, t)
-    glow(S, 1, at(BAY, 1.6, -1.6, 1.0), 300, t)
-    reach = sm(lt / 0.45) * (1 - sm((lt - 0.6) / 0.18))
-    S['glove'].place(at(BAY, lerp(3.4, 1.55, reach), -0.75, 1.55 + 0.1 * math.sin(lt * 30) * reach), (0.2, 0.0, -PI / 2))
-    S['glove'].grip(0.1 + 0.5 * (1 - reach))
-    shoot(S, BAY, (lerp(1.5, 1.1, k), lerp(-5.2, -4.4, k), lerp(2.2, 1.9, k)), (0.1, 0.2, 1.55), 42)
+        o.scale = (1 + 0.7 * g, 0.2, 1 + 0.7 * g)
+    fire(S, [(-0.62, -0.1, 2.25), (0.1, -0.05, 2.3), (0.66, -0.1, 2.2), (-0.9, -0.2, 1.75), (0.85, -0.25, 1.3), (-3.0, 0.2, 1.0), (-3.6, 0.2, 2.6),
+             (4.2, 0.6, 2.6), (-2.3, 0.1, 0.4)], t, lerp(0.3, 0.5, g), (0.2, 0, 1), o=BAY)
+    for i in (5, 6, 8):
+        S['fl'][i].scale = tuple(v * 2.2 for v in S['fl'][i].scale)
+    glow(S, 0, at(BAY, -0.8, -1.4, 2.4), 500, t)
+    glow(S, 1, at(BAY, 1.8, -1.8, 1.0), 200, t)
+    reach = sm(lt / 0.45) * (1 - sm((lt - 0.62) / 0.16))
+    S['glove'].place(at(BAY, lerp(3.6, 1.75, reach), -0.7, 1.35 + 0.06 * math.sin(lt * 30) * reach), (0.15, 0.0, -PI / 2))
+    S['glove'].grip(0.1 + 0.6 * (1 - reach))
+    shoot(S, BAY, (lerp(1.3, 1.0, k), lerp(-5.6, -4.8, k), lerp(2.1, 1.9, k)), (0.5, 0.2, 1.5), 40)
 
 
 def backflip(S, k, t, lt):
     """From beside the tail: he lets go and goes backwards out of the turret into the dark."""
     sky(S, 'night', True)
-    air(S, SKYO, t, (0, 85, 0))
-    b = burning(S, t, 2.4)
-    fire(S, [(-1.9, 15.2, 0.6), (1.7, 15.0, 1.0), (0.0, 15.3, 1.9)], t, 1.4, (0, 1, 0.4), i0=12, par=b)
-    u = sm((lt - 0.15) / 0.8)
+    air(S, SKYO, t, (0, 85, 0), top=-6)
+    b = burning(S, t, 2.0)
+    fire(S, [(-1.9, 15.2, 0.6), (1.7, 15.0, 1.0), (0.0, 15.3, 1.9)], t, 1.2, (0, 1, 0.4), i0=12, par=b)
+    glow(S, 2, at(SKYO, -3.0, 19.5, 1.5), 1500, t)
+    u = sm((lt - 0.1) / 0.6)
     m = S['man']
-    m.place((0.0, 16.6 + 4.6 * u, -1.5 + 2.2 * math.sin(PI * min(1, u * 1.6)) * (1 - 0.5 * u) - 5.0 * u * u), PI, -2.9 * u)
-    m.apply(blend(P('sit', aL=(1.1, 0.25, 0.9), aR=(1.2, 0.3, 0.7), lift=-0.5), P('stand', aL=(2.6, 0.5, 0.2), aR=(2.5, 0.6, 0.3), lL=(0.9, 0.9), lR=(0.6, 1.2)), u * 1.6))
+    m.place((0.0, 16.6 + 3.6 * u, -1.5 + 2.6 * math.sin(PI * min(1, u * 1.5)) * (1 - 0.5 * u) - 3.2 * u * u), PI, -2.9 * u)
+    m.apply(blend(P('sit', aL=(1.1, 0.25, 0.9), aR=(1.2, 0.3, 0.7), lift=-0.5), P('stand', aL=(2.6, 0.7, 0.2), aR=(2.5, 0.8, 0.3), lL=(0.9, 0.9), lR=(0.6, 1.2)), u * 1.6))
     m.face = 'shut' if u > 0.2 else 'wide'
-    shoot(S, SKYO, (lerp(-8.5, -7.5, k), lerp(22.5, 23.5, k), lerp(1.8, 0.6, k)), (0.0, 17.6 + 2.6 * u, -0.6 - 2.2 * u), 30)
+    shoot(S, SKYO, (lerp(-7.5, -6.5, k), lerp(23.5, 24.5, k), lerp(1.2, 0.2, k)), (0.0, 17.6 + 2.4 * u, 0.2 - 1.6 * u), 38)
 
 
 # ---------------------------------------------------------------- the doubt and the fall
@@ -727,84 +736,91 @@ def rook_fall(S, k, t, lt):
     """Rook is falling beside him, wings out, hat brim low, and does not believe it. The man tumbles behind him, the bomber burns above."""
     sky(S, 'night', True)
     air(S, FALL, t, (0, 0, 55))
-    far_bomber(S, at(FALL, -17, 46, 30 + 9 * lt), t)
-    falling(S, at(FALL, -2.5, 3.2, -0.6 + 0.3 * math.sin(t * 2)), t, 0.9)
-    rk = rook_air(S, at(FALL, 1.0, -0.5, -0.4), t, 0.2, P('stand', aL=(0.25, 1.3 + 0.12 * math.sin(t * 9), 0.2), aR=(0.3, 1.25 - 0.12 * math.sin(t * 9), 0.3),
-                                                        lL=(0.35, 0.6), lR=(-0.15, 0.5), head=(0.05, lerp(-0.9, 0.0, sm(lt / 0.5)))))
-    S['rface'], S['hat_tip'] = 'low', 0.55
-    shoot(S, FALL, (lerp(0.2, 0.5, k), lerp(-7.0, -6.2, k), 1.0), (0.3, 0.0, 1.75), 32)
+    far_bomber(S, at(FALL, -9, 34, 17 + 5 * lt), t)
+    falling(S, at(FALL, -1.5, 4.5, 1.2 + 0.3 * math.sin(t * 2)), t, 0.9)
+    f = math.sin(t * 10)
+    rk = rook_air(S, at(FALL, 1.2, -0.5, -0.4), t, 0.3, P('stand', aL=(0.35, 1.15 + 0.2 * f, 0.95 - 0.35 * f), aR=(0.35, 1.1 + 0.2 * f, 1.0 - 0.35 * f),
+                                                        lL=(0.7, 1.2), lR=(0.1, 0.9), lean=0.12, head=(0.05, lerp(-0.9, 0.0, sm(lt / 0.45)))))
+    S['rface'], S['hat_tip'] = 'low', 0.45
+    h = rhead(S)
+    shoot(S, (0, 0, 0), (h[0] + lerp(-0.2, 0.1, k), h[1] - lerp(4.9, 4.4, k), h[2] - 0.6), (h[0] - 0.9, h[1], h[2] - 0.5), 34)
 
 
 def fighter(S, k, t, lt):
-    """From below and behind: the dark twin-engined fighter under the bomber's belly, its tracer going up into the wing."""
+    """From behind and below: the dark twin-engined fighter under the bomber's tail, its tracer going up in a line into the wing."""
     sky(S, 'night', True)
-    air(S, SKYO, t, (0, 85, 0))
+    air(S, SKYO, t, (0, 85, 0), top=-30)
     b = S['bomber']
     b.location = SKYO
     b.rotation_euler = (0, 0.04 * math.sin(t * 2), 0)
     f = S['fighter']
-    f.location = at(SKYO, 6 - 2 * k, 30 - 5 * k, -17 + 2 * k)
-    f.rotation_euler = (0.3, -0.1, 0.1)
-    a, e = Vector(at(SKYO, 5.5 - 2 * k, 22 - 5 * k, -13.5 + 2 * k)), Vector(at(SKYO, -9, -3, 0))
+    fp = (7 - 2 * k, 34 - 5 * k, -13 + 2 * k)
+    f.location = at(SKYO, *fp)
+    f.rotation_euler = (0.32, -0.12 + 0.05 * math.sin(t * 3), 0.2)
+    a, e = Vector(at(SKYO, fp[0] - 1.2, fp[1] - 8.5, fp[2] + 3.0)), Vector(at(SKYO, -9, -3, 0))
     for i, o in enumerate(S['tracers']):
         p = (lt * 2.6 + i / 7) % 1
-        span(o, a + (e - a) * p, a + (e - a) * min(1.0, p + 0.08), 0.1)
+        span(o, a + (e - a) * p, a + (e - a) * min(1.0, p + 0.07), 0.14)
     hit = sm((lt - 0.25) / 0.5)
-    fire(S, WINGF[:5], t, 0.5 + 2.2 * hit, (0, 1, 0.2), par=b)
-    glow(S, 0, at(SKYO, -8, -2, -3), 90000 * hit + 15000 * (math.sin(lt * 40) > 0), t)
-    shoot(S, SKYO, (lerp(20, 17, k), lerp(50, 46, k), lerp(-24, -22, k)), (0.0, 10.0, -5.0), 26)
+    fire(S, WINGF[:5], t, 0.4 + 2.0 * hit, (0, 1, 0.2), par=b)
+    glow(S, 0, at(SKYO, -8, -2, -3), 60000 * hit + 12000 * (math.sin(lt * 40) > 0), t)
+    shoot(S, SKYO, (lerp(30, 26, k), lerp(64, 58, k), lerp(-5, -6, k)), (1.5, 15.0, -6.5), 38)
 
 
 def wing_fire(S, k, t, lt):
     """The wing goes up: fire bursts out of the engine and streams back along the fuselage; torn metal flies off."""
     sky(S, 'night', True)
-    air(S, SKYO, t, (0, 85, 0))
+    air(S, SKYO, t, (0, 85, 0), top=-6)
     g = sm(lt / 0.5)
-    b = burning(S, t, 0.8 + 2.4 * g, 12, 20000 + 60000 * g)
+    b = burning(S, t, 0.6 + 1.9 * g, 12, 15000 + 40000 * g)
     debris(S, at(SKYO, -8, -3, 1), lt * 1.4, 8, 5.0, 2.0, 2.0)
     for o in S['bits'][:8]:
         o.location.y += 26 * lt
-    shoot(S, SKYO, (lerp(-25, -22, k), lerp(-17, -15, k), lerp(7.5, 6.0, k)), (-7.5, -1.5, 0.3), 34)
+    shoot(S, SKYO, (lerp(-34, -30, k), lerp(-30, -27, k), lerp(11, 9, k)), (-5.0, 1.0, 0.0), 30)
 
 
 def fall_wide(S, k, t, lt):
-    """From underneath: one small figure on his back in the open sky, the burning bomber turning away high above him."""
+    """From above: he drops away on his back, arms and legs trailing, turning slowly, the dark country a long way under him."""
     sky(S, 'night', True)
-    air(S, FALL, t, (0, 0, 70))
-    far_bomber(S, at(FALL, -8, 22, 46 + 22 * lt), t, 3.4)
-    falling(S, at(FALL, 0, -1.5, 0), t, 0.3, 0.9 * lt)
-    shoot(S, FALL, (lerp(5.5, 4.0, k), lerp(-8.0, -6.0, k), lerp(-6.5, -5.0, k)), (-0.4, 1.0, 3.0), 24, roll=0.15 * k)
+    air(S, FALL, t, (0, 0, 70), top=-10)
+    falling(S, at(FALL, 0, -1.5, 0), t, 0.3, 1.3 * lt)
+    shoot(S, FALL, (lerp(0.8, 0.4, k), lerp(-3.0, -2.2, k), lerp(6.5, 10.5, k)), (0.0, 0.0, 0.0), 24, roll=0.5 * k)
 
 
 def pad_at(S, rk, lift=0.0, spin=0.0):
     h = wpos(rk.hands[0], (0, 0, -0.5))
-    S['pad'].location = (h[0] + 0.05, h[1] - 0.12, h[2] + 0.2 + lift)
-    S['pad'].rotation_euler = (-0.35 + spin, 0.0 + spin * 0.6, rk.root.rotation_euler[2] + 0.2)
+    S['pad'].location = (h[0] + 0.05, h[1] - 0.1, h[2] + 0.02 + lift)
+    S['pad'].rotation_euler = (-0.75 + spin, 0.0 + spin * 0.6, rk.root.rotation_euler[2] + 0.2)
 
 
 def rook_maths(S, k, t, lt):
     """Rook, still falling, has his notepad out and is working it through: height, speed, no parachute. He looks down, and his eyes go wide."""
     sky(S, 'night', True)
     air(S, FALL, t, (0, 0, 70))
-    falling(S, at(FALL, -3.4, 5.5, 0.5), t, 1.2)
+    falling(S, at(FALL, -3.0, 4.5, 0.5), t, 1.2)
     sc = math.sin(lt * 26)
     look = sm((lt - 0.75) / 0.25)
-    rk = rook_air(S, FALL, t, 0.35, P('stand', aL=(0.95, -0.12, 1.75, 0.5), aR=(0.95 + 0.06 * sc, -0.2 + 0.05 * sc, 1.95, 0.75), lL=(0.35, 0.6), lR=(-0.15, 0.5),
-                                      head=(lerp(0.5, 0.7, look), lerp(0.1, -0.5, look))))
+    rk = rook_air(S, FALL, t, 0.35, P('stand', aL=(0.7, -0.12, 1.45, 0.5), aR=(0.75 + 0.06 * sc, -0.2 + 0.05 * sc, 1.6, 0.75), lL=(0.35, 0.6), lR=(-0.15, 0.5),
+                                      head=(lerp(0.5, 0.25, look), lerp(0.1, 0.0, look))))
     pad_at(S, rk)
     S['rface'] = 'shocked' if look > 0.5 else 'calm'
+    S['hat_jump'] = 0.2 * look
     h = rhead(S)
     shoot(S, (0, 0, 0), (h[0] + lerp(1.6, 1.3, k), h[1] - lerp(4.6, 4.0, k), h[2] + 0.1), (h[0] - 0.1, h[1], h[2] - 0.45), 44)
 
 
 def fall_close(S, k, t, lt):
-    """Close on him, on his back in the air, looking up at the stars; his eyes close."""
+    """Close on him, on his back in the air, arms wide, looking straight up at the stars; his eyes close."""
     sky(S, 'night', True)
     air(S, FALL, t, (0, 0, 70))
-    m = falling(S, at(FALL, 0, -1.5, 0), t * 0.5, 0.0, face='wide' if lt < 0.75 else 'tired' if lt < 1.0 else 'shut')
+    m = S['man']
+    w = math.sin(t * 4)
+    m.place(at(FALL, 0, -1.5, 0), 0.0, -PI / 2 + 0.08 * math.sin(t * 1.3), 0.1 * math.sin(t * 0.9))
+    m.apply(P('stand', aL=(0.7 + 0.12 * w, 1.25, 0.5), aR=(0.8 - 0.12 * w, 1.2, 0.6), lL=(0.9, 0.6), lR=(0.5, 0.9), head=(-0.05, 0.0)))
+    m.face = 'wide' if lt < 0.7 else 'tired' if lt < 0.95 else 'shut'
     m.jawv = 0.15
     h = mhead(S)
-    shoot(S, (0, 0, 0), (h[0] + lerp(1.3, 0.9, k), h[1] - lerp(1.8, 1.4, k), h[2] + lerp(3.6, 3.0, k)), (h[0], h[1] - 0.15, h[2]), 48, roll=0.1 - 0.2 * k)
+    shoot(S, (0, 0, 0), (h[0] + 0.3 - 0.3 * k, h[1] - lerp(1.5, 1.2, k), h[2] + lerp(3.4, 2.8, k)), (h[0], h[1] - 0.2, h[2]), 46, roll=0.12 - 0.24 * k)
 
 
 def rook_gives_up(S, k, t, lt):
@@ -826,8 +842,8 @@ def rook_gives_up(S, k, t, lt):
 def trees_rush(S, k, t, lt):
     """Straight down: a dark pine wood under snow, coming up fast."""
     sky(S, 'wood')
-    z = lerp(210, 30, k ** 1.4)
-    shoot(S, WOOD, (0.8 + 2 * math.sin(lt * 7), -1.2 + 2 * math.cos(lt * 6), z), (0.0, 0.0, 0.0), 20, roll=0.9 * k)
+    z = lerp(120, 17, k ** 1.3)
+    shoot(S, WOOD, (0.8 + 1.5 * math.sin(lt * 7), -1.2 + 1.5 * math.cos(lt * 6), z), (0.0, 0.0, 0.0), 20, roll=0.9 * k)
 
 
 # ---------------------------------------------------------------- the wood
@@ -847,12 +863,12 @@ def crash_branches(S, k, t, lt):
     """Through the young pines: branches snap and fly, and he goes into the drift in a burst of snow."""
     sky(S, 'wood')
     u = min(1.0, lt / 0.5)
-    z = lerp(24.0, 0.0, u ** 1.5)
+    z = lerp(22.0, 0.0, u ** 1.5)
     m = lying(S, 'shut', dict(aL=(2.0, 0.8, 0.5), aR=(1.7, 0.9, 0.6), lL=(0.8, 0.7), lR=(0.4, 0.9), head=(0, 0)) if u < 1 else None, z)
     m.root.rotation_euler[0] = -PI / 2 + 0.5 * (1 - u) * math.sin(lt * 20)
     debris(S, at(WOOD, 0, 0, lerp(13, 6, min(1, lt / 0.4))), lt - 0.12, 8, 5.0, 2.5, 9.0)
-    snowburst(S, at(WOOD, 0, 0, 0.3), lt - 0.5, 20, 4.5, 5.5)
-    shoot(S, WOOD, (lerp(2.5, 1.8, k), lerp(-17.0, -14.5, k), lerp(2.6, 2.0, k)), (0.0, 0.0, lerp(9.0, 2.6, sm(lt / 0.55))), 24)
+    snowburst(S, at(WOOD, 0, 0, 0.3), lt - 0.5, 20, 4.0, 5.0)
+    shoot(S, WOOD, (lerp(3.0, 2.4, k), lerp(-10.5, -9.0, k), lerp(1.6, 1.3, k)), (0.0, 0.0, lerp(9.0, 1.6, sm(lt / 0.5))), 24)
 
 
 def snow_hole(S, k, t, lt):
@@ -866,17 +882,15 @@ def snow_hole(S, k, t, lt):
 
 def hole_up(S, k, t, lt):
     """What he sees: a ring of pine tops, a ragged hole, stars. Snow drifts down through it. Rook's head comes in over the edge, staring."""
-    sky(S, 'wood', True)
-    lying(S, 'wide')
-    snowfall(S, WOOD, t, 14, 0, 2.6, 12.0, 2.2)
-    u = sm((lt - 0.25) / 0.4)
+    sky(S, 'up', True)
+    snowfall(S, WOOD, t, 14, 0, 2.2, 12.0, 2.2)
+    u = sm((lt - 0.2) / 0.35)
     rk = S['rook']
-    rk.place(at(WOOD, 0.25, lerp(5.2, 3.3, u), 0.0), 0.0)
-    rk.apply(P('stand', aL=(0.5, 0.3, 0.4), aR=(0.5, 0.3, 0.4), lean=0.75, head=(0.7, 0.0)))
+    rk.place(at(WOOD, 0.3, lerp(-5.2, -2.1, u), 0.0), PI)
+    rk.apply(P('stand', aL=(0.5, 0.3, 0.4), aR=(0.5, 0.3, 0.4), lean=0.55, head=(0.5, 0.0)))
     S['rface'] = 'shocked'
-    S['hat_jump'] = 0.25 * max(0.0, math.sin((lt - 0.6) * 9)) if 0.6 < lt < 0.95 else 0.0
-    shoot(S, WOOD, (0.3, 0.4, 1.0), (0.3 + 0.3 * math.sin(lt), lerp(0.5, 0.9, k), 30.0), 17)
-    S['cam'].rotation_euler = (0, 0, PI)
+    S['hat_jump'] = 0.25 * max(0.0, math.sin((lt - 0.55) * 9)) if 0.55 < lt < 0.9 else 0.0
+    shoot(S, WOOD, (0.3, 0.7, 0.45), (0.3 + 0.2 * math.sin(lt), lerp(-3.6, -4.4, k), 8.0), 16)
 
 
 def rook_measure(S, k, t, lt):
@@ -885,15 +899,15 @@ def rook_measure(S, k, t, lt):
     m = lying(S, 'wide', dict(LIE, head=(0.0, -0.5)))
     u = sm(lt / 0.5)
     v = sm((lt - 0.8) / 0.35)
-    S['twig'].location = at(WOOD, 2.2, -1.3, lerp(1.5, 0.45, u))
+    S['twig'].location = at(WOOD, 2.0, -2.2, lerp(1.5, 0.45, u))
     S['twig'].rotation_euler = (0.08, 0.05, 0)
     rk = S['rook']
-    rk.place(at(WOOD, 3.1, -0.7, 0.0), facing((3.1, -0.7), (1.0, -1.6)))
+    rk.place(at(WOOD, 2.9, -2.0, 0.0), facing((2.9, -2.0), (1.0, -3.2)))
     crouch = P('stand', aR=(1.0, 0.2, 0.5), aL=(0.3, 0.2, 0.6), lL=(1.1, 1.7), lR=(1.1, 1.7), lift=-0.5, lean=0.4, head=(0.35, 0.0))
     up = P('reach', aR=(2.75, 0.2, 0.05), lL=(0.2, 0.3), lR=(0.1, 0.2), lift=-0.05, head=(-0.55, 0.3))
     rk.apply(blend(crouch, up, v))
     S['rface'] = 'shocked' if v > 0.5 else 'calm'
-    shoot(S, WOOD, (lerp(4.2, 3.6, k), lerp(-8.5, -7.6, k), lerp(1.7, 1.5, k)), (1.5, -0.8, lerp(1.2, 1.7, v)), 30)
+    shoot(S, WOOD, (lerp(1.2, 1.0, k), lerp(-8.0, -7.2, k), lerp(1.9, 1.7, k)), (1.7, -1.2, lerp(1.0, 1.6, v)), 30)
 
 
 def sat(S, lift=-0.95, pose=None, x=0.0, y=0.5, yaw=0.0):
@@ -961,8 +975,8 @@ def lantern(S, k, t, lt):
 # ---------------------------------------------------------------- the room
 def room(S, t, lampk=1.0):
     sky(S, 'room')
-    S['deskl'].data.energy = 900 * lampk * (0.97 + 0.03 * math.sin(t * 31))
-    S['cl'].data.energy = 420
+    S['deskl'].data.energy = 700 * lampk * (0.97 + 0.03 * math.sin(t * 31))
+    S['cl'].data.energy = 1800
     S['cl'].rotation_euler = (0, 0, 0)
     no_harness(S)
 
@@ -997,7 +1011,7 @@ def agent_stand(S, pose=None, face='hard'):
     return b
 
 
-RK_ROOM = (-3.9, 2.4)
+RK_ROOM = (-0.9, 3.5)
 
 
 def rook_corner(S, pose=None, yaw=None):
@@ -1035,14 +1049,14 @@ def gestapo_laugh(S, k, t, lt):
 
 
 def rook_room(S, k, t, lt):
-    """Rook in his corner by the cabinet: arms folded, hat brim down, nodding along with them. He does not believe it either."""
+    """Rook by the wall map: arms folded, hat brim down, nodding along with them. He does not believe it either."""
     room(S, t)
     man_chair(S)
     nod = 0.16 * math.sin(lt * 8)
-    rk = rook_corner(S, P('cross', head=(0.12 + nod, lerp(0.5, -0.35, sm(lt / 0.9)))), yaw=facing(RK_ROOM, (-1.0, -2.5)))
+    rk = rook_corner(S, P('cross', head=(0.12 + nod, lerp(-0.5, 0.35, sm(lt / 0.9)))), yaw=facing(RK_ROOM, (-2.2, -1.5)))
     S['rface'], S['hat_tip'] = 'low', 0.7
     h = rhead(S)
-    shoot(S, (0, 0, 0), (h[0] + lerp(1.7, 1.4, k), h[1] - lerp(4.3, 3.7, k), h[2] - 0.2), (h[0] + 0.1, h[1], h[2] - 0.4), 42)
+    shoot(S, (0, 0, 0), (h[0] - lerp(2.3, 2.0, k), h[1] - lerp(3.9, 3.4, k), h[2] - 0.2), (h[0] - 0.05, h[1], h[2] - 0.4), 42)
 
 
 def spy_point(S, k, t, lt):
@@ -1054,32 +1068,34 @@ def spy_point(S, k, t, lt):
     a = S['agents'][0]
     a.place(at(ROOM, 1.75, 0, 0), -PI / 2)
     a.apply(blend(P('stand', aL=(0.9, 0.2, 0.3), aR=(0.9, 0.2, 0.3), lean=0.45 * up, head=(-0.1, 0.0)),
-                  P('point', aR=(1.35, 0.05, 0.05), aL=(0.9, 0.2, 0.3), lean=0.4, head=(-0.1, 0.0)), pt))
+                  P('point', aR=(1.2, 0.55, 0.05), aL=(0.9, 0.2, 0.3), lean=0.4, head=(-0.1, 0.0)), pt))
     a.face, a.jawv = 'hard', 0.3 + 0.4 * abs(math.sin(lt * 14))
     agent_stand(S, P('hips', head=(0.1, 0.0)))
-    shoot(S, ROOM, (lerp(-4.4, -3.9, k), lerp(-1.7, -1.5, k), lerp(2.75, 2.6, k)), (1.2, 0.15, 2.05), 34)
+    shoot(S, ROOM, (lerp(-4.6, -4.1, k), lerp(-2.3, -2.0, k), lerp(2.9, 2.75, k)), (1.0, 0.25, 2.0), 36)
 
 
 def he_points(S, k, t, lt):
     """Close on the airman: he leans in and points past them, level and sure. Behind him Rook unfolds his arms and tilts his head."""
     room(S, t)
     u = sm(lt / 0.4)
-    m = man_chair(S, dict(aR=(lerp(0.75, 1.5, u), lerp(-0.05, 0.1, u), lerp(1.2, 0.1, u), 0.0), lean=lerp(0.1, 0.32, u), head=(0.0, 0.25 * (1 - u))), 'hard' if u < 0.3 else 'calm')
+    m = man_chair(S, dict(aR=(lerp(0.75, 1.5, u), lerp(-0.05, 0.1, u), lerp(1.2, 0.1, u), 0.0), lean=lerp(0.1, 0.32, u), head=(0.0, -0.45)), 'hard' if u < 0.3 else 'calm')
     m.jawv = 0.3 + 0.3 * abs(math.sin(lt * 11))
     v = sm((lt - 0.5) / 0.4)
-    rook_corner(S, blend(P('cross', head=(0.1, 0.0)), P('think', head=(0.05, 0.35)), v), yaw=facing(RK_ROOM, (-0.5, -3.0)))
+    rk = S['rook']
+    rk.place(at(ROOM, -3.9, 1.5, 0), facing((-3.9, 1.5), (1.5, -3.0)))
+    rk.apply(blend(P('cross', head=(0.1, 0.0)), P('think', head=(0.05, 0.35)), v))
     S['rface'], S['hat_tip'] = ('calm' if v > 0.5 else 'low'), 0.5 * (1 - v)
     h = mhead(S)
-    shoot(S, (0, 0, 0), (h[0] + lerp(2.6, 2.2, k), h[1] - lerp(3.4, 3.0, k), h[2] + 0.1), (h[0] - 0.25, h[1] + 0.2, h[2] - 0.3), 40)
+    shoot(S, (0, 0, 0), (h[0] + lerp(3.3, 2.9, k), h[1] - lerp(2.9, 2.5, k), h[2] + 0.1), (h[0] - 0.2, h[1] + 0.5, h[2] - 0.1), 36)
 
 
 def officer_writes(S, k, t, lt):
     """Later, at the same desk: a man in a cap writes it out, signs and stamps it. The airman watches; Rook leans in over the desk to read."""
     room(S, t)
-    man_chair(S, dict(lean=0.2, head=(0.3, 0.0)))
+    man_chair(S, dict(lean=0.2 + 0.1 * sm((lt - 1.0) / 0.3), head=(0.3, 0.2 * math.sin(lt * 2.5))))
     st = sm((lt - 1.0) / 0.2)
     w = math.sin(lt * 24) * (1 - st)
-    o = agent_chair(S, S['men'][0], dict(aR=(1.05 + 0.03 * w, -0.25 + 0.05 * w, 0.75, 0.3), aL=(0.95, -0.2, 0.8, 0.5), lean=0.42, head=(0.5, 0.0)), 'calm')
+    o = agent_chair(S, S['men'][0], dict(aR=(1.05 + 0.06 * w, -0.25 + 0.1 * w, 0.75, 0.3), aL=(0.95, -0.2, 0.8, 0.5), lean=0.42, head=(0.5, 0.1 * w)), 'calm')
     S['paper'].location = at(ROOM, 0.15, -0.1, 1.36)
     S['paper'].rotation_euler = (0, 0, 0.12)
     hp = wpos(o.hands[1], (0, 0, -0.6))
@@ -1087,38 +1103,39 @@ def officer_writes(S, k, t, lt):
     S['pen'].rotation_euler = (0.4, 0.3, 0)
     S['stamp'].location = at(ROOM, 0.2, -0.3, 1.52 + 0.9 * (1 - st) + 0.25 * sm((lt - 1.25) / 0.2)) if lt > 0.85 else FAR
     rk = S['rook']
-    rk.place(at(ROOM, -0.3, 2.3, 0), facing((-0.3, 2.3), (0.1, 0)))
-    rk.apply(P('stand', aL=(0.6, 0.2, 0.5), aR=(0.6, 0.2, 0.5), lean=0.5, head=(0.55, 0.15 * math.sin(lt * 3))))
+    rk.place(at(ROOM, lerp(-1.6, -0.6, sm(lt / 0.8)), 2.4, 0), facing((-0.6, 2.4), (0.1, -3)))
+    rk.apply(blend(K.walk(t, 1.4), P('stand', aL=(0.6, 0.2, 0.5), aR=(0.6, 0.2, 0.5), lean=0.35, head=(0.4, 0.15 * math.sin(lt * 3))), (lt - 0.5) / 0.4))
     S['rface'] = 'calm' if st < 0.5 else 'shocked'
-    shoot(S, ROOM, (lerp(-0.6, -0.2, k), lerp(-4.4, -3.8, k), lerp(3.7, 3.3, k)), (0.1, 0.3, 1.7), 30)
+    shoot(S, ROOM, (lerp(-2.2, 0.6, k), lerp(-7.2, -4.6, k), lerp(3.3, 2.5, k)), (0.0, 0.4, 1.75), 27)
 
 
 def man_smile(S, k, t, lt):
     """The airman holds the sheet in both hands and reads it, and for the first time something like a smile."""
     room(S, t)
-    m = man_chair(S, dict(aL=(1.0, -0.15, 1.35, 0.5), aR=(1.0, -0.15, 1.35, 0.5), head=(lerp(0.45, 0.1, sm((lt - 0.6) / 0.4)), 0.0), lean=0.12), 'calm' if lt < 0.6 else 'warm')
+    v = sm((lt - 0.5) / 0.35)
+    m = man_chair(S, dict(aL=(0.75, -0.15, 1.1, 0.5), aR=(0.75, -0.15, 1.1, 0.5), head=(lerp(0.4, 0.0, v), lerp(-0.2, -0.6, v)), lean=0.12), 'calm' if lt < 0.5 else 'warm')
     hl, hr = wpos(m.hands[0], (0, 0, -0.5)), wpos(m.hands[1], (0, 0, -0.5))
-    S['paper'].location = ((hl[0] + hr[0]) / 2 + 0.05, (hl[1] + hr[1]) / 2, (hl[2] + hr[2]) / 2 + 0.2)
-    S['paper'].rotation_euler = (1.15, 0, PI / 2)
+    S['paper'].location = ((hl[0] + hr[0]) / 2 + 0.1, (hl[1] + hr[1]) / 2, (hl[2] + hr[2]) / 2 + 0.05)
+    S['paper'].rotation_euler = (0.6, 0, PI / 2)
     h = mhead(S)
-    shoot(S, (0, 0, 0), (h[0] + lerp(3.0, 2.5, k), h[1] - lerp(1.7, 1.4, k), h[2] + 0.2), (h[0] + 0.2, h[1], h[2] - 0.35), 44)
+    shoot(S, (0, 0, 0), (h[0] + lerp(3.2, 2.8, k), h[1] - lerp(1.9, 1.6, k), h[2] + 0.15), (h[0] + 0.15, h[1], h[2] - 0.35), 44)
 
 
 def rook_hat(S, k, t, lt):
     """Rook has the sheet now. He reads down it, and his hat leaves his head; a feather comes loose."""
     room(S, t)
     rk = S['rook']
-    rk.place(at(ROOM, -0.3, 2.3, 0), 0.25)
-    rk.apply(P('stand', aL=(1.05, -0.15, 1.5, 0.5), aR=(1.05, -0.15, 1.5, 0.5), head=(lerp(0.4, 0.55, sm(lt / 0.5)), 0.0)))
+    rk.place(at(ROOM, -0.2, 2.5, 0), 0.25)
+    rk.apply(P('stand', aL=(0.7, -0.15, 1.2, 0.5), aR=(0.7, -0.15, 1.2, 0.5), head=(lerp(0.45, 0.6, sm(lt / 0.5)) - 0.5 * sm((lt - 0.6) / 0.2), 0.0)))
     hl, hr = wpos(rk.hands[0], (0, 0, -0.5)), wpos(rk.hands[1], (0, 0, -0.5))
-    S['paper'].location = ((hl[0] + hr[0]) / 2, (hl[1] + hr[1]) / 2 - 0.05, (hl[2] + hr[2]) / 2 + 0.25)
-    S['paper'].rotation_euler = (1.2, 0, 0.25)
+    S['paper'].location = ((hl[0] + hr[0]) / 2, (hl[1] + hr[1]) / 2 - 0.05, (hl[2] + hr[2]) / 2 + 0.05)
+    S['paper'].rotation_euler = (0.7, 0, 0.25)
     pop = sm((lt - 0.55) / 0.12)
     S['rface'] = 'shocked' if pop > 0.3 else 'calm'
     S['hat_jump'] = 0.55 * pop * (0.6 + 0.4 * abs(math.cos((lt - 0.55) * 7))) * (1 - sm((lt - 1.3) / 0.3))
     h = rhead(S)
     feather(S, (h[0] + 0.3, h[1], h[2] + 0.2), lt - 0.6)
-    shoot(S, (0, 0, 0), (h[0] - lerp(1.5, 1.2, k), h[1] - lerp(4.5, 3.8, k), h[2] + 0.1), (h[0], h[1], h[2] - 0.3), 42)
+    shoot(S, (0, 0, 0), (h[0] - lerp(1.5, 1.2, k), h[1] - lerp(4.5, 3.8, k), h[2] + 0.1), (h[0], h[1], h[2] - 0.45), 40)
 
 
 # ---------------------------------------------------------------- the proof
@@ -1126,42 +1143,41 @@ def search_wood(S, k, t, lt):
     """Grey daylight in the same wood: two men in caps wade through the snow towards the dent. Rook is already there, pointing down at it."""
     sky(S, 'day')
     for i, rig in enumerate(S['men']):
-        y = lerp(-13 - 2.5 * i, -7.0 - 2.0 * i, k)
-        rig.place(at(WOOD, -1.2 + 2.6 * i, y, 0), PI + 0.1 * (1 - 2 * i))
+        x = lerp(11 + 2.5 * i, 6.2 + 2.2 * i, k)
+        rig.place(at(WOOD, x, 0.2 - 1.8 * i, 0), -PI / 2 - 0.3)
         rig.apply(K.walk(t + i * 0.3, 1.5))
         rig.face = 'calm'
     rk = S['rook']
-    rk.place(at(WOOD, 2.7, -0.2, 0.0), facing((2.7, -0.2), (0.5, -6)))
-    rk.apply(blend(P('stand', head=(0.0, 0.5)), P('point', aR=(0.75, 0.35, 0.1), head=(0.3, -0.3)), lt / 0.45))
-    S['harness'].location = at(WOOD, 1.2, -2.6, 0.06)
-    shoot(S, WOOD, (lerp(7.2, 6.4, k), lerp(-2.2, -2.6, k), lerp(1.5, 1.3, k)), (0.2, -3.0, 1.5), 26)
+    rk.place(at(WOOD, 3.6, -4.2, 0.0), facing((3.6, -4.2), (1.5, -9.0)))
+    rk.apply(blend(P('stand', head=(0.0, 0.9)), P('point', aR=(0.8, 0.5, 0.1), head=(0.3, -0.2)), lt / 0.45))
+    S['harness'].location = at(WOOD, 2.2, -5.2, 0.06)
+    S['harness'].scale = (1.6, 1.6, 1.6)
+    shoot(S, WOOD, (lerp(0.0, 0.5, k), lerp(-11.5, -10.5, k), lerp(1.6, 1.45, k)), (3.6, -2.4, 1.5), 26)
 
 
 def harness(S, k, t, lt):
-    """Close in the snow: the harness he took off. A gloved hand lifts a strap: the two lift webs are still folded and tacked down. Rook
-    bends in beside it and taps his beak."""
+    """The harness he took off, found in the snow. Rook lifts it by one strap and turns it over: the two lifting straps are still folded
+    flat against it, never pulled out. He taps his beak."""
     sky(S, 'day')
-    S['harness'].location = at(WOOD, 1.2, -2.6, 0.06)
-    S['harness'].rotation_euler = (0, 0, 0.3)
-    u = sm(lt / 0.5)
-    S['glove'].root.scale = (1.3, 1.3, 1.3)
-    S['glove'].place(at(WOOD, lerp(-1.2, 0.35, u), -2.75, 0.55 + 0.12 * math.sin(lt * 3)), (-0.5, 0.0, PI / 2))
-    S['glove'].grip(0.25 + 0.5 * u)
+    u = sm(lt / 0.55)
     rk = S['rook']
-    rk.place(at(WOOD, 2.9, -1.3, 0.0), facing((2.9, -1.3), (1.4, -3.4)))
-    tap = 0.12 * max(0.0, math.sin(lt * 14))
-    rk.apply(P('tap', aR=(1.25 + tap, -0.25, 2.2, 0.6), lL=(1.0, 1.6), lR=(1.0, 1.6), lift=-0.48, lean=0.5, head=(0.4, -0.1)))
-    S['rface'] = 'calm'
-    shoot(S, WOOD, (lerp(1.5, 1.7, k), lerp(-6.6, -5.9, k), lerp(1.7, 1.45, k)), (1.75, -2.3, 0.75), 38)
+    rk.place(at(WOOD, 2.6, -4.6, 0.0), facing((2.6, -4.6), (2.2, -9.0)))
+    tap = 0.14 * max(0.0, math.sin((lt - 0.8) * 14)) if lt > 0.8 else 0.0
+    low = P('stand', aL=(0.9, 0.1, 0.3), aR=(0.3, 0.2, 0.4), lL=(1.0, 1.6), lR=(1.0, 1.6), lift=-0.48, lean=0.5, head=(0.5, 0.0))
+    high = P('tap', aR=(1.25 + tap, -0.25, 2.2, 0.6), aL=(1.15, 0.0, 0.9, 0.2), head=(0.3, 0.1))
+    rk.apply(blend(low, high, u))
+    yw = rk.root.rotation_euler[2]
+    S['harness'].location = at(WOOD, 2.6 + 0.62 * math.sin(yw) - 0.35 * math.cos(yw), -4.6 - 0.62 * math.cos(yw) - 0.35 * math.sin(yw), lerp(0.1, 1.25, u))
+    S['harness'].rotation_euler = (lerp(0.0, 1.25, u), 0.0, yw + 0.12 * math.sin(lt * 2.5) * u)
+    S['harness'].scale = (0.62, 0.62, 0.62)
+    S['rface'] = 'calm' if lt < 1.1 else 'shocked'
+    snowburst(S, at(WOOD, 2.5, -5.4, 0.1), lt - 0.1, 8, 1.2, 1.0, 12)
+    h = rhead(S)
+    shoot(S, (0, 0, 0), (h[0] - lerp(1.6, 0.9, k), h[1] - lerp(5.6, 4.4, k), lerp(0.9, 1.9, k) + WOOD[2]), (h[0] - 0.1, h[1], lerp(1.2, h[2] - WOOD[2] - 0.75, sm(k * 1.3)) + WOOD[2]), 36)
 
 
 def at_wreck(S, t):
     sky(S, 'day')
-    for i, o in enumerate(S['smoke']):
-        z = (t * 0.9 + i * 0.7) % 5.0
-        o.location = at(WRECK, -2.5 + 0.9 * i + 0.3 * math.sin(t + i), 2.0 + 0.5 * i, 2.6 + z)
-        s = 0.8 + 0.5 * z
-        o.scale = (s, s, s)
 
 
 def wreck(S, k, t, lt):
@@ -1178,22 +1194,24 @@ def wreck(S, k, t, lt):
 def chute_pack(S, k, t, lt):
     """The breath before: inside the container, the parachute pack, charred, never opened, its metal ripcord handle still in its pocket."""
     at_wreck(S, t)
-    S['handle'].material_slots[0].material.node_tree.nodes['Principled BSDF'].inputs['Emission Strength'].default_value = 0.0
-    S['glove'].root.scale = (1.3, 1.3, 1.3)
-    S['glove'].place(at(WRECK, lerp(3.4, 2.75, sm(lt / 0.6)), -2.75, 1.0), (0.0, 0.0, -PI / 2 + 0.3))
+    S['glove'].root.scale = (1.0, 1.0, 1.0)
+    S['glove'].place(at(WRECK, lerp(3.1, 2.45, sm(lt / 0.6)), -2.6, 0.95), (0.0, 0.0, -PI / 2 + 0.3))
     S['glove'].grip(0.75)
-    shoot(S, WRECK, (lerp(2.5, 2.2, k), lerp(-5.4, -4.6, k), lerp(1.5, 1.25, k)), (1.62, -2.0, 0.78), 46)
+    S['glove'].f[0][0].rotation_euler = (0.0, 0, 0)
+    S['glove'].f[0][1].rotation_euler = (0.0, 0, 0)
+    shoot(S, WRECK, (lerp(2.5, 2.2, k), lerp(-5.4, -4.6, k), lerp(1.5, 1.25, k)), (1.75, -2.0, 0.78), 44)
 
 
 # ---------------------------------------------------------------- the ending
 def four_stones(S, k, t, lt):
     """Four plain white headstones in a row, early light. Rook stands beside them with his hat off and his head down."""
     sky(S, 'dawn')
+    S['sun'].data.energy = 4.5
     rk = S['rook']
-    rk.place(at(YARD, 3.9, -0.9, 0), facing((3.9, -0.9), (0.0, 0.2)))
-    rk.apply(P('stand', head=(lerp(0.15, 0.45, sm(lt / 0.8)), 0.0), aR=(0.1, 0.25, 0.3)))
+    rk.place(at(YARD, 3.1, -1.2, 0), facing((3.1, -1.2), (-1.5, -3.6)))
+    rk.apply(P('stand', head=(lerp(0.0, 0.5, sm(lt / 0.9)), 0.25), aR=(0.1, 0.25, 0.3)))
     S['rface'], S['hat_off'] = 'sad', 1.0
-    shoot(S, YARD, (lerp(4.6, 3.6, k), lerp(-8.2, -7.6, k), lerp(1.8, 1.6, k)), (0.9, 0.0, 1.35), 30)
+    shoot(S, YARD, (lerp(5.6, 1.6, k), lerp(-8.0, -6.6, k), lerp(2.2, 1.5, k)), (1.6, -0.5, 1.5), 28)
 
 
 def signoff(S, k, t, lt):

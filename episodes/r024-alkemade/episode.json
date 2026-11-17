@@ -1,13 +1,31 @@
 {
  "id": "r024-alkemade",
  "format": "short",
- "status": "draft",
+ "status": "approved",
  "synthetic": false,
  "host": "rook",
  "case": 24,
  "title": "His Parachute Was on Fire. He Jumped Anyway #shorts",
- "description": "draft",
- "tags": [],
+ "description": "Case 024. On the night of 24 March 1944 a Lancaster bomber of No. 115 Squadron RAF, on its way home from a raid on Berlin, was attacked over Germany by a Junkers Ju 88 night fighter and set on fire. The rear gunner, Flight Sergeant Nicholas Alkemade, aged 21, could not wear his parachute in the cramped turret; it was stowed in the fuselage behind him, and when he went for it, it was burning. He chose to jump rather than burn, and fell about 18,000 feet (roughly five and a half kilometres). He came down through young pine trees into deep snow and got up with a twisted knee and no broken bones. He was taken prisoner. His interrogators, the Gestapo, did not believe him and suspected a spy who had buried his parachute, until the wood and the wreck were searched: the lifting straps of his harness were still folded away, and the parachute had never left the aircraft. He was given a certificate saying that his claim had been investigated and corroborated by the German authorities and was true in all respects. Four of the seven men in the crew were killed: the pilot Jack Newman, Edgar Warren, Charles Hilder and John McDonough. Nicholas Alkemade died in June 1987. Rook didn't believe it either.\n\nAnimated reconstruction of a true story, made with respect for the four men of the crew who died. The aircraft are generic low-poly shapes with no markings; the men in the room and in the wood wear plain coats, hats and caps with no badges or symbols; nobody's likeness is attempted. The typed sheet is a plain re-setting of the reported wording of the certificate, not a copy of the document, and the chalk drawing shows what his interrogators suspected, not what happened. Staging details such as the way he leaves the turret, the look of the parachute rack, the room, the desk and who wrote the sheet out, where the harness lay, how the wreck looked, the lantern, the row of four plain headstones and everything Rook does are reconstruction, not record. Narration is a synthetic voice (Kokoro).",
+ "tags": [
+  "Nicholas Alkemade",
+  "fell without a parachute",
+  "RAF",
+  "Lancaster",
+  "tail gunner",
+  "rear gunner",
+  "115 Squadron",
+  "1944",
+  "World War II",
+  "WW2",
+  "survival",
+  "true story",
+  "survival story",
+  "history",
+  "animated story",
+  "Rook",
+  "Survra"
+ ],
  "hashtags": [
   "#shorts",
   "#truestory",
@@ -16,9 +34,124 @@
  "playlist": "Rook's Case Files (Shorts)",
  "sources": [
   "https://www.rafmuseum.org.uk/blog/the-indestructible-alkemade/",
-  "https://en.wikipedia.org/wiki/Nicholas_Alkemade"
+  "https://en.wikipedia.org/wiki/Nicholas_Alkemade",
+  "https://www.bombercommandmuseumarchives.ca/s,alkemade.html",
+  "https://www.airspacemag.com/daily-planet/parachuteless-freaks-170764598/",
+  "https://www.wearethemighty.com/articles/nicholas-alkemade-parachute-survives/"
  ],
+ "story_score": {
+  "curiosity": 9,
+  "stakes": 9,
+  "freshness": 7,
+  "story": 8,
+  "visual": 9,
+  "audience_fit": 8,
+  "payoff": 9,
+  "packaging": 9,
+  "research": 9,
+  "repeatability": 7,
+  "total": 84
+ },
+ "title_options": [
+  "His Parachute Was on Fire. He Jumped Anyway #shorts",
+  "He Fell 18,000 Feet With No Parachute. The Gestapo Checked #shorts",
+  "The Germans Gave Him a Certificate for Falling Out of a Plane #shorts",
+  "No Parachute, 18,000 Feet, One Twisted Knee #shorts"
+ ],
+ "spine": "v2",
+ "shown_moments": {
+  "his bomber is on fire": "shots 1, 2 and 4 (the burning bomber from behind its tail; the gunner in the open turret with fire behind him; the tail from the side)",
+  "his parachute is burning": "shot 3 (the pack in its rack, burning; a gloved hand driven back)",
+  "and he jumps anyway": "shots 1 and 4 (the figure rolling out of the turret and dropping away)",
+  "a night fighter has ripped the bomber open": "shots 6 and 7 (the fighter under the tail with tracer going up into the wing; the wing catching fire)",
+  "five and a half kilometres up": "shot 8 (from above, the small figure dropping away, label 18,000 FEET)",
+  "burn, or jump. He picks the quick way down": "shots 9 to 12 (Rook's sums; his face, eyes closing; Rook gives up; the wood coming up)",
+  "he wakes up in deep snow": "shots 13 and 14 (through the pines into the drift; from above, his eyes opening)",
+  "under a hole smashed through the pine trees": "shots 15 and 16 (looking up at the ring of tree tops; Rook measures the drift and points up at the hole)",
+  "nothing is broken. Just a twisted knee": "shots 17 and 18 (he tries his hands and legs; the knee gives under him)",
+  "now he's a prisoner": "shot 19 (two men with a lantern find him)",
+  "the Gestapo don't believe a word": "shots 20 to 22 (the room; the man at the desk laughs; Rook nods along)",
+  "then he's a spy, and he buried it": "shots 23 and 24 (the man points at him; the chalk drawing headed WHAT THEY SUSPECTED)",
+  "so he tells them: go and look": "shot 25 (he leans in and points)",
+  "they search the wood, and the wreck": "shots 26 and 28 (the men wading through the snow towards Rook and the harness; the burnt tail and the open container)",
+  "the harness straps: still folded": "shot 27 (Rook lifts the harness and looks it over)",
+  "his parachute never left the plane": "shot 29 (the charred pack in its container, handle still in place)",
+  "so the Germans put it in writing": "shots 30 and 31 (the sheet is written and stamped; the typed sheet)",
+  "true in all respects": "shots 31 to 33 (the sheet; the gunner reads it; Rook reads it and his hat leaves his head)",
+  "four of his crew never came home": "shot 34 (four plain headstones, Rook with his hat off). No one is shown dying.",
+  "I was wrong. Case closed": "shots 35 and 36 (Rook under the hole in the trees at dawn; the board)",
+  "it all began the night": "shot 37 (back to the opening frame)"
+ },
+ "experiments": {
+  "E1_E2": "spine v2: Rook is falling beside the gunner in shot 5 and doubts it there in one line of 1.4 s ('No parachute? No chance.') with the man and the burning bomber in frame behind him; no office. The story runs forward from the jump; how the bomber came to be on fire is two fast shots inside the fall, not a jump back. Date, place, name and age are on-screen labels (24 MARCH 1944, OVER GERMANY, NICHOLAS ALKEMADE, 21).",
+  "E3": "batch Short 6 (even): wide spectacle first frame, as the brief assigns: the burning bomber from behind its tail with the figure leaving the turret.",
+  "E4": "'Case closed.' ending, as the brief assigns to this Short.",
+  "E7": "hook_text NO / PARACHUTE.",
+  "E8": "tail 0.4 s; the last line ('It all began the night') runs into the first ('his bomber is on fire...'), and the last shot is the opening shot played back to its first frame.",
+  "rook_action": "The brief's Rook moment is kept: he does the sums on a notepad in mid-air (shot 9) and gives up, throwing the pad away and pulling his hat brim over his eyes (11). Detective actions in the story world: he pushes a stick into the drift to measure it and points up at the hole in the trees (16), and he is the one who finds and examines the harness (26, 27, beak tap). Mannerisms: hat brim low (5, 11, 22), beak tap (27), hat leaving his head (15, 18, 33), a shed feather (33). His one joke-like beat is the notepad; from the interrogation on he makes none, and he takes his hat off for the four men who died (34). He pockets nothing in this case."
+ },
+ "sound_plan": {
+  "first_frame": "One 'hit' at 0.03 s as the cannon strike on the bomber (the gate needs an impact in the first second; here it is a story sound), then rushing air. The hook mood is sparse.",
+  "music": "The engine's score follows the segment moods: hook, tense for Rook's line, action for the fall, wonder for the wood, tense for the room and the search, triumph for the certificate, sad for the ending. No drum loop under the sad segment. The engine cannot delay the music's entry.",
+  "effects": "One to three cues a shot, each tied to something visible: hits for the tracer, crashes for the wing and the branches, pencil scratches for the notepad, ticks for the stick and the beak tap, a clunk for the stamp.",
+  "hush": "Shot 29 (the unopened pack in the wreck): the music drops out for the breath before 'So the Germans put it in writing'.",
+  "tragic_beats": "Shot 34 has one tick only; Rook's only line there is 'I was wrong.'",
+  "voice": "Narration is ducked over the bed by the engine; measured in the local rehearsal (see quality_gate), not listened to."
+ },
+ "source_notes": "Read for this run on 17 Nov 2026 (five pages, through a fetch tool). The RAF Museum's article and the Bomber Command Museum of Canada page carry largely the same text, so they are counted as one source; every narrated fact is also on at least one of the other pages. Date and unit: night of 24/25 March 1944, No. 115 Squadron, Lancaster II DS664, returning from Berlin (RAF Museum, Wikipedia, We Are The Mighty); Air & Space alone says 23 March, so 24 March is used. Night fighter: a Ju 88 flown by Heinz Roekker of NJG 2 (RAF Museum, Wikipedia); neither he nor the unit is named in the film. Parachute: stowed outside the cramped turret and burning when he reached it (all five pages; Wikipedia words it as 'caught fire'). He chose to jump rather than burn, 'quick and clean' in his own words (RAF Museum, We Are The Mighty; Wikipedia in paraphrase); the narration's 'He picks the quick way down' is a paraphrase, not a quotation. Height: 18,000 feet on all five pages (about 5.5 km); the RAF Museum also says 3.5 miles. Pine or fir trees and deep snow: all five pages. Injuries from the fall: a twisted or sprained knee, no broken bones (RAF Museum, We Are The Mighty; Wikipedia 'only a sprained leg'; Air & Space 'a wrenched knee'). He also had burns and cuts from the aircraft (RAF Museum), which are not narrated; 'nothing is broken' is meant literally, of bones. That he was unconscious for about three hours, saw the stars through the hole, lit a cigarette and blew his whistle is on the RAF Museum text only: the cigarette and the whistle are left out, the hole in the trees is narrated because the pines breaking his fall is on every page, and his closing eyes in shot 10 are staging. Capture: carried off by German civilians, 'possibly Home Guardsmen' (RAF Museum); the film shows two men in caps with a lantern and says only 'now he's a prisoner'. Gestapo disbelief and the spy accusation: RAF Museum, We Are The Mighty; Wikipedia says they were 'initially suspicious'. Proof: the RAF Museum says a search of the wood bore out his story (his harness, with its lift webs still in the stowed position) and that in the wreck the ripcord handle and cable were still in their stowage container; Wikipedia says the wreckage was examined and his parachute found as he had described. The narration ('The harness straps: still folded. His parachute never left the plane.') follows that; what the remains of the pack looked like is not recorded, and the charred pack with its handle is staging. Certificate: quoted on four pages ('investigated and corroborated by the German authorities ... true in all respects'); it was witnessed by British prisoners at Dulag Luft, and who wrote it out is not established, so the man at the desk is a generic figure and the narration says only 'the Germans put it in writing'. Crew: seven aboard, four killed (Newman, Warren, Hilder, McDonough), buried at Hanover War Cemetery (RAF Museum, Wikipedia); two others survived as prisoners. Age 21: born December 1922 (Wikipedia 20 Dec, the Canadian page 10 Dec; 21 either way). Death: June 1987 (RAF Museum, Wikipedia). Kept out because single-sourced or disputed: the aircraft's name, the size of the raid (pages differ), the lost boots, the snow depth in inches, the 20 yards to bare ground, his later accidents. Staging that is not fact: how he leaves the turret (the sources say he turned it sideways and went out backwards), the look of both aircraft, the rack, the room and its map, the lantern, where the harness lay, the wreck, the headstones (plain slabs, no inscriptions), and everything Rook does.",
  "authoring": {
-  "claimed_at": "2026-11-17T11:38:40Z"
+  "claimed_at": "2026-11-17T11:38:40Z",
+  "run": "scheduled short run, 17 Nov 2026; brief order (Short 6 of the batch, slate case 24)"
+ },
+ "quality_gate": {
+  "method": "One run, six review rounds. Rounds 1 to 3: low-res contact sheets of all 34 3D shots (one frame each). Found and fixed: flames blown out to white and pink; the bomber unreadable and hidden by a cloud; the parachute pack buried in flame; the gunner out of frame in the jump; Rook a small T-pose in his doubt shot with the man out of frame; the fall seen from below as a black frame (re-shot from above); arms over the gunner's face in his close-up; pines with no snow on them from above; Rook hidden behind a trunk, off frame in the room, and upside down in the look-up shot; a dressing that read as a box on the gunner's head (removed); a trunk in front of the lens in the search; the sheet of paper covering faces; Rook cut off by the frame at the headstones. Round 4: full-length rehearsal (216x384, 4 samples, 12 fps, every 3D frame) composited with captions, labels, overlays, inserts and sound, reviewed as a 4-frames-per-second sheet of the whole video (180 frames). Found and fixed: a date label over the hook title (label removed from shot 2); translucent propeller discs that glowed pink (replaced by blades); my own '18,000 FEET' on the typed sheet doubling the figure the engine pops on screen; the harness shot (the harness lay under the captions and Rook's face was hidden, so he now lifts it); three static stretches. Rounds 5 and 6: the changed shots re-rendered and looked at frame by frame, a second and third rehearsal against the gate, and eight stills at 720x1280 with production samples (opening frame, shots 10, 21 and 33). The final rehearsal passed the automated gate locally: 37 shots, mean 1.21 s, longest 1.83 s, Rook acting in 15 of 37 shots (41%), -14.9 LUFS, peak -1.3 dBFS, voice 17.8 dB over the bed, closest match to any earlier episode 0.73 (shot 13 against r004-packard; the limit is 0.93). Duration 44.6 s. The cloud render runs the real gate at 720x1280 and 60 fps.",
+  "gate_history": "Rehearsal 1 failed three times on static stretches: 28.3 to 30.0 s (the harness), 33.2 to 34.7 s (the desk), 39.2 to 40.8 s (the headstones). Fixes were made in the film, never in the gate: Rook now lifts the harness while the camera rises; the desk shot became a crane move with Rook walking in; the headstone shot became a track along the row. Rehearsals 2 and 3 passed.",
+  "checked": "Every 3D kind in the storyboard exists in world3d.SHOTS3D and every other kind in scenes.SHOTS (checked by script); HOST lists the 15 kinds in which Rook is placed; bomber_wide is the only kind used twice (first and last shot, for the loop). The first shot is 1.0 s with an impact sound at 0.03 s. The doubt line is 1.4 s and is spoken in the air beside him. The re-hook ('But now he's a prisoner, and the Gestapo don't believe a word') starts at 18.8 s of 44.6 s (42%). One hush shot (29). Tail 0.4 s; first and last frames compared side by side and they match. On-screen dates, names and figures (24 MARCH 1944, OVER GERMANY, 18,000 FEET, NICHOLAS ALKEMADE, 21, 4 OF THE 7 CREW DIED, TRUE IN ALL RESPECTS) were checked against the sources. No death is shown, nothing graphic appears, and no flag, emblem, insignia, marking or likeness appears anywhere.",
+  "not_met": "The audio was measured, not listened to; loudness range was not measured and the earlier Shorts measure about 2.5 LU against the checklist's 4 LU (the engine's mix). Preview stills at 20% and 80% of every shot were not made: every shot was looked at on three contact sheets (one frame each) and then at four frames a second in the rehearsal at low resolution, plus eight full-resolution stills of four shots. The cloud render is the first full-resolution, 60 fps pass. The 13-category score was given from stills and rehearsal sheets, not from playback. Kokoro's reading of the opening line and of the loop could not be heard; the first caption starts with a lower-case 'his' by design."
+ },
+ "checklist": {
+  "A_story": "done: score 84/100 with curiosity 9, story 8, payoff 9; spine v2; shown_moments lists every narrated moment",
+  "B_storyboard": "done: every shot has action, expression, camera and sound cue; Rook's mannerisms are hat brim low (5, 11, 22), beak tap (27), hat hop (15, 18, 33) and a shed feather (33); detective actions are measuring the drift (16) and finding and examining the harness (26, 27); no neutral poses under action lines",
+  "B2_retention": "done: hook_text set; first frame is the burning bomber with the figure at its tail (the brief's E3 wide opening for an even-numbered Short, which replaces the checklist's close subject); re-hook at 42%; one hush; tail 0.4 s with the loop",
+  "C_previews": "partly: contact sheets and three rehearsals at low resolution, eight stills at 720x1280; no blown-out or crushed frame where the story has to be seen; Rook on-model; see quality_gate.not_met",
+  "D_render": "engine defaults untouched (60 fps, 720x1280, 16 jobs in the workflow); the local rehearsal used low settings only for review",
+  "E_sound": "voice am_fenrir; no drum loop under the sad segment; voice 17.8 dB over the bed; loudness range not measured, see quality_gate.not_met",
+  "F_captions": "done: captions inside the frame; the two cards and the board keep the caption band clear of their own text; on-screen dates, names and figures checked against sources",
+  "G_final": "rehearsal reviewed as a 4 fps sheet of the whole video and larger frames; local gate PASS on the second and third rehearsals; the full-resolution render and the real gate happen in the workflow"
+ },
+ "review": {
+  "notes": [
+   "0.0 s: the burning bomber from behind its tail, the figure at the turret, hook text above",
+   "1.0 to 2.0 s: the gunner in the open turret, fire behind him; 2.0 to 3.0 s: the pack burning in its rack",
+   "3.0 to 3.9 s: he goes out backwards; 3.9 to 5.4 s: Rook falling beside him, 'No parachute? No chance.'",
+   "5.4 to 7.3 s: the fighter's tracer, the wing catching",
+   "7.3 to 8.2 s: he drops away, seen from above; 8.2 to 9.4 s: Rook's notepad",
+   "9.4 to 10.5 s: his face, eyes closing; 10.5 to 11.6 s: Rook throws the pad away, brim down",
+   "12.4 to 13.2 s: through the pines into the drift; 13.2 to 14.4 s: his eyes open",
+   "14.4 to 15.5 s: looking up at the hole, Rook walks into view; 15.5 to 16.7 s: Rook measures the drift and points up",
+   "16.7 to 18.8 s: hands, legs, the knee gives",
+   "18.8 s: re-hook, the lantern; 19.9 to 24.1 s: the room, the laugh, Rook nodding, the pointing finger",
+   "24.1 to 25.2 s: the chalk drawing, SPY?",
+   "25.2 to 26.8 s: 'go and look'; 26.8 to 30.0 s: the wood, Rook lifts the harness",
+   "30.0 to 31.4 s: the wreck; 31.4 to 33.0 s: hush, the unopened pack",
+   "33.0 to 36.5 s: the sheet written, stamped and shown; 36.5 to 39.1 s: he reads it; Rook's hat leaves his head",
+   "39.1 to 40.8 s: four headstones, hat off; 40.8 to 42.1 s: hat back on, 'Case closed.'; 43.4 to 44.6 s: back to the opening frame"
+  ],
+  "scores_13": {
+   "story": 4,
+   "hook": 4,
+   "character_acting": 3,
+   "animation": 3,
+   "art_direction": 3,
+   "lighting": 3,
+   "camera": 3,
+   "pacing": 4,
+   "editing": 4,
+   "narration": 3,
+   "sound": 3,
+   "captions_graphics": 4,
+   "respect_accuracy": 5
+  },
+  "weakest": "The opening is a wide shot by the brief's design, so the gunner is small in the first frame and the bomber is seen from above and behind rather than in a clean side view. Flames are faceted cones and read as stylised. In the harness shot (27) the harness hangs in front of Rook's coat rather than visibly from his hand, and reads as a bundle of straps, not as a harness. The fighter shot (6) is small in frame. In the look-up shot (15) Rook stands in view rather than leaning over. Narration and sound were measured, not heard."
  }
 }

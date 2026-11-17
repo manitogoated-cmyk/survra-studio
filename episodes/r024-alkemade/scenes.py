@@ -133,10 +133,10 @@ def cert_card(cv, c):
         plain(cv, 'RESPECTS', 0, 108, 104, h('B02A1E'), 900)
         cv.restore()
     # the caption band (62 to 78 % of the frame) is left clear on the sheet
-    if c.k > 0.55:
-        plain(cv, '18,000 FEET', 0, 560, 96, INK, 900)
-    if c.k > 0.7:
-        plain(cv, 'WITHOUT A PARACHUTE', 0, 650, 62, INK, 900)
+    # the spoken figure (18,000) is popped on screen by the engine, in the band left clear here
+    if c.k > 0.62:
+        plain(cv, 'FEET, WITHOUT', 0, 570, 78, INK, 900)
+        plain(cv, 'A PARACHUTE', 0, 655, 78, INK, 900)
     cv.restore()
     Wd.particles(cv, W, H, c.t, 14, 0x44FFE8C8, 91, size=(2, 5), drift=(10, -14), wobble=14, twinkle=True)
 
