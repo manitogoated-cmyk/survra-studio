@@ -407,6 +407,20 @@
     "url": "https://youtu.be/fw9AFBVXqjE",
     "video_id": "fw9AFBVXqjE"
   },
+  "r015-hall-long": {
+    "captions": "ok",
+    "format": "long",
+    "playlist": "Rook's Case Files (Full Cases)",
+    "privacy": "private",
+    "publish_at": null,
+    "review": true,
+    "sha256": "1a30dfb1535ac3a7059458ff2028e7f9e7763c5091999537ff5ebc98f7e0e164",
+    "thumbnail": "failed: thumbnail -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The authenticated user doesn't have permissions to upload and set custom video thumbnails.\",\n ",
+    "title": "Declared Dead on Everest: The Full Case of Lincoln Hall",
+    "uploaded_at": "2026-11-17T07:17:01Z",
+    "url": "https://youtu.be/I_J-1CkXBas",
+    "video_id": "I_J-1CkXBas"
+  },
   "r016-simpson": {
     "captions": "ok",
     "format": "short",
