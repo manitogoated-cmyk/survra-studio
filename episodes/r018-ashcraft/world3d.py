@@ -572,7 +572,7 @@ def tether(S, pts, ring=True):
     if ring:
         S['ring'].location = pts[-1]
         S['ring'].rotation_euler = (0.3, 0.2, 0.6)
-        S['ring'].scale = (1.9, 1.9, 1.9)
+        S['ring'].scale = (1.25, 1.25, 1.25)
 
 
 def slack_line(S, t):
@@ -735,7 +735,7 @@ def storm_roll(S, k, t, lt):
     sky(S, 'storm')
     u = sm(k * 1.1)
     afloat(S, t * 1.6, 3.0, 'storm', roll=lerp(0.5, 2.9, u), lift=lerp(3.0, 7.0, math.sin(PI * u)) - 2.0 * u)
-    S['swell'].location = at(SEA, lerp(-34, 6, k), 0, -9)
+    S['swell'].location = at(SEA, lerp(-34, -17, k), 0, lerp(-9, -13, k))
     for i, o in enumerate(S['spray']):
         a = rnd(i, 51) * 2 * PI
         r_ = (3 + 9 * rnd(i, 52)) * u
@@ -772,7 +772,7 @@ def rook_ring(S, k, t, lt):
     afloat(S, t, 1.2, 'grey')
     u, v = sm(lt / 0.5), sm((lt - 1.0) / 0.4)
     rk = aboard(S, S['rook'], -2.1, 8.1, D, facing((-2.1, 8.1), (0.3, 5.9)),
-                blend(P('stand', aR=(0.5, 0.2, 0.5)), P('stand', aR=(1.5, 0.35, 0.95, 0.2), aL=(0.3, 0.15, 0.4), head=(lerp(0.05, 0.45, v), -0.4)), u), 'sad')
+                blend(P('stand', aR=(0.5, 0.2, 0.5)), P('stand', aR=(0.85, 0.8, 0.9, 0.2), aL=(0.3, 0.15, 0.4), head=(lerp(0.05, 0.45, v), -0.45)), u), 'sad')
     hw = bloc(S, wpos(rk.hands[1], (0, 0, -0.25)))
     tether(S, [(-2.3, 6.0, D + 0.52), (-2.3, 7.0, D + 0.5), hw])
     shoot(S, SEA, (lerp(0.5, 0.2, k), lerp(5.5, 5.9, k), D + lerp(1.3, 1.6, k)), (-1.9, 8.1, D + 1.75), 32)
@@ -817,7 +817,7 @@ def pump(S, k, t, lt):
     m.place(at(CAB, -0.35, 2.75, 0.0), facing((-0.35, 2.75), (-1.25, 4.0)))
     m.apply(P('stand', aL=(1.15 + 0.3 * a, 0.05, 0.5 - 0.3 * a), aR=(1.15 + 0.3 * a, 0.05, 0.5 - 0.3 * a), lean=0.22 + 0.2 * a, lL=(0.3, 0.3), lR=(-0.3, 0.2), head=(-0.1, 0.0)))
     m.face, m.jawv = 'hard', 0.3
-    shoot(S, CAB, (lerp(1.35, 1.1, k), lerp(4.8, 4.6, k), lerp(3.2, 3.0, k)), (-0.5, 3.0, 2.4), 24)
+    shoot(S, CAB, (lerp(-0.95, -0.85, k), lerp(5.3, 5.25, k), lerp(3.0, 2.7, k)), (-0.45, 2.8, 2.3), 26)
 
 
 def pole_up(S, k, t, lt):
@@ -906,7 +906,7 @@ def rook_glass(S, k, t, lt):
     afloat(S, t, 1.0, 'grey', flow=7)
     jury(S, t, 1.0, 1.0)
     v = sm((lt - 0.8) / 0.35)
-    rk = aboard(S, S['rook'], 1.86, -8.26, D, facing((1.86, -8.26), (-196, -2.4)),
+    rk = aboard(S, S['rook'], 1.3, -8.4, D, facing((1.3, -8.4), (-196, -2.4)),
                 blend(P('stand', aR=(1.45, 0.35, 1.9, 0.5), aL=(0.3, 0.2, 0.5), head=(-0.05, 0.0)), P('stand', aR=(0.4, 0.2, 0.5), head=(0.2, -1.1)), v), 'sad' if v > 0.5 else 'calm')
     g = S['glass']
     g.parent = rk.head
@@ -914,7 +914,7 @@ def rook_glass(S, k, t, lt):
     g.rotation_euler = (lerp(0.0, -1.2, v), 0, 0)
     for i, (x, y) in enumerate(((-196, -2.4), (-235, -30))):
         S['far'][i].location = at(SEA, x, y - 7 * lt, 0)
-    shoot(S, SEA, (lerp(4.4, 4.2, k), lerp(-9.6, -9.4, k), D + lerp(2.4, 2.6, k)), (-40.1, -1.6, lerp(3.6, 3.2, k)), 24)
+    shoot(S, SEA, (lerp(4.5, 4.3, k), lerp(-9.7, -9.5, k), D + lerp(1.9, 2.1, k)), (-40.1, -1.6, lerp(4.2, 3.8, k)), 24)
 
 
 # ---------------------------------------------------------------- steering for Hawaii
@@ -985,10 +985,10 @@ def helm_days(S, k, t, lt):
     helm(S, t, 'tired', 0.0, 0.05)
     n = int(1 + k * 11.99)
     for j, o in enumerate(S['tally'][:n]):
-        o.location = (-0.9 + 0.15 * j + (0.07 if j % 5 == 4 else 0), 5.3, D + 0.02)
+        o.location = (-0.3 + 0.15 * j + (0.07 if j % 5 == 4 else 0), 5.0, D + 0.02)
         o.rotation_euler = (PI / 2, 0, 0.6 if j % 5 == 4 else 0.0)
     a = math.sin(t * 14)
-    aboard(S, S['rook'], -1.2, 6.2, D, facing((-1.2, 6.2), (1.2, 4.6)), P('stand', **dict(CROUCH, lean=0.22, aR=(1.0 + 0.15 * a, 0.0, 0.7), head=(0.05, 0.0))), 'calm')
+    aboard(S, S['rook'], -0.5, 5.9, D, facing((-0.5, 5.9), (1.6, 4.4)), P('stand', **dict(CROUCH, lean=0.22, aR=(1.0 + 0.15 * a, 0.0, 0.7), head=(0.05, 0.0))), 'calm')
     shoot(S, SEA, (lerp(3.0, 2.5, k), lerp(3.6, 4.1, k), D + lerp(2.8, 2.5, k)), (-0.3, 7.4, D + 1.7), 28)
 
 

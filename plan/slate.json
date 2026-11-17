@@ -243,7 +243,7 @@
    "world": "broken yacht, Pacific",
    "est_score": 80,
    "long_form_candidate": true,
-   "status": "in progress",
+   "status": "authored",
    "claimed_at": "2026-11-17T18:20:32Z",
    "facts": "verify with 2+ sources at authoring; skip if they do not hold"
   },

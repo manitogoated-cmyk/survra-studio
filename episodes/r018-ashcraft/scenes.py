@@ -139,13 +139,13 @@ def hours(cv, c):
     """Out cold: the hours go by in the corner of the frame."""
     motes(cv, c)
     n = int(lerp(1, 27, ease(c.k * 1.15)))
-    fit(cv, f'{n} H', 540, 430, 190, 800, AMBER if n >= 27 else 0xFFFFFFFF)
+    fit(cv, f'{n} H', 540, 560, 190, 800, AMBER if n >= 27 else 0xFFFFFFFF)
 
 
 def days(cv, c):
     spray(cv, c)
     n = int(lerp(2, 41, ease(c.k * 1.1)))
-    fit(cv, f'DAY {n}', 540, 430, 170, 860, AMBER if n >= 41 else 0xFFFFFFFF)
+    fit(cv, f'DAY {n}', 540, 560, 170, 860, AMBER if n >= 41 else 0xFFFFFFFF)
 
 
 def stars(cv, c):

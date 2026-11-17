@@ -1,11 +1,11 @@
 {
  "id": "r018-ashcraft",
  "format": "short",
- "status": "draft",
+ "status": "approved",
  "synthetic": false,
  "host": "rook",
  "case": 18,
- "title": "She Woke Up Alone on a Wrecked Yacht #shorts",
+ "title": "She Woke Up Alone on a Wrecked Yacht. Then She Sailed It 1,500 Miles #shorts",
  "playlist": "Rook's Case Files (Shorts)",
  "sources": [
   "https://en.wikipedia.org/wiki/Tami_Oldham_Ashcraft",
@@ -19,5 +19,136 @@
  "authoring": {
   "claimed_at": "2026-11-17T18:21:30Z",
   "run": "scheduled short run, 17 Nov 2026; brief order (Short 7 of the batch, slate case 18)"
+ },
+ "description": "Case 018. In September 1983 Tami Oldham, 23, and her fiancé Richard Sharp, a British sailor, left Tahiti to deliver the yacht Hazana to San Diego. On 12 October they were caught by Hurricane Raymond. He sent her below and stayed in the cockpit, clipped on; the yacht went over, and she was thrown against the cabin and knocked unconscious for about 27 hours. She woke with a head wound in a flooded cabin. Both masts were gone, the engine was useless, and Richard was gone: his safety line was still made fast, with nobody on it. She pumped the cabin out by hand, set a storm jib on a broken spinnaker pole, and steered for Hawaii, about 1,500 miles away, with a sextant and a watch she found in the bilge. An aircraft flew low over her without seeing her, and so did two ships. Forty-one days after the storm a Japanese research ship found the Hazana just outside the harbour at Hilo, Hawaii, and towed her in. Richard Sharp was lost at sea. Tami went back to sailing, and later told the story in her book Red Sky in Mourning. Rook didn't believe it either.\n\nAnimated reconstruction of a true story, made with respect for Richard Sharp, who is never shown. The yacht, the aircraft and the ships are generic low-poly shapes with no names, flags or markings; nobody's likeness is attempted. The chart is a drawing with approximate positions, not a real chart. Staging details such as where she lay, the look of the cabin and the deck, the cleat and the colour of the line, the engine hatch, how she waved, the telescope, the tally marks, the searchlight, the tow, the breakwater and everything Rook does are reconstruction, not record. Narration is a synthetic voice (Kokoro).",
+ "tags": [
+  "Tami Oldham Ashcraft",
+  "Tami Oldham",
+  "Hazana",
+  "Hurricane Raymond",
+  "Adrift true story",
+  "41 days at sea",
+  "lost at sea",
+  "sailing",
+  "sextant",
+  "1983",
+  "Hilo",
+  "survival",
+  "true story",
+  "survival story",
+  "animated story",
+  "Rook",
+  "Survra"
+ ],
+ "hashtags": [
+  "#shorts",
+  "#truestory",
+  "#survival"
+ ],
+ "story_score": {
+  "curiosity": 8,
+  "stakes": 9,
+  "freshness": 6,
+  "story": 9,
+  "visual": 8,
+  "audience_fit": 8,
+  "payoff": 8,
+  "packaging": 8,
+  "research": 9,
+  "repeatability": 7,
+  "total": 80
+ },
+ "title_options": [
+  "She Woke Up Alone on a Wrecked Yacht. Then She Sailed It 1,500 Miles #shorts",
+  "No Masts, No Engine, 1,500 Miles to Hawaii #shorts",
+  "Out Cold for 27 Hours. She Woke Up Alone at Sea #shorts"
+ ],
+ "shown_moments": {
+  "she wakes up in a flooded cabin": "shot 1 (her face on the settee, the gash, water beside her; her eyes open)",
+  "the masts are gone": "shots 2 and 4 (the fallen mast over the side; the splintered stump Rook stands on)",
+  "so is her fiancé": "shot 3 (the empty cockpit, the wheel turning by itself; she calls out)",
+  "a hurricane flipped the boat": "shots 5 and 6 (the wave behind the yacht; the yacht thrown over). Nobody is shown on deck.",
+  "out cold for 27 hours": "shot 7 (she lies still while the porthole light goes from day to night to day; a count runs to 27 H)",
+  "his safety line is still tied on": "shot 8 (the orange line on the cleat, her hand going to it)",
+  "nobody is on the end of it": "shots 9 and 10 (Rook lifts the free end with its opened ring; she at the stern rail, Rook with his hat off)",
+  "the engine is dead": "shot 11 (the open engine hatch, one puff of smoke, her shoulders drop)",
+  "she pumps out the cabin": "shot 12 (she works the pump lever; the water falls)",
+  "hangs one small sail on a broken pole": "shots 13 to 15 (the pole goes up, the jib fills, the yacht moves)",
+  "a plane flies right over her, low": "shot 16 (the aircraft coming in over the stern)",
+  "it doesn't see her": "shots 17 and 18 (seen from above, waving; the aircraft shrinking, her arms coming down)",
+  "neither do two ships": "shot 19 (two ships on the horizon past Rook and his telescope)",
+  "she aims for Hawaii, 1,500 miles away": "shot 20 (the chart, the orange line running west to Hawaii)",
+  "with a sextant": "shots 21 and 22 (she takes a sun sight; Rook follows the line of it)",
+  "a watch she finds in the bilge": "shot 23 (her hand lifts the watch out of the bilge)",
+  "on day 41": "shot 24 (she steers through days and nights, the count running up; Rook's tally marks)",
+  "a ship finds her just outside the harbour at Hilo": "shots 25 to 27 (the searchlight, her face in the beam, the tow past the breakwater light)",
+  "she steered that wreck there herself": "shots 28 and 29 (Rook's hat leaves his head; the finished line on the chart, 41 DAYS, ALONE)",
+  "Richard Sharp was lost in the storm": "shot 30 (the line still on its cleat at dawn, Rook with his hat off). He is never shown.",
+  "she went back to sea": "shot 31 (a sloop under full sail, her at the helm)",
+  "I was wrong. Case closed": "shots 32 and 33",
+  "it all began when": "shot 34 (the opening shot played back to its first frame)"
+ },
+ "experiments": {
+  "E1_E2": "spine v2: Rook is on the stump of the mainmast in shot 4 and doubts it there in one line of about 1.1 s ('No masts? No chance.') with her and the wreckage in frame; no office. The story runs forward from her waking; the storm is two fast shots and a count of hours, not a jump back to the start of the voyage. Date, place, name and age are on-screen labels (PACIFIC OCEAN, 1983; 12 OCTOBER 1983; TAMI OLDHAM, 23; DAY 41; HILO, HAWAII).",
+  "E3": "batch Short 7 (odd): person close-up first frame, as the brief assigns: her face in the flooded cabin.",
+  "E4": "'Case closed.' ending, as the brief assigns to this Short.",
+  "E7": "hook_text ALONE / AT SEA.",
+  "E8": "tail 0.4 s; the last line ('It all began when') runs into the first ('she wakes up in a flooded cabin'), and the last shot is the opening shot played back to its first frame.",
+  "brief_changes": "The brief's hook said 'on the floor of a wrecked yacht'; none of the six pages says where in the cabin she woke, so the line is 'in a flooded cabin' and she is staged on a settee. The brief's '41 days to Hawaii' is told as the sources have it: a ship found her off Hilo on day 41 and towed her in. The re-hook (the aircraft and the two ships that did not see her) was added from the sources.",
+  "rook_action": "The brief's Rook moment is kept: he stands beside her while she takes the sun sight, taps his beak, follows the line of the sextant and nods (shot 21). Detective actions in the story world: he lifts the free end of the safety line and looks at the opened ring (9), watches the two ships through a telescope (19) and keeps a tally of the days (24). Mannerisms: hat brim low (4), beak tap (21), hat off for Richard Sharp (10, 30), hat leaving his head and a shed feather (28). His only joke-like beat is the doubt line; after it he makes none. He pockets nothing in this case."
+ },
+ "sound_plan": {
+  "first_frame": "One 'hit' at 0.03 s (the gate needs an impact in the first second; here it is the sea knocking on the hull), then a wave. The hook mood is sparse.",
+  "music": "The engine's score follows the segment moods: hook, tense for Rook's line, sad for the storm and the line, action for the work, tense for the aircraft, wonder for the navigation, triumph for Hilo, sad for the ending. No drum loop under the sad segments. The engine cannot delay the music's entry.",
+  "effects": "One to four cues a shot, each tied to something visible: thunder and a crash for the wave, creaks for the wreck, a sputter for the engine, splashes for the pump, flaps for the sail, a buzz for the aircraft, far horns for the ships, ticks for the sextant and the watch.",
+  "hush": "Shot 23 (the watch coming out of the bilge): the music drops out and only the ticking is left, the breath before 'On day 41'.",
+  "tragic_beats": "Shots 8 to 10 and shot 30 carry one or two quiet cues only; Rook says nothing of his own there.",
+  "voice": "Narration is ducked over the bed by the engine; measured in the local rehearsal (see quality_gate), not listened to."
+ },
+ "source_notes": "Six pages were opened and read for this run on 17 Nov 2026 through a fetch tool: Wikipedia, the RNLI's 2019 interview with her, ExplorersWeb (2025), Outside (2018), Stylist (2018) and All That's Interesting. Every narrated fact is on at least two of them. Hurricane Raymond, 12 October 1983: Wikipedia, Outside, ATI (Stylist calls it Storm Raymond). 'Flipped the boat': Wikipedia, Stylist, ATI and Outside say capsized, the RNLI and ExplorersWeb say pitchpoled; 'flipped' covers both. Unconscious about 27 hours: Wikipedia, RNLI, Outside, ATI; ExplorersWeb alone says three hours, so 27 is used. Flooded cabin, masts gone, Richard gone: Wikipedia, ATI, ExplorersWeb, Outside. Head wound: ATI (a gash on her forehead), ExplorersWeb, Outside, Stylist; it is drawn small. Safety line still attached with nobody on it: the RNLI interview (the tether still on the cleat, the D-ring of his harness parted) and ExplorersWeb; Stylist says the harness was empty. Engine: unusable on four pages (the RNLI says she tried it and it was fouled); the narration says only 'the engine is dead'. Radio: the pages disagree (dead on waking, or working for some days), so it is not mentioned. Pumping by hand and a storm jib on a broken spinnaker pole: all six pages. Aircraft that flew low without seeing her and two ships: RNLI and ExplorersWeb; the order of these within the 41 days is not given and the film does not claim one. Hawaii rather than San Diego, about 1,500 miles: Wikipedia, RNLI, Stylist, ATI (ExplorersWeb 2,400 km). Sextant and watch: all six; the watch found in the bilge about a week in: RNLI, ExplorersWeb, Outside. Forty-one days, Hilo: all pages that give the arrival. Found just outside the harbour by a Japanese research ship: Stylist, ATI, ExplorersWeb (which names it and says it towed her in and that this was near midnight; the name is not used). Her age, 23: Wikipedia, RNLI, ExplorersWeb. Her name then was Tami Oldham; Ashcraft is her married name. Richard Sharp lost: all six pages. She went back to sailing: Outside, ExplorersWeb. Kept out because single-sourced, disputed or not needed: Richard's age (34 or 35), the yacht's length (43 or 44 feet), wind speeds and wave heights (pages differ), the departure date, the voice she says she heard, what she ate, the flares, the six years in which she could not read, the ship's name. Staging that is not fact: that she woke on a settee, the colour of the safety line and which cleat it was on, the smoke from the engine, that she waved from the roof, the telescope, the tally marks, the searchlight, the towline and the breakwater light, the sloop of the last shot, the positions on the chart (marked approximate), and everything Rook does.",
+ "quality_gate": {
+  "method": "One run, five review rounds. Rounds 1 to 3: low-res contact sheets of all 32 3D shots (one frame each). Found and fixed: her arm across her face in the opening shot; the safety line too thin to see and then hidden behind the coaming (re-routed along the cockpit seat and made thicker); the mizzen stump and then the wheel in front of Rook in the ring shot (moved to the stern); smoke that read as boulders; the camera inside the cabin steps in the pump shot; her back to the camera in the sail shot; the yacht cut off in the wide shot; her out of frame as the aircraft leaves; Rook out of frame at the bow and at the wheel; the storm too dark to read. Round 4: a full-length rehearsal (216x384, 4 samples, 12 fps, every 3D frame) composited with captions, labels, overlays, the chart and sound, reviewed as a 4-frames-per-second sheet of the whole video (173 frames). Found and fixed: a label under the hook title (removed from shot 2); the big wave swallowing the camera at the end of the capsize; the ring held in front of Rook's face; the pump lever across her face; the hour and day counts touching the label. Round 5: the changed shots re-rendered and looked at five frames a second, the gate run again, first and last frames compared side by side (they match), and twelve stills at 720x1280 with production samples (shots 1, 4, 9, 25 and 30). Both rehearsals passed the automated gate locally: 34 shots, mean 1.27 s, longest 2.20 s, Rook acting in 15 of 34 shots (44%), -14.8 LUFS, peak -1.3 dBFS, voice 14.5 dB over the bed, closest match to any earlier episode 0.78 (shot 29, the chart, against r011-sullivan; the limit is 0.93). Duration 43.3 s. The cloud render runs the real gate at 720x1280 and 60 fps.",
+  "checked": "Every 3D kind in the storyboard exists in world3d.SHOTS3D and the one other kind (chart) in scenes.SHOTS (checked by script); HOST lists the 15 kinds in which Rook is placed; wake and chart are the only kinds used twice, neither twice in a row. The first shot is 1.38 s with an impact sound at 0.03 s. The doubt line is about 1.1 s and is spoken on the wreck. The re-hook ('Then a plane flies right over her, low') starts at 18.7 s of 43.3 s (43%). One hush shot (23). Tail 0.4 s. On-screen dates, names and figures (PACIFIC OCEAN, 1983; 12 OCTOBER 1983; 27 H; TAMI OLDHAM, 23; 1,500 MILES; DAY 41; HILO, HAWAII; 41 DAYS) were checked against the sources. No death is shown, Richard Sharp is never shown, nothing graphic appears (the head wound is one small mark), and no flag, name, number or likeness appears anywhere.",
+  "not_met": "The audio was measured, not listened to; loudness range measured 3.0 LU against the checklist's 4 LU (the engine's mix, as in earlier Shorts). Preview stills at 20% and 80% of every shot were not made with preview3d.py: every shot was looked at on contact sheets, then at four frames a second in the rehearsal at low resolution, plus twelve full-resolution stills of five shots. The cloud render is the first full-resolution, 60 fps pass. The 13-category score was given from stills and rehearsal sheets, not from playback. Kokoro's reading of the opening line, of 'Hilo' and of the loop could not be heard; the first caption starts with a lower-case 'she' by design."
+ },
+ "checklist": {
+  "A_story": "done: score 80/100 with curiosity 8, story 9, payoff 8; spine v2; shown_moments lists every narrated moment",
+  "B_storyboard": "done: every shot has action, expression, camera and sound cue; Rook's mannerisms are hat brim low (4), beak tap (21), hat off (10, 30), hat hop and a shed feather (28); detective actions are the ring (9), the telescope (19) and the tally (24); no neutral poses under action lines",
+  "B2_retention": "done: hook_text set; first frame is her face in the flooded cabin; re-hook at 43%; one hush; tail 0.4 s with the loop, first and last frames compared",
+  "C_previews": "partly: contact sheets and two rehearsals at low resolution, twelve stills at 720x1280; no blown-out or crushed frame where the story has to be seen; Rook on-model; see quality_gate.not_met",
+  "D_render": "engine defaults untouched (60 fps, 720x1280, 16 jobs in the workflow); the local rehearsal used low settings only for review",
+  "E_sound": "voice am_fenrir; no drum loop under the sad segments; voice 14.5 dB over the bed; loudness range 3.0 LU, see quality_gate.not_met",
+  "F_captions": "done: captions inside the frame; the chart keeps the caption band clear of its own text; on-screen dates, names and figures checked against sources",
+  "G_final": "rehearsal reviewed as a 4 fps sheet of the whole video and larger frames; local gate PASS on both rehearsals; the full-resolution render and the real gate happen in the workflow"
+ },
+ "review": {
+  "notes": [
+   "0.0 s: her face on the settee, eyes opening, hook text above; 1.4 s: up through the hatch, the fallen mast; 2.8 s: the empty cockpit, the wheel turning",
+   "4.1 to 5.4 s: Rook on the mast stump, 'No masts? No chance.'",
+   "5.4 to 7.4 s: the wave, the capsize; 7.4 to 9.1 s: out cold, the count to 27 H",
+   "9.1 to 10.7 s: the line on the cleat; 10.7 to 12.4 s: Rook lifts the opened ring; 12.4 to 13.5 s: the stern rail, hat off",
+   "13.5 to 18.7 s: engine, pump, pole, sail, the yacht moving",
+   "18.7 s: re-hook, the aircraft; 20.0 to 22.2 s: waving from above, the aircraft leaving; 22.2 to 23.5 s: two ships on the horizon",
+   "23.5 to 25.0 s: the chart, 1,500 MILES; 25.0 to 27.8 s: the sun sight; 27.8 to 29.4 s: hush, the watch from the bilge",
+   "29.4 to 30.6 s: days and nights at the wheel; 30.6 to 32.7 s: the searchlight, her face in it; 32.7 to 34.0 s: the tow into Hilo",
+   "34.0 to 36.1 s: Rook's hat leaves his head; the chart, 41 DAYS, ALONE",
+   "36.1 to 38.3 s: the line at dawn, hat off; 38.3 to 39.7 s: the sloop; 39.7 to 41.6 s: 'I was wrong. Case closed.'; 41.6 to 43.3 s: back to the opening frame"
+  ],
+  "scores_13": {
+   "story": 4,
+   "hook": 4,
+   "character_acting": 3,
+   "animation": 3,
+   "art_direction": 3,
+   "lighting": 3,
+   "camera": 3,
+   "pacing": 4,
+   "editing": 4,
+   "narration": 3,
+   "sound": 3,
+   "captions_graphics": 4,
+   "respect_accuracy": 5
+  },
+  "weakest": "The cabin water is a flat teal surface, so 'flooded' reads from the floating tins more than from the water itself. In the ring shot (9) the opened ring sits in front of the wheel rim and is hard to pick out. Rook is seen from behind in the telescope shot (19) and the telescope itself is hidden. The tow shot (27) is dark and the town lights are hidden by the ship. She is small in the sloop shot (31). Smoke and spray are faceted blobs. Narration and sound were measured, not heard."
  }
 }
