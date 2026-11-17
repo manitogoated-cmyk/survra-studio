@@ -434,6 +434,45 @@
     "url": "https://youtu.be/FY_52abpoyw",
     "video_id": "FY_52abpoyw"
   },
+  "r019-adilang": {
+    "captions": "ok",
+    "format": "short",
+    "playlist": "Rook's Case Files (Shorts)",
+    "privacy": "private",
+    "publish_at": "2026-11-17T02:00:00Z",
+    "review": false,
+    "sha256": "19ca4a7d676fe12edad39224000e49af96ccc44c3d96ad1895fb65eff3802475",
+    "title": "The Rope Snapped. His Fishing Hut Drifted Out to Sea for 49 Days #shorts",
+    "uploaded_at": "2026-11-17T01:23:02Z",
+    "url": "https://youtu.be/5sjV1ZS5mek",
+    "video_id": "5sjV1ZS5mek"
+  },
+  "r020-thamluang": {
+    "captions": "ok",
+    "format": "short",
+    "playlist": "Rook's Case Files (Shorts)",
+    "privacy": "private",
+    "publish_at": "2026-11-17T17:00:00Z",
+    "review": false,
+    "sha256": "770a139dd6f7ab81c185a3b08461746943552561d9adb044133638cf0f0ca067",
+    "title": "12 Boys Trapped in a Flooded Cave. Then a Light Came Up #shorts",
+    "uploaded_at": "2026-11-17T01:23:20Z",
+    "url": "https://youtu.be/8YUhbBWTtsU",
+    "video_id": "8YUhbBWTtsU"
+  },
+  "r021-sanjose": {
+    "captions": "ok",
+    "format": "short",
+    "playlist": "Rook's Case Files (Shorts)",
+    "privacy": "private",
+    "publish_at": "2026-11-17T20:00:00Z",
+    "review": false,
+    "sha256": "7c7d07cb27e338177aa2f4c43dacee0934758e165b46a54483deb32f5fd4fefb",
+    "title": "17 Days After the Mine Collapsed, a Drill Came Up With a Note #shorts",
+    "uploaded_at": "2026-11-17T01:23:40Z",
+    "url": "https://youtu.be/gQ52iGzsKyk",
+    "video_id": "gQ52iGzsKyk"
+  },
   "s001-alvarenga": {
     "privacy": "private",
     "publish_at": null,
