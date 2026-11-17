@@ -1,0 +1,14 @@
+{
+  "id": "r021-sanjose", "spine": "v2", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.4,
+  "segments": [
+    {"scene": "hook", "mood": "hook", "text": "Seventeen days after a mine collapses, a drill comes back up with a note tied to it."},
+    {"scene": "doubt", "mood": "tense", "text": "A note? From down there?"},
+    {"scene": "note", "mood": "wonder", "text": "In red ink, it says: we are fine in the shelter, the thirty-three of us."},
+    {"scene": "deep", "mood": "tense", "text": "Thirty-three miners, seven hundred metres down. For seventeen days nobody knew if they were alive. Seven drill holes had missed."},
+    {"scene": "food", "mood": "calm", "text": "Their food was meant for a couple of days. So each man got two spoonfuls of tuna, every other day."},
+    {"scene": "rehook", "mood": "tense", "text": "But that hole fits a note, not a man. Drilling one wide enough takes seven more weeks."},
+    {"scene": "capsule", "mood": "action", "text": "Then a steel capsule, barely wider than their shoulders, goes down. One man at a time, up through solid rock."},
+    {"scene": "out", "mood": "triumph", "text": "In under a day, all thirty-three are out. Sixty-nine days underground."},
+    {"scene": "end", "mood": "end", "text": "I was wrong. Their foreman rode up last. Would you have waited? And the rescue began"}
+  ]
+}
