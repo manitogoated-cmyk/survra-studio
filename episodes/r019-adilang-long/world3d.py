@@ -1233,10 +1233,10 @@ def set_dock():
     cols = ('B4703A', '3A6A9A', '8E2C26', '4A7A5A', 'C8B070')
     for j in range(9):                                                                       # plain stacked boxes
         box(cols[j % 5], (-34 - 7.2 * (j % 3), -26 - 3.2 * (j // 3 % 2), 3.3 + 2.6 * (j // 6)), (6.6, 2.6, 2.6), r, rough=0.6)
-    for x in (-18, 18):                                                                      # a gantry
-        for y in (-12, -24):
+    for x in (-27, 27):                                                                      # a gantry
+        for y in (-12, -31):
             box('C8A040', (x, y, 13), (1.0, 1.0, 22), r)
-    box('C8A040', (0, -18, 24.5), (40, 14, 1.4), r)
+    box('C8A040', (0, -21, 24.5), (58, 20, 1.4), r)
     box('C8A040', (0, -10, 26), (3, 34, 1.6), r)
     for j in range(6):
         x = -70 + 28 * j
@@ -1457,9 +1457,9 @@ def job_wide(S, k, t, lt):
     b = S['boy']
     on(S, b, 1.0, -3.25, 0.0, -0.42)
     b.apply(P('sit', aL=(0.5, 0.2, 0.4), aR=(0.5, 0.2, 0.4), head=(0.05, 0.5 * math.sin(lt * 1.2)), lean=0.1, lL=(1.45 + 0.2 * math.sin(lt * 3), 1.4), lR=(1.45 - 0.2 * math.sin(lt * 3), 1.4)))
-    a = lerp(-1.05, 0.3, k)
-    R = lerp(20.0, 13.0, k)
-    shoot(S, (R * math.sin(a) + 1.0, -R * math.cos(a), lerp(7.5, 3.4, k)), (0.3, 0.0, 2.2), 30, fill=0.8)
+    a = lerp(-1.1, 0.35, k)
+    R = lerp(13.0, 8.5, k)
+    shoot(S, (R * math.sin(a) + 1.0, -R * math.cos(a), lerp(5.0, 2.0, k)), (0.3, 0.0, 2.3), 28, fill=0.8)
 
 
 def rook_coin(S, k, t, lt):
@@ -1904,7 +1904,7 @@ def carrier_pass(S, k, t, lt):
     S['rag'].location = (hl[0] + 0.4, hl[1], hl[2] + 0.3)
     S['rag'].rotation_euler = (0.2 * w, 0.5 * w, 0.0)
     S['rag'].scale = (0.9 * 1.6, 0.03, 0.6 * 1.6)
-    shoot(S, (lerp(40, 30, k), lerp(78, 75, k), lerp(31, 28, k)), (lerp(6, 2, k), 12, 2.0), 44, fill=0.6, fcol='FFD8B0')
+    shoot(S, (lerp(40, 30, k), lerp(78, 75, k), lerp(31, 28, k)), (lerp(6, 2, k), 10, 2.0), 58, fill=0.6, fcol='FFD8B0')
 
 
 # ---------------------------------------------------------------- on the ship
@@ -2192,7 +2192,7 @@ SHOTS3D.update({f.__name__: f for f in (
     home_rook, walk_inland, rook_shore)})
 STILLS.update(thumb=photo_thumb)
 
-REFRAME = dict(boy_face=(1.5, 1.6), alive=(-0.35, 1.0))                 # the Short's portrait framing cut Rook off the top of a wide frame: (lift the aim, pull back)
+REFRAME = dict(boy_face=(0.75, 2.3), alive=(-0.35, 1.0))                 # the Short's portrait framing cut Rook off the top of a wide frame: (lift the aim, pull back)
 
 
 def _reframed(f, dz, mul):

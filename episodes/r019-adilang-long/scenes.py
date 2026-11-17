@@ -105,6 +105,10 @@ def chart(cv, c, top='1A5A80', low='0C2C48'):
         yy = 40 + 40 * i
         xx = (rn(i, 31) * W + c.t * (90 + 80 * rn(i, 32))) % (W + 300) - 300
         cv.drawLine(xx, yy, xx + 160 + 140 * rn(i, 33), yy, P(0xFFFFFFFF, 7, a=0.24))
+    for i in range(9):                                             # and the wind over it
+        yy = 120 + 105 * i
+        xx = (rn(i, 51) * W + c.t * (520 + 260 * rn(i, 52))) % (W + 500) - 400
+        cv.drawLine(xx, yy, xx + 260, yy - 60, P(0xFFFFFFFF, 9, a=0.3))
 
 
 def land(cv, pts, seed=1):
@@ -248,7 +252,7 @@ def north_card(cv, c):
     cv.drawLine(1700, 330, 1700, 150, P(0xFFFFFFFF, 10))
     cv.drawPath(poly([(1670, 170), (1700, 100), (1730, 170)]), P(0xFFFFFFFF))
     fit(cv, 'N', 1700, 400, 60, 100, 0xFFFFFFFF)
-    fit(cv, 'NO BOAT COMES', 1150, 700, 110, 1100, AMBER)
+    fit(cv, 'NO BOAT COMES', 1280, 770, 110, 1000, AMBER)
     note(cv)
 
 
@@ -263,7 +267,8 @@ def guam_card(cv, c):
     pos = track(cv, k, DRIFT)
     cv.save()
     cv.translate(pos[0], pos[1] - 10 + 4 * math.sin(c.t * 2.2))
-    hut_mark(cv, 0, 0, 0.95, lamp=False)
+    cv.rotate(6 * math.sin(c.t * 4))
+    hut_mark(cv, 0, 0, 1.5, lamp=False)
     cv.restore()
     fit(cv, '14 JULY', 560, 640, 46, 400, 0xFFFFFFFF)
     if k > 0.95:
@@ -433,7 +438,7 @@ def day_49(cv, c):
 
 def passes(cv, c):
     n = 1 + min(3, int(c.k * 4))
-    big(cv, f'PASS {n} OF 4', 420, 240, c, 0.0, 110, 700)
+    big(cv, f'PASS {n} OF 4', 520, 240, c, 0.0, 110, 700)
     cv.drawCircle(960, 540, 54, P(AMBER, 7))
     fit(cv, 'THE HUT', 960, 660, 44, 300, 0xFFFFFFFF)
 
