@@ -1488,7 +1488,7 @@ STILLS = dict(ledge=photo_ledge)
 # navy divers, a doctor, a farmer, boys in hospital gowns, novices) are plain stand-ins: nobody's likeness is attempted.
 SETS.update(camp=(16000, 0, 0), fields=(20000, 0, 0), ward=(24000, 0, 0), temple=(28000, 0, 0))
 CAMFILL.update(take_under=200, rook_edge=220, arrive=90, locked_bikes=160, camp_wide=120, pumps_row=200, pipe_out=60, fields_flood=0, farmer=110,
-               doctor_stay=240, letters=160, letter_out=220, coach_sorry=260, search_map=220, still_water=120, doc_kit=240, team_watch=300, relay=260,
+               doctor_stay=240, letters=160, letter_out=220, coach_sorry=260, search_map=220, still_water=120, doc_kit=240, vials=160, team_watch=300, relay=260,
                cheer=220, get_out=420, out_mouth=160, ward=120, walk_home=120, novices=160, candles=200)
 CREWC = (('C86A22', 'E8E4D8'), ('2E6A4A', 'E0B030'), ('C86A22', 'E0B030'), ('3A5A8A', 'E8E4D8'), ('8A7A4A', 'D8822A'))
 PUMPS = [(10.0 + 2.4 * j, -2.0) for j in range(4)]
@@ -1857,6 +1857,7 @@ def _build_long():
     box('3A3F4C', (0, -0.33, 0.04), (1.0, 0.66, 0.08), S['lid'])
     for j in range(4):
         add('cylinder', 'F4F4F0' if j % 2 else 'BFEFFF', (-0.3 + 0.2 * j, 0.0, 0.3), radius=0.05, depth=0.2, vertices=6, parent=cs, rough=0.2)
+    S['vial'] = keep(add('cylinder', 'BFEFFF', AWAY, radius=0.055, depth=0.24, vertices=6, rough=0.15))
     S['lock'] = keep(add('torus', 'D8DCE4', AWAY, major_radius=0.2, minor_radius=0.035, major_segments=12, minor_segments=4, rough=0.3))
     reset(S)
     return S
@@ -1915,9 +1916,9 @@ def grey_day(S):
 def foil(S, A, i, seat, up=0.95):
     x, y = SEATS[seat]
     o = S['foils'][i]
-    o.location = A(*lp(x, y + 0.12, up))
-    o.scale = (0.62, 0.5, 0.62)
-    o.rotation_euler = (0.3, 0, 0.3 * i)
+    o.location = A(*lp(x, y + 0.3, up - 0.12))
+    o.scale = (0.5, 0.26, 0.55)
+    o.rotation_euler = (0.25, 0, 0.2 * math.sin(i * 2.0))
 
 
 def kneel(rig, pos, yaw, face='calm', **over):
@@ -2309,6 +2310,26 @@ def doc_kit(S, k, t, lt):
     shoot(S, A(lerp(-2.6, -1.8, k), lerp(-2.6, -2.0, k), lerp(2.2, 2.5, k)), A(0.7, 2.0, 1.5), 28, fill=1.2)
 
 
+def vials(S, k, t, lt):
+    A = chamber(S)
+    cs = S['case']
+    cp = A(*lp(1.3, 1.2, 0.02))
+    cs.location = cp
+    cs.rotation_euler = (TH, 0, 0.5)
+    S['lid'].rotation_euler = (1.9, 0, 0)
+    dn, up = sm(lt / 0.7), sm((lt - 0.9) / 0.8)
+    hz = cp[2] + 1.3 - 0.75 * dn + 0.7 * up
+    h = S['hands'][0]
+    h.place((cp[0] + 0.25, cp[1] - 0.05, hz), (1.2, 0.0, -0.9))
+    h.grip(lerp(0.3, 0.8, sm((lt - 0.6) / 0.3)))
+    v = S['vial']
+    v.location = (cp[0] + 0.02, cp[1] - 0.3, hz - 0.38) if lt > 0.75 else (cp[0] + 0.02, cp[1] - 0.3, cp[2] + 0.42)
+    v.rotation_euler = (0.2 * up, 0.3 * up, 0)
+    lampat(S, 0, (cp[0] - 0.8, cp[1] - 1.6, cp[2] + 1.8), 260, 'E8F6FF')
+    lampat(S, 1, (cp[0] + 1.6, cp[1] + 0.6, cp[2] + 1.4), 160, 'FFC890')
+    shoot(S, (cp[0] + lerp(-1.3, -0.7, k), cp[1] - lerp(2.3, 1.9, k), cp[2] + lerp(1.3, 1.7, k)), (cp[0] + 0.1, cp[1] - 0.1, cp[2] + 0.55 + 0.25 * up), 36, fill=1.1)
+
+
 def team_watch(S, k, t, lt):
     A = chamber(S)
     seat_team(S, A, t, face='wide', nod=0.05, turn=-0.15, skip=(3, 12))
@@ -2372,7 +2393,7 @@ def get_out(S, k, t, lt):
     torch(S, 0, rigs[0], 1.0, li=0, watts=420)
     torch(S, 1, rigs[2], 1.0, li=1, watts=420)
     foam(S, [A(-4.5 + 9 * rn(i, 270), 15 - 10 * k - 3 * rn(i, 271), wl + 0.15 + 0.4 * abs(math.sin(t * 8 + i))) for i in range(14)], 1.6)
-    flyer(S, A(2.6, 3.0 - 9.0 * k, 3.9 + 0.3 * math.sin(lt * 5)), 0.2, lt, head=(0.2, -0.5))
+    flyer(S, A(2.6, 5.0 - 9.0 * k, 2.1 + 0.3 * math.sin(lt * 5)), 0.2, lt, head=(0.2, -0.5))
     S['rface'] = 'shocked'
     lampat(S, 2, A(3.0, 2.0 - 9.0 * k, 5.8), 600, 'FFC890')
     lampat(S, 3, A(0, 16, 5.5), 1600, 'A8D8E8')
@@ -2392,7 +2413,7 @@ def out_mouth(S, k, t, lt):
         rig.apply(blend(walk(t + i * 0.3, 1.7), dict(walk(t + i * 0.3, 1.7), aR=(2.9, 0.2, 0.1), head=(-0.2, 0.0)), up))
         rig.face = 'warm'
         rig.jawv = 0.5 * up
-    flyer(S, A(-2.9, 5.0 - 5.0 * k, 2.0 + 0.3 * math.sin(lt * 5)), 0.5, lt, head=(0.2, 0.5))
+    flyer(S, A(2.4, 4.0 - 5.0 * k, 1.5 + 0.3 * math.sin(lt * 5)), -0.5, lt, head=(0.2, -0.5))
     S['rface'] = 'warm'
     lampat(S, 0, A(-1.0, 4.0, 3.6), 1800, 'FFC890')
     lampat(S, 1, A(-4.5, 5.0, 5.2), 700, 'FFC890')
@@ -2478,25 +2499,25 @@ def candles(S, k, t, lt):
 # ---------------------------------------------------------------- the thumbnail picture
 def photo_thumb(S, k, t, lt):
     A = chamber(S)
-    seat_team(S, A, t, face='calm', nod=0.1, skip=(12,))
     p = lie_pat(S, A, t, 1.0)
     wear_mask(S, p)
-    d = S['divers'][0]
-    dp = lp(1.7, 2.6)
-    d.place(A(*dp), look_yaw(dp, (0.0, 3.2)))
-    d.apply(dict(KNEE, aR=(1.25, 0.25, 0.5), aL=(0.9, 0.0, 0.8), head=(0.45, 0.0)))
-    dlamp(S, d, 0, False)
     hd = world_of(p.head)
-    lampat(S, 0, (hd[0] - 0.6, hd[1] - 2.2, hd[2] + 2.2), 700, 'E8F6FF')
-    lampat(S, 1, (hd[0] + 3.0, hd[1] - 1.0, hd[2] + 2.0), 500, 'FFC890')
-    shoot(S, (hd[0] - 1.9, hd[1] - 3.3, hd[2] + 1.5), (hd[0] - 1.2, hd[1] + 0.6, hd[2] + 0.35), 34, fill=1.5)
+    d = S['divers'][0]
+    dp = lp(-1.75, 2.75)
+    d.place(A(*dp), look_yaw(dp, (0.0, 3.0)))
+    d.apply(dict(KNEE, aR=(1.25, 0.25, 0.5), aL=(1.1, 0.1, 0.6), head=(0.5, 0.0)))
+    dlamp(S, d, 0, False)
+    lampat(S, 0, (hd[0] + 1.6, hd[1] - 1.2, hd[2] + 2.0), 500, 'E8F6FF')
+    lampat(S, 1, (hd[0] - 2.5, hd[1] + 2.5, hd[2] + 2.6), 600, 'FFC890')
+    lampat(S, 2, (hd[0] + 0.5, hd[1] + 3.0, hd[2] + 1.5), 300, '8FD8F0')
+    shoot(S, (hd[0] + 3.3, hd[1] - 0.6, hd[2] + 1.7), (hd[0] - 0.6, hd[1] - 1.0, hd[2] + 0.35), 34, fill=1.4)
 
 
 HOST |= {'rook_edge', 'arrive', 'camp_wide', 'pumps_row', 'farmer', 'letter_out', 'coach_sorry', 'search_map', 'team_watch', 'cheer', 'get_out', 'out_mouth',
          'ward', 'walk_home', 'candles'}
 SHOTS3D.update({f.__name__: f for f in (
     take_under, rook_edge, arrive, locked_bikes, camp_wide, pumps_row, pipe_out, fields_flood, farmer, doctor_stay, letters, letter_out, coach_sorry,
-    search_map, still_water, doc_kit, team_watch, relay, cheer, get_out, out_mouth, ward, walk_home, novices, candles)})
+    search_map, still_water, doc_kit, vials, team_watch, relay, cheer, get_out, out_mouth, ward, walk_home, novices, candles)})
 STILLS.update(thumb=photo_thumb)
 
 

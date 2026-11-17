@@ -185,7 +185,7 @@ def map_card(cv, c):
         fit(cv, 'FLOODED', 920, 400, 96, 620, h('7FD4F4'))
     if c.lt > 0.6:
         fit(cv, '13', 1610, 420, 110, 240, AMBER)
-    fit(cv, 'NOT TO SCALE', 960, 1010, 44, 600, 0x99FFFFFF, None)
+    fit(cv, 'NOT TO SCALE', 960, 800, 44, 600, 0x99FFFFFF, None)
     Wd.vgrad(cv, 0, 0, W, H, [(0, 0x33000000), (0.5, 0x00000000), (1, 0x66000000)])
 
 
@@ -220,7 +220,7 @@ def air_card(cv, c):
     cv.drawRoundRect(skia.Rect.MakeXYWH(gx - 8, gy - 8, gw + 16, gh + 16), 18, 18, P(0xFFFFFFFF, 6))
     fit(cv, 'OXYGEN', gx + gw / 2, 150, 64, 400, 0xFFFFFFFF)
     if c.lt > 0.5:
-        fit(cv, 'RUNNING DOWN', 960, 1000, 96, 1100, RED)
+        fit(cv, 'RUNNING DOWN', 960, 790, 96, 1100, RED)
     Wd.vgrad(cv, 0, 0, W, H, [(0, 0x33000000), (0.5, 0x00000000), (1, 0x66000000)])
 
 
@@ -270,7 +270,7 @@ def options_card(cv, c):
         if c.k > 0.8:
             s = ease((c.k - 0.8) / 0.08)
             cv.drawLine(x - 230, 520, x - 230 + 460 * s, 180, P(RED, 22))
-            fit(cv, 'TOO RISKY', x, 960, 110, 700, RED)
+            fit(cv, 'TOO RISKY', x, 780, 100, 700, RED)
 
 
 def days_card(cv, c):
@@ -294,7 +294,7 @@ def days_card(cv, c):
             idx += 1
         fit(cv, 'FOUR' if n == 4 else 'FOUR AND THE COACH', x, 630, 64, 480, 0xFFFFFFFF)
     if c.k > 0.86:
-        fit(cv, 'ALL THIRTEEN', 960, 960, 110, 1000, GREEN)
+        fit(cv, 'ALL THIRTEEN', 960, 790, 110, 1000, GREEN)
 
 
 def thirteen_card(cv, c):
@@ -312,7 +312,7 @@ def thirteen_card(cv, c):
         person(cv, x, y, 1.15 if big else 0.95, h('34466A') if big else h(SHIRTS[i % 6]))
         tick(cv, x + 50, y + 62, 1.4, min(1.0, max(0.0, n - i)))
     if c.k > 0.8:
-        fit(cv, '13 OF 13', 960, 990, 130, 900, GREEN)
+        fit(cv, '13 OF 13', 960, 800, 110, 900, GREEN)
     fit(cv, '8 TO 10 JULY 2018', 960, 130, 70, 900, 0xFFFFFFFF)
 
 
@@ -416,7 +416,7 @@ OVER = dict(mouth_wide=monsoon, bikes=monsoon, walk_in=mouth_rain, rain_gush=spr
             mask_on=drips, carry_in=drips, carry_dark=silt, squeeze=silt, stretcher_out=dusk_air, pump_fail=dusk_air, reflood=spray,
             signoff=closed, take_under=drips, rook_edge=drips, arrive=motes, locked_bikes=monsoon, camp_wide=monsoon, pumps_row=monsoon, pipe_out=drizzle,
             fields_flood=drizzle, farmer=drizzle, doctor_stay=drips, letters=drips, letter_out=drips, coach_sorry=drips, search_map=drizzle,
-            still_water=drips, doc_kit=drips, team_watch=drips, relay=silt, cheer=dusk_air, get_out=spray, out_mouth=dusk_air, ward=motes,
+            still_water=drips, doc_kit=drips, vials=drips, team_watch=drips, relay=silt, cheer=dusk_air, get_out=spray, out_mouth=dusk_air, ward=motes,
             walk_home=motes, novices=embers, candles=embers, tank_carry=drips, rook_wrong=motes)
 
 

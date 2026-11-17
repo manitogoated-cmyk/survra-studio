@@ -1223,7 +1223,7 @@
      0.6
     ]
    ],
-   "hud": "\"I AM SORRY\"",
+   "hud": "THE COACH'S APOLOGY",
    "prm": {}
   },
   {
@@ -1707,7 +1707,7 @@
   {
    "n": 45,
    "segment": "plan",
-   "weight": 1.0,
+   "weight": 1.3,
    "kind": "team_watch",
    "action": "The boys on the mud, wide-eyed, all looking down at the water; the coach stands at the edge with his hands clasped. Rook sits among them, hugging his knees, and turns his head to look where they look",
    "camera": "High from the side over the water, moving in",
@@ -1743,7 +1743,7 @@
   {
    "n": 46,
    "segment": "plan",
-   "weight": 1.2,
+   "weight": 0.9,
    "kind": "doc_kit",
    "action": "A diver kneels on the mud beside a boy in a wetsuit sitting on a silver blanket, and opens a small case of vials; the coach kneels on the other side with a hand out to the boy, who looks up at the diver",
    "camera": "Low from the water's edge, easing in",
@@ -1779,7 +1779,43 @@
   {
    "n": 47,
    "segment": "plan",
-   "weight": 1.0,
+   "weight": 0.8,
+   "kind": "vials",
+   "action": "Close on the open case: a gloved hand comes down, closes on a small glass vial and lifts it out into the light",
+   "camera": "Close above the case, easing round",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.35
+    ],
+    [
+     "clunk",
+     0.6
+    ]
+   ],
+   "hud": "DIVER AND ANAESTHETIST",
+   "prm": {}
+  },
+  {
+   "n": 48,
+   "segment": "plan",
+   "weight": 0.8,
    "kind": "sleep",
    "action": "The boy lies back on the blanket. The diver kneels over him, a hand on his arm, the coach on the other side. The boy's eyes close",
    "camera": "Over the diver's shoulder, moving in",
@@ -1813,9 +1849,9 @@
    "prm": {}
   },
   {
-   "n": 48,
+   "n": 49,
    "segment": "plan",
-   "weight": 0.9,
+   "weight": 0.8,
    "kind": "mask_on",
    "action": "The gloved hands lower the mask onto his face, seen from the other side",
    "camera": "From above and behind, close",
@@ -1855,9 +1891,9 @@
    }
   },
   {
-   "n": 49,
+   "n": 50,
    "segment": "plan",
-   "weight": 1.0,
+   "weight": 0.9,
    "kind": "carry_in",
    "action": "The diver wades out with the sleeping boy and takes him under, seen from along the bank: the coach and Rook stand at the edge and watch him go",
    "camera": "From along the water's edge, higher",
@@ -1897,7 +1933,7 @@
    }
   },
   {
-   "n": 50,
+   "n": 51,
    "segment": "carry",
    "weight": 1.0,
    "kind": "relay",
@@ -1933,7 +1969,7 @@
    "prm": {}
   },
   {
-   "n": 51,
+   "n": 52,
    "segment": "carry",
    "weight": 1.0,
    "kind": "carry_dark",
@@ -1975,7 +2011,7 @@
    }
   },
   {
-   "n": 52,
+   "n": 53,
    "segment": "carry",
    "weight": 1.0,
    "kind": "squeeze",
@@ -2012,7 +2048,7 @@
    "hush": true
   },
   {
-   "n": 53,
+   "n": 54,
    "segment": "out",
    "weight": 1.1,
    "kind": "stretcher_out",
@@ -2052,7 +2088,7 @@
    "prm": {}
   },
   {
-   "n": 54,
+   "n": 55,
    "segment": "out",
    "weight": 1.2,
    "kind": "days_card",
@@ -2092,7 +2128,7 @@
    "prm": {}
   },
   {
-   "n": 55,
+   "n": 56,
    "segment": "out",
    "weight": 1.0,
    "kind": "cheer",
@@ -2132,7 +2168,7 @@
    "prm": {}
   },
   {
-   "n": 56,
+   "n": 57,
    "segment": "out",
    "weight": 1.1,
    "kind": "thirteen_card",
@@ -2180,9 +2216,9 @@
    "prm": {}
   },
   {
-   "n": 57,
+   "n": 58,
    "segment": "pumps",
-   "weight": 1.1,
+   "weight": 1.4,
    "kind": "pump_fail",
    "action": "A pump by the cave mouth shudders and puffs, then stops dead. Rook, beside it, unfolds his arms and prods it, eyes wide",
    "camera": "Close, three-quarter",
@@ -2220,9 +2256,9 @@
    "prm": {}
   },
   {
-   "n": 58,
+   "n": 59,
    "segment": "pumps",
-   "weight": 1.1,
+   "weight": 1.0,
    "kind": "reflood",
    "action": "Inside: the water comes back up the passage, over the tanks and the line. A work light on a stand topples, flickers and goes out. Rook flaps up out of the way",
    "camera": "High, backing off",
@@ -2264,9 +2300,9 @@
    "prm": {}
   },
   {
-   "n": 59,
+   "n": 60,
    "segment": "pumps",
-   "weight": 1.1,
+   "weight": 1.0,
    "kind": "get_out",
    "action": "Four rescue workers wade hard down the passage towards us, waist-deep and rising, torches swinging, mouths open, foam chasing them. Rook flies ahead of them, looking back",
    "camera": "High from the side, backing away fast",
@@ -2304,9 +2340,9 @@
    "prm": {}
   },
   {
-   "n": 60,
+   "n": 61,
    "segment": "pumps",
-   "weight": 1.0,
+   "weight": 0.9,
    "kind": "out_mouth",
    "action": "The cave mouth at night under the work lights: the last workers and the navy divers walk out of the dark, one by one raising a fist. Rook flies out over their heads",
    "camera": "Low beside the path, easing in",
@@ -2340,7 +2376,7 @@
    "prm": {}
   },
   {
-   "n": 61,
+   "n": 62,
    "segment": "after",
    "weight": 1.1,
    "kind": "ward",
@@ -2376,7 +2412,7 @@
    "prm": {}
   },
   {
-   "n": 62,
+   "n": 63,
    "segment": "after",
    "weight": 1.0,
    "kind": "walk_home",
@@ -2412,11 +2448,11 @@
      0.8
     ]
    ],
-   "hud": "18 JULY 2018",
+   "hud": "ABOUT A WEEK LATER",
    "prm": {}
   },
   {
-   "n": 63,
+   "n": 64,
    "segment": "novices",
    "weight": 1.0,
    "kind": "novices",
@@ -2452,7 +2488,7 @@
    "prm": {}
   },
   {
-   "n": 64,
+   "n": 65,
    "segment": "novices",
    "weight": 1.1,
    "kind": "candles",
@@ -2488,9 +2524,9 @@
    "prm": {}
   },
   {
-   "n": 65,
+   "n": 66,
    "segment": "end",
-   "weight": 1.1,
+   "weight": 3.0,
    "kind": "rook_wrong",
    "action": "Morning, the rain gone. Rook stands in front of the cave mouth, turns to us and shrugs, eyes warm",
    "camera": "Three-quarter, drifting in",
@@ -2524,9 +2560,51 @@
    "prm": {}
   },
   {
-   "n": 66,
+   "n": 67,
    "segment": "end",
-   "weight": 0.9,
+   "weight": 3.0,
+   "kind": "take_under",
+   "action": "The cold open again from the bank: the diver sinks with the sleeping boy in his arms; rings spread and bubbles come up",
+   "camera": "From the bank, higher and wider",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.06,
+     960,
+     538,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "splash",
+     0.4
+    ],
+    [
+     "bubbles",
+     0.7
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "alt": [
+     -70,
+     1.25,
+     0.7
+    ]
+   }
+  },
+  {
+   "n": 68,
+   "segment": "end",
+   "weight": 2.2,
    "kind": "camp_wide",
    "action": "The camp from high up: the canopies, the lamps and the crowd, small under the mountain",
    "camera": "Higher and further back, swinging round",
@@ -2566,9 +2644,9 @@
    }
   },
   {
-   "n": 67,
+   "n": 69,
    "segment": "end",
-   "weight": 1.1,
+   "weight": 1.8,
    "kind": "pin_13",
    "action": "Rook's case board, a slab of wet limestone: a photograph of the thirteen on the ledge, THIRTEEN IN, THIRTEEN OUT, stamped TRUE",
    "camera": "Flat insert",
@@ -2602,9 +2680,9 @@
    "prm": {}
   },
   {
-   "n": 68,
+   "n": 70,
    "segment": "end",
-   "weight": 1.3,
+   "weight": 1.9,
    "kind": "signoff",
    "action": "By the path he picks a small brass torch out of the mud, clicks it on, pockets it and pulls his hat brim down",
    "camera": "Three-quarter, pushing in",
