@@ -12,7 +12,7 @@
     {"scene": "life", "mood": "calm", "text": "It is hot down there, and wet. They drink water drained from the machines, and run their helmet lamps off truck batteries. I'd have complained. Loudly."},
     {"scene": "above", "mood": "sad", "text": "Up top, their families camp at the mine gate, and will not leave. They call it Camp Hope. And the drills start down, through seven hundred metres of rock, aimed at one small room."},
     {"scene": "miss", "mood": "sad", "text": "One after another, they miss. Seven holes. And nobody on the surface knows if anyone down there is still alive."},
-    {"scene": "day17", "mood": "action", "text": "Day seventeen. The eighth drill comes through the roof, right beside them. And the men tie a note to it."},
+    {"scene": "day17", "mood": "action", "text": "Day seventeen. The eighth drill comes through the roof, close to the shelter. And the men tie a note to it."},
     {"scene": "alive", "mood": "triumph", "text": "That's the note. Thirty-three men, all alive. The whole camp goes wild. So did I."},
     {"scene": "rehook", "mood": "tense", "text": "But now comes the hard part. That hole fits a note. It does not fit a man. And the first estimate for getting them out is four months."},
     {"scene": "doves", "mood": "calm", "text": "So the little hole becomes a lifeline. Down it go narrow tubes the rescuers call doves, carrying glucose and medicine, then food. And letters from home. Even a video camera."},
@@ -20,11 +20,11 @@
     {"scene": "through", "mood": "action", "text": "On the ninth of October, Plan B breaks through. A shaft more than six hundred metres long, and about as wide as a bicycle wheel."},
     {"scene": "capsule", "mood": "calm", "text": "The navy builds a steel capsule to ride in it. Fifty-four centimetres across. Barely wider than a man's shoulders. I tried one. Don't."},
     {"scene": "down", "mood": "tense", "text": "And the first person to ride it goes the wrong way. A rescuer, Manuel González, goes down alone, to get the men ready."},
-    {"scene": "up", "mood": "wonder", "text": "Just after midnight, on the thirteenth of October, the first miner starts up. One man, in the dark, through solid rock."},
-    {"scene": "out", "mood": "triumph", "text": "And he steps out, in dark glasses against the lights. The second man up brings rocks from the mine, as souvenirs. My kind of miner."},
+    {"scene": "up", "mood": "wonder", "text": "Then, around midnight, the first miner starts up. One man, in the dark, through solid rock."},
+    {"scene": "out", "mood": "triumph", "text": "Just after midnight, on the thirteenth of October, he steps out, in dark glasses against the lights. The second man up brings rocks from the mine, as souvenirs. My kind of miner."},
     {"scene": "count", "mood": "triumph", "text": "They come up one at a time, all night and all day. Twenty-two hours later, the count is thirty-three out of thirty-three. Sixty-nine days underground."},
     {"scene": "last", "mood": "calm", "text": "The last miner out is their foreman, Luis Urzúa. Then the rescuers ride up. The very last is Manuel González, the man who went down first. And the mine is empty."},
-    {"scene": "after", "mood": "calm", "text": "A steel lid goes over the shaft. Prosecutors closed the case in {2013|twenty thirteen}, and nobody was charged. But every one of those men came back up into the light."},
+    {"scene": "after", "mood": "calm", "text": "A lid goes over the shaft. Prosecutors closed the case in {2013|twenty thirteen}, and nobody was charged. But every one of those men came back up into the light."},
     {"scene": "end", "mood": "end", "text": "I said no chance. I was wrong. Case closed."}
   ]
 }

@@ -5,8 +5,8 @@
  "synthetic": false,
  "host": "rook",
  "case": 21,
- "title": "17 Days After the Mine Collapsed, a Drill Came Up With a Note #shorts",
- "description": "Case 021. On 5 August 2010 the San José copper and gold mine near Copiapó, in Chile's Atacama desert, collapsed and trapped 33 miners about 700 metres underground. For seventeen days nobody on the surface knew whether they were alive, and probe after probe missed them. The men stretched an emergency food supply meant for a couple of days: two spoonfuls of tuna each, every other day. On 22 August a drill broke through near their shelter and came back up with a note tied to it, written in red ink: in English, \"We are fine in the shelter, the 33 of us.\" That borehole was only wide enough for messages and supplies, so a wider shaft was drilled, which took about seven more weeks. On 13 October 2010 a steel capsule barely wider than a man's shoulders lifted them out one at a time in about 22 and a half hours, 69 days after the collapse. The shift foreman, Luis Urzúa, came up last. Rook didn't believe it either.\n\nAnimated reconstruction of a true story. The drill site, the gallery, the shelter, the shaft and the capsule are generic low-poly sets, not models of the real site or equipment; the capsule is drawn as an open cage so the man inside can be seen (the real one was closed), and its white, blue and red bands follow press descriptions of its paint. The miners, rescuers and families are simple figures and nobody's likeness is attempted; no flag, emblem, company name or logo appears. The note card shows an English translation in a drawn hand, not a copy of the real note. The cross-sections are diagrams, not surveys, and are not to scale. Staging details such as the miners watching the drill go up, the queue with cups, the rule Rook lays across the borehole, Rook wedged in the capsule, the embrace at the surface and the drill tooth Rook keeps are reconstruction, not record. Narration is a synthetic voice (Kokoro).",
+ "title": "33 Men, 69 Days Underground: The Full Case of the Chilean Mine Rescue",
+ "description": "Case 021, the full case file. On 5 August 2010 the San José copper and gold mine near Copiapó, in Chile's Atacama desert, collapsed and trapped 33 men about 700 metres underground. The road out was sealed, and the ladder in the ventilation shaft had never been finished. In an emergency shelter stocked for about two days they voted on everything and rationed the food: two spoonfuls of tuna, a sip of milk and a bite of cracker each, every other day. Above them, families camped at the gate (Camp Hope) while probe after probe missed. On day 17 a drill came back up with a note tied to it, in red ink: in English, \"We are fine in the shelter, the 33 of us.\" The first estimate for getting them out was four months. Supplies went down the narrow borehole in tubes the rescuers called doves while three drills (Plans A, B and C) cut towards them; Plan B broke through on 9 October. On 13 October 2010 a steel capsule 54 centimetres across lifted them out one at a time in about 22 hours, 69 days after the collapse. Rook didn't believe it either.\n\nChapters follow the story in order: the note, the collapse, the shelter, the camp, day 17, the lifeline, the three drills, the capsule, the rescue.\n\nAnimated reconstruction of a true story. The drill sites, the access road, the ventilation shaft, the gallery, the shelter and the capsule are generic low-poly sets, not models of the real site or equipment; the capsule is drawn as an open cage so the man inside can be seen (the real one was closed), and its white, blue and red bands follow press descriptions of its paint. The miners, rescuers and families are simple figures and nobody's likeness is attempted; no flag, emblem, company name or logo appears. The note card shows an English translation in a drawn hand, not a copy of the real note. The cross-sections and scale drawings are diagrams, not surveys. Staging that is reconstruction, not record: the pickup on the access road, the men running from the dust, how the vote was taken, the queue with cups, the men listening to a drill pass, the hammer on the drill bit, the candles at the camp, how the supply tubes were handled, the shovels and the barrow, the capsule on trestles, who embraces whom, the sack the rocks come out of, the empty gallery, the look of the lid on the shaft, and everything Rook does. Narration is a synthetic voice (Kokoro).",
  "tags": [
   "San José mine",
   "Chilean miners",
@@ -15,21 +15,25 @@
   "2010 Copiapó mining accident",
   "Chile mine rescue",
   "Luis Urzúa",
+  "Manuel González",
   "Fénix capsule",
+  "Camp Hope",
   "Atacama",
   "2010",
   "survival",
   "true story",
   "survival story",
+  "full story",
   "rescue",
   "animated story",
+  "animated documentary",
   "Rook",
   "Survra"
  ],
  "hashtags": [
-  "#shorts",
   "#truestory",
-  "#survival"
+  "#survival",
+  "#rescue"
  ],
  "playlist": "Rook's Case Files (Full Cases)",
  "sources": [
@@ -45,7 +49,23 @@
   "https://www.aljazeera.com/news/2010/10/14/last-of-chiles-miners-rescued",
   "https://www.scotsman.com/news/world/last-chilean-miner-pulled-from-pit-1700775",
   "https://www.foxnews.com/world/all-33-chilean-miners-rescued-in-flawless-operation",
-  "https://www.columbian.com/news/2010/oct/13/first-33-trapped-chile-miners-rescued/"
+  "https://www.columbian.com/news/2010/oct/13/first-33-trapped-chile-miners-rescued/",
+  "https://www.britannica.com/event/Chile-mine-rescue-of-2010",
+  "https://theworld.org/stories/2016/08/02/poor-safety-standards-led-chilean-mine-disaster",
+  "https://www.washingtontimes.com/news/2010/aug/22/33-trapped-chilean-miners-are-alive-after-17-days/",
+  "https://www.heraldnet.com/news/joy-and-fear-miners-found-alive-stuck-for-months",
+  "https://www.scotsman.com/news/first-supplies-boost-trapped-chilean-miners-spirits-as-they-dig-in-for-long-haul-1707748",
+  "https://macleans.ca/news/world/voices-from-the-underground/",
+  "https://www.pbs.org/newshour/world/miners-families",
+  "https://www.cbsnews.com/news/trapped-chile-miners-have-ally-in-geology",
+  "https://phys.org/news/2012-02-chilean-miners-capsule-london.html",
+  "https://www.goodmorningamerica.com/news/story/chilean-miners-rescue-begin-11863154",
+  "https://www.aljazeera.com/news/2010/10/14/chile-miners-rescue-accomplished",
+  "https://www.nbcnews.com/id/39625809/ns/world_news-americas/",
+  "https://www.democracynow.org/2010/10/13/headlines/chilean_miners_rescued_after_over_2_months_underground",
+  "https://www.irishtimes.com/news/world/investigation-into-chile-mine-collapse-ends-with-no-charges-1.1482801",
+  "https://www.rte.ie/news/2013/0802/466061-chile-miners",
+  "https://en.wikipedia.org/wiki/2010_Copiap%C3%B3_mining_accident"
  ],
  "story_score": {
   "curiosity": 8,
@@ -60,97 +80,14 @@
   "repeatability": 6,
   "total": 77
  },
- "title_options": [
-  "17 Days After the Mine Collapsed, a Drill Came Up With a Note #shorts",
-  "A Drill Came Back Up With a Note in Red Ink #shorts",
-  "33 Men, 700 Metres Down, Two Spoonfuls of Tuna #shorts",
-  "Their Foreman Rode Up Last. Would You Have Waited? #shorts",
-  "69 Days Underground, and All 33 Came Out #shorts"
- ],
  "spine": "v2",
- "shown_moments": {
-  "a drill comes back up with a note tied to it": "shots 1 to 4 (hands tying the note on above the bit; the pipe going up into the roof; the derrick at night; the bit clearing the hole with the note on it)",
-  "in red ink, it says: we are fine in the shelter, the thirty-three of us": "shots 7 and 8 (the rescuer unfolding it; the note card written out in red)",
-  "thirty-three miners, seven hundred metres down": "shots 10 and 11 (the shelter; the cross-section counting down to 700 M)",
-  "for seventeen days nobody knew if they were alive": "shots 12 and 13 (the row of tired faces; the families at the camp)",
-  "seven drill holes had missed": "shot 14 (seven lines past the room, the eighth reaching it)",
-  "food meant for a couple of days": "shot 15 (three tins and a carton on bare shelves)",
-  "two spoonfuls of tuna, every other day": "shots 16 to 18 (the spoon; the queue with cups; the calendar)",
-  "that hole fits a note, not a man": "shot 19 (Rook's rule across the borehole)",
-  "drilling one wide enough takes seven more weeks": "shots 20 and 21 (the big rig turning; the wide drill head coming through the gallery roof)",
-  "a steel capsule, barely wider than their shoulders, goes down": "shots 22 to 24 (the capsule over the shaft; Rook wedged in one; the capsule arriving below)",
-  "one man at a time, up through solid rock": "shots 25 to 27 (one miner in the cage; the cut-away shaft; his face in the growing light)",
-  "all thirty-three are out, sixty-nine days underground": "shots 28 to 30 (the capsule at the surface; the embrace with 69 DAYS; thirty-three helmets ticked)",
-  "their foreman rode up last": "shot 32 (the foreman alone in the gallery, standing into the cage)"
- },
- "experiments": {
-  "E1_E2": "spine v2: Rook doubts the story on the rig deck beside the hanging bit with the note on it, in one line of 1.32 s (4.85 s to 6.18 s); no office, no cutaway. The story then runs forward from the note; the seventeen days before it come back as the stakes (shots 10 to 14), not as a narrated date. Dates, place and the foreman's name are on-screen labels only (22 AUGUST 2010, SAN JOSÉ MINE, CHILE, 13 OCTOBER 2010, LUIS URZÚA, SHIFT FOREMAN).",
-  "E3": "batch Short 3 (odd): person close-up first frame - a miner's hands on the note and his face behind it in a lamp's beam.",
-  "E4": "question ending, as the brief assigns to this Short, but not the brief's question. The brief proposed 'One capsule, 33 men. Who goes up first? They had to decide.' The sources read say officials set the order by health and fitness, so 'they had to decide' would be false. The question used is tied to a fact two sources give, that the shift foreman came up last: 'Their foreman rode up last. Would you have waited?'",
-  "E7": "hook_text is set (NOTE FROM / BELOW), following AUTHORING.md's mandatory rule, as Short 2 did; Short 1 (r016) has none.",
-  "E8": "tail 0.4 s; the last line ('And the rescue began') runs into the first ('Seventeen days after a mine collapses, a drill comes back up with a note tied to it'), and the last shot is the opening shot played back to its first frame.",
-  "rook_action": "He lays his rule across the borehole and reads it (shot 19) and tries the capsule for size (shot 23, the brief's Rook moment). Mannerisms: beak tap (shot 6), hat jump and shed feather (shots 9 and 23), coin flip while waiting (shot 13), hat jump (shots 7 and 29), pocketing the shiny drill tooth and pulling the brim down (shot 34)."
- },
- "sound_plan": {
-  "first_frame": "One 'hit' at 0.03 s as a clank on the drill pipe (the gate needs an impact in the first second; here it is a story sound), then a clunk and the scratch of the band going on. The hook mood is sparse.",
-  "hook": "Stones and a shout as the pipe goes up; a low tone and a clunk at the rig; a gasp as the bit clears the hole.",
-  "music": "The engine's score follows the segment moods: hook, tense for Rook's line, wonder for the note, tense for the seventeen days, calm for the rations, tense for the re-hook, action for the capsule, triumph, end. The engine cannot delay the music's entry.",
-  "hush": "Shot 27 (the face in the cage): the music drops out for the breath before 'all thirty-three are out'.",
-  "voice": "Narration is ducked over the bed by the engine; measured in the local rehearsal (see quality_gate), not listened to."
- },
- "source_notes": "Read for this run on 16 Nov 2026 (thirteen pages, through a fetch tool; quotes below are from those pages). Pages that could not be read: Wikipedia, Britannica, NASA, History.com (fetch refused) and one NBC page (robots). Every narrated fact is in at least two of the pages read. Collapse on 5 August 2010 at the San José copper and gold mine near Copiapó, 33 men trapped: NBC/AP, Christian Science Monitor, E&MJ, Interesting Engineering, WRAL/CNN fast facts. Seventeen days to first contact, on 22 August: Irish Times ('until they established contact with the surface 17 days later'), CS Monitor, E&MJ, Live Science, Deseret/AP. 'Nobody knew if they were alive': Deseret/AP and Fox/AP ('For the first 17 days, no one even knew whether they were alive'), NPR ('when they were feared lost'). Seven failed holes: NBC/AP ('after seven failed attempts'), CS Monitor ('failed seven times'); Interesting Engineering calls the hole that got through the eighth. The note: E&MJ ('The miners attached a note to the drill bit saying all 33 were alive'), Irish Times ('Rescuers withdrew the drill to find a note attached'), WRAL ('a note up tied to a probe'); red ink: WRAL ('Written in red ink'), Deseret/AP ('scrawled in red ink'). Its wording is narrated in WRAL's English ('We are fine in the shelter, the 33 of us'); Irish Times and Live Science translate it 'The 33 of us in the shelter are well'; the Spanish original was found on only one page read and is not shown. Depth: E&MJ 'approximately 700 m', Interesting Engineering 701 m, WRAL 2,300 feet; other pages say 'half a mile', 670 m (Live Science, for the shelter) or 625 m (Irish Times), so 700 is the round figure most pages support. Food: NBC/AP ('a two-day emergency supply'; 'two spoonfuls of tuna, a sip of milk, a bite of crackers and a morsel of peaches. Every other day'), Irish Times ('two spoonfuls of tuna, half a biscuit and a half-full glass of milk every 48 hours'), E&MJ (teaspoons; a three-day supply), Live Science (two days), Interesting Engineering (two or three days): the film says 'a couple of days' and mentions only the tuna. The first borehole was narrow (Live Science: about 15 cm) and the escape shaft had to be 66 to 70 cm (NBC, WRAL, Deseret). 'Seven more weeks': 22 August to the rescue on 13 October is 52 days. Capsule 'barely wider than their shoulders', painted white, blue and red: Deseret/AP, Scotsman/AP, Al Jazeera, WRAL. Rescue on 13 October in about 22 and a half hours, all 33 out, 69 days: NPR, Deseret, Scotsman, WRAL, Al Jazeera, Fox. Last man up was the shift foreman Luis Urzúa: NPR, WRAL, Deseret, Fox. Things kept out or changed. The brief's ending question said the miners had to decide who went first; Al Jazeera says 'Officials decided the order ... based on their health and capacities' and Interesting Engineering describes an order set by fitness, so the question was replaced (see experiments.E4). Whether Urzúa chose to be last is not claimed: the film says only that he rode up last. Miners knocking on the drill is on one page only and is not narrated or claimed; the men watching the pipe go up is staging. The width of the capsule in centimetres, the length of one ride (16 minutes on one page, 9 to 18 on another), the date the wide shaft broke through and the first rescuer's name are each on too few pages or differ, and are left out. The first man up is Florencio Ávalos on most pages (one gives his second surname); he is not named in the film. Staging choices that are not facts: the number of men shown (twelve figures stand for thirty-three), helmets and overalls, the tins and carton in the locker, cups and queue, the families' lamps and tents, the look of both rigs and the winch tower, the open cage, who embraces the first miner, time of day in the daylight shots, and the drill tooth Rook keeps.",
- "quality_gate": {
-  "method": "One run, six rounds. Rounds 1 and 2: low-res contact sheets of all 29 3D shots. Found and fixed: the miner's hands nowhere near the note; Rook hidden behind the derrick, or with his back to the camera, in five shots (5, 19, 20, 24, 28); the unfolded note covering the rescuer's face; Rook out of frame in the cheer and at the camp; a floor-sitter's helmet filling the frame in the row of faces; the miner's back hiding the food locker; the spoon shot too tight to show the hand. Round 3: preview stills of every 3D kind at 15% and 85% of the shot (58 stills at 270x480, the phone-size check). Found and fixed: raised arms crossing in front of faces in three shots (the spread sign flips when the arm is up), the drill dust reading as boulders, Rook blocking the capsule as it came up. Round 4: full-length rehearsal (216x384, 4 samples, 12 fps, all 3D frames) composited with captions, labels, overlays, inserts and sound, reviewed as a 4-frames-per-second sheet of the whole video (176 frames). Found and fixed: the note's red lines faced away from the camera in the first frame; '69 DAYS' ran off both edges and collided with the date label; the missed-holes card opened on '0 MISSED'. Round 5: five stills at 720x1280 and three at 540x960 of the opening shot, the capsule gag, the embrace and the row of faces; the opening was re-staged so the pipe sits between the miner's hands, the note's red lines face the lens and his face is clear of the paper. Round 6: second rehearsal with the gate, and the first frame, last frame and three cards pulled at larger size; the hook text overflowed the frame during its pop-in and was shortened to NOTE FROM / BELOW. The final rehearsal passed the automated gate locally: 35 shots, mean 1.25 s, longest 1.88 s, Rook acting in 16 of 35 shots (46%), -14.4 LUFS, peak -1.3 dBFS, voice 11.5 dB over the bed, closest match to any earlier episode 0.73 (shot 8, the note card, against r005-vulovic; the limit is 0.93). Duration 43.9 s. The cloud render runs the real gate at 720x1280 and 60 fps.",
-  "checked": "Every 3D kind in the storyboard exists in world3d.SHOTS3D and every other kind in scenes.SHOTS (checked by script); HOST lists the 16 kinds in which Rook is placed; tie_note is the only kind used twice (first and last shot, for the loop). The doubt line is 1.32 s and is spoken on the rig deck with the note in shot. The re-hook starts at 23.3 s of 43.9 s (53%). One hush shot (27). Tail 0.4 s; the last frame matches the first (compared side by side). On-screen dates, names and figures (22 AUGUST 2010, SAN JOSÉ MINE, CHILE, 33 MEN, 700 M, 17 DAYS, 7 MISSED, DAY 17, 2 SPOONFULS, EVERY OTHER DAY, 13 OCTOBER 2010, 69 DAYS, 33 OF 33, LUIS URZÚA, SHIFT FOREMAN) were checked against the sources. Nothing graphic is shown and nobody dies in this story; Rook's two jokes (the cup, the capsule) sit away from the seventeen-days beat. No flag, emblem, logo or likeness appears.",
-  "not_met": "Loudness range measures 2.2 LU (ffmpeg ebur128) against the checklist's 4 LU; this is the engine's mix and the earlier approved Shorts measure about the same. The audio was measured, not listened to. Preview stills of every shot were looked at at 270x480, not at full resolution; eight stills were checked at 720x1280 or 540x960. The cloud render is the first full-resolution, 60 fps pass. The 13-category score was given from stills and the rehearsal sheet, not from playback."
- },
- "checklist": {
-  "A_story": "done: score 77/100 with curiosity 8, story 8, payoff 9; spine v2; shown_moments lists every narrated moment",
-  "B_storyboard": "done: every shot has action, camera and sound cue; Rook's mannerisms are the beak tap (6), hat jump and feather (7, 9, 23, 29), coin flip (13), pocketing the drill tooth and brim down (34); detective actions are the rule across the borehole (19) and trying the capsule (23); no neutral poses under action lines",
-  "B2_retention": "done: hook_text set; first frame is a miner's hands and face at the note, close; re-hook at 53%; one hush; tail 0.4 s with the loop",
-  "C_previews": "done at 270x480 (15% and 85% of every 3D shot) and looked at; eight stills at higher resolution; no blown-out or crushed frame where the story has to be seen; Rook on-model",
-  "D_render": "engine defaults untouched (60 fps, 720x1280, 16 jobs in the workflow); the local rehearsal used low settings only for review",
-  "E_sound": "voice am_fenrir; no tragic beat in this case; voice 11.5 dB over the bed; loudness range 2.2 LU is under the 4 LU item, see quality_gate.not_met",
-  "F_captions": "done: captions inside the frame; the six cards keep the caption band clear; on-screen dates, names and figures checked against sources",
-  "G_final": "rehearsal reviewed as a 4 fps sheet of the whole video and larger frames; local gate PASS; the full-resolution render and the real gate happen in the workflow"
- },
- "review": {
-  "notes": [
-   "0.0 s: hands and face at the note, red lines towards the lens, hook text inside the frame",
-   "1.1 to 2.3 s: the pipe goes up into the roof, three men with their arms up",
-   "4.85 to 6.2 s: Rook on the deck, 'A note? From down there?', the note in shot",
-   "7.4 to 8.9 s: note card writes itself out in red",
-   "11.2 to 12.8 s: cross-section counts down to 700 M",
-   "15.8 to 17.5 s: seven misses, then the eighth line in green and DAY 17",
-   "18.9 to 22.1 s: the spoon, the queue, Rook's look at his cup",
-   "23.3 s: re-hook, Rook's rule across the borehole",
-   "29.3 to 30.4 s: Rook wedged in the capsule",
-   "33.7 to 34.8 s: hush on the face in the cage",
-   "36.2 to 37.6 s: the embrace, 69 DAYS",
-   "39.7 to 41.1 s: the foreman alone, standing into the cage",
-   "43.1 to 43.9 s: back to the opening framing"
-  ],
-  "scores_13": {
-   "story": 4,
-   "hook": 4,
-   "character_acting": 3,
-   "animation": 3,
-   "art_direction": 4,
-   "lighting": 3,
-   "camera": 3,
-   "pacing": 4,
-   "editing": 4,
-   "narration": 3,
-   "sound": 3,
-   "captions_graphics": 4,
-   "respect_accuracy": 5
-  },
-  "weakest": "The big-rig shot (20) is the plainest picture in the film; the shelter wide (10) keeps the men small; twelve figures stand in for thirty-three; narration and sound were measured, not heard."
- },
- "authoring": {
-  "claimed_at": "2026-11-16T11:38:32Z",
-  "run": "scheduled short run, 16 Nov 2026; brief order (Short 3 of the batch, slate case 21)"
- },
  "case_of": "r021-sanjose",
- "claimed_at": "2026-11-17T08:49:08Z"
+ "claimed_at": "2026-11-17T08:49:08Z",
+ "title_options": [
+  "33 Men, 69 Days Underground: The Full Case of the Chilean Mine Rescue",
+  "A Drill Came Up With a Note: The Full Case of the 33 Chilean Miners",
+  "17 Days Buried, Then a Note in Red Ink: The Chilean Mine Rescue",
+  "700 Metres Down for 69 Days: How 33 Miners Got Out"
+ ],
+ "source_notes": "IMPORTANT LIMIT OF THIS RUN (17 Nov 2026): the session's network policy refused every page fetch (e-mj.com, wral.com, npr.org, deseret.com, britannica.com and others: host not resolvable), so no page could be opened and read. Only web search worked. The facts the Short already narrates were read on thirteen pages by the Short's run on 16 Nov 2026 and stand on its notes (episodes/r021-sanjose/episode.json). Every fact ADDED here was checked only against what the search tool reported from at least two outlets; it was not read on the page. For that reason this episode is 'ready' (private), not 'approved': the owner or a later run with page access should read the pages before it goes public. Added facts and the outlets the search results gave for them. Mine in operation since 1889 ('more than a century'): Wikipedia, Britannica Kids. Dust blinding the men for hours: Britannica and Wikipedia say up to six hours; the film says 'for hours'. Ventilation shaft, ladder: Britannica ('the ladders required by safety codes were missing'), The World and Interesting Engineering (the owners never finished the ladder; the men got about a third of the way); the film says the ladder 'was never finished' and shows it stopping part-way. Voting: Luis Urzúa, 'Everything was voted on ... 16 plus one was a majority', and Mario Sepúlveda's 'one-man, one-vote' (Wikipedia and pages quoting them); who set the ration is told differently (Urzúa on some pages, Sepúlveda on others), so the film says only that they voted. A sip of milk and a bite of cracker with the tuna: NBC/AP and the Irish Times, from the Short's notes. Heat and damp: figures differ (29 to 35 °C, humidity up to 98% on one page), so the film gives no figure. Water drained from radiators and lamps run from truck batteries: AP via CBS News and Deseret; Maclean's and Wikipedia for the batteries. Camp Hope at the mine gate: The World, PBS NewsHour. Seven misses and the eighth hole near the shelter: the Short's notes. First estimate of up to four months: AP via Fox and HeraldNet. Supply tubes called palomas (doves), first loads glucose gel, rehydration tablets and medicine, then food, letters and a video camera: AP via Washington Times, Scotsman, Fox. Plans A, B and C and the Plan B breakthrough at 8:05 a.m. on 9 October: AP via Washington Times, CNN fast facts, Interesting Engineering, Britannica. Miners clearing the drill cuttings in shifts: Interesting Engineering and trade press; the half-tonne-an-hour figure is on Wikipedia only and is not used. Shaft length 622 to 625 m ('more than six hundred metres') and width 66 to 71 cm; 'about as wide as a bicycle wheel' is this film's comparison, not a quotation. Capsule built by the Chilean navy, 54 cm (21 in) wide: phys.org/AFP, Smithsonian, ABS. Manuel González first rescuer down and last up: Good Morning America, a BBC-derived report, Al Jazeera. First miner (Florencio Ávalos, not named in the film) out at about 12:10 a.m. on 13 October: NPR 12:11, others 'shortly after midnight'; the film says he starts up 'around midnight' and steps out 'just after midnight'. Dark glasses: AP, CNN. The second man up (Mario Sepúlveda, not named) brought rocks as souvenirs: Democracy Now; the LA Times is reported as describing a rock signed by his comrades; the film says 'rocks from the mine, as souvenirs', and the sack is staging. About 22 hours: Al Jazeera 'just 22 hours', Deseret/AP '22½-hour'. Last miner Luis Urzúa: the Short's notes. A lid on the shaft: one page says the president placed a cover on it, NBC mentions 'the lid of the emergency shaft'; its look here is invented. Prosecutors closed the investigation on 1 August 2013 without charges: Irish Times, RTÉ. Left out because one source, or sources differ: the time of day of the collapse, the 50 m² shelter and 2 km of tunnel, weight lost, who wrote the note, what Urzúa said to the president, the number of rescuers who went down, the length of one ride, the television audience, the 2023 compensation ruling, earlier accidents at the mine, the men's names other than Urzúa and González. Not claimed in narration but shown as staging: the men hearing a drill pass (Wikipedia: 'for days the miners had heard drills approaching') and hammering on the bit (Wikipedia: 'tapped on the drill'; one page in the Short's notes)."
 }

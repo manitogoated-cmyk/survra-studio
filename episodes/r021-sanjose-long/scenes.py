@@ -123,6 +123,15 @@ def helmet(cv, x, y, s, col):
     cv.drawRect(skia.Rect.MakeXYWH(x - 12 * s, y - 40 * s, 24 * s, 20 * s), P(h('FFF2C0')))
 
 
+def push(cv, c, amount=0.1, sway=0.0):
+    """A slow push in on a card (and a little sway), so a held card is never a still picture."""
+    z = 1 + amount * c.k
+    cv.translate(W / 2, H / 2)
+    cv.scale(z, z)
+    cv.rotate(sway * math.sin(c.t * 1.3))
+    cv.translate(-W / 2 + 14 * math.sin(c.t * 0.9), -H / 2 + 8 * math.sin(c.t * 1.4))
+
+
 def line2(cv, a, b, col, w_=8):
     cv.drawLine(a[0], a[1], b[0], b[1], P(0xFF000000, w_ + 6))
     cv.drawLine(a[0], a[1], b[0], b[1], P(col, w_))
@@ -168,11 +177,9 @@ FILE = ('5 AUGUST 2010', 'SAN JOSÉ MINE', 'ATACAMA DESERT, CHILE', 'COPPER AND 
 
 def file_card(cv, c):
     """Rook's case file for the day it began: four lines on the steel plate, typed in one after another."""
-    plate(cv, 9, 0.6)
     cv.save()
-    cv.translate(960, 540)
-    cv.scale(1 + 0.03 * c.k, 1 + 0.03 * c.k)
-    cv.translate(-960, -540)
+    push(cv, c, 0.14, 0.5)
+    plate(cv, 9, 0.6)
     card(cv, 400, 400, 420, 520, -3)
     cv.save()
     cv.translate(400, 400)
@@ -188,10 +195,11 @@ def file_card(cv, c):
             break
         n = max(1, int(len(line) * min(1.0, (shown - i) * 1.6)))
         left(cv, line[:n], 720, 310 + 128 * i, 92 if i < 2 else 78, AMBER if i == 0 else 0xFFFFFFFF)
-    cv.restore()
     for x in (250, 550):
         cv.drawCircle(x, 150, 20, P(ORANGE))
         cv.drawCircle(x, 150, 20, P(INK, 5))
+    cv.restore()
+    Wd.particles(cv, W, H, c.t, 40, 0x88FFE8C0, 73, size=(3, 7), drift=(120, -50), wobble=30, twinkle=True)
 
 
 def section(cv, t, lit=True):
@@ -246,7 +254,7 @@ def trap_card(cv, c):
     cv.drawRect(skia.Rect.MakeXYWH(-70, -46, 140, 92), P(RED, 8))
     cv.restore()
     if c.lt > 0.5:
-        left(cv, 'THE ROAD: BLOCKED', 110, 470, 54, RED)
+        left(cv, 'THE ROAD: BLOCKED', 90, 800, 46, RED)
     # the ventilation shaft
     vx = 1040
     cv.drawLine(vx, GROUND, vx, 690, P(0xFF0A0706, 34))
@@ -335,7 +343,7 @@ def shaft_card(cv, c):
     cv.drawLine(1210, GROUND, 1210, y1, P(AMBER, 10))
     fit(cv, f'{int(round(620 * k / 10) * 10)} M +', 1500, 470, 110, 420, AMBER)
     # the wheel
-    wx, wy, r = 470, 520, 190
+    wx, wy, r = 470, 450, 170
     cv.drawCircle(wx, wy, r + 22, P(0xFF0A0706))
     cv.drawCircle(wx, wy, r, P(h('1E1614')))
     cv.drawCircle(wx, wy, r - 12, P(h('C8CCD4'), 16))
@@ -346,8 +354,8 @@ def shaft_card(cv, c):
         cv.drawLine(wx, wy, wx + (r - 14) * math.cos(a), wy + (r - 14) * math.sin(a), P(h('9AA0AC'), 4))
     cv.drawCircle(wx, wy, 18, P(h('9AA0AC')))
     if c.lt > 0.9:
-        fit(cv, 'THE SHAFT: ABOUT AS WIDE', 470, 800, 44, 760, 0xFFFFFFFF)
-        fit(cv, 'AS A BICYCLE WHEEL', 470, 856, 44, 760, AMBER)
+        fit(cv, 'THE SHAFT: ABOUT AS WIDE', 470, 720, 44, 760, 0xFFFFFFFF)
+        fit(cv, 'AS A BICYCLE WHEEL', 470, 776, 44, 760, AMBER)
     note_scale(cv)
 
 
@@ -376,7 +384,9 @@ def cal_card(cv, c):
 def hole_card(cv, c):
     """'That hole fits a note. It does not fit a man.' The borehole and a man's shoulders, drawn to one scale."""
     Wd.vgrad(cv, 0, 0, W, H, [(0, h('3A2C22')), (0.5, h('5A463A')), (1, h('1E1614'))])
-    Wd.glow(cv, 960, 460, 1000, h('FFC890'), 0.18)
+    Wd.glow(cv, 600 + 700 * c.k, 460, 900, h('FFC890'), 0.3)
+    Wd.particles(cv, W, H, c.t, 40, 0x88FFE8C0, 81, size=(3, 7), drift=(120, -50), wobble=30, twinkle=True)
+    push(cv, c, 0.1, 0.3)
     k1 = ease(c.lt / 0.3)
     hx, hy = 560, 470
     r = 52 * k1 * (1 + 0.04 * math.sin(c.t * 5))
@@ -406,19 +416,23 @@ HELMC = ('E0B020', 'C8372D', 'E07A1E')
 def count33(cv, c):
     """'...thirty-three out of thirty-three.' Thirty-three helmets, ticked off one by one."""
     Wd.vgrad(cv, 0, 0, W, H, [(0, h('10183A')), (0.6, h('2A2A5A')), (1, h('0C1024'))])
-    Wd.glow(cv, 960, 460, 1000, h('FFC890'), 0.22)
+    Wd.glow(cv, 960 + 500 * math.sin(c.t * 0.8), 460, 900, h('FFC890'), 0.3)
+    cv.save()
+    push(cv, c, 0.1, 0.4)
     left(cv, '13 OCTOBER 2010', 90, 110, 56, 0xFFFFFFFF)
     n = c.k * 44
     for i in range(33):
         col, row = i % 11, i // 11
         x = 960 + (col - 5) * 150
-        y = 300 + row * 150
+        y = 300 + row * 150 + 10 * math.sin(c.t * 3 + i * 0.6)
         helmet(cv, x, y, 0.86, h('F2F2EC') if i == 32 else h(HELMC[i % 3]))
         tick(cv, x + 34, y + 28, 0.95, min(1.0, max(0.0, n - i)))
     if c.k > 0.78:
         fit(cv, '33 OF 33', 660, 790, 120, 700, GREEN)
     if c.k > 0.88:
         fit(cv, '69 DAYS', 1330, 790, 120, 600, AMBER)
+    cv.restore()
+    Wd.particles(cv, W, H, c.t, 50, 0x88FFE8C0, 75, size=(3, 8), drift=(60, -160), wobble=30, twinkle=True)
 
 
 DAYS = ((0, '5 AUGUST', 'THE COLLAPSE'), (17, '22 AUGUST', 'THE NOTE'), (65, '9 OCTOBER', 'THE SHAFT'), (69, '13 OCTOBER', 'ALL OUT'))
@@ -427,7 +441,9 @@ DAYS = ((0, '5 AUGUST', 'THE COLLAPSE'), (17, '22 AUGUST', 'THE NOTE'), (65, '9 
 def timeline_card(cv, c):
     """One line of sixty-nine days, with the four dates on it."""
     Wd.vgrad(cv, 0, 0, W, H, [(0, h('10183A')), (0.6, h('1C1A2C')), (1, h('0A0A14'))])
-    Wd.glow(cv, 960, 480, 1000, h('FFC890'), 0.16)
+    Wd.glow(cv, 400 + 1100 * c.k, 480, 800, h('FFC890'), 0.3)
+    Wd.particles(cv, W, H, c.t, 40, 0x88FFE8C0, 79, size=(3, 7), drift=(120, -50), wobble=30, twinkle=True)
+    push(cv, c, 0.08, 0.3)
     fit(cv, '69 DAYS', 960, 190, 130, 1000, AMBER)
     x0, x1, y = 200, 1720, 470
     k = ease(c.k * 1.3)
@@ -448,6 +464,8 @@ def timeline_card(cv, c):
 
 def board(cv, c):
     """Rook's board: the capsule at the surface, and the count."""
+    cv.save()
+    push(cv, c, 0.14, 0.5)
     plate(cv, 5, 0.7)
     k = min(1, c.lt / 0.16)
     s = 0.74 + 0.26 * (1 - (1 - k) ** 3) + 0.02 * c.k
@@ -468,6 +486,8 @@ def board(cv, c):
         left(cv, '69 DAYS', 1080, 550, 130, AMBER)
     if c.lt > 0.7:
         stamp(cv, 'TRUE', 1400, 720, -10, min(1, (c.lt - 0.7) / 0.12), 130, GREEN)
+    cv.restore()
+    Wd.particles(cv, W, H, c.t, 40, 0x88FFE8C0, 77, size=(3, 7), drift=(120, -50), wobble=30, twinkle=True)
 
 
 SHOTS = {f.__name__: f for f in (note_card, file_card, trap_card, depth_card, miss_card, plans_card, shaft_card, cal_card, hole_card, count33, timeline_card, board)}
@@ -537,5 +557,5 @@ def THUMB(cv, c):
         cv.clear(h('3E2F28'))
     cv.drawRect(skia.Rect(0, 0, 1280, 720), skia.Paint(Shader=skia.GradientShader.MakeLinear([(640, 0), (0, 0)], [0x00000000, 0xE0000000])))
     Wd.text_card(cv, '17 DAYS', 310, 250, 132, 0xFFFFFFFF, 0xFF000000)
-    Wd.text_card(cv, 'BURIED.', 310, 395, 132, 0xFFFFFFFF, 0xFF000000)
+    Wd.text_card(cv, 'TRAPPED.', 310, 395, 132, 0xFFFFFFFF, 0xFF000000)
     Wd.text_card(cv, 'A NOTE.', 310, 540, 132, RED, 0xFF000000)

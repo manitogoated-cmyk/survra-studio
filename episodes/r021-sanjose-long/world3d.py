@@ -1267,7 +1267,7 @@ STILLS = dict(capsule=photo_capsule)
 # rocks, the empty gallery and the capped shaft. Still generic: no name, flag, logo or lettering anywhere, none of
 # the sets or machines is a model of the real ones, and nobody's likeness is attempted.
 SETS.update(ramp=(15000, 0, 0), chim=(20000, 0, 0))
-RIGA, RIGC = (-10.0, 17.0), (38.0, 20.0)
+RIGA, RIGC = (-7.0, 9.0), (33.0, 11.0)
 CAMFILL.update(shift=220, cave_in=200, dust_blind=260, block_wall=240, chimney=260, ladder_end=260, vote=380, battery=200, heat=260, listen=300, bang_bit=300,
                vigil=160, three_rigs=30, dove=40, dove_arrive=300, letter=260, muck=300, workshop=40, first_down=180, greet=300, shades=160,
                gift=200, lights_out=120, sealed=50)
@@ -1493,7 +1493,7 @@ def cave_in(S, k, t, lt):
         rig.place(A(xx, y, 0), lerp(PI / 2, -PI / 2, sm((lt - 0.2 - 0.1 * j) / 0.25)))
         rig.apply(blend(P('stand', head=(-0.35, 0.0), aR=(1.4, 0.3, 0.6)), walk(t + j * 0.3, 2.6), go))
         rig.face, rig.jawv = 'wide', 0.7 * go
-    roll_dust(S, A, 15.0, 2.5, t, sm((lt - 0.25) / 2.2))
+    roll_dust(S, A, 14.0, 4.5, t, sm((lt - 0.2) / 2.0), grow=(1.6, 3.0), y=4.6)
     for i, o in enumerate(S['bouls']):
         u = max(0.0, (lt - 0.15 - 0.16 * i) * 0.9) % 1.4
         o.location = A(7.5 + 5.0 * rn(i, 91), (rn(i, 92) - 0.5) * 7, max(0.3, 6.3 - 9.0 * u * u))
@@ -1504,14 +1504,14 @@ def cave_in(S, k, t, lt):
     fl = 0.5 + 0.5 * math.sin(t * 37) * math.sin(t * 13)
     lampat(S, 0, A(-1.5, 1.9, 1.6), 1600, 'FFF4D0')
     lampat(S, 1, A(5.0, -2.0, 4.6), 1500 * (1 - 0.8 * go) * (0.4 + 0.6 * fl), 'FFE2B0')
-    lampat(S, 2, A(11.0, 0.0, 3.0), 2600, 'FFB870')
-    shoot(S, A(lerp(-9.5, -8.0, k), -3.3, lerp(1.4, 1.7, k)), A(4.5, 0.2, 2.5), 26, fill=1.2)
+    lampat(S, 2, A(6.0, -3.5, 3.4), 3000, 'FFC890')
+    shoot(S, A(lerp(-5.2, -4.2, k), -3.0, lerp(1.3, 1.6, k)), A(4.0, 0.4, 2.4), 30, fill=1.3)
 
 
 def dust_blind(S, k, t, lt):
     """Afterwards: dust so thick the lamps are only glows. Three men feel their way with their arms out; Rook has a wing over his beak."""
     A = env(S, 'ramp', '2A2018', fk=1.6, skyk=0.6)
-    hang_dust(S, A, 0.5, 0.0, t)
+    hang_dust(S, A, 7.0, 0.5, t, rx=5.0)
     for j, (rig, x, y) in enumerate(((S['men'][1], 1.6, 0.6), (S['men'][5], -0.6, 2.2), (S['men'][9], 3.4, 2.6))):
         rig.place(A(x - 0.5 * k, y, 0), -PI / 2 + 0.5 * math.sin(t * 0.7 + j * 2))
         w = walk(t * 0.35 + j, 1.0)
@@ -1553,7 +1553,7 @@ def block_wall(S, k, t, lt):
     lampat(S, 0, A(8.0, 1.0 + 2.5 * sw, 3.6), 2600, 'FFE2B0')
     lampat(S, 1, A(8.5, -3.6, 1.6), 500, 'B8D0FF')
     lampat(S, 2, A(10.5, -1.0, 5.4), 500, 'FFF0D0')
-    shoot(S, A(lerp(3.4, 4.4, k), lerp(-3.8, -3.5, k), lerp(1.2, 1.4, k)), A(11.2, -0.5, lerp(3.4, 3.8, k)), 24, fill=1.3)
+    shoot(S, A(lerp(5.2, 6.0, k), lerp(-4.4, -4.1, k), lerp(1.2, 1.4, k)), A(10.6, -0.6, lerp(2.9, 3.2, k)), 26, fill=1.3)
 
 
 def _arm_(v):
@@ -1585,7 +1585,7 @@ def chimney(S, k, t, lt):
     lampat(S, 0, A(-1.6, -1.6, z + 1.0), 900, 'FFE2B0')
     lampat(S, 1, A(0.2, 0.6, z + 7.0), 400, 'BFD4FF')
     lampat(S, 2, A(1.2, -1.2, 2.2), 600, 'FFE8C8')
-    shoot(S, A(lerp(-1.9, -1.5, k), lerp(-3.9, -3.5, k), lerp(0.9, 1.6, k)), A(0.0, 1.7, z + 2.6), 20, fill=1.3)
+    shoot(S, A(lerp(-1.8, -1.4, k), lerp(-3.4, -3.0, k), z - 0.9), A(0.0, 1.8, z + 2.4), 24, fill=1.3)
 
 
 def ladder_end(S, k, t, lt):
@@ -1639,7 +1639,7 @@ def vote(S, k, t, lt):
     S['rface'] = 'calm'
     shelter_light(S, A)
     lampat(S, 3, A(8.0, -2.5, 3.2), 700, 'FFE8C8')
-    shoot(S, A(lerp(6.2, 7.0, k), lerp(-6.6, -6.0, k), lerp(3.1, 2.8, k)), A(9.3, 2.6, 1.9), 28, fill=1.3)
+    shoot(S, A(lerp(6.2, 7.0, k), lerp(-6.6, -6.0, k), lerp(3.1, 2.8, k)), A(9.3, 2.6, 1.9), 35, fill=1.3)
 
 
 def battery(S, k, t, lt):
@@ -1660,7 +1660,7 @@ def battery(S, k, t, lt):
     hand = world_of(m.hands[1], (0, -0.12, -0.05))
     rope(S, 0, bat, hand, 0.02)
     glow = 0.6 + 0.4 * math.sin(t * 5)
-    lampat(S, 3, (hand[0], hand[1], hand[2] + 0.3), 160 * glow, 'FFF2C0')
+    lampat(S, 3, (hand[0], hand[1], hand[2] + 0.3), 50 * glow, 'FFF2C0')
     m2 = S['men'][9]
     p2 = (front[0] + side[0] * 0.2 + fx * 1.6, front[1] + side[1] * 0.2 + fy * 1.6)
     m2.place(A(p2[0], p2[1], 0), look_yaw(p2, front) + 0.3)
@@ -1680,7 +1680,7 @@ def battery(S, k, t, lt):
             sp.location = (bat[0] + 0.9 * u * math.cos(a), bat[1] + 0.9 * u * math.sin(a), bat[2] + 0.1 + 0.9 * u - 1.6 * u * u)
             sp.scale = (1.6 * (1 - u),) * 3
         feather(S, world_of(rk.head, (0.3, 0, 0.3)), lt, 1.35)
-    lampat(S, 0, A(front[0] + fx * 2.0, front[1] + fy * 2.0, 1.2), 1700, 'FFF4D0')
+    lampat(S, 0, A(front[0] + fx * 3.2, front[1] + fy * 3.2, 1.2), 600, 'FFF4D0')
     lampat(S, 1, A(tp[0] - 2.0, tp[1] - 3.5, 3.6), 900, 'FFE2B0')
     lampat(S, 2, A(4.6, -1.5, 3.4), 400, 'B8D0FF')
     shoot(S, A(lerp(-9.2, -8.4, k), lerp(-4.6, -4.0, k), lerp(1.7, 2.0, k)), A(front[0] + 0.5, front[1] + 0.6, 1.7), 30, fill=1.2)
@@ -1734,7 +1734,7 @@ def listen(S, k, t, lt):
     lampat(S, 0, A(-2.5, -2.6, 3.2), 1500 * (1 - 0.35 * gone), 'FFE2B0')
     lampat(S, 1, A(sx, 3.2, 5.6), 420, 'BFD4FF')
     lampat(S, 2, A(4.2, 1.6, 3.0), 320, 'FFE8C8')
-    shoot(S, A(lerp(-1.2, 0.2, k), lerp(-7.2, -6.6, k), lerp(1.4, 1.7, k)), A(0.9, 2.2, 3.1), 24, fill=1.3)
+    shoot(S, A(lerp(-1.2, 0.2, k), lerp(-7.2, -6.6, k), lerp(1.4, 1.7, k)), A(0.9, 2.2, 2.7), 31, fill=1.3)
 
 
 def bang_bit(S, k, t, lt):
@@ -1766,7 +1766,7 @@ def bang_bit(S, k, t, lt):
     lampat(S, 0, A(2.6, -2.0, 3.0), 1700, 'FFE2B0')
     lampat(S, 1, A(0.2, 0.2, 6.0), 600, 'FFF4D8')
     lampat(S, 2, A(-3.0, 1.0, 2.6), 400, 'B8D0FF')
-    shoot(S, A(lerp(3.8, 3.0, k), lerp(-4.8, -4.2, k), lerp(1.5, 1.8, k)), A(0.1, 1.3, lerp(3.6, 3.3, k)), 24, fill=1.3)
+    shoot(S, A(lerp(2.6, 1.9, k), lerp(-5.2, -4.6, k), lerp(1.5, 1.8, k)), A(0.1, 1.3, lerp(3.6, 3.3, k)), 24, fill=1.3)
 
 
 # ---------------------------------------------------------------- the camp, the lifeline, the three drills
@@ -1810,8 +1810,8 @@ def three_rigs(S, k, t, lt):
     puffs(S, A(sx, sy, 0.3), t + 0.4, 5, 3.0, 2.4, 1.6, 5)
     puffs(S, A(RIGC[0], RIGC[1], 0.3), t + 0.8, 4, 3.4, 2.8, 2.0, 10)
     rk = S['rook']
-    rp = (10.5, -22.5)
-    cam = (lerp(8.6, 7.6, k), lerp(-31.0, -30.0, k), lerp(2.6, 3.0, k))
+    rp = (10.6, -17.0)
+    cam = (lerp(9.4, 8.4, k), lerp(-24.5, -23.5, k), lerp(2.3, 2.7, k))
     u = lt / 0.7
     hd = 1.2 if u < 1 else 0.0 if u < 2 else -1.2 if u < 3 else 0.0
     hd2 = (1.2, 0.0, -1.2, 0.0)[min(3, int(u) + 1)] if u < 3 else 0.0
@@ -1821,16 +1821,16 @@ def three_rigs(S, k, t, lt):
     rk.apply(blend(P('hips', head=(-0.15, turn)), P('shrug', head=(0.0, 0.0)), done))
     S['rface'] = 'calm'
     c = S['crew'][2]
-    c.place(A(3.5, -15.0, 0), look_yaw((3.5, -15.0), SITE))
+    c.place(A(4.5, -10.0, 0), look_yaw((4.5, -10.0), SITE))
     c.apply(P('point', aR=(1.5, 0.2, 0.1), head=(-0.2, 0.0)))
-    shoot(S, A(*cam), A(13.0, 2.0, 7.6), 22, fill=0.6)
+    shoot(S, A(*cam), A(12.5, 2.0, 7.0), 22, fill=0.6)
 
 
 def dove(S, k, t, lt):
     """Daylight at the narrow borehole: two rescuers lower a long thin tube into it on a cable, hand over hand. Rook, on one knee at the collar, bends to watch it go down."""
     A = day(S, False)
     drill_at(S, A, -80, HOLE[0], HOLE[1])
-    z = lerp(2.7, -2.2, sm((lt - 0.3) / 1.8))
+    z = lerp(3.4, 0.3, sm(k))
     S['dove'].location = A(HOLE[0], HOLE[1], z)
     S['dove'].rotation_euler = (0, 0, t * 0.8)
     rope(S, 0, A(HOLE[0], HOLE[1], z + 2.5), A(HOLE[0], HOLE[1], 12.6), 0.02)
@@ -1840,13 +1840,13 @@ def dove(S, k, t, lt):
     pay = math.sin(lt * 5)
     c.apply(P('stand', aR=(1.5 + 0.25 * pay, -0.15, 0.4), aL=(1.3 - 0.25 * pay, 0.05, 0.6), head=(lerp(-0.1, 0.4, k), 0.0), lean=0.15))
     c2 = S['crew'][2]
-    c2.place(A(1.3, -4.0, 0), look_yaw((1.3, -4.0), HOLE))
+    c2.place(A(1.9, -1.5, 0.4), look_yaw((1.9, -1.5), HOLE))
     c2.apply(P('stand', aR=(1.2, 0.2, 0.5), head=(lerp(0.0, 0.35, k), 0.0)))
     rk = S['rook']
-    rp = (1.25, -1.85)
-    rk.place(A(rp[0], rp[1], 0), look_yaw(rp, (-0.5, -5.0)))
+    rp = (1.7, -4.3)
+    rk.place(A(rp[0], rp[1], 0), look_yaw(rp, (-0.9, -3.2)))
     peer = sm((lt - 0.8) / 0.5)
-    rk.apply(blend(KNEEL, P('stand', lL=(0.2, 1.5), lR=(1.3, 1.45), lift=-0.76, lean=0.7, aR=(1.0, 0.4, 0.3), aL=(0.9, 0.3, 0.4), head=(0.5, 0.5)), peer))
+    rk.apply(blend(KNEEL, P('stand', lL=(0.2, 1.5), lR=(1.3, 1.45), lift=-0.76, lean=0.3, aR=(1.0, 0.4, 0.3), aL=(0.9, 0.3, 0.4), head=(0.3, 0.6)), peer))
     S['rface'] = 'calm'
     shoot(S, A(lerp(-2.9, -2.3, k), lerp(-7.6, -7.0, k), lerp(1.3, 1.6, k)), A(0.1, -2.6, lerp(2.2, 1.6, k)), 34, fill=0.9)
 
@@ -1929,7 +1929,7 @@ def muck(S, k, t, lt):
         o.scale = (s, s, s)
     puffs(S, A(dx, dy, 0.3), t, 6, 2.0, 1.2, 0.8)
     M = S['men']
-    for j, (rig, x, y) in enumerate(((M[1], -4.9, 1.7), (M[6], -5.2, -1.7), (M[8], -8.9, 1.6))):
+    for j, (rig, x, y) in enumerate(((M[1], -4.6, 1.9), (M[6], -5.3, -2.0), (M[8], -6.4, 3.0))):
         yw = look_yaw((x, y), DROP)
         dig = 0.5 + 0.5 * math.sin(t * 4 + j * 2.1)
         rig.place(A(x, y, 0), yw)
@@ -1939,7 +1939,7 @@ def muck(S, k, t, lt):
     S['barrow'].location = A(-3.9, -0.2, 0)
     S['barrow'].rotation_euler = (0, 0, 2.2)
     rk = S['rook']
-    rp = (-9.4, -2.0)
+    rp = (-9.2, 1.5)
     bonk = sm((lt - 1.5) / 0.08)
     yw = look_yaw(rp, DROP)
     dig = (0.5 + 0.5 * math.sin(t * 4)) * (1 - bonk)
@@ -1978,8 +1978,8 @@ def workshop(S, k, t, lt):
     c1.place(A(kp[0], kp[1], 0), look_yaw(kp, (sx + 0.3, sy)))
     c1.apply(KNEEL)
     rk = S['rook']
-    rp = (sx - 3.2, sy - 1.0)
-    cam = (sx + lerp(-5.4, -4.6, k), sy + lerp(-6.6, -6.0, k), lerp(1.9, 2.1, k))
+    rp = (sx - 3.5, sy + 1.2)
+    cam = (sx + lerp(1.6, 2.4, k), sy + lerp(-7.0, -6.4, k), lerp(1.9, 2.1, k))
     lay = sm((lt - 0.2) / 0.4)
     look = sm((lt - 1.4) / 0.3)
     rk.place(A(rp[0], rp[1], 0), lerp(look_yaw(rp, (sx - 2.4, sy)), look_yaw(rp, cam), 0.6 * look))
@@ -2002,14 +2002,14 @@ def first_down(S, k, t, lt):
     c.face = 'calm'
     cable_top(S, A, sx, sy, z)
     S['surf']['wheel'].rotation_euler = (z * 1.2, PI / 2, 0)
-    for j, (rig, x, y) in enumerate(((S['crew'][0], -2.5, -1.2), (S['crew'][2], 2.6, 0.2), (S['civ'][2], -3.9, -2.4))):
+    for j, (rig, x, y) in enumerate(((S['crew'][0], -2.5, -1.2), (S['crew'][2], -1.7, 2.0), (S['civ'][2], -3.9, -2.4))):
         rig.place(A(sx + x, sy + y, 0), look_yaw((x, y), (0, 0)))
         cp = 0.5 + 0.5 * math.sin(t * 13 + j)
         rig.apply(P('stand', aL=(1.1, -0.1 - 0.25 * cp, 1.3, 0.5), aR=(1.1, -0.1 - 0.25 * cp, 1.3, 0.5), head=(lerp(-0.1, 0.35, sm((lt - 1.1) / 1.4)), 0.0)))
         rig.face = 'calm'
     rk = S['rook']
-    rp = (sx + 2.3, sy - 2.6)
-    rk.place(A(rp[0], rp[1], 0), look_yaw(rp, (sx - 2.0, sy - 9.0)))
+    rp = (sx + 2.5, sy - 0.2)
+    rk.place(A(rp[0], rp[1], 0), look_yaw(rp, (sx + 0.6, sy - 3.0)))
     rk.apply(P('hat', head=(lerp(0.0, 0.35, sm((lt - 1.1) / 1.4)), 0.7)))
     S['rface'] = 'calm'
     S['hat_tip'] = 0.3
@@ -2135,11 +2135,11 @@ def lights_out(S, k, t, lt):
     for j in range(5):
         S['cups'][j].location = A(10.0 + 0.3 * j, 0.45 + 0.2 * (j % 2), 1.14)
     S['tins'][0].location = A(11.2, 0.8, 1.13)
-    dim = 1 - 0.85 * sm((lt - 1.2) / 1.8)
+    dim = 1 - 0.7 * sm((lt - 1.6) / 2.0)
     lampat(S, 0, A(-4.0, -3.4, 3.6), 2400 * dim, 'FFE2B0')
-    lampat(S, 1, A(dx, dy, 6.2), 1400, 'FFF8E8')
+    lampat(S, 1, A(dx, dy - 1.0, 5.6), 2600, 'FFF8E8')
     lampat(S, 2, A(9.0, 0.6, 4.6), 900 * dim, 'FFD8A0')
-    shoot(S, A(lerp(13.6, 12.6, k), lerp(-4.6, -4.2, k), lerp(2.2, 2.5, k)), A(-3.0, 0.6, 2.6), 26, fill=1.0 * dim)
+    shoot(S, A(lerp(12.8, 12.0, k), lerp(-3.6, -3.3, k), lerp(2.1, 2.4, k)), A(-5.0, 0.4, 3.0), 36, fill=1.3)
 
 
 def sealed(S, k, t, lt):
@@ -2148,6 +2148,7 @@ def sealed(S, k, t, lt):
     drill_at(S, A, -80, HOLE[0], HOLE[1])
     sx, sy = SITE
     S['lid'].location = A(sx, sy, 0)
+    S['lid'].scale = (1.3, 1.3, 1.3)
     puffs(S, A(sx - 6.0 + 9.0 * ((t * 0.25) % 1), sy - 1.0, 0.3), t, 6, 2.0, 0.5, 0.7)
     rk = S['rook']
     rp = (sx - 1.9, sy - 2.3)
@@ -2156,7 +2157,7 @@ def sealed(S, k, t, lt):
     rk.apply(blend(P('hat', head=(0.45, -0.45)), P('stand', aL=(0.3, 0.1, 0.4), aR=(0.3, 0.1, 0.4), head=(-0.2, 0.5)), look))
     S['rface'] = 'calm'
     S['hat_tip'] = 0.5 * (1 - look)
-    shoot(S, A(sx + lerp(-7.6, -6.6, k), sy + lerp(-9.6, -9.0, k), lerp(1.7, 2.1, k)), A(sx - 0.9, sy - 1.0, 1.7), 30, fill=0.8)
+    shoot(S, A(sx + lerp(-5.6, -4.8, k), sy + lerp(-7.2, -6.6, k), lerp(1.5, 1.9, k)), A(sx - 0.9, sy - 1.0, 1.6), 34, fill=0.8)
 
 
 # ---------------------------------------------------------------- the thumbnail picture
@@ -2167,7 +2168,8 @@ def photo_thumb(S, k, t, lt):
     m = S['men'][3]
     m.face, m.jawv = 'wide', 0.5
     d = S['drill'].location
-    shoot(S, (d[0] + 1.75, d[1] - 2.6, d[2] + 1.9), (d[0] + 0.75, d[1] + 0.25, d[2] + 1.5), 40, fill=1.6)
+    lampat(S, 3, (d[0] + 0.2, d[1] - 2.2, d[2] + 2.4), 420, 'FFE8C8')
+    shoot(S, (d[0] + 0.4, d[1] - 3.3, d[2] + 1.8), (d[0] - 1.05, d[1] + 0.3, d[2] + 1.45), 40, fill=1.8)
 
 
 def shift(S, k, t, lt):
@@ -2175,7 +2177,7 @@ def shift(S, k, t, lt):
     A = env(S, 'ramp', '000000', fk=2.3)
     x = lerp(-6.0, -1.0, k)
     truck_at(S, A(x, 1.2, 0.02 * abs(math.sin(t * 19))), PI / 2)
-    for j, (rig, dx_, y) in enumerate(((S['men'][1], 1.6, -1.6), (S['men'][5], -1.6, -2.6))):
+    for j, (rig, dx_, y) in enumerate(((S['men'][1], 4.4, -0.7), (S['men'][5], 6.0, 0.9))):
         rig.place(A(x + dx_, y, 0), PI / 2)
         rig.apply(walk(t + j * 0.4, 1.5))
         rig.face = 'calm'
@@ -2211,7 +2213,7 @@ for _k in ('emerge', 'hug'):
 
 # A wide frame held for three or four seconds needs more than a slow push: every shot also swings a little round its own subject.
 # The rate is degrees per second; prm "orb": [degrees, dolly, rise] sets it for one shot.
-SWING = dict(three_rigs=3.0, lights_out=3.0, vigil=5.0, shaft_ride=0.0, ride_face=0.0, tie_note=4.0, spoon=5.0)
+SWING = dict(three_rigs=3.0, lights_out=4.0, vigil=5.0, shaft_ride=0.0, ride_face=0.0, tie_note=4.0, spoon=5.0, sealed=11.0, rook_wrong=10.0, signoff=9.0)
 
 
 def _swung(f, name):
@@ -2232,4 +2234,28 @@ def _swung(f, name):
     return g
 
 
+def _closer(f, mul, dz=0.0):
+    def g(S, k, t, lt):
+        f(S, k, t, lt)
+        c, tg = S['camrig'].location, S['camtgt'].location
+        S['camrig'].location = (tg[0] + (c[0] - tg[0]) * mul, tg[1] + (c[1] - tg[1]) * mul, c[2] + dz)
+    g.__name__ = f.__name__
+    return g
+
+
+SHOTS3D['shaft_ride'] = _closer(SHOTS3D['shaft_ride'], 0.6)
+
+
+def _lower(f, dz, mul):
+    """The Short's portrait close-up puts the faces where the wide frame carries the opening words: aim higher and stand back."""
+    def g(S, k, t, lt):
+        f(S, k, t, lt)
+        c, tg = S['camrig'].location, S['camtgt'].location
+        S['camtgt'].location = (tg[0], tg[1], tg[2] + dz)
+        S['camrig'].location = (tg[0] + (c[0] - tg[0]) * mul, tg[1] + (c[1] - tg[1]) * mul, c[2] + 0.4 * dz)
+    g.__name__ = f.__name__
+    return g
+
+
+SHOTS3D['tie_note'] = _lower(SHOTS3D['tie_note'], 0.5, 1.2)
 SHOTS3D = {name: _swung(f, name) for name, f in SHOTS3D.items()}
