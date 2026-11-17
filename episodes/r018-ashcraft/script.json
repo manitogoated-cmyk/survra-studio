@@ -1,7 +1,7 @@
 {
   "id": "r018-ashcraft", "spine": "v2", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.4,
   "segments": [
-    {"scene": "hook", "mood": "hook", "text": "she wakes up on the floor of a wrecked yacht, and her fiancé is gone."},
+    {"scene": "hook", "mood": "hook", "text": "she wakes up in a flooded cabin. The masts are gone. So is her fiancé."},
     {"scene": "doubt", "mood": "tense", "text": "No masts? No chance."},
     {"scene": "wreck", "mood": "sad", "text": "A hurricane flipped the boat. She was out cold for {27|twenty-seven} hours. His safety line is still tied on. Nobody is on the end of it."},
     {"scene": "work", "mood": "action", "text": "The engine is dead. So she pumps out the cabin, and hangs one small sail on a broken pole."},

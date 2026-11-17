@@ -1,0 +1,1220 @@
+{
+ "id": "r018-ashcraft",
+ "hook_text": "ALONE|AT SEA",
+ "shots": [
+  {
+   "n": 1,
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "wake",
+   "action": "Flooded cabin, grey light. Close on a young woman lying across a settee, a gash on her forehead, sea water slopping a hand's width below her face, tins and a cushion drifting past. Her eyes snap open; she lifts her head, mouth open",
+   "camera": "Close above her face, drifting back",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "cut",
+   "sfx": [
+    [
+     "hit",
+     0.03
+    ],
+    [
+     "wave",
+     0.35
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 2,
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "hatch_out",
+   "action": "She comes up through the hatch into daylight, eyes wide, head turning: the mainmast is a splintered stump in front of her, the rest of it over the side in a tangle of wire and torn sail",
+   "camera": "From the foredeck, low, past the stump, easing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "cut",
+   "sfx": [
+    [
+     "creak",
+     0.1
+    ],
+    [
+     "gasp",
+     0.5
+    ]
+   ],
+   "hud": "PACIFIC OCEAN, 1983",
+   "prm": {}
+  },
+  {
+   "n": 3,
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "helm_empty",
+   "action": "From the stern: the wheel turns by itself, the cockpit is empty. She twists round in the hatch, searching, and shouts a name",
+   "camera": "Behind the wheel, pushing forward",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "creak",
+     0.2
+    ],
+    [
+     "shout",
+     0.5
+    ]
+   ],
+   "hud": "PACIFIC OCEAN, 1983",
+   "prm": {}
+  },
+  {
+   "n": 4,
+   "segment": "doubt",
+   "weight": 1.0,
+   "kind": "rook_mast",
+   "action": "A crow in a long coat stands on the stump of the mainmast, arms folded, hat brim low, eyes half shut. He looks down at the wreckage, then at us, and speaks. Behind and below him she is still turning in the hatch, looking for someone",
+   "camera": "Low three-quarter on Rook, drifting in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "zoom",
+   "sfx": [
+    [
+     "flap",
+     0.1
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": "CASE 018",
+   "prm": {}
+  },
+  {
+   "n": 5,
+   "segment": "wreck",
+   "weight": 0.9,
+   "kind": "storm_wave",
+   "action": "A black sky, rain, lightning. The yacht, small, heeling; behind her a wall of water with a white crest climbs higher than her masts ever were",
+   "camera": "Low on the water, the wave filling the frame behind the boat",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 3,
+   "transition": "flash",
+   "sfx": [
+    [
+     "thunder",
+     0.05
+    ],
+    [
+     "wave",
+     0.4
+    ]
+   ],
+   "hud": "12 OCTOBER 1983",
+   "prm": {}
+  },
+  {
+   "n": 6,
+   "segment": "wreck",
+   "weight": 1.0,
+   "kind": "storm_roll",
+   "action": "The wave takes her: the yacht is thrown onto her side and goes on over, keel to the sky, in a burst of white water",
+   "camera": "Off the bow, low, pushing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 4,
+   "transition": "cut",
+   "sfx": [
+    [
+     "crash",
+     0.25
+    ],
+    [
+     "splash",
+     0.6
+    ]
+   ],
+   "hud": "12 OCTOBER 1983",
+   "prm": {}
+  },
+  {
+   "n": 7,
+   "segment": "wreck",
+   "weight": 1.5,
+   "kind": "out_cold",
+   "action": "From high in the cabin: she lies where she was thrown, eyes shut, not moving. The light in the portholes goes from day to night and back to day while the water slops and the tins drift. A count of hours runs up to 27",
+   "camera": "High and wide, sinking slowly towards her",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.0
+    ],
+    [
+     "wave",
+     0.5
+    ]
+   ],
+   "hud": "OUT COLD",
+   "prm": {}
+  },
+  {
+   "n": 8,
+   "segment": "wreck",
+   "weight": 1.5,
+   "kind": "cleat_line",
+   "action": "On deck, close on a cleat: an orange safety line is still made fast to it and runs away over the side, swaying. She kneels, face set with dread, and her hand goes out to it",
+   "camera": "Close, tracking along the line",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "creak",
+     0.2
+    ],
+    [
+     "cord",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 9,
+   "segment": "wreck",
+   "weight": 1.6,
+   "kind": "rook_ring",
+   "action": "Rook, at the stern rail, lifts the free end of the line into view: the steel ring on it has sprung open. He looks at it, and his head goes down",
+   "camera": "Three-quarter on Rook, the ring in the middle of the frame",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "cord",
+     0.15
+    ],
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 10,
+   "segment": "wreck",
+   "weight": 1.0,
+   "kind": "stern_alone",
+   "action": "She stands at the stern rail looking back down the empty sea; her head sinks. Behind her Rook holds his hat to his chest. The camera pulls away and up: grey water in every direction",
+   "camera": "Astern of the yacht, pulling back and rising",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.0
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 11,
+   "segment": "work",
+   "weight": 1.3,
+   "kind": "engine_dead",
+   "action": "Cockpit, hard sunlight. The engine hatch is up. She turns the key: the engine shudders, coughs one puff of grey smoke and stops. Her shoulders drop",
+   "camera": "High three-quarter from the port side, easing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "sputter",
+     0.1
+    ],
+    [
+     "clunk",
+     0.6
+    ]
+   ],
+   "hud": "TAMI OLDHAM, 23",
+   "prm": {}
+  },
+  {
+   "n": 12,
+   "segment": "work",
+   "weight": 1.0,
+   "kind": "pump",
+   "action": "Below: she throws her weight on the bilge pump lever, back and forth, jaw set. The water in the cabin is going down round her legs",
+   "camera": "Beside the lever, looking forward at her",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "cut",
+   "sfx": [
+    [
+     "splash",
+     0.2
+    ],
+    [
+     "splash",
+     0.6
+    ]
+   ],
+   "hud": "TAMI OLDHAM, 23",
+   "prm": {}
+  },
+  {
+   "n": 13,
+   "segment": "work",
+   "weight": 1.0,
+   "kind": "pole_up",
+   "action": "On the coachroof she walks a broken spinnaker pole upright, hand over hand, teeth gritted. Rook is down on his knees holding its foot",
+   "camera": "Low off the bow, tilting up with the pole",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "creak",
+     0.3
+    ],
+    [
+     "clunk",
+     0.85
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 14,
+   "segment": "work",
+   "weight": 1.0,
+   "kind": "sail_fill",
+   "action": "A small storm jib goes up the pole, shakes, and fills. She hauls on the halyard, looks up at it, and for the first time her face eases",
+   "camera": "From the side, low, rising with the sail",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "flap",
+     0.2
+    ],
+    [
+     "flap",
+     0.5
+    ],
+    [
+     "whoosh",
+     0.8
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 15,
+   "segment": "work",
+   "weight": 0.9,
+   "kind": "wide_sail",
+   "action": "Wide, from the side: the dismasted yacht under one small sail, moving through the swell. She is at the wheel; Rook stands on the roof, a wing shading his eyes",
+   "camera": "Abeam, tracking, closing slowly",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "wave",
+     0.1
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 16,
+   "segment": "rehook",
+   "weight": 1.3,
+   "kind": "plane_over",
+   "action": "Looking aft and up from the roof: an aircraft comes in low over the stern, straight at us, growing fast. At the wheel she throws her head back and both arms up",
+   "camera": "Low on the roof, tilting up as it comes",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 3,
+   "transition": "flash",
+   "sfx": [
+    [
+     "buzz",
+     0.0
+    ],
+    [
+     "whoosh",
+     0.7
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 17,
+   "segment": "rehook",
+   "weight": 1.1,
+   "kind": "wave_up",
+   "action": "From the aircraft: a small white hull on a very large sea. Two figures on the roof, jumping, arms going: her, shouting, and Rook waving both wings",
+   "camera": "High above, climbing away and rolling",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "cut",
+   "sfx": [
+    [
+     "shout",
+     0.1
+    ],
+    [
+     "flap",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 18,
+   "segment": "rehook",
+   "weight": 1.1,
+   "kind": "plane_gone",
+   "action": "Over her shoulder: the aircraft is already small, and getting smaller. Her arms come down. She turns her head; she has stopped shouting",
+   "camera": "Behind her, level, easing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "buzz",
+     0.0
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 19,
+   "segment": "rehook",
+   "weight": 1.26,
+   "kind": "rook_glass",
+   "action": "At the bow, over his shoulder: Rook has a small brass telescope to his eye. On the horizon two ships cross, a long way off, and keep going. He lowers the glass and turns his head back to us; his brows have dropped",
+   "camera": "Behind his shoulder at the bow, the horizon across the frame",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "horn_far",
+     0.2
+    ],
+    [
+     "tick",
+     0.8
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 20,
+   "segment": "steer",
+   "weight": 1.5,
+   "kind": "chart",
+   "action": "Rook's board: a sea chart pinned at the corners. A dashed course runs up from Tahiti to a red cross; from the cross an orange line starts west and runs all the way to Hawaii. 1,500 MILES",
+   "camera": "Flat, the chart swaying on its pins",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "scratch",
+     0.2
+    ],
+    [
+     "bloop",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 21,
+   "segment": "steer",
+   "weight": 1.5,
+   "kind": "rook_sun",
+   "action": "On the roof she stands braced with a brass sextant at her eye, aimed at the sun. Beside her Rook taps his beak, follows the line of it up to the sun, then looks at her and nods once",
+   "camera": "Front three-quarter two-shot, easing round",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "tick",
+     0.7
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 22,
+   "segment": "steer",
+   "weight": 1.3,
+   "kind": "sextant",
+   "action": "Close on her face: the sextant at her eye, its arm moving a hair at a time, the sun flashing in the little mirror. Her eye is narrowed, steady",
+   "camera": "Close, three-quarter, drifting round",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.2
+    ],
+    [
+     "pop",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 23,
+   "segment": "steer",
+   "weight": 1.6,
+   "kind": "bilge_watch",
+   "action": "Below, a floorboard up: her hand comes out of the black bilge water holding a wristwatch, dripping. The second hand is still going round",
+   "camera": "Close and low over the open bilge, rising with the hand",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "splash",
+     0.1
+    ],
+    [
+     "tick",
+     0.4
+    ],
+    [
+     "tick",
+     0.6
+    ],
+    [
+     "tick",
+     0.8
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "hush": true
+  },
+  {
+   "n": 24,
+   "segment": "payoff",
+   "weight": 1.1,
+   "kind": "helm_days",
+   "action": "She steers, worn out. Behind her the sky runs through day, dusk, night and dawn, twice; a count runs up to DAY 41. Rook crouches at the coaming scratching one more mark for each day",
+   "camera": "Front three-quarter from the side deck, easing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "scratch",
+     0.2
+    ],
+    [
+     "scratch",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 25,
+   "segment": "payoff",
+   "weight": 1.2,
+   "kind": "ship_light",
+   "action": "Night, an island's lights along the horizon. A ship's searchlight swings across the black water and stops on the wreck. At the bow Rook is waving both wings; at the wheel she turns to the light",
+   "camera": "Off the stern quarter, the ship beyond the yacht",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "horn",
+     0.1
+    ],
+    [
+     "whoosh",
+     0.6
+    ]
+   ],
+   "hud": "DAY 41",
+   "prm": {}
+  },
+  {
+   "n": 26,
+   "segment": "payoff",
+   "weight": 0.9,
+   "kind": "her_light",
+   "action": "Close on her at the wheel: the beam hits her face, white. Her eyes go wide, then screw shut; a hand comes up against the glare and her mouth opens",
+   "camera": "Close on her face, easing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "gasp",
+     0.3
+    ]
+   ],
+   "hud": "DAY 41",
+   "prm": {}
+  },
+  {
+   "n": 27,
+   "segment": "payoff",
+   "weight": 1.3,
+   "kind": "tow_in",
+   "action": "From above and behind: the ship ahead with a towline down to the yacht's bow, where Rook stands pointing the way; a green light on the end of a breakwater slides past, the town beyond",
+   "camera": "High astern, sinking and closing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "horn_far",
+     0.1
+    ],
+    [
+     "wave",
+     0.5
+    ]
+   ],
+   "hud": "HILO, HAWAII",
+   "prm": {}
+  },
+  {
+   "n": 28,
+   "segment": "payoff",
+   "weight": 1.1,
+   "kind": "rook_hatjump",
+   "action": "Rook on the roof, harbour lights behind him. He looks back towards her at the wheel: his eyes go wide, his hat leaves his head, and a feather comes loose",
+   "camera": "Close on Rook, easing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "pop",
+     0.35
+    ],
+    [
+     "flap",
+     0.5
+    ]
+   ],
+   "hud": "HILO, HAWAII",
+   "prm": {}
+  },
+  {
+   "n": 29,
+   "segment": "payoff",
+   "weight": 1.0,
+   "kind": "chart",
+   "action": "The chart again: the orange line now runs the whole way from the red cross to Hawaii. 41 DAYS is stamped under it, then ALONE",
+   "camera": "Flat, the chart swaying on its pins",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.1
+    ],
+    [
+     "bloop",
+     0.45
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "done": true
+   }
+  },
+  {
+   "n": 30,
+   "segment": "end",
+   "weight": 2.2,
+   "kind": "line_dawn",
+   "action": "Dawn, in harbour, the water still. Low on the side deck: the orange line is still on its cleat, hanging over the side. Rook stands over it with his hat held to his chest, and bows his head",
+   "camera": "Low outside the rail, rising slowly",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 31,
+   "segment": "end",
+   "weight": 1.4,
+   "kind": "sloop",
+   "action": "Another year, another boat: a small sloop with her mast standing and both sails full, heeling to a clean breeze in bright sun. She is at the helm, looking ahead",
+   "camera": "Off the bow, low, tracking",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "wave",
+     0.1
+    ],
+    [
+     "flap",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 32,
+   "segment": "end",
+   "weight": 0.95,
+   "kind": "rook_wrong",
+   "action": "Close on Rook at dawn: he puts his hat back on, settles the brim, and looks straight at us",
+   "camera": "Close, level",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 33,
+   "segment": "end",
+   "weight": 0.95,
+   "kind": "signoff",
+   "action": "Rook on the end of the breakwater at dawn, the dismasted yacht lying quiet in the harbour behind him. He lets go of his brim and looks out to sea",
+   "camera": "Three-quarter, easing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "flap",
+     0.2
+    ],
+    [
+     "gulls",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "brand": true
+  },
+  {
+   "n": 34,
+   "segment": "end",
+   "weight": 1.7,
+   "kind": "wake",
+   "action": "Back in the flooded cabin, running backwards to where it began: her head goes down on the settee, her eyes close, the water slops under her",
+   "camera": "Close above her face, the opening move reversed",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "wave",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "loop": true
+   }
+  }
+ ]
+}
