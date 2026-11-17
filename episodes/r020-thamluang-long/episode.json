@@ -1,0 +1,25 @@
+{
+ "id": "r020-thamluang-long",
+ "format": "long",
+ "status": "draft",
+ "case_of": "r020-thamluang",
+ "synthetic": false,
+ "host": "rook",
+ "case": 20,
+ "claimed_at": "2026-11-17T08:43:38Z",
+ "title": "Thirteen in the Dark: The Full Case File of the Thai Cave Rescue",
+ "playlist": "Rook's Case Files (Full Cases)",
+ "sources": [
+  "https://en.wikipedia.org/wiki/Tham_Luang_cave_rescue",
+  "https://sg.news.yahoo.com/timeline-thai-cave-rescue-transfixed-123325942.html",
+  "https://itv.com/news/2018-07-10/how-the-thailand-cave-ordeal-unfolded",
+  "https://www.goodmorningamerica.com/news/story/odds-rescuers-pulled-off-miracle-thai-cave-mission-56509114",
+  "https://www.thailandcaves.shepton.org.uk/node/209",
+  "https://www.abc15.com/news/world/boys-rescued-from-cave-in-thailand-were-sedated-with-ketamine",
+  "https://www.thenewdaily.com.au/news/world/2019/04/06/thai-boys-drugged-with-ketamine",
+  "https://www.history.com/this-day-in-history/july-10/thai-soccer-team-rescued-from-cave",
+  "https://www.npr.org/2018/07/11/627916837/pump-fails-at-thai-cave-hours-after-soccer-boys-rescued",
+  "https://www.yahoo.com/news/thailand-cave-rescue-water-pumps-065632360.html",
+  "https://www.scmp.com/news/asia/southeast-asia/article/2154815/divers-give-first-detailed-account-thai-cave-rescue-water"
+ ]
+}
