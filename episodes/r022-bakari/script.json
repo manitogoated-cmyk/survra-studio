@@ -1,0 +1,13 @@
+{
+  "id": "r022-bakari", "spine": "v2", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.4,
+  "segments": [
+    {"scene": "hook", "mood": "hook", "text": "a twelve-year-old who can barely swim, alone in the sea at night, holding a piece of a plane."},
+    {"scene": "doubt", "mood": "tense", "text": "All night? At twelve?"},
+    {"scene": "dark", "mood": "tense", "text": "She just found herself in the water. She hears voices calling in the dark, but she can't see anyone."},
+    {"scene": "hold", "mood": "sad", "text": "The waves are high. She can't climb onto the wreckage, so she just holds on. Hour after hour. All night. Then all morning."},
+    {"scene": "rehook", "mood": "tense", "text": "Then, a boat. The crew throw her a life ring. In those waves, she can't reach it."},
+    {"scene": "rescue", "mood": "action", "text": "So one sailor jumps in after her. On deck: blankets, and warm, sweet water. She's alive."},
+    {"scene": "truth", "mood": "calm", "text": "But she thinks she just fell out of the plane, and that her mother landed safely without her."},
+    {"scene": "end", "mood": "sad", "text": "In hospital, she learns the truth. The plane crashed. {152|A hundred and fifty-two} people died, her mother among them. I was wrong. Case closed. The only one who lived was"}
+  ]
+}

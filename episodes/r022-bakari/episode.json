@@ -1,0 +1,22 @@
+{
+ "id": "r022-bakari",
+ "format": "short",
+ "status": "draft",
+ "synthetic": false,
+ "host": "rook",
+ "case": 22,
+ "title": "She Was 12, Alone in the Sea at Night, Holding a Piece of a Plane #shorts",
+ "description": "draft",
+ "tags": [],
+ "hashtags": ["#shorts", "#truestory", "#survival"],
+ "playlist": "Rook's Case Files (Shorts)",
+ "sources": [
+  "https://www.cbsnews.com/news/recounting-rescue-of-child-crash-survivor",
+  "https://www.wbur.org/news/2009/07/01/yemen-plane-crash-2",
+  "https://www.irishtimes.com/news/girl-tells-of-miraculous-escape-from-air-crash-1.691112",
+  "https://www.africanews.com/2022/05/23/sole-survivor-relives-2009-yemenia-airways-crash-at-french-trial//",
+  "https://en.wikipedia.org/wiki/Bahia_Bakari",
+  "https://en.wikipedia.org/wiki/Yemenia_Flight_626"
+ ],
+ "authoring": {"claimed_at": "2026-11-17T06:15:05Z", "run": "scheduled short run, 17 Nov 2026; brief order (Short 5 of the batch, slate case 22)"}
+}
