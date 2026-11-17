@@ -296,7 +296,7 @@
    "world": "night ocean, debris, fishing boat",
    "est_score": 82,
    "long_form_candidate": false,
-   "status": "in progress",
+   "status": "authored",
    "facts": "verify with 2+ sources at authoring; skip if they do not hold",
    "claimed_at": "2026-11-17T06:15:05Z"
   },

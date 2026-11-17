@@ -1,22 +1,155 @@
 {
  "id": "r022-bakari",
  "format": "short",
- "status": "draft",
+ "status": "approved",
  "synthetic": false,
  "host": "rook",
  "case": 22,
  "title": "She Was 12, Alone in the Sea at Night, Holding a Piece of a Plane #shorts",
- "description": "draft",
- "tags": [],
- "hashtags": ["#shorts", "#truestory", "#survival"],
+ "description": "Case 022. In the early hours of 30 June 2009 Yemenia Flight 626, an Airbus A310 flying from Sana'a in Yemen to Moroni in the Comoros, came down in the sea off Grande Comore with 153 people on board. Bahia Bakari, a twelve-year-old from France travelling with her mother to visit family, found herself in the water in the dark. She could barely swim. She could hear people speaking around her but could not see anyone. She held on to a piece of the wreckage, which she could not climb onto, through the night and the morning; reports of how long she was in the water run from nine to more than thirteen hours. The crew of the boat Sima Com 2 found her in rough seas. They threw her a life ring that she could not get hold of, so one sailor went into the water and brought her to the boat, where she was wrapped in blankets and given warm sugared water. She has said that she believed she alone had fallen out of the aeroplane and that the others had arrived safely; in hospital she was told that the aeroplane had crashed. She was the only survivor: 152 people died, her mother among them. Rook didn't believe it either.\n\nAnimated reconstruction of a true story, made with respect for the 152 people who died and for their families. The crash is not shown. The wreckage is a plain panel with no livery, the boat is a generic boat and not a model of the real Sima Com 2, and no name, flag or logo appears on anything. The girl, the crew and the woman at the bedside are simple figures; nobody's likeness is attempted. The two drawn cards show what she has said she believed, not what happened. Staging details such as the shape of the piece she held, where the debris floated, the look of the sky, the way the ring was thrown, the locker and the cup on deck, the hospital room and who told her are reconstruction, not record. Narration is a synthetic voice (Kokoro).",
+ "tags": [
+  "Bahia Bakari",
+  "Yemenia Flight 626",
+  "sole survivor",
+  "plane crash survivor",
+  "Comoros",
+  "Grande Comore",
+  "Moroni",
+  "2009",
+  "Sima Com 2",
+  "survival",
+  "true story",
+  "survival story",
+  "rescue at sea",
+  "animated story",
+  "Rook",
+  "Survra"
+ ],
+ "hashtags": [
+  "#shorts",
+  "#truestory",
+  "#survival"
+ ],
  "playlist": "Rook's Case Files (Shorts)",
  "sources": [
   "https://www.cbsnews.com/news/recounting-rescue-of-child-crash-survivor",
+  "https://www.foxnews.com/story/rescuers-recall-pulling-sole-survivor-from-indian-ocean-after-yemeni-plane-crash",
   "https://www.wbur.org/news/2009/07/01/yemen-plane-crash-2",
   "https://www.irishtimes.com/news/girl-tells-of-miraculous-escape-from-air-crash-1.691112",
+  "https://nzherald.co.nz/world/sole-crash-surviror-could-hardly-swim-says-father/E4AVKBYI7BXOEMKIXDLRRM2J2M",
   "https://www.africanews.com/2022/05/23/sole-survivor-relives-2009-yemenia-airways-crash-at-french-trial//",
   "https://en.wikipedia.org/wiki/Bahia_Bakari",
   "https://en.wikipedia.org/wiki/Yemenia_Flight_626"
  ],
- "authoring": {"claimed_at": "2026-11-17T06:15:05Z", "run": "scheduled short run, 17 Nov 2026; brief order (Short 5 of the batch, slate case 22)"}
+ "story_score": {
+  "curiosity": 8,
+  "stakes": 9,
+  "freshness": 7,
+  "story": 8,
+  "visual": 7,
+  "audience_fit": 7,
+  "payoff": 8,
+  "packaging": 8,
+  "research": 9,
+  "repeatability": 6,
+  "total": 77
+ },
+ "title_options": [
+  "She Was 12, Alone in the Sea at Night, Holding a Piece of a Plane #shorts",
+  "153 People Were on the Plane. Only a 12-Year-Old Lived #shorts",
+  "She Thought She Had Fallen Out of the Plane #shorts",
+  "The Life Ring Landed Out of Her Reach. So a Sailor Jumped In #shorts"
+ ],
+ "spine": "v2",
+ "shown_moments": {
+  "a twelve-year-old who can barely swim, alone in the sea at night": "shots 1 to 3 (her face and arms at the edge of the wreckage; her hands sliding and gripping; the one small figure in a field of debris)",
+  "holding a piece of a plane": "shot 4 (along the torn panel: ribs, torn metal, the row of window holes)",
+  "she just found herself in the water": "shot 7 (from straight above, turning her head one way and the other)",
+  "she hears voices calling in the dark, but she can't see anyone": "shots 8 to 10 (she calls out; the view over her head into the dark with no one in it while Rook listens; Rook lowers his wing)",
+  "the waves are high": "shot 11 (the swell lifting the wreckage and breaking over it)",
+  "she can't climb onto the wreckage": "shot 12 (she pushes up, the panel tips, she slides back)",
+  "so she just holds on, hour after hour": "shots 13 and 14 (cheek on her arm with Rook's wing on the panel beside her; her eyes closing and jerking open)",
+  "all night, then all morning": "shots 15 and 16 (the sun coming up behind the wreckage; the grey morning sea)",
+  "then, a boat": "shots 17 and 18 (the boat on the horizon, Rook pointing; the bow coming on with the crew pointing)",
+  "the crew throw her a life ring": "shot 19 (the throw, seen from the deck)",
+  "in those waves, she can't reach it": "shots 20 and 21 (the ring carried off sideways; her reach falling short)",
+  "one sailor jumps in after her": "shots 22 to 24 (the jump; his arm round her; the crew lifting her up the side)",
+  "blankets, and warm, sweet water. She's alive": "shots 25 and 26 (the covers and the cup on deck; her eyes opening over the cup)",
+  "she thinks she just fell out of the plane, and that her mother landed safely without her": "shots 27 to 29 (her look back at the sea; the two drawn cards headed WHAT SHE BELIEVED)",
+  "in hospital, she learns the truth. The plane crashed": "shots 30 to 32 (the quiet room; the woman at the bedside; her eyes closing, Rook's hat coming off)",
+  "152 people died, her mother among them": "shots 33 to 35 (the wreckage alone on an empty sea; debris riding the swell; the empty chair by the bed). No victim is shown.",
+  "I was wrong. Case closed": "shots 36 and 37 (Rook at the window, hat at his side; hat back on at dusk)",
+  "the only one who lived was": "shots 38 and 39 (the board: 153 ON BOARD, 1 SURVIVOR; back to the opening frame)"
+ },
+ "experiments": {
+  "E1_E2": "spine v2: Rook lands on a floating panel behind her during the hook (shot 5) and doubts the story there, in one line of 1.2 s ('All night? At twelve?'), with her at the wreckage behind him; no office, no cutaway. The story runs forward from the hook. Date, place, name and age are on-screen labels only (30 JUNE 2009, OFF GRANDE COMORE, BAHIA BAKARI, 12, SIMA COM 2).",
+  "E3": "batch Short 5 (odd): person close-up first frame, as the brief assigns: her face and arms at the edge of the wreckage, at eye level, in the water.",
+  "E4": "'Case closed.' ending, as the brief assigns to this Short.",
+  "E7": "hook_text ALONE IN / THE SEA.",
+  "E8": "tail 0.4 s; the last line ('The only one who lived was') runs into the first ('a twelve-year-old who can barely swim...'), and the last shot is the opening shot played back to its first frame.",
+  "rook_action": "Detective action: he cups a wing to the side of his head and listens into the dark for the voices (shot 9), and he is the one who spots the boat and points (shot 17). The brief's Rook moment is kept: he crosses to the wreckage and lays a wing on it beside her hands (shot 13) and stays there until the boat comes. Mannerisms: sheds a feather as he lands (5), hat brim low (6, 10), hat hop (17). He makes no joke anywhere in this film. He takes his hat off when she is told (32, 36) and does not pocket anything: there is no keepsake from this case."
+ },
+ "sound_plan": {
+  "first_frame": "One 'hit' at 0.03 s as a wave slapping the panel (the gate needs an impact in the first second; here it is a story sound), then a gasp. The hook mood is sparse.",
+  "music": "The engine's score follows the segment moods: hook, tense for Rook's line and the voices, sad for the night of holding on, tense for the boat and the ring, action for the rescue, calm for what she believed, sad for the hospital and the ending. No drum loop under the sad segments. The engine cannot delay the music's entry.",
+  "effects": "Deliberately thin: one or two quiet cues a shot (ticks, a heartbeat, a splash where water is thrown, wing flaps). The first mix measured the voice only 8.6 dB over the bed, because the sad mood lowers the narration, so the loud cues (crash, low tones, most waves and shouts) were taken out.",
+  "hush": "Shot 30 (the hospital room before she is told): the music drops out for the breath before 'In hospital, she learns the truth'.",
+  "tragic_beats": "From shot 30 to the end there are only ticks, a heartbeat and one soft tone; Rook's only line there is 'I was wrong.'",
+  "voice": "Narration is ducked over the bed by the engine; measured in the local rehearsal (see quality_gate), not listened to."
+ },
+ "source_notes": "Read for this run on 17 Nov 2026 (eight pages, through a fetch tool). Every narrated fact is on at least two of the pages read. Age: 12 on five pages (AP via CBS and Fox, africanews/AFP 2022, both Wikipedia articles; Wikipedia gives her date of birth as 15 August 1996); two first-day reports (WBUR/AP, NZ Herald) said 14. 12 is used. Flight, date and place: Yemenia Flight 626, an Airbus A310, Sana'a to Moroni, came down in the sea off Grande Comore at about 1.50 am local time on 30 June 2009 (both Wikipedia articles; the Irish Times says 2 am). 153 on board (142 passengers, 11 crew) and 152 dead: Wikipedia, WBUR, africanews, AP; the NZ Herald alone says 151 others, an early count. She was travelling with her mother from Paris to visit family: WBUR, Irish Times, africanews, Wikipedia. 'She just found herself in the water': her own words as quoted by her father on WBUR and the NZ Herald, and her 2022 testimony (africanews). 'Can barely swim': WBUR, Irish Times, NZ Herald, Wikipedia. Voices in the dark that she could not see: WBUR, Irish Times, NZ Herald, africanews, Wikipedia. She held a piece of debris and could not climb onto it: africanews (her testimony) and the rescue crew's report quoted by AP ('trying to get on to a piece of wood or plastic'); what the piece was is not established (she said 'I grabbed on to something but I don't know what'), so the fuselage panel with window holes is staging. Rough seas: AP (waves up to 16 feet in the search area), Irish Times, NZ Herald, Wikipedia. Hours in the water: pages disagree, from about nine (her memoir, per Wikipedia, with a rescue at about 11 am) to more than thirteen (French officials at the time); the narration says only 'all night, then all morning', which holds in every version, and no figure is shown. The boat Sima Com 2: AP (CBS and Fox) and both Wikipedia articles. A life ring was thrown and she could not take hold of it: AP, WBUR, Irish Times, NZ Herald, Wikipedia. A sailor went into the water for her: all of those pages; his name differs (Maturaffi Selemane Libounah on AP and Wikipedia; early reports named Sgt Said Abdilai), so he is not named. Blankets and warm sugared water: WBUR, Irish Times, NZ Herald; AP has bed covers; Wikipedia has blankets and a hot drink. She believed that she alone had fallen out and that the others, her mother included, had arrived safely: her 2022 testimony (africanews: 'convinced that I was the only one who fell') and her memoir as summarised on Wikipedia. She learned in hospital that the plane had crashed and that she was the only survivor: africanews (a psychologist told her) and Wikipedia. Who told her and in which hospital are not narrated; the woman in a white coat is a generic figure. Things kept out because they rest on one page or are disputed: that she had no life jacket; that she fell asleep holding on; the taste of fuel; a ship that passed without seeing her; her injuries (pages differ beyond a broken collarbone and hypothermia); the cause of the crash and the trial; the film offer. Staging choices that are not facts: the shape and colour of the wreckage and debris; a dark, starlit sky (no page read verbatim gives the sky); the sunrise shot; the look of the boat, its crew and their clothes; where on the boat she sat; the ring's flight; the hospital room; the empty chair; the two drawn cards (they show her belief, and are headed WHAT SHE BELIEVED); her clothes and hair; everything Rook does.",
+ "authoring": {
+  "claimed_at": "2026-11-17T06:15:05Z",
+  "run": "scheduled short run, 17 Nov 2026; brief order (Short 5 of the batch, slate case 22)"
+ },
+ "quality_gate": {
+  "method": "One run, seven rounds. Rounds 1 to 3: low-res contact sheets of all 3D shots. Found and fixed: the opening close-up showed her in profile with her arms hidden (camera moved in front of her, longer lens); the hands shot was blocked by the panel; Rook hid the girl in six shots while he stood between her and the camera (his place on the wreckage moved to her other side); his hat filled the frame in his close-up; the rising sun sat high in the sky as a white disc; the boat was a speck in its approach; the camera was under a wave in the ring shot; the crewman's back covered her on deck and she faced away from the camera; the hospital room had no ceiling, her feet came through the cover, and the woman at the bedside was out of frame; the hat held to Rook's chest read as a shield (he now holds it at his side). Round 4: full-length rehearsal (216x384, 4 samples, 12 fps, all 3D frames) composited with captions, labels, overlays, inserts and sound, reviewed as a 4-frames-per-second sheet of the whole video (180 frames). Found and fixed: the engine already pops the figure 152 on screen, so my own '152' overlay doubled it (removed); the board's photograph showed her from behind (re-shot from the front); a green TRUE stamp on a board about 152 deaths was the wrong tone (removed for this case); captions sat on her mouth in two close-ups (faces moved up); the woman and the girl were both cut by the frame edges in the bedside shot; she blinked on the very first frame. Rounds 5 to 7: three more rehearsals against the gate, see below, and four stills at 720x1280 (opening frame, shots 13, 26, 31). The final rehearsal passed the automated gate locally: 39 shots, mean 1.15 s, longest 1.90 s, Rook acting in 16 of 39 shots (41%), -14.9 LUFS, peak -1.3 dBFS, voice 17.0 dB over the bed, closest match to any earlier episode 0.82 (shot 34, debris on a grey sea, against k001-koepcke; the limit is 0.93). Duration 44.8 s. The cloud render runs the real gate at 720x1280 and 60 fps.",
+  "gate_history": "Rehearsal 1 failed twice: a static stretch at 34.2 to 35.8 s (the bedside shot) and the voice only 8.6 dB over the bed. Rehearsals 2 to 4 failed once each on a static stretch (the empty-sea shot, the bedside shot again, the empty-sea shot again). Fixes were made in the film, never in the gate: the sound cues were thinned and the loud ones removed; the hospital room got a darker floor, a painted lower wall band and a notice board so that a camera move registers, and the bedside shot got a long dolly and more acting; the 1.9 s empty-sea shot was split into a wide (1.1 s) and a low shot of debris on the swell (0.8 s). Lowest motion in any 1.5 s window of the final rehearsal is 1.92 against the gate's 1.2 (the wide night shot and the bedside shot).",
+  "checked": "Every 3D kind in the storyboard exists in world3d.SHOTS3D and every other kind in scenes.SHOTS (checked by script); HOST lists the 16 kinds in which Rook is placed; girl_close is the only kind used twice (first and last shot, for the loop). The first shot is 0.92 s with an impact sound at 0.03 s. The doubt line is 1.2 s and is spoken on the water with her behind him. The re-hook ('Then, a boat') starts at 19.3 s of 44.8 s (43%), and its turn ('she can't reach it') lands at 53%. One hush shot (30). Tail 0.4 s; the last shot is the opening shot run backwards to its first frame; the swell is at a different phase, so the match is close, not exact. On-screen dates, names and figures (30 JUNE 2009, OFF GRANDE COMORE, BAHIA BAKARI, 12, SIMA COM 2, 152, 153 ON BOARD, 1 SURVIVOR) were checked against the sources. The crash is not shown, no victim is shown, nothing graphic appears, Rook makes no joke, and no flag, livery, logo or likeness appears.",
+  "not_met": "The audio was measured, not listened to; loudness range was not re-measured and the earlier Shorts measure about 2.5 LU against the checklist's 4 LU (the engine's mix). Preview stills at 12% and 88% of every shot were not made this run: every shot was looked at on three contact sheets (one frame each) and then at four frames a second in the rehearsal, at low resolution, plus four stills at 720x1280. The cloud render is the first full-resolution, 60 fps pass. The 13-category score was given from stills and rehearsal sheets, not from playback. Kokoro's reading of the opening line could not be heard: the loop relies on 'The only one who lived was' running into 'a twelve-year-old...', and the first caption starts with a lower-case 'A' by design."
+ },
+ "checklist": {
+  "A_story": "done: score 77/100 with curiosity 8, story 8, payoff 8; spine v2; shown_moments lists every narrated moment",
+  "B_storyboard": "done: every shot has action, expression, camera and sound cue; Rook's mannerisms are the shed feather (5), hat brim low (6, 10) and hat hop (17); detective actions are listening for the voices (9) and spotting the boat (17); no neutral poses under action lines; he does not pocket a keepsake in this case, by choice",
+  "B2_retention": "done: hook_text set; first frame is her face and arms at the wreckage, close (the brief's E3 for an odd-numbered Short); re-hook at 43%; one hush; tail 0.4 s with the loop",
+  "C_previews": "partly: contact sheets and the rehearsal at low resolution, four stills at 720x1280; no blown-out or crushed frame where the story has to be seen; Rook on-model; see quality_gate.not_met",
+  "D_render": "engine defaults untouched (60 fps, 720x1280, 16 jobs in the workflow); the local rehearsal used low settings only for review",
+  "E_sound": "voice am_fenrir; no drum loop under the sad segments; voice 17.0 dB over the bed; loudness range not re-measured, see quality_gate.not_met",
+  "F_captions": "done: captions inside the frame; the three cards keep the caption band clear of their own text; faces moved out of the caption band in two close-ups; on-screen dates, names and figures checked against sources",
+  "G_final": "rehearsal reviewed as a 4 fps sheet of the whole video and larger frames; local gate PASS on the fifth rehearsal; the full-resolution render and the real gate happen in the workflow"
+ },
+ "review": {
+  "notes": [
+   "0.0 s: her face and arms at the edge of the wreckage, eyes open, hook text above her head",
+   "0.9 to 2.0 s: her hands slide and grip; 2.0 to 4.1 s: the wide and the window holes",
+   "4.1 to 5.1 s: Rook lands on the floating panel; 5.1 to 6.4 s: 'All night? At twelve?'",
+   "7.6 to 9.1 s: she calls out; 9.1 to 10.6 s: the empty dark, Rook listening",
+   "13.2 to 14.6 s: she pushes up, the panel tips, she slides back",
+   "14.6 to 16.1 s: cheek on her arm, Rook's wing on the panel; 17.4 to 18.3 s: sunrise",
+   "19.3 s: re-hook, the boat; 21.2 to 22.3 s: the ring is thrown; 23.3 to 24.2 s: her reach falls short",
+   "24.2 to 25.3 s: the sailor jumps; 26.2 to 27.1 s: she is lifted up the side",
+   "27.1 to 29.4 s: covers and the cup; her eyes open",
+   "30.4 to 33.0 s: the two drawn cards, WHAT SHE BELIEVED",
+   "33.0 to 34.0 s: hush, the hospital room; 34.0 to 35.9 s: the woman leans in",
+   "35.9 to 37.4 s: her eyes close; Rook's hat comes off",
+   "37.4 to 39.3 s: the empty sea; 39.3 to 40.5 s: the empty chair",
+   "41.6 to 42.6 s: hat back on, 'Case closed.'; 43.7 to 44.8 s: back to the opening frame"
+  ],
+  "scores_13": {
+   "story": 4,
+   "hook": 4,
+   "character_acting": 3,
+   "animation": 3,
+   "art_direction": 3,
+   "lighting": 3,
+   "camera": 3,
+   "pacing": 4,
+   "editing": 4,
+   "narration": 3,
+   "sound": 3,
+   "captions_graphics": 4,
+   "respect_accuracy": 5
+  },
+  "weakest": "Rook is a head taller than the girl and crowds her in the shots where he is on the wreckage (13, 21); his face is dark under the hat in the night two-shots; she is small in the climb attempt (12) and behind the panel in the reach (21), so her arm does not read well; the covers on deck read as a poncho; the hospital room is plain. Narration and sound were measured, not heard."
+ }
 }

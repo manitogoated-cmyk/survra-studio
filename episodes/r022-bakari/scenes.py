@@ -1,7 +1,7 @@
 """Case 022 - Bahia Bakari, the only survivor of Yemenia Flight 626 (30 June 2009). The story is filmed in 3D
 (world3d.py). This file holds the flat inserts (two cards drawn like a child's picture of what she believed
 had happened, and Rook's case board on a sheet of riveted aircraft skin) and the 2D overlays drawn on top of
-3D shots (spray, a few stars, dust in the hospital light, one figure, the sign-off). Every card is a drawing
+3D shots (spray, a few stars, dust in the hospital light, the sign-off). Every card is a drawing
 made for this film: the aeroplane on it is a generic shape with no livery, and none of it reproduces a real
 photograph, document or logo."""
 import math
@@ -17,7 +17,7 @@ h = Wd.hexc
 lerp = lambda a, b, k: a + (b - a) * max(0.0, min(1.0, k))
 B3D = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'build', '3d')
 _IMG = {}
-ORANGE, AMBER, PAPER, GREEN = h('FF7A1A'), h('FFB000'), h('EFE6CC'), h('3EC46A')
+ORANGE, AMBER, PAPER = h('FF7A1A'), h('FFB000'), h('EFE6CC')
 CHALK = h('F4EEDC')
 
 
@@ -150,21 +150,8 @@ def photo(cv, name, x, y, w_, h_, focus=(0.5, 0.5)):
                      skia.SamplingOptions(skia.CubicResampler.Mitchell()), skia.Paint())
 
 
-def stamp(cv, s, x, y, ang, k, size=150, col=GREEN):
-    f = font(size)
-    tw = f.measureText(s)
-    cv.save()
-    cv.translate(x, y)
-    cv.rotate(ang)
-    sc = 2.3 - 1.3 * k
-    cv.scale(sc, sc)
-    cv.drawRoundRect(skia.Rect.MakeXYWH(-tw / 2 - 30, -size * 0.62, tw + 60, size * 1.2), 18, 18, P(col, 14, a=k))
-    cv.drawString(s, -tw / 2, size * 0.36, f, P(col, a=k))
-    cv.restore()
-
-
 def board(cv, c):
-    """Rook's board for this case: a sheet of riveted aircraft skin, a photograph of the girl at the wreckage, two figures."""
+    """Rook's board for this case: a sheet of riveted aircraft skin, a photograph of the girl at the wreckage, two figures. No stamp on this one."""
     Wd.vgrad(cv, 0, 0, W, H, [(0, h('20323E')), (0.5, h('16242E')), (1, h('0A1218'))])
     for i in range(4):                                             # skin panels
         y = 150 + 405 * i
@@ -193,8 +180,6 @@ def board(cv, c):
         fit(cv, '153 ON BOARD', 540, 1560, 112, 900, 0xFFFFFFFF)
     if c.lt > 0.4:
         fit(cv, '1 SURVIVOR', 540, 1690, 128, 900, AMBER)
-    if c.lt > 0.65:
-        stamp(cv, 'TRUE', 760, 380, -10, min(1, (c.lt - 0.65) / 0.12), 140, GREEN)
 
 
 SHOTS = {f.__name__: f for f in (fell_card, landed_card, board)}
@@ -218,18 +203,6 @@ def dust(cv, c):
     Wd.particles(cv, W, H, c.t, 18, 0x55FFE8C8, 89, size=(2, 5), drift=(10, -14), wobble=14, twinkle=True)
 
 
-def died(cv, c):
-    glint(cv, c)
-    if c.lt > 0.25:
-        k = min(1, (c.lt - 0.25) / 0.2)
-        cv.save()
-        cv.translate(540, 520)
-        cv.scale(1.25 - 0.25 * k, 1.25 - 0.25 * k)
-        fit(cv, '152', 0, 0, 230, 800, 0xFFFFFFFF)
-        fit(cv, 'DID NOT SURVIVE', 0, 120, 70, 860, 0xFFFFFFFF)
-        cv.restore()
-
-
 def closed(cv, c):
     glint(cv, c)
     if c.lt > 0.4:
@@ -246,4 +219,4 @@ OVER = dict(girl_close=night, hands_grip=night, wide_night=night, plane_piece=ni
             dark_look=night, rook_quiet=night, big_wave=spray, climb_try=night, hold_on=night, face_tired=night, dawn_break=glint, morning=spray,
             boat_far=spray, boat_near=spray, ring_throw=spray, ring_miss=spray, reach_fail=spray, sailor_jump=spray, sailor_swim=spray, lift_aboard=spray,
             blanket=glint, alive=glint, look_back=glint, hospital_wait=dust, hospital_tell=dust, her_face=dust, empty_chair=dust, rook_wrong=dust,
-            sea_after=died, signoff=closed)
+            sea_after=spray, debris_close=spray, signoff=closed)
