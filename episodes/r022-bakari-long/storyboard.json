@@ -288,7 +288,13 @@
     ]
    ],
    "hud": null,
-   "prm": {}
+   "prm": {
+    "orb": [
+     34,
+     0.45,
+     0.7
+    ]
+   }
   },
   {
    "n": 9,
@@ -432,7 +438,13 @@
     ]
    ],
    "hud": "GRANDE COMORE, ABOUT 1.50 AM",
-   "prm": {}
+   "prm": {
+    "orb": [
+     26,
+     0.5,
+     0.6
+    ]
+   }
   },
   {
    "n": 13,
@@ -500,7 +512,13 @@
     ]
    ],
    "hud": null,
-   "prm": {}
+   "prm": {
+    "orb": [
+     6,
+     0.7,
+     0.1
+    ]
+   }
   },
   {
    "n": 15,
@@ -1080,7 +1098,7 @@
      0.5
     ]
    ],
-   "hud": "TOO EXHAUSTED TO GRAB IT",
+   "hud": "TOO EXHAUSTED",
    "prm": {}
   },
   {
@@ -1256,7 +1274,7 @@
      0.6
     ]
    ],
-   "hud": "COLLARBONE BROKEN. BURNS. ALIVE.",
+   "hud": "BROKEN COLLARBONE, BURNS",
    "prm": {}
   },
   {
@@ -1788,7 +1806,13 @@
     ]
    ],
    "hud": "BAHIA BAKARI, 25",
-   "prm": {}
+   "prm": {
+    "orb": [
+     75,
+     0.55,
+     0.9
+    ]
+   }
   },
   {
    "n": 53,

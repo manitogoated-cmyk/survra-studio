@@ -203,7 +203,7 @@ def route_card(cv, c):
     """A drawn chart, not a map: four stops joined by a dotted line, a small plain plane travelling along it."""
     Wd.vgrad(cv, 0, 0, W, H, [(0, h('1C2A3A')), (1, h('0E161E'))])
     cv.save()
-    push(cv, c, 0.08, 0.2)
+    push(cv, c, 0.22, 0.7)
     card(cv, 960, 540, 1700, 900, -1, h('E8DFC4'))
     for i in range(14):                                       # faint blobs of land, nothing like a real coastline
         Wd.glow(cv, 200 + 1500 * rn(i, 5), 160 + 760 * rn(i, 6), 120 + 160 * rn(i, 7), h('C8B890'), 0.35)
@@ -236,7 +236,7 @@ def approach_card(cv, c):
     round to land from the other side. No figures that are not in the sources; marked as a diagram."""
     Wd.vgrad(cv, 0, 0, W, H, [(0, h('06121A')), (1, h('0A1E28'))])
     cv.save()
-    push(cv, c, 0.04, 0.15)
+    push(cv, c, 0.16, 0.5)
     land = poly([(-50, 1150), (-50, 250), (420, 200), (760, 300), (900, 520), (860, 780), (700, 1150)])
     cv.drawPath(land, P(h('16302A')))
     cv.drawPath(land, P(h('3E6A5A'), 5))
@@ -252,8 +252,8 @@ def approach_card(cv, c):
     for i in range(7):                                        # gusting wind from the south
         x = 1050 + 120 * (i % 4) + 30 * math.sin(c.t * 2 + i)
         y = 920 - ((c.t * 260 + 140 * i) % 760)
-        cv.drawLine(x, y + 90, x, y, P(SEAL, 9, a=0.8))
-        cv.drawPath(poly([(x - 18, y + 20), (x, y - 10), (x + 18, y + 20)]), P(SEAL, a=0.8))
+        cv.drawLine(x, y + 120, x, y, P(h('7FD0E0'), 12))
+        cv.drawPath(poly([(x - 24, y + 26), (x, y - 14), (x + 24, y + 26)]), P(h('7FD0E0')))
     k = ease(c.k * 1.2)
     pts = []
     for j in range(80):                                       # the swing out over the sea and back
@@ -272,7 +272,7 @@ def approach_card(cv, c):
     left(cv, 'LAND THE OTHER WAY', 1180, 410, 52, AMBER, maxw=600)
     fit(cv, 'DIAGRAM, NOT TO SCALE', 380, 120, 34, 520, 0xAAFFFFFF)
     cv.restore()
-    Wd.particles(cv, W, H, c.t, 60, 0x66DCF0FF, 81, size=(2, 5), drift=(30, -260), wobble=20)
+    Wd.particles(cv, W, H, c.t, 110, 0xAADCF0FF, 81, size=(3, 7), drift=(60, -420), wobble=30)
 
 
 def shock_card(cv, c):
@@ -292,14 +292,14 @@ def shock_card(cv, c):
 def black_card(cv, c):
     """'A black hole in her memory.' Near-black, dim specks drifting, the words coming up slowly. Nothing of the crash is shown."""
     cv.clear(h('020406'))
-    Wd.glow(cv, 960 + 120 * math.sin(c.t * 0.7), 540, 700, h('1A3A4A'), 0.35 + 0.1 * math.sin(c.t * 1.3))
+    Wd.glow(cv, 960 + 420 * math.sin(c.t * 1.1), 540 + 120 * math.sin(c.t * 0.8), 760, h('2A5A6A'), 0.55 + 0.15 * math.sin(c.t * 2.3))
     cv.save()
-    push(cv, c, 0.12, 0.3)
+    push(cv, c, 0.3, 1.0)
     a = ease(c.lt / 0.8)
     fit(cv, 'A BLACK HOLE', 960, 470, 120, 1400, (int(255 * a) << 24) | 0xFFFFFF, None)
     fit(cv, 'IN HER MEMORY', 960, 600, 76, 1200, (int(200 * ease((c.lt - 0.6) / 0.8)) << 24) | 0xFFB000, None)
     cv.restore()
-    Wd.particles(cv, W, H, c.t, 90, 0x77AACCDD, 63, size=(2, 6), drift=(40, -60), wobble=30, twinkle=True)
+    Wd.particles(cv, W, H, c.t, 140, 0xAAAACCDD, 63, size=(3, 8), drift=(160, -220), wobble=40, twinkle=True)
 
 
 def fell_card(cv, c):
@@ -382,7 +382,7 @@ def verdict_card(cv, c):
     for i, (a, b) in enumerate(VERDICT):
         if shown < i:
             break
-        y = 300 + 230 * i
+        y = 280 + 200 * i
         left(cv, a, 200, y, 48, 0xCCFFFFFF)
         n = max(1, int(len(b) * min(1.0, (shown - i) * 1.6)))
         left(cv, b[:n], 200, y + 92, 88, AMBER if i == 0 else 0xFFFFFFFF, maxw=1400)

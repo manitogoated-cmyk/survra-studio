@@ -1444,7 +1444,7 @@ def doorway(S, k, t, lt):
     d = inside(S, 'flat', 'dusk')
     d['lamp'].data.energy, d['win'].data.energy = 520, 700
     d['door'].rotation_euler = (0, 0, -1.4)
-    go = sm(lt / 2.2)
+    go = sm(lt / 3.6)
     m = put(S, S['mom'], 'flat', lerp(-4.6, -6.0, go), -3.6, 0.0, PI / 2 - 0.4)
     m.apply(blend(K.walk(t, 1.2), P('stand', aR=(-0.2, 0.3, 0.2), head=(0.0, 0.5)), 0.4))
     m.face, m.jawv = 'warm', 0.25 * abs(math.sin(lt * 4))
@@ -1670,13 +1670,15 @@ def court_wide(S, k, t, lt):
     rk = put(S, S['rook'], 'court', 2.6 + 1.45 * 4, -11.0, seat_z(S['rook'], 0.7), PI)
     rk.apply(P('sit', head=(0.1, -0.2)))
     S['rface'] = 'calm'
-    shoot(S, SP('court', lerp(6.0, 4.6, k), lerp(-12.0, -11.6, k), lerp(6.2, 5.9, k)), SP('court', 0.0, 3.0, 2.2), 22, fill=0.8, fcol='FFE8C8')
+    shoot(S, SP('court', lerp(5.4, 4.2, k), lerp(-10.8, -10.3, k), lerp(6.2, 5.9, k)), SP('court', 0.0, 3.0, 2.2), 22, fill=0.8, fcol='FFE8C8')
 
 
 def testify(S, k, t, lt):
     """From the side of the bar: Bahia, twenty-five, both hands on the rail, speaks towards the bench. Her voice is steady, then her head goes down."""
     court(S, t)
     b = _witness(S, lt)
+    hand = sm((lt - 0.6) / 0.6) * (1 - sm((lt - 1.9) / 0.4))
+    b.apply(P('stand', aL=(0.55, 0.1, 0.9), aR=(lerp(0.55, 1.0, hand), lerp(0.1, -0.5, hand), lerp(0.9, 2.0, hand)), head=(0.05 * math.sin(lt * 1.2), 0.3 * math.sin(lt * 0.9))))
     if lt > 2.0:
         b.apply(P('stand', aL=(0.55, 0.1, 0.9), aR=(0.55, 0.1, 0.9), head=(lerp(0.0, 0.35, sm((lt - 2.0) / 0.6)), 0.0)))
         b.face = 'shut'
@@ -1690,7 +1692,7 @@ def families(S, k, t, lt):
     dd = put(S, S['dad'], 'court', -2.6 - 1.45 * 4, -1.0, seat_z(S['dad'], 0.7), PI)
     dd.apply(P('sit', aL=(0.7, -0.1, 1.5, 1.0), head=(0.25 + 0.1 * math.sin(lt), 0.15)))
     dd.face = 'sad'
-    shoot(S, SP('court', lerp(-12.0, -11.0, k), lerp(4.0, 3.6, k), lerp(3.6, 3.4, k)), SP('court', -6.5, -3.5, 1.8), 30, fill=0.9, fcol='FFE8C8')
+    shoot(S, SP('court', lerp(-11.2, -10.6, k), lerp(3.6, 3.2, k), lerp(3.6, 3.4, k)), SP('court', -6.5, -3.5, 1.8), 30, fill=0.9, fcol='FFE8C8')
 
 
 def verdict(S, k, t, lt):
@@ -1724,7 +1726,7 @@ def photo_thumb(S, k, t, lt):
     g = hang(S, HOLD(nod=-0.25, turn=0.35))
     g.face = 'wide'
     hd = ghead(S)
-    shoot(S, (hd[0] + 1.9, hd[1] + 2.1, hd[2] + 0.4), (hd[0] - 0.7, hd[1] - 0.4, hd[2] - 0.15), 34, fill=2.0, fcol=NIGHTC)
+    shoot(S, (hd[0] + 1.9, hd[1] + 2.1, hd[2] + 0.35), (hd[0] + 0.75, hd[1] - 0.55, hd[2] - 0.2), 36, fill=3.2, fcol=NIGHTC)
 
 
 def photo_court(S, k, t, lt):
@@ -1742,7 +1744,7 @@ STILLS.update(thumb=photo_thumb, court=photo_court)
 # the first 1.4 s of a shot (lt is slowed, never sped up) and every shot also swings a little round its own subject, so a held
 # frame keeps moving. prm "orb": [degrees, dolly, rise] sets the swing for one shot.
 SHORT_KINDS = set(SHOTS3D) - {f.__name__ for f in NEW}
-SWING = dict(window_dark=2.0, cabin_shake=3.0, jet_arrive=4.0, island_night=5.0, verdict=6.0, court_rook=5.0)
+SWING = dict(window_dark=2.0, cabin_shake=3.0, jet_arrive=4.0, island_night=5.0, verdict=6.0, court_rook=5.0, court_wide=3.0, families=3.0)
 
 
 def _slowed(f):
