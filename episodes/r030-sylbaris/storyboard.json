@@ -1,0 +1,1091 @@
+{
+ "id": "r030-sylbaris",
+ "hook_text": "SAVED BY|HIS CELL",
+ "shots": [
+  {
+   "n": 1,
+   "segment": "hook",
+   "weight": 0.95,
+   "kind": "bay_blast",
+   "action": "Dawn over a bay: a green mountain behind a town of red roofs and two church towers, ships at anchor. The summit blows a black and orange cloud that boils up and starts to roll down the slope towards the town",
+   "camera": "Wide from out over the water, easing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "cut",
+   "sfx": [
+    [
+     "boom",
+     0.02
+    ],
+    [
+     "wind",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 2,
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "cloud_town",
+   "action": "Low over the harbour: the cloud pours down onto the rooftops, glowing from inside, the cathedral towers in front of it",
+   "camera": "Low from the harbour, tilting up",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.1
+    ],
+    [
+     "low",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 3,
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "jail_yard",
+   "action": "A prison yard under the burning sky: a stone cell sunk half into the ground, a slit in its door. A crow in a long coat drops onto its roof and looks up at the sky",
+   "camera": "Low three-quarter across the yard, easing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "flap",
+     0.15
+    ],
+    [
+     "wind",
+     0.5
+    ]
+   ],
+   "hud": "SAINT-PIERRE, MARTINIQUE",
+   "prm": {}
+  },
+  {
+   "n": 4,
+   "segment": "hook",
+   "weight": 1.05,
+   "kind": "cell_face",
+   "action": "Inside the cell, close on a man's face in the strip of orange light from the slit. He lifts his head towards it, eyes wide",
+   "camera": "Close, eye level, drifting in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.2
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 5,
+   "segment": "doubt",
+   "weight": 1.0,
+   "kind": "rook_slit",
+   "action": "Down in the pit at the cell door, Rook peers through the slit, then turns round to us, arms folded, brim low, and says one line. Over the wall behind him the cloud glows",
+   "camera": "Low from the pit, past his shoulder",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "zoom",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ]
+   ],
+   "hud": "CASE 030",
+   "prm": {}
+  },
+  {
+   "n": 6,
+   "segment": "cell",
+   "weight": 1.0,
+   "kind": "led_in",
+   "action": "An ordinary morning days earlier: a guard in a kepi walks the man across the yard by the arm towards the prison building",
+   "camera": "Tracking alongside",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.3
+    ]
+   ],
+   "hud": "LUDGER SYLBARIS",
+   "prm": {}
+  },
+  {
+   "n": 7,
+   "segment": "cell",
+   "weight": 1.05,
+   "kind": "wall_sneak",
+   "action": "Night. The man swings a leg over the top of the prison wall towards lantern light beyond. Rook sits on the wall beside him, one brow up",
+   "camera": "From inside the yard, looking up at the wall",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "scratch",
+     0.2
+    ],
+    [
+     "caw",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 8,
+   "segment": "cell",
+   "weight": 0.95,
+   "kind": "back_gate",
+   "action": "Next morning he is back at the prison gate on his own, shrugging. The gate swings open and the guard stands there, hands on hips",
+   "camera": "From inside the yard past the guard",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "creak",
+     0.15
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 9,
+   "segment": "cell",
+   "weight": 1.0,
+   "kind": "door_shut",
+   "action": "In the pit, the guard pushes the heavy wooden door shut on him; through the closing gap his face, then only the dark slit",
+   "camera": "Low in the pit, facing the door",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "creak",
+     0.1
+    ],
+    [
+     "clunk",
+     0.75
+    ]
+   ],
+   "hud": "SOLITARY",
+   "prm": {}
+  },
+  {
+   "n": 10,
+   "segment": "cell",
+   "weight": 1.15,
+   "kind": "rook_tap",
+   "action": "Inside the cell with him: Rook raps the stone wall with his knuckles, then turns and looks round the tiny room and up at the slit, unimpressed. The man sits on his mat",
+   "camera": "Wide inside the cell, low corner",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.15
+    ],
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "tick",
+     0.45
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 11,
+   "segment": "cell",
+   "weight": 0.95,
+   "kind": "slit_close",
+   "action": "Close on the slit from inside: three iron bars and a strip of daylight with dust turning in it",
+   "camera": "Close, pushing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.3
+    ]
+   ],
+   "hud": "ONE SLIT",
+   "prm": {}
+  },
+  {
+   "n": 12,
+   "segment": "blast",
+   "weight": 1.0,
+   "kind": "cloud_rush",
+   "action": "High over the bay: the cloud runs down the mountain, over the town and out across the ships in one rush",
+   "camera": "High and wide, drifting",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "flash",
+   "sfx": [
+    [
+     "boom",
+     0.05
+    ],
+    [
+     "whoosh",
+     0.3
+    ]
+   ],
+   "hud": "8 MAY 1902",
+   "prm": {}
+  },
+  {
+   "n": 13,
+   "segment": "blast",
+   "weight": 1.1,
+   "kind": "slit_glow",
+   "action": "Inside: the slit flares orange and hot air and ash blast through it. The man is thrown back from the door, arms up over his face",
+   "camera": "Wide from the back corner, shaking",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "cut",
+   "sfx": [
+    [
+     "impact",
+     0.05
+    ],
+    [
+     "wind",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 14,
+   "segment": "blast",
+   "weight": 0.9,
+   "kind": "rook_brace",
+   "action": "Rook pressed flat against the back wall in the glare, both hands holding his hat on, eyes screwed shut. No joke",
+   "camera": "Close, from the side, shaking",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.2
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 15,
+   "segment": "rehook",
+   "weight": 1.0,
+   "kind": "shield",
+   "action": "He is curled up in the back corner with his back to the door, arms over his head, while the orange light and the ash pour in",
+   "camera": "Low, close, from the side",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.2
+    ],
+    [
+     "heartbeat",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 16,
+   "segment": "rehook",
+   "weight": 1.05,
+   "kind": "sleeve_look",
+   "action": "The glow dies down. He lifts one arm and stares at his shirt sleeve: whole, not even scorched",
+   "camera": "Close over his shoulder",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 17,
+   "segment": "rehook",
+   "weight": 1.0,
+   "kind": "rook_listen",
+   "action": "Rook at the slit, head tilted, listening. No sound from outside; ash drifts down past the bars",
+   "camera": "Close, from behind his shoulder",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 18,
+   "segment": "rehook",
+   "weight": 1.0,
+   "kind": "town_ash",
+   "action": "The same bay as at dawn, now grey: roofless walls, smoke rising, the ships gone. Nothing moves but the smoke",
+   "camera": "Wide from over the water, slow",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.2
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 19,
+   "segment": "city",
+   "weight": 1.0,
+   "kind": "ruins_street",
+   "action": "A street of the town: broken walls in deep ash, a fallen beam, two broken towers at the end. Empty",
+   "camera": "Street level, slow push",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 20,
+   "segment": "city",
+   "weight": 1.0,
+   "kind": "rook_hatoff",
+   "action": "Rook alone in the grey street, hat held to his chest, head bowed",
+   "camera": "Three-quarter, slow push",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 21,
+   "segment": "wait",
+   "weight": 1.05,
+   "kind": "dark_wait",
+   "action": "He sits against the wall in the near-dark with his arms across his knees as the light in the slit goes from grey to night to dawn",
+   "camera": "From the door side, slow push",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "heartbeat",
+     0.4
+    ]
+   ],
+   "hud": "DAYS LATER",
+   "prm": {}
+  },
+  {
+   "n": 22,
+   "segment": "wait",
+   "weight": 0.95,
+   "kind": "rescuers",
+   "action": "Grey daylight in the ruined prison yard: three men in hats pick through the ash, one with a shovel. The first stops and turns his head",
+   "camera": "Low across the yard",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.3
+    ],
+    [
+     "scratch",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 23,
+   "segment": "wait",
+   "weight": 0.95,
+   "kind": "shout",
+   "action": "Inside, close: he is up at the slit with both hands on the door, shouting through the bars",
+   "camera": "Close, from the side",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "shout",
+     0.15
+    ],
+    [
+     "shout",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 24,
+   "segment": "wait",
+   "weight": 1.05,
+   "kind": "dig_out",
+   "action": "In the pit, the men drag the door open through the ash and light falls in on him; they reach in and help him out by the arms. Rook watches from the edge with his hat to his chest",
+   "camera": "Low from the pit, wide",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "creak",
+     0.1
+    ],
+    [
+     "grab",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "hush": true
+  },
+  {
+   "n": 25,
+   "segment": "payoff",
+   "weight": 1.05,
+   "kind": "rook_wall",
+   "action": "Rook lays a wing flat on the cell's thick stone wall, looks at it, then turns and points at it for us",
+   "camera": "Medium, three-quarter",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.2
+    ],
+    [
+     "clunk",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 26,
+   "segment": "payoff",
+   "weight": 1.0,
+   "kind": "pardon",
+   "action": "In the grey yard a man in a black coat hands him a sealed paper; his arms are bandaged. Rook reads over his shoulder",
+   "camera": "Medium-wide, three-quarter",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "flip",
+     0.4
+    ]
+   ],
+   "hud": "PARDONED",
+   "prm": {}
+  },
+  {
+   "n": 27,
+   "segment": "payoff",
+   "weight": 1.0,
+   "kind": "poster",
+   "action": "An old-style circus bill pasted on a board: THE MAN WHO LIVED THROUGH DOOMSDAY, in big type, a drawn stone cell under it",
+   "camera": "Flat, slow push",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "flip",
+     0.1
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "still": true
+   }
+  },
+  {
+   "n": 28,
+   "segment": "payoff",
+   "weight": 1.0,
+   "kind": "circus_ring",
+   "action": "Under a striped tent: he stands in the spotlight beside a stone cell built for the show, the crowd quiet in the dark around the ring",
+   "camera": "Wide from the ring edge, easing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 29,
+   "segment": "payoff",
+   "weight": 1.0,
+   "kind": "rook_crowd",
+   "action": "Rook in the front row: his hat leaves his head and a feather comes loose",
+   "camera": "Close, three-quarter",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "pop",
+     0.35
+    ],
+    [
+     "caw",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 30,
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "rook_question",
+   "action": "Today, late sun: the little stone cell still stands, grass where the prison was. Rook sits on its roof and asks us straight out",
+   "camera": "Close, level",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": "THE CELL STILL STANDS",
+   "prm": {}
+  },
+  {
+   "n": 31,
+   "segment": "end",
+   "weight": 0.9,
+   "kind": "signoff",
+   "action": "Wide: the cell in the grass at dusk, the mountain quiet behind it, Rook on its roof tipping his hat",
+   "camera": "Wide, easing back",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "brand": true
+  },
+  {
+   "n": 32,
+   "segment": "end",
+   "weight": 1.3,
+   "kind": "bay_blast",
+   "action": "Back over the bay at dawn, running back to where it began: the cloud sinks back towards the summit",
+   "camera": "Wide from over the water, the opening move reversed",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "wind",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "loop": true
+   }
+  }
+ ]
+}

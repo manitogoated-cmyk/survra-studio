@@ -1,0 +1,14 @@
+{
+  "id": "r030-sylbaris", "spine": "v2", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.4,
+  "segments": [
+    {"scene": "hook", "mood": "hook", "text": "a burning cloud rolls off the mountain and buries a whole city. One of the few who live is locked in a cell."},
+    {"scene": "doubt", "mood": "tense", "text": "Locked in? He can't even run."},
+    {"scene": "cell", "mood": "tense", "text": "He was jailed for a fight, sneaked out to a party, and came back. So: solitary. Stone walls, half underground, one slit in the door."},
+    {"scene": "blast", "mood": "action", "text": "Then, just before eight, the cloud hits. Hot air and ash blast through the slit."},
+    {"scene": "rehook", "mood": "tense", "text": "His back, his arms, his legs burn. His clothes don't even catch fire. And outside, everything goes quiet."},
+    {"scene": "city", "mood": "sad", "text": "Around {28,000|twenty-eight thousand} people died that morning."},
+    {"scene": "wait", "mood": "tense", "text": "He waits in the dark for days. Then he hears voices, and he shouts. They dig him out."},
+    {"scene": "payoff", "mood": "wonder", "text": "The cell meant to punish him had saved his life. He was pardoned, and toured with a circus as the man who lived through Doomsday."},
+    {"scene": "end", "mood": "end", "text": "Was it luck, or those walls? You tell me. It all began when"}
+  ]
+}
