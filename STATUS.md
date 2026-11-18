@@ -1,6 +1,6 @@
 # Survra production dashboard
 
-Updated 2026-11-18 04:46 UTC by the publish workflow. Daily target: 1 long-form + 4 Shorts. Review mode: **off**. Paused: **no**.
+Updated 2026-11-18 20:45 UTC by the publish workflow. Daily target: 1 long-form + 4 Shorts. Review mode: **off**. Paused: **no**.
 
 A stage shows `done` only when its output file exists; QC shows `done` only after the automated gate passed on the rendered video.
 
@@ -41,13 +41,16 @@ A stage shows `done` only when its output file exists; QC shows `done` only afte
 | r015-hall | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-16T20:00:00Z | https://youtu.be/fw9AFBVXqjE |
 | r016-simpson-long | long | ready | done | done | done | done | done | done | - | done | done | private (review) | https://youtu.be/FY_52abpoyw |
 | r016-simpson | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-16T23:00:00Z | https://youtu.be/6ZLO3VlvIhs |
-| r018-ashcraft | short | approved | done | done | done | done | - | - | n/a | - | - | - | - |
-| r019-adilang-long | long | ready | done | done | done | done | done | done | done | done | done | private (review) | https://youtu.be/b53Ko9YLazc |
+| r017-callahan | short | approved | done | done | done | done | - | - | n/a | - | - | - | - |
+| r018-ashcraft | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-18T23:00:00Z | https://youtu.be/MlpEGGEsZGk |
+| r019-adilang-long | long | ready | done | done | done | done | done | done | done | done | done | private (review) | https://youtu.be/Bgj4AgfWe7c |
 | r019-adilang | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-17T02:00:00Z | https://youtu.be/5sjV1ZS5mek |
-| r020-thamluang-long | long | ready | done | done | done | done | done | done | done | done | done | private (review) | https://youtu.be/bhjoLrN7sik |
+| r020-thamluang-long | long | ready | done | done | done | done | done | done | done | done | done | private (review) | https://youtu.be/gtNOzyvR7wo |
 | r020-thamluang | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-17T17:00:00Z | https://youtu.be/8YUhbBWTtsU |
-| r021-sanjose-long | long | ready | done | done | done | done | done | done | done | done | done | private (review) | https://youtu.be/gWHpYSEmH1A |
+| r021-sanjose-long | long | ready | done | done | done | done | done | done | done | done | done | private (review) | https://youtu.be/4E5ZY4LkpnQ |
 | r021-sanjose | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-17T20:00:00Z | https://youtu.be/gQ52iGzsKyk |
-| r022-bakari | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-18T17:00:00Z | https://youtu.be/mtImLlceSEI |
+| r022-bakari-long | long | approved | done | done | done | done | - | - | - | - | - | - | - |
+| r022-bakari | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-19T02:00:00Z | https://youtu.be/S6xePThwOs8 |
 | r024-alkemade | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-18T20:00:00Z | https://youtu.be/yHkpPAv0qTU |
+| r030-sylbaris | short | approved | done | done | done | done | - | - | n/a | - | - | - | - |
 | s001-alvarenga | short | draft | done | done | done | done | done | done | n/a | done | done | private (review) | https://youtu.be/FZZ4SOnRhYU |
