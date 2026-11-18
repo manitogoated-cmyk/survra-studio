@@ -406,6 +406,168 @@
    "status": "authored",
    "facts": "verify with 2+ sources at authoring; skip if they do not hold",
    "claimed_at": "2026-11-18T07:35:16Z"
+  },
+  {
+   "case": 31,
+   "day": 31,
+   "title": "The Spaceship That Became a Lifeboat",
+   "subject": "Apollo 13",
+   "year": 1970,
+   "premise": "An oxygen tank explodes on the way to the Moon; three men use the lunar module as a lifeboat and get home",
+   "world": "the crippled spacecraft, the lunar module cabin",
+   "est_score": 84,
+   "long_form_candidate": true,
+   "status": "idea",
+   "facts": "premise checked on 18 Nov 2026 against the two sources listed; verify again at authoring",
+   "sources": [
+    "https://www.space.com/17250-apollo-13",
+    "https://www.history.com/articles/apollo-13-mission-lessons"
+   ],
+   "source_notes": "Explosion 13 April 1970, lunar module Aquarius used as a lifeboat, splashdown 17 April."
+  },
+  {
+   "case": 32,
+   "day": 32,
+   "title": "800 Miles in a Lifeboat",
+   "subject": "James Caird voyage (Shackleton)",
+   "year": 1916,
+   "premise": "Six men sail a lifeboat about 800 miles from Elephant Island to South Georgia; every man of the Endurance lives",
+   "world": "a 7 m lifeboat in the Southern Ocean, Elephant Island",
+   "est_score": 83,
+   "long_form_candidate": true,
+   "status": "idea",
+   "facts": "premise checked on 18 Nov 2026 against the two sources listed; verify again at authoring",
+   "sources": [
+    "https://www.amnh.org/learn-teach/curriculum-collections/antarctica/exploration/the-voyage-of-the-james-caird",
+    "https://www.livescience.com/shackleton-endurance-expedition"
+   ],
+   "source_notes": "All 28 of Endurance's men survived (the separate Ross Sea party lost three). Crossing 14 or 17 days by source."
+  },
+  {
+   "case": 33,
+   "day": 33,
+   "title": "Alone on the Island with a Cat",
+   "subject": "Ada Blackjack",
+   "year": 1923,
+   "premise": "The only survivor of the Wrangel Island expedition is alone with the expedition cat until a ship comes",
+   "world": "Arctic island camp, driftwood hut",
+   "est_score": 80,
+   "long_form_candidate": false,
+   "status": "idea",
+   "facts": "premise checked on 18 Nov 2026 against the two sources listed; verify again at authoring",
+   "sources": [
+    "https://www.history.com/articles/ada-blackjack-inuit-wrangel-island",
+    "https://www.anchoragemuseum.org/exhibits/extra-tough-women-of-the-north/women-of-the-north-profiles/ada-blackjack-sole-survivor-of-doomed-wrangel-island-expedition/"
+   ],
+   "source_notes": "Alone about two months (23 June to 20 August 1923), not 'months'; respect for the four men who died."
+  },
+  {
+   "case": 34,
+   "day": 34,
+   "title": "Carried to Freedom on a Sled",
+   "subject": "Jan Baalsrud",
+   "year": 1943,
+   "premise": "A commando escapes German troops and survives weeks in the snow until villagers and Sami herders carry him to Sweden",
+   "world": "Arctic Norway, snow plateau, reindeer sled",
+   "est_score": 81,
+   "long_form_candidate": true,
+   "status": "idea",
+   "facts": "premise checked on 18 Nov 2026 against the two sources listed; verify again at authoring",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Jan_Baalsrud",
+    "https://explorersweb.com/great-survival-stories-jan-baalsrud-evades-nazi-dragnet/"
+   ],
+   "source_notes": "About nine weeks in all, 27 days on a plateau. He cut off frostbitten toes: tell, do not show."
+  },
+  {
+   "case": 35,
+   "day": 35,
+   "title": "Alone on the Ice",
+   "subject": "Douglas Mawson",
+   "year": 1913,
+   "premise": "Both his companions are dead; he struggles back alone across the ice to base, just as the ship sails away",
+   "world": "Antarctic ice sheet, a crevasse, Cape Denison hut",
+   "est_score": 80,
+   "long_form_candidate": false,
+   "status": "idea",
+   "facts": "premise checked on 18 Nov 2026 against the two sources listed; verify again at authoring",
+   "sources": [
+    "https://www.antarctica.gov.au/about-antarctica/history/people/douglas-mawson/",
+    "https://www.mawsons-huts.org.au/sir-douglas-mawson/"
+   ],
+   "source_notes": "Back to his coastal base, not across Antarctica; '30 days alone' is on one source only."
+  },
+  {
+   "case": 36,
+   "day": 36,
+   "title": "117 Days After a Whale Sank Their Boat",
+   "subject": "Maurice and Maralyn Bailey",
+   "year": 1973,
+   "premise": "A whale holes their yacht; the couple drift 117 days before a fishing boat finds them",
+   "world": "Pacific raft, a small dinghy",
+   "est_score": 82,
+   "long_form_candidate": true,
+   "status": "idea",
+   "facts": "premise checked on 18 Nov 2026 against the two sources listed; verify again at authoring",
+   "sources": [
+    "https://nzherald.co.nz/world/maurice-bayley-who-survived-117-days-lost-at-sea-with-his-wife-dies-aged-85/B5OJDJYWD4773CQX24R5YBYZJY",
+    "https://soundingsonline.com/features/how-a-shipwreck-changed-a-marriage/"
+   ],
+   "source_notes": "Raft plus dinghy is on a third source only; rescued 30 June 1973 by a Korean fishing boat."
+  },
+  {
+   "case": 37,
+   "day": 37,
+   "title": "Three Weeks Lost in the Amazon",
+   "subject": "Yossi Ghinsberg",
+   "year": 1981,
+   "premise": "Separated from his companions, a backpacker survives alone in the Bolivian jungle until a search finds him",
+   "world": "Amazon river, jungle",
+   "est_score": 78,
+   "long_form_candidate": false,
+   "status": "idea",
+   "facts": "premise checked on 18 Nov 2026 against the two sources listed; verify again at authoring",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Yossi_Ghinsberg",
+    "https://iflscience.com/in-1981-yossi-ghinsberg-entered-the-bolivian-amazon-with-three-companions-weeks-later-only-two-of-them-walked-out-83750"
+   ],
+   "source_notes": "19 days alone vs three weeks lost; two companions were never found: treat with respect."
+  },
+  {
+   "case": 38,
+   "day": 38,
+   "title": "17 Days Under a Collapsed Factory",
+   "subject": "Reshma Begum",
+   "year": 2013,
+   "premise": "A seamstress is pulled alive from the Rana Plaza rubble 17 days after the building fell",
+   "world": "collapsed factory, rescue tunnel",
+   "est_score": 79,
+   "long_form_candidate": false,
+   "status": "idea",
+   "facts": "premise checked on 18 Nov 2026 against the two sources listed; verify again at authoring",
+   "sources": [
+    "https://amp.cbc.ca/news/world/bangladesh-rescuers-find-woman-alive-after-17-days-in-rubble-1.1388841",
+    "https://csmonitor.com/World/Latest-News-Wires/2013/0511/Bangladeshi-survivor-recovering-after-17-days-trapped-in-rubble"
+   ],
+   "source_notes": "A mass-casualty tragedy: no jokes after the hook, nobody who died is shown."
+  },
+  {
+   "case": 39,
+   "day": 39,
+   "title": "Hit by a Meteorite on Her Couch",
+   "subject": "Ann Hodges",
+   "year": 1954,
+   "premise": "A meteorite crashes through her roof, bounces off the radio and hits her as she naps",
+   "world": "1950s living room, Alabama night sky",
+   "est_score": 77,
+   "long_form_candidate": false,
+   "status": "idea",
+   "facts": "premise checked on 18 Nov 2026 against the two sources listed; verify again at authoring",
+   "sources": [
+    "https://encyclopediaofalabama.org/article/hodges-meteorite-strike-sylacauga-aerolite/",
+    "https://www.astronomy.com/today-in-the-history-of-astronomy/nov-30-1954-the-first-known-human-injury-via-a-meteorite/"
+   ],
+   "source_notes": "30 November 1954; the hit was indirect (bounced off a console radio); a large bruise, first known person injured by a meteorite."
   }
  ]
 }
