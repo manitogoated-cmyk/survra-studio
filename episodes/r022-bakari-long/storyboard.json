@@ -1,0 +1,2069 @@
+{
+ "id": "r022-bakari-long",
+ "hook_text": "ALONE IN|THE SEA",
+ "shots": [
+  {
+   "n": 1,
+   "segment": "hook",
+   "weight": 0.95,
+   "kind": "girl_close",
+   "action": "Close on Bahia at the edge of the floating wreckage at night: both arms over it, eyes wide, a wave slaps the panel and throws spray",
+   "camera": "Eye level at the water, pushing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 2,
+   "transition": "cut",
+   "sfx": [
+    [
+     "hit",
+     0.03
+    ],
+    [
+     "gasp",
+     0.55
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 2,
+   "segment": "hook",
+   "weight": 0.9,
+   "kind": "hands_grip",
+   "action": "Her hands slide back on the torn edge, then clamp down again; her face behind them",
+   "camera": "Low along the panel",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.2
+    ],
+    [
+     "grab",
+     0.7
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 3,
+   "segment": "hook",
+   "weight": 1.1,
+   "kind": "wide_night",
+   "action": "From high up: one small figure at a piece of wreckage, debris scattered round it, black water in every direction",
+   "camera": "High, pulling up and away",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "wave",
+     0.1
+    ]
+   ],
+   "hud": "30 JUNE 2009",
+   "prm": {}
+  },
+  {
+   "n": 4,
+   "segment": "doubt",
+   "weight": 1.0,
+   "kind": "rook_lands",
+   "action": "Behind her, Rook flaps down onto a floating floor panel, sheds a feather and settles in a crouch",
+   "camera": "Low, across the water",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "flap",
+     0.1
+    ],
+    [
+     "flap",
+     0.3
+    ],
+    [
+     "clunk",
+     0.55
+    ]
+   ],
+   "hud": "OFF GRANDE COMORE",
+   "prm": {}
+  },
+  {
+   "n": 5,
+   "segment": "doubt",
+   "weight": 1.2,
+   "kind": "rook_doubt",
+   "action": "Rook crouched on his panel, arms folding, hat brim low, the girl at the wreckage behind him: 'All night? At twelve? I don't buy it.'",
+   "camera": "Three-quarter on Rook, her in the background",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "zoom",
+   "sfx": [
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": "CASE 022",
+   "prm": {}
+  },
+  {
+   "n": 6,
+   "segment": "family",
+   "weight": 1.2,
+   "kind": "flat_pack",
+   "action": "A small flat in the evening: Bahia lays a folded top in the open suitcase on the bed, her mother beside her smoothing it; her two brothers and sister on the sofa; Rook leans in the window bay, arms folded",
+   "camera": "Wide, from the room's corner, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "scratch",
+     0.6
+    ]
+   ],
+   "hud": "PARIS, JUNE 2009",
+   "prm": {}
+  },
+  {
+   "n": 7,
+   "segment": "family",
+   "weight": 1.0,
+   "kind": "file_card",
+   "action": "Rook's case file types itself onto a riveted panel: BAHIA BAKARI, 12 / ELDEST OF FOUR / WITH HER MOTHER, AZIZA / TO THE COMOROS, FOR THE SUMMER",
+   "camera": "Flat insert, slow push",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "scratch",
+     0.2
+    ],
+    [
+     "tick",
+     0.5
+    ],
+    [
+     "tick",
+     0.7
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 8,
+   "segment": "family",
+   "weight": 1.2,
+   "kind": "doorway",
+   "action": "At the open front door: Bahia and her mother head out; her father and the three younger ones wave; Bahia turns and waves back. Rook holds the door, brim tipped",
+   "camera": "Wide from inside the room",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "creak",
+     0.1
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 9,
+   "segment": "route",
+   "weight": 1.2,
+   "kind": "route_card",
+   "action": "A drawn chart: a dotted line runs PARIS, MARSEILLE, SANA'A (CHANGE PLANES), MORONI; a small plain plane follows it",
+   "camera": "Flat insert, pushing along the line",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.1
+    ],
+    [
+     "pop",
+     0.4
+    ],
+    [
+     "pop",
+     0.6
+    ],
+    [
+     "pop",
+     0.8
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 10,
+   "segment": "route",
+   "weight": 1.0,
+   "kind": "lounge",
+   "action": "A departure lounge at night: Bahia and her mother at the glass, looking out at a plain white airliner under floodlights. Rook by the seats, hand at his chin",
+   "camera": "Wide behind them, drifting",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.4
+    ]
+   ],
+   "hud": "SANA'A, YEMEN",
+   "prm": {}
+  },
+  {
+   "n": 11,
+   "segment": "route",
+   "weight": 1.0,
+   "kind": "cabin_seats",
+   "action": "The cabin at night: Bahia in the window seat, her mother's arm round her; across the aisle Rook reads the safety card; heads above the seat backs",
+   "camera": "From the row in front, looking back at them",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": "153 ON BOARD",
+   "prm": {}
+  },
+  {
+   "n": 12,
+   "segment": "approach",
+   "weight": 1.1,
+   "kind": "island_night",
+   "action": "The island at night from its shore: a black volcano, a scatter of lights, palms thrashing in the wind. Rook on a rock at the water's edge holds his hat on, coat flapping",
+   "camera": "Low on the shore, looking along the coast",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "wind",
+     0.05
+    ],
+    [
+     "wave",
+     0.5
+    ]
+   ],
+   "hud": "GRANDE COMORE, ABOUT 1.50 AM",
+   "prm": {}
+  },
+  {
+   "n": 13,
+   "segment": "approach",
+   "weight": 1.2,
+   "kind": "approach_card",
+   "action": "Diagram: the island's coast, the runway, wind arrows; a dotted path swings out over the sea and round to land from the other side. NO MOON / GUSTING WIND / DIAGRAM, NOT TO SCALE",
+   "camera": "Flat insert",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.1
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 14,
+   "segment": "approach",
+   "weight": 0.9,
+   "kind": "window_dark",
+   "action": "Out of a cabin window: black; the wing with a red light blinking at its tip; far below, a few lights on a coast",
+   "camera": "Over the shoulder of the seat, to the window",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 15,
+   "segment": "shake",
+   "weight": 1.0,
+   "kind": "cabin_shake",
+   "action": "Down the aisle: the cabin jolts and shudders, the seat-belt signs are lit; the passengers' heads barely move",
+   "camera": "From the front of the cabin, looking down the aisle, shaking",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 3,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.1
+    ],
+    [
+     "scratch",
+     0.4
+    ],
+    [
+     "clunk",
+     0.7
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 16,
+   "segment": "shake",
+   "weight": 1.0,
+   "kind": "bahia_look",
+   "action": "Close in her seat: she looks round at the faces near her, then at her mother, who is calm. Across the aisle Rook's eyes go to the window",
+   "camera": "Close, from the row in front",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "heartbeat",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 17,
+   "segment": "blank",
+   "weight": 0.8,
+   "kind": "shock_card",
+   "action": "White streaks crack across the frame and fade to dark: SOMETHING LIKE AN ELECTRIC SHOCK",
+   "camera": "Flat insert",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "hit",
+     0.05
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 18,
+   "segment": "blank",
+   "weight": 1.2,
+   "kind": "black_card",
+   "action": "Near-black, a slow drift of dim specks: A BLACK HOLE / IN HER MEMORY. Nothing of the crash is shown",
+   "camera": "Flat insert, slow push",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "heartbeat",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "hush": true
+  },
+  {
+   "n": 19,
+   "segment": "water",
+   "weight": 1.0,
+   "kind": "in_water",
+   "action": "From straight above: she is a small shape at the edge of the panel, turning her head one way and the other",
+   "camera": "Overhead, turning",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "splash",
+     0.1
+    ],
+    [
+     "gasp",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 20,
+   "segment": "water",
+   "weight": 1.0,
+   "kind": "plane_piece",
+   "action": "Along the wreckage: torn metal, ribs, a row of window holes; she is at the far end of it, looking round for her mother",
+   "camera": "Along the panel, pushing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 21,
+   "segment": "voices",
+   "weight": 1.0,
+   "kind": "voices",
+   "action": "Close: she lifts her chin and calls out, turning her head left, then right",
+   "camera": "Close at the water",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "shout",
+     0.15
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 22,
+   "segment": "voices",
+   "weight": 1.0,
+   "kind": "dark_look",
+   "action": "Over her head into the dark: dim shapes of debris, no one. On his panel Rook cups a wing to the side of his head, listening",
+   "camera": "Behind her head, out to sea",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": "VOICES. NO ONE.",
+   "prm": {}
+  },
+  {
+   "n": 23,
+   "segment": "hold",
+   "weight": 1.0,
+   "kind": "climb_try",
+   "action": "She heaves herself up on straight arms; the panel tips and she slides back. Rook half rises on his panel",
+   "camera": "Wide, low on the water",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.2
+    ],
+    [
+     "splash",
+     0.85
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 24,
+   "segment": "hold",
+   "weight": 0.9,
+   "kind": "big_wave",
+   "action": "A black swell lifts the wreckage and her with it; white water breaks over the edge",
+   "camera": "Low on the water, rolling",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "wave",
+     0.1
+    ],
+    [
+     "splash",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 25,
+   "segment": "night",
+   "weight": 1.0,
+   "kind": "hold_on",
+   "action": "Her cheek goes down on her arm. Rook has crossed to the wreckage and puts a wing on it beside her hands",
+   "camera": "Close, from across the panel",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "flap",
+     0.1
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 26,
+   "segment": "night",
+   "weight": 1.0,
+   "kind": "face_tired",
+   "action": "Very close: her eyes close; her head sinks; it jerks back up",
+   "camera": "Very close, still",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "heartbeat",
+     0.2
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 27,
+   "segment": "night",
+   "weight": 1.0,
+   "kind": "dawn_break",
+   "action": "Wide and low: the sky goes from black to orange and the sun comes up out of the sea; two small shapes at the wreckage",
+   "camera": "Wide and low, drifting",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ]
+   ],
+   "hud": "MORNING",
+   "prm": {}
+  },
+  {
+   "n": 28,
+   "segment": "rehook",
+   "weight": 1.0,
+   "kind": "boat_far",
+   "action": "Grey morning: across the wreckage, a white boat on the horizon. Rook jumps up and points at it with his whole wing",
+   "camera": "Behind her, towards the horizon",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "horn_far",
+     0.1
+    ],
+    [
+     "pop",
+     0.3
+    ]
+   ],
+   "hud": "A BOAT",
+   "prm": {}
+  },
+  {
+   "n": 29,
+   "segment": "rehook",
+   "weight": 1.0,
+   "kind": "boat_near",
+   "action": "The boat comes on, foam at the bow; two crewmen at the rail lean out and point down at her",
+   "camera": "Low on the water, the boat coming at us",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "horn",
+     0.1
+    ],
+    [
+     "shout",
+     0.6
+    ]
+   ],
+   "hud": "SIMA COM 2",
+   "prm": {}
+  },
+  {
+   "n": 30,
+   "segment": "ring",
+   "weight": 0.9,
+   "kind": "ring_throw",
+   "action": "From the deck: a crewman swings back and throws an orange life ring; it sails out on its line towards her",
+   "camera": "Over the crew's shoulders",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.3
+    ],
+    [
+     "cord",
+     0.45
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 31,
+   "segment": "ring",
+   "weight": 0.9,
+   "kind": "ring_miss",
+   "action": "Water level: the ring slaps down and the next swell carries it off sideways; her arm comes out towards it",
+   "camera": "Water level, panning with the ring",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "splash",
+     0.05
+    ],
+    [
+     "wave",
+     0.5
+    ]
+   ],
+   "hud": "TOO EXHAUSTED TO GRAB IT",
+   "prm": {}
+  },
+  {
+   "n": 32,
+   "segment": "ring",
+   "weight": 0.9,
+   "kind": "reach_fail",
+   "action": "Close: her arm at full stretch, fingers open; the ring slides away. Rook stretches a wing after it too",
+   "camera": "Close over the panel",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "gasp",
+     0.2
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 33,
+   "segment": "jump",
+   "weight": 1.0,
+   "kind": "sailor_jump",
+   "action": "One sailor goes over the rail and drops into the swell in a burst of white water",
+   "camera": "From the water, looking up at the hull",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "shout",
+     0.1
+    ],
+    [
+     "splash",
+     0.52
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 34,
+   "segment": "jump",
+   "weight": 1.0,
+   "kind": "sailor_swim",
+   "action": "He comes round the end of the wreckage and gets an arm round her; her hands let go. Rook leans down, watching",
+   "camera": "From above",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "swim",
+     0.1
+    ],
+    [
+     "grab",
+     0.75
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 35,
+   "segment": "jump",
+   "weight": 0.9,
+   "kind": "lift_aboard",
+   "action": "At the boat's side: the sailor pushes her up; two crewmen take her under the arms",
+   "camera": "Low at the hull",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "splash",
+     0.1
+    ],
+    [
+     "grab",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 36,
+   "segment": "deck",
+   "weight": 1.0,
+   "kind": "blanket",
+   "action": "On deck: she sits on a locker wrapped in blankets; a crewman holds out a cup and she takes it; Rook sits on the rail",
+   "camera": "Deck height, three-quarter",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "bloop",
+     0.6
+    ]
+   ],
+   "hud": "COLLARBONE BROKEN. BURNS. ALIVE.",
+   "prm": {}
+  },
+  {
+   "n": 37,
+   "segment": "deck",
+   "weight": 1.0,
+   "kind": "alive",
+   "action": "Close: she drinks, lowers the cup, and her eyes open",
+   "camera": "Close on her face",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "bloop",
+     0.2
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 38,
+   "segment": "belief",
+   "weight": 0.9,
+   "kind": "look_back",
+   "action": "She sits at the rail in her blankets and looks back over the water; Rook beside her looks the same way",
+   "camera": "From the sea, towards the rail",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 39,
+   "segment": "belief",
+   "weight": 1.1,
+   "kind": "fell_card",
+   "action": "A child's drawing headed WHAT SHE BELIEVED: the plane flies on across the night; one small figure drops away from it. JUST HER",
+   "camera": "Flat insert",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "whoosh",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 40,
+   "segment": "belief",
+   "weight": 1.1,
+   "kind": "landed_card",
+   "action": "The same drawing: the plane lands on a lit runway. EVERYONE SAFE / EXCEPT HER",
+   "camera": "Flat insert",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "bloop",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 41,
+   "segment": "truth",
+   "weight": 0.8,
+   "kind": "hospital_wait",
+   "action": "The breath before: a quiet room, evening in the window, the curtain moving; she sits up in bed and looks at the door",
+   "camera": "Wide, slow push",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "heartbeat",
+     0.2
+    ],
+    [
+     "heartbeat",
+     0.75
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "fstop": 0
+   },
+   "hush": true
+  },
+  {
+   "n": 42,
+   "segment": "truth",
+   "weight": 1.2,
+   "kind": "hospital_tell",
+   "action": "A woman in a white coat sits by the bed, leans in and puts a hand on the girl's hand; the girl looks at her, eyes wide",
+   "camera": "Dolly round the bed",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.4
+    ]
+   ],
+   "hud": "IN HOSPITAL",
+   "prm": {}
+  },
+  {
+   "n": 43,
+   "segment": "truth",
+   "weight": 1.0,
+   "kind": "her_face",
+   "action": "Close on her: her eyes go from wide to shut. At the window Rook takes his hat off",
+   "camera": "Close, three-quarter",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "heartbeat",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 44,
+   "segment": "truth",
+   "weight": 0.9,
+   "kind": "empty_chair",
+   "action": "Her hand on the cover; beyond it, the chair by the bed, empty, the evening light across its seat",
+   "camera": "Low over the bed",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": "152 DIED",
+   "prm": {}
+  },
+  {
+   "n": 45,
+   "segment": "home",
+   "weight": 1.0,
+   "kind": "jet_arrive",
+   "action": "Overcast morning on an apron: a small white jet rolls in and stops; an ambulance waits with its blue lights turning",
+   "camera": "Wide, panning with the jet",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "engine_start",
+     0.05
+    ]
+   ],
+   "hud": "2 JULY 2009",
+   "prm": {}
+  },
+  {
+   "n": 46,
+   "segment": "home",
+   "weight": 1.0,
+   "kind": "stairs",
+   "action": "At the jet's door a medic helps Bahia down the steps, her arm in a sling. Rook stands back by the wing",
+   "camera": "Low by the wing, looking up the steps",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.3
+    ],
+    [
+     "tick",
+     0.7
+    ]
+   ],
+   "hud": "LE BOURGET, PARIS",
+   "prm": {}
+  },
+  {
+   "n": 47,
+   "segment": "home",
+   "weight": 1.2,
+   "kind": "father_hug",
+   "action": "At the foot of the steps her father kneels and holds her, carefully, away from the sling; his eyes close",
+   "camera": "Close two-shot",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "heartbeat",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 48,
+   "segment": "report",
+   "weight": 1.4,
+   "kind": "report_card",
+   "action": "The investigators' findings on Rook's panel: THE AIRCRAFT: NO FAULT FOUND / THE APPROACH: AT NIGHT, IN A STRONG WIND / THE CAUSE: THE CREW'S ACTIONS, A STALL / REPORT, 2013",
+   "camera": "Flat insert, slow push",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "scratch",
+     0.1
+    ],
+    [
+     "tick",
+     0.4
+    ],
+    [
+     "tick",
+     0.65
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 49,
+   "segment": "report",
+   "weight": 1.0,
+   "kind": "sea_after",
+   "action": "Morning, from high up: the piece of wreckage alone on a wide, empty sea",
+   "camera": "High, pulling up",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 50,
+   "segment": "report",
+   "weight": 0.8,
+   "kind": "debris_close",
+   "action": "Low on the grey water: a seat cushion and a small case ride the swell. Nothing else",
+   "camera": "Low on the water",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 51,
+   "segment": "trial",
+   "weight": 1.0,
+   "kind": "court_wide",
+   "action": "A courtroom from the back: benches full of families, the bench at the far end, a young woman standing alone at the bar. Rook in the last row",
+   "camera": "High at the back, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ]
+   ],
+   "hud": "PARIS, MAY 2022",
+   "prm": {}
+  },
+  {
+   "n": 52,
+   "segment": "trial",
+   "weight": 1.2,
+   "kind": "testify",
+   "action": "From the side of the bar: Bahia, now twenty-five, both hands on the rail, speaks towards the bench; then her head goes down",
+   "camera": "Side-on, close",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": "BAHIA BAKARI, 25",
+   "prm": {}
+  },
+  {
+   "n": 53,
+   "segment": "trial",
+   "weight": 1.0,
+   "kind": "families",
+   "action": "Along a bench: the families listen; in the front row, her father, head bowed",
+   "camera": "Along the rows from the side wall",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 54,
+   "segment": "verdict",
+   "weight": 1.0,
+   "kind": "verdict",
+   "action": "The bench: the presiding judge rises with a sheet of paper and reads; the two judges either side look down at the room",
+   "camera": "Low from the room, looking up at the bench",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.3
+    ]
+   ],
+   "hud": "SEPTEMBER 2022",
+   "prm": {}
+  },
+  {
+   "n": 55,
+   "segment": "verdict",
+   "weight": 1.2,
+   "kind": "verdict_card",
+   "action": "Rook's panel: THE AIRLINE: GUILTY OF MANSLAUGHTER / THE MAXIMUM FINE: 225,000 EUROS / UPHELD ON APPEAL, 2024",
+   "camera": "Flat insert",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "hit",
+     0.1
+    ],
+    [
+     "tick",
+     0.5
+    ],
+    [
+     "tick",
+     0.8
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 56,
+   "segment": "verdict",
+   "weight": 1.0,
+   "kind": "court_rook",
+   "action": "The back row: Rook sits with his hat in his lap; he puts it back on and looks down the room to the woman at the bar",
+   "camera": "Close on Rook, the room behind",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 57,
+   "segment": "end",
+   "weight": 0.9,
+   "kind": "girl_close",
+   "action": "Back at the wreckage at night: her arms over the edge, holding on",
+   "camera": "From her other side, low",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wave",
+     0.2
+    ]
+   ],
+   "hud": "152 DIED. 1 LIVED.",
+   "prm": {
+    "alt": [
+     70,
+     1.25,
+     0.15
+    ]
+   }
+  },
+  {
+   "n": 58,
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "rook_wrong",
+   "action": "Rook at the hospital window, hat at his side, head bowed: 'I was wrong.'",
+   "camera": "Medium on Rook",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 59,
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "signoff",
+   "action": "Dusk: Rook on his floating panel puts his hat back on and pulls the brim down. 'Case closed.'",
+   "camera": "Three-quarter on Rook",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "flap",
+     0.2
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "brand": true
+  },
+  {
+   "n": 60,
+   "segment": "end",
+   "weight": 1.1,
+   "kind": "board",
+   "action": "Rook's case board, a sheet of riveted aircraft skin: the photograph of her at the wreckage, and of her at the bar in 2022. 153 ON BOARD / 1 SURVIVOR",
+   "camera": "Flat insert, slow push",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "bloop",
+     0.1
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  }
+ ]
+}

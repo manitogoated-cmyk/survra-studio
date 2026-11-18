@@ -1,0 +1,27 @@
+{
+  "id": "r022-bakari-long", "spine": "v2", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9,
+  "segments": [
+    {"scene": "hook", "mood": "hook", "text": "A twelve-year-old who can barely swim, alone in the sea at night, holding on to a piece of a plane."},
+    {"scene": "doubt", "mood": "tense", "text": "All night? At twelve? I don't buy it. Let's go back to the start."},
+    {"scene": "family", "mood": "calm", "text": "Paris, the end of June, {2009|two thousand and nine}. Bahia Bakari is the eldest of four. She and her mother, Aziza, are off to the Comoros for the summer, to see family. Her brothers and her sister stay home with their dad."},
+    {"scene": "route", "mood": "calm", "text": "Paris, then Marseille, then Yemen, where they change planes. The last leg flies through the night to Moroni, on the island of Grande Comore. A hundred and fifty-three people on board."},
+    {"scene": "approach", "mood": "tense", "text": "Close to two in the morning, they reach the island. No moon. A strong wind, gusting. The crew can't come straight in. They have to swing round over the sea, to land from the other side."},
+    {"scene": "shake", "mood": "tense", "text": "Bahia feels the plane shaking. Nobody around her seems worried, so she tells herself it must be normal."},
+    {"scene": "blank", "mood": "sad", "text": "Then, she said later, something like an electric shock. And after that, nothing. A black hole in her memory."},
+    {"scene": "water", "mood": "tense", "text": "She just finds herself in the water. In the dark. There's the taste of fuel in her mouth, and she can't see her mother anywhere."},
+    {"scene": "voices", "mood": "tense", "text": "She hears voices calling for help, in Comorian. She calls back. But she can't see anyone."},
+    {"scene": "hold", "mood": "sad", "text": "She finds a piece of wreckage. She tries to climb onto it, but she isn't strong enough. So she holds on."},
+    {"scene": "night", "mood": "sad", "text": "The waves are high. At some point she falls asleep, still holding on. What kept her going, she said, was thinking of her mother. All night. Then all morning."},
+    {"scene": "rehook", "mood": "tense", "text": "Then, a boat. The Sima Com 2. Help is right there, and this is where it nearly goes wrong."},
+    {"scene": "ring", "mood": "tense", "text": "The crew throw her a life ring. She's too exhausted to grab it, and the waves carry it away."},
+    {"scene": "jump", "mood": "action", "text": "So one sailor jumps in, swims out to her, and brings her back to the boat."},
+    {"scene": "deck", "mood": "calm", "text": "Blankets. Warm, sweet water. A broken collarbone, burns and bruises. And she is alive."},
+    {"scene": "belief", "mood": "calm", "text": "And here's the part I couldn't get past. She thinks she just fell out of the plane, on her own. That everyone else, her mother too, landed safely."},
+    {"scene": "truth", "mood": "sad", "text": "In hospital, she's told the truth. The plane came down in the sea. Of a hundred and fifty-three people, she is the only one who lived. Her mother is gone."},
+    {"scene": "home", "mood": "calm", "text": "On the second of July, a French government jet flies her home to Paris. Her father is waiting on the tarmac. He hugs her gently, because of the collarbone."},
+    {"scene": "report", "mood": "calm", "text": "Investigators find nothing wrong with the plane itself. Their report, in {2013|twenty thirteen}, says the crew's actions on that night approach put it into a stall it never recovered from."},
+    {"scene": "trial", "mood": "sad", "text": "In {2022|twenty twenty-two}, the airline goes on trial in Paris. Bahia is twenty-five now. She stands up and testifies. The hardest thing, she tells the court, has been grieving for her mother."},
+    {"scene": "verdict", "mood": "calm", "text": "The court finds the airline guilty of manslaughter, and gives it the maximum fine. Two years later, the appeal court upholds it."},
+    {"scene": "end", "mood": "end", "text": "A hundred and fifty-two people died that night. One twelve-year-old held on until morning. I said I didn't buy it. I was wrong. Case closed."}
+  ]
+}
