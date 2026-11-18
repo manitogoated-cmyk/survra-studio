@@ -230,8 +230,9 @@
    "world": "Atlantic raft, solar still",
    "est_score": 79,
    "long_form_candidate": true,
-   "status": "idea",
-   "facts": "verify with 2+ sources at authoring; skip if they do not hold"
+   "status": "in progress",
+   "facts": "verify with 2+ sources at authoring; skip if they do not hold",
+   "claimed_at": "2026-11-18T12:19:38Z"
   },
   {
    "case": 18,
