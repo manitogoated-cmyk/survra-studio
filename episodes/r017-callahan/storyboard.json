@@ -1,0 +1,1034 @@
+{
+ "id": "r017-callahan",
+ "hook_text": "76 DAYS|ADRIFT",
+ "shots": [
+  {
+   "n": 1,
+   "segment": "hook",
+   "weight": 0.95,
+   "kind": "cabin_flood",
+   "action": "Night, inside the sloop: close on his face lit by his own torch, sea water spurting through the planks and rising round him, the lamp swinging hard",
+   "camera": "Close at eye level, easing in, rolling with the boat",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "cut",
+   "sfx": [
+    [
+     "impact",
+     0.02
+    ],
+    [
+     "splash",
+     0.35
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 2,
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "boat_sink",
+   "action": "Out on the black swell: the little white sloop down by the bow, its cabin lights still on, sliding under; the black raft open on the water beside it",
+   "camera": "Low and wide from the water, drifting",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wave",
+     0.1
+    ],
+    [
+     "low",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 3,
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "raft_jump",
+   "action": "He tumbles in over the raft's tube with the emergency bag; the sloop's rail goes under behind him",
+   "camera": "Close on the raft, pushing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "splash",
+     0.2
+    ],
+    [
+     "grab",
+     0.6
+    ]
+   ],
+   "hud": "STEVEN CALLAHAN",
+   "prm": {}
+  },
+  {
+   "n": 4,
+   "segment": "hook",
+   "weight": 1.05,
+   "kind": "raft_alone",
+   "action": "High and wide: the tiny raft alone where the sloop was; Rook drops onto the canopy and folds his wings",
+   "camera": "High wide, descending",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "flap",
+     0.2
+    ],
+    [
+     "wave",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 5,
+   "segment": "doubt",
+   "weight": 1.0,
+   "kind": "rook_raft",
+   "action": "Rook on the tube pokes the rubber, it gives; he turns to us, unimpressed: 'A balloon? It'll pop first.'",
+   "camera": "Close on Rook, three-quarter, the dark swell behind",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "zoom",
+   "sfx": [
+    [
+     "tick",
+     0.15
+    ],
+    [
+     "tick",
+     0.3
+    ]
+   ],
+   "hud": "CASE 017",
+   "prm": {}
+  },
+  {
+   "n": 6,
+   "segment": "water",
+   "weight": 1.0,
+   "kind": "dawn_wide",
+   "action": "Dawn: the raft and its orange canopy a speck on an endless ocean",
+   "camera": "Wide and low, slow push",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.2
+    ]
+   ],
+   "hud": "MID-ATLANTIC, 1982",
+   "prm": {}
+  },
+  {
+   "n": 7,
+   "segment": "water",
+   "weight": 1.0,
+   "kind": "still_close",
+   "action": "Close on the solar still riding beside the raft, drops running down inside",
+   "camera": "Close, easing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "bloop",
+     0.3
+    ],
+    [
+     "bloop",
+     0.6
+    ]
+   ],
+   "hud": "SOLAR STILL",
+   "prm": {}
+  },
+  {
+   "n": 8,
+   "segment": "water",
+   "weight": 1.1,
+   "kind": "rook_still",
+   "action": "He sips from a tiny cup; Rook taps the still, then squints at how little is in the cup",
+   "camera": "Medium on Rook and the man in the raft",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.2
+    ],
+    [
+     "tick",
+     0.4
+    ]
+   ],
+   "hud": "ABOUT A PINT A DAY",
+   "prm": {}
+  },
+  {
+   "n": 9,
+   "segment": "fish",
+   "weight": 1.05,
+   "kind": "under_fish",
+   "action": "Underwater looking up: the raft a dark disc against the bright surface, a school of dorado circling below it",
+   "camera": "Low under the school, looking up",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "bubbles",
+     0.2
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 10,
+   "segment": "fish",
+   "weight": 1.0,
+   "kind": "spear_aim",
+   "action": "He leans out over the tube with the short spear gun, aiming down; Rook leans out beside him",
+   "camera": "Close from outside the raft, low",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 11,
+   "segment": "fish",
+   "weight": 0.95,
+   "kind": "fish_catch",
+   "action": "Underwater: the spear shoots down and one dorado jerks away with it; the school scatters",
+   "camera": "Medium underwater",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.1
+    ],
+    [
+     "splash",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 12,
+   "segment": "ships",
+   "weight": 1.0,
+   "kind": "ship_pass",
+   "action": "A big freighter crosses the horizon; he stands and waves an orange cloth over his head",
+   "camera": "Low from the water behind the raft",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "horn_far",
+     0.15
+    ]
+   ],
+   "hud": "SHIP AFTER SHIP",
+   "prm": {}
+  },
+  {
+   "n": 13,
+   "segment": "ships",
+   "weight": 1.0,
+   "kind": "rook_wave",
+   "action": "Rook on the canopy waves his arm in big arcs at the ship; it keeps going; his arm and his brim drop",
+   "camera": "Medium behind and beside Rook, the ship beyond",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "flap",
+     0.2
+    ],
+    [
+     "flap",
+     0.45
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 14,
+   "segment": "rehook",
+   "weight": 1.1,
+   "kind": "spear_hole",
+   "action": "Underwater, close on the raft's belly: a speared dorado thrashes and the spear point rips into the bottom tube; air pours out",
+   "camera": "Close underwater, pushing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "flash",
+   "sfx": [
+    [
+     "hit",
+     0.25
+    ],
+    [
+     "bubbles",
+     0.45
+    ]
+   ],
+   "hud": "A HOLE",
+   "prm": {}
+  },
+  {
+   "n": 15,
+   "segment": "rehook",
+   "weight": 1.0,
+   "kind": "raft_soft",
+   "action": "In the raft: the bottom tube sags, water slops in, he grabs at the soft rubber",
+   "camera": "Medium from above the tube",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wave",
+     0.2
+    ],
+    [
+     "gasp",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 16,
+   "segment": "rehook",
+   "weight": 0.95,
+   "kind": "rook_sink",
+   "action": "Rook standing on the tube as it folds under him: he drops to his knees and his hat jumps",
+   "camera": "Close on Rook",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "pop",
+     0.25
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 17,
+   "segment": "repair",
+   "weight": 1.0,
+   "kind": "patch_fail",
+   "action": "Close on the hole: his hands press a patch over it; it bubbles and peels away",
+   "camera": "Close on the tube",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.2
+    ],
+    [
+     "bubbles",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 18,
+   "segment": "repair",
+   "weight": 1.0,
+   "kind": "rook_feather",
+   "action": "Rook plucks a feather and holds it over the hole; the air blows it straight off",
+   "camera": "Medium on Rook and the hole",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "pop",
+     0.3
+    ],
+    [
+     "whoosh",
+     0.55
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 19,
+   "segment": "repair",
+   "weight": 1.05,
+   "kind": "fork_fix",
+   "action": "Close: his hands push a fork through the rubber round the hole and fold it shut; the bubbling stops",
+   "camera": "Close on the hands and the hole",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.2
+    ],
+    [
+     "clunk",
+     0.7
+    ]
+   ],
+   "hud": "A FORK",
+   "prm": {}
+  },
+  {
+   "n": 20,
+   "segment": "lights",
+   "weight": 1.05,
+   "kind": "thin_man",
+   "action": "Weeks later under a white sun: he sits hunched and thin, beard long; Rook beside him, hat off",
+   "camera": "Medium on the two of them",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.3
+    ]
+   ],
+   "hud": "A THIRD OF HIS WEIGHT GONE",
+   "prm": {}
+  },
+  {
+   "n": 21,
+   "segment": "lights",
+   "weight": 1.0,
+   "kind": "night_lights",
+   "action": "Night: from behind him, a low dark island on the horizon with a string of lights; he pulls himself up to look",
+   "camera": "Over his shoulder towards the island",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wave",
+     0.2
+    ]
+   ],
+   "hud": "DAY 75",
+   "prm": {}
+  },
+  {
+   "n": 22,
+   "segment": "lights",
+   "weight": 0.95,
+   "kind": "rook_lights",
+   "action": "Rook on the canopy at night lifts his brim with one finger, the island's lights in his eyes",
+   "camera": "Close on Rook from the island side",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 23,
+   "segment": "payoff",
+   "weight": 1.0,
+   "kind": "birds_circle",
+   "action": "Morning, from high above: dark frigate birds wheel in a ring over the raft, gold fish flashing round it",
+   "camera": "High over the raft",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "gulls",
+     0.1
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 24,
+   "segment": "payoff",
+   "weight": 1.0,
+   "kind": "fishing_boat",
+   "action": "Low on the water: a small blue and yellow fishing boat with three men turns towards the birds",
+   "camera": "Low from the water",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wave",
+     0.2
+    ],
+    [
+     "shout",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 25,
+   "segment": "payoff",
+   "weight": 1.15,
+   "kind": "boat_reach",
+   "action": "Alongside: the fishermen take him by the arms and lift him out of the raft; Rook steadies the raft, hat off",
+   "camera": "Medium from the side, low",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "grab",
+     0.45
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "hush": true
+  },
+  {
+   "n": 26,
+   "segment": "payoff",
+   "weight": 1.1,
+   "kind": "rook_point",
+   "action": "Rook on the canopy points up at the birds, then straight down at the fish, and nods",
+   "camera": "Low on Rook, the birds above",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 27,
+   "segment": "payoff",
+   "weight": 1.0,
+   "kind": "fish_hull",
+   "action": "Underwater: the raft above, the fishing boat's hull sliding in beside it, the school still circling",
+   "camera": "Underwater, looking up",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "bubbles",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 28,
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "rook_question",
+   "action": "Sunset, the empty raft drifting: Rook on its tube with the fork from the case, asking us straight out",
+   "camera": "Close on Rook",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": "76 DAYS ADRIFT",
+   "prm": {}
+  },
+  {
+   "n": 29,
+   "segment": "end",
+   "weight": 0.9,
+   "kind": "signoff",
+   "action": "Wide at sunset: the raft on a gold sea, Rook on the canopy tipping his hat, then pocketing the fork",
+   "camera": "Wide, slow pull back",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wave",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "brand": true
+  },
+  {
+   "n": 30,
+   "segment": "end",
+   "weight": 1.3,
+   "kind": "cabin_flood",
+   "action": "The opening shot played back to its first frame, so the end runs into the start",
+   "camera": "As the first shot",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "splash",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "loop": true
+   }
+  }
+ ]
+}

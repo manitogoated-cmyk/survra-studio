@@ -1,0 +1,129 @@
+{
+ "id": "r017-callahan",
+ "format": "short",
+ "status": "approved",
+ "synthetic": false,
+ "host": "rook",
+ "case": 17,
+ "title": "His Boat Sank. He Lived 76 Days in This Raft #shorts",
+ "playlist": "Rook's Case Files (Shorts)",
+ "spine": "v2",
+ "sources": [
+  "https://en.wikipedia.org/wiki/Steven_Callahan",
+  "https://en.wikipedia.org/wiki/Adrift:_Seventy-six_Days_Lost_at_Sea",
+  "https://www.csmonitor.com/1982/0930/093036.html",
+  "https://csmonitor.com/1986/0131/dbadri.html",
+  "https://newengland.com/today/lost-at-sea-yankee-classic/",
+  "https://vault.si.com/vault/1986/04/07/if-youre-at-sea-in-the-search-for-a-good-book-heres-a-gripping-tale"
+ ],
+ "authoring": {
+  "claimed_at": "2026-11-18T12:19:38Z",
+  "run": "scheduled short run, 18 Nov 2026; brief order (Short 9 of the batch, slate case 17)"
+ },
+ "description": "Case 017. One night in February 1982, about a week out of the Canary Islands, something hit Steven Callahan's small sloop Napoleon Solo (he believes it was a whale) and it went down. He got away in a six-person inflatable life raft with his emergency bag. Little solar stills and rain gave him a little over a pint of water a day. Dorado gathered under the raft, and he speared them to eat. Ships passed; none saw him. Then a speared dorado drove the spear point into the raft's bottom tube and tore a hole. Patches failed, until he pushed a fork through the fabric around the hole and folded it shut. He lost about a third of his weight. On the night of his 75th day he saw lights; the next morning fishermen, drawn by the birds circling over the fish under his raft, picked him up near Marie-Galante, off Guadeloupe. He had drifted about 1,800 nautical miles in 76 days.\n\nAnimated reconstruction of a true story. The boat, the raft, the ship, the island and every person are generic low-poly reconstructions; no likeness is attempted. Staging details such as the cabin, the torch, the cup, the cloth he waves, the patch, the boat's colours and everything Rook does (including his feather) are reconstruction, not record. Sources give 4 or 5 February for the sinking and seven or nine ships, so the film shows neither number. Narration is a synthetic voice (Kokoro).",
+ "tags": [
+  "Steven Callahan",
+  "Adrift",
+  "76 days adrift",
+  "Napoleon Solo",
+  "life raft",
+  "lost at sea",
+  "Atlantic",
+  "survival",
+  "solar still",
+  "dorado",
+  "true story",
+  "animated story",
+  "Rook",
+  "Survra"
+ ],
+ "hashtags": [
+  "#shorts",
+  "#truestory",
+  "#survival"
+ ],
+ "story_score": {
+  "curiosity": 8,
+  "stakes": 9,
+  "freshness": 7,
+  "story": 9,
+  "visual": 9,
+  "audience_fit": 8,
+  "payoff": 8,
+  "packaging": 8,
+  "research": 9,
+  "repeatability": 7,
+  "total": 82
+ },
+ "title_options": [
+  "His Boat Sank. He Lived 76 Days in This Raft #shorts",
+  "76 Days in a Rubber Raft #shorts",
+  "The Fish That Got Him Found #shorts"
+ ],
+ "shown_moments": {
+  "something huge rams his boat in the dark": "shot 1 (his face in torchlight, water spurting into the cabin)",
+  "It goes down": "shot 2 (the sloop down by the bow on the night swell)",
+  "all he has left is a tiny rubber raft": "shots 3 and 4 (he tumbles into the raft; the raft alone where the sloop was)",
+  "A balloon? It'll pop first": "shot 5 (Rook pokes the tube in the dark)",
+  "Mid-Atlantic": "shot 6 (dawn, the raft a speck), label MID-ATLANTIC, 1982",
+  "Little solar stills and rain give him barely a pint of water a day": "shots 7 and 8 (the still; the cup), label ABOUT A PINT A DAY",
+  "Then fish gather under the raft, like it's an island": "shot 9 (underwater, the school under the raft)",
+  "He spears them to eat": "shots 10 and 11 (aiming over the tube; the spear strikes, no blood shown)",
+  "Ship after ship sails past. Not one sees him": "shots 12 and 13 (the freighter; Rook waving)",
+  "a speared fish drives the spear into the raft and tears a hole": "shot 14 (underwater, the spear rips the bottom tube, air pours out)",
+  "The raft goes soft": "shots 15 and 16",
+  "Patch after patch fails": "shots 17 and 18 (the patch peels; Rook's feather blows away)",
+  "he pushes a fork through the rubber and folds the hole shut": "shot 19, label A FORK",
+  "He loses a third of his weight": "shot 20, label A THIRD OF HIS WEIGHT GONE",
+  "On day seventy-five, he sees lights": "shots 21 and 22, label DAY 75",
+  "Next morning, fishermen find him, led by birds circling over the fish under his raft": "shots 23 to 25 (the birds; the boat; lifted out, hush)",
+  "The fish that fed him got him found": "shots 26 and 27 (Rook points from the birds to the fish; the school under both hulls)",
+  "Seventy-six days. What would you miss most?": "shots 28 and 29, label 76 DAYS ADRIFT",
+  "It all began when": "shot 30 (the opening shot played back to its first frame)"
+ },
+ "experiments": {
+  "E1_E2": "spine v2: Rook is already on the raft in the night swell in shot 5 and doubts it in one line of 1.5 s with the dark sea behind; no office. The story moves forward from the sinking; name, place and date are on-screen labels (STEVEN CALLAHAN; MID-ATLANTIC, 1982).",
+  "E3": "batch Short 9 (odd): person close-up first frame, as the brief assigns: his face in torchlight as water floods the cabin.",
+  "E4": "question ending, as the brief assigns: 'Seventy-six days. What would you miss most?'",
+  "E7": "hook_text 76 DAYS / ADRIFT.",
+  "E8": "tail 0.4 s; the last line ('It all began when') runs into the first ('something huge rams his boat in the dark'), and the last shot is the opening shot played back to its first frame.",
+  "brief_changes": "The brief's hook named the number of days; spine v2 wants a physical image, so the hook is the night collision and the raft, and 76 is the hook text and the end label. The brief's 'raft punctured (verify)' held: three sources say a speared dorado drove the spear into the bottom tube. The brief's reversal (the fish followed him the whole way) became the payoff the sources support: the birds over those fish led the fishermen to him. The brief's Rook moment (patching with his own feather) is kept as a gag that fails (shot 18), so the real fix, the fork, stays his.",
+  "rook_action": "Detective actions in the story world: pokes the tube (5), taps the still and checks the cup (8), tries a feather on the hole (18), points from the birds to the fish to show what found him (26). Mannerisms: brim low (5, 13), hat jumps (16), hat off (20, 25), brim lifted (22), hat tip and the fork pocketed (29)."
+ },
+ "sound_plan": {
+  "first_frame": "An 'impact' at 0.02 s (the collision; the impact the gate needs in the first second), then a splash as water comes in.",
+  "music": "The engine's score follows the segment moods: hook, tense for Rook's line, calm for the water, wonder for the fish, sad for the ships, action for the hole, tense for the repair and the lights, triumph for the rescue, end.",
+  "effects": "One or two cues a shot, each tied to something visible: waves and splashes, bloops for the still's drops, a far horn for the freighter, a hit and bubbles for the hole, a pop for Rook's hat, a clunk as the fork folds the hole shut, gulls for the birds.",
+  "hush": "Shot 25 (lifted out of the raft): the music drops out for the breath before the payoff.",
+  "voice": "Narration ducked over the bed by the engine."
+ },
+ "source_notes": "Six pages were read for this run on 18 Nov 2026 (both Wikipedia articles; Christian Science Monitor 30 Sep 1982 interview and 31 Jan 1986 review; the Yankee excerpt of his book; Sports Illustrated 7 Apr 1986 review). Every narrated fact is on at least two of them. Sloop Napoleon Solo, sank at night about a week out of the Canaries: all six; the date is 4 Feb (CSM82, SI86, Yankee) or 5 Feb (Wikipedia, book article), so the film labels 1982 only. Something hit it, believed to be a whale: Wikipedia x2, CSM82 ('most likely a whale, he believes'), SI86; the film says 'something huge'. Six-person Avon inflatable raft with an emergency bag, short spear gun, solar stills: Wikipedia x2, Yankee. Water from solar stills plus rain, a little over a pint a day: Wikipedia x2 (pint), CSM82 and SI86 (stills). Dorado gathered and followed the raft, speared for food: Wikipedia x2, CSM82, SI86, CSM86. Ships passed without seeing him: nine in Wikipedia and SI86, seven in CSM82; the film shows no count. A speared dorado drove the spear into the bottom tube and tore a hole: CSM82, Yankee, SI86 (SI86 says he punched it while spearing); patches failed, a fork pushed through the fabric round the hole and folded closed: CSM82 and SI86. Lost about a third of his weight: Wikipedia x2, Yankee caption (44 lb, about a third); CSM82 says 40 lb. Lights seen on the night of 20 April (day 75): Wikipedia, CSM82, Yankee; picked up next day by fishermen drawn by birds over the raft: Wikipedia x2, CSM82, SI86. Near Marie-Galante: CSM82, Yankee (in description only). 76 days: Wikipedia x2, CSM82, Yankee. About 1,800 nautical miles: Wikipedia x2, CSM82, SI86, CSM86 (in description only). Not used: the 'only man to survive more than a month alone' claim (not in Wikipedia), sharks, his quotes (no line is put in his mouth).",
+ "quality_gate": {
+  "method": "One run, five review rounds. Rounds 1 and 2: low-res contact sheets of all 30 shots (one frame each). Found and fixed: his back to the camera in the cabin, the raft jump, the cup shot and the thin shot (he faces us now); the night sinking almost black and the sloop sunk too deep to read (brighter moonlight key, less sunk); the island's lights buried inside the island (moved in front of its shore); the frigate birds reading as black crosses (V-shaped wings, smaller, higher); Rook and the man overlapping in the cup shot; the bubbles from the hole drifting into the lens; the fork and the feather too small to read; the fishing boat a speck (longer lens). Round 3: the hole made bigger and moved onto the tube's outer skin; school fish swimming into the lens in the spear shot; the feather shot reframed. Round 4: a full-length rehearsal (270x480, 6 samples, 8 fps of 3D frames, composited at 30 fps with captions, labels, overlays and sound) reviewed as a 2-frames-per-second sheet. Found and fixed: the gate's one fail, a static stretch in shot 4 (Rook now flaps down onto the canopy over the whole shot, the sloop's mast slides under, the camera drops in); Rook seeming to stand on air in shots 13 and 26 (reframed to show the canopy under him). Round 5: those three shots checked as stills, re-rendered and the gate run again: PASS. 30 shots, mean 1.46 s, longest 1.79 s, Rook acting in 13 of 30 shots (43%), -14.5 LUFS, peak -1.4 dBFS, voice 15.6 dB over the bed, closest match to any earlier episode 0.87 (shot 6 against r019-adilang; the limit is 0.93). Duration 43.7 s. The cloud render runs the real gate at 720x1280 and 60 fps.",
+  "checked": "Every kind in the storyboard exists in world3d.SHOTS3D (no flat inserts); HOST lists the 13 kinds in which Rook is placed; cabin_flood is the only kind used twice, not in a row (first and last shot). First shot 1.43 s with an impact at 0.02 s. The doubt line (1.5 s) is spoken on the raft in the night swell. The re-hook ('Then a speared fish drives the spear into the raft and tears a hole') starts at 19.2 s of 43.7 s (44%). One hush shot (25). Tail 0.4 s; first and last frames compared on the sheet (same framing). Labels (CASE 017; STEVEN CALLAHAN; MID-ATLANTIC, 1982; SOLAR STILL; ABOUT A PINT A DAY; SHIP AFTER SHIP; A HOLE; A FORK; A THIRD OF HIS WEIGHT GONE; DAY 75; 76 DAYS ADRIFT) checked against the sources. The fish is speared off screen below the surface with no blood; no injury is shown.",
+  "not_met": "No full-resolution, full-sample render was made locally (the workflow does it); the rehearsal ran at 8 fps of 3D frames, so motion was judged at that rate. The solar still is a stylised clear balloon with rings rather than an exact model of his stills. The voice was measured, not listened to."
+ },
+ "checklist": {
+  "A_story": "done: score 82/100 with curiosity 8, story 9, payoff 8; spine v2; shown_moments lists every narrated moment",
+  "B_storyboard": "done: every shot has action, camera and sound cue; Rook's mannerisms are brim low (5, 13), hat jump (16), hat off (20, 25), brim lifted (22), hat tip and the fork pocketed (29); detective actions are poking the tube (5), checking the still and the cup (8), the feather test (18) and pointing from the birds to the fish (26)",
+  "B2_retention": "done: hook_text set; first frame is a person close-up (odd Short in the batch); re-hook at 44%; one hush; tail 0.4 s with the loop, first and last frames compared",
+  "C_previews": "partly: three contact-sheet rounds and a full low-res rehearsal; no blown-out or crushed frame where the story has to be seen; Rook on-model; see quality_gate.not_met",
+  "D_render": "engine defaults untouched (60 fps, 720x1280, 16 jobs in the workflow); the local rehearsal used low settings only for review",
+  "E_sound": "voice am_fenrir; voice 15.6 dB over the bed; -14.5 LUFS",
+  "F_captions": "done: captions inside the frame; on-screen dates, names and figures checked against sources",
+  "G_final": "rehearsal reviewed as a 2 fps sheet of the whole video; local gate PASS; the full-resolution render and the real gate happen in the workflow"
+ },
+ "review": {
+  "notes": [
+   "0.0 to 1.4 s: his face in torchlight as water floods the cabin, hook text 76 DAYS / ADRIFT; 1.4 to 6.0 s: the sloop going under, into the raft, the raft alone with Rook dropping onto it",
+   "6.0 to 7.7 s: Rook pokes the tube: 'A balloon? It'll pop first.'",
+   "7.7 to 12.3 s: dawn, the still, the cup",
+   "12.3 to 19.2 s: the school under the raft, the spear, the freighter passing, Rook waving",
+   "19.2 to 24.2 s: re-hook: the spear rips the tube, the raft goes soft, Rook drops to his knees",
+   "24.2 to 29.0 s: the patch peels, Rook's feather blows away, the fork folds the hole shut",
+   "29.0 to 32.8 s: thin under the sun, DAY 75 and the island's lights, Rook lifts his brim",
+   "32.8 to 39.7 s: the birds, the fishing boat, lifted out (hush), Rook points from the birds to the fish, the school under both hulls",
+   "39.7 to 43.7 s: sunset question, sign-off, back to the opening frame"
+  ]
+ }
+}

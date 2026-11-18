@@ -1,0 +1,61 @@
+{
+  "id": "r017-callahan",
+  "spine": "v2",
+  "voice": "am_fenrir",
+  "speed": 1.12,
+  "gap": 0.14,
+  "lead": 0.1,
+  "tail": 0.4,
+  "segments": [
+    {
+      "scene": "hook",
+      "mood": "hook",
+      "text": "something huge rams his boat in the dark. It goes down, and all he has left is a tiny rubber raft."
+    },
+    {
+      "scene": "doubt",
+      "mood": "tense",
+      "text": "A balloon? It'll pop first."
+    },
+    {
+      "scene": "water",
+      "mood": "calm",
+      "text": "Mid-Atlantic. Little solar stills and rain give him barely a pint of water a day."
+    },
+    {
+      "scene": "fish",
+      "mood": "wonder",
+      "text": "Then fish gather under the raft, like it's an island. He spears them to eat."
+    },
+    {
+      "scene": "ships",
+      "mood": "sad",
+      "text": "Ship after ship sails past. Not one sees him."
+    },
+    {
+      "scene": "rehook",
+      "mood": "action",
+      "text": "Then a speared fish drives the spear into the raft and tears a hole. The raft goes soft."
+    },
+    {
+      "scene": "repair",
+      "mood": "tense",
+      "text": "Patch after patch fails. So he pushes a fork through the rubber and folds the hole shut."
+    },
+    {
+      "scene": "lights",
+      "mood": "tense",
+      "text": "He loses a third of his weight. On day {75|seventy-five}, he sees lights."
+    },
+    {
+      "scene": "payoff",
+      "mood": "triumph",
+      "text": "Next morning, fishermen find him, led by birds circling over the fish under his raft. The fish that fed him got him found."
+    },
+    {
+      "scene": "end",
+      "mood": "end",
+      "text": "{76|Seventy-six} days. What would you miss most? It all began when"
+    }
+  ]
+}
