@@ -99,9 +99,9 @@ def make_cloud(n, seed):
     c = keep(empty(FAR))
     puffs = []
     for i in range(n):
-        hot = rnd(i, seed + 3) < 0.22
-        col = ('E8692A' if rnd(i, seed + 4) < 0.5 else 'C8481E') if hot else ('5E544E', '726660', '4A4440', '857870')[i % 4]
-        o = add('ico_sphere', col, (0, 0, 0), radius=1.0, subdivisions=1, parent=c, rough=1.0, emit=3.5 if hot else 0.0)
+        hot = rnd(i, seed + 3) < 0.16
+        col = ('C8501E' if rnd(i, seed + 4) < 0.5 else 'A83A16') if hot else ('5E544E', '726660', '4A4440', '857870')[i % 4]
+        o = add('ico_sphere', col, (0, 0, 0), radius=1.0, subdivisions=2, parent=c, rough=1.0, emit=1.4 if hot else 0.0)
         puffs.append((o, rnd(i, seed), rnd(i, seed + 1), rnd(i, seed + 2)))
     return c, puffs
 
@@ -165,12 +165,12 @@ def make_bay(S):
         S['ships'].append(s_)
     # smoke columns over the ruined town
     S['smoke'] = keep(empty(FAR))
-    for i in range(10):
-        for j in range(4):
-            r = 5 + 3 * j
-            add('ico_sphere', ('5A5450', '6E6862')[j % 2], (-120 + 26 * i + 6 * rnd(i, 9), 20 + 50 * rnd(i, 8), 8 + 11 * j), radius=r, subdivisions=1, parent=S['smoke'], rough=1.0)
+    for i in range(6):
+        for j in range(5):
+            r = 2.5 + 1.6 * j
+            add('ico_sphere', ('A8A29C', 'B8B2AA')[j % 2], (-110 + 44 * i + 6 * rnd(i, 9) + 3 * j, 20 + 50 * rnd(i, 8), 10 + 9 * j), radius=r, subdivisions=1, parent=S['smoke'], rough=1.0)
     S['bay'] = b
-    S['cloud'] = make_cloud(70, 11)
+    S['cloud'] = make_cloud(110, 11)
 
 
 def town(S, ruin=False):
@@ -189,13 +189,13 @@ def town(S, ruin=False):
 def make_yard(S):
     y = empty(YARD)
     # ground with a pit in front of the cell door (the cell front wall is at y = -3.2, its floor 1.6 below the yard)
-    for x0, x1, y0, y1 in ((-300, -1.4, -300, 300), (1.4, 300, -300, 300), (-1.4, 1.4, -300, -7.0), (-1.4, 1.4, -3.2, 300)):
+    for x0, x1, y0, y1 in ((-300, -2.4, -300, 300), (2.4, 300, -300, 300), (-2.4, 2.4, -300, -7.0), (-2.4, 2.4, -3.2, 300)):
         S.setdefault('yground', []).append(box(y, EARTH, x0, x1, y0, y1, -2.0, 0.0, rough=1.0))
-    box(y, '4A3E2C', -1.4, 1.4, -7.0, -3.2, -2.0, -1.6, rough=1.0)                                       # pit floor
+    box(y, '4A3E2C', -2.4, 2.4, -7.0, -3.2, -2.0, -1.6, rough=1.0)                                       # pit floor
     for i in range(4):                                                                                  # steps down
-        box(y, STONE2, -1.2, 1.2, -7.0 + 0.45 * i, -6.55 + 0.45 * i, -1.6, -1.6 + 0.4 * (4 - i), rough=1.0)
+        box(y, STONE2, -2.2, 2.2, -7.0 + 0.45 * i, -6.55 + 0.45 * i, -1.6, -1.6 + 0.4 * (4 - i), rough=1.0)
     for s in (-1, 1):                                                                                  # pit walls
-        box(y, STONE2, s * 1.4 - 0.15, s * 1.4 + 0.15, -7.0, -3.2, -1.6, 0.15, rough=1.0)
+        box(y, STONE2, s * 2.4 - 0.15, s * 2.4 + 0.15, -7.0, -3.2, -1.6, 0.15, rough=1.0)
     # the cell block: stone, its roof just above the yard, earth banked against it
     box(y, STONE, -3.0, 3.0, -3.2, 3.8, -1.6, 1.9)
     box(y, '76706A', -3.3, 3.3, -3.5, 4.1, 1.9, 2.3)
@@ -214,7 +214,7 @@ def make_yard(S):
     for j in range(3):
         box(d, '2A2A2E', 0.42 + 0.27 * j, 0.47 + 0.27 * j, -0.1, 0.1, 1.95, 2.35, rough=0.4)
         box(d, '2A2A2E', 0.0, 1.6, -0.11, -0.08, 0.3 + 0.7 * j, 0.42 + 0.7 * j, rough=0.4)
-    S['slitglow'] = add('plane', 'FFFFFF', at(YARD, 0.0, -3.0, 0.55), rot=(PI / 2, 0, 0), size=1, scale=(0.9, 0.4, 1), emit=0.0)
+    S['slitglow'] = add('plane', 'FFFFFF', at(YARD, 0.0, -3.1, 0.55), rot=(PI / 2, 0, 0), size=1, scale=(0.9, 0.4, 1), emit=0.0)
     box(y, '120C08', -0.82, 0.82, -3.2, -3.0, -1.6, 1.0)                                                 # the dark doorway behind it
     # the prison: high walls, a gate, a building with a tiled roof; and the mountain beyond
     S['yintact'] = yi = keep(empty(YARD))
@@ -239,7 +239,9 @@ def make_yard(S):
                     scale=(1 + 2 * rnd(i, 25), 0.8 + rnd(i, 26), 0.6), size=1, parent=par, rough=1.0)
             add('cube', ASH, (0, 0, 0.04), scale=(46, 70, 0.08), size=1, parent=par, rough=1.0)
             add('cube', 'B8B4AE', (0, 0.3, 2.34), scale=(6.6, 7.6, 0.12), size=1, parent=par, rough=1.0)  # ash on the cell roof
-    add('cube', '3A2A1C', (4, -14.5, 3), scale=(5, 0.6, 6), size=1, parent=yi)                         # the gate in the wall
+    for x0, x1 in ((-24, 1.5), (6.5, 24)):                                                           # the front wall and its gate
+        box(yi, 'C8B898', x0, x1, -15.0, -14.0, 0, 6)
+    box(yi, 'C8B898', 1.5, 6.5, -15.0, -14.0, 6, 7)
     S['gate'] = gt = empty(at(YARD, 1.5, -14.6, 0), yi)
     box(gt, '4A3220', 0, 5, -0.15, 0.15, 0, 6)
     S['ygreen'] = keep(empty(FAR))                                                                     # today: grass and a hedge over the old ruins
@@ -305,10 +307,11 @@ def make_cell(S):
 def cell(S, mode='day', k=0.0, ash=0.0):
     """Light through the slit: day (pale), glow (the cloud), dim, night; the cell has no other window."""
     sky(S, 'dark')
-    col, e, w = dict(day=('DCEBFF', 6.0, 900), glow=('FF7A2A', 14.0, 2600), dim=('C8C0B0', 2.5, 300), night=('7A90C0', 1.2, 90),
+    col, e, w = dict(day=('DCEBFF', 3.5, 900), glow=('FF7A2A', 14.0, 2600), dim=('C8C0B0', 2.5, 300), night=('7A90C0', 1.2, 90),
                      dawn=('FFE0B8', 5.0, 700))[mode]
     S['outside'].data.materials[0] = K.mat(col, 0.9, emit=e)
-    S['slitl'].data.energy, S['slitl'].data.color = w, K.hexc(col)[:3]
+    fl = (0.65 + 0.35 * math.sin(K._T[0] * 23) * math.sin(K._T[0] * 7.3)) if mode == 'glow' else 1.0
+    S['slitl'].data.energy, S['slitl'].data.color = w * fl, K.hexc(col)[:3]
     S['celll'].data.energy = 40 if mode != 'glow' else 140
     S['celll'].data.color = K.hexc('FFB880' if mode != 'night' else '8090C0')[:3]
     S['ashheap'].location = CELL if ash > 0 else FAR
@@ -329,7 +332,7 @@ def make_street(S):
     for i in range(12):
         add('cube', ('6E6A64', '9A968E', '4A3A2C')[i % 3], (-4 + 8 * rnd(i, 11), -4 + 60 * rnd(i, 12), 0.25), rot=(rnd(i, 13), rnd(i, 14), rnd(i, 15) * 3),
             scale=(0.6 + 1.6 * rnd(i, 16), 0.5 + 0.8 * rnd(i, 17), 0.4), size=1, parent=s_, rough=1.0)
-    bar(s_, '3A2A1C', (-5.5, 18, 3.5), (3.0, 22, 0.1), 0.35)
+    bar(s_, '3A2A1C', (-5.5, 30, 3.5), (3.0, 34, 0.1), 0.35)
     for side in (-1, 1):                                                                                # two broken towers at the end of the street
         add('cube', 'B8B2A8', (side * 5, 75, 8), scale=(4.6, 4.6, 16 - 4 * (side > 0)), size=1, parent=s_)
     add('cube', '9C968C', (0, 80, 4), scale=(12, 9, 8), size=1, parent=s_)
@@ -581,7 +584,7 @@ def bay_blast(S, k, t, lt):
     d = lt / k if k > 1e-3 else 1.5
     u = (1 - k) * d if S['prm'].get('loop') else lt
     sky(S, 'dawn', 'blast', sm(u / 1.5) * 0.6)
-    pose_cloud(S['cloud'], SUMMIT, (0, 180, 60), 0.25 + 0.5 * sm(u / 1.6), t, 1.4, 1.6)
+    pose_cloud(S['cloud'], SUMMIT, (0, 150, 50), 0.5 + 0.45 * sm(u / 1.6), t, 2.6, 5.0)
     key(S, BAY, (0, -60, 80), (0, 60, 20), 0)
     q = sm(u / 1.6)
     shoot(S, BAY, (lerp(30, 24, q), lerp(-200, -185, q), lerp(26, 30, q)), (0, 160, lerp(70, 85, q)), 30)
@@ -590,7 +593,7 @@ def bay_blast(S, k, t, lt):
 def cloud_town(S, k, t, lt):
     """Low over the harbour wall: the cloud pours down the slope onto the rooftops, glowing from inside; the cathedral towers in front of it."""
     sky(S, 'blast')
-    pose_cloud(S['cloud'], (0, 200, 70), (8, 60, 12), 0.45 + 0.45 * k, t, 1.1, 1.0)
+    pose_cloud(S['cloud'], (0, 220, 90), (8, 70, 14), 0.5 + 0.45 * k, t, 2.4, 1.6)
     shoot(S, BAY, (lerp(-24, -20, k), lerp(-36, -30, k), lerp(5, 7, k)), (8, 50, lerp(20, 24, k)), 34)
 
 
@@ -598,21 +601,21 @@ def jail_yard(S, k, t, lt):
     """The prison yard under a burning sky: a stone cell sunk half into the ground, a slit in its door. Rook lands on its roof and looks at the sky."""
     sky(S, 'blast')
     yard(S, 'intact')
-    pose_cloud(S['jcloud'], at(YARD, -40, 260, 150), at(YARD, -10, 70, 40), 0.55 + 0.25 * k, t, 1.4, 1.2)
-    u = sm(lt / 0.5)
-    put(S, S['rook'], YARD, 0.8, 0.5, 2.3 + 1.5 * (1 - u), facing((0.8, 0.5), (-10, 60)), blend(P('up', head=(-0.2, 0)), P('stand', head=(-0.35, 0.3)), u), 'low')
+    pose_cloud(S['jcloud'], at(YARD, -40, 260, 150), at(YARD, -10, 70, 40), 0.35 + 0.6 * k, t, 1.4, 1.2)
+    u = sm(lt / 0.7)
+    put(S, S['rook'], YARD, 0.8 + 2.5 * (1 - u), 0.5, 2.3 + 4.0 * (1 - u), facing((0.8, 0.5), (-10, 60)), blend(P('up', head=(-0.2, 0)), P('stand', head=(-0.35, 0.3)), u), 'low')
     S['hat_tip'] = 0.3
     key(S, YARD, (8, -10, 10), (0, 0, 1), 2500, 'FFB080')
-    shoot(S, YARD, (lerp(9, 7.5, k), lerp(-16, -14, k), lerp(2.0, 2.6, k)), (0, 0, 1.6), 28)
+    shoot(S, YARD, (lerp(8.0, 4.6, k), lerp(-11.5, -9.0, k), lerp(0.6, 1.6, k)), (0.3, 0, 3.4), 26)
 
 
 def cell_face(S, k, t, lt):
     """Inside the cell, close on the prisoner's face in the strip of light from the slit. He lifts his head towards it."""
     pre = S['prm'].get('after')
     cell(S, 'dim' if pre else 'glow', ash=0.6 if pre else 0.0)
-    m = put(S, S['man'], CELL, -0.4, -0.6, 0, PI + 0.2, P('sit', head=(lerp(0.3, -0.35, sm(lt / 0.8)), 0.2), aL=(0.5, 0.3, 1.6, 0.8)), 'wide' if not pre else 'tired')
+    m = put(S, S['man'], CELL, -0.4, -0.2, 0, 0.25, P('sit', head=(lerp(0.3, -0.35, sm(lt / 0.8)), 0.2), aL=(0.5, 0.3, 1.6, 0.8)), 'wide' if not pre else 'tired')
     h = head(S, m)
-    shoot(S, (0, 0, 0), (h[0] + lerp(0.8, 0.6, k), h[1] - lerp(1.9, 1.6, k), h[2] + 0.15), (h[0], h[1], h[2] - 0.05), 40)
+    shoot(S, (0, 0, 0), (h[0] + lerp(0.7, 0.5, k), h[1] - lerp(1.9, 1.6, k), h[2] + 0.1), (h[0], h[1], h[2] - 0.05), 40)
 
 
 # ---------------------------------------------------------------- doubt
@@ -627,7 +630,7 @@ def rook_slit(S, k, t, lt):
     S['hat_tip'] = 0.4 * turn
     h = head(S, S['rook'])
     key(S, YARD, (-3, -9, 2), (0.3, -4, 0.8), 1600, 'FFB080')
-    shoot(S, (0, 0, 0), (h[0] - 1.8, h[1] - 3.2, h[2] - 0.6), (h[0] - 0.1, h[1], h[2] - 0.15), 32)
+    shoot(S, (0, 0, 0), (h[0] - lerp(1.9, 1.2, k), h[1] - lerp(3.4, 2.4, k), h[2] - lerp(0.7, 0.4, k)), (h[0] - 0.1, h[1], h[2] - 0.15), 32)
 
 
 # ---------------------------------------------------------------- how he came to be in the cell
@@ -635,11 +638,11 @@ def led_in(S, k, t, lt):
     """Days earlier, a quiet morning: a guard in a kepi walks him across the yard by the arm towards the prison building."""
     sky(S, 'day')
     yard(S, 'intact')
-    x = lerp(-4, -9, k)
-    m = put(S, S['man'], YARD, x, 2.0, 0, facing((0, 0), (-1, 0.6)), K.walk(t, 1.2), 'hard')
-    put(S, S['guard'], YARD, x + 1.0, 1.6, 0, facing((0, 0), (-1, 0.6)), dict(K.walk(t + 0.3, 1.2), aL=(0.9, -0.4, 0.6)), 'hard')
-    key(S, YARD, (2, -6, 6), (-6, 2, 1.5), 400)
-    shoot(S, YARD, (lerp(2, 0, k), lerp(-6, -5, k), 2.4), (x - 0.5, 1.8, 2.0), 34)
+    x, y_ = lerp(-8, -10.5, k), lerp(-2, 2, k)
+    m = put(S, S['man'], YARD, x, y_, 0, facing((0, 0), (-0.55, 1)), K.walk(t, 1.2), 'hard')
+    put(S, S['guard'], YARD, x + 1.0, y_ - 0.4, 0, facing((0, 0), (-0.55, 1)), dict(K.walk(t + 0.3, 1.2), aL=(0.9, -0.4, 0.6)), 'hard')
+    key(S, YARD, (-3, -8, 6), (x, y_, 1.5), 600)
+    shoot(S, YARD, (lerp(-3.5, -4.5, k), lerp(-9, -6, k), 2.3), (x - 0.3, y_, 2.0), 30)
 
 
 def wall_sneak(S, k, t, lt):
@@ -652,8 +655,8 @@ def wall_sneak(S, k, t, lt):
     S['hat_tip'] = 0.2
     S['lamp'].location = at(YARD, -14, 30, 3.0)
     S['lantern'].location, S['lantern'].data.energy = at(YARD, -14, 28, 4.0), 700
-    key(S, YARD, (-6, 12, 9), (-9, 22, 6.5), 900, 'A8C0FF')
-    shoot(S, YARD, (lerp(-6, -5.4, k), lerp(14, 15, k), 6.0), (-9, 22, 7.2), 30)
+    key(S, YARD, (-6, 12, 9), (-9, 22, 6.5), 2200, 'A8C0FF')
+    shoot(S, YARD, (lerp(-6.2, -5.8, k), lerp(16.5, 17.2, k), 5.4), (-8.8, 22, 6.8), 32)
 
 
 def back_gate(S, k, t, lt):
@@ -661,8 +664,8 @@ def back_gate(S, k, t, lt):
     sky(S, 'dawn')
     yard(S, 'intact')
     S['gate'].rotation_euler = (0, 0, -1.4 * sm(lt / 0.8))
-    put(S, S['man'], YARD, 4.2, -17.0, 0, 0.0, P('shrug', head=(0.0, 0.0)), 'calm')
-    put(S, S['guard'], YARD, 3.2, -12.5, 0, PI, P('hips', head=(-0.1, 0.0)), 'wide')
+    put(S, S['man'], YARD, 4.2, -17.0, 0, PI, P('shrug', head=(0.0, 0.0)), 'calm')
+    put(S, S['guard'], YARD, 5.6, -12.2, 0, -0.5, P('hips', head=(-0.1, 0.0)), 'wide')
     key(S, YARD, (4, -24, 6), (4, -15, 2), 600, 'FFD2A8')
     shoot(S, YARD, (lerp(9, 8, k), lerp(-9, -10, k), 2.8), (3.8, -15.5, 2.2), 34)
 
@@ -672,10 +675,10 @@ def door_shut(S, k, t, lt):
     sky(S, 'day')
     yard(S, 'intact')
     door(S, 1.0 - sm(lt / 0.9))
-    put(S, S['man'], YARD, 0.0, -2.0, PIT, PI, P('stand', head=(0.1, 0.0)), 'hard')
-    put(S, S['guard'], YARD, -1.0, -4.6, PIT, -0.5, P('point', aR=(1.2, 0.4, 0.2)), 'hard')
+    put(S, S['man'], YARD, 0.1, -3.0, PIT, 0.0, P('stand', head=(0.1, 0.0)), 'hard')
+    put(S, S['guard'], YARD, -1.3, -4.4, PIT, PI - 0.4, P('point', aR=(1.2, 0.4, 0.2)), 'hard')
     key(S, YARD, (2, -9, 3), (0, -3, 0.4), 900)
-    shoot(S, YARD, (lerp(1.6, 1.3, k), lerp(-7.6, -7.0, k), 0.6), (0, -3.2, 0.2), 30)
+    shoot(S, YARD, (lerp(2.0, 1.7, k), lerp(-8.8, -8.2, k), 0.9), (-0.2, -3.2, 0.2), 30)
 
 
 def rook_tap(S, k, t, lt):
@@ -685,20 +688,20 @@ def rook_tap(S, k, t, lt):
     s = 0.4 * math.sin(lt * 14) * (1 if lt < 0.6 else 0)
     put(S, S['rook'], CELL, 1.6, -0.6, 0, PI / 2 + 0.1, P('tap', aR=(1.4 + s, 0.3, 1.2)) if lt < 0.7 else P('shrug', head=(-0.2, 0.6)), 'low')
     key(S, CELL, (0, -2, 3), (1.6, -0.6, 2), 260, 'FFE0B8')
-    shoot(S, CELL, (lerp(-1.8, -1.5, k), lerp(-2.2, -2.5, k), 2.6), (1.4, -0.4, 2.1), 22)
+    shoot(S, CELL, (lerp(-2.0, -0.9, k), lerp(-2.5, -1.6, k), lerp(3.0, 2.3, k)), (1.4, -0.4, 2.1), 22)
 
 
 def slit_close(S, k, t, lt):
     """Close on the slit from inside: three bars, a strip of daylight, and dust turning in it."""
     cell(S, 'day')
-    shoot(S, CELL, (lerp(0.5, 0.3, k), lerp(-1.0, -1.4, k), 2.0), (0, -2.9, 2.15), 40)
+    shoot(S, CELL, (lerp(0.9, 0.2, k), lerp(-0.4, -1.6, k), lerp(1.7, 2.1, k)), (0, -2.9, 2.15), 40)
 
 
 # ---------------------------------------------------------------- the cloud hits
 def cloud_rush(S, k, t, lt):
     """High over the bay: the cloud runs down the mountain and over the town and the ships in one rush."""
     sky(S, 'blast')
-    pose_cloud(S['cloud'], SUMMIT, (0, -60, 10), 0.35 + 0.7 * k, t, 1.6, 1.8)
+    pose_cloud(S['cloud'], SUMMIT, (0, -60, 10), 0.45 + 0.6 * k, t, 2.4, 4.6)
     shoot(S, BAY, (lerp(-180, -160, k), lerp(-140, -120, k), lerp(90, 80, k)), (0, 60, 20), 30)
 
 
@@ -706,19 +709,20 @@ def slit_glow(S, k, t, lt):
     """Inside: the slit goes orange and a blast of hot air and ash pours through it. He is thrown back off the ledge, arms up."""
     cell(S, 'glow', ash=sm(k) * 0.5)
     u = sm(lt / 0.5)
-    put(S, S['man'], CELL, lerp(0.2, 1.0, u), lerp(-1.0, 1.0, u), 0, PI + 0.3, blend(P('stand', head=(0.0, 0.0)), P('scream', aL=(2.2, 0.5, 0.8), aR=(2.2, 0.5, 0.8)), u), 'shut')
+    put(S, S['man'], CELL, lerp(-0.2, -0.5, u), lerp(-1.2, 0.6, u), 0, 0.3, blend(P('stand', head=(0.0, 0.0)), P('scream', aL=(2.2, 0.5, 0.8), aR=(2.2, 0.5, 0.8)), u), 'shut')
     S['man'].jawv = 0.6
-    shoot(S, CELL, (-1.6, 2.6, 2.6), (0.3, -1.4, 1.9), 26)
+    key(S, CELL, (0, -2.4, 2.2), (-0.4, 0, 1.6), 300, 'FF7A2A')
+    shoot(S, CELL, (1.9, 2.9, 2.6), (-0.2, -1.3, 1.7), 20, roll=0.05 * math.sin(t * 31))
 
 
 def rook_brace(S, k, t, lt):
     """Rook pressed flat against the back wall, holding his hat on with both hands, eyes shut against the glare. No joke now."""
     cell(S, 'glow', ash=0.5)
-    put(S, S['rook'], CELL, -1.6, 2.6, 0, PI + 0.15, P('brace', aL=(2.5, 0.3, 1.9), aR=(2.5, 0.3, 1.9), head=(0.3, 0.0)), 'shocked')
+    put(S, S['rook'], CELL, -1.6, 2.6, 0, 0.15, P('brace', aL=(2.5, 0.3, 1.9), aR=(2.5, 0.3, 1.9), head=(0.3, 0.0)), 'shocked')
     S['hat_tip'] = 0.9
     h = head(S, S['rook'])
     key(S, CELL, (0, -2.5, 2.2), (-1.6, 2.6, 2), 500, 'FF8A3A')
-    shoot(S, (0, 0, 0), (h[0] + lerp(1.5, 1.2, k), h[1] - lerp(2.8, 2.4, k), h[2] - 0.4), (h[0], h[1], h[2] - 0.4), 32)
+    shoot(S, (0, 0, 0), (h[0] + lerp(1.9, 0.9, k), h[1] - lerp(3.2, 2.2, k), h[2] - 0.4), (h[0], h[1], h[2] - 0.4), 32, roll=0.04 * math.sin(t * 27))
 
 
 # ---------------------------------------------------------------- re-hook: he burns, but lives
@@ -727,24 +731,24 @@ def shield(S, k, t, lt):
     cell(S, 'glow', ash=0.7)
     put(S, S['man'], CELL, -1.4, 2.5, 0, 0.3, P('stand', **HUDDLE), 'pain')
     key(S, CELL, (0, -2.6, 2.3), (-1.4, 2.5, 1.0), 420, 'FF7A2A')
-    shoot(S, CELL, (lerp(0.8, 0.5, k), lerp(0.0, 0.4, k), 1.4), (-1.4, 2.4, 0.9), 30)
+    shoot(S, CELL, (lerp(1.2, 0.2, k), lerp(-0.6, 0.6, k), lerp(1.8, 1.2, k)), (-1.4, 2.4, 0.9), 30)
 
 
 def sleeve_look(S, k, t, lt):
     """The glow dies down. He lifts one arm and stares at his shirt sleeve: whole, not even scorched."""
     cell(S, 'dim', ash=0.8)
-    m = put(S, S['man'], CELL, -1.0, 2.0, 0, PI + 0.5, P('sit', aR=(1.2, 0.2, 1.7, 0.6), head=(0.35, -0.3)), 'wide')
+    m = put(S, S['man'], CELL, -1.0, 2.0, 0, 0.6, P('sit', aR=(1.2, 0.2, 1.7, 0.6), head=(0.35, -0.3)), 'wide')
     h = head(S, m)
-    shoot(S, (0, 0, 0), (h[0] + 1.6, h[1] - 1.6, h[2] - 0.2), (h[0] + 0.3, h[1] - 0.2, h[2] - 0.45), 34)
+    shoot(S, (0, 0, 0), (h[0] + lerp(1.7, 1.1, k), h[1] - lerp(1.7, 1.1, k), h[2] - lerp(0.4, 0.1, k)), (h[0] + 0.3, h[1] - 0.2, h[2] - 0.45), 34)
 
 
 def rook_listen(S, k, t, lt):
     """Rook at the slit from inside, head tilted, listening: no sound from outside, only ash drifting down past the bars."""
     cell(S, 'dim', ash=0.8)
-    put(S, S['rook'], CELL, 0.1, -2.2, 0, PI - 0.6, P('stand', head=(0.1, 0.6)), 'sad')
+    put(S, S['rook'], CELL, 0.1, -2.2, 0, 0.5, P('stand', head=(0.1, -0.5)), 'sad')
     h = head(S, S['rook'])
     key(S, CELL, (1, 0, 3), h, 160)
-    shoot(S, (0, 0, 0), (h[0] + lerp(1.6, 1.3, k), h[1] + lerp(1.4, 1.1, k), h[2] - 0.1), (h[0] - 0.2, h[1] - 0.3, h[2] - 0.2), 32)
+    shoot(S, (0, 0, 0), (h[0] + lerp(2.4, 1.1, k), h[1] + lerp(2.8, 1.8, k), h[2] + lerp(0.5, 0.0, k)), (h[0] - 0.3, h[1] - 0.6, h[2] - 0.2), 30)
 
 
 def town_ash(S, k, t, lt):
@@ -753,8 +757,8 @@ def town_ash(S, k, t, lt):
     town(S, True)
     for s_ in S['ships']:
         s_.location.z = -40
-    S['smoke'].location = at(BAY, 0.6 * math.sin(t * 0.4), 0, 2.0 * lt)
-    shoot(S, BAY, (lerp(-60, -52, k), lerp(-120, -110, k), lerp(30, 28, k)), (10, 40, 10), 32)
+    S['smoke'].location = at(BAY, 4.0 * lt, 0, 6.0 * lt)
+    shoot(S, BAY, (lerp(-52, -20, k), lerp(-62, -34, k), lerp(40, 18, k)), (6, 40, 0), 30, roll=lerp(-0.06, 0.04, k))
 
 
 # ---------------------------------------------------------------- the city
@@ -767,7 +771,7 @@ def ruins_street(S, k, t, lt):
 def rook_hatoff(S, k, t, lt):
     """Rook alone in the ash-covered street, hat held to his chest, head bowed."""
     sky(S, 'ash')
-    put(S, S['rook'], STREET, 0.5, 10, 0, PI + 0.2, P('stand', aL=(0.6, -0.2, 2.0, 1.0), head=(lerp(0.2, 0.5, sm(k * 1.5)), 0.0)), 'sad')
+    put(S, S['rook'], STREET, 0.5, 10, 0, 0.5, P('stand', aL=(0.6, -0.2, 2.0, 1.0), head=(lerp(0.2, 0.5, sm(k * 1.5)), 0.0)), 'sad')
     S['hat_off'] = 1.0
     key(S, STREET, (3, 4, 5), (0.5, 10, 2), 600, 'E8E0D4')
     shoot(S, STREET, (lerp(3.4, 3.0, k), lerp(4.0, 4.8, k), 2.1), (0.5, 10, 2.1), 34)
@@ -778,7 +782,7 @@ def dark_wait(S, k, t, lt):
     """He sits against the wall in the near-dark, burned arms across his knees, as the light in the slit goes from day to night and back."""
     ph = k * 2
     cell(S, ('dim', 'night', 'dawn')[min(2, int(ph * 1.5))], ash=0.8)
-    put(S, S['man'], CELL, -1.6, 1.8, 0, PI + 0.6, P('sit', head=(0.5 + 0.1 * math.sin(lt), 0.2)), 'tired')
+    put(S, S['man'], CELL, -1.4, 1.8, 0, 0.5, P('sit', head=(0.5 + 0.1 * math.sin(lt), 0.2)), 'tired')
     shoot(S, CELL, (lerp(1.2, 0.9, k), lerp(-1.6, -1.2, k), 2.6), (-1.5, 1.7, 1.2), 28)
 
 
@@ -787,7 +791,7 @@ def rescuers(S, k, t, lt):
     sky(S, 'ash')
     yard(S, 'ruin')
     for i, c in enumerate(S['crew']):
-        x, y = lerp(-12 + 2.2 * i, -6 + 2.2 * i, k), lerp(-12, -8, k) - 1.4 * i
+        x, y = lerp(-12, -7, k) - 1.2 * i, lerp(-12, -8, k) + 2.4 * i
         put(S, c, YARD, x, y, 0.05, facing((x, y), (0, -4)), K.walk(t + 0.4 * i, 1.0) if not (i == 0 and lt > 0.8) else P('stand', head=(0.0, 0.7)), 'hard')
     S['shovel'].location = wpos(S['crew'][1].hands[1])
     key(S, YARD, (-4, -20, 8), (-8, -10, 2), 600, 'E8E0D4')
@@ -797,11 +801,11 @@ def rescuers(S, k, t, lt):
 def shout(S, k, t, lt):
     """Inside, close: he is up at the slit with both hands on the door, shouting through the bars."""
     cell(S, 'dawn', ash=0.8)
-    m = put(S, S['man'], CELL, 0.0, -2.2, 0, PI + 0.15, P('stand', aL=(1.9, 0.2, 0.8), aR=(1.9, 0.2, 0.8), head=(-0.15, 0.0)), 'wide')
+    m = put(S, S['man'], CELL, 0.0, -2.3, 0, 0.1, P('stand', aL=(1.4, 0.4, 1.0), aR=(1.4, 0.4, 1.0), head=(-0.15, 0.0)), 'wide')
     m.jawv = 0.6 + 0.4 * math.sin(lt * 10)
     wraps(S, False)
     h = head(S, m)
-    shoot(S, (0, 0, 0), (h[0] + 1.3, h[1] + 1.4, h[2] + 0.1), (h[0] - 0.1, h[1] - 0.3, h[2] - 0.05), 34)
+    shoot(S, (0, 0, 0), (h[0] + 1.7, h[1] + 0.2, h[2] + 0.05), (h[0] - 0.1, h[1] - 0.2, h[2] - 0.05), 32)
 
 
 def dig_out(S, k, t, lt):
@@ -811,13 +815,13 @@ def dig_out(S, k, t, lt):
     door(S, sm(lt / 1.0))
     slit(S, '0A0806', 0)
     up = sm((lt - 0.8) / 1.0)
-    put(S, S['man'], YARD, 0.0, lerp(-2.4, -4.0, up), PIT, PI, P('stand', aL=(0.6, 0.6, 0.3), aR=(0.6, 0.6, 0.3), head=(0.3, 0.0), lean=0.2), 'tired')
+    put(S, S['man'], YARD, 0.0, lerp(-3.3, -4.6, up), PIT, 0.0, P('stand', aL=(0.6, 0.6, 0.3), aR=(0.6, 0.6, 0.3), head=(0.3, 0.0), lean=0.2), 'tired')
     wraps(S, False)
-    put(S, S['crew'][0], YARD, -0.9, -4.8, PIT, -0.3, P('reach', aR=(1.6, 0.3, 0.3)), 'hard')
-    put(S, S['crew'][2], YARD, 0.9, -4.8, PIT, 0.3, P('reach', aR=(1.6, -0.3, 0.3)), 'wide')
-    put(S, S['rook'], YARD, 2.2, -6.0, 0, 2.6, P('hat', head=(0.4, 0.0)), 'soft')
+    put(S, S['crew'][0], YARD, -1.3, -5.0, PIT, PI - 0.4, P('reach', aR=(1.6, 0.3, 0.3)), 'hard')
+    put(S, S['crew'][2], YARD, 1.3, -5.0, PIT, PI + 0.4, P('reach', aR=(1.6, -0.3, 0.3)), 'wide')
+    put(S, S['rook'], YARD, 0.9, -3.0, 2.3, -0.3, P('hat', head=(0.5, 0.2)), 'soft')
     key(S, YARD, (0, -8, 3), (0, -3.2, 0), 900, 'E8E0D4')
-    shoot(S, YARD, (lerp(-2.6, -2.2, k), lerp(-9.5, -8.8, k), 1.6), (0.3, -4.0, 0.0), 26)
+    shoot(S, YARD, (lerp(1.0, 0.8, k), lerp(-8.6, -8.2, k), 0.3), (-0.1, -3.6, 0.7), 22)
 
 
 # ---------------------------------------------------------------- the payoff
@@ -825,11 +829,11 @@ def rook_wall(S, k, t, lt):
     """Rook lays a wing flat on the cell's thick stone wall, looks at it, then back at us: the punishment was the shelter."""
     sky(S, 'ash')
     yard(S, 'ruin')
-    u = sm((lt - 0.5) / 0.4)
-    put(S, S['rook'], YARD, 3.6, -1.0, 0, facing((3.6, -1.0), (3.0, -1.0)) * (1 - u) + u * 0.35, P('stand', aR=(1.5, 0.6, 0.2), head=(0.1, 0.4)) if u < 0.5 else P('point', head=(0.0, 0.0)), 'soft')
+    u = sm((lt - 0.45) / 0.35)
+    put(S, S['rook'], YARD, -1.7 + 0.5 * u, -3.8 - 0.6 * u, PIT, lerp(PI, 0.4, u), P('stand', aL=(1.5, 0.3, 0.2), head=(0.1, 0.0)) if u < 0.5 else P('point', aR=(1.2, -0.6, 0.1), head=(0.0, 0.0)), 'soft')
     h = head(S, S['rook'])
-    key(S, YARD, (6, -6, 4), h, 900, 'E8E0D4')
-    shoot(S, (0, 0, 0), (h[0] + 1.0, h[1] - 3.6, h[2] - 0.4), (h[0] - 0.6, h[1], h[2] - 0.5), 30)
+    key(S, YARD, (1, -8, 3), h, 900, 'E8E0D4')
+    shoot(S, (0, 0, 0), (h[0] + lerp(2.4, 0.9, k), h[1] - lerp(3.6, 2.6, k), h[2] - lerp(0.6, 0.0, k)), (h[0] - 0.3, h[1] + 0.3, h[2] - 0.4), 30)
 
 
 def pardon(S, k, t, lt):
@@ -851,18 +855,19 @@ def pardon(S, k, t, lt):
 def circus_ring(S, k, t, lt):
     """Under a striped tent: he stands in the spotlight in the ring beside a stone cell built for the show, the crowd in the dark around him."""
     sky(S, 'tent')
-    S['spot'].data.energy, S['tentl'].data.energy = 9000, 260
+    S['spot'].data.energy, S['tentl'].data.energy = 40000, 2500
     S['spotaim'].location = at(RING, 0.8, 0.4, 1.5)
+    key(S, RING, (-3, -8, 5), (1, 0.5, 2), 1500, 'FFD8A0')
     put(S, S['man'], RING, 0.8, 0.4, 0.04, -0.35, P('stand', aL=(0.3, 0.6, 0.6), head=(-0.05, 0.0)), 'calm')
     for i, p in enumerate(S['crowd']):
         p.rotation_euler.x = 0.06 * math.sin(t * 2 + i)
-    shoot(S, RING, (lerp(-3, -2.4, k), lerp(-10.5, -9.5, k), lerp(3.2, 2.9, k)), (1.4, 0.8, 2.0), 30)
+    shoot(S, RING, (lerp(-1.6, -1.2, k), lerp(-7.0, -6.4, k), lerp(2.6, 2.4, k)), (1.5, 0.8, 2.0), 30)
 
 
 def rook_crowd(S, k, t, lt):
     """Rook in the front row of the crowd: his hat leaves his head and a feather comes loose."""
     sky(S, 'tent')
-    S['spot'].data.energy, S['tentl'].data.energy = 9000, 260
+    S['spot'].data.energy, S['tentl'].data.energy = 40000, 2500
     u = max(0.0, min(1.0, (lt - 0.25) / 0.55))
     put(S, S['rook'], RING, -10.0 * math.cos(0.3), -10.0 * math.sin(0.3), 0.2, facing((-9.55, -2.96), (0, 0)), blend(P('sit', head=(0.0, 0.0)), P('shrug', lift=-0.4), u * 2), 'shocked' if u > 0.05 else 'calm')
     S['hat_jump'] = 0.55 * math.sin(PI * u)

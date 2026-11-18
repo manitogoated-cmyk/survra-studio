@@ -80,12 +80,10 @@ def poster(cv, c):
     g = ease((c.lt - 0.15) / 0.3)
     cv.save()
     cv.translate(530, 1190)
-    s = 1.4 - 0.4 * g
+    s = 1.15 - 0.15 * g
     cv.scale(s, s)
     plain(cv, 'DOOMSDAY', 0, 0, 160, INK, 900, 760)
     cv.restore()
-    plain(cv, 'SAINT-PIERRE, MARTINIQUE', 530, 1300, 46, INK, 800, 700)
-    plain(cv, '8 MAY 1902', 530, 1380, 56, RED, 900, 700)
     for x, y in ((130, 250), (930, 250), (130, 1490), (930, 1490)):
         cv.drawCircle(x, y, 12, P(h('9A9690')))
     cv.restore()
@@ -107,11 +105,16 @@ def embers(cv, c):
 
 
 def ashfall(cv, c):
-    Wd.particles(cv, W, H, c.t, 34, 0x88D8D4CC, 73, size=(2, 6), drift=(20, 70), wobble=26, twinkle=False)
+    Wd.particles(cv, W, H, c.t, 70, 0xAAE0DCD4, 73, size=(3, 8), drift=(30, 140), wobble=40, twinkle=False)
+
+
+def heavyash(cv, c):
+    ashfall(cv, c)
+    Wd.particles(cv, W, H, c.t * 1.3, 60, 0x99C8C4BC, 79, size=(4, 10), drift=(-40, 180), wobble=50, twinkle=False)
 
 
 def motes(cv, c):
-    Wd.particles(cv, W, H, c.t, 22, 0x55F4ECDC, 63, size=(2, 5), drift=(8, 18), wobble=18, twinkle=True)
+    Wd.particles(cv, W, H, c.t, 40, 0x88F4ECDC, 63, size=(3, 7), drift=(20, 50), wobble=30, twinkle=True)
 
 
 def stars(cv, c):
@@ -130,6 +133,6 @@ def closed(cv, c):
 
 
 OVER = dict(bay_blast=ashfall, cloud_town=embers, jail_yard=embers, cell_face=motes, rook_slit=embers, rook_tap=motes, slit_close=motes,
-            cloud_rush=embers, slit_glow=embers, rook_brace=embers, shield=embers, sleeve_look=ashfall, rook_listen=ashfall, town_ash=ashfall,
+            cloud_rush=embers, slit_glow=embers, rook_brace=embers, shield=embers, sleeve_look=ashfall, rook_listen=ashfall, town_ash=heavyash,
             ruins_street=ashfall, rook_hatoff=ashfall, dark_wait=motes, rescuers=ashfall, shout=motes, dig_out=ashfall, rook_wall=ashfall,
             pardon=ashfall, wall_sneak=stars, circus_ring=motes, rook_crowd=motes, signoff=closed)

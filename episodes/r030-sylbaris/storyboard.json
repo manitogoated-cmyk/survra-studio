@@ -673,7 +673,12 @@
    ],
    "shake": 0,
    "transition": "cut",
-   "sfx": [],
+   "sfx": [
+    [
+     "wind",
+     0.3
+    ]
+   ],
    "hud": null,
    "prm": {}
   },
@@ -821,7 +826,7 @@
   {
    "n": 25,
    "segment": "payoff",
-   "weight": 1.05,
+   "weight": 1.5,
    "kind": "rook_wall",
    "action": "Rook lays a wing flat on the cell's thick stone wall, looks at it, then turns and points at it for us",
    "camera": "Medium, three-quarter",
@@ -857,7 +862,7 @@
   {
    "n": 26,
    "segment": "payoff",
-   "weight": 1.0,
+   "weight": 1.1,
    "kind": "pardon",
    "action": "In the grey yard a man in a black coat hands him a sealed paper; his arms are bandaged. Rook reads over his shoulder",
    "camera": "Medium-wide, three-quarter",
@@ -923,7 +928,7 @@
   {
    "n": 28,
    "segment": "payoff",
-   "weight": 1.0,
+   "weight": 0.9,
    "kind": "circus_ring",
    "action": "Under a striped tent: he stands in the spotlight beside a stone cell built for the show, the crowd quiet in the dark around the ring",
    "camera": "Wide from the ring edge, easing in",
@@ -955,7 +960,7 @@
   {
    "n": 29,
    "segment": "payoff",
-   "weight": 1.0,
+   "weight": 0.9,
    "kind": "rook_crowd",
    "action": "Rook in the front row: his hat leaves his head and a feather comes loose",
    "camera": "Close, three-quarter",

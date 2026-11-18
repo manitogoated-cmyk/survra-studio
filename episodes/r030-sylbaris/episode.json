@@ -1,11 +1,136 @@
 {
  "id": "r030-sylbaris",
  "format": "short",
- "status": "draft",
+ "status": "approved",
  "synthetic": false,
  "host": "rook",
  "case": 30,
  "title": "A Volcano Buried His City. His Prison Cell Saved Him #shorts",
  "playlist": "Rook's Case Files (Shorts)",
- "spine": "v2"
+ "spine": "v2",
+ "sources": [
+  "https://en.wikipedia.org/wiki/Ludger_Sylbaris",
+  "https://www.atlasobscura.com/places/the-prison-cell-of-ludger-sylbaris-saint-pierre-martinique",
+  "https://www.amusingplanet.com/2018/11/how-solitary-confinement-saved-ludger.html",
+  "https://volcanoes.sdsu.edu/Pelee.html",
+  "https://www.history.com/this-day-in-history/may-8/volcanic-eruption-buries-caribbean-city",
+  "https://www.herodote.net/8_mai_1902-evenement-19020508.php",
+  "https://www.futura-sciences.com/planete/actualites/volcan-il-y-120-ans-plus-grande-catastrophe-volcanique-xxe-siecle-98374/",
+  "https://hoopermuseum.carleton.ca/cruise/martinique/HIS4C.HTM"
+ ],
+ "authoring": {
+  "claimed_at": "2026-11-18T07:35:16Z",
+  "run": "scheduled short run, 18 Nov 2026; brief order (Short 8 of the batch, slate case 30)"
+ },
+ "description": "Case 030. On the morning of 8 May 1902, just before eight, Mount Pelée on Martinique sent a burning cloud of gas and ash down onto the town of Saint-Pierre. Around 28,000 people died, almost the whole town. One of the very few who lived was a prisoner. Ludger Sylbaris (also recorded as Louis-Auguste Cyparis) had been jailed after a fight; for slipping out overnight to a party and coming back the next morning, he was put in solitary: a stone cell built partly underground, with no window and only a narrow grating in the door. Hot air and ash came in through that grating and burned his back, arms and legs, but his clothes did not catch fire. Days later, men from outside the town heard him shouting and dug him out. He was pardoned, and toured with a circus as “the man who lived through Doomsday”. His cell still stands in Saint-Pierre.\n\nAnimated reconstruction of a true story, made with respect for the people of Saint-Pierre, who are never shown. The town, the prison, the cell, the circus and every person are generic low-poly reconstructions; no likeness is attempted. The circus bill is a drawing made for this film and copies no real poster. Staging details such as the guard, the gate, the wall he climbed, the look of the cell, the pardon being handed over, the rescuers' clothes and everything Rook does are reconstruction, not record. Sources disagree on whether he was found on the third or the fourth day, so the film says “days”. Narration is a synthetic voice (Kokoro).",
+ "tags": [
+  "Ludger Sylbaris",
+  "Louis-Auguste Cyparis",
+  "Mount Pelée",
+  "Mont Pelée 1902",
+  "Saint-Pierre",
+  "Martinique",
+  "volcano",
+  "eruption",
+  "survivor",
+  "prison cell",
+  "true story",
+  "history",
+  "animated story",
+  "Rook",
+  "Survra"
+ ],
+ "hashtags": [
+  "#shorts",
+  "#truestory",
+  "#history"
+ ],
+ "story_score": {
+  "curiosity": 9,
+  "stakes": 9,
+  "freshness": 7,
+  "story": 8,
+  "visual": 9,
+  "audience_fit": 8,
+  "payoff": 9,
+  "packaging": 8,
+  "research": 8,
+  "repeatability": 7,
+  "total": 82
+ },
+ "title_options": [
+  "A Volcano Buried His City. His Prison Cell Saved Him #shorts",
+  "Locked in Solitary When the Volcano Hit #shorts",
+  "The Prisoner the Volcano Missed #shorts"
+ ],
+ "shown_moments": {
+  "a burning cloud rolls off the mountain and buries a whole city": "shots 1 and 2 (the summit blows the cloud over the bay; the cloud pours onto the roofs)",
+  "one of the few who live is locked in a cell": "shots 3 and 4 (the half-buried cell in the yard; his face in the slit light)",
+  "Locked in? He can't even run": "shot 5 (Rook at the slit, the glow over the wall)",
+  "He was jailed for a fight": "shot 6 (a guard walks him across the yard; no fight is shown)",
+  "sneaked out to a party, and came back": "shots 7 and 8 (over the wall at night towards lantern light; back at the gate next morning)",
+  "So: solitary": "shot 9 (the door shut on him)",
+  "Stone walls, half underground, one slit in the door": "shots 10 and 11 (Rook raps the wall; the slit close up)",
+  "just before eight, the cloud hits": "shot 12 (the cloud over the town and the ships), label 8 MAY 1902",
+  "Hot air and ash blast through the slit": "shots 13 and 14 (the slit flares; Rook braced against the wall)",
+  "His back, his arms, his legs burn": "shot 15 (curled in the corner in the glow; no wound is shown)",
+  "His clothes don't even catch fire": "shot 16 (he looks at his whole sleeve)",
+  "outside, everything goes quiet": "shots 17 and 18 (Rook listening at the slit; the grey bay, smoke rising)",
+  "Around 28,000 people died that morning": "shots 19 and 20 (an empty ash street; Rook with his hat off). Nobody who died is shown.",
+  "He waits in the dark for days": "shot 21 (the slit light goes from grey to night to dawn)",
+  "Then he hears voices": "shot 22 (three men crossing the ruined yard)",
+  "and he shouts": "shot 23",
+  "They dig him out": "shot 24 (the door dragged open, hands reaching in; hush)",
+  "The cell meant to punish him had saved his life": "shot 25 (Rook's wing on the thick wall, then he points at it)",
+  "He was pardoned": "shot 26 (a sealed paper; his arms bandaged)",
+  "toured with a circus as the man who lived through Doomsday": "shots 27 to 29 (the bill, the ring with a replica cell, Rook's hat leaving his head)",
+  "Was it luck, or those walls? You tell me": "shots 30 and 31 (the cell as it stands today; sign-off)",
+  "It all began when": "shot 32 (the opening shot played back to its first frame)"
+ },
+ "experiments": {
+  "E1_E2": "spine v2: Rook is in the pit at the cell door in shot 5 and doubts it there in one line of about 1.6 s ('Locked in? He can't even run.') with the burning sky over the wall; no office. The story then jumps back only as far as the brief needs to explain why he was in solitary (three fast shots), labelled LUDGER SYLBARIS and SOLITARY rather than narrated dates. Place and date are on-screen labels (SAINT-PIERRE, MARTINIQUE; 8 MAY 1902; DAYS LATER).",
+  "E3": "batch Short 8 (even): wide spectacle first frame, as the brief assigns: the mountain blowing its cloud over the bay at dawn.",
+  "E4": "question ending, as the brief assigns: 'Was it luck, or those walls? You tell me.'",
+  "E7": "hook_text SAVED BY / HIS CELL.",
+  "E8": "tail 0.4 s; the last line ('It all began when') runs into the first ('a burning cloud rolls off the mountain...'), and the last shot is the opening shot played back to its first frame.",
+  "brief_changes": "The brief's hook line named the number of the dead; spine v2 asks for a physical image, so the hook is the burning cloud burying the city and the number comes later, as the tragic beat. The brief's 'one of the only survivors' is kept as 'one of the few who live' because the sources count two or three known survivors in the town. The circus detail was verified (Wikipedia, Atlas Obscura, Amusing Planet, SDSU) and kept; the brief's Rook moment (tapping the thick wall, then the tiny door) is shot 10 and is paid off in shot 25.",
+  "rook_action": "Detective action in the story world: he raps the cell wall and looks up at the slit (shot 10), listens at the slit after the blast (17), and lays his wing on the wall to show what saved him (25). Mannerisms: brim low (3, 5), hat held on in the blast (14), hat off for the dead (20) and the rescue (24), hat leaving his head and a shed feather (29), hat tip at the sign-off (31). His jokes stop when the cloud hits (shot 12)."
+ },
+ "sound_plan": {
+  "first_frame": "A 'boom' at 0.02 s (the eruption; it is the impact the gate needs in the first second), then wind.",
+  "music": "The engine's score follows the segment moods: hook, tense for Rook's line and the backstory, action for the blast, tense for the burns, sad for the dead, tense for the wait, wonder for the pardon and the circus, end. No drum loop under the sad segment.",
+  "effects": "One to three cues a shot, each tied to something visible: booms and whooshes for the cloud, creaks and a clunk for the door, ticks for Rook's knuckles on the wall, wind and a heartbeat in the cell, shouts at the slit, a flip for the paper, a pop and a caw for Rook's hat.",
+  "hush": "Shot 24 (the door dragged open): the music drops out for the breath before the payoff.",
+  "tragic_beats": "Shots 12 to 24 carry no joke; Rook says nothing of his own there and holds his hat in shots 20 and 24.",
+  "voice": "Narration ducked over the bed by the engine; measured in the local rehearsal (see quality_gate)."
+ },
+ "source_notes": "Eight pages were opened and read for this run on 18 Nov 2026 through a fetch tool (one more, Wikiwand, failed and was not used). Every narrated fact is on at least two of them. Burning cloud swept the town on 8 May 1902: SDSU (pyroclastic flow, 'glowing clouds', about 7:50 a.m.), Wikipedia (7:52), Herodote and Futura (8:02, nuée ardente), History.com ('early morning'); the film says 'just before eight' and labels 8 MAY 1902. Around 28,000 died: SDSU ('~28,000 people in St. Pierre'), Herodote (28,000 inhabitants), Futura ('28.000 victimes'), History.com (27,000), Wikipedia and Amusing Planet (about 30,000); 'around 28,000' is used. Few survivors in the town: two in SDSU, Herodote, Futura, History.com and Amusing Planet; three known names in Wikipedia and Atlas Obscura; hence 'one of the few who live'. Jailed after a fight: Wikipedia (stabbing in a brawl), SDSU (wounded a friend with a cutlass), Amusing Planet (brawl, cutlass), Atlas Obscura (a fight); Herodote alone says drunkenness. Slipped out to a party and came back, then solitary: Wikipedia (left overnight for a celebration, came back next morning, eight days in solitary) and Amusing Planet (escaped, danced all night, turned himself in, a week in the dungeon). Stone cell, partly underground, no window, a narrow grating in the door: Wikipedia, Amusing Planet, Atlas Obscura ('half-underground', 'narrow slit in the door'), SDSU ('a small grated opening'). Hot air and ash through the grating, burns on back, arms and legs, clothes not alight: Wikipedia and Amusing Planet. Found days later after rescuers heard him: Wikipedia, Atlas Obscura and SDSU say four days, Amusing Planet and Hooper three, Wikipedia's own date (11 May) is three; the film says 'days'. Pardoned: Wikipedia, Atlas Obscura, SDSU. Circus as 'the man who lived through Doomsday': Wikipedia, Atlas Obscura, Amusing Planet (SDSU names Barnum & Bailey); the show's name is left off screen. The cell still stands: Wikipedia, Atlas Obscura, Amusing Planet. Not used because they are on one page only or disputed: his age, the 'awaiting execution' story, the urine detail, the rainwater detail, the girl who escaped by boat.",
+ "quality_gate": {
+  "method": "One run, five review rounds. Rounds 1 to 3: low-res contact sheets of all 31 3D shots (one frame each). Found and fixed: the cloud far too small to read over the mountain and then a few giant balls (more, smaller, darker puffs with a dimmer glow); the prisoner with his back to the camera in four cell shots (he faces the door now) and Rook with his back to us in the blast; the walk across the yard hidden behind the cell's earth bank; the gate shot blocked by a solid doorway block (replaced by a wall with an opening) and then the guard out of frame; the camera inside the pit wall in the door shot (pit widened); the rescuers facing the camera instead of the door, then their heads popping out of the ground, then Rook out of frame in the rescue shot; Rook standing inside the earth bank in the wall shot (moved into the pit beside the door); a fallen beam through Rook's head in the street; the circus ring almost black; the bay after the cloud lost under black smoke. Round 4: a full-length rehearsal (216x384, 4 samples, 6 fps of 3D frames) composited with captions, labels, overlays, the circus bill and sound, reviewed as a 2-frames-per-second sheet of the whole video. Found and fixed: eight static stretches flagged by the gate (camera moves lengthened, the glow flickers, heavier ash and dust overlays); the camera starting inside a wall at the start of Rook's doubt shot and of the sleeve shot; the bill's place and date lines under the caption band (removed); DOOMSDAY overflowing the bill at the start of its scale-in. Round 5: payoff re-timed so the PARDONED label lands on 'He was pardoned'; the gate run again; first and last frames compared side by side (same framing, the cloud at the same stage). The last rehearsal passed the automated gate locally: 32 shots, mean 1.43 s, longest 1.96 s, Rook acting in 13 of 32 shots (41%), -14.7 LUFS, peak -1.4 dBFS, voice 13.0 dB over the bed, closest match to any earlier episode 0.79 (shot 7 against m001-wow-signal; the limit is 0.93). Duration 45.8 s. The cloud render runs the real gate at 720x1280 and 60 fps.",
+  "checked": "Every 3D kind in the storyboard exists in world3d.SHOTS3D and the one other kind (poster) in scenes.SHOTS; HOST lists the 13 kinds in which Rook is placed; bay_blast is the only kind used twice, not in a row. The first shot is 1.48 s with a boom at 0.02 s. The doubt line is spoken in the pit at the cell door with the burning sky behind. The re-hook ('His back, his arms, his legs burn. His clothes don't even catch fire.') starts at 20.7 s of 45.8 s (45%). One hush shot (24). Tail 0.4 s. On-screen labels (SAINT-PIERRE, MARTINIQUE; CASE 030; LUDGER SYLBARIS; SOLITARY; ONE SLIT; 8 MAY 1902; 28,000; DAYS LATER; PARDONED; THE MAN WHO LIVED THROUGH DOOMSDAY; THE CELL STILL STANDS) were checked against the sources. No death is shown, nobody who died is shown, the burns are told, not shown.",
+  "not_met": "No full-resolution, full-sample render was made locally (the workflow does it); the rehearsal ran at 6 fps of 3D frames, so motion was judged at that rate. The cloud is stylised low-poly puffs and reads as a cloud of ash with fire inside rather than a realistic flow. The voice was measured, not listened to."
+ },
+ "checklist": {
+  "A_story": "done: score 82/100 with curiosity 9, story 8, payoff 9; spine v2; shown_moments lists every narrated moment",
+  "B_storyboard": "done: every shot has action, camera and sound cue; Rook's mannerisms are brim low (3, 5), hat held on (14), hat off (20, 24), hat jump and a shed feather (29), hat tip (31); detective actions are rapping the wall (10), listening at the slit (17) and the wing on the wall (25)",
+  "B2_retention": "done: hook_text set; first frame is the wide eruption (even Short in the batch); re-hook at 45%; one hush; tail 0.4 s with the loop, first and last frames compared",
+  "C_previews": "partly: three contact-sheet rounds and a full low-res rehearsal; no blown-out or crushed frame where the story has to be seen; Rook on-model; see quality_gate.not_met",
+  "D_render": "engine defaults untouched (60 fps, 720x1280, 16 jobs in the workflow); the local rehearsal used low settings only for review",
+  "E_sound": "voice am_fenrir; no drum loop under the sad segment; voice 13.0 dB over the bed; -14.7 LUFS",
+  "F_captions": "done: captions inside the frame; the bill keeps the caption band clear of its own text; on-screen dates, names and figures checked against sources",
+  "G_final": "rehearsal reviewed as a 2 fps sheet of the whole video and spot sheets at 3 to 4 fps; local gate PASS; the full-resolution render and the real gate happen in the workflow"
+ },
+ "review": {
+  "notes": [
+   "0.0 to 1.5 s: the mountain blows its cloud over the bay, hook text SAVED BY / HIS CELL; 1.5 to 3.1 s: the cloud onto the roofs; 3.1 to 4.7 s: the half-buried cell, Rook landing on it; 4.7 to 6.2 s: his face in the slit light",
+   "6.2 to 8.0 s: Rook at the slit in the pit, 'Locked in? He can't even run.'",
+   "8.0 to 16.2 s: walked across the yard, over the wall at night, back at the gate, the door shut, Rook rapping the wall, the slit close up",
+   "16.2 to 20.7 s: 8 MAY 1902, the cloud over the town; the slit flares; Rook braced, no joke",
+   "20.7 to 27.4 s: re-hook, curled in the glow; the whole sleeve; Rook listening; the grey bay",
+   "27.4 to 30.0 s: 28,000; the empty street; Rook with his hat off",
+   "30.0 to 34.7 s: DAYS LATER, the slit light day to night; the rescuers; the shout; the door dragged open (hush)",
+   "34.7 to 41.8 s: Rook's wing on the wall; PARDONED; the circus bill; the ring with the replica cell; Rook's hat leaves his head",
+   "41.8 to 45.8 s: today, the cell in the grass, the question; sign-off; back to the opening frame"
+  ]
+ }
 }
