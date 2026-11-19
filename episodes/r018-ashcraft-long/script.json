@@ -1,28 +1,126 @@
 {
-  "id": "r018-ashcraft-long", "spine": "v2", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9,
+  "id": "r018-ashcraft-long",
+  "spine": "v2",
+  "voice": "am_fenrir",
+  "speed": 1.12,
+  "gap": 0.14,
+  "lead": 0.1,
+  "tail": 0.9,
   "segments": [
-    {"scene": "hook", "mood": "hook", "text": "She wakes up in a flooded cabin. The masts are gone. So is the man she was going to marry."},
-    {"scene": "doubt", "mood": "tense", "text": "No masts, no engine, nobody? No chance. Let's go back to the start."},
-    {"scene": "who", "mood": "calm", "text": "Tami Oldham is twenty-three, from San Diego, and she grew up around boats. Now she's sailing the South Pacific with her fiancé, Richard Sharp, a British sailor."},
-    {"scene": "job", "mood": "calm", "text": "In Tahiti, they're hired for a job. Sail a yacht called Hazana home to San Diego for its owners. About four thousand miles of open ocean."},
-    {"scene": "depart", "mood": "calm", "text": "On the twenty-second of September, {1983|nineteen eighty-three}, they sail out of Papeete. For two weeks, it's easy."},
-    {"scene": "warn", "mood": "tense", "text": "Then a storm builds to the east, grows fast, and turns their way. For three days they try to outrun it."},
-    {"scene": "storm", "mood": "tense", "text": "On the twelfth of October, it catches them. Hurricane Raymond. Category four. Waves of forty feet and more."},
-    {"scene": "below", "mood": "sad", "text": "Richard is at the wheel, clipped on. He sends her below. Then she hears him shout: Oh my God."},
-    {"scene": "roll", "mood": "sad", "text": "The yacht is thrown over. She's hurled against the cabin, and everything goes black."},
-    {"scene": "wake", "mood": "sad", "text": "She comes to about twenty-seven hours later, with a gash on her head, in a cabin half full of sea."},
-    {"scene": "line", "mood": "sad", "text": "On deck, his safety line is still tied on. The ring of his harness has been torn open. Richard is gone."},
-    {"scene": "broken", "mood": "tense", "text": "The radio is wrecked. The emergency beacon is damaged. The engine won't run. She is on her own."},
-    {"scene": "rig", "mood": "action", "text": "So she fixes what she can. She pumps the cabin out by hand. She takes half of a broken spinnaker pole, about nine feet of it, stands it up as a mast, and hangs a storm jib on it."},
-    {"scene": "rehook", "mood": "tense", "text": "Then, a plane. Low, right over her. She waves and yells. It flies on. Later, two ships pass, too far away to see her."},
-    {"scene": "where", "mood": "tense", "text": "So where now? With this rig, San Diego is out of reach. Hawaii is the closest land. Fifteen hundred miles."},
-    {"scene": "sextant", "mood": "wonder", "text": "She has a sextant. With the sun at noon she finds her latitude. Her plan: sail north to nineteen degrees, then turn left, and run west to Hawaii."},
-    {"scene": "watch", "mood": "wonder", "text": "To know how far west she is, she needs the time. About a week in, she finds her watch in the bilge."},
-    {"scene": "days", "mood": "calm", "text": "She lives on tins, rationed. She writes in the log every day. At night, she sleeps with one of his shirts."},
-    {"scene": "voice", "mood": "sad", "text": "And all the way, she said later, she heard Richard's voice, urging her on."},
-    {"scene": "hilo", "mood": "triumph", "text": "On the twenty-second of November, day forty-one, a Japanese research ship finds her just outside the harbour at Hilo, Hawaii, and tows her in."},
-    {"scene": "after", "mood": "calm", "text": "The head injury leaves her unable to read for years. In {2002|two thousand and two}, she tells it all in a book, Red Sky in Mourning. In {2018|twenty eighteen}, it becomes a film, Adrift."},
-    {"scene": "now", "mood": "calm", "text": "She married, had two children, and still sails. Round her neck she wears a small sextant."},
-    {"scene": "end", "mood": "end", "text": "Richard Sharp was lost in that storm. She steered a wreck fifteen hundred miles, alone. I said no chance. I was wrong. Case closed."}
+    {
+      "scene": "hook",
+      "mood": "hook",
+      "text": "She wakes up in a flooded cabin. The masts are gone. So is the man she was going to marry."
+    },
+    {
+      "scene": "doubt",
+      "mood": "tense",
+      "text": "No masts, no engine, nobody? No chance. Let's go back to the start."
+    },
+    {
+      "scene": "who",
+      "mood": "calm",
+      "text": "Tami Oldham, twenty-three, from San Diego, grew up around boats. Now she's sailing the South Pacific with her fiancé, Richard Sharp, a British sailor."
+    },
+    {
+      "scene": "job",
+      "mood": "calm",
+      "text": "In Tahiti they're hired to sail a yacht, the Hazana, to San Diego for its owners. About four thousand miles."
+    },
+    {
+      "scene": "depart",
+      "mood": "calm",
+      "text": "On the twenty-second of September, {1983|nineteen eighty-three}, they sail out of Papeete. For two weeks, it's easy."
+    },
+    {
+      "scene": "warn",
+      "mood": "tense",
+      "text": "Then a storm builds to the east, grows fast, and turns their way. For three days they try to outrun it."
+    },
+    {
+      "scene": "storm",
+      "mood": "tense",
+      "text": "On the twelfth of October, it catches them. Hurricane Raymond. Category four. Waves of forty feet and more."
+    },
+    {
+      "scene": "below",
+      "mood": "sad",
+      "text": "Richard is at the wheel, clipped on. He sends her below. Then she hears him shout: Oh my God."
+    },
+    {
+      "scene": "roll",
+      "mood": "sad",
+      "text": "The yacht is thrown over. She's hurled against the cabin, and everything goes black."
+    },
+    {
+      "scene": "wake",
+      "mood": "sad",
+      "text": "She comes to about twenty-seven hours later, with a gash on her head, in a cabin half full of sea."
+    },
+    {
+      "scene": "line",
+      "mood": "sad",
+      "text": "On deck, his safety line is still tied on. The ring of his harness has been torn open. Richard is gone."
+    },
+    {
+      "scene": "broken",
+      "mood": "tense",
+      "text": "The radio is wrecked. The emergency beacon is damaged. The engine won't run. She is on her own."
+    },
+    {
+      "scene": "rig",
+      "mood": "action",
+      "text": "So she fixes what she can. She pumps the cabin out by hand. She takes half of a broken spinnaker pole, about nine feet of it, stands it up as a mast, and hangs a storm jib on it."
+    },
+    {
+      "scene": "rehook",
+      "mood": "tense",
+      "text": "Then, a plane. Low, right over her. She waves and yells. It flies on. Later, two ships pass, too far away to see her."
+    },
+    {
+      "scene": "where",
+      "mood": "tense",
+      "text": "So where now? With this rig, San Diego is out of reach. Hawaii is the closest land. Fifteen hundred miles."
+    },
+    {
+      "scene": "sextant",
+      "mood": "wonder",
+      "text": "She has a sextant. With the sun at noon she finds her latitude. Her plan: sail north to nineteen degrees, then turn left, and run west to Hawaii."
+    },
+    {
+      "scene": "watch",
+      "mood": "wonder",
+      "text": "To know how far west she is, she needs the time. About a week in, she finds her watch in the bilge."
+    },
+    {
+      "scene": "days",
+      "mood": "calm",
+      "text": "She lives on tins, rationed. She writes in the log every day. At night, she sleeps with one of his shirts."
+    },
+    {
+      "scene": "voice",
+      "mood": "sad",
+      "text": "And all the way, she said later, she heard Richard's voice, urging her on."
+    },
+    {
+      "scene": "hilo",
+      "mood": "triumph",
+      "text": "On the twenty-second of November, day forty-one, a Japanese research ship finds her just outside the harbour at Hilo, Hawaii, and tows her in."
+    },
+    {
+      "scene": "after",
+      "mood": "calm",
+      "text": "The head injury leaves her unable to read for years. In {2002|two thousand and two}, she tells it all in a book, Red Sky in Mourning. In {2018|twenty eighteen}, it becomes a film, Adrift."
+    },
+    {
+      "scene": "now",
+      "mood": "calm",
+      "text": "She married, had two children, and still sails. Round her neck she wears a small sextant."
+    },
+    {
+      "scene": "end",
+      "mood": "end",
+      "text": "Richard Sharp was lost in that storm. She steered a wreck fifteen hundred miles, alone. I said no chance. I was wrong. Case closed."
+    }
   ]
 }
