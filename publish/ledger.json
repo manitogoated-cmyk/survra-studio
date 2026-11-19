@@ -448,18 +448,31 @@
     "url": "https://youtu.be/FY_52abpoyw",
     "video_id": "FY_52abpoyw"
   },
+  "r017-callahan": {
+    "captions": "ok",
+    "format": "short",
+    "playlist": "Rook's Case Files (Shorts)",
+    "privacy": "private",
+    "publish_at": "2026-11-19T17:00:00Z",
+    "review": false,
+    "sha256": "591d686f0ba2016c061afe35a2725f6da43c357a6104e2a02a05d8eadcf663b9",
+    "title": "His Boat Sank. He Lived 76 Days in This Raft #shorts",
+    "uploaded_at": "2026-11-19T05:08:11Z",
+    "url": "https://youtu.be/j2JMZQ3cYGg",
+    "video_id": "j2JMZQ3cYGg"
+  },
   "r018-ashcraft": {
     "captions": "ok",
     "format": "short",
     "playlist": "Rook's Case Files (Shorts)",
     "privacy": "private",
-    "publish_at": "2026-11-18T23:00:00Z",
+    "publish_at": "2026-11-19T20:00:00Z",
     "review": false,
-    "sha256": "7ec1f0f24b0066741f6b8b33c4398ce0391361717ba34376218c820e3fe98a22",
+    "sha256": "23d02be7ecc5a69cc3014c791d217e686c0d3b3e722be8ec935e73a489dcd108",
     "title": "She Woke Up Alone on a Wrecked Yacht. Then She Sailed It 1,500 Miles #shorts",
-    "uploaded_at": "2026-11-18T20:44:22Z",
-    "url": "https://youtu.be/MlpEGGEsZGk",
-    "video_id": "MlpEGGEsZGk"
+    "uploaded_at": "2026-11-19T05:08:16Z",
+    "url": "https://youtu.be/jvN_MzCVKLw",
+    "video_id": "jvN_MzCVKLw"
   },
   "r019-adilang": {
     "captions": "ok",
@@ -555,6 +568,20 @@
     "url": "https://youtu.be/S6xePThwOs8",
     "video_id": "S6xePThwOs8"
   },
+  "r022-bakari-long": {
+    "captions": "ok",
+    "format": "long",
+    "playlist": "Rook's Case Files (Full Cases)",
+    "privacy": "private",
+    "publish_at": "2026-11-19T19:00:00Z",
+    "review": false,
+    "sha256": "ebe97b4d28c2efbcebc79c7227b059e32d711a80603a4eb58211950532e71ae0",
+    "thumbnail": "failed: thumbnail -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The authenticated user doesn't have permissions to upload and set custom video thumbnails.\",\n ",
+    "title": "The Only One of 153 to Survive: The Full Case of Bahia Bakari and Yemenia Flight 626",
+    "uploaded_at": "2026-11-19T05:08:26Z",
+    "url": "https://youtu.be/_6fVjilvciA",
+    "video_id": "_6fVjilvciA"
+  },
   "r024-alkemade": {
     "captions": "ok",
     "format": "short",
@@ -567,6 +594,19 @@
     "uploaded_at": "2026-11-18T04:46:22Z",
     "url": "https://youtu.be/yHkpPAv0qTU",
     "video_id": "yHkpPAv0qTU"
+  },
+  "r030-sylbaris": {
+    "captions": "ok",
+    "format": "short",
+    "playlist": "Rook's Case Files (Shorts)",
+    "privacy": "private",
+    "publish_at": "2026-11-19T23:00:00Z",
+    "review": false,
+    "sha256": "2a3ac343fcf29ec3cb10323bb3e9bde41805280fffac5cc4c37c9a7175e3f197",
+    "title": "A Volcano Buried His City. His Prison Cell Saved Him #shorts",
+    "uploaded_at": "2026-11-19T05:08:31Z",
+    "url": "https://youtu.be/WjfNZpOXF5o",
+    "video_id": "WjfNZpOXF5o"
   },
   "s001-alvarenga": {
     "privacy": "private",
