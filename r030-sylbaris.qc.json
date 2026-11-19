@@ -1,0 +1,32 @@
+{
+ "pass": true,
+ "fails": [],
+ "warnings": [],
+ "notes": [
+  "32 shots, mean 1.43s, longest 1.96s",
+  "motion: mean frame change 3.76, 42 hard cuts detected",
+  "audio: -14.6 LUFS, peak -1.2 dBFS, voice 13.0 dB over bed",
+  "host: acts in 13/32 shots (41%)",
+  "originality: closest match to any earlier episode 0.79 (shot 7 vs m001-wow-signal)"
+ ],
+ "rules": {
+  "first_shot_max": 1.6,
+  "hook_impact_by": 1.0,
+  "shot_max": 3.5,
+  "shot_mean_max": 2.4,
+  "kind_max_uses": 2,
+  "static_window": 1.5,
+  "static_motion_min": 1.2,
+  "cut_diff": 28.0,
+  "first_second_motion_min": 2.0,
+  "repeat_corr": 0.97,
+  "repeat_pairs_max": 1,
+  "lufs": -14.0,
+  "lufs_tol": 1.5,
+  "tp_max": -1.0,
+  "voice_over_bed_db": 9.0,
+  "dead_air_s": 1.5,
+  "dead_air_db": -45.0
+ },
+ "format": "short"
+}
