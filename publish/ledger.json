@@ -455,11 +455,11 @@
     "privacy": "private",
     "publish_at": "2026-11-19T17:00:00Z",
     "review": false,
-    "sha256": "591d686f0ba2016c061afe35a2725f6da43c357a6104e2a02a05d8eadcf663b9",
+    "sha256": "25fcd009b09b6dd6958d20a55887846ebb38ef2757b43229c90d974d78429e13",
     "title": "His Boat Sank. He Lived 76 Days in This Raft #shorts",
-    "uploaded_at": "2026-11-19T05:08:11Z",
-    "url": "https://youtu.be/j2JMZQ3cYGg",
-    "video_id": "j2JMZQ3cYGg"
+    "uploaded_at": "2026-11-19T13:10:25Z",
+    "url": "https://youtu.be/1LSTb4JV9lM",
+    "video_id": "1LSTb4JV9lM"
   },
   "r018-ashcraft": {
     "captions": "ok",
@@ -575,12 +575,12 @@
     "privacy": "private",
     "publish_at": "2026-11-19T19:00:00Z",
     "review": false,
-    "sha256": "ebe97b4d28c2efbcebc79c7227b059e32d711a80603a4eb58211950532e71ae0",
+    "sha256": "0cf1db57a9d023901e668f3c5e59e09befddfea12690492aa1991994d47e92a7",
     "thumbnail": "failed: thumbnail -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The authenticated user doesn't have permissions to upload and set custom video thumbnails.\",\n ",
     "title": "The Only One of 153 to Survive: The Full Case of Bahia Bakari and Yemenia Flight 626",
-    "uploaded_at": "2026-11-19T05:08:26Z",
-    "url": "https://youtu.be/_6fVjilvciA",
-    "video_id": "_6fVjilvciA"
+    "uploaded_at": "2026-11-19T13:10:34Z",
+    "url": "https://youtu.be/N9uFblYhP6Q",
+    "video_id": "N9uFblYhP6Q"
   },
   "r024-alkemade": {
     "captions": "ok",
@@ -600,13 +600,13 @@
     "format": "short",
     "playlist": "Rook's Case Files (Shorts)",
     "privacy": "private",
-    "publish_at": "2026-11-19T23:00:00Z",
+    "publish_at": "2026-11-19T20:00:00Z",
     "review": false,
-    "sha256": "2a3ac343fcf29ec3cb10323bb3e9bde41805280fffac5cc4c37c9a7175e3f197",
+    "sha256": "0b537d86c404c3f0d1adfcde75b0c088161c63e30dd2d923873b6827b4ff4936",
     "title": "A Volcano Buried His City. His Prison Cell Saved Him #shorts",
-    "uploaded_at": "2026-11-19T05:08:31Z",
-    "url": "https://youtu.be/WjfNZpOXF5o",
-    "video_id": "WjfNZpOXF5o"
+    "uploaded_at": "2026-11-19T13:10:39Z",
+    "url": "https://youtu.be/-eHaYHprOmk",
+    "video_id": "-eHaYHprOmk"
   },
   "s001-alvarenga": {
     "privacy": "private",
