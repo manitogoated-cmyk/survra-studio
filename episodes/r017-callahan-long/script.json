@@ -1,0 +1,126 @@
+{
+ "id": "r017-callahan-long",
+ "spine": "v2",
+ "voice": "am_fenrir",
+ "speed": 1.12,
+ "gap": 0.14,
+ "lead": 0.1,
+ "tail": 0.9,
+ "segments": [
+  {
+   "scene": "hook",
+   "mood": "hook",
+   "text": "A bang in the dark, and in thirty seconds his little boat is full of sea. He's alone, in the middle of the Atlantic."
+  },
+  {
+   "scene": "doubt",
+   "mood": "tense",
+   "text": "Out here, alone? No chance. Let's go look."
+  },
+  {
+   "scene": "who",
+   "mood": "calm",
+   "text": "Steven Callahan designs boats. He built this one himself, a little sloop called Napoleon Solo, and sailed her from America to England, then south. A week ago, he left the Canary Islands alone, bound for Antigua."
+  },
+  {
+   "scene": "dive",
+   "mood": "action",
+   "text": "Now she's swamped, but she doesn't go straight down. So he does the mad thing. He climbs back aboard, and dives into the flooded cabin, feeling in the dark for his emergency bag."
+  },
+  {
+   "scene": "raft",
+   "mood": "tense",
+   "text": "He gets it, and a cushion, and his sleeping bag. Then he's in a rubber life raft about six feet across, and the boat he built is gone."
+  },
+  {
+   "scene": "ducky",
+   "mood": "calm",
+   "text": "He names the raft Rubber Ducky. Of course he does."
+  },
+  {
+   "scene": "kit",
+   "mood": "calm",
+   "text": "Here's what he has. A few pints of water. A little food. Flares. A radio beacon. A short spear gun. And solar stills, to turn sea water into drinking water."
+  },
+  {
+   "scene": "stills",
+   "mood": "tense",
+   "text": "The stills don't work the way they should, so he works out how to fix them. With the rain, it comes to about a pint a day."
+  },
+  {
+   "scene": "reef",
+   "mood": "wonder",
+   "text": "Then the raft turns into a reef. Barnacles grow on its bottom. Small fish come to eat them. Then the dorado come, a whole school, following him across the ocean like he's an island."
+  },
+  {
+   "scene": "spear",
+   "mood": "action",
+   "text": "He spears them to eat. They're big and strong, and they keep breaking his little gun."
+  },
+  {
+   "scene": "sharks",
+   "mood": "tense",
+   "text": "Sharks come too, a hammerhead among them, slamming into the floor of the raft from below."
+  },
+  {
+   "scene": "ships",
+   "mood": "sad",
+   "text": "And ships come. He fires his flares. His beacon is on. One ship passes within a mile. Not one of them sees him."
+  },
+  {
+   "scene": "rehook",
+   "mood": "action",
+   "text": "Then, six weeks in, he spears a big dorado. It fights, and drives the spear point straight into the bottom of the raft."
+  },
+  {
+   "scene": "hole",
+   "mood": "tense",
+   "text": "A four-inch hole. Air pours out. The bottom tube goes soft."
+  },
+  {
+   "scene": "patch",
+   "mood": "tense",
+   "text": "For days, he patches it and pumps it up. Every time he pumps, the pressure blows his patch off."
+  },
+  {
+   "scene": "fork",
+   "mood": "triumph",
+   "text": "Then he finds the answer in his mess kit: a fork. He pushes it through the rubber around the hole, folds the hole shut, and the patch holds."
+  },
+  {
+   "scene": "sextant",
+   "mood": "calm",
+   "text": "Now he keeps his own log. He ties three pencils into a sextant, measures the stars, and works out how far he's drifted."
+  },
+  {
+   "scene": "fade",
+   "mood": "sad",
+   "text": "But he's wasting away. He's lost a third of his weight, and salt-water sores cover his skin."
+  },
+  {
+   "scene": "lights",
+   "mood": "tense",
+   "text": "Then, on the night of his {75|seventy-fifth} day, a glow on the horizon. Land."
+  },
+  {
+   "scene": "found",
+   "mood": "triumph",
+   "text": "The next day, three fishermen off the island of Marie-Galante see birds circling over his raft. Birds mean fish. They come for the fish, and find a man."
+  },
+  {
+   "scene": "ashore",
+   "mood": "triumph",
+   "text": "Seventy-six days. About eighteen hundred nautical miles. That same evening, he's walking again."
+  },
+  {
+   "scene": "after",
+   "mood": "calm",
+   "text": "He wrote it all down. His book, Adrift, was a bestseller. And decades later, when the film Life of Pi needed to know how to live on a life raft, they asked him."
+  },
+  {
+   "scene": "end",
+   "mood": "end",
+   "text": "The fish that fed him got him found. Seventy-six days, and a fork. Case closed."
+  }
+ ]
+}
