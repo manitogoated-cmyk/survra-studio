@@ -474,6 +474,20 @@
     "url": "https://youtu.be/jvN_MzCVKLw",
     "video_id": "jvN_MzCVKLw"
   },
+  "r018-ashcraft-long": {
+    "captions": "ok",
+    "format": "long",
+    "playlist": "Rook's Case Files (Full Cases)",
+    "privacy": "private",
+    "publish_at": "2026-11-20T19:00:00Z",
+    "review": false,
+    "sha256": "124ce1bd04ece6487a3a4dde2ae236c2bb51d9470a596f945be6423243da4e1d",
+    "thumbnail": "failed: thumbnail -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The authenticated user doesn't have permissions to upload and set custom video thumbnails.\",\n ",
+    "title": "She Sailed a Wrecked Yacht 1,500 Miles Alone: The Full Case of Tami Oldham",
+    "uploaded_at": "2026-11-19T23:17:53Z",
+    "url": "https://youtu.be/xkvXpDFS6NQ",
+    "video_id": "xkvXpDFS6NQ"
+  },
   "r019-adilang": {
     "captions": "ok",
     "format": "short",
@@ -582,6 +596,19 @@
     "url": "https://youtu.be/N9uFblYhP6Q",
     "video_id": "N9uFblYhP6Q"
   },
+  "r023-herfkens": {
+    "captions": "ok",
+    "format": "short",
+    "playlist": "Rook's Case Files (Shorts)",
+    "privacy": "private",
+    "publish_at": "2026-11-20T02:00:00Z",
+    "review": false,
+    "sha256": "1e49c2b9f4cc857dfe72c820ffbd466ff0a81bfecdf917020ea2b50581e2f857",
+    "title": "She Woke Up Under a Seat in the Jungle. 8 Days Later\u2026 #shorts",
+    "uploaded_at": "2026-11-19T23:17:59Z",
+    "url": "https://youtu.be/KR0ZYHRx_Ac",
+    "video_id": "KR0ZYHRx_Ac"
+  },
   "r024-alkemade": {
     "captions": "ok",
     "format": "short",
@@ -594,6 +621,20 @@
     "uploaded_at": "2026-11-18T04:46:22Z",
     "url": "https://youtu.be/yHkpPAv0qTU",
     "video_id": "yHkpPAv0qTU"
+  },
+  "r024-alkemade-long": {
+    "captions": "ok",
+    "format": "long",
+    "playlist": "Rook's Case Files (Full Cases)",
+    "privacy": "private",
+    "publish_at": "2026-11-21T19:00:00Z",
+    "review": false,
+    "sha256": "70ac17624f1fdf84cb47f83edf58b3911c2f5baf4a35595e4704792dc2e66db1",
+    "thumbnail": "failed: thumbnail -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The authenticated user doesn't have permissions to upload and set custom video thumbnails.\",\n ",
+    "title": "He Fell 18,000 Feet With No Parachute: The Full Case of Nicholas Alkemade",
+    "uploaded_at": "2026-11-19T23:18:10Z",
+    "url": "https://youtu.be/h2laJU6_7gY",
+    "video_id": "h2laJU6_7gY"
   },
   "r030-sylbaris": {
     "captions": "ok",
