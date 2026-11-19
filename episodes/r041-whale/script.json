@@ -3,9 +3,9 @@
   "segments": [
     {"scene": "hook", "mood": "hook", "text": "they blew up a dead whale on a beach full of people, and it rained whale."},
     {"scene": "doubt", "mood": "tense", "text": "Raining whale? Not a chance."},
-    {"scene": "rain", "mood": "action", "text": "Blubber sailed right over the crowd. Everyone ran for their cars."},
+    {"scene": "rain", "mood": "action", "text": "Blubber sailed right over the crowd. People ran for their cars."},
     {"scene": "plan", "mood": "calm", "text": "The plan? Twenty cases of dynamite. Blow it into bits small enough for the seagulls to eat."},
-    {"scene": "warn", "mood": "tense", "text": "One man there knew explosives from the war. He warned it was way too much, and stood way back."},
+    {"scene": "warn", "mood": "tense", "text": "One man there knew explosives from the military. He warned it was way too much, and stood way back."},
     {"scene": "car", "mood": "action", "text": "Then, a quarter of a mile away, a slab of whale came down right on his new car, and crushed the roof."},
     {"scene": "deal", "mood": "wonder", "text": "He'd bought it days before, in a sale called: a whale of a deal."},
     {"scene": "cleanup", "mood": "tense", "text": "Road crews had to clean up the rest. And the engineer in charge?"},

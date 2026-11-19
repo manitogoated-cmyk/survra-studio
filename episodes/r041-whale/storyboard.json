@@ -395,7 +395,7 @@
    "segment": "plan",
    "weight": 0.9,
    "kind": "wire",
-   "action": "The wire runs across the sand to a wooden blasting machine at the foot of the dunes; the engineer kneels behind it, hands on the T-handle, the whale far behind",
+   "action": "The wire runs across the sand to a wooden blasting machine at the foot of the dunes; a workman in a hard hat kneels behind it checking the T-handle, the whale far behind",
    "camera": "Low, close on the box, slow drift",
    "cam": [
     [
@@ -555,7 +555,7 @@
    "segment": "car",
    "weight": 0.9,
    "kind": "slab_fall",
-   "action": "In the lot: a slab of blubber the size of a tyre tumbles down out of the sky towards the cars, growing",
+   "action": "In the lot: a big slab of blubber tumbles down out of the sky towards the cars, growing",
    "camera": "Low, looking up past the cars",
    "cam": [
     [

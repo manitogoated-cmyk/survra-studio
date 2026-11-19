@@ -37,7 +37,8 @@ CARP = (6.0, -136.0)                # the new car in the lot
 HOST = {'rook_dune', 'rook_duck', 'rook_count', 'gull', 'expert', 'rook_eye', 'rook_roof', 'rook_laugh', 'rook_nose',
         'rook_stare', 'rook_park', 'signoff'}
 CAMFILL = {'*': 150, 'blast_close': 60, 'column': 0, 'chunk_lens': 0, 'overhead_chunk': 0, 'slab_fall': 0, 'run_cars': 80,
-           'car_crush': 80, 'bulldozer': 80, 'park_sign': 60, 'rook_dune': 180, 'rook_eye': 160, 'owner_face': 120}
+           'car_crush': 80, 'bulldozer': 80, 'park_sign': 60, 'rook_dune': 180, 'rook_eye': 160, 'owner_face': 120,
+           'rook_park': 320, 'signoff': 220}
 ROOKC = dict(top='566178', belt='3E4658', lap='6B7690', pants='2A2742', hand='2F2B4D', boot='8A90A6')
 SAND, SAND2, WET, DUNE = 'D9C59C', 'C9B48A', 'B49E78', 'D2BC8E'
 WHALE, BELLY = '596169', '8E9294'
@@ -263,20 +264,22 @@ def text3d(par, s, loc, size, col, rot=(PI / 2, 0, 0), extrude=0.03, emit=0.0):
 
 # ---------------------------------------------------------------- the beach, the whale, the crates
 def make_whale(par):
-    """A big dead whale lying on the sand, head towards -X, its flank towards the dunes (-Y). Grey, no wounds."""
+    """A big dead whale lying on the sand, head towards -X, its flank towards the dunes (-Y): one long tapering body,
+    a pale underside, a tail stock narrowing to broad flukes. Grey, no wounds."""
     w = empty((0, 0, 0), par)
-    body = []
-    for loc, s, col in (((-6.8, 0, 2.55), (5.6, 2.45, 2.55), WHALE), ((-0.8, 0, 2.5), (6.2, 2.65, 2.6), WHALE),
-                        ((5.2, 0, 2.0), (4.6, 1.9, 1.95), WHALE), ((-3.0, -0.25, 1.3), (8.5, 2.3, 1.45), BELLY)):
-        body.append(add('uv_sphere', col, loc, scale=s, radius=1, segments=14, ring_count=8, parent=w, rough=0.55))
-    stock = [add('uv_sphere', WHALE, (9.6, 0, 1.45), scale=(2.9, 0.95, 1.0), radius=1, segments=10, ring_count=6, parent=w, rough=0.55)]
+    body = [add('uv_sphere', WHALE, (-1.2, 0, 2.45), scale=(9.6, 2.75, 2.5), radius=1, segments=20, ring_count=10, parent=w, rough=0.55),
+            add('uv_sphere', BELLY, (-2.0, -0.25, 1.25), scale=(8.6, 2.45, 1.35), radius=1, segments=16, ring_count=8, parent=w, rough=0.55),
+            add('uv_sphere', WHALE, (-8.6, 0, 2.35), scale=(2.6, 2.5, 2.3), radius=1, segments=14, ring_count=8, parent=w, rough=0.55)]
+    stock = [add('cone', WHALE, (10.2, 0, 1.75), rot=(0, PI / 2, 0), scale=(0.8, 1.0, 1.0), radius1=2.1, radius2=0.55, depth=7.0, vertices=12, parent=w, rough=0.55)]
     for s in (-1, 1):
-        stock.append(add('uv_sphere', WHALE, (12.0, s * 1.6, 1.25), rot=(0, 0, s * 0.45), scale=(1.4, 2.3, 0.17), radius=1, segments=10, ring_count=6, parent=w, rough=0.55))
-    body.append(add('uv_sphere', WHALE, (-3.6, -2.55, 0.9), rot=(0.5, 0.2, -0.3), scale=(1.6, 0.28, 0.7), radius=1, segments=8, ring_count=5, parent=w, rough=0.55))
-    body.append(add('cube', '2A2E33', (-9.2, -2.05, 2.25), rot=(0, 0, 0.32), scale=(0.5, 0.06, 0.07), size=1, parent=w))        # the closed eye
-    body.append(add('cube', '3E444A', (-9.0, -1.95, 1.3), rot=(0, 0.05, 0.25), scale=(5.0, 0.06, 0.08), size=1, parent=w))       # mouth line
+        stock.append(add('uv_sphere', WHALE, (14.4, s * 1.9, 1.15), rot=(0, 0.08, s * 0.5), scale=(1.5, 2.7, 0.2), radius=1, segments=12, ring_count=6, parent=w, rough=0.55))
+    body.append(add('uv_sphere', WHALE, (-3.4, -2.55, 0.85), rot=(0.55, 0.25, -0.35), scale=(1.9, 0.3, 0.75), radius=1, segments=10, ring_count=6, parent=w, rough=0.55))
+    body.append(add('cube', '262A2F', (-8.0, -2.42, 2.15), rot=(0, 0.1, 0.35), scale=(0.55, 0.06, 0.08), size=1, parent=w))         # the closed eye
+    body.append(add('cube', '34383E', (-9.4, -2.05, 1.45), rot=(0, 0.06, 0.3), scale=(4.6, 0.06, 0.09), size=1, parent=w))          # mouth line
+    for i in range(6):                                                                                                               # throat grooves
+        body.append(add('cube', 'A4A8AA', (-7.0 + 0.4 * i, -2.25 - 0.02 * i, 0.75 + 0.12 * i), rot=(0.25, 0, 0.3), scale=(3.4, 0.04, 0.05), size=1, parent=w))
     for i in range(7):                                                                                                               # pale scars
-        body.append(add('cube', '8C9498', (-6 + 2.0 * i, -2.5 + 0.15 * math.sin(i), 2.6 + 0.5 * rnd(i, 5)), rot=(0.3, 0, 0.4 * rnd(i, 6)),
+        body.append(add('cube', '8C9498', (-5 + 2.0 * i, -2.62 + 0.12 * math.sin(i), 2.7 + 0.5 * rnd(i, 5)), rot=(0.3, 0, 0.4 * rnd(i, 6)),
                         scale=(0.9, 0.04, 0.05), size=1, parent=w))
     return w, body, stock
 
@@ -878,7 +881,7 @@ def blast_close(S, k, t, lt):
     d = lt / max(k, 1e-3) if k > 0 else 1.0
     if loop:
         u = sm(k / 0.95)
-        cam(S, (lerp(5.6, 2.8, u), lerp(-15.5, -11.2, u), lerp(2.6, 1.05, u)), (lerp(-2.0, -2.6, u), lerp(-1.2, -1.0, u), lerp(2.4, 2.0, u)), lerp(26, 24, u))
+        cam(S, (lerp(10.5, 7.5, u), lerp(-15.5, -11.0, u), lerp(2.6, 1.3, u)), (lerp(-1.0, -1.5, u), lerp(-1.2, -0.8, u), lerp(2.6, 2.3, u)), lerp(24, 22, u))
         return
     ub = lt - TB
     if ub > 0:
@@ -887,7 +890,7 @@ def blast_close(S, k, t, lt):
             for c in cr.children:
                 c.hide_render = ub > 0.03
     sh = 0.25 * math.exp(-max(0, ub) * 3) if ub > 0 else 0.0
-    cam(S, (2.8 + sh * math.sin(t * 61), -11.2 - 1.2 * max(0, ub), 1.05 + sh * math.cos(t * 53)), (-2.6, -1.0, 2.0 + 2.5 * sm(ub / 0.6)), 24)
+    cam(S, (7.5 + sh * math.sin(t * 61), -11.0 - 1.2 * max(0, ub), 1.3 + sh * math.cos(t * 53)), (-1.5, -0.8, 2.3 + 2.5 * sm(ub / 0.6)), 22)
 
 
 def column_wide(S, k, t, lt, u0=0.75):
@@ -1053,11 +1056,12 @@ def _gull_shot(S, k, t, lt):
 
 
 def wire(S, k, t, lt):
-    """At the foot of the dunes: the wire runs across the sand to a wooden blasting machine. The engineer kneels behind
-    it, hands on the T-handle, the whale far behind him."""
+    """At the foot of the dunes: the wire runs across the sand to a wooden blasting machine. A workman in a hard hat
+    kneels behind it checking the T-handle, the whale far behind him. (Who pushed the plunger is not on record here,
+    so it is a generic workman, not the engineer.)"""
     sky(S, 'day')
     surf(S, t)
-    th = S['thorn']
+    th = S['workers'][1]
     th.place((-22.3, -42.6, 0), PI - 0.3)
     th.apply(P('stand', lL=(1.5, 2.3), lR=(-0.2, 1.9), lift=-0.75, lean=0.4, aL=(1.0, 0.3, 0.6), aR=(1.0, -0.1, 0.6), head=(0.1, 0.0)))
     th.face = 'hard'
@@ -1130,7 +1134,7 @@ def rook_eye(S, k, t, lt):
 
 # ---------------------------------------------------------------- the car
 def slab_fall(S, k, t, lt):
-    """In the lot: a slab of blubber the size of a tyre tumbles down out of the sky, growing, right over the cars."""
+    """In the lot: a big slab of blubber tumbles down out of the sky, growing, right over the cars."""
     sky(S, 'day')
     sl = S['slab']
     u = sm(k)
@@ -1309,18 +1313,34 @@ def engineer_turn(S, k, t, lt):
 
 # ---------------------------------------------------------------- payoff
 def engineer(S, k, t, lt):
-    """The engineer, close, pleased with himself: a firm nod and a thumbs-up, the hole and the lumps behind him."""
+    """The engineer, close, pleased with himself: he sweeps an arm back at the hole and the lumps, then turns to us with
+    a firm nod and a thumbs-up. Behind him the bulldozer is already rolling across the sand."""
     sky(S, 'day')
     surf(S, t)
     intact(S, False)
     th = S['thorn']
-    up = sm((k - 0.2) / 0.25)
-    nod = 0.18 * math.sin(lt * 7) * sm((k - 0.15) / 0.2)
-    stand(th, (-2.0, -9.0, 0), 0.15, P('stand', aL=(0.35, 0.1, 1.2, 0.6), aR=(lerp(0.2, 1.0, up), lerp(0.25, 0.4, up), lerp(0.3, 1.25, up), 0.3), head=(nod, 0.0)), 'proud')
+    sweep = sm(k / 0.3) * (1 - sm((k - 0.45) / 0.2))
+    up = sm((k - 0.5) / 0.2)
+    nod = 0.2 * math.sin(lt * 8) * sm((k - 0.55) / 0.15)
+    pose = blend(P('stand', aL=(0.35, 0.1, 1.2, 0.6), aR=(0.2, 0.25, 0.3)), P('stand', aL=(0.35, 0.1, 1.2, 0.6), aR=(1.2, 1.3, 0.2), head=(0.0, 0.6)), sweep)
+    if up > 0:
+        pose = blend(pose, P('stand', aL=(0.35, 0.1, 1.2, 0.6), aR=(1.0, 0.4, 1.25, 0.3), head=(nod, 0.0)), up)
+    stand(th, (-2.0, -9.0, 0), 0.15 + 0.5 * sweep, pose, 'proud')
     th.jawv = 0.04
     S['clip'].hide_render = False
+    x = lerp(-16, 4, k)
+    dozer_at(S, x, 2.0, 0.0)
+    for i, o in enumerate(S['mound']):
+        o.location = (x + 4.4 + 0.6 * rnd(i, 100), 2.0 + (i - 3) * 0.75, 0.3 + 0.2 * rnd(i, 101))
+        sc = 1.0 + 0.5 * rnd(i, 102)
+        o.scale = (sc, sc * 0.9, sc * 0.55)
+    for i, o in enumerate(S['puffs'][:6]):
+        q = (t * 1.1 + i / 6) % 1
+        o.location = (x - 2.2 + 0.8 * q, 1.6 + 0.4 * i, 4.6 + 3.0 * q)
+        s2 = 0.25 + 0.7 * q
+        o.scale = (s2, s2, s2)
     h = head(th)
-    cam(S, plus(h, (lerp(1.6, -0.2, k), lerp(-3.8, -3.0, k), lerp(-0.5, -0.1, k))), plus(h, (0.05, 0.0, -0.25)), 32)
+    cam(S, plus(h, (lerp(2.6, -0.6, k), lerp(-4.4, -3.0, k), lerp(-0.6, -0.1, k))), plus(h, (lerp(-0.6, 0.05, k), 0.0, -0.25)), 32)
 
 
 def rook_stare(S, k, t, lt):
@@ -1354,7 +1374,7 @@ def rook_park(S, k, t, lt):
     S['hat_to'] = (0.15, -0.55, -1.0)
     S['rface'] = 'soft'
     h = head(rk)
-    cam(S, at(PARK, lerp(-1.0, -4.6, k), lerp(-8.6, -8.2, k), lerp(2.2, 2.8, k)), at(PARK, -2.8, -1.0, 2.4), 28)
+    cam(S, at(PARK, lerp(-1.4, -5.2, k), lerp(-7.4, -7.0, k), lerp(2.2, 2.7, k)), at(PARK, -3.3, -1.6, 2.4), 28)
 
 
 # ---------------------------------------------------------------- end
