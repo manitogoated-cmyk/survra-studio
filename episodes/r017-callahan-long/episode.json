@@ -1,0 +1,23 @@
+{
+ "id": "r017-callahan-long",
+ "format": "long",
+ "status": "draft",
+ "case_of": "r017-callahan",
+ "synthetic": false,
+ "host": "rook",
+ "case": 17,
+ "playlist": "Rook's Case Files (Full Cases)",
+ "claimed_at": "2026-11-19T12:50:08Z",
+ "authoring": {
+  "claimed_at": "2026-11-19T12:50:08Z",
+  "run": "scheduled long run, 19 Nov 2026 (retry after an earlier attempt of this run stopped during setup)"
+ },
+ "sources": [
+  "https://en.wikipedia.org/wiki/Steven_Callahan",
+  "https://en.wikipedia.org/wiki/Adrift:_Seventy-six_Days_Lost_at_Sea",
+  "https://www.csmonitor.com/1982/0930/093036.html",
+  "https://csmonitor.com/1986/0131/dbadri.html",
+  "https://newengland.com/today/lost-at-sea-yankee-classic/",
+  "https://vault.si.com/vault/1986/04/07/if-youre-at-sea-in-the-search-for-a-good-book-heres-a-gripping-tale"
+ ]
+}
