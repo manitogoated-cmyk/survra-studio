@@ -24,7 +24,7 @@ from engine4 import kit3d as K
 from engine4.kit3d import P, add, blend, empty, lerp, light
 
 PI = math.pi
-FAR = (0, 0, -3000)
+FAR = (0, 0, -30000)
 SKYO = (0.0, 0.0, 0.0)              # the bomber, high over the coast
 TUR = (0.0, -4600.0, 0.0)           # the ball turret, alone, for the close-ups
 FUS = (0.0, -4000.0, 0.0)           # the waist of the fuselage, inside
@@ -38,7 +38,7 @@ HOST = {'rook_ridge', 'chute_find', 'rook_silk', 'rook_dive', 'rook_look', 'shar
 CAMFILL = {'*': 200, 'turret_close': 140, 'chute_rags': 120, 'bomber_down': 3000, 'roof_rush': 0, 'rook_ridge': 300, 'formation': 0,
            'flak_hit': 2500, 'turret_climb': 260, 'chute_find': 260, 'rook_silk': 160, 'gasp_dim': 180, 'thrown_clear': 2500,
            'fall_wide': 600, 'rook_dive': 320, 'town_below': 0, 'rook_look': 320, 'smash': 0, 'shards': 500, 'hole_up': 0,
-           'found': 500, 'rook_shard': 220, 'stretcher': 500, 'doctor': 260, 'rook_bed': 180, 'camp': 500, 'memorial': 500,
+           'found': 500, 'rook_shard': 220, 'stretcher': 500, 'doctor': 260, 'rook_bed': 320, 'camp': 500, 'memorial': 500,
            'wreath': 120, 'signoff': 260}
 ROOKC = dict(top='566178', belt='3E4658', lap='6B7690', pants='2A2742', hand='2F2B4D', boot='8A90A6')
 SKIN = 'E4B892'
@@ -183,13 +183,13 @@ def make_turret(S):
             bar(r, '4A4E52', (s * 1.2, -1.2, z), (s * 1.6, 0.9, z * 1.2), 0.05)
     add('cube', '2A2C2E', (0, -0.95, 0.75), scale=(0.3, 0.3, 0.22), size=1, parent=r)                            # the gunsight
     add('cube', 'FFB04A', (0, -1.1, 0.75), scale=(0.12, 0.02, 0.08), size=1, parent=r, emit=2.0)
-    S['glass'] = add('cylinder', 'CFE8F4', (0, -1.47, 0), rot=(PI / 2, 0, 0), radius=1.05, depth=0.02, vertices=20, parent=r, rough=0.05, alpha=0.1)
+    S['glass'] = add('cylinder', 'CFE8F4', (0, -1.47, 0), rot=(PI / 2, 0, 0), radius=1.05, depth=0.02, vertices=20, parent=r, rough=0.05, alpha=0.03)
     S['cracks'] = []
-    c0 = (0.38, -1.52, 0.42)
-    for i in range(9):
-        a = i * 0.7 + 0.3
-        L = 0.4 + 0.6 * rnd(i, 30)
-        o = bar(r, 'F4FAFF', c0, (c0[0] + L * math.cos(a), -1.52, c0[2] + L * math.sin(a)), 0.018, emit=2.5)
+    c0 = (0.72, -1.52, 0.55)
+    for i in range(7):
+        a = i * 0.9 + 0.2
+        L = 0.25 + 0.35 * rnd(i, 30)
+        o = bar(r, 'E4F2FF', c0, (c0[0] + L * math.cos(a), -1.52, c0[2] + L * math.sin(a)), 0.008, emit=1.2)
         S['cracks'].append((o, tuple(o.scale)))
     S['tlamp'] = light(at(TUR, 0.4, -0.4, 0.9), 0, 'FFD8A0', size=0.5)
     S['turret'] = r
@@ -214,7 +214,7 @@ def make_fuse(S):
     for i, (y, a) in enumerate(((-2.6, 0.5), (-1.2, 0.9), (0.6, 0.3), (2.6, 0.8), (-3.8, 1.0), (3.6, 0.45))):
         x, z = 2.55 * math.cos(a), 1.3 + 2.55 * math.sin(a)
         add('ico_sphere', 'FFF6E4', (x, y, z), radius=0.11 + 0.09 * rnd(i, 40), subdivisions=1, parent=r, emit=14.0)
-        bar(r, 'FFF2DC', (x, y, z), (x - 3.6, y + 0.4, z - 2.4), 0.12 + 0.06 * rnd(i, 41), emit=0.6, alpha=0.08)
+        bar(r, 'FFF2DC', (x, y, z), (x - 3.6, y + 0.4, z - 2.4), 0.05 + 0.03 * rnd(i, 41), emit=0.5, alpha=0.035)
     for y in (-0.6, 4.6):
         add('cube', 'DCEAF6', (-2.5, y, 1.7), scale=(0.1, 1.5, 0.9), size=1, parent=r, emit=3.0)                   # waist window, open sky
     # the parachute hook and the torn pack
@@ -226,11 +226,11 @@ def make_fuse(S):
         add('cylinder', '0E0D0A', (-0.12, -0.25 + 0.12 * i, 0.3 - 0.13 * (i % 3)), rot=(0, PI / 2, 0), radius=0.05 + 0.03 * rnd(i, 42), depth=0.04, vertices=6, parent=pk)
     S['rags'] = []
     for i in range(9):
-        o = add('cube', ('F4F2EA', 'E8E4D8', 'FFFFFF')[i % 3], (0, 0, 0), scale=(0.05, 0.22 + 0.2 * rnd(i, 43), 0.3 + 0.5 * rnd(i, 44)), size=1, parent=pk, rough=1.0)
+        o = add('cube', ('F4F2EA', 'E8E4D8', 'FFFFFF')[i % 3], (0, 0, 0), scale=(0.02, 0.07 + 0.08 * rnd(i, 43), 0.5 + 0.6 * rnd(i, 44)), size=1, parent=pk, rough=1.0)
         S['rags'].append(o)
-    S['silk'] = keep(add('cube', 'F6F4EE', FAR, scale=(0.04, 0.5, 1.2), size=1, rough=1.0))
+    S['silk'] = keep(add('cube', 'F6F4EE', FAR, scale=(0.04, 0.4, 1.0), size=1, rough=1.0))
     S['silkholes'] = [add('cylinder', '1A1814', (0, 0, 0), rot=(0, PI / 2, 0), radius=0.07 + 0.04 * rnd(i, 45), depth=0.06, vertices=6, parent=S['silk']) for i in range(4)]
-    S['fsmoke'] = [keep(add('ico_sphere', '7A7E80', FAR, radius=0.6, subdivisions=1, rough=1.0, alpha=0.35)) for _ in range(6)]
+    S['fsmoke'] = [keep(add('ico_sphere', '7A7E80', FAR, radius=0.22, subdivisions=1, rough=1.0, alpha=0.3)) for _ in range(6)]
     S['flight'] = light(at(FUS, 0.5, -1.0, 2.4), 0, 'FFF0DC', size=3.0)
     S['fuse'] = r
 
@@ -277,16 +277,14 @@ def make_station(S):
             p = add('cube', 'BFE2EE', ((x0 + x1) / 2, y + 2, (z0 + z1) / 2), rot=(0, -ang, 0), scale=(L * 0.96, 3.8, 0.04), size=1,
                     parent=r, rough=0.05, emit=0.25, alpha=0.32)
             add('cube', '2E3236', ((x0 + x1) / 2, y + 2, (z0 + z1) / 2), rot=(0, -ang, 0), scale=(L, 0.08, 0.07), size=1, parent=r)  # glazing bar
-            if y + 2 in (-2, 2) and i in (3, 4, 5):
+            if y == -2 and i in (3, 4, 5):
                 S['holep'].append(p)
     # ragged edges of the hole (shown after the smash)
     S['edge'] = []
     for i in range(12):
         a = PI * (0.33 + 0.34 * rnd(i, 50))
         x, z = arch_pt(a)
-        y = -4 + 8 * rnd(i, 51)
-        if abs(y) < 3.2:
-            y = 3.6 * (1 if y > 0 else -1)
+        y = (2.1 if i % 2 else -2.1) + 0.3 * (rnd(i, 51) - 0.5)
         o = add('cone', 'CFEAF4', (x, y, z - 0.1), rot=(PI / 2 + 0.6 * (rnd(i, 52) - 0.5), 0, rnd(i, 53) * 6), radius1=0.35, radius2=0.0,
                 depth=1.1, vertices=3, parent=r, rough=0.05, emit=0.4, alpha=0.6)
         S['edge'].append(o)
@@ -329,10 +327,10 @@ def make_station(S):
     for i in range(150):
         x = -130 + 260 * rnd(i, 60)
         y = -160 + 320 * rnd(i, 61)
-        if abs(x) < 16 and abs(y) < 36:
-            continue
         if x > 45:
             x -= 60
+        if abs(x) < 20 and abs(y) < 40:
+            continue
         w, d, hh = 6 + 8 * rnd(i, 62), 6 + 10 * rnd(i, 63), 4 + 7 * rnd(i, 64)
         col = ('D8CCB4', 'C8B8A0', 'E2D8C4', 'B8A890')[i % 4]
         add('cube', col, (x, y, hh / 2), scale=(w, d, hh), size=1, parent=tw, rough=1.0)
@@ -486,7 +484,7 @@ def build():
     make_square(S)
     S['rook'] = K.Rig(ROOKC, K.rook_head, coat=True)
     S['man'] = m = K.Rig(dict(top=JACKET, pants='5C5A44', hand='3A2A1E', boot='2A2018', fore=JACKET), gunner_head)
-    add('cube', FLEECE, (0, -0.28, 1.04), scale=(0.62, 0.24, 0.18), size=1, parent=m.body, rough=1.0)              # fleece collar
+    add('cube', FLEECE, (0, -0.22, 0.98), scale=(0.5, 0.16, 0.1), size=1, parent=m.body, rough=1.0)              # fleece collar
     for s in (-1, 1):
         add('cube', '8A7A4A', (s * 0.2, -0.36, 0.55), rot=(0, s * 0.25, 0), scale=(0.09, 0.03, 0.9), size=1, parent=m.body, rough=1.0)   # harness straps
     S['cast'] = add('cube', 'F4F2EC', (0, 0, -0.24), scale=(0.2, 0.2, 0.5), size=1, parent=m.el[1], rough=1.0)
@@ -732,7 +730,7 @@ def broken(S):
     """After the smash: the hole in the glass, ragged edges, glass on the floor, a shaft of light."""
     for o in S['holep']:
         o.hide_render = True
-    for o in S['edge'] + S['floorglass'] + [S['shaft']]:
+    for o in S['edge'] + S['floorglass']:
         o.hide_render = False
 
 
@@ -758,14 +756,14 @@ def limp(t, k=1.0):
 
 
 # ---------------------------------------------------------------- hook
-TURP = P('sit', aL=(1.25, 0.15, 1.2, 0.3), aR=(1.25, 0.15, 1.2, -0.3), lL=(1.9, 2.2), lR=(1.9, 2.2), lean=0.15, head=(0.05, 0.0))
+TURP = P('sit', aL=(1.0, 0.35, 1.3, 0.3), aR=(1.0, 0.35, 1.3, -0.3), lL=(1.2, 2.4), lR=(1.2, 2.4), lean=0.3, head=(0.05, 0.0))
 
 
 def in_turret(S, flinch=0.0, look=0.0):
     m = S['man']
     pose = dict(TURP)
     pose['head'] = (0.05 - 0.25 * flinch, look)
-    put(m, at(TUR, 0.0, -0.35, 0.25), 0.0, -0.45, 0.0, pose)
+    put(m, at(TUR, 0.0, -0.45, 0.2), 0.0, -0.2, 0.0, pose)
     return m
 
 
@@ -787,7 +785,7 @@ def turret_close(S, k, t, lt):
     m.face = 'wide' if kk < 0.6 else 'hard'
     m.jawv = 0.2 * fl
     h = head(m)
-    cam(S, plus(h, (0.35, -3.1 + 0.25 * kk, 0.15)), plus(h, (0.05, 0, -0.15)), 34)
+    cam(S, plus(h, (0.3, -3.3 + 0.3 * kk, 0.35)), plus(h, (0.05, 0, -0.35)), 36)
 
 
 def chute_rags(S, k, t, lt):
@@ -838,7 +836,7 @@ def roof_rook(S, t, look_up, talk=True):
     rk = S['rook']
     p = at(STA, 0.0, 6.0, 13.0)
     pose = blend(P('stand', head=(-0.45, 0.0), aL=(0.2, 0.3, 0.3), aR=(0.2, 0.3, 0.3)), P('hips', head=(0.1, 0.0)), 1 - look_up)
-    stand(rk, p, PI, pose)
+    stand(rk, p, 0.15, pose)
     return rk
 
 
@@ -855,7 +853,7 @@ def rook_ridge(S, k, t, lt):
     m.place(at(STA, -4.0, 46.0, 50.0 - 6 * k), 0.5 * t, -1.6, 0.4 * math.sin(t))
     m.apply(limp(t))
     h = head(rk)
-    cam(S, at(STA, 1.6, 1.2, 13.6), plus(h, (-0.2, 0.4, 1.4)), 24)
+    cam(S, at(STA, 1.2, 2.2, 13.7), plus(h, (-0.2, 0.4, 0.9)), 24)
 
 
 # ---------------------------------------------------------------- flak
@@ -872,7 +870,7 @@ def formation(S, k, t, lt):
         o.location = at(SKYO, p[0], p[1], p[2] + 0.6 * math.sin(t * 0.9 + i))
         o.rotation_euler = (0, 0.03 * math.sin(t + i), 0)
     clouds(S, SKYO, t, depth=-50, spread=320, vy=-30)
-    flak(S, at(SKYO, 0, 20, 2), t, (110, 70, 30), n=18, size=4.5, period=1.3)
+    flak(S, at(SKYO, -20, 30, 6), t, (120, 80, 34), n=18, size=2.6, period=1.3)
     shoot(S, SKYO, (lerp(70, 64, k), lerp(-40, -30, k), lerp(6, 4, k)), (-6, 14, 0), 28)
 
 
@@ -884,7 +882,7 @@ def flak_hit(S, k, t, lt):
     b.rotation_euler = (0.05 * j * math.sin(t * 40), 0.08 * j * math.sin(t * 33), 0)
     clouds(S, SKYO, t, depth=-60, spread=260, vy=-30)
     flak(S, at(SKYO, 0, 20, -10), t, (60, 60, 20), n=6, i0=8, size=3.0)
-    bp = at(SKYO, 2.6, 4.2, -4.2)
+    bp = at(SKYO, 3.4, 5.0, -4.6)
     u = (k - 0.28)
     if u > 0:
         f, o = S['flash'][0], S['puffs'][0]
@@ -892,11 +890,11 @@ def flak_hit(S, k, t, lt):
             fs = 2.6 * (0.6 + 4 * u)
             f.location, f.scale = bp, (fs, fs, fs)
             S['flamp'][0].location, S['flamp'][0].data.energy = bp, 50000 * (1 - u / 0.12)
-        s = 1.4 + 3.0 * sm(u * 2)
+        s = 0.8 + 1.8 * sm(u * 2)
         o.location, o.scale = plus(bp, (0.5 * u, 2 * u, 0)), (s, s, s)
         debris(S, wpos(b, (0.6, 2.6, -2.0)), u * 2.2, n=12, r=5.0, h=1.0, g=4.0, dirx=-1.0)
     smoke_trail(S, wpos(b, (0.3, 2.9, -2.2)), (0.0, 1.0, -0.1), t, n=6, i0=0, gap=1.2, size=0.5 * (k > 0.3))
-    shoot(S, SKYO, (3.6, -3.2, -5.6), (0.2, 2.4, -1.7), 26)
+    shoot(S, SKYO, (7.5, -7.5, -9.0), (0.6, 2.8, -1.6), 28)
 
 
 def turret_climb(S, k, t, lt):
@@ -906,7 +904,7 @@ def turret_climb(S, k, t, lt):
     u = act(k)
     m = S['man']
     pose = P('stand', aL=(1.3 - 0.6 * u, 0.55, 0.6 + 0.8 * (1 - u)), aR=(1.3 - 0.6 * u, 0.55, 0.6 + 0.8 * (1 - u)), lean=0.5 - 0.2 * u, head=(-0.25, 0.0))
-    m.place(at(FUS, 0.0, 1.6, lerp(-2.1, -0.4, u)), PI * 0.85, 0, 0)
+    m.place(at(FUS, 0.0, 1.6, lerp(-2.1, -0.4, u)), facing((0.0, 1.6), (1.5, -1.3)), 0, 0)
     m.apply(pose)
     m.face = 'hard'
     m.jawv = 0.25 + 0.15 * math.sin(lt * 8)
@@ -926,25 +924,26 @@ def chute_find(S, k, t, lt):
     sky(S, 'inside')
     S['flight'].data.energy = 220
     m = S['man']
-    stand(m, at(FUS, 1.0, -2.2, 0), -2.3, P('stand', aL=(1.05, -0.05, 0.9, 0.3), aR=(1.05, -0.05, 0.9, -0.3), head=(0.25 + 0.15 * sm((k - 0.4) / 0.3), 0.0)))
+    stand(m, at(FUS, 0.6, -2.6, 0), facing((0.6, -2.6), (-0.6, -5.6)), P('stand', aL=(0.75, -0.05, 1.0, 0.3), aR=(0.75, -0.05, 1.0, -0.3), head=(0.25 + 0.15 * sm((k - 0.4) / 0.3), 0.0)))
     m.face = 'wide' if k < 0.5 else 'sad'
     m.jawv = 0.3 if 0.35 < k < 0.6 else 0.05
     hl, hr = wpos(m.hands[0]), wpos(m.hands[1])
     pk = S['pack']
     pk.parent = None
-    pk.location = plus(((hl[0] + hr[0]) / 2, (hl[1] + hr[1]) / 2, (hl[2] + hr[2]) / 2), (0, 0, 0.05))
-    pk.rotation_euler = (0, 0, -2.3 + PI / 2)
+    pk.location = plus(((hl[0] + hr[0]) / 2, (hl[1] + hr[1]) / 2, (hl[2] + hr[2]) / 2), (0, 0, -0.25))
+    pk.rotation_euler = (0, 0, facing((0.6, -2.6), (-0.6, -5.6)) + PI / 2)
     u = sm((k - 0.3) / 0.6)
     for i, o in enumerate(S['rags']):
         o.location = (-0.15 - 0.1 * i * u, -0.3 + 0.075 * i, -0.4 - (0.5 + 1.0 * rnd(i, 46)) * u)
         o.rotation_euler = (0.4 * math.sin(t * 2.1 + i) * u, 0.3 * i * u, 0.3 * rnd(i, 47))
     rk = S['rook']
     jump = max(0.0, 1 - abs(k - 0.55) * 6)
-    stand(rk, at(FUS, -0.9, 0.2, 0), facing((-0.9, 0.2), (1.0, -2.2)) + 0.3, blend(P('stand'), P('scream'), jump))
+    stand(rk, at(FUS, -0.7, -0.4, 0), facing((-0.7, -0.4), (-0.9, -5.8)) + 0.2, blend(P('stand'), P('scream'), jump))
     S['rface'] = 'shocked' if k > 0.45 else 'calm'
     S['hat_jump'] = 0.35 * jump
     h = head(m)
-    cam(S, at(FUS, -1.0, -4.4, 2.3), plus(h, (-0.5, 0.6, -0.5)), 26)
+    hr_ = head(rk)
+    cam(S, at(FUS, -0.9, -5.8, 2.3), ((h[0] + hr_[0]) / 2, (h[1] + hr_[1]) / 2, (h[2] + hr_[2]) / 2 - 0.5), 26)
 
 
 def rook_silk(S, k, t, lt):
@@ -954,14 +953,14 @@ def rook_silk(S, k, t, lt):
     rk = S['rook']
     poke = sm(k / 0.35) * (1 - sm((k - 0.55) / 0.15))
     tap = sm((k - 0.6) / 0.2)
-    pose = P('stand', aL=(2.0, 0.25, 0.5), aR=(lerp(0.3, 1.6, poke), -0.1, lerp(0.4, 1.0, poke)), head=(-0.1, -0.35))
-    pose = blend(pose, P('tap', aL=(2.0, 0.25, 0.5), head=(0.1, -0.2)), tap)
+    pose = P('stand', aL=(1.3, 1.1, 0.3), aR=(lerp(0.3, 1.6, poke), -0.1, lerp(0.4, 1.0, poke)), head=(-0.1, -0.35))
+    pose = blend(pose, P('tap', aL=(1.3, 1.1, 0.3), head=(0.1, -0.2)), tap)
     stand(rk, at(FUS, 0.4, -2.4, 0), -1.0, pose)
     S['rface'] = 'low' if tap > 0.5 else 'calm'
     S['hat_tip'] = 0.3
     hl = wpos(rk.hands[0])
     s = S['silk']
-    s.location = plus(hl, (0.1, -0.1, 0.55))
+    s.location = plus(hl, (0.0, -0.1, -0.55))
     s.rotation_euler = (0.1 * math.sin(t * 2), 0.0, -1.0 + 0.1 * math.sin(t * 1.3))
     for i, o in enumerate(S['silkholes']):
         o.location = (-0.03, -0.25 + 0.17 * i, 0.4 - 0.3 * i)
@@ -1015,9 +1014,9 @@ def falling_man(S, o, t, spin=0.3):
 def fall_wide(S, k, t, lt):
     """From above: one limp figure turning slowly in open sky, cloud far below, the coast beyond."""
     sky(S, 'high')
-    clouds(S, FALLZ, t, vz=8, depth=-110, spread=300)
+    clouds(S, FALLZ, t, vz=8, depth=-90, spread=150)
     falling_man(S, FALLZ, t, 0.5)
-    cam(S, at(FALLZ, 3.0, 4.0, lerp(26, 22, k)), FALLZ, 30, roll=0.4 * t)
+    cam(S, at(FALLZ, 3.0, 4.0, lerp(30, 24, k)), FALLZ, 26, roll=0.4 * t)
 
 
 def rook_dive(S, k, t, lt):
@@ -1042,9 +1041,9 @@ def town_below(S, k, t, lt):
     S['hlamp'].data.energy = 2500
     z = lerp(150, 90, k)
     m = S['man']
-    m.place(at(STA, 0.0, 1.5, z), 0.2 * t, PI / 2 - 0.25, 0.1 * math.sin(t))
+    m.place(at(STA, 0.8, -1.2, z), 0.4, PI / 2 - 0.2, 0.1 * math.sin(t))
     m.apply(limp(t))
-    cam(S, at(STA, 0.6, -1.0, z + 7.5), at(STA, 0.0, 3.0, 0.0), 22, roll=0.25 * t)
+    cam(S, at(STA, 0.0, -2.6, z + 6.0), at(STA, 0.0, 2.0, 0.0), 22, roll=0.25 * t)
 
 
 def rook_look(S, k, t, lt):
@@ -1054,8 +1053,9 @@ def rook_look(S, k, t, lt):
     rk = S['rook']
     u = sm((k - 0.3) / 0.5)
     pose = blend(P('stand', head=(-0.5, 0.0)), P('scream', head=(-0.4, 0.0)), sm(k / 0.3))
-    stand(rk, at(STA, 0.0, 6.0 + 1.8 * u, 13.0 - 0.6 * u), PI + 0.3, pose)
-    rk.root.rotation_euler = (0.25 * u, 0, PI + 0.3)
+    yw = facing((0.0, 6.0), (2.6, 3.4))
+    stand(rk, at(STA, 0.0, 6.0 + 1.8 * u, 13.0 - 0.6 * u), yw, pose)
+    rk.root.rotation_euler = (-0.2 * u, 0, yw)
     S['rface'] = 'shocked'
     jp = sm(k / 0.25) * (1 - sm((k - 0.6) / 0.4))
     S['hat_jump'] = 0.9 * jp
@@ -1064,7 +1064,7 @@ def rook_look(S, k, t, lt):
     m.place(at(STA, -2.0, 18.0, lerp(44, 30, k)), 0.5 * t, -1.6, 0.4 * math.sin(t))
     m.apply(limp(t))
     h = head(rk)
-    cam(S, at(STA, 3.6, 2.2, 13.8), plus(h, (-0.6, 3.0, 1.6)), 22)
+    cam(S, at(STA, 2.4, 2.6, 14.3), plus(h, (-0.3, 1.0, 0.7)), 24)
 
 
 # ---------------------------------------------------------------- the smash
@@ -1085,15 +1085,15 @@ def smash(S, k, t, lt):
         S['flamp'][0].location = at(STA, 0, 0, 10.0)
         S['flamp'][0].data.energy = 40000 * max(0, 1 - u * 5)
         m = S['man']
-        m.place(at(STA, 0.3, 0.6, lerp(14.5, 2.5, u * 3.2)), 0.6, -1.3, 0.4)
+        m.place(at(STA, 0.6, 1.5, lerp(14.5, 8.0, u * 5)), 0.6, -1.3, 0.4)
         m.apply(limp(t))
-        if u > 0.33:
+        if u > 0.2:
             m.place(FAR)
     else:
         m = S['man']
         m.place(at(STA, 0.3, 0.6, 30 - 70 * (k)), 0.6, -1.3, 0.4)
         m.apply(limp(t))
-    cam(S, at(STA, -2.0, -5.5, 2.2), at(STA, 0.0, 0.0, 12.0), 20, roll=0.3)
+    cam(S, at(STA, -1.5, -7.0, 1.6), at(STA, 0.0, 0.5, 12.0), 22, roll=0.3)
 
 
 def shards(S, k, t, lt):
@@ -1106,10 +1106,10 @@ def shards(S, k, t, lt):
     lying(S)
     rk = S['rook']
     peek = 0.5 + 0.5 * math.sin(lt * 5)
-    stand(rk, at(STA, -3.0, -2.6, 0.7), facing((-3.0, -2.6), (-5.6, -9.5)) + 0.4,
+    stand(rk, at(STA, -3.0, -4.0, 0.7), facing((-3.0, -4.0), (1.6, -10.5)),
           P('stand', aL=(2.6, 0.5, 1.9, 0.3), aR=(2.6, 0.5, 1.9 - 0.4 * peek, -0.3), lift=-0.2, lean=0.2, head=(0.15, 0.0)))
     S['rface'] = 'shocked'
-    cam(S, at(STA, -5.8, -10.0, 1.9), at(STA, -1.2, -1.0, 3.2), 24)
+    cam(S, at(STA, 1.6, -10.5, 1.5), at(STA, -1.4, -1.8, 2.6), 24)
 
 
 def hole_up(S, k, t, lt):
@@ -1162,11 +1162,11 @@ def found(S, k, t, lt):
         else:
             kneel(rig, at(STA, kp[0], kp[1], 0), yw, 0.5 + 0.5 * math.sin(lt * 2 + j))
     rk = S['rook']
-    stand(rk, at(STA, -3.4, 1.6, 0.7), facing((-3.4, 1.6), (-0.4, -1.0)) - 0.5,
+    stand(rk, at(STA, -3.4, 0.6, 0.7), facing((-3.4, 0.6), (-0.4, -1.0)) - 0.9,
           P('stand', aR=(0.9, -0.25, 1.9, 0.6), head=(0.3, -0.3)))
     S['hat_off'], S['hat_to'] = 1.0, (0.15, -0.55, -1.0)
     S['rface'] = 'sad'
-    cam(S, at(STA, -2.6, lerp(-7.5, -6.0, k), 1.7), at(STA, -0.6, -0.4, 0.9), 26)
+    cam(S, at(STA, -2.6, lerp(-7.5, -6.0, k), 1.7), at(STA, -1.4, -0.4, 1.1), 26)
 
 
 def rook_shard(S, k, t, lt):
@@ -1184,7 +1184,7 @@ def rook_shard(S, k, t, lt):
     stand(rk, at(STA, -1.6, -4.0, 0.0), 0.35, pose)
     S['rface'] = 'shocked' if look > 0.5 else 'calm'
     hr = wpos(rk.hands[1])
-    S['shard'].location = plus(hr, (0, -0.1, 0.25)) if meas < 0.5 else FAR
+    S['shard'].location = plus(hr, (0.3, -0.25, 0.1)) if meas < 0.5 else FAR
     S['shard'].rotation_euler = (t * 2, 0.5, t)
     h = head(rk)
     cam(S, plus(h, (0.9, -2.8, lerp(-0.9, -1.3, look))), plus(h, (0.0, 0.0, lerp(-0.2, 1.2, look))), 26)
@@ -1206,11 +1206,11 @@ def stretcher(S, k, t, lt):
         rig.face = 'hard'
         rig.place(at(STA, 4.6, yy, 0.7), 0.0 if j == 0 else PI)
     m = S['man']
-    m.place(at(STA, 4.6, y + 1.3, 2.35), 0.0, -PI / 2, 0.0)
+    m.place(at(STA, 4.6, y - 1.3, 2.45), 0.0, -PI / 2, 0.0)
     m.apply(LIEP)
     m.face = 'shut'
     dust(S, at(STA, 3.0, y, 1.0), t, 3.0, 6.0)
-    cam(S, at(STA, -1.6, y - 1.0, 2.6), at(STA, 4.6, y, 2.0), 24)
+    cam(S, at(STA, -1.2, y - 2.0, 4.4), at(STA, 4.6, y, 2.0), 24)
 
 
 # ---------------------------------------------------------------- payoff
@@ -1236,9 +1236,9 @@ def doctor(S, k, t, lt):
     d = S['doc']
     b = sm(k / 0.3) * (1 - sm((k - 0.55) / 0.25))
     nod = max(0.0, math.sin((k - 0.8) / 0.2 * PI)) if k > 0.8 else 0.0
-    stand(d, at(HOS, 1.7, 1.6, 0), 1.75, P('stand', aR=(0.9 * b + 0.2, 0.1, 0.6), aL=(0.3, 0.1, 0.4), lean=0.55 * b, head=(0.3 * b + 0.35 * nod, 0.0)))
+    stand(d, at(HOS, -1.7, 1.9, 0), facing((-1.7, 1.9), (0.0, 1.6)), P('stand', aR=(0.9 * b + 0.2, 0.1, 0.6), aL=(0.3, 0.1, 0.4), lean=0.55 * b, head=(0.3 * b + 0.35 * nod, 0.0)))
     d.face = 'calm'
-    cam(S, at(HOS, 0.8, lerp(-4.0, -3.4, k), 3.3), at(HOS, 0.6, 1.9, 1.9), 26)
+    cam(S, at(HOS, 1.4, lerp(-2.6, -2.1, k), 3.1), at(HOS, -0.4, 2.2, 2.0), 26)
 
 
 def rook_bed(S, k, t, lt):
@@ -1301,7 +1301,7 @@ def wreath(S, k, t, lt):
     for i, o in enumerate(S['petals']):
         a = i * 2 * PI / 12
         o.location = (0.7 * math.cos(a) + 0.02 * math.sin(t * 3 + i), -0.12, 0.6 + 0.7 * math.sin(a))
-    cam(S, at(MEM, 1.9, lerp(-5.4, -4.9, k), 1.2), at(MEM, 0.4, -2.0, 1.25), 30)
+    cam(S, at(MEM, -1.4, lerp(-6.6, -6.0, k), 1.6), at(MEM, 0.6, -2.3, 1.4), 28)
 
 
 def signoff(S, k, t, lt):
