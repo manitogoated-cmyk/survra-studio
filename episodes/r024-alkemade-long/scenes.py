@@ -90,14 +90,14 @@ def wind_card(cv, c):
         Wd.glow(cv, 250 + 1400 * rn(i, 5), 140 + 600 * rn(i, 6), 110 + 140 * rn(i, 7), h('C8B890'), 0.3)
     for j in range(40):                                                   # the planned way home: dotted, east to west
         cv.drawCircle(1600 - 35 * j, 300, 6, P(INK))
-    plain(cv, 'THE WAY HOME', 1300, 270, 40, INK, 900)
+    plain(cv, 'THE WAY HOME', 1640, 270, 40, INK, 900)
     k = ease(c.k * 1.3)
     for i in range(5):                                                    # wind arrows from the north
-        x = 380 + 300 * i
+        x = 470 + 270 * i
         y0, y1 = 120 + 30 * rn(i, 8), lerp(260, 520, k) + 30 * rn(i, 9)
         cv.drawLine(x, y0, x - 40, y1, P(h('3A6E9A'), 22))
         cv.drawPath(poly([(x - 80, y1 - 10), (x + 2, y1 - 10), (x - 44, y1 + 60)]), P(h('3A6E9A')))
-    plain(cv, 'STRONG WIND', 420, 170, 46, h('2A5A8A'), 900)
+    plain(cv, 'STRONG WIND', 280, 245, 46, h('2A5A8A'), 900)
     for i in range(4):                                                    # the bombers drift south of the line
         x = 1450 - 300 * i - 260 * k
         y = 300 + (60 + 70 * i) * k + 12 * math.sin(c.t * 2 + i)
@@ -328,7 +328,7 @@ OVER = dict(bomber_wide=sparks, turret_fire=sparks, chute_burn=sparks, backflip=
             man_smile=dust, rook_hat=dust, search_wood=snow, harness=snow, wreck=snow, chute_pack=mist, four_stones=mist, signoff=closed,
             garden_wide=pollen, garden_close=pollen, field_dusk=dust, crew_seven=dust, takeoff=dust, stream=night, turret_calm=night, rack_calm=dust,
             gunner_face=sparks, cigarette=snow, whistle=snow, hospital=dust, witnesses=dust, camp_famous=dust, camp_wire=snow, long_march=snow,
-            home_may=petals, works=mist, tv_studio=dust, plaque=pollen)
+            home_may=petals, works=mist, tv_studio=dust, plaque=pollen, dawn_wood=snow)
 
 
 def THUMB(cv, c):

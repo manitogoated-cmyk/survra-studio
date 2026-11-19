@@ -2,21 +2,147 @@
  "id": "r024-alkemade-long",
  "format": "long",
  "case_of": "r024-alkemade",
- "status": "draft",
+ "status": "approved",
  "synthetic": false,
  "host": "rook",
  "case": 24,
- "title": "(draft) Nicholas Alkemade full case file",
+ "title": "He Fell 18,000 Feet With No Parachute: The Full Case of Nicholas Alkemade",
  "playlist": "Rook's Case Files (Full Cases)",
  "sources": [
   "https://www.rafmuseum.org.uk/blog/the-indestructible-alkemade/",
   "https://en.wikipedia.org/wiki/Nicholas_Alkemade",
   "https://www.bombercommandmuseumarchives.ca/s,alkemade.html",
+  "https://controltowers.co.uk/nicholas-alkemade-fell-18000-feet/",
+  "https://ww2gravestone.com/?p=33696",
   "https://www.airspacemag.com/daily-planet/parachuteless-freaks-170764598/",
   "https://www.wearethemighty.com/articles/nicholas-alkemade-parachute-survives/"
  ],
  "authoring": {
   "claimed_at": "2026-11-19T04:15:06Z",
-  "run": "scheduled long run, 19 Nov 2026"
+  "run": "scheduled long run, 19 Nov 2026 (oldest public or scheduled r-case with a world3d.py and no long version: r024-alkemade, scheduled 18 Nov 20:00 UTC)"
+ },
+ "description": "Case 024, the full case file. Before the war Nicholas Alkemade worked as a market gardener in Loughborough. By March 1944 he was 21 and a rear gunner in a Lancaster bomber of No. 115 Squadron RAF, a crew of seven. The rear turret was too cramped to wear a parachute in, so his was stowed in the fuselage just behind the turret. On the night of 24 March 1944 more than 800 bombers set out for Berlin; on the way home a strong wind pushed many of them off their course over Germany. Close to midnight a night fighter attacked, and the bomber caught fire and began to go down. When he went back for his parachute it was already burning, and the flames drove him back. He chose to jump rather than burn, and fell about 18,000 feet. Young pine trees and deep snow broke his fall. About three hours later he came round, saw stars through the trees, found his flying boots gone, and had burns, cuts and a twisted knee, but no broken bones. He lit a cigarette and blew his whistle. Local people found him and took him to hospital, and he was a prisoner. The Gestapo did not believe him and suspected he was a spy who had hidden his parachute, until the wood and the wreck were searched: his harness still had its lifting straps folded away, and in the wreck the ripcord handle was still in its container. At the camp where captured airmen were questioned, a certificate was drawn up, witnessed by British prisoners, recording that his claim was true in all respects. Among the prisoners he became famous. In the last winter of the war he was marched west with the others, and in May 1945 he went home. Four of his crew were killed: the pilot Jack Newman, Edgar Warren, Charles Hilder and John McDonough, who lie in Hanover War Cemetery; two others survived as prisoners. After the war he worked in the chemical industry, married and had a family, and told his story on British television. He died in June 1987, aged 64. In 2020 his old squadron named a building after him. Rook didn't believe it either.\n\nAnimated reconstruction of a true story, made with respect for the four men of the crew who died. The aircraft are generic low-poly shapes with no markings; nobody wears badges, insignia or symbols; nobody's likeness is attempted; none of the places is a model of the real one. The wind chart is a diagram, not a map. The typed sheet is a plain re-setting of the reported wording of the certificate, not a copy of the document, and the chalk drawing shows what his interrogators suspected, not what happened. Staging details such as the glasshouse, the airfield, how he leaves the turret, the rack, the rooms and huts, the camp, the lane, the works, the studio, the building and its plaque, the headstones and everything Rook does are reconstruction, not record. Narration is a synthetic voice (Kokoro).",
+ "tags": [
+  "Nicholas Alkemade",
+  "fell without a parachute",
+  "18,000 feet",
+  "RAF",
+  "Lancaster",
+  "rear gunner",
+  "tail gunner",
+  "115 Squadron",
+  "Bomber Command",
+  "1944",
+  "World War II",
+  "WW2",
+  "prisoner of war",
+  "survival",
+  "true story",
+  "survival story",
+  "full story",
+  "history",
+  "animated story",
+  "Rook",
+  "Survra"
+ ],
+ "hashtags": [
+  "#truestory",
+  "#survival",
+  "#history"
+ ],
+ "story_score": {
+  "curiosity": 9,
+  "stakes": 9,
+  "freshness": 7,
+  "story": 8,
+  "visual": 9,
+  "audience_fit": 8,
+  "payoff": 9,
+  "packaging": 9,
+  "research": 9,
+  "repeatability": 7,
+  "total": 84
+ },
+ "title_options": [
+  "He Fell 18,000 Feet With No Parachute: The Full Case of Nicholas Alkemade",
+  "His Parachute Was on Fire, So He Jumped Without One (The Full Case)",
+  "The Germans Certified It: He Fell 18,000 Feet and Lived. The Full Story",
+  "No Parachute, 18,000 Feet, One Twisted Knee: The Rear Gunner Who Fell and Lived"
+ ],
+ "spine": "v2",
+ "shown_moments": {
+  "cold open: the bomber on fire, the burning parachute, he jumps": "shots 1 to 3",
+  "Rook's doubt, in the scene": "shot 4 (Rook falling beside him: 'No parachute? No chance. Let's go back to the start.')",
+  "market gardener in Loughborough before the war": "shots 5 and 6 (the glasshouse)",
+  "twenty-one, rear gunner, 115 Squadron": "shot 7 (the airfield at dusk) with the labels 115 SQUADRON, RAF and REAR GUNNER, 21",
+  "the cramped turret; the parachute stowed behind the doors": "shots 8 to 10 (the turret with Rook squeezed on the tail; the pack in its rack, Rook points from it to the turret)",
+  "seven crew, 800+ bombers to Berlin, the strong wind": "shots 11 to 14 (the seven by their bomber; take-off; the stream; the drawn wind diagram)",
+  "the night fighter; the bomber catches fire": "shots 15 to 17",
+  "the parachute already on fire; the flames drive him back": "shots 18 and 19",
+  "burn or jump; quick and clean": "shots 20 and 21 (his face lit by the fire, eyes closing; the burning wing)",
+  "over the side, 18,000 feet up; he blacks out": "shots 22 to 25",
+  "Rook's sums": "shots 26 and 27",
+  "pines and deep snow": "shots 28 to 30",
+  "three hours later: stars, no boots, burns, cuts, twisted knee, nothing broken": "shots 31 to 34",
+  "the cigarette and the whistle": "shots 35 and 36",
+  "found, hospital, prisoner (re-hook at 95.5 s of 178.5 s, 53%)": "shots 37 and 38",
+  "the Gestapo don't believe him; spy": "shots 39 to 42 (the chalk card is headed WHAT THEY SUSPECTED)",
+  "go and look: harness straps folded, ripcord handle still in its container": "shots 43 to 47 (47 is the hush)",
+  "put in writing, witnessed by British prisoners; true in all respects": "shots 48 to 52",
+  "famous among the prisoners; marched west; home in May 1945": "shots 53 to 56",
+  "the four who died, Hanover; two more survived": "shots 57 to 59 (plain headstones, Rook's hat off; the seven remembered by their bomber). No one is shown dying.",
+  "chemical industry, family, television; died 1987 aged 64; the building in 2020": "shots 60 to 63 (the works; the studio; the empty wood at dawn, label 1922 - 1987; the plaque, nothing legible on it)",
+  "Case closed": "shots 64 and 65 (the board; Rook under the hole in the trees at dawn)"
+ },
+ "experiments": {
+  "spine": "v2 kept from the Short: cold open on the burning bomber, Rook's doubt falling beside him in the scene; then 'Let's go back to the start' and the story runs forward from the glasshouse to 2020, each jump carried by a label.",
+  "rook_action": "Detective actions: he raps the parachute pack and points from it to the turret (9), counts the crew (11), measures the drift (33), lifts and examines the harness (45), reads the certificate over the prisoners' shoulders (49). Mannerisms: brim low, beak tap, collar pop, hat leaving his head. No jokes from the night fighter onwards except his one line about the sums; hat off at the headstones and at the plaque."
+ },
+ "sound_plan": {
+  "first_frame": "One 'hit' at 0.03 s (the cannon strike), then rushing air; the hook text NO / PARACHUTE for 1.8 s.",
+  "music": "The engine's score follows the segment moods: calm for the garden, the airfield and the later life, tense and action for the raid and the fall, wonder for the wood, triumph for the certificate, sad for the choice and the crew. No drums under the sad segments.",
+  "effects": "One to three cues a shot, each tied to something visible.",
+  "hush": "One: shot 47 (the unopened pack in the wreck), before the certificate.",
+  "voice": "am_fenrir at 1.12; measured in the rehearsal (18.7 dB over the bed), not listened to."
+ },
+ "source_notes": "Read for this run on 19 Nov 2026 (six pages through a fetch tool: RAF Museum blog, Wikipedia, Bomber Command Museum of Canada, Control Towers, WW2 Gravestone, Wikipedia's Bombing of Berlin article; warhistoryonline failed to load and is not listed). The RAF Museum and Bomber Command Museum of Canada pages carry largely the same text and are counted as one source, so every fact added to the narration is on that text and at least one other page: market gardener in Loughborough (RAF Museum/BCMC, Control Towers); 115 Squadron, Lancaster, rear gunner, 21, crew of seven (all); turret too cramped for a parachute, stowed in the fuselage (all); more than 800 bombers to Berlin on 24 March (RAF Museum: 811; Control Towers: more than 800; Wikipedia and WW2 Gravestone call it a 300-bomber raid, so the figure is given as 800+ from the two pages that give the count); strong wind pushing returning bombers off course (RAF Museum, Control Towers); close to midnight, a night fighter attack, fire, going down (RAF Museum 'shortly before midnight', Control Towers 'close to midnight', Wikipedia); the parachute already burning and the flames driving him back (RAF Museum, Wikipedia 'beaten back by the flames', Control Towers); 'quick and clean' is his own phrase on the RAF Museum and Control Towers pages and is paraphrased, not quoted; he lost consciousness and came round about three hours later (RAF Museum, Control Towers; WW2 Gravestone 'when he came to his senses'); stars overhead (RAF Museum, WW2 Gravestone); flying boots gone (RAF Museum, Control Towers); burns, cuts, twisted knee, no broken bones (RAF Museum, Control Towers, Wikipedia 'only a sprained leg'); cigarette (RAF Museum, WW2 Gravestone, Control Towers); whistle (RAF Museum, Control Towers); found by local civilians and taken to hospital (RAF Museum, Control Towers: Meschede); Gestapo disbelief and spy suspicion (RAF Museum, Control Towers, Wikipedia 'initially suspicious'); harness lift webs still stowed and ripcord handle still in its container in the wreck (RAF Museum, Control Towers); certificate drawn up at Dulag Luft, witnessed by British prisoners including the senior British officer (RAF Museum, Control Towers), wording quoted on RAF Museum/BCMC and in the Short's sources; famous among prisoners (RAF Museum 'minor celebrity', Wikipedia 'celebrated prisoner of war'); marched west in the last winter (RAF Museum, Control Towers); home in May 1945 (Wikipedia, Control Towers, WW2 Gravestone); crew names and Hanover War Cemetery (RAF Museum, Wikipedia, WW2 Gravestone); two others survived as prisoners (RAF Museum names Cleary and Burwell; Control Towers 'two others'); chemical industry (Wikipedia, Control Towers, WW2 Gravestone, RAF Museum); married with a family (RAF Museum, Control Towers); British television (Wikipedia, Control Towers); died 22 June 1987 aged 64 (Wikipedia, WW2 Gravestone, Control Towers); 115 Squadron named a building after him in 2020 (Wikipedia, Control Towers). Kept out because single-sourced or disputed: the attack 'from below', the turret being swung round and the back-flip exit, falling head first and at 120 mph (all RAF Museum/BCMC text only; the first draft narrated some of these and was changed), the Gestapo laughing, the aircraft's name and serial, 14 operations, the snow depth, the 20 yards to open ground, the wreck 20 miles away, three weeks in hospital, the camp's name (Stalag Luft III on two pages, Stalag Luft I on Wikipedia), his birth date and birthplace (pages differ), the later accidents at the chemical works, the furniture job, the 72 bombers lost. Staging that is not fact: the glasshouse, the airfield and its hangar, the crew line-up, how he leaves the turret, the rack, the hospital room and guard, the hut, the camp, the lane, the works, the studio, the building and plaque, the headstones, and everything Rook does.",
+ "thumbnail": {
+  "hook": "NO / PARACHUTE / 18,000 FT",
+  "still": "world3d.STILLS['thumb']: the gunner in the open turret, face lit orange by the fire, right of frame",
+  "checked": "1280x720: words inside the frame on the left, off his face; three versions, the first two were too dark and too close (bomber filling the frame, then his face cut by the frame) and were reframed and relit"
+ },
+ "quality_gate": {
+  "method": "Round 1: low-res contact sheet of all 61 3D shots in three parts plus the composite sheet of cards, captions and labels. Found and fixed: the garden close-up shot from behind his head; the airfield too dark to read; the crew line-up filmed from under the bomber's wing (moved in front of the nose, twice); the bomber stream too dark (moonlight made a sun lamp); Rook's head cut off on the tail; the hospital guard lying on the floor and then blocking the lens; the British prisoners standing with their backs to the table; Rook hidden behind them and behind the marching column; the lane filmed from behind with the kitbag on his head; Rook out of frame in the studio; the 'dies in 1987' shot (Rook's head poking into the stars) replaced by an empty wood at dawn; the falling man gone from the wider 16:9 frame in the jump (the drop now takes the whole shot). Round 2: the changed shots again. Round 3: thumbnail, three versions. Round 4: full rehearsal at 384x216, 4 samples, 8 fps, every 3D frame (1,397), composited with captions, labels, cards and sound and run through the real gate: it failed on three static stretches (the airfield, the turret and rack, the headstones) and a weak first second. Fixed in the film, not the gate: stronger camera swings and a brighter rack, a faster opening move; rehearsal 2 failed only the opening, rehearsal 3 passed. Round 5: the whole rehearsal reviewed as 1-frame-a-second sheets (179 frames); the two certificate shots swapped so the German writing comes before the British witnesses, and the wind diagram's labels moved off the arrows; rehearsal 4 passed.",
+  "gate": "Local gate PASS on rehearsals 3 and 4: 65 shots, mean 2.75 s, longest 4.28 s, first shot 1.77 s with an impact at 0.03 s, Rook acting in 30 of 65 shots (46%), -14.6 LUFS, peak -1.2 dBFS, voice 18.7 dB over the bed, closest match to any earlier episode 0.80 (shot 12 against r003-lemons-long; the limit is 0.93). Duration 178.5 s. The local fingerprint file was deleted, not committed; the cloud render runs the real gate at 60 fps.",
+  "build": "The scene build now copies one prototype mesh per primitive shape instead of calling the Blender add operator for every object (identical geometry, materials and bevels): the build fell from over ten minutes to about 15 seconds, which also matters for the 16 parallel cloud jobs. The Short's code above the extension is byte-for-byte unchanged.",
+  "not_met": "The audio was measured, not listened to. Every frame was looked at only at low resolution; there were no full-resolution stills of the new shots. The new sets are simple (the studio, the works and the building especially), and several Short shots were staged for 9:16 and are only re-lensed for 16:9. The 13-category score below was given from sheets and the rehearsal, not playback."
+ },
+ "checklist": {
+  "A_story": "done: the Short's score stands (84/100, curiosity 9, story 8, payoff 9); spine v2; shown_moments lists every narrated moment; every added fact on two or more pages read this run (source_notes)",
+  "B_storyboard": "done: 65 shots, every shot has action, camera and sound cue; no kind more than three times or twice in a row; 20 new 3D kinds",
+  "B2_retention": "done: hook_text NO|PARACHUTE; re-hook at 53%; one hush; camera never frozen",
+  "C_previews": "partly: three contact-sheet rounds, four rehearsals at low resolution, thumbnail checked at 1280x720; see quality_gate.not_met",
+  "D_render": "engine defaults untouched (60 fps, 16 jobs in the workflow); low settings were used only for local review",
+  "E_sound": "voice am_fenrir; one hush; voice 18.7 dB over the bed; not listened to",
+  "F_captions": "done: captions in the band, labels top right, cards keep both clear; on-screen dates, names and figures checked against the sources",
+  "G_final": "local gate PASS; the full-resolution render and the real gate happen in the workflow"
+ },
+ "review": {
+  "scores_13": {
+   "story": 4,
+   "hook": 4,
+   "character_acting": 3,
+   "animation": 3,
+   "art_direction": 3,
+   "lighting": 3,
+   "camera": 3,
+   "pacing": 4,
+   "editing": 4,
+   "narration": 3,
+   "sound": 3,
+   "captions_graphics": 4,
+   "respect_accuracy": 5
+  },
+  "weakest": "The new interiors and the later-life sets are plain; faces are small in the wide shots of the airfield, the march and the lane; the hat-off pose shows the hat as a disc in front of Rook (as in the Short); the turret shots are dark; narration and sound were measured, not heard."
  }
 }

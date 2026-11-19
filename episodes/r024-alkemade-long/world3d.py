@@ -1850,9 +1850,9 @@ def rack_calm(S, k, t, lt):
     """Inside the fuselage, just behind the turret doors: the parachute pack in its rack, dim blue light. Rook steps in, raps the pack
     with a knuckle and points from it back towards the turret: there, and he's here."""
     sky(S, 'room')
-    glow(S, 0, at(BAY, -0.4, -2.0, 2.6), 160, 0.0)
+    glow(S, 0, at(BAY, -0.4, -2.0, 2.6), 420, 0.0)
     S['flamp'][0].data.color = (0.6, 0.75, 1.0)
-    glow(S, 1, at(BAY, 2.5, -2.4, 1.0), 90, 0.0)
+    glow(S, 1, at(BAY, 2.5, -2.4, 1.0), 260, 0.0)
     S['flamp'][1].data.color = (0.6, 0.75, 1.0)
     rk = S['rook']
     rk.place(at(BAY, lerp(4.2, 2.3, sm(lt / 0.8)), -1.3, -0.0), facing((2.3, -1.3), (0.0, 0.3)))
@@ -1860,7 +1860,7 @@ def rack_calm(S, k, t, lt):
     pt = sm((lt - 1.8) / 0.4)
     rk.apply(blend(blend(K.walk(t, 1.3), P('point', aR=(1.2, 0.1, 0.4)), sm((lt - 0.6) / 0.3)), P('point', aR=(1.5, -0.9, 0.05), head=(0.0, 0.8)), pt))
     S['rface'] = 'calm'
-    shoot(S, BAY, (lerp(-1.6, -1.2, k), lerp(-6.2, -5.4, k), lerp(2.0, 1.8, k)), (1.0, 0.0, 1.6), 30)
+    shoot(S, BAY, (lerp(-2.4, -0.6, k), lerp(-6.4, -4.8, k), lerp(2.4, 1.7, k)), (lerp(0.4, 1.4, k), 0.0, 1.6), 30)
 
 
 def gunner_face(S, k, t, lt):
