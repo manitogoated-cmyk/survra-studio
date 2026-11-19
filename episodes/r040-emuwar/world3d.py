@@ -37,7 +37,7 @@ HOST = {'rook_jam', 'rook_truck', 'rook_paper', 'pack_up', 'emu_tank', 'farmers_
         'rook_squint', 'fence_build', 'fence_face', 'rook_question'}
 CAMFILL = {'*': 90, 'dam_mob': 40, 'wheat_raid': 0, 'truck_chase': 30, 'weeks_sun': 0, 'gun_hide': 70, 'press_drop': 150,
            'rook_paper': 200, 'major_report': 160, 'ledger': 90, 'casings': 110, 'rook_tens': 190, 'rook_squint': 170,
-           'pack_up': 120, 'fence_face': 160, 'rook_question': 200, 'round_two': 80, 'recalled': 130}
+           'pack_up': 320, 'fence_face': 160, 'rook_question': 200, 'round_two': 80, 'recalled': 130}
 ROOKC = dict(top='566178', belt='3E4658', lap='6B7690', pants='2A2742', hand='2F2B4D', boot='8A90A6')
 KHAKI, KHAKI2, DRAB = 'A8915E', '8E7A4E', '5C6142'
 WHEAT, WHEAD, EARTH, RED = 'B8963E', 'E2BE5E', 'A8744A', '9A5A36'
@@ -301,9 +301,9 @@ class Emu:
         self.body.location.z = 1.68 + 0.08 * run * abs(math.cos(ph)) - 0.04 * run + 0.06 * up
         self.body.rotation_euler = (0.12 * run - 0.18 * up + 0.12 * dip, 0, 0.04 * run * math.sin(ph))
         pump = 0.1 * run * math.sin(2 * ph)
-        self.nb.rotation_euler = (0.35 + 0.3 * run + 1.05 * dip - 0.35 * up + pump, 0, look * 0.4)
-        self.nu.rotation_euler = (-0.25 - 0.2 * run + 0.55 * dip + 0.15 * up - pump * 0.6, 0, look * 0.6)
-        self.hd.rotation_euler = (-0.1 - 0.4 * dip, tilt, 0)
+        self.nb.rotation_euler = (0.35 + 0.3 * run + 0.85 * dip - 0.35 * up + pump, 0, look * 0.4)
+        self.nu.rotation_euler = (-0.25 - 0.2 * run + 1.65 * dip + 0.15 * up - pump * 0.6, 0, look * 0.6)
+        self.hd.rotation_euler = (-0.1 - 1.3 * dip, tilt, 0)
 
 
 def gait(t, speed, off):
@@ -572,7 +572,7 @@ def make_field(S):
     # wheat: the dam paddock (around the ambush), the gate, the camp, the chase stretch of the track
     S['sway'] = []
     ko = [(DAM[0], DAM[1], 17.5), (GUN[0], GUN[1] - 2.5, 4.0), (GUN[0] + 4.0, GUN[1] - 2.5, 4.0), (GUN[0] + 6.0, GUN[1] - 5.0, 3.5), (GUN[0] - 3.0, GUN[1] - 1.0, 2.5),
-          (13.0, 27.0, 4.5), (16.5, 32.0, 3.5), (39.5, 67.0, 5.2)]
+          (13.0, 27.0, 4.5), (16.5, 32.0, 3.5), (39.5, 67.0, 5.2), (3.4, 22.6, 2.4)]
     for i in range(6):
         for j in range(5):
             x0, y0 = -6 + 4 * i, 12 + 4 * j
@@ -941,15 +941,17 @@ def gun_hide(S, k, t, lt):
 
 
 def gunner_eyes(S, k, t, lt):
-    """Close on the gunner's face behind the stock, eyes narrowing; the sergeant beside him holds up a flat hand: wait."""
+    """Close on the gunner's face behind the stock, eyes narrowing as he tracks the birds; the sergeant beside him lifts a flat hand: wait."""
     sky(S, 'day')
     gun_scene(S, t)
     g = S['gunner']
-    g.face = 'squint' if lt > 0.6 else 'hard'
-    put(S, S['sarge'], FIELD, GUN[0] + 1.35, GUN[1] - 1.75, 0.1, PI - 0.25, P('stand', **CROUCH, aR=(2.3, 0.35, 0.6, -0.8), head=(0.0, 0.3)), 'hard')
+    put(S, g, FIELD, GUN[0] + 0.05, GUN[1] - 2.05, 0.15, PI, P('stand', **dict(AIM, head=(0.15 + 0.05 * math.sin(lt * 3), lerp(0.3, -0.2, sm(k))))), 'squint' if lt > 0.6 else 'hard')
+    hand = sm(lt / 0.6)
+    put(S, S['sarge'], FIELD, GUN[0] + 1.35, GUN[1] - 1.75, 0.1, PI - 0.25, P('stand', **CROUCH, aR=(lerp(0.9, 2.3, hand), lerp(0.1, 0.35, hand), lerp(1.3, 0.6, hand), -0.8 * hand), head=(0.0, lerp(0.0, 0.35, hand))), 'hard')
     h = head(S, g)
     key(S, FIELD, (h[0] - 2, h[1] + 3, h[2] + 0.5), h, 600)
-    shoot(S, (0, 0, 0), (h[0] - lerp(2.0, 1.7, k), h[1] + lerp(2.9, 2.5, k), h[2] - 0.55), (h[0] + 0.45, h[1], h[2] - 0.05), 32)
+    q = sm(k)
+    shoot(S, (0, 0, 0), (h[0] - lerp(2.6, 1.3, q), h[1] + lerp(3.4, 2.4, q), h[2] - lerp(0.75, 0.4, q)), (h[0] + lerp(0.7, 0.35, q), h[1], h[2] - 0.1), 32)
 
 
 def jam(S, k, t, lt):
@@ -1164,7 +1166,7 @@ def pack_up(S, k, t, lt):
         e = S['emus'][n]
         e.place(at(FIELD, ex, ey, 0), yaw)
         e.pose(0.0, 0.0, look=0.15 * math.sin(t * 1.3 + n), tilt=0.15 * math.sin(t * 0.9 + n * 2), up=0.4)
-    key(S, FIELD, (18, TRACK - 6, 5), (8, TRACK, 2), 500, 'FFB878')
+    key(S, FIELD, (24, TRACK - 4, 6), (10, TRACK, 2.5), 2600, 'FFC898')
     shoot(S, FIELD, (lerp(21.0, 20.4, k), TRACK - 0.3, 1.6), (lerp(4.0, 2.0, k), TRACK, 2.6), 36)
 
 
@@ -1304,26 +1306,27 @@ def ledger(S, k, t, lt):
 
 
 def casings(S, k, t, lt):
-    """An ammunition box tips over and a heap of brass cases pours out across the table, glinting in the lamplight. (hush)"""
+    """An ammunition box tips over and brass cases pour out across the table, rolling and glinting in the lamplight. (hush)"""
     sky(S, 'tent')
     tentlight(S, 340)
-    tip = sm(lt / 0.35)
+    tip = sm(lt / 0.5)
     S['abox'].location = at(TENT, -0.9, 0.2, 1.27)
     S['abox'].rotation_euler = (0, lerp(0.0, -1.75, tip), 0.2)
     for i, c in enumerate(S['cases']):
-        f = max(0.0, lt - 0.2 - 0.012 * i)
+        f = max(0.0, lt - 0.25 - 0.032 * i)
         if f <= 0:
             c.location = at(TENT, -0.9 + 0.1 * (rnd(i, 1) - 0.5), 0.2 + 0.1 * (rnd(i, 2) - 0.5), 1.4)
             continue
-        dist = min(1.0, f * 1.6)
+        dist = min(1.0, f * 1.1)
         ang = 0.9 * (rnd(i, 3) - 0.5)
         L = 0.4 + 1.3 * rnd(i, 4)
         x = -0.75 + math.cos(ang) * L * sm(dist)
         y = 0.2 + math.sin(ang) * L * sm(dist) * 1.3 - 0.3 * rnd(i, 5)
         z = 1.3 + 0.25 * max(0.0, 1 - dist * 3) + 0.03
         c.location = at(TENT, x, y, z)
-        c.rotation_euler = (PI / 2, 0, ang + f * 12 * (1 - dist) + rnd(i, 6) * 3)
-    shoot(S, TENT, (lerp(1.9, 1.6, k), lerp(-1.5, -1.25, k), 1.75), (-0.2, 0.15, 1.3), 30)
+        c.rotation_euler = (PI / 2, 0, ang + f * 14 * (1 - dist) + rnd(i, 6) * 3)
+    q = sm(k)
+    shoot(S, TENT, (lerp(2.0, 1.1, q), lerp(-1.7, -1.2, q), lerp(1.95, 1.62, q)), (lerp(-0.4, 0.0, q), 0.15, 1.3), 30, roll=lerp(-0.05, 0.03, q))
 
 
 # ---------------------------------------------------------------- suspiciously tidy
@@ -1343,7 +1346,7 @@ def lay_rows(S, rows, part, x0=-0.9, y0=-0.45):
 
 
 def rook_tens(S, k, t, lt):
-    """Rook at the table slides brass cases into neat rows of ten with a wingtip, counts the last one and taps his beak."""
+    """At the end of the camp table Rook slides brass cases into neat rows of ten with a wingtip, counts the last one and taps his beak."""
     sky(S, 'tent')
     tentlight(S, 300)
     part = min(10, int(lt * 7) + 4)
@@ -1354,25 +1357,27 @@ def rook_tens(S, k, t, lt):
         c.location = at(TENT, -0.9 + 0.09 * part + 0.25 * (1 - sm(slide)), -0.45 + 0.64, 1.33)
         c.rotation_euler = (PI / 2, 0, 0)
     tap = lt > 1.2
-    r = put(S, S['rook'], TENT, -0.35, -1.45, 0.0, 0.15, P('tap', head=(0.1, -0.1)) if tap else P('point', aR=(1.2, -0.1, 0.5), aL=(0.4, 0.2, 1.6, 1.0), head=(0.35, 0.15), lean=0.2), 'squint' if tap else 'calm')
+    r = put(S, S['rook'], TENT, -1.85, -0.15, 0.0, PI / 2 - 0.15, P('tap', head=(0.1, 0.25)) if tap else P('point', aR=(1.15, 0.1, 0.5), aL=(0.4, 0.2, 1.6, 1.0), head=(0.45, 0.1), lean=0.25), 'squint' if tap else 'calm')
     S['hat_tip'] = -0.1
     h = head(S, r)
-    key(S, TENT, (h[0] + 0.6, h[1] - 1.6, h[2] + 0.2), h, 320, 'FFC890')
-    shoot(S, (0, 0, 0), (h[0] + lerp(2.0, 1.7, k), h[1] - lerp(2.2, 1.9, k), h[2] - 0.45), (h[0] - 0.2, h[1] + 0.5, h[2] - 0.7), 30)
+    key(S, TENT, (h[0] + 1.6, h[1] - 1.0, h[2] + 0.4), h, 320, 'FFC890')
+    q = sm(k)
+    shoot(S, TENT, (lerp(0.75, 0.5, q), lerp(-1.75, -1.5, q), lerp(2.55, 2.4, q)), (-1.2, -0.05, lerp(1.85, 1.95, q)), 28)
 
 
 def rook_squint(S, k, t, lt):
-    """Close on Rook in the lamplight: he lifts his brim with one finger, raises one brow and narrows his eyes at us."""
+    """Close on Rook in the lamplight at the end of the table: he lifts his brim with one finger, raises one brow and narrows his eyes at us."""
     sky(S, 'tent')
     tentlight(S, 280)
     lay_rows(S, 5, 10)
     u = sm(lt / 0.5)
-    r = put(S, S['rook'], TENT, -0.35, -1.45, 0.0, PI * 0.05, blend(P('stand', head=(0.1, 0.0)), P('hat', head=(0.0, 0.0)), u), 'squint')
+    r = put(S, S['rook'], TENT, -1.85, -0.15, 0.0, facing((-1.85, -0.15), (-0.5, -1.15)), blend(P('stand', head=(0.1, 0.0)), P('hat', head=(0.0, 0.0)), u), 'squint')
     S['brow1'] = sm((lt - 0.3) / 0.3)
     S['hat_tip'] = lerp(0.4, -0.25, u)
     h = head(S, r)
-    key(S, TENT, (0.8, -3.2, 2.9), h, 200, 'FFC890')
-    shoot(S, (0, 0, 0), (h[0] + 0.15, h[1] - lerp(2.4, 1.9, k), h[2] + 0.05), (h[0], h[1], h[2] - 0.05), 45)
+    key(S, TENT, (0.6, -2.0, 2.6), h, 220, 'FFC890')
+    dd = lerp(1.75, 1.45, k)
+    shoot(S, (0, 0, 0), (h[0] + 0.8 * dd + 0.1, h[1] - 0.6 * dd, h[2] - 0.12), (h[0], h[1], h[2] - 0.05), 40)
 
 
 # ---------------------------------------------------------------- the end
