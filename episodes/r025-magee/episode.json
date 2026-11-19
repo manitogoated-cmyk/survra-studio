@@ -1,7 +1,7 @@
 {
  "id": "r025-magee",
  "format": "short",
- "status": "draft",
+ "status": "approved",
  "synthetic": false,
  "host": "rook",
  "case": 25,
@@ -102,5 +102,55 @@
  "authoring": {
   "claimed_at": "2026-11-19T04:15:19Z",
   "run": "scheduled short run, 19 Nov 2026; first slate idea was case 023, already claimed seconds earlier by a parallel run, so this run took case 025"
+ },
+ "quality_gate": {
+  "method": "One run, seven review rounds. Rounds 1 to 3: low-res contact sheets of all 29 3D shots (one frame each), plus targeted re-renders. Found and fixed: a town house generated inside the station hall that blocked four shots (the exclusion test ran before the coordinate shift); the hole in the glass roof never opening (off-by-one bay index); the gunner's knees and an oversized star of cracks covering his face in the opening; light shafts and smoke spheres washing out the fuselage; a fleece collar reading as a block over his mouth; the parachute pack covering his face and Rook hidden behind him in the pack shot; the gunner's back to the camera climbing out of the hatch; the silk strip and the glass shard covering Rook's face; the doctor with his back to us and then out of frame; the man missing from the stretcher; Rook out of frame in the finding shot; a white light cone reading as a blob (removed); parked props visible in downward views (moved further away). Round 4: full-length rehearsal (216x384, 4 samples, 12 fps, all 526 3D frames) composited with captions, labels, overlays, the board and sound, reviewed as a 4-frames-per-second sheet (172 frames). Found and fixed: two static stretches flagged by the gate (camp fence, memorial; both given real camera moves and acting), two labels running off the frame (shortened), the men in the finding shot walking in right past the lens (now from the far end), Rook's hat brim hiding his face in the dive and on the roof, the board's chalked facts too close to the caption band. Round 5: second rehearsal, changed ranges looked at at 4 fps; gate PASS. Round 6: seven stills at 720x1280 with production samples (opening frame, the pack, the finding, the shard, the doctor, the sign-off, the loop frame): the opening flak flash blew the face out to orange at full resolution (the low-res pass hid it), so it was cut by three quarters and re-checked at full resolution. Round 7: third rehearsal with the re-lit opening and loop; local gate PASS: 30 shots, mean 1.43 s, longest 1.84 s, Rook acting in 13 of 30 shots (43%), -14.8 LUFS, peak -1.3 dBFS, voice 15.8 dB over the bed, closest match to any earlier episode 0.72 (shot 7 against r004-packard; the limit is 0.93). Duration 42.9 s. The cloud render runs the real gate at 720x1280 and 60 fps.",
+  "gate_history": "Rehearsal 1 failed on two static stretches: 34.0 to 35.5 s (camp fence) and 35.7 to 37.3 s (memorial). Fixed in the film, never in the gate: the camp shot tracks along and in, the gunner turns to Rook and Rook leans towards him in heavier snow; the memorial is a strong push-in while Rook bows and brings his hat to his chest. Rehearsals 2 and 3 passed.",
+  "checked": "Every 3D kind in the storyboard exists in world3d.SHOTS3D and the board in scenes.SHOTS (checked by script); HOST lists the 13 kinds in which Rook is placed; turret_close is the only kind used twice (first and last shot, for the loop) and no kind repeats back to back. First shot 1.09 s with a story impact sound at 0.04 of it. The doubt line is 1.2 s and is spoken on the roof with the falling figure in frame. Re-hook ('And right below him: the railway station.') starts at 18.5 s of 42.9 s (43%). One hush shot (19). Tail 0.4 s; last shot is the opening played back to its first frame (it differs from the first frame only by the hook title). On-screen dates, names and figures (3 JANUARY 1943, ST-NAZAIRE, FRANCE, SGT ALAN MAGEE, 22,000 FEET, NO PARACHUTE, 28 SHRAPNEL WOUNDS, MILITARY DOCTOR, PRISONER UNTIL MAY 1945, 7 OF THE 10 CREW DIED, ST-NAZAIRE, 1993) checked against the sources. No death or wound is shown, nothing graphic appears, and no flag, emblem, insignia, marking, inscription or likeness appears anywhere.",
+  "not_met": "The audio was measured, not listened to; loudness range was not measured (earlier Shorts measure about 2.5 LU against the checklist's 4 LU, the engine's mix). Preview stills at 20% and 80% of every shot were not made: every shot was looked at on three contact sheets and at four frames a second in rehearsals at low resolution, plus nine stills at 720x1280. The cloud render is the first full-resolution, 60 fps pass. The 13-category score was given from stills and sheets, not playback. Kokoro's reading of 'Saint-Nazaire' could not be heard."
+ },
+ "checklist": {
+  "A_story": "done: score 81/100 with curiosity 9, story 8, payoff 7; spine v2; shown_moments lists every narrated moment",
+  "B_storyboard": "done: every shot has action, expression, camera and sound cue; Rook's mannerisms are hat brim low (5), hat hop (9, 16), beak tap (10), lifting the brim and nodding (24), hat off (20, 26, 27) and pocketing the shiny shard (28); detective actions are examining the holed silk (10) and measuring the hole in the roof with a shard in hand (21); no neutral poses under action lines",
+  "B2_retention": "done: hook_text set; first frame is the gunner's face close behind the turret window in the flak flash; re-hook at 43%; one hush; tail 0.4 s with the loop",
+  "C_previews": "partly: contact sheets and three rehearsals at low resolution, nine stills at 720x1280; no blown-out or crushed frame where the story has to be seen (the opening flash was toned down after the full-resolution check); Rook on-model; see quality_gate.not_met",
+  "D_render": "engine defaults untouched (60 fps, 720x1280, 16 jobs in the workflow); the local rehearsals used low settings only for review",
+  "E_sound": "voice am_fenrir; no drum loop under the sad segment; voice 15.8 dB over the bed; loudness range not measured, see quality_gate.not_met",
+  "F_captions": "done: two long labels shortened so none leaves the frame; the board keeps its text below the caption band; on-screen dates, names and figures checked against sources",
+  "G_final": "rehearsal reviewed as a 4 fps sheet of the whole video and full-resolution stills; local gate PASS on rehearsals 2 and 3; the full-resolution render and the real gate happen in the workflow"
+ },
+ "review": {
+  "notes": [
+   "0.0 to 1.1 s: the gunner's face behind the turret window, orange flak flash, cracks spreading; hook title above",
+   "1.1 to 2.6 s: the torn pack on its hook, silk spilling; 2.6 to 4.2 s: the bomber rolling over in smoke, a tiny figure falling away",
+   "4.2 to 5.8 s: straight down at the station roof among the town; 5.8 to 7.0 s: Rook on the roof ridge, 'Through glass? No chance.'",
+   "7.0 to 8.3 s: the formation in flak, 3 JANUARY 1943; 8.3 to 9.5 s: the burst beside the ball turret",
+   "9.5 to 12.1 s: he climbs out of the hatch; the pack falls open in rags, Rook's hat hops",
+   "12.1 to 13.6 s: Rook examines the holed silk, beak tap; 13.6 to 14.7 s: he blacks out",
+   "14.7 to 15.9 s: thrown clear; 15.9 to 18.5 s: the fall over cloud, 22,000 FEET; Rook diving, hat clamped",
+   "18.5 s: re-hook, straight down past his boots at the station; 20.1 to 21.6 s: Rook on the roof, hat jumps",
+   "21.6 to 24.0 s: the roof bursts; glass pours down, Rook shielding his head",
+   "24.0 to 25.5 s: hush, the hole in the roof; 25.5 to 27.1 s: men kneel beside him, his hand moves, Rook hat to chest",
+   "27.1 to 30.5 s: Rook and the shard, measuring the hole; the stretcher",
+   "30.5 to 33.7 s: the doctor at the bed; Rook nods; 33.7 to 35.5 s: at the wire in the snow",
+   "35.5 to 38.6 s: the memorial stone, hat off; a flower on the wreath",
+   "38.6 to 40.3 s: Rook pockets the shard, 'Case closed.'; 40.3 to 41.7 s: the board; 41.7 to 42.9 s: back to the opening frame"
+  ],
+  "scores_13": {
+   "story": 4,
+   "hook": 4,
+   "character_acting": 3,
+   "animation": 3,
+   "art_direction": 3,
+   "lighting": 3,
+   "camera": 3,
+   "pacing": 4,
+   "editing": 4,
+   "narration": 3,
+   "sound": 3,
+   "captions_graphics": 4,
+   "respect_accuracy": 5
+  },
+  "weakest": "The opening is a close-up through a round window, so the flak is a light and a crack rather than a visible burst. Flak bursts are faceted black spheres and read as stylised. Rook's hat, when it hops or is held to his chest, reads as a black disc. The fall shots over cloud are thin on detail; the station's glass reads mainly through its frames. Narration and sound were measured, not heard."
  }
 }

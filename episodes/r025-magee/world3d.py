@@ -775,7 +775,7 @@ def turret_close(S, k, t, lt):
     S['tlamp'].data.energy = 60
     flak(S, at(TUR, 0, 30, 6), t, (40, 10, 18), n=6, size=3.0)
     S['flamp'][0].location = at(TUR, 1.6, -4.0, 1.4)
-    S['flamp'][0].data.energy = 9000 * math.exp(-kk * 9) + 300 * (0.5 + 0.5 * math.sin(t * 17))
+    S['flamp'][0].data.energy = 2200 * math.exp(-kk * 8) + 200 * (0.5 + 0.5 * math.sin(t * 17))
     u = sm((kk - 0.05) / 0.35)
     for o, sc in S['cracks']:
         o.hide_render = u < 0.02

@@ -340,9 +340,10 @@
    "world": "B-17, glass roof",
    "est_score": 83,
    "long_form_candidate": false,
-   "status": "in progress",
-   "facts": "verify with 2+ sources at authoring; skip if they do not hold",
-   "claimed_at": "2026-11-19T04:15:19Z"
+   "status": "authored",
+   "facts": "checked on 19 Nov 2026 against four pages (Wikipedia, IWM American Air Museum, Historic Wings, Vintage Aviation News); see episodes/r025-magee/episode.json",
+   "claimed_at": "2026-11-19T04:15:19Z",
+   "episode": "r025-magee"
   },
   {
    "case": 40,
