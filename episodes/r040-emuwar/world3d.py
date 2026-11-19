@@ -917,17 +917,17 @@ def gun_scene(S, t, aim=0.0):
 
 # ---------------------------------------------------------------- the hook: the ambush at the dam
 def dam_mob(S, k, t, lt):
-    """On the trampled ground east of the dam, low: the mob pours out of the wheat and runs at the lens, one bird passing close. First and last shot."""
+    """On the trampled ground east of the dam, low: the mob pours out of the wheat and runs at the lens, the lead bird charging right past it. First and last shot."""
     d = lt / k if k > 1e-3 else 1.1
     u = (1 - k) * d if S['prm'].get('loop') else lt
     sky(S, 'day')
     stream(S, MOB, (17.5, 39.0), (-1.9, -5.4), t, u, spread=(11.0, 20.0), speed=6.5)
     e = S['emus'][16]
-    e.place(at(FIELD, lerp(15.4, 14.3, u / 1.1), lerp(35.0, 29.2, u / 1.1), 0), facing((0, 0), (-1.0, -5.9)))
+    e.place(at(FIELD, lerp(15.2, 14.7, u / 1.1), lerp(33.0, 28.8, u / 1.1), 0), facing((0, 0), (-0.5, -4.2)))
     e.pose(gait(t, 7, 0.3), 1.0, look=-0.3)
     S['horde'].location = (0, -10.0 * u, 0)
     q = sm(u / 1.2)
-    shoot(S, FIELD, (lerp(13.0, 12.8, q), lerp(26.4, 26.0, q), lerp(0.85, 0.95, q)), (lerp(19.4, 19.0, q), 46.0, 3.6), 26)
+    shoot(S, FIELD, (lerp(13.0, 12.8, q), lerp(26.4, 26.0, q), lerp(0.9, 1.0, q)), (lerp(18.0, 17.6, q), 46.0, lerp(2.6, 2.9, q)), 30)
 
 
 def gun_hide(S, k, t, lt):
@@ -1459,11 +1459,14 @@ def rook_question(S, k, t, lt):
 
 
 def mob_still(S, k, t, lt):
-    """The photograph on the case board: the mob at the dam from the spoil bank."""
+    """The photograph on the case board: the mob coming down to the dam, from the trampled ground by the water."""
     sky(S, 'day')
-    stream(S, MOB, (4.0, 70.0), (-0.8, -5.0), 0.3, 3.0, spread=(26.0, 18.0), speed=6.0)
-    S['horde'].location = (0, -18, 0)
-    shoot(S, FIELD, (9.0, 21.0, 2.6), (3.0, 52.0, 2.0), 30)
+    stream(S, MOB, (17.5, 39.0), (-1.9, -5.4), 0.3, 0.35, spread=(11.0, 20.0), speed=6.0)
+    e = S['emus'][16]
+    e.place(at(FIELD, 15.6, 33.5, 0), facing((0, 0), (-0.5, -4.2)))
+    e.pose(gait(0.3, 7, 0.3), 1.0, look=-0.3)
+    S['horde'].location = (0, -4, 0)
+    shoot(S, FIELD, (12.6, 25.6, 1.5), (17.4, 44.0, 2.4), 30)
 
 
 STILLS = {'mob': mob_still}

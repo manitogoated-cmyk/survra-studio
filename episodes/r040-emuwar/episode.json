@@ -1,7 +1,7 @@
 {
  "id": "r040-emuwar",
  "format": "short",
- "status": "draft",
+ "status": "approved",
  "synthetic": false,
  "host": "rook",
  "case": 40,
@@ -101,5 +101,58 @@
   "effects": "One to four cues a shot, each tied to something visible: pops for the two bursts (no realistic gunfire), clunks and a sputter for the jam, engine starts and a horn for the truck, flips for the newspapers, the telegram and the letter, scratches for the pen, ticks for the counting, clunks for the hammer.",
   "hush": "Shot 22 (the brass pouring out of the box): the music drops out for the breath before 'Exactly ten rounds a bird.'",
   "voice": "Narration is ducked over the bed by the engine; measured in the local rehearsal, not listened to."
+ },
+ "quality_gate": {
+  "method": "One run, eight review rounds. Rounds 1 to 4: low-res contact sheets of all 29 3D shots (one frame each). Found and fixed: a scene build of seven minutes (thousands of bpy.ops calls; the sets, the emus and the wheat now build through bpy.data and numpy in about ten seconds, so the 16 cloud jobs are not slowed); wheat ears as thick as planks and stalks blocking half the shots (thinner stalks, pointed ears, clearings where the soldiers, the emus and the camera stand); the mob too far away and too small in the opening (restaged three times until the lead bird fills the frame and charges past the lens); the gunner's face hidden by his own hat brim and a camera inside his head; the sergeant's hat blocking the jam; the camera outside the bell tent's canvas in the newspaper shot; the paper covering Rook's face; the truck too far away in the chase and the emu-legs shot buried in wheat (a bare verge added); Rook seen from behind on the truck; road dust reading as white rocks and later as eggs (made thin, see-through and removed at ground level); backlit emus reading as posts in the evening shot (lit from behind the lens); farmers seen from behind (re-shot in profile); the major's face behind his telegram; brass that read as pills (now metallic); the fence-building shot full of wheat (shot from the open end of the fence). Round 5: full rehearsal (216x384, 4 samples, 12 fps, all 557 3D frames) composited with captions, labels, overlays, the board and sound, reviewed as a 4-frames-per-second sheet (181 frames); the gate failed on two static stretches (2.7 to 4.3 s, the gunner's close-up; 31.5 to 33.2 s, the brass). Fixed in the film: the gunner's shot now pushes in and arcs while his head tracks the birds and the sergeant's hand rises; the brass pours for the whole shot while the camera arcs in. Also found: the camera starting outside the tent canvas in the squint shot (a white frame), the emus pecking with planks for necks (new neck pose), the board's figures low in the frame where the Shorts interface sits (moved above the caption band). Round 6: second rehearsal, gate PASS; found a white stalk at the edge of the gunner shot and a white frame at the start of the counting shot (both cameras moved). Round 7: third rehearsal, gate PASS; the counting shot hid the rows of brass behind Rook, so Rook and the squint close-up moved to the end of the table and were checked on a sheet. Round 8: five stills at 720x1280 with production samples (opening frame, the emu 'tank', the squint, the question, the board photograph): the opening still had too much sky and a small lead bird, so it was reframed (30 mm, level, the lead bird closer) and checked again at full resolution at 0 s and 1 s; fourth rehearsal, gate PASS; first and last frames compared for the loop.",
+  "local_gate": "Fourth rehearsal: PASS. 30 shots, mean 1.51 s, longest 2.51 s, Rook acting in 13 of 30 shots (43%), -14.6 LUFS, peak -1.3 dBFS, voice 17.0 dB over the bed, loudness range 2.9 LU, closest match to any earlier episode 0.73 (shot 9 against r019-adilang; the limit is 0.93). Duration 45.4 s. The cloud render runs the real gate at 720x1280 and 60 fps.",
+  "gate_history": "Rehearsal 1 failed on two static stretches: 2.7 to 4.3 s (gunner close-up) and 31.5 to 33.2 s (brass on the table). Fixed in the film with real camera moves and acting, never in the gate. Rehearsals 2, 3 and 4 passed. The local fingerprint file written by the rehearsal gate was deleted, not committed.",
+  "checked": "Every 3D kind in the storyboard exists in world3d.SHOTS3D and the board in scenes.SHOTS (checked by script); HOST lists the 13 kinds in which Rook is placed; dam_mob is the only kind used twice (first and last shot, for the loop) and no kind repeats back to back. First shot 1.10 s with a story impact sound at 0.05 of it. The doubt line is 1.44 s and is spoken beside the jammed gun with the emus scattering behind. Re-hook ('Then the farmers ask them back. Round two.') starts at 23.45 s of 45.37 s (52%). One hush shot (22). Tail 0.4 s; the last shot is the opening played back to its first frame (it differs from the first frame only by the hook title and the caption). HUD labels measured: the widest (W. AUSTRALIA, 1932) leaves 289 px to the left edge. On-screen dates, names and figures (4 NOVEMBER 1932, W. AUSTRALIA, 1932, MAJOR MEREDITH, 6 DAYS IN, WITHDRAWN, 13 NOVEMBER, 4 WEEKS, DECEMBER 1932, HIS CLAIM, BOUNTIES + FENCES, 20,000, 986, 9,860, 986 BIRDS, 9,860 ROUNDS, = 10 EACH?) checked against the sources. No bird is shown hit, hurt or dead; the gun fires only in the jam shot, at nothing in frame. No flag, badge, insignia, marking, headline, logo or likeness appears.",
+  "not_met": "The audio was measured, not listened to; the loudness range is 2.9 LU against the checklist's 4 LU (the engine's mix; earlier Shorts measure about 2.5). Kokoro's reading of 'emus' was checked only in the phonemes (imjuz), not heard. Preview stills at 20% and 80% of every shot were not made: every shot was looked at on four contact sheets and at four frames a second in four rehearsals at low resolution, plus seven stills at 720x1280. The cloud render is the first full-resolution, 60 fps pass. The 13-category score was given from stills and sheets, not playback. The mob is about 30 modelled birds plus a far herd of simple shapes, which suggests rather than shows a thousand."
+ },
+ "checklist": {
+  "A_story": "done: score 82/100 with curiosity 10, story 8, payoff 8; spine v2; shown_moments lists every narrated moment",
+  "B_storyboard": "done: every shot has action, expression, camera and sound cue; Rook's mannerisms are brim low (5, 14), hat bouncing off (11), eyes over the paper with one brow up (13), brim dropping over his eyes (16), beak tap (23), lifting the brim with one finger (24), flinching (26) and flipping and pocketing the brass case (29); detective actions are rapping the jammed gun (5), knocking on the emu (16) and laying the brass out in rows of ten (23); no neutral poses under action lines",
+  "B2_retention": "done: hook_text set; the first frame is the mob running at the lens, the lead bird large; re-hook at 52%; one hush; tail 0.4 s with the loop",
+  "C_previews": "partly: four contact sheets and four rehearsals at low resolution, seven stills at 720x1280; no blown-out or crushed frame where the story has to be seen (two white frames from cameras outside the tent were found and fixed); Rook on-model; see quality_gate.not_met",
+  "D_render": "engine defaults untouched (60 fps, 720x1280, 16 jobs in the workflow); the local rehearsals used low settings only for review",
+  "E_sound": "voice am_fenrir; no tragic beats; voice 17.0 dB over the bed; loudness range 2.9 LU, see quality_gate.not_met",
+  "F_captions": "done: the board's figures moved above the caption band and away from the Shorts interface; HUD labels measured; on-screen dates, names and figures checked against sources",
+  "G_final": "rehearsals reviewed as 4 fps sheets of the whole video and full-resolution stills; local gate PASS on rehearsals 2, 3 and 4; the full-resolution render and the real gate happen in the workflow"
+ },
+ "review": {
+  "notes": [
+   "0.0 to 1.1 s: the mob runs at the lens across the trampled ground by the dam, the lead bird large and charging past; hook title THE ARMY / VS. EMUS",
+   "1.1 to 2.6 s: behind the gun hidden on the spoil bank, two soldiers crouched, the emus round the water",
+   "2.6 to 4.4 s: the gunner's face behind the gun, eyes narrowing, the sergeant's hand rising: wait; label 4 NOVEMBER 1932",
+   "4.4 to 6.4 s: two bursts of flash, the drum stops, smoke; the gunner yanks the handle, the sergeant slaps the gun",
+   "6.4 to 7.9 s: Rook beside the jammed gun raps it and turns: 'Beaten by birds? No chance.' CASE 040",
+   "7.9 to 10.4 s: the paddock overrun, W. AUSTRALIA, 1932; emus pecking at the wheat while the farmer takes off his hat",
+   "10.4 to 15.8 s: the gun mounted on the truck (MAJOR MEREDITH); the truck lurching beside running emus; legs by the wheel; Rook clinging on, hat bouncing",
+   "15.8 to 19.5 s: newspapers thump onto the major's table (6 DAYS IN); Rook peeks over a paper; the truck leaves with Rook on the tailgate, three emus watching (WITHDRAWN)",
+   "19.5 to 23.4 s: the major writing by the lamp; Rook knocks on a big emu's chest and his brim drops",
+   "23.4 to 25.7 s: re-hook, the farmers at the tent; the truck roars back with Rook on the cab roof (13 NOVEMBER)",
+   "25.7 to 28.7 s: the weeks rush by over the camp (4 WEEKS); the major lowers a telegram (DECEMBER 1932)",
+   "28.7 to 33.8 s: tally marks in the report book (986, HIS CLAIM); brass pouring out of the box (9,860), hush",
+   "33.8 to 36.6 s: Rook lays the brass in rows of ten and taps his beak; close-up, one brow up: 'Suspiciously tidy.'",
+   "36.6 to 41.3 s: the farmer lowers a letter; farmers driving fence posts with Rook flinching (BOUNTIES + FENCES); Rook and an emu face to face through the wire",
+   "41.3 to 42.7 s: the board, 986 BIRDS, 9,860 ROUNDS, = 10 EACH?",
+   "42.7 to 45.4 s: Rook flips and pockets a brass case, 'Do you buy it?', SURVRA CASE 040; back to the opening frame"
+  ],
+  "scores_13": {
+   "story": 4,
+   "hook": 4,
+   "character_acting": 3,
+   "animation": 3,
+   "art_direction": 4,
+   "lighting": 3,
+   "camera": 3,
+   "pacing": 4,
+   "editing": 4,
+   "narration": 3,
+   "sound": 3,
+   "captions_graphics": 4,
+   "respect_accuracy": 5
+  },
+  "weakest": "The emus' running legs are stiff and the pecking neck still reads blocky up close; the mob suggests a thousand birds rather than showing them; the gunner close-up is crowded by the gun and two hat brims; in the truck shot the emu is small at the edge of the frame. Narration and sound were measured, not heard."
  }
 }
