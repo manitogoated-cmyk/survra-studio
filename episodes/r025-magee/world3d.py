@@ -399,7 +399,7 @@ def make_camp(S):
     add('cube', '3A3430', (0, 0, 8.5), scale=(3.2, 3.2, 0.25), size=1, parent=tw)
     for i in range(12):
         add('cone', '2E4A3A', (-30 + 5.5 * i, 22 + 4 * rnd(i, 71), 3.5), radius1=1.8, radius2=0.0, depth=7 + 3 * rnd(i, 72), vertices=6, parent=r, rough=1.0)
-    S['flakes'] = [keep(add('ico_sphere', 'FFFFFF', FAR, radius=0.04, subdivisions=1, rough=1.0)) for _ in range(30)]
+    S['flakes'] = [keep(add('ico_sphere', 'FFFFFF', FAR, radius=0.07, subdivisions=1, rough=1.0)) for _ in range(30)]
     S['camp'] = r
 
 
@@ -1026,7 +1026,7 @@ def rook_dive(S, k, t, lt):
     falling_man(S, at(FALLZ, 3.5, 5.0, -1.0), t, 0.6)
     rk = S['rook']
     lk = sm((k - 0.45) / 0.3)
-    pose = P('hat', aL=(0.3, 0.8, 0.6), lL=(0.4, 0.5), lR=(-0.2, 0.3), head=(lerp(0.0, 0.55, lk), lerp(0.55, 0.0, lk)))
+    pose = P('hat', aL=(0.3, 0.8, 0.6), lL=(0.4, 0.5), lR=(-0.2, 0.3), head=(lerp(0.0, 0.22, lk), lerp(0.55, 0.0, lk)))
     rk.place(at(FALLZ, 0.0, 0.0, 0.15 * math.sin(t * 3)), -0.5, 0.35 + 0.05 * math.sin(t * 2.3), 0.06 * math.sin(t * 1.9))
     rk.apply(pose)
     S['rface'] = 'shocked'
@@ -1052,7 +1052,7 @@ def rook_look(S, k, t, lt):
     S['hlamp'].data.energy = 2500
     rk = S['rook']
     u = sm((k - 0.3) / 0.5)
-    pose = blend(P('stand', head=(-0.5, 0.0)), P('scream', head=(-0.4, 0.0)), sm(k / 0.3))
+    pose = blend(P('stand', head=(-0.1, 0.0)), P('scream', head=(-0.05, 0.0)), sm(k / 0.3))
     yw = facing((0.0, 6.0), (2.6, 3.4))
     stand(rk, at(STA, 0.0, 6.0 + 1.8 * u, 13.0 - 0.6 * u), yw, pose)
     rk.root.rotation_euler = (-0.2 * u, 0, yw)
@@ -1064,7 +1064,7 @@ def rook_look(S, k, t, lt):
     m.place(at(STA, -2.0, 18.0, lerp(44, 30, k)), 0.5 * t, -1.6, 0.4 * math.sin(t))
     m.apply(limp(t))
     h = head(rk)
-    cam(S, at(STA, 2.4, 2.6, 14.3), plus(h, (-0.3, 1.0, 0.7)), 24)
+    cam(S, at(STA, 3.4, 3.4, 14.6), plus(h, (-0.6, 1.2, 0.5)), 24)
 
 
 # ---------------------------------------------------------------- the smash
@@ -1154,7 +1154,7 @@ def found(S, k, t, lt):
     m = lying(S, mv * (0.6 + 0.4 * math.sin(lt * 3)), 'pain' if k > 0.6 else 'shut')
     arrive = sm(k / 0.45)
     for j, (rig, kp, yw) in enumerate(zip(S['men'], ((-1.3, -0.2), (1.0, 0.4)), (-1.4, 1.6))):
-        start = (kp[0] - 1.0 - 3 * j, kp[1] - 7.0)
+        start = (kp[0] + 0.5 - 1.5 * j, kp[1] + 7.0 + 2 * j)
         if arrive < 1:
             p = (lerp(start[0], kp[0], arrive), lerp(start[1], kp[1], arrive))
             stand(rig, at(STA, p[0], p[1], 0), facing(start, kp), K.walk(t + j * 0.3, 2.2))
@@ -1259,18 +1259,18 @@ def camp(S, k, t, lt):
     """Snow, a wire fence, a wooden hut: the gunner at the wire, arm in a sling; Rook perched on a fence post beside him."""
     sky(S, 'snow')
     m = S['man']
-    stand(m, at(CMP, 0.6, -1.0, 0), PI, P('stand', aR=(0.9, 0.2, 1.5, 0.8), aL=(0.1, 0.15, 0.2), head=(-0.05, 0.1 * math.sin(t * 0.5))))
+    stand(m, at(CMP, 0.6, -1.0, 0), PI, P('stand', aR=(0.9, 0.2, 1.5, 0.8), aL=(0.1, 0.15, 0.2), head=(-0.05 + 0.1 * sm((k - 0.5) / 0.3), -0.6 * sm((k - 0.3) / 0.3))))
     S['cast'].hide_render = S['sling'].hide_render = False
     m.face = 'sad'
     rk = S['rook']
     rk.place(at(CMP, -1.8, 0.0, 3.36 - 0.55), PI - 0.4)
-    rk.apply(P('sit', lL=(1.3, 1.8), lR=(1.2, 1.7), aL=(0.4, 0.3, 1.2), aR=(0.4, 0.3, 1.2), head=(0.15, -0.2)))
+    rk.apply(P('sit', lL=(1.3, 1.8), lR=(1.2, 1.7), aL=(0.4, 0.3, 1.2), aR=(0.4 + 0.5 * sm((k - 0.55) / 0.3), 0.3, 1.2 + 0.6 * sm((k - 0.55) / 0.3)), head=(0.15 + 0.2 * sm((k - 0.6) / 0.3), -0.2 + 0.5 * sm((k - 0.4) / 0.3))))
     S['rface'] = 'sad'
     S['hat_tip'] = 0.5
     for i, o in enumerate(S['flakes']):
-        z = 6 - ((t * 0.9 * (0.7 + 0.6 * rnd(i, 120)) + rnd(i, 121) * 6) % 6)
+        z = 6 - ((t * 1.6 * (0.7 + 0.6 * rnd(i, 120)) + rnd(i, 121) * 6) % 6)
         o.location = at(CMP, -4 + 9 * rnd(i, 122) + 0.3 * math.sin(t + i), 0.5 + 6 * rnd(i, 123), z)
-    cam(S, at(CMP, lerp(1.6, -0.4, k), 7.2, 2.6), at(CMP, -0.5, -0.4, 2.3), 30)
+    cam(S, at(CMP, lerp(3.2, -1.6, k), lerp(8.0, 5.6, k), lerp(3.2, 2.4, k)), at(CMP, -0.5, -0.4, 2.3), 30)
 
 
 # ---------------------------------------------------------------- end
@@ -1279,10 +1279,10 @@ def memorial(S, k, t, lt):
     sky(S, 'square')
     rk = S['rook']
     bow = sm((k - 0.3) / 0.4)
-    stand(rk, at(MEM, 2.1, -2.0, 0), facing((2.1, -2.0), (0, 0)) - 0.4, P('stand', aR=(0.1, 0.2, 0.2), head=(0.15 + 0.35 * bow, 0.25)))
-    S['hat_off'] = 1.0
+    stand(rk, at(MEM, 2.1, -2.0, 0), facing((2.1, -2.0), (0, 0)) - 0.4, blend(P('stand', aR=(0.1, 0.2, 0.2), head=(0.15, 0.25)), P('stand', aR=(0.9, -0.25, 1.9, 0.6), head=(0.5, 0.25)), bow))
+    S['hat_off'], S['hat_to'] = 1.0, (lerp(0.74, 0.15, bow), lerp(-0.14, -0.55, bow), lerp(-1.45, -1.0, bow))
     S['rface'] = 'sad'
-    cam(S, at(MEM, lerp(4.4, 3.6, k), lerp(-12.5, -9.0, k), lerp(3.6, 2.8, k)), at(MEM, 0.8, -0.5, 3.0), 30)
+    cam(S, at(MEM, lerp(5.6, 3.0, k), lerp(-14.0, -7.6, k), lerp(4.2, 2.6, k)), at(MEM, 1.0, -0.8, lerp(3.0, 2.4, k)), 30)
 
 
 def wreath(S, k, t, lt):

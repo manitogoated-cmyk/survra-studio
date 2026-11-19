@@ -69,8 +69,8 @@ def board(cv, c):
     k = min(1, c.lt / 0.16)
     s = 0.74 + 0.26 * (1 - (1 - k) ** 3)
     cv.save()
-    cv.translate(540, 680)
-    cv.scale(s, s)
+    cv.translate(540, 640)
+    cv.scale(s * 0.95, s * 0.95)
     cv.rotate(2.0)
     cv.drawRect(skia.Rect.MakeXYWH(-380 + 12, -440 + 16, 760, 880), P(0x66000000))
     cv.drawRect(skia.Rect.MakeXYWH(-380, -440, 760, 880), P(PAPER))
@@ -85,11 +85,11 @@ def board(cv, c):
         cv.drawCircle(x, 270, 22, P(ORANGE))
         cv.drawCircle(x, 270, 22, P(INK, 5))
     if c.lt > 0.2:
-        fit(cv, '22,000 FEET', 540, 1500, 120, 920, 0xFFFFFFFF)
+        fit(cv, '22,000 FEET', 540, 1580, 96, 900, 0xFFFFFFFF)
     if c.lt > 0.4:
-        fit(cv, 'NO PARACHUTE', 540, 1630, 120, 920, AMBER)
+        fit(cv, 'NO PARACHUTE', 540, 1690, 96, 900, AMBER)
     if c.lt > 0.6:
-        fit(cv, 'GLASS ROOF', 540, 1760, 110, 920, h('BFE4F0'))
+        fit(cv, 'GLASS ROOF', 540, 1800, 96, 900, h('BFE4F0'))
 
 
 SHOTS = {f.__name__: f for f in (board,)}

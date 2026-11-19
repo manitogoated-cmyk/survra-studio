@@ -6,5 +6,101 @@
  "host": "rook",
  "case": 25,
  "title": "He Fell 22,000 Feet Through a Train Station's Glass Roof #shorts",
- "playlist": "Rook's Case Files (Shorts)"
+ "playlist": "Rook's Case Files (Shorts)",
+ "description": "Case 025. On 3 January 1943 the B-17 \"Snap! Crackle! Pop!\" of the 303rd Bomb Group's 360th Bomb Squadron was hit by flak in a daylight raid on the German U-boat base at Saint-Nazaire in occupied France. Its ball turret gunner, Staff Sergeant Alan Magee, climbed out of his damaged turret into the fuselage and found that his parachute had been torn apart by the flak. Short of oxygen, he blacked out and was thrown clear of the aircraft. He fell about 22,000 feet (some 6.7 km) and crashed through the glass roof of the Saint-Nazaire railway station, which broke his fall. He was found alive with 28 shrapnel wounds, broken bones and a badly injured arm, was treated by a German military doctor, and spent the rest of the war as a prisoner until he was liberated in May 1945. Seven of the ten men on board were killed. In 1993, fifty years on, the people of Saint-Nazaire put up a memorial to Alan Magee and his crew. He died in December 2003. Rook didn't believe it either.\n\nAnimated reconstruction of a true story, made with respect for the seven men of the crew who died. The aircraft are generic low-poly shapes with no markings, numbers, names or insignia; the men in the station wear plain greatcoats and caps with no badges or symbols; the memorial stone carries no text; nobody's likeness is attempted. Staging details such as the look of the turret, the fuselage, the station, the hospital room and the camp fence, the way he leaves the plane, where he lay, who carried him, the wreath and everything Rook does are reconstruction, not record. Narration is a synthetic voice (Kokoro).",
+ "tags": [
+  "Alan Magee",
+  "fell without a parachute",
+  "B-17",
+  "Snap Crackle Pop",
+  "ball turret gunner",
+  "303rd Bomb Group",
+  "Saint-Nazaire",
+  "St Nazaire",
+  "1943",
+  "World War II",
+  "WW2",
+  "survival",
+  "true story",
+  "survival story",
+  "history",
+  "animated story",
+  "Rook",
+  "Survra"
+ ],
+ "hashtags": [
+  "#shorts",
+  "#truestory",
+  "#survival"
+ ],
+ "sources": [
+  "https://en.wikipedia.org/wiki/Alan_Magee",
+  "https://www.americanairmuseum.com/aircraft/534",
+  "https://fly.historicwings.com/2013/01/the-miracle-of-st-nazaire/",
+  "https://vintageaviationnews.com/warbird-articles/the-gunner-who-fell-from-the-skywithout-a-parachute-the-story-of-sgt-alan-e-magee.html"
+ ],
+ "story_score": {
+  "curiosity": 9,
+  "stakes": 9,
+  "freshness": 6,
+  "story": 8,
+  "visual": 9,
+  "audience_fit": 8,
+  "payoff": 7,
+  "packaging": 9,
+  "research": 9,
+  "repeatability": 7,
+  "total": 81
+ },
+ "title_options": [
+  "He Fell 22,000 Feet Through a Train Station's Glass Roof #shorts",
+  "No Parachute. Then a Glass Roof. He Lived #shorts",
+  "The Gunner Who Fell Through a Station Roof #shorts",
+  "Shredded Parachute, 22,000 Feet, One Glass Roof #shorts"
+ ],
+ "spine": "v2",
+ "shown_moments": {
+  "his parachute is in shreds": "shot 2 (the pack on its hook, torn, silk spilling out); shot 9 (it falls open in his hands)",
+  "his bomber is going down": "shot 3 (the bomber rolling over, trailing smoke, an engine burning, a tiny figure falling away)",
+  "he's heading for a train station's glass roof": "shot 4 (straight down at the arched glass roof among the town, rushing up)",
+  "Through glass? No chance.": "shot 5 (Rook on the roof ridge, the falling figure in the sky above him)",
+  "daylight, over Saint-Nazaire": "shot 6 (the formation in daylight among flak bursts, label 3 JANUARY 1943)",
+  "flak wrecks his ball turret": "shot 7 (a burst beside the ball turret under the belly; the plane jolts, fragments fly)",
+  "he crawls out": "shot 8 (he hauls himself up out of the turret hatch into the fuselage)",
+  "his parachute is torn to rags": "shots 9 and 10 (the silk drops out in rags; Rook examines a holed strip)",
+  "short of oxygen, he blacks out": "shot 11 (he sways, mask loose, eyes closing, slumps)",
+  "the bomber throws him clear": "shot 12 (a limp figure flung out of the broken waist as the plane rolls away)",
+  "22,000 feet": "shots 13 and 14 (the small figure over the cloud, label 22,000 FEET; Rook diving beside him)",
+  "right below him: the railway station. Glass, and iron": "shots 15 and 16 (straight down past his boots at the station roof; Rook on the roof, hat jumping)",
+  "he smashes straight through. The glass bursts": "shot 17 (from below, the roof bursting inward)",
+  "and slows him. Just enough": "shots 18 and 19 (the glass pouring down; the hush, the hole in the roof)",
+  "they find him in the station, alive": "shot 20 (men kneel beside him; his hand moves)",
+  "twenty-eight shrapnel wounds, and a badly injured arm": "shots 21 and 22 (label 28 SHRAPNEL WOUNDS; carried out on a stretcher). No wound is shown.",
+  "a German military doctor saves him": "shots 23 and 24 (the doctor at his bedside, his arm in a cast; Rook nods)",
+  "he sees out the war as a prisoner, and goes home": "shot 25 (at a wire fence in the snow, arm in a sling, label PRISONER UNTIL MAY 1945)",
+  "seven of his crew never did": "shot 26 (the plain memorial stone, Rook with his hat off, label 7 OF THE 10 CREW DIED). No one is shown dying.",
+  "fifty years on, Saint-Nazaire built them a memorial": "shots 26 and 27 (the memorial; a flower laid on the wreath, label ST-NAZAIRE, 1993)",
+  "Case closed. Now picture it": "shots 28 to 30 (Rook pockets the glass shard; the board; back to the opening frame)"
+ },
+ "experiments": {
+  "E1_E2": "spine v2: Rook is already on the station roof in shot 5 and doubts it in one line of 1.2 s ('Through glass? No chance.') with the falling figure in the sky above him; no office. The story runs forward from the hook; date, place and name are on-screen labels (3 JANUARY 1943, ST-NAZAIRE, FRANCE, ALAN MAGEE, BALL TURRET GUNNER).",
+  "E3": "The batch brief's ten Shorts are all claimed, so this Short is outside it. It opens on a person close-up (the gunner's face behind the turret window as flak flashes), the opposite of the previous Short (r024, wide).",
+  "E4": "'Case closed.' ending.",
+  "E7": "hook_text NO PARACHUTE. / GLASS ROOF.",
+  "E8": "tail 0.4 s; the last line ('Now picture it:') runs into the first ('his parachute is in shreds...'), and the last shot is the opening shot played back to its first frame.",
+  "rook_action": "Detective actions in the story world: he holds a strip of the torn silk to the light and pokes a wingtip through a hole in it (10), and in the station he picks up a shard, looks up at the hole and measures it with his wings (21). Mannerisms: hat brim low (5), hat hop (9, 16), beak tap (10), hat clamped in the dive (14), lifting the brim and nodding (24), hat off for the crew (20, 26, 27) and pocketing the shiny glass shard (28). He makes no jokes from the landing on."
+ },
+ "sound_plan": {
+  "first_frame": "One 'hit' at 0.04 of the first shot as the flak burst outside the turret window (the gate needs an impact in the first second; here it is a story sound), then a crash as the glass cracks.",
+  "music": "The engine's score follows the segment moods: hook, tense for Rook's line, action for the flak, tense for the fall and the re-hook, action for the smash, wonder for the finding, triumph for the doctor, sad for the memorial. No drum loop under the sad segment.",
+  "effects": "One to three cues a shot, each tied to something visible: hits and crashes for flak, clunks for the hatch and the jolt, whooshes for the fall, ticks for the shard and the glass, heartbeats when he blacks out.",
+  "hush": "Shot 19 (looking up at the hole in the roof): the music drops out for the breath before 'They find him in the station, alive.'",
+  "tragic_beats": "Shots 26 and 27 carry one tick each; there is no joke after the landing.",
+  "voice": "Narration is ducked over the bed by the engine; measured in the local rehearsal, not listened to."
+ },
+ "source_notes": "Read for this run on 19 Nov 2026 through a fetch tool: Wikipedia, the Imperial War Museums' American Air Museum page for B-17 41-24620, Historic Wings ('The Miracle of St Nazaire', 2013) and Vintage Aviation News. Every narrated fact is on at least two of them. Date 3 January 1943: all four. Daylight raid on Saint-Nazaire, a U-boat base: all four (Wikipedia: 'daylight bombing run over Saint-Nazaire'). Aircraft B-17F 41-24620 'Snap! Crackle! Pop!', 360th BS, 303rd BG: Wikipedia, Historic Wings, American Air Museum (code letters differ, PU-O or PU-D, so none are shown and the aircraft carry no markings). Ball turret gunner: Wikipedia, Historic Wings, American Air Museum (Vintage Aviation News 'belly turret'). Flak damaged the turret and he climbed out into the fuselage: Wikipedia ('left his ball turret when it became inoperative after German flak damaged it'), Historic Wings ('crawled out into the fuselage'). Parachute torn: Wikipedia ('torn and rendered useless'), Historic Wings and Vintage Aviation News ('shredded'). Blacked out from lack of oxygen and thrown clear: Wikipedia ('blacked out from lack of oxygen ... thrown clear'), Historic Wings (unconscious, ejected); Vintage Aviation News alone says he jumped, so the narration follows the two that agree. Height: 22,000 feet on Wikipedia, Vintage Aviation News and the American Air Museum; Historic Wings 'more than 20,000 feet'. Glass roof of the Saint-Nazaire railway station: Wikipedia and Historic Wings (the other two say the station roof); that the glass broke his fall: Wikipedia ('mitigating the force of Magee's final impact'), and Historic Wings lists the yielding glass as a reason he survived, so the narration says 'slows him. Just enough.' Where exactly he lay is disputed (Wikipedia: on the station floor; Historic Wings: draped over the roof girders), so the narration says only 'in the station'. Injuries: 28 shrapnel wounds and a nearly severed arm (Wikipedia, Historic Wings); the narration says 'a badly injured arm' and shows no wound. German military doctor: Historic Wings and the American Air Museum. Prisoner for the rest of the war: all four; liberated May 1945 (Wikipedia, Vintage Aviation News). Crew: seven of ten killed (Historic Wings, American Air Museum; Vintage Aviation News 'one of three members of the crew to survive'). Memorial: Wikipedia says the people of Saint-Nazaire erected a memorial to Magee and his crew on 3 January 1993; Vintage Aviation News dates the dedication 23 September 1993 (or 1995); the American Air Museum 'in the 1990s'. The narration's 'Fifty years on' and the label 1993 follow Wikipedia and Vintage Aviation News. Death 20 December 2003: Wikipedia, Vintage Aviation News (in the description only). Kept out because single-sourced or disputed: quotations attributed to him, his age, the pilot's name, the crash site of the aircraft, how he left the plane in detail, the size of the memorial. Staging that is not fact: the look of the turret, the window cracking, the fuselage and the hook, the station, the men who found him, the stretcher, the hospital room, the fence, the memorial stone (a plain stone with a blank plate) and the wreath, and everything Rook does.",
+ "authoring": {
+  "claimed_at": "2026-11-19T04:15:19Z",
+  "run": "scheduled short run, 19 Nov 2026; first slate idea was case 023, already claimed seconds earlier by a parallel run, so this run took case 025"
+ }
 }
