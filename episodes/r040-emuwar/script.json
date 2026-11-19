@@ -4,7 +4,7 @@
     {"scene": "hook", "mood": "hook", "text": "a thousand emus, heading for a hidden machine gun. The soldiers wait till they're close, and the gun jams."},
     {"scene": "doubt", "mood": "tense", "text": "Beaten by birds? No chance."},
     {"scene": "chase", "mood": "action", "text": "{20,000|Twenty thousand} emus are raiding the wheat. So the major mounts a gun on a truck. The emus outrun it, and the ride's too rough to shoot."},
-    {"scene": "retreat", "mood": "calm", "text": "After six days and bad press, the army pulls out. The major reports they can face machine guns with the invulnerability of tanks."},
+    {"scene": "retreat", "mood": "calm", "text": "After six days and bad press, the army pulls out. The major says they can face machine guns with the invulnerability of tanks."},
     {"scene": "rehook", "mood": "tense", "text": "Then the farmers ask them back. Round two."},
     {"scene": "count", "mood": "action", "text": "Four weeks later, he's recalled for good. His count: {986|nine hundred and eighty-six} birds, for {9,860|nine thousand, eight hundred and sixty} rounds."},
     {"scene": "tidy", "mood": "wonder", "text": "Exactly ten rounds a bird. Suspiciously tidy."},

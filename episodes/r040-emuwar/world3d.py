@@ -456,7 +456,7 @@ def make_truck(S):
     fadd('cylinder', '2A2C2E', (0, 2.0, 2.15), radius=0.08, depth=1.4, vertices=8, parent=b, rough=0.4)   # post mount
     fadd('cylinder', '2A2C2E', (0, 2.0, 1.5), radius=0.35, depth=0.08, vertices=8, parent=b, rough=0.4)
     S['mount'] = fempty((0, 2.0, 2.95), b)
-    S['dust'] = [keep(fadd('ico_sphere', ('C09A70', 'B08A62', 'C8A47A')[i % 3], FAR, radius=1.0, subdivisions=2, rough=1.0, alpha=0.55)) for i in range(14)]
+    S['dust'] = [keep(fadd('ico_sphere', ('C09A70', 'B08A62', 'C8A47A')[i % 3], FAR, radius=1.0, subdivisions=2, rough=1.0, alpha=0.3)) for i in range(14)]
     S['truck'] = tr
 
 
@@ -571,7 +571,8 @@ def make_field(S):
                 scale=(1.4, 1.4, 0.8), radius=2.0 + rnd(i, j + 9), subdivisions=1, parent=f, rough=1.0)
     # wheat: the dam paddock (around the ambush), the gate, the camp, the chase stretch of the track
     S['sway'] = []
-    ko = [(DAM[0], DAM[1], 17.5), (GUN[0], GUN[1] - 2.5, 4.0), (GUN[0] + 4.0, GUN[1] - 2.5, 4.0), (GUN[0] + 6.0, GUN[1] - 5.0, 3.5), (GUN[0] - 3.0, GUN[1] - 1.0, 2.5)]
+    ko = [(DAM[0], DAM[1], 17.5), (GUN[0], GUN[1] - 2.5, 4.0), (GUN[0] + 4.0, GUN[1] - 2.5, 4.0), (GUN[0] + 6.0, GUN[1] - 5.0, 3.5), (GUN[0] - 3.0, GUN[1] - 1.0, 2.5),
+          (13.0, 27.0, 4.5), (16.5, 32.0, 3.5), (39.5, 67.0, 5.2)]
     for i in range(6):
         for j in range(5):
             x0, y0 = -6 + 4 * i, 12 + 4 * j
@@ -594,6 +595,8 @@ def make_field(S):
         x0 = 100 + 20 * i
         wheat(S, par, x0, x0 + 20, -38, -18.2, 1.3, 1000 + 7 * i)
         wheat(S, par, x0, x0 + 20, -8.2, 8, 1.1, 1200 + 7 * i)
+    for i in range(4):
+        wheat(S, par, 18 + 5 * i, 23 + 5 * i, 46, 54, 5, 1500 + 7 * i, ko, sway=True)
     for i in range(4):
         for j in range(3):
             x0, y0 = 30 + 6 * i, 60 + 6 * j
@@ -670,8 +673,10 @@ def make_tent(S):
             S['tally'].append(o)
     S['pen'] = keep(fadd('cylinder', '1E1A18', FAR, radius=0.018, depth=0.32, vertices=6, rough=0.4))
     S['sheet'] = fadd('cube', 'ECE4CC', at(TENT, 0.75, -0.35, 1.275), rot=(0, 0, 0.25), scale=(0.5, 0.68, 0.01), size=1, rough=1.0)
-    S['paper'] = pp = keep(fempty(FAR))
+    S['paper'] = pp = fempty(FAR)
     fadd('cube', 'E8E2D0', (0, 0, 0), scale=(0.9, 1.2, 0.012), size=1, parent=pp, rough=1.0)
+    pp.scale = (0.75, 0.75, 0.75)
+    keep(pp)
     for i in range(14):
         box(pp, '9A968C', -0.4 + (0.45 if i >= 7 else 0), -0.05 + (0.45 if i >= 7 else 0), -0.54 + 0.08 * (i % 7) - (0.0 if i < 7 else 0), -0.52 + 0.08 * (i % 7), 0.007, 0.009)
     for (cx, cy, sx, sy, r) in ((0.05, 0.25, 0.32, 0.18, 0.0), (-0.17, 0.39, 0.03, 0.2, -0.6), (-0.27, 0.49, 0.07, 0.05, 0), (0.08, 0.06, 0.025, 0.2, 0.2), (0.16, 0.07, 0.025, 0.2, -0.2)):
@@ -688,6 +693,7 @@ def make_tent(S):
     box(ab, '7A6A40', -0.3, 0.3, -0.2, 0.2, 0, 0.36)
     box(ab, '6A5A36', -0.31, 0.31, -0.21, 0.21, 0.3, 0.36)
     S['cases'] = [keep(fadd('cylinder', 'C8901C', FAR, radius=0.035, depth=0.13, vertices=8, rough=0.18, bevel=False)) for _ in range(64)]
+    K.mat('C8901C', 0.18).node_tree.nodes['Principled BSDF'].inputs['Metallic'].default_value = 1.0
     S['tent'] = t
 
 
@@ -721,7 +727,7 @@ def make_fence(S):
     for j in range(5):
         for i in range(5):
             x0, y0 = -24 + 9 * i, 0.9 + 4 * j
-            wheat(S, par, x0, x0 + 9, y0, y0 + 4, 2.8 if j < 2 else 1.2, 2000 + 7 * i + 31 * j, sway=(j < 1))
+            wheat(S, par, x0, x0 + 9, y0, y0 + 4, 2.8 if j < 2 else 1.2, 2000 + 7 * i + 31 * j, [(9.5, 4.5, 4.5), (-2.0, 3.5, 3.5)], sway=(j < 1))
             wheat(S, par, x0, x0 + 9, -0.9 - 4 * (j + 1), -0.9 - 4 * j, 2.2 if j < 2 else 1.0, 2400 + 7 * i + 31 * j, [(8.0, -4.0, 6.5), (-3.2, -4.0, 6.0)])
     S['fen'] = f
 
@@ -911,24 +917,24 @@ def gun_scene(S, t, aim=0.0):
 
 # ---------------------------------------------------------------- the hook: the ambush at the dam
 def dam_mob(S, k, t, lt):
-    """Low in the wheat east of the dam: the mob runs down the bank towards the lens, one bird passing close. First and last shot."""
+    """On the trampled ground east of the dam, low: the mob pours out of the wheat and runs at the lens, one bird passing close. First and last shot."""
     d = lt / k if k > 1e-3 else 1.1
     u = (1 - k) * d if S['prm'].get('loop') else lt
     sky(S, 'day')
-    stream(S, MOB, (19.5, 33.0), (-0.3, -6.0), t, u, spread=(14.0, 24.0), speed=6.5)
+    stream(S, MOB, (17.5, 39.0), (-1.9, -5.4), t, u, spread=(11.0, 20.0), speed=6.5)
     e = S['emus'][16]
-    e.place(at(FIELD, 17.4 - 0.3 * u, 28.5 - 6.5 * u, 0), facing((0, 0), (-0.3, -6.5)))
-    e.pose(gait(t, 7, 0.3), 1.0, look=-0.35)
+    e.place(at(FIELD, lerp(15.4, 14.3, u / 1.1), lerp(35.0, 29.2, u / 1.1), 0), facing((0, 0), (-1.0, -5.9)))
+    e.pose(gait(t, 7, 0.3), 1.0, look=-0.3)
     S['horde'].location = (0, -10.0 * u, 0)
     q = sm(u / 1.2)
-    shoot(S, FIELD, (lerp(19.6, 19.5, q), lerp(19.6, 20.0, q), lerp(0.75, 0.85, q)), (lerp(18.3, 18.0, q), 40.0, 3.0), 20)
+    shoot(S, FIELD, (lerp(13.0, 12.8, q), lerp(26.4, 26.0, q), lerp(0.85, 0.95, q)), (lerp(19.4, 19.0, q), 46.0, 3.6), 26)
 
 
 def gun_hide(S, k, t, lt):
-    """Behind the gun hidden on the spoil bank: the two soldiers crouched behind it, barrel and drum aimed at the dam, the emus at the water."""
+    """Behind the gun hidden on the spoil bank: the two soldiers crouched behind it, barrel and drum aimed at the dam, the emus coming round the water."""
     sky(S, 'day')
     gun_scene(S, t)
-    stream(S, MOB, (-1.0, 60.0), (0.3, -3.0), t, lt + 1.0, spread=(30.0, 14.0), speed=4.0)
+    stream(S, MOB, (12.0, 58.0), (-0.6, -3.2), t, lt + 1.0, spread=(22.0, 12.0), speed=4.0)
     S['horde'].location = (0, -16.0 - 6.0 * lt, 0)
     key(S, FIELD, (2, 14, 6), (6, 19, 2), 400)
     shoot(S, FIELD, (lerp(2.6, 3.2, k), lerp(15.2, 15.9, k), lerp(3.6, 3.4, k)), (lerp(6.4, 6.2, k), 26.0, 1.5), 24)
@@ -942,8 +948,8 @@ def gunner_eyes(S, k, t, lt):
     g.face = 'squint' if lt > 0.6 else 'hard'
     put(S, S['sarge'], FIELD, GUN[0] + 1.35, GUN[1] - 1.75, 0.1, PI - 0.25, P('stand', **CROUCH, aR=(2.3, 0.35, 0.6, -0.8), head=(0.0, 0.3)), 'hard')
     h = head(S, g)
-    key(S, FIELD, (h[0] - 2, h[1] + 3, h[2] + 1), h, 500)
-    shoot(S, (0, 0, 0), (h[0] - lerp(1.6, 1.3, k), h[1] + lerp(3.0, 2.5, k), h[2] - 0.3), (h[0] + 0.35, h[1], h[2] - 0.15), 34)
+    key(S, FIELD, (h[0] - 2, h[1] + 3, h[2] + 0.5), h, 600)
+    shoot(S, (0, 0, 0), (h[0] - lerp(2.0, 1.7, k), h[1] + lerp(2.9, 2.5, k), h[2] - 0.55), (h[0] + 0.45, h[1], h[2] - 0.05), 32)
 
 
 def jam(S, k, t, lt):
@@ -1015,22 +1021,22 @@ def wheat_raid(S, k, t, lt):
 
 
 def wheat_eat(S, k, t, lt):
-    """Ground level in the farmer's wheat: three emu heads dip and tug at the ears; at the gate behind them the farmer takes off his hat."""
+    """Low in the farmer's wheat: emu heads dip and tug at the ears either side of the lens; at the gate beyond them the farmer takes off his hat."""
     sky(S, 'day')
-    for n, (x, y, yaw) in enumerate(((-65.4, -2.4, 2.4), (-67.4, -0.4, 2.0), (-68.4, -3.4, 3.3))):
+    for n, (x, y, yaw) in enumerate(((-63.9, -4.0, facing((0, 0), (-0.79, 0.61))), (-66.7, -2.8, facing((0, 0), (0.79, -0.61))), (-70.6, -3.2, facing((0, 0), (0.9, 0.3))))):
         e = S['emus'][n]
         e.place(at(FIELD, x, y, 0), yaw)
         e.pose(0.0, 0.0, dip=0.85 + 0.15 * math.sin(t * 6 + n * 2), look=0.2 * math.sin(t * 2 + n))
     u = sm((lt - 0.3) / 0.5)
-    f = put(S, S['farmer'], FIELD, GATE[0] + 0.6, GATE[1] - 0.9, 0, PI + 0.3,
+    f = put(S, S['farmer'], FIELD, GATE[0] + 0.6, GATE[1] - 0.9, 0, facing((GATE[0] + 0.6, GATE[1] - 0.9), (-63.0, -0.6)),
             blend(P('stand', aR=(0.3, 0.2, 0.3)), P('stand', aR=(1.55, 0.0, 2.2, 0.6), aL=(0.4, 0.3, 0.5), head=(0.2, 0.0)), u), 'sad')
     hat = f.extra['hat']
     if u > 0.3:
         hat.parent = None
         hat.location = wpos(f.hands[0], (0, 0, -0.6))
         hat.rotation_euler = (1.2, 0, 0.2)
-    key(S, FIELD, (-62, -1, 4), (-66, -3, 1.4), 500)
-    shoot(S, FIELD, (lerp(-62.0, -62.4, k), lerp(1.4, 1.0, k), lerp(1.9, 2.0, k)), (lerp(-67.0, -68.0, k), lerp(-4.0, -5.2, k), lerp(1.5, 2.2, k)), 30)
+    key(S, FIELD, (-62, -2, 4), (-67, -6, 1.8), 600)
+    shoot(S, FIELD, (lerp(-62.8, -63.1, k), lerp(-0.4, -0.8, k), lerp(1.55, 1.65, k)), (-69.2, -8.6, lerp(1.9, 2.3, k)), 30)
 
 
 def truck_mount(S, k, t, lt):
@@ -1082,34 +1088,29 @@ def emu_legs(S, k, t, lt):
     e2 = S['emus'][1]
     e2.place(at(FIELD, ex + 5, TRACK - 5.4, 0), PI / 2)
     e2.pose(gait(t, 11, 0.6), 1.0)
-    for i, d in enumerate(S['dust'][:6]):
-        f = (t * 3 + i / 6) % 1.0
-        d.location = at(FIELD, ex - 1.0 - 3 * f, TRACK - 4.0 + 0.5 * (rnd(i, 2) - 0.5), 0.15 + 0.5 * f)
-        r = 0.15 + 0.35 * f
-        d.scale = (r, r, r * 0.7)
     shoot(S, FIELD, (ex - 2.2, TRACK - 5.9, 0.45), (ex + 0.2, TRACK - 3.0, 0.75), 24, roll=0.03 * math.sin(t * 17))
 
 
 def rook_truck(S, k, t, lt):
-    """On the bouncing flatbed: the gunner fights the gun, Rook clings to the side, hat bouncing; an emu runs level with him and looks at him."""
+    """On the bouncing flatbed, filmed from beside the cab looking back: the gunner fights the gun, Rook clings to the side rail, hat bouncing, and stares at the emu running level with the tail."""
     sky(S, 'day')
     x = 300 + 8.0 * lt
     truck_at(S, x, TRACK, PI / 2, t, bounce=1.6, dist=8.0 * lt)
     gun_on_mount(S, (0.45 * math.sin(t * 7), 0.3 * math.sin(t * 11)))
     gp = wpos(S['mount'], (0, 1.1, -1.5))
-    put(S, S['gunner'], (0, 0, 0), gp[0], gp[1], gp[2], -PI / 2 - 0.3, P('brace', aL=(1.5, 0.2, 0.6), aR=(1.5, -0.2, 0.6)), 'wide')
+    put(S, S['gunner'], (0, 0, 0), gp[0], gp[1], gp[2], PI / 2 + 0.3, P('brace', aL=(1.5, 0.2, 0.6), aR=(1.5, -0.2, 0.6)), 'wide')
     S['gunner'].jawv = 0.4
-    rp = wpos(S['tbody'], (-0.85, 1.4, 1.45))
-    put(S, S['rook'], (0, 0, 0), rp[0], rp[1], rp[2], 0.6, P('brace', aR=(1.6, -0.6, 0.4), aL=(0.5, 0.9, 0.6), head=(0.1, -0.6)), 'shocked')
+    rp = wpos(S['tbody'], (-0.85, 2.6, 1.45))
+    put(S, S['rook'], (0, 0, 0), rp[0], rp[1], rp[2], PI / 2 + 0.25, P('brace', aR=(1.0, 0.9, 0.5), aL=(1.2, -0.3, 0.8), head=(0.05, -0.9)), 'shocked')
     S['hat_jump'] = 0.35 * abs(math.sin(t * 9.0))
     e = S['emus'][2]
-    e.place(at(FIELD, x - 1.0 + 0.3 * math.sin(t), TRACK - 4.4, 0), PI / 2)
+    e.place(at(FIELD, x - 8.0 + 0.4 * math.sin(t), TRACK - 3.4, 0), PI / 2)
     e.pose(gait(t, 9, 0.1), 1.0, look=-0.9, tilt=0.2)
-    truck_dust(S, t, wpos(S['tbody'], (0, 4.2, 0.5)), 0.8)
+    truck_dust(S, t, wpos(S['tbody'], (0, 4.2, 0.5)), 0.35)
     h = head(S, S['rook'])
-    key(S, FIELD, (x + 2, TRACK - 8, 6), h, 600)
-    c = wpos(S['tbody'], (0.9, 0.1, 3.6))
-    shoot(S, (0, 0, 0), c, (h[0] + 0.3, h[1] - 1.4, h[2] - 0.8), 22, roll=0.04 * math.sin(t * 13))
+    key(S, FIELD, (x + 4, TRACK - 4, 6), h, 700)
+    c = wpos(S['tbody'], (-0.3, -0.1, 3.4))
+    shoot(S, (0, 0, 0), c, (h[0] - 1.0, h[1] - 1.5, h[2] - 0.8), 24, roll=0.04 * math.sin(t * 13))
 
 
 # ---------------------------------------------------------------- the retreat
@@ -1132,26 +1133,26 @@ def rook_paper(S, k, t, lt):
     """Rook on an ammunition crate holding the newspaper up; he lowers it until only his eyes show over the top, one brow up."""
     sky(S, 'tent')
     tentlight(S, 300)
-    u = sm((lt - 0.2) / 0.5)
+    u = sm((lt - 0.1) / 0.4)
     yaw = 0.6
-    r = put(S, S['rook'], TENT, -2.2, 1.2, 0.25, yaw, P('sit', aL=(1.35, 0.25, 1.4, 1.0), aR=(1.35, 0.25, 1.4, 1.0), head=(lerp(0.1, 0.25, u), 0.0)), 'squint')
+    r = put(S, S['rook'], TENT, -2.2, 1.2, 0.25, yaw, P('sit', aL=(1.35, 0.25, 1.4, 1.0), aR=(1.35, 0.25, 1.4, 1.0), head=(lerp(0.1, 0.2, u), 0.0)), 'squint')
     S['brow1'] = u
-    S['hat_tip'] = 0.2
+    S['hat_tip'] = 0.1
     hd = wpos(r.hands[0])
     hr = wpos(r.hands[1])
     c = ((hd[0] + hr[0]) / 2, (hd[1] + hr[1]) / 2, (hd[2] + hr[2]) / 2)
     fx, fy = math.sin(yaw), -math.cos(yaw)
-    S['paper'].location = (c[0] + 0.1 * fx, c[1] + 0.1 * fy, c[2] + lerp(0.5, -0.1, u))
+    S['paper'].location = (c[0] + 0.15 * fx, c[1] + 0.15 * fy, c[2] + lerp(0.45, -0.35, u))
     S['paper'].rotation_euler = (PI / 2 - 0.1, 0, yaw)
     h = head(S, r)
-    key(S, TENT, (h[0] + 1.5 * fx, h[1] + 1.5 * fy, h[2] + 0.8), h, 220, 'FFC890')
-    shoot(S, (0, 0, 0), (h[0] + 2.6 * fx + 0.3, h[1] + 2.6 * fy, h[2] - 0.2), (h[0], h[1], h[2] - 0.3), 36)
+    key(S, TENT, (h[0] + 1.5 * fx, h[1] + 1.5 * fy, h[2] + 0.8), h, 240, 'FFC890')
+    shoot(S, (0, 0, 0), (h[0] + 3.1 * fx + 0.3, h[1] + 3.1 * fy, h[2] - 0.25), (h[0], h[1], h[2] - 0.45), 36)
 
 
 def pack_up(S, k, t, lt):
-    """Evening on the track: the truck drives away with the gun under canvas, Rook sitting on the tailgate; three emus stand and watch."""
+    """Evening on the track: the truck drives away with the gun under canvas, Rook sitting on the tailgate; three emus stand in the track and watch it go."""
     sky(S, 'evening')
-    x = 4.0 - 5.0 * lt
+    x = 1.0 - 5.0 * lt
     truck_at(S, x, TRACK, -PI / 2, t, bounce=0.6, dist=5.0 * lt)
     gun_on_mount(S)
     S['cover'].parent = S['mount']
@@ -1159,13 +1160,12 @@ def pack_up(S, k, t, lt):
     rp = wpos(S['tbody'], (0.6, 4.05, 1.25))
     put(S, S['rook'], (0, 0, 0), rp[0], rp[1], rp[2], PI / 2, P('sit', lL=(1.4, 1.5), lR=(1.4, 1.3), aL=(0.4, 0.3, 0.6), aR=(0.4, 0.3, 0.6), head=(0.3, 0.0)), 'low')
     S['hat_tip'] = 0.6
-    for n, (ex, ey, yaw) in enumerate(((13.0, TRACK + 2.8, -PI / 2 - 0.2), (15.6, TRACK - 3.0, -PI / 2 + 0.25), (11.4, TRACK - 3.6, -PI / 2 + 0.1))):
+    for n, (ex, ey, yaw) in enumerate(((10.5, TRACK + 1.9, -PI / 2 - 0.2), (12.6, TRACK - 1.6, -PI / 2 + 0.25), (8.4, TRACK - 1.3, -PI / 2 + 0.1))):
         e = S['emus'][n]
         e.place(at(FIELD, ex, ey, 0), yaw)
         e.pose(0.0, 0.0, look=0.15 * math.sin(t * 1.3 + n), tilt=0.15 * math.sin(t * 0.9 + n * 2), up=0.4)
-    truck_dust(S, t, wpos(S['tbody'], (0, 4.2, 0.5)), 0.5)
     key(S, FIELD, (18, TRACK - 6, 5), (8, TRACK, 2), 500, 'FFB878')
-    shoot(S, FIELD, (lerp(20.5, 20.0, k), TRACK - 0.5, 1.8), (lerp(5.0, 3.0, k), TRACK, 2.5), 36)
+    shoot(S, FIELD, (lerp(21.0, 20.4, k), TRACK - 0.3, 1.6), (lerp(4.0, 2.0, k), TRACK, 2.6), 36)
 
 
 def major_report(S, k, t, lt):
@@ -1185,10 +1185,10 @@ def major_report(S, k, t, lt):
 
 
 def emu_tank(S, k, t, lt):
-    """Dawn in the wheat: one big emu stands chest out like a tank, filmed from the ground; Rook walks up, knocks on it, it does not blink."""
+    """Dawn: one big emu stands chest out like a tank, filmed from the ground right under it; Rook walks up, knocks on it, it does not blink."""
     sky(S, 'dawn')
     e = S['emus'][5]
-    e.place(at(FIELD, 40.0, 70.0, 0), facing((40, 70), (38.6, 64.5)))
+    e.place(at(FIELD, 40.0, 70.0, 0), facing((40, 70), (38.8, 66.4)))
     e.pose(0.0, 0.0, look=0.0, up=1.0)
     for n, (x, y) in enumerate(((30.0, 82.0), (52.0, 86.0), (44.0, 95.0))):
         o = S['emus'][n]
@@ -1196,36 +1196,36 @@ def emu_tank(S, k, t, lt):
         o.pose(0.0, 0.0, dip=0.7)
     wk = sm(lt / 0.8)
     knock = 0.8 < lt < 1.5
-    put(S, S['rook'], FIELD, lerp(43.2, 41.4, wk), lerp(66.0, 68.4, wk), 0.0, facing((41.4, 68.4), (40.0, 70.0)) if wk >= 1 else -PI / 2 - 0.6,
+    put(S, S['rook'], FIELD, lerp(43.0, 41.2, wk), lerp(67.4, 68.9, wk), 0.0, facing((41.2, 68.9), (40.0, 70.0)) if wk >= 1 else -PI / 2 + 0.3,
         K.walk(t, 1.6) if wk < 1 else P('point', aR=(1.1, 0.2, 0.9 + 0.6 * abs(math.sin(lt * 18)) if knock else 0.9), head=(-0.2, 0.0)), 'low')
     S['hat_tip'] = lerp(0.2, 1.0, sm((lt - 1.5) / 0.3))
-    key(S, FIELD, (44, 62, 4), (40, 70, 2.5), 700, 'FFD0A0')
-    shoot(S, FIELD, (lerp(38.4, 38.8, k), lerp(64.6, 65.2, k), 0.35), (40.6, 69.6, lerp(2.9, 2.7, k)), 18)
+    key(S, FIELD, (44, 63, 3), (40, 70, 2.5), 900, 'FFD0A0')
+    shoot(S, FIELD, (lerp(39.0, 39.2, k), lerp(66.9, 67.2, k), 0.35), (40.4, 69.9, lerp(2.6, 2.4, k)), 20)
 
 
 # ---------------------------------------------------------------- re-hook: round two
 def farmers_ask(S, k, t, lt):
-    """At the tent door: two farmers, hats in hands, point back at the wheat where emus graze; the major listens, arms folded; Rook leans by the door."""
+    """In profile at the tent door: two farmers, hats in hands, point back at the wheat where emus graze; the major listens, arms folded; Rook leans by the door."""
     sky(S, 'day')
     cx, cy = CAMP
     for n, rig in enumerate((S['farmer'], S['farmer2'])):
-        fx, fy = cx - 1.5 + 2.6 * n, cy - 7.8 - 0.4 * n
+        fx, fy = cx - 0.9 + 1.7 * n, cy - 8.4 - 0.3 * n
         pt = n == 1 or math.sin(lt * 4) > 0.0
-        put(S, rig, FIELD, fx, fy, 0, facing((fx, fy), (cx + 0.2, cy - 4.4)),
-            P('point', aR=(1.25, -0.9 + 0.2 * n, 0.2), aL=(0.6, 0.2, 1.4, 0.6), head=(0.0, -0.5 if pt else 0.0)) if pt else P('stand', aL=(0.6, 0.2, 1.4, 0.6), aR=(0.9, 0.2, 1.4)), 'sad')
+        put(S, rig, FIELD, fx, fy, 0, facing((fx, fy), (cx + 0.4, cy - 4.6)),
+            P('point', aR=(1.25, -0.9 + 0.2 * n, 0.2), aL=(0.6, 0.2, 1.4, 0.6), head=(0.0, 0.5 if pt else 0.0)) if pt else P('stand', aL=(0.6, 0.2, 1.4, 0.6), aR=(0.9, 0.2, 1.4)), 'sad')
         rig.jawv = 0.35 * abs(math.sin(lt * 9 + n))
         hat = rig.extra['hat']
         hat.parent = None
         hat.location = wpos(rig.hands[0], (0, 0, -0.5))
         hat.rotation_euler = (1.3, 0, 0.3)
-    put(S, S['major'], FIELD, cx + 0.2, cy - 4.6, 0, 0.1, P('cross', head=(0.05, 0.1 * math.sin(lt * 2))), 'hard')
-    put(S, S['rook'], FIELD, cx + 1.8, cy - 4.4, 0, 0.5, P('stand', aL=(0.5, -0.1, 1.7, 1.3), aR=(0.4, 0.7, 0.3), lean=-0.06, head=(0.0, 0.5 - 0.9 * sm((lt - 0.5) / 0.4))), 'low')
+    put(S, S['major'], FIELD, cx + 0.4, cy - 4.6, 0, facing((cx + 0.4, cy - 4.6), (cx, cy - 8.4)), P('cross', head=(0.05, 0.1 * math.sin(lt * 2))), 'hard')
+    put(S, S['rook'], FIELD, cx + 1.9, cy - 4.3, 0, facing((cx + 1.9, cy - 4.3), (cx, cy - 8.4)) + 0.3, P('stand', aL=(0.5, -0.1, 1.7, 1.3), aR=(0.4, 0.7, 0.3), lean=-0.06, head=(0.0, 0.5 - 0.9 * sm((lt - 0.5) / 0.4))), 'low')
     for n in range(3, 8):
         e = S['emus'][n]
-        e.place(at(FIELD, cx - 16 - 4 * rnd(n, 1), cy - 12 + 5 * (n - 3), 0), rnd(n, 3) * 6.28)
+        e.place(at(FIELD, cx + 12 + 5 * rnd(n, 1), cy - 16 + 4 * (n - 3), 0), rnd(n, 3) * 6.28)
         e.pose(0.0, 0.0, dip=0.6 + 0.3 * math.sin(t * 3 + n))
-    key(S, FIELD, (cx + 6, cy - 12, 6), (cx, cy - 6, 2.4), 900)
-    shoot(S, FIELD, (lerp(cx + 7.0, cx + 6.4, k), lerp(cy - 12.0, cy - 11.4, k), 2.7), (cx - 0.6, cy - 5.8, 2.3), 26)
+    key(S, FIELD, (cx - 6, cy - 9, 6), (cx, cy - 6.5, 2.4), 900)
+    shoot(S, FIELD, (lerp(cx - 7.6, cx - 7.0, k), lerp(cy - 8.4, cy - 8.0, k), 2.6), (cx + 0.6, cy - 6.4, 2.4), 28)
 
 
 def round_two(S, k, t, lt):
@@ -1276,15 +1276,15 @@ def recalled(S, k, t, lt):
     S['cover'].scale = (0.5, lerp(0.4, 2.4, cv), 0.42)
     put(S, S['gunner'], FIELD, -24.0 - 1.4, TRACK + 1.2, 1.45, -PI / 2, P('reach', aR=(1.6, 0.2, 0.3), aL=(1.4, 0.3, 0.4)), 'tired')
     low = sm((lt - 0.7) / 0.5)
-    m = put(S, S['major'], FIELD, cx + 2.6, cy - 5.2, 0, 0.3, P('stand', aL=(lerp(1.3, 0.5, low), 0.15, 1.3, 0.8), aR=(lerp(1.3, 0.5, low), 0.15, 1.3, 0.8), head=(lerp(0.3, 0.45, low), 0.0)), 'tired')
+    m = put(S, S['major'], FIELD, cx + 2.6, cy - 5.2, 0, 0.3, P('stand', aL=(lerp(0.95, 0.4, low), 0.1, 1.1, 0.8), aR=(lerp(0.95, 0.4, low), 0.1, 1.1, 0.8), head=(lerp(0.35, 0.5, low), 0.0)), 'tired')
     hl, hr = wpos(m.hands[0]), wpos(m.hands[1])
-    S['telegram'].location = ((hl[0] + hr[0]) / 2, (hl[1] + hr[1]) / 2, (hl[2] + hr[2]) / 2 + 0.25)
-    S['telegram'].rotation_euler = (0.5, 0, 0.3)
+    S['telegram'].location = ((hl[0] + hr[0]) / 2, (hl[1] + hr[1]) / 2, (hl[2] + hr[2]) / 2 + 0.12)
+    S['telegram'].rotation_euler = (0.7, 0, 0.3)
     put(S, S['rook'], FIELD, cx + 3.6, cy - 4.4, 0, 0.1, P('stand', aL=(-0.2, 0.4, 1.8, 1.2), aR=(-0.2, 0.4, 1.8, 1.2), lean=0.22, head=(0.35, 0.4)), 'squint')
     S['brow1'] = sm((lt - 0.5) / 0.3)
     h = head(S, m)
     key(S, FIELD, (cx + 4, cy - 12, 4), h, 700, 'FFB878')
-    shoot(S, (0, 0, 0), (h[0] + lerp(1.4, 1.2, k), h[1] - lerp(4.4, 3.8, k), h[2] - 0.35), (h[0] + 0.5, h[1], h[2] - 0.3), 32)
+    shoot(S, (0, 0, 0), (h[0] + lerp(1.4, 1.2, k), h[1] - lerp(4.4, 3.8, k), h[2] - 0.6), (h[0] + 0.5, h[1], h[2] - 0.45), 32)
 
 
 def ledger(S, k, t, lt):
@@ -1354,11 +1354,11 @@ def rook_tens(S, k, t, lt):
         c.location = at(TENT, -0.9 + 0.09 * part + 0.25 * (1 - sm(slide)), -0.45 + 0.64, 1.33)
         c.rotation_euler = (PI / 2, 0, 0)
     tap = lt > 1.2
-    r = put(S, S['rook'], TENT, -0.35, -1.45, 0.0, 0.15, P('tap', head=(0.2, -0.1)) if tap else P('point', aR=(1.2, -0.1, 0.5), aL=(0.4, 0.2, 1.6, 1.0), head=(0.55, 0.15), lean=0.25), 'squint' if tap else 'calm')
-    S['hat_tip'] = 0.0
+    r = put(S, S['rook'], TENT, -0.35, -1.45, 0.0, 0.15, P('tap', head=(0.1, -0.1)) if tap else P('point', aR=(1.2, -0.1, 0.5), aL=(0.4, 0.2, 1.6, 1.0), head=(0.35, 0.15), lean=0.2), 'squint' if tap else 'calm')
+    S['hat_tip'] = -0.1
     h = head(S, r)
-    key(S, TENT, (h[0] + 0.8, h[1] - 1.8, h[2] + 0.5), h, 260, 'FFC890')
-    shoot(S, (0, 0, 0), (h[0] + lerp(1.9, 1.6, k), h[1] - lerp(1.9, 1.6, k), h[2] + 0.0), (h[0] - 0.1, h[1] + 0.55, h[2] - 0.75), 30)
+    key(S, TENT, (h[0] + 0.6, h[1] - 1.6, h[2] + 0.2), h, 320, 'FFC890')
+    shoot(S, (0, 0, 0), (h[0] + lerp(2.0, 1.7, k), h[1] - lerp(2.2, 1.9, k), h[2] - 0.45), (h[0] - 0.2, h[1] + 0.5, h[2] - 0.7), 30)
 
 
 def rook_squint(S, k, t, lt):
@@ -1381,10 +1381,10 @@ def asked_no(S, k, t, lt):
     sky(S, 'day')
     drop = sm((lt - 0.7) / 0.5)
     f = put(S, S['farmer'], FIELD, GATE[0] + 0.4, GATE[1] - 1.2, 0, 0.25,
-            P('stand', aL=(lerp(1.3, 0.3, drop), 0.1, lerp(1.3, 0.4, drop)), aR=(lerp(1.3, 0.2, drop), 0.1, lerp(1.3, 0.3, drop)), head=(lerp(0.4, 0.3, drop), 0.0), lean=0.1 * drop, lift=-0.04 * drop), 'sad')
+            P('stand', aL=(lerp(0.95, 0.3, drop), 0.1, lerp(1.1, 0.4, drop)), aR=(lerp(0.95, 0.2, drop), 0.1, lerp(1.1, 0.3, drop)), head=(lerp(0.45, 0.3, drop), 0.0), lean=0.1 * drop, lift=-0.04 * drop), 'sad')
     hl, hr = wpos(f.hands[0]), wpos(f.hands[1])
-    S['telegram'].location = ((hl[0] + hr[0]) / 2, (hl[1] + hr[1]) / 2 - 0.1, (hl[2] + hr[2]) / 2 + 0.25)
-    S['telegram'].rotation_euler = (0.5 + 0.9 * drop, 0, 0.25)
+    S['telegram'].location = ((hl[0] + hr[0]) / 2, (hl[1] + hr[1]) / 2 - 0.1, (hl[2] + hr[2]) / 2 + 0.12)
+    S['telegram'].rotation_euler = (0.7 + 0.7 * drop, 0, 0.25)
     for n, (x, y) in enumerate(((-75.0, 3.0), (-66.0, 4.0), (-71.0, 8.0), (-63.0, 1.0))):
         e = S['emus'][n]
         e.place(at(FIELD, x, y, 0), rnd(n, 9) * 6.28)
@@ -1396,7 +1396,7 @@ def asked_no(S, k, t, lt):
 def fence_build(S, k, t, lt):
     """Two farmers put up a tall wire fence: one swings a sledgehammer onto a post that Rook holds steady, flinching at every blow."""
     sky(S, 'day')
-    hit = (lt * 2.2) % 1.0
+    hit = (lt * 2.2 + 0.25) % 1.0
     sw = math.sin(PI * min(1.0, hit / 0.5)) if hit < 0.5 else 0.0
     down = 0.42 <= hit < 0.62
     S['post'].location = (FEN[0] + 7.0, FEN[1], 1.6 - 0.04 * int(lt * 2.2))
@@ -1404,31 +1404,30 @@ def fence_build(S, k, t, lt):
     hp = wpos(f.hands[0])
     S['hammer'].location = hp
     S['hammer'].rotation_euler = (lerp(-0.4, -2.8, sw) + PI, 0, 0)
-    put(S, S['farmer2'], FEN, 2.6, -1.6, 0, 0.9, P('reach', aR=(1.2, 0.3, 0.5), aL=(1.1, 0.4, 0.6), lean=0.3), 'calm')
+    put(S, S['farmer2'], FEN, 3.4, -1.8, 0, 0.9, P('reach', aR=(1.2, 0.3, 0.5), aL=(1.1, 0.4, 0.6), lean=0.3), 'calm')
     put(S, S['rook'], FEN, 7.85, -0.7, 0, -1.3, P('stand', aL=(1.4, -0.3, 0.6), aR=(1.4, 0.1, 0.6), lean=-0.08 if down else 0.05, head=(0.25 if down else 0.0, 0.3)), 'shut' if down else 'low')
     S['hat_jump'] = 0.12 if down else 0.0
-    key(S, FEN, (11, -6, 5), (7.3, -1, 2.4), 800)
-    shoot(S, FEN, (lerp(11.4, 10.9, k), lerp(-6.4, -5.9, k), 2.7), (6.6, -0.8, 2.4), 26)
+    key(S, FEN, (10, 5, 5), (7.3, -1, 2.4), 800)
+    shoot(S, FEN, (lerp(9.8, 9.5, k), lerp(4.6, 4.1, k), 2.6), (6.8, -1.0, 2.4), 28)
 
 
 def fence_face(S, k, t, lt):
-    """Sunset at the new fence: an emu on the far side, Rook on this side, face to face through the wire; both tilt their heads."""
+    """Sunset, from the emus' side of the new fence: the emu's head in the foreground, Rook's face through the wire; both tilt their heads."""
     sky(S, 'dusk')
     tl = math.sin(PI * sm((lt - 0.4) / 0.6))
     e = S['emus'][4]
-    e.place(at(FEN, -4.5, 1.2, 0), facing((-4.5, 1.2), (-4.5, -1.0)))
-    e.pose(0.0, 0.0, tilt=0.45 * tl, look=0.0)
+    e.place(at(FEN, -4.5, 1.6, 0), facing((-4.5, 1.6), (-4.5, -1.0)))
+    e.pose(0.0, 0.0, tilt=0.45 * tl, look=0.0, dip=0.12)
     for n, x in enumerate((-12.0, 3.0, 10.0)):
         o = S['emus'][n]
         o.place(at(FEN, x, 6.0 + 3 * n, 0), 2.6 + n)
         o.pose(0.0, 0.0, dip=0.6)
-    put(S, S['rook'], FEN, -4.6, -1.1, 0.0, PI, P('cross', head=(0.0, 0.0)), 'low')
+    put(S, S['rook'], FEN, -4.6, -1.3, 0.0, PI, P('cross', head=(0.0, 0.0)), 'low')
     S['rook'].head.rotation_euler.y = -0.4 * tl
     eh = wpos(e.hd)
     rh = head(S, S['rook'])
-    key(S, FEN, (-1, -6, 4), rh, 700, 'FFA070')
-    mid = ((eh[0] + rh[0]) / 2, (eh[1] + rh[1]) / 2, (eh[2] + rh[2]) / 2)
-    shoot(S, (0, 0, 0), (mid[0] + lerp(3.4, 3.0, k), mid[1] - lerp(2.8, 2.4, k), mid[2] - 0.3), (mid[0], mid[1], mid[2] - 0.15), 30)
+    key(S, FEN, (-3.5, -6, 4), rh, 800, 'FFA070')
+    shoot(S, (0, 0, 0), (eh[0] + lerp(2.0, 1.7, k), eh[1] + lerp(2.4, 2.1, k), eh[2] + 0.1), (rh[0] - 0.1, rh[1], rh[2] - 0.2), 32)
 
 
 def rook_question(S, k, t, lt):
