@@ -1,0 +1,14 @@
+{
+  "id": "r025-magee", "spine": "v2", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.4,
+  "segments": [
+    {"scene": "hook", "mood": "hook", "text": "his parachute is in shreds, his bomber is going down, and he's heading for a train station's glass roof."},
+    {"scene": "doubt", "mood": "tense", "text": "Through glass? No chance."},
+    {"scene": "flak", "mood": "action", "text": "Daylight, over Saint-Nazaire. Flak wrecks his ball turret. He crawls out. His parachute is torn to rags."},
+    {"scene": "fall", "mood": "tense", "text": "Short of oxygen, he blacks out, and the bomber throws him clear. {22,000|Twenty-two thousand} feet."},
+    {"scene": "rehook", "mood": "tense", "text": "And right below him: the railway station. Glass, and iron."},
+    {"scene": "land", "mood": "action", "text": "He smashes straight through. The glass bursts, and slows him. Just enough."},
+    {"scene": "found", "mood": "wonder", "text": "They find him in the station, alive. Twenty-eight shrapnel wounds, and a badly injured arm."},
+    {"scene": "payoff", "mood": "triumph", "text": "A German military doctor saves him. He sees out the war as a prisoner, and goes home."},
+    {"scene": "end", "mood": "sad", "text": "Seven of his crew never did. Fifty years on, Saint-Nazaire built them a memorial. Case closed. Now picture it:"}
+  ]
+}

@@ -1,0 +1,1074 @@
+{
+ "id": "r025-magee",
+ "hook_text": "NO PARACHUTE.|GLASS ROOF.",
+ "shots": [
+  {
+   "n": 1,
+   "segment": "hook",
+   "weight": 0.75,
+   "kind": "turret_close",
+   "action": "Close on a young gunner curled inside the steel ball of a bomber's belly turret, seen through its round front window: a flak burst flashes orange outside, the window cracks across in a star, he flinches and his eyes go wide",
+   "camera": "Close, outside the window, easing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 2,
+   "transition": "cut",
+   "sfx": [
+    [
+     "hit",
+     0.04
+    ],
+    [
+     "crash",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 2,
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "chute_rags",
+   "action": "Inside the fuselage: his chest parachute pack hanging on its hook, torn open; white silk spills out of it in rags and shreds, daylight coming through holes in the skin behind it",
+   "camera": "Close, three-quarter, pushing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 3,
+   "segment": "hook",
+   "weight": 1.1,
+   "kind": "bomber_down",
+   "action": "Daylight, high above cloud: a four-engined bomber rolls over and goes down trailing black smoke, one engine on fire; a tiny dark figure tumbles away under its belly",
+   "camera": "Below and beside, tilting with the roll",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 2,
+   "transition": "cut",
+   "sfx": [
+    [
+     "crash",
+     0.15
+    ],
+    [
+     "whoosh",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 4,
+   "segment": "hook",
+   "weight": 1.1,
+   "kind": "roof_rush",
+   "action": "Straight down: a long arched railway-station roof of glass and iron among the roofs of a town, rushing up at the lens",
+   "camera": "Top down, falling",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 3,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.0
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "fstop": 0
+   }
+  },
+  {
+   "n": 5,
+   "segment": "doubt",
+   "weight": 1.0,
+   "kind": "rook_ridge",
+   "action": "A crow in a long coat and hat stands on the iron ridge of the station roof, glass panes sloping away either side of his boots. He looks up at a tiny figure falling out of the sky above him, then at us, brim low, and speaks",
+   "camera": "Low on the roof, looking up past him",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "zoom",
+   "sfx": [
+    [
+     "flap",
+     0.1
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": "CASE 025",
+   "prm": {}
+  },
+  {
+   "n": 6,
+   "segment": "flak",
+   "weight": 1.0,
+   "kind": "formation",
+   "action": "Daylight over the sea coast: a formation of four-engined bombers in a staggered line, black flak bursts blooming all round them, each with an orange flash at the heart",
+   "camera": "Wide, alongside the formation, tracking",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "flash",
+   "sfx": [
+    [
+     "hit",
+     0.2
+    ],
+    [
+     "hit",
+     0.5
+    ],
+    [
+     "hit",
+     0.8
+    ]
+   ],
+   "hud": "3 JANUARY 1943",
+   "prm": {}
+  },
+  {
+   "n": 7,
+   "segment": "flak",
+   "weight": 1.0,
+   "kind": "flak_hit",
+   "action": "Under the bomber's belly: a flak burst goes off right beside the ball turret; the ball jolts, fragments fly, and its guns sag and stop turning",
+   "camera": "Close below the belly, looking up, shaking",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 4,
+   "transition": "cut",
+   "sfx": [
+    [
+     "crash",
+     0.25
+    ],
+    [
+     "clunk",
+     0.6
+    ]
+   ],
+   "hud": "ST-NAZAIRE, FRANCE",
+   "prm": {}
+  },
+  {
+   "n": 8,
+   "segment": "flak",
+   "weight": 1.0,
+   "kind": "turret_climb",
+   "action": "Inside the fuselage: the hatch of the turret in the floor. The gunner hauls himself up out of it on both arms into the waist of the plane, smoke drifting past, light through flak holes",
+   "camera": "Low, beside the hatch, rising with him",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.2
+    ],
+    [
+     "gasp",
+     0.7
+    ]
+   ],
+   "hud": "ALAN MAGEE, BALL TURRET GUNNER",
+   "prm": {}
+  },
+  {
+   "n": 9,
+   "segment": "flak",
+   "weight": 1.1,
+   "kind": "chute_find",
+   "action": "He pulls his parachute pack off its hook: it falls open in his hands and the silk drops out in rags. His face falls. Behind him the crow flinches, hat hopping",
+   "camera": "Medium close, front three-quarter",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "grab",
+     0.2
+    ],
+    [
+     "whoosh",
+     0.55
+    ],
+    [
+     "pop",
+     0.75
+    ]
+   ],
+   "hud": "ALAN MAGEE, BALL TURRET GUNNER",
+   "prm": {}
+  },
+  {
+   "n": 10,
+   "segment": "flak",
+   "weight": 1.2,
+   "kind": "rook_silk",
+   "action": "The crow holds a strip of the torn silk up to a shaft of daylight from a flak hole, pokes a wingtip through one of the holes in it, then taps his beak",
+   "camera": "Close, side light, easing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.3
+    ],
+    [
+     "tick",
+     0.75
+    ]
+   ],
+   "hud": "PARACHUTE: SHREDDED",
+   "prm": {}
+  },
+  {
+   "n": 11,
+   "segment": "fall",
+   "weight": 1.0,
+   "kind": "gasp_dim",
+   "action": "The gunner sways in the fuselage, mask hanging loose, fumbling for something to hold; his eyes drift shut and he slumps against the ribs",
+   "camera": "Close, tilting slowly with him",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "cut",
+   "sfx": [
+    [
+     "heartbeat",
+     0.2
+    ],
+    [
+     "heartbeat",
+     0.6
+    ]
+   ],
+   "hud": "NO OXYGEN",
+   "prm": {}
+  },
+  {
+   "n": 12,
+   "segment": "fall",
+   "weight": 1.0,
+   "kind": "thrown_clear",
+   "action": "Outside: the bomber's broken waist, a ragged hole in its side; a limp figure is flung out among scraps of metal as the plane rolls away above him",
+   "camera": "Beside the fuselage, holding as the plane pulls away",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 3,
+   "transition": "cut",
+   "sfx": [
+    [
+     "crash",
+     0.1
+    ],
+    [
+     "whoosh",
+     0.45
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 13,
+   "segment": "fall",
+   "weight": 1.1,
+   "kind": "fall_wide",
+   "action": "From above: one small limp figure turning slowly in the open sky, a white cloud layer far below him and a coastline beyond",
+   "camera": "High above him, looking down, rolling",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "whip",
+   "sfx": [
+    [
+     "wind",
+     0.0
+    ]
+   ],
+   "hud": "22,000 FEET",
+   "prm": {}
+  },
+  {
+   "n": 14,
+   "segment": "fall",
+   "weight": 1.1,
+   "kind": "rook_dive",
+   "action": "The crow dives beside him, wings tucked, one wingtip clamping his hat on his head, eyes wide, looking across at the falling man and then down",
+   "camera": "Close, three-quarter, falling with him",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "flap",
+     0.1
+    ],
+    [
+     "whoosh",
+     0.5
+    ]
+   ],
+   "hud": "NO PARACHUTE",
+   "prm": {}
+  },
+  {
+   "n": 15,
+   "segment": "rehook",
+   "weight": 1.0,
+   "kind": "town_below",
+   "action": "Straight down past the man's boots: the town, the harbour, and the long glass roof of the station growing in the middle of the picture",
+   "camera": "Over his shoulder, looking straight down, sinking",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.0
+    ],
+    [
+     "whoosh",
+     0.7
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "fstop": 0
+   }
+  },
+  {
+   "n": 16,
+   "segment": "rehook",
+   "weight": 1.0,
+   "kind": "rook_look",
+   "action": "On the station roof: the crow looks up, his hat jumps off his head, and he backs off down the glass with his wings up, eyes on the sky",
+   "camera": "Low, across the ridge",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "pop",
+     0.3
+    ],
+    [
+     "flap",
+     0.6
+    ]
+   ],
+   "hud": "ST-NAZAIRE STATION",
+   "prm": {}
+  },
+  {
+   "n": 17,
+   "segment": "land",
+   "weight": 0.9,
+   "kind": "smash",
+   "action": "Inside the station, looking up at the arched glass roof: a section bursts inward as he comes through, a fan of glass and splinters of light",
+   "camera": "From the platform, looking straight up",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 4,
+   "transition": "flash",
+   "sfx": [
+    [
+     "crash",
+     0.15
+    ],
+    [
+     "hit",
+     0.2
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 18,
+   "segment": "land",
+   "weight": 1.1,
+   "kind": "shards",
+   "action": "Glass pours down through sunbeams onto the platform; the crow at the edge of the platform has both wings over his head, peeking out between them",
+   "camera": "Low on the platform, wide",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 2,
+   "transition": "cut",
+   "sfx": [
+    [
+     "crash",
+     0.05
+    ],
+    [
+     "tick",
+     0.4
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 19,
+   "segment": "land",
+   "weight": 1.2,
+   "kind": "hole_up",
+   "action": "Stillness: looking straight up at the ragged hole in the glass roof, the iron ribs around it, daylight pouring through, a few last glints falling and dust turning",
+   "camera": "Flat on the platform, looking straight up, slowly rotating",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "hush": true
+  },
+  {
+   "n": 20,
+   "segment": "found",
+   "weight": 1.1,
+   "kind": "found",
+   "action": "Men in plain grey greatcoats and caps run in and kneel beside the gunner lying on the platform among the glass; he moves one hand. The crow stands back with his hat held to his chest",
+   "camera": "Low, along the platform, pushing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.2
+    ],
+    [
+     "gasp",
+     0.7
+    ]
+   ],
+   "hud": "ALIVE",
+   "prm": {}
+  },
+  {
+   "n": 21,
+   "segment": "found",
+   "weight": 1.2,
+   "kind": "rook_shard",
+   "action": "The crow picks a shard of glass up off the platform, turns it in the light, looks up from it to the hole in the roof, then holds his wings apart to measure the hole",
+   "camera": "Close, low, tilting up with his look",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.2
+    ],
+    [
+     "tick",
+     0.5
+    ],
+    [
+     "pop",
+     0.8
+    ]
+   ],
+   "hud": "28 SHRAPNEL WOUNDS",
+   "prm": {}
+  },
+  {
+   "n": 22,
+   "segment": "found",
+   "weight": 1.0,
+   "kind": "stretcher",
+   "action": "Two of the men carry him on a stretcher along the platform past the locomotive, the dust still in the light",
+   "camera": "Side on, tracking with them",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.3
+    ]
+   ],
+   "hud": "28 SHRAPNEL WOUNDS",
+   "prm": {}
+  },
+  {
+   "n": 23,
+   "segment": "payoff",
+   "weight": 1.1,
+   "kind": "doctor",
+   "action": "A plain hospital room: the gunner in bed with his arm in a white cast; a doctor in a white coat bends over him, listening, then straightens up and nods",
+   "camera": "Medium, from the foot of the bed, easing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": "A GERMAN MILITARY DOCTOR",
+   "prm": {}
+  },
+  {
+   "n": 24,
+   "segment": "payoff",
+   "weight": 1.0,
+   "kind": "rook_bed",
+   "action": "The crow at the foot of the bed lifts his hat brim, looks at the man, and gives one slow nod",
+   "camera": "Close, three-quarter",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 25,
+   "segment": "payoff",
+   "weight": 1.2,
+   "kind": "camp",
+   "action": "Snow, a wire fence, a wooden hut: the gunner stands at the wire with his arm in a sling, looking out; the crow is perched on a fence post beside him, coat collar up",
+   "camera": "Medium wide, tracking slowly along the fence",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.0
+    ],
+    [
+     "clunk",
+     0.6
+    ]
+   ],
+   "hud": "PRISONER UNTIL MAY 1945",
+   "prm": {}
+  },
+  {
+   "n": 26,
+   "segment": "end",
+   "weight": 1.3,
+   "kind": "memorial",
+   "action": "A quiet town square in soft morning light: a plain stone memorial on a plinth, a wreath at its foot. The crow stands beside it with his hat off, held at his side, and lowers his head",
+   "camera": "Tracking slowly in towards the stone, sinking",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": "7 OF THE 10 CREW DIED",
+   "prm": {}
+  },
+  {
+   "n": 27,
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "wreath",
+   "action": "Close on the wreath at the foot of the stone, a few petals moving in the wind; a black-feathered hand lays one more flower on it",
+   "camera": "Close, low, easing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.4
+    ]
+   ],
+   "hud": "ST-NAZAIRE, 1993",
+   "prm": {}
+  },
+  {
+   "n": 28,
+   "segment": "end",
+   "weight": 1.2,
+   "kind": "signoff",
+   "action": "Back in the station under the hole in the roof: the crow puts his hat back on, tugs the brim, holds up the shard of glass so it glints, and pockets it",
+   "camera": "Low, pushing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "flap",
+     0.2
+    ],
+    [
+     "tick",
+     0.7
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "brand": true
+  },
+  {
+   "n": 29,
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "board",
+   "action": "Rook's case board, iron and glass: a photograph of the hole in the station roof, 22,000 FEET, NO PARACHUTE, GLASS ROOF",
+   "camera": "Flat insert",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "bloop",
+     0.1
+    ],
+    [
+     "clunk",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 30,
+   "segment": "end",
+   "weight": 0.9,
+   "kind": "turret_close",
+   "action": "Back to the first picture: the gunner in the ball turret behind its round window, played back to its first frame",
+   "camera": "The opening framing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "whoosh",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "loop": true
+   }
+  }
+ ]
+}
