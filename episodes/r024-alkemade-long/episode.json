@@ -1,0 +1,22 @@
+{
+ "id": "r024-alkemade-long",
+ "format": "long",
+ "case_of": "r024-alkemade",
+ "status": "draft",
+ "synthetic": false,
+ "host": "rook",
+ "case": 24,
+ "title": "(draft) Nicholas Alkemade full case file",
+ "playlist": "Rook's Case Files (Full Cases)",
+ "sources": [
+  "https://www.rafmuseum.org.uk/blog/the-indestructible-alkemade/",
+  "https://en.wikipedia.org/wiki/Nicholas_Alkemade",
+  "https://www.bombercommandmuseumarchives.ca/s,alkemade.html",
+  "https://www.airspacemag.com/daily-planet/parachuteless-freaks-170764598/",
+  "https://www.wearethemighty.com/articles/nicholas-alkemade-parachute-survives/"
+ ],
+ "authoring": {
+  "claimed_at": "2026-11-19T04:15:06Z",
+  "run": "scheduled long run, 19 Nov 2026"
+ }
+}
