@@ -312,8 +312,9 @@
    "world": "jungle ridge",
    "est_score": 79,
    "long_form_candidate": false,
-   "status": "idea",
-   "facts": "verify with 2+ sources at authoring; skip if they do not hold"
+   "status": "in progress",
+   "facts": "verify with 2+ sources at authoring; skip if they do not hold",
+   "claimed_at": "2026-11-19T04:15:05Z"
   },
   {
    "case": 24,
