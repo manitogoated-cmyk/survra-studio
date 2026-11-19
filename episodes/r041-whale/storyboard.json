@@ -1,0 +1,1066 @@
+{
+ "id": "r041-whale",
+ "hook_text": "THEY BLEW UP|A WHALE.",
+ "shots": [
+  {
+   "n": 1,
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "blast_close",
+   "action": "Low on the sand beside a dead whale's huge grey flank, twenty wooden cases stacked against it: a white flash, and the beach erupts in a column of sand and whale that swallows the frame; the camera is knocked back",
+   "camera": "Low, beside the flank, three-quarter; knocked back by the blast",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 3,
+   "transition": "cut",
+   "sfx": [
+    [
+     "hit",
+     0.2
+    ],
+    [
+     "boom",
+     0.21
+    ],
+    [
+     "crash",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 2,
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "column",
+   "action": "From the dunes behind the crowd: spectators point as a column of sand and blubber climbs high over the beach, lumps arcing out of it against the sky",
+   "camera": "Wide, from behind the crowd, tilting up with the column",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 2,
+   "transition": "cut",
+   "sfx": [
+    [
+     "crash",
+     0.0
+    ],
+    [
+     "whoosh",
+     0.55
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 3,
+   "segment": "hook",
+   "weight": 0.75,
+   "kind": "chunk_lens",
+   "action": "Looking straight up from the dune: one big lump of blubber tumbles out of the sky right at the lens, more sailing over",
+   "camera": "Low, looking up; the lump fills the frame",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.25
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 4,
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "rain_crowd",
+   "action": "The crowd on the ridge: lumps thud into the sand all round them; people duck with their arms over their heads, faces wide-eyed, sand puffing up",
+   "camera": "Medium-wide, slightly above, from the slope",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "cut",
+   "sfx": [
+    [
+     "splash",
+     0.35
+    ],
+    [
+     "clunk",
+     0.62
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 5,
+   "segment": "doubt",
+   "weight": 1.0,
+   "kind": "rook_dune",
+   "action": "Rook on the dune ridge, arms crossed, hat brim low, unimpressed, the column still climbing behind him: 'Raining whale? Not a chance.' A lump slaps into the sand beside him; he flinches into a brace and his hat hops",
+   "camera": "Medium, low front, column over his shoulder",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "splash",
+     0.72
+    ]
+   ],
+   "hud": "CASE 041",
+   "prm": {}
+  },
+  {
+   "n": 6,
+   "segment": "rain",
+   "weight": 1.0,
+   "kind": "overhead_chunk",
+   "action": "Flat among the beach grass looking up: lumps of blubber sail across the sky over everyone's raised arms",
+   "camera": "Low wide, looking up, a slow roll",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.25
+    ],
+    [
+     "whoosh",
+     0.65
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 7,
+   "segment": "rain",
+   "weight": 1.1,
+   "kind": "run_cars",
+   "action": "From the parking lot: people pour down the back of the dunes towards their cars, arms over their heads, as lumps drop between them and a sand cloud hangs behind",
+   "camera": "Wide, from the lot, slow drift",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "splash",
+     0.45
+    ]
+   ],
+   "hud": "12 NOV 1970",
+   "prm": {}
+  },
+  {
+   "n": 8,
+   "segment": "rain",
+   "weight": 1.0,
+   "kind": "rook_duck",
+   "action": "Rook sprints down the dune clamping his hat on with one hand; a lump slaps down right in front of him and he swerves round it, eyes wide",
+   "camera": "Medium, leading him",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "splash",
+     0.4
+    ]
+   ],
+   "hud": "FLORENCE, OREGON",
+   "prm": {}
+  },
+  {
+   "n": 9,
+   "segment": "plan",
+   "weight": 1.1,
+   "kind": "crates",
+   "action": "Earlier that day: the stack of wooden cases against the whale's flank; two workmen in hard hats carry in more while the engineer, clipboard in hand, checks the pile",
+   "camera": "Medium-wide, three-quarter, slow push",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.3
+    ],
+    [
+     "clunk",
+     0.7
+    ]
+   ],
+   "hud": "20 CASES OF DYNAMITE",
+   "prm": {}
+  },
+  {
+   "n": 10,
+   "segment": "plan",
+   "weight": 1.3,
+   "kind": "rook_count",
+   "action": "Rook walks along the stack tapping each case with a wingtip, counting; at the last one he turns to us, eyes wide, hat hopping",
+   "camera": "Medium, tracking with him",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.2
+    ],
+    [
+     "tick",
+     0.4
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": "HALF A TON",
+   "prm": {}
+  },
+  {
+   "n": 11,
+   "segment": "plan",
+   "weight": 1.2,
+   "kind": "gull",
+   "action": "Rook and a seagull sit side by side on a driftwood log, the whale filling the frame behind them; the gull looks back at the whale, then at Rook; Rook shrugs",
+   "camera": "Medium, front, eye level",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "gulls",
+     0.15
+    ],
+    [
+     "flip",
+     0.65
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 12,
+   "segment": "plan",
+   "weight": 0.9,
+   "kind": "wire",
+   "action": "The wire runs across the sand to a wooden blasting machine at the foot of the dunes; the engineer kneels behind it, hands on the T-handle, the whale far behind",
+   "camera": "Low, close on the box, slow drift",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 13,
+   "segment": "warn",
+   "weight": 1.2,
+   "kind": "expert",
+   "action": "A man in a brown sports coat stands at the cases frowning, slowly shaking his head; Rook beside him, arms crossed, copies the head shake",
+   "camera": "Medium two-shot from beside the stack",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ]
+   ],
+   "hud": "WALTER UMENHOFER",
+   "prm": {}
+  },
+  {
+   "n": 14,
+   "segment": "warn",
+   "weight": 1.1,
+   "kind": "warn_talk",
+   "action": "He points hard at the cases and talks; the engineer, clipboard under his arm, waves him away",
+   "camera": "Medium-wide, side-on, the whale behind",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "flip",
+     0.55
+    ]
+   ],
+   "hud": "KNEW EXPLOSIVES",
+   "prm": {}
+  },
+  {
+   "n": 15,
+   "segment": "warn",
+   "weight": 1.1,
+   "kind": "walk_back",
+   "action": "The crowd stays on the ridge facing the whale; he strides off over the back of the dunes, far behind everyone",
+   "camera": "Wide along the ridge",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.2
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 16,
+   "segment": "warn",
+   "weight": 1.0,
+   "kind": "rook_eye",
+   "action": "Rook crouched in the beach grass holds up a magnifying glass and follows the man walking away, then lowers it and raises one brow at us",
+   "camera": "Close, front",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 17,
+   "segment": "car",
+   "weight": 0.9,
+   "kind": "slab_fall",
+   "action": "In the lot: a slab of blubber the size of a tyre tumbles down out of the sky towards the cars, growing",
+   "camera": "Low, looking up past the cars",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.1
+    ],
+    [
+     "whoosh",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 18,
+   "segment": "car",
+   "weight": 1.3,
+   "kind": "car_crush",
+   "action": "The slab lands square on the shiny gold sedan's roof: the roof caves in, the car bucks on its springs, sand jumps",
+   "camera": "Wide three-quarter on the car",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 3,
+   "transition": "cut",
+   "sfx": [
+    [
+     "crash",
+     0.3
+    ],
+    [
+     "clunk",
+     0.32
+    ]
+   ],
+   "hud": "A QUARTER MILE AWAY",
+   "prm": {}
+  },
+  {
+   "n": 19,
+   "segment": "car",
+   "weight": 1.0,
+   "kind": "owner_face",
+   "action": "His face, close: he stares at what's left of his new car, and his jaw drops",
+   "camera": "Close, eye level",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "gasp",
+     0.2
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 20,
+   "segment": "car",
+   "weight": 1.3,
+   "kind": "rook_roof",
+   "action": "Rook standing on the crumpled roof beside the slab runs a tape measure along it, then pinches his beak shut against the smell",
+   "camera": "Medium, low three-quarter",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.15
+    ],
+    [
+     "scratch",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 21,
+   "segment": "deal",
+   "weight": 1.2,
+   "kind": "showroom",
+   "action": "Days before, at a car dealer's forecourt under fluttering bunting: a banner reads 'A WHALE OF A DEAL!'; the same gold sedan wears a big ribbon bow; the salesman drops the keys into the man's hand and he grins",
+   "camera": "Wide, low, slow push in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "bloop",
+     0.2
+    ],
+    [
+     "tick",
+     0.55
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 22,
+   "segment": "deal",
+   "weight": 1.0,
+   "kind": "rook_laugh",
+   "action": "Back at the flattened car: Rook doubles over cawing with laughter and slaps the crumpled roof",
+   "camera": "Medium, three-quarter",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.3
+    ],
+    [
+     "clunk",
+     0.65
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 23,
+   "segment": "cleanup",
+   "weight": 1.1,
+   "kind": "bulldozer",
+   "action": "Afterwards: a hole in the sand where the whale was, lumps everywhere; a yellow bulldozer shoves a wave of sand over them",
+   "camera": "Wide, three-quarter, drifting",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "sputter",
+     0.1
+    ],
+    [
+     "clunk",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 24,
+   "segment": "cleanup",
+   "weight": 0.9,
+   "kind": "rook_nose",
+   "action": "Rook rides the bulldozer's track guard, pinching his beak with one hand and fanning the air with his hat",
+   "camera": "Medium, front",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "sputter",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 25,
+   "segment": "cleanup",
+   "weight": 1.1,
+   "kind": "engineer_turn",
+   "action": "Quiet. The engineer stands at the edge of the hole, clipboard under his arm, looking at the mess; he turns to us",
+   "camera": "Medium, behind him, slow push",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.65
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "hush": true
+  },
+  {
+   "n": 26,
+   "segment": "payoff",
+   "weight": 1.3,
+   "kind": "engineer",
+   "action": "The engineer, close, pleased with himself: a firm nod and a thumbs-up, the hole and the lumps behind him",
+   "camera": "Close, eye level",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "bloop",
+     0.3
+    ]
+   ],
+   "hud": "ENGINEER GEORGE THORNTON",
+   "prm": {}
+  },
+  {
+   "n": 27,
+   "segment": "payoff",
+   "weight": 1.0,
+   "kind": "rook_stare",
+   "action": "Rook, deadpan among the lumps of whale; very slowly his hat brim drops over his eyes",
+   "camera": "Close, front, locked",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "flip",
+     0.55
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 28,
+   "segment": "payoff",
+   "weight": 1.1,
+   "kind": "rook_park",
+   "action": "Fifty years on, in a little park in the pines: Rook beside a wooden sign takes off his hat, holds it to his chest and gives a small bow",
+   "camera": "Medium, three-quarter",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "flap",
+     0.35
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 29,
+   "segment": "payoff",
+   "weight": 1.5,
+   "kind": "park_sign",
+   "action": "The wooden sign among rhododendrons and pines by the river: EXPLODING WHALE MEMORIAL PARK",
+   "camera": "Wide to medium push in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "bloop",
+     0.15
+    ]
+   ],
+   "hud": "FLORENCE, 2020",
+   "prm": {}
+  },
+  {
+   "n": 30,
+   "segment": "end",
+   "weight": 1.4,
+   "kind": "signoff",
+   "action": "At the water's edge: Rook picks a pearly shell out of the wet sand, turns it so it glints, pockets it and tugs his brim",
+   "camera": "Medium, low front, the sea behind",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "tick",
+     0.45
+    ],
+    [
+     "flap",
+     0.8
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "brand": true
+  },
+  {
+   "n": 31,
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "blast_close",
+   "action": "Back to the first picture: the dead whale and the stacked cases, still whole, the camera settling into the opening framing",
+   "camera": "The opening framing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "whoosh",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "loop": true
+   }
+  }
+ ]
+}
