@@ -1199,8 +1199,8 @@ def make_whole(S):
 def make_cloudwall(S):
     w = keep(empty(FAR))
     for i in range(26):
-        add('ico_sphere', ('1E262E', '28323C', '161C22')[i % 3], (-260 + 21 * i + 9 * rnd(i, 61), 40 * rnd(i, 62), 25 + 45 * rnd(i, 63)),
-            scale=(1.6, 1.0, 1.0 + 0.6 * rnd(i, 64)), radius=30 + 22 * rnd(i, 65), subdivisions=1, parent=w, rough=1.0)
+        add('ico_sphere', ('7A848E', '8A949E', '6A747E')[i % 3], (-260 + 21 * i + 9 * rnd(i, 61), 40 * rnd(i, 62), 55 + 55 * rnd(i, 63)),
+            scale=(1.8, 1.0, 0.8 + 0.4 * rnd(i, 64)), radius=34 + 24 * rnd(i, 65), subdivisions=2, parent=w, rough=1.0)
     add('cube', '1A2228', (0, 30, 8), scale=(560, 40, 16), size=1, parent=w, rough=1.0)                          # the rain curtain under it
     S['bolt'] = [add('cube', 'E8F0FF', (-120 + 90 * i, -5, 40), rot=(0, 0.3 - 0.25 * i, 0), scale=(0.9, 0.9, 40), size=1, parent=w, emit=30.0) for i in range(3)]
     S['cloudwall'] = w
@@ -1342,7 +1342,7 @@ def make_props(S):
     for i in range(4):
         a0, a1 = -0.5 + i / 4, -0.5 + (i + 1) / 4
         bar(S['pend'], 'E8C060', (0.13 * math.sin(a0), 0, -0.13 * math.cos(a0)), (0.13 * math.sin(a1), 0, -0.13 * math.cos(a1)), 0.016, rough=0.2)
-    S['pglint'] = add('ico_sphere', 'FFFFFF', (0.04, -0.01, -0.05), radius=0.014, subdivisions=1, parent=S['pend'], emit=60.0)
+    S['pglint'] = add('ico_sphere', 'FFFFFF', (0.04, -0.01, -0.05), radius=0.01, subdivisions=1, parent=S['pend'], emit=20.0)
     S['chain'] = keep(add('torus', 'E8C060', FAR, major_radius=0.3, minor_radius=0.008, major_segments=16, minor_segments=3, rough=0.2))
     S['shed'] = keep(add('cone', '2F2B4D', FAR, radius1=0.07, radius2=0.0, depth=0.36, vertices=4))
 
@@ -1427,11 +1427,14 @@ def whole(S, t, amp=1.0, col='day', flow=0.0, roll=0.0, pitch=0.0, lift=0.0, at_
         S['whole'].location = at(SEA, 0, 0, 0.12 * amp * math.sin(1.3 * t) + lift)
     else:
         S['whole'].location = at_
+        for o in (S['wmain'], S['wmiz'], S['wjib']):                     # alongside the quay the sails are down
+            o.scale = (0.01, 0.01, 0.01)
     S['whole'].rotation_euler = (0.035 * amp * math.sin(1.1 * t + 1) + pitch, 0.05 * amp * math.sin(0.9 * t) + roll, 0)
     S['wwheel'].rotation_euler = (PI / 2, 0.3 * math.sin(t * 1.3), 0)
     fl = 0.04 * math.sin(t * 6) * amp
-    for s in (S['wmain'], S['wmiz'], S['wjib']):
-        s.scale = (1 + 4 * fl, 1, 1)
+    if at_ is None:
+        for s in (S['wmain'], S['wmiz'], S['wjib']):
+            s.scale = (1 + 4 * fl, 1, 1)
 
 
 def wboard(S, rig, x, y, z=D, yaw=0.0, pose=None, face=None):
@@ -1472,7 +1475,7 @@ def harbour_wide(S, k, t, lt):
     S['sun'].data.energy = 2.4
     d = setin(S, 'quay')
     d['sun'].data.energy = 0
-    whole(S, t, 0.15, at_=SP('quay', 0, 3.2, 0))
+    whole(S, t, 0.15, at_=SP('quay', 0, -2.6, 0))
     nocut(S)
     wboard(S, S['tami'], 1.2, -6.0, D, PI * 0.7, P('stand', aL=(0.9, 0.3, 1.2 + 0.4 * math.sin(lt * 4)), aR=(0.9, 0.3, 1.2 - 0.4 * math.sin(lt * 4)), head=(0.3, 0.0)), 'calm')
     for i, cr in enumerate(d['palms']):
@@ -1486,17 +1489,17 @@ def quay(S, k, t, lt):
     sky(S, 'day')
     S['sun'].data.energy = 2.4
     d = setin(S, 'quay')
-    whole(S, t, 0.15, at_=SP('quay', 0, 3.2, 0))
+    whole(S, t, 0.15, at_=SP('quay', 0, -2.6, 0))
     nocut(S)
     c = math.sin(lt * 4)
-    wboard(S, S['tami'], 2.2, -1.0, D, PI * 0.5 + 0.3, P('stand', aL=(0.9, 0.3, 1.2 + 0.4 * c), aR=(0.9, 0.3, 1.2 - 0.4 * c), head=(0.15, 0.3)), 'warm')
+    wboard(S, S['tami'], 1.3, 6.6, D, PI * 0.75, P('stand', aL=(0.9, 0.3, 1.2 + 0.4 * c), aR=(0.9, 0.3, 1.2 - 0.4 * c), head=(0.15, 0.3)), 'warm')
     S['tami'].jawv = 0.15
     v = sm((lt - 0.9) / 0.4)
-    rk = onset(S, S['rook'], 'quay', -4.0, 8.0, 2.65 - 0.55, facing((-4.0, 8.0), (2.2, 3.0)),
+    rk = onset(S, S['rook'], 'quay', -4.0, 8.0, 2.65 - 0.55, facing((-4.0, 8.0), (1.3, 4.0)),
                blend(P('sit', aL=(0.9, -0.1, 1.6, 1.0), head=(0.45, 0.0)), P('tap', lL=(1.45, 1.6), lR=(1.45, 1.6), lift=-0.5, head=(0.0, -0.3)), v), 'calm')
     S['logb'].parent = rk.hands[0]
     S['logb'].location, S['logb'].rotation_euler = (0.25, -0.3, -0.6), (1.0, 0, 0.3)
-    shoot(S, QUAY, (lerp(-9.5, -8.6, k), lerp(14.5, 14.0, k), lerp(4.6, 4.3, k)), (-1.0, 5.6, 3.4), 30)
+    shoot(S, QUAY, (lerp(9.5, 8.6, k), lerp(12.5, 12.0, k), lerp(4.6, 4.3, k)), (-1.2, 5.6, 3.2), 30)
 
 
 def quay_load(S, k, t, lt):
@@ -1505,7 +1508,7 @@ def quay_load(S, k, t, lt):
     sky(S, 'day')
     S['sun'].data.energy = 2.4
     d = setin(S, 'quay')
-    whole(S, t, 0.15, at_=SP('quay', 0, 3.2, 0))
+    whole(S, t, 0.15, at_=SP('quay', 0, -2.6, 0))
     nocut(S)
     x = lerp(-11.0, -5.5, k)
     m = onset(S, S['tami'], 'quay', x, 9.6, 1.8, PI / 2, blend(K.walk(t, 1.1), P('stand', aL=(1.0, 0.25, 1.2), aR=(1.0, 0.25, 1.2), head=(0.1, 0.4)), 0.65), 'warm')
@@ -1536,12 +1539,12 @@ def easy_sail(S, k, t, lt):
     sky(S, 'day')
     whole(S, t, 0.6, 'day', flow=6, roll=-0.08)
     nocut(S)
-    wboard(S, S['tami'], 1.0, -0.5, R - 0.5, -0.9, P('sit', aL=(0.8, 0.2, 1.4, 1.0), aR=(0.8, 0.2, 1.4, 1.0), head=(-0.25, 0.35 + 0.1 * math.sin(lt))), 'warm')
+    wboard(S, S['tami'], 1.4, -1.5, R - 0.5, -0.9, P('sit', aL=(0.8, 0.2, 1.4, 1.0), aR=(0.8, 0.2, 1.4, 1.0), head=(-0.25, 0.35 + 0.1 * math.sin(lt))), 'warm')
     v = sm((lt - 1.2) / 0.4)
-    rk = wboard(S, S['rook'], -1.0, -5.6, R + 0.3, 0.0, P('stand', lL=(0.0, 0.0), lR=(0.3, 0.6), aL=(0.2, 0.9, 1.6, -1.2), aR=(0.2, 0.9, 1.6, -1.2), head=(-0.2 + 0.4 * v, 0.0)), 'low')
-    rk.place((-1.0, -5.6, R + 0.35), 0.0, -PI / 2)
+    rk = wboard(S, S['rook'], 1.6, -6.4, R + 0.3, 0.0, P('stand', lL=(0.0, 0.0), lR=(0.3, 0.6), aL=(0.2, 0.9, 1.6, -1.2), aR=(0.2, 0.9, 1.6, -1.2), head=(-0.2 + 0.4 * v, 0.0)), 'low')
+    rk.place((1.6, -6.4, R + 0.35), 0.0, -PI / 2)
     S['hat_tip'] = 1.6 * (1 - v)
-    shoot(S, SEA, (lerp(7.5, 6.8, k), lerp(-10.5, -9.5, k), R + lerp(2.6, 2.4, k)), (0.0, -2.6, R + 0.8), 28)
+    shoot(S, SEA, (lerp(8.6, 8.0, k), lerp(-10.0, -9.4, k), R + lerp(2.6, 2.4, k)), (1.2, -3.8, R + 0.9), 28)
 
 
 def radio_chart(S, k, t, lt):
@@ -1564,7 +1567,7 @@ def radio_chart(S, k, t, lt):
     rk.place(at(CAB, -0.3, 4.6, 0.85), facing((-0.3, 4.6), (1.4, 3.1)))
     rk.apply(P('tap', head=(0.2, -0.1)))
     S['rface'] = 'calm'
-    shoot(S, CAB, (lerp(-1.5, -1.2, k), lerp(0.2, 0.6, k), lerp(3.2, 3.0, k)), (1.5, 3.4, 2.2), 26)
+    shoot(S, CAB, (lerp(2.3, 2.0, k), lerp(0.2, 0.5, k), lerp(3.1, 3.0, k)), (1.0, 3.6, 2.4), 26)
 
 
 def clouds_build(S, k, t, lt):
@@ -1637,7 +1640,7 @@ def hear_shout(S, k, t, lt):
     m.jawv = 0.7 * v
     _harness(S, m)
     h = thead(S)
-    shoot(S, (0, 0, 0), (h[0] + lerp(0.9, 0.7, k), h[1] - lerp(2.1, 1.8, k), h[2] - 0.35), (h[0], h[1] + 0.2, h[2] + 0.1), 40)
+    shoot(S, (0, 0, 0), (h[0] + lerp(1.9, 1.6, k), h[1] + lerp(0.7, 0.5, k), h[2] - 0.4), (h[0], h[1] - 0.05, h[2] + 0.05), 36)
 
 
 def tumble(S, k, t, lt):
@@ -1669,8 +1672,8 @@ def radio_dead(S, k, t, lt):
     the water by the steps and slowly shakes his head."""
     cabin(S, t, 0.55, 700, 160, 0.8)
     m = S['tami']
-    m.place(at(CAB, 1.25, 3.0, 0.0), facing((1.25, 3.0), (2.4, 3.6)))
-    m.apply(P('stand', aR=(1.2, -0.2, 2.2, 0.6), aL=(0.9, 0.1, 0.9), lean=0.2, head=(0.15 + 0.1 * math.sin(lt * 2), 0.2)))
+    m.place(at(CAB, 1.25, 3.0, 0.0), facing((1.25, 3.0), (2.6, 2.0)))
+    m.apply(P('stand', aR=(1.2, -0.2, 2.2, 0.6), aL=(0.9, 0.1, 0.9), lean=0.1, head=(0.0 + 0.1 * math.sin(lt * 2), 0.3)))
     m.face, m.jawv = 'hard', 0.5 * abs(math.sin(lt * 6))
     S['mic'].parent = m.hands[1]
     S['mic'].location, S['mic'].rotation_euler = (0, -0.2, -0.55), (0.3, 0, 0)
@@ -1679,7 +1682,7 @@ def radio_dead(S, k, t, lt):
     rk.place(at(CAB, -0.6, 3.4, 0.0), facing((-0.6, 3.4), (0.9, 2.0)))
     rk.apply(P('stand', aL=(0.3, 0.2, 0.4), head=(0.2, 0.35 * math.sin(lt * 4))))
     S['rface'] = 'sad'
-    shoot(S, CAB, (lerp(-1.6, -1.3, k), lerp(0.0, 0.4, k), lerp(3.1, 3.0, k)), (1.0, 3.2, 2.3), 26)
+    shoot(S, CAB, (lerp(2.95, 2.85, k), lerp(1.1, 1.4, k), lerp(3.0, 2.9, k)), (1.1, 3.4, 2.4), 22)
 
 
 def beacon(S, k, t, lt):
@@ -1695,10 +1698,10 @@ def beacon(S, k, t, lt):
     S['beacon'].location, S['beacon'].rotation_euler = (0.3, -0.2, -0.5), (0.4 + sh, 0.0, 0.3)
     S['beacon'].scale = (1.3, 1.3, 1.3)
     rk = S['rook']
-    rk.place(at(CAB, 0.1, -1.6, 0.0), facing((0.1, -1.6), (-0.9, -0.5)))
+    rk.place(at(CAB, -0.2, 1.0, 0.0), facing((-0.2, 1.0), (-1.0, -0.4)))
     rk.apply(P('stand', lean=0.5, aL=(0.4, 0.1, 1.2), aR=(0.2, 0.3, 0.8), head=(0.5, 0.0)))
     S['rface'] = 'low'
-    shoot(S, CAB, (lerp(1.6, 1.3, k), lerp(-3.0, -2.7, k), lerp(2.6, 2.5, k)), (-0.7, -0.6, 1.8), 30)
+    shoot(S, CAB, (lerp(1.7, 1.4, k), lerp(-2.6, -2.3, k), lerp(2.6, 2.5, k)), (-0.7, -0.2, 1.8), 28)
 
 
 # ---------------------------------------------------------------- tins, the log, his shirt
@@ -1709,7 +1712,7 @@ def tins_count(S, k, t, lt):
     for o in S['flot']:
         o.location = FAR
     m = S['tami']
-    m.place(at(CAB, 1.2, -2.0, 0.0), -PI / 2)
+    m.place(at(CAB, -0.4, -2.2, 0.0), -PI / 2)
     reach = math.sin(lt * 3.2)
     m.apply(P('stand', aR=(1.2 + 0.2 * reach, 0.1, 0.5), aL=(0.5, 0.1, 1.4, 0.8), lean=0.45, head=(0.45, 0.0)))
     m.face, m.jawv = 'tired', 0.2 * abs(math.sin(lt * 7))
@@ -1717,10 +1720,10 @@ def tins_count(S, k, t, lt):
     for i, o in enumerate(S['tins']):
         o.location = at(CAB, -1.95 + 0.3 * (i // 5), -3.2 + 0.32 * (i % 5) * 2, 1.45) if i < n else FAR
     rk = S['rook']
-    rk.place(at(CAB, -0.9, -4.6, 0.0), facing((-0.9, -4.6), (-1.9, -2.4)))
+    rk.place(at(CAB, -1.0, -5.0, 0.0), facing((-1.0, -5.0), (-1.8, -2.8)))
     rk.apply(P('point', aR=(1.0, 0.0, 0.1), head=(0.45, 0.1 * math.sin(lt * 3.2))))
     S['rface'] = 'calm'
-    shoot(S, CAB, (lerp(1.4, 1.1, k), lerp(-6.6, -6.2, k), lerp(3.3, 3.2, k)), (-0.8, -2.6, 1.7), 26)
+    shoot(S, CAB, (lerp(1.8, 1.5, k), lerp(-6.0, -5.6, k), lerp(3.3, 3.2, k)), (-1.3, -2.6, 1.6), 26)
 
 
 def log_write(S, k, t, lt):
@@ -1730,7 +1733,7 @@ def log_write(S, k, t, lt):
     for o in S['flot']:
         o.location = FAR
     m = S['tami']
-    m.place(at(CAB, 1.25, 3.0, 0.0), facing((1.25, 3.0), (2.4, 3.3)))
+    m.place(at(CAB, 1.25, 3.0, 0.0), facing((1.25, 3.0), (2.6, 2.4)))
     w_ = math.sin(lt * 7)
     m.apply(P('stand', aR=(0.95, 0.1 + 0.08 * w_, 1.0), aL=(0.7, 0.1, 1.3), lean=0.35, head=(0.45, 0.0)))
     m.face = 'tired'
@@ -1744,7 +1747,7 @@ def log_write(S, k, t, lt):
     rk.apply(P('sit', head=(0.3, 0.0)))
     S['hat_off'] = 1.0
     S['rface'] = 'soft'
-    shoot(S, CAB, (lerp(-1.4, -1.0, k), lerp(0.4, 0.8, k), lerp(3.3, 3.1, k)), (1.4, 3.6, 2.2), 26)
+    shoot(S, CAB, (lerp(2.95, 2.85, k), lerp(1.1, 1.4, k), lerp(3.0, 2.9, k)), (1.0, 3.6, 2.3), 22)
 
 
 def shirt_night(S, k, t, lt):
@@ -1771,10 +1774,10 @@ def voice_helm(S, k, t, lt):
     jury(S, t, 1.0, 1.0)
     helm(S, t, 'soft', lerp(0.0, 0.9, sm((lt - 0.8) / 1.4)), 0.1)
     S['tami'].face = 'sad'
-    aboard(S, S['rook'], 1.8, 8.6, D, PI + 0.3, P('stand', aL=(0.6, -0.2, 2.0, 1.0), head=(0.35, 0.0)), 'sad')
+    aboard(S, S['rook'], -1.9, 7.6, D, PI - 0.6, P('stand', aL=(0.6, -0.2, 2.0, 1.0), head=(0.35, 0.0)), 'sad')
     S['hat_off'] = 1.0
     key(S, SEA, (-6, 4, 10), (0, 8, D + 2), 900, 'A8C4F0')
-    shoot(S, SEA, (lerp(-4.2, -3.6, k), lerp(3.4, 4.0, k), D + lerp(2.6, 2.4, k)), (0.3, 8.2, D + 2.4), 30)
+    shoot(S, SEA, (lerp(3.9, 3.5, k), lerp(4.0, 4.5, k), D + lerp(2.6, 2.4, k)), (-0.6, 8.0, D + 2.2), 30)
 
 
 # ---------------------------------------------------------------- Hilo, and after
@@ -1784,16 +1787,16 @@ def hilo_quay(S, k, t, lt):
     sky(S, 'dawn')
     d = setin(S, 'hiloq')
     d['sun'].data.energy = 60
-    S['boat'].location = SP('hiloq', 0.0, 3.0, 0.0)
+    S['boat'].location = SP('hiloq', 0.0, -2.7, 0.0)
     S['boat'].rotation_euler = (0, 0.02 * math.sin(t), 0)
     jury(S, t, 1.0, 0.25)
     slack_line(S, t * 0.3)
-    m = onset(S, S['tami'], 'hiloq', -2.0, 8.2, 2.5 - 0.55, PI * 0.15, P('sit', aL=(1.0, -0.2, 1.6, 1.0), aR=(1.0, -0.2, 1.6, 1.0), head=(0.2, 0.35)), 'tired')
+    m = onset(S, S['tami'], 'hiloq', -2.0, 8.2, 2.5 - 0.55, facing((-2.0, 8.2), (0.5, -2.0)), P('sit', aL=(1.0, -0.2, 1.6, 1.0), aR=(1.0, -0.2, 1.6, 1.0), head=(0.2, 0.35)), 'tired')
     d['blanket'].parent = m.body
-    d['blanket'].location, d['blanket'].rotation_euler, d['blanket'].scale = (0, 0, 0.75), (0, 0, 0), (1.15, 0.9, 1.3)
+    d['blanket'].location, d['blanket'].rotation_euler, d['blanket'].scale = (0, 0.02, 0.5), (0, 0, 0), (1.05, 0.8, 0.95)
     onset(S, S['rook'], 'hiloq', 2.4, 10.0, 1.8, facing((2.4, 10.0), (-2.0, 8.2)), P('stand', aL=(0.6, -0.2, 2.0, 1.0), head=(0.25, 0.0)), 'soft')
     S['hat_off'] = 1.0
-    shoot(S, HILOQ, (lerp(1.5, 0.8, k), lerp(19.5, 18.5, k), lerp(4.6, 4.3, k)), (-1.0, 6.0, 3.0), 30)
+    shoot(S, HILOQ, (lerp(5.2, 4.6, k), lerp(2.6, 3.2, k), lerp(4.0, 3.8, k)), (-1.0, 8.6, 2.8), 30)
 
 
 def desk_write(S, k, t, lt):
@@ -1821,7 +1824,7 @@ def book_close(S, k, t, lt):
     u = sm(lt / 1.2)
     m = onset(S, S['tami'], 'desk', 1.4, 1.0, 1.08 - 0.55, PI + 0.4, P('sit', aL=(lerp(1.1, 1.3, u), 0.1, 0.8), aR=(lerp(1.1, 1.3, u), 0.3, 0.8), lean=0.45, head=(0.55, 0.0)), 'warm')
     d['pages'].location = (lerp(2.1, 1.3, u), 2.4, 1.66)
-    shoot(S, DESK, (lerp(0.9, 0.6, k), lerp(0.6, 0.8, k), lerp(2.9, 2.75, k)), (0.5, 2.4, 1.7), 34)
+    shoot(S, DESK, (lerp(2.6, 2.4, k), lerp(4.4, 4.2, k), lerp(3.0, 2.9, k)), (0.9, 2.0, 1.9), 28)
 
 
 def pendant(S, k, t, lt):
@@ -1863,7 +1866,7 @@ def photo_quay(S, k, t, lt):
     sky(S, 'day')
     S['sun'].data.energy = 2.4
     setin(S, 'quay')
-    whole(S, 0.5, 0.15, at_=SP('quay', 0, 3.2, 0))
+    whole(S, 0.5, 0.15, at_=SP('quay', 0, -2.6, 0))
     nocut(S)
     shoot(S, QUAY, (-22, -24, 8), (0, 2, 7), 34)
 

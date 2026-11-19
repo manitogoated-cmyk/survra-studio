@@ -295,8 +295,8 @@
    "segment": "who",
    "weight": 0.9,
    "kind": "quay",
-   "action": "Rook on the bollard again, seen from the water: behind him the yacht's two masts against the green peaks",
-   "camera": "From the water, low",
+   "action": "Rook on the bollard again from the other side, the case file open on his knee; behind him the ketch's stern and her two masts against the green peaks",
+   "camera": "From the quay, the other side",
    "cam": [
     [
      1.0,
@@ -322,9 +322,9 @@
    "hud": null,
    "prm": {
     "alt": [
-     150,
+     -70,
      1.1,
-     -0.6
+     0.5
     ]
    }
   },
@@ -400,9 +400,9 @@
    "hud": "YACHT HAZANA",
    "prm": {
     "alt": [
-     -120,
-     0.75,
-     -3
+     40,
+     0.6,
+     -4
     ]
    }
   },
@@ -666,7 +666,7 @@
    "weight": 1.0,
    "kind": "reef_run",
    "action": "The same deck from behind the mast: green water sweeps along the side deck; she ducks under it, still holding on; Rook's coat streams out",
-   "camera": "Behind the mast, low",
+   "camera": "From the side deck, close",
    "cam": [
     [
      1.0,
@@ -696,9 +696,9 @@
    "hud": "CATEGORY 4",
    "prm": {
     "alt": [
-     160,
-     1.0,
-     -0.8
+     -60,
+     0.8,
+     0
     ]
    }
   },
@@ -2221,7 +2221,13 @@
     ]
    ],
    "hud": null,
-   "prm": {},
+   "prm": {
+    "alt": [
+     0,
+     1.0,
+     1.2
+    ]
+   },
    "brand": true
   }
  ]

@@ -178,9 +178,9 @@ def chart_base(cv, c, amount=0.12):
     cv.drawCircle(TAH[0], TAH[1], 13, P(h('5E8A5A')))
     cv.drawCircle(SDG[0], SDG[1], 11, P(INK))
     plain(cv, 'HAWAII', HILO[0] - 40, HILO[1] - 90, 46, INK, 900)
-    plain(cv, 'TAHITI', TAH[0], TAH[1] + 70, 46, INK, 900)
+    plain(cv, 'TAHITI', TAH[0] + 150, TAH[1] + 14, 46, INK, 900)
     plain(cv, 'SAN DIEGO', SDG[0] - 70, SDG[1] + 70, 42, INK, 900)
-    plain(cv, 'DRAWING, POSITIONS APPROXIMATE', 1390, 930, 26, h('5A6E76'), 700)
+    plain(cv, 'DRAWING, POSITIONS APPROXIMATE', 1390, 150, 26, h('5A6E76'), 700)
     pins(cv, ((200, 120), (1720, 120), (200, 920), (1720, 920)))
 
 
@@ -344,7 +344,7 @@ OVER = dict(wake=motes, out_cold=hours, pump=motes, bilge_watch=motes, storm_wav
 
 
 def THUMB(cv, c):
-    """1280x720: the 3D still (the wreck under its one small sail, her at the wheel, right of frame) and the hook on the left, over open sea."""
+    """1280x720: the 3D still (the wreck under its one small sail, her at the wheel, left of centre) and the hook on the right, over open sky and sea."""
     if 'thumb' not in _IMG:
         p = os.path.join(B3D, 'still_thumb.jpg')
         _IMG['thumb'] = skia.Image.open(p) if os.path.exists(p) else None
@@ -352,6 +352,6 @@ def THUMB(cv, c):
         cv.drawImageRect(_IMG['thumb'], skia.Rect(0, 0, 1280, 720), skia.SamplingOptions(skia.CubicResampler.Mitchell()))
     else:
         cv.clear(h('3A6078'))
-    cv.drawRect(skia.Rect(0, 0, 1280, 720), skia.Paint(Shader=skia.GradientShader.MakeLinear([(720, 0), (0, 0)], [0x00000000, 0xC8000000])))
-    Wd.text_card(cv, '41 DAYS', 320, 270, 130, AMBER, 0xFF000000)
-    Wd.text_card(cv, 'ALONE', 320, 420, 140, 0xFFFFFFFF, 0xFF000000)
+    cv.drawRect(skia.Rect(0, 0, 1280, 720), skia.Paint(Shader=skia.GradientShader.MakeLinear([(640, 0), (1280, 0)], [0x00000000, 0xB0000000])))
+    Wd.text_card(cv, '41 DAYS', 1010, 190, 120, AMBER, 0xFF000000)
+    Wd.text_card(cv, 'ALONE', 1010, 330, 130, 0xFFFFFFFF, 0xFF000000)
