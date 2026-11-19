@@ -375,14 +375,15 @@
    "world": "beach and dunes, parking lot, 1970 TV news crew",
    "est_score": 94,
    "long_form_candidate": true,
-   "status": "idea",
+   "status": "in progress",
    "facts": "premise checked on 18 Nov 2026 against the two sources listed (both fetched and read); verify again at authoring. Funny case: keep the comedy on the absurd parts, never on anyone's suffering.",
    "sources": [
     "https://en.wikipedia.org/wiki/Exploding_whale",
     "https://www.salemreporter.com/?p=158935"
    ],
    "source_notes": "12 Nov 1970. Charge given as half a ton or 20 cases; sperm vs gray whale disputed; car owner's name spelled Umenhofer or Unenhofer, car 1969 or 1971. The whale was already dead; no injuries reported. Payoff: blubber flattens the new car of the man who warned them; the state paid; Exploding Whale Memorial Park.",
-   "tone": "funny"
+   "tone": "funny",
+   "claimed_at": "2026-11-19T12:50:58Z"
   },
   {
    "case": 42,
