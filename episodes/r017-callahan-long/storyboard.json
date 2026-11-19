@@ -145,7 +145,7 @@
   {
    "n": 5,
    "segment": "who",
-   "weight": 3.2,
+   "weight": 3.3,
    "kind": "shed_build",
    "action": "A timber boat shed by day: he planes a bare white hull, shavings curling off; Rook leans on a sawhorse, arms folded, then taps his beak",
    "camera": "From inside the shed, easing in",
@@ -185,7 +185,43 @@
   {
    "n": 6,
    "segment": "who",
-   "weight": 3.3,
+   "weight": 2.7,
+   "kind": "sail_calm",
+   "action": "Fair weather: the sloop under full sail, heeled, spray off the bow; he sits at the tiller, Rook stands on the bow holding the forestay",
+   "camera": "Three-quarter from ahead, tracking",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wave",
+     0.3
+    ],
+    [
+     "wind",
+     0.6
+    ]
+   ],
+   "hud": "NAPOLEON SOLO, BUILT BY HIM",
+   "prm": {}
+  },
+  {
+   "n": 7,
+   "segment": "who",
+   "weight": 2.9,
    "kind": "route_card",
    "action": "Drawn diagram, not a map: a dotted line draws itself from America to England, then south to the Canary Islands, then a dashed arrow aims west at Antigua",
    "camera": "Flat, slow push",
@@ -221,45 +257,9 @@
    }
   },
   {
-   "n": 7,
-   "segment": "who",
-   "weight": 3.2,
-   "kind": "sail_calm",
-   "action": "Fair weather: the sloop under full sail, heeled, spray off the bow; he sits at the tiller, Rook stands on the bow holding the forestay",
-   "camera": "Three-quarter from ahead, tracking",
-   "cam": [
-    [
-     1.0,
-     960,
-     540,
-     0
-    ],
-    [
-     1.09,
-     960,
-     536,
-     0
-    ]
-   ],
-   "shake": 0,
-   "transition": "cut",
-   "sfx": [
-    [
-     "wave",
-     0.3
-    ],
-    [
-     "wind",
-     0.6
-    ]
-   ],
-   "hud": "NAPOLEON SOLO, BUILT BY HIM",
-   "prm": {}
-  },
-  {
    "n": 8,
    "segment": "who",
-   "weight": 3.27,
+   "weight": 4.07,
    "kind": "canary_leave",
    "action": "Dusk: the sloop under sail heads away from a dark volcanic island with a few lit houses, out into open ocean",
    "camera": "Low ahead of the bow, the island behind",
@@ -658,7 +658,13 @@
     ]
    ],
    "hud": null,
-   "prm": {}
+   "prm": {
+    "orb": [
+     70,
+     0.4,
+     1.0
+    ]
+   }
   },
   {
    "n": 19,
@@ -894,7 +900,13 @@
     ]
    ],
    "hud": null,
-   "prm": {}
+   "prm": {
+    "orb": [
+     75,
+     0.45,
+     1.0
+    ]
+   }
   },
   {
    "n": 26,
@@ -1782,43 +1794,7 @@
   {
    "n": 51,
    "segment": "found",
-   "weight": 2.3,
-   "kind": "birds_circle",
-   "action": "Morning, from high above: dark frigate birds wheel in a ring over the raft, gold fish flashing under it",
-   "camera": "High overhead",
-   "cam": [
-    [
-     1.0,
-     960,
-     540,
-     0
-    ],
-    [
-     1.09,
-     960,
-     536,
-     0
-    ]
-   ],
-   "shake": 0,
-   "transition": "flash",
-   "sfx": [
-    [
-     "birdcall",
-     0.3
-    ],
-    [
-     "flap",
-     0.6
-    ]
-   ],
-   "hud": null,
-   "prm": {}
-  },
-  {
-   "n": 52,
-   "segment": "found",
-   "weight": 2.2,
+   "weight": 3.4,
    "kind": "fishing_boat",
    "action": "Low on the water: a small open fishing boat with three men turns towards the birds",
    "camera": "Low, long lens",
@@ -1837,7 +1813,7 @@
     ]
    ],
    "shake": 0,
-   "transition": "cut",
+   "transition": "flash",
    "sfx": [
     [
      "engine_start",
@@ -1845,15 +1821,21 @@
     ]
    ],
    "hud": "OFF MARIE-GALANTE",
-   "prm": {}
+   "prm": {
+    "orb": [
+     50,
+     0.4,
+     0.8
+    ]
+   }
   },
   {
-   "n": 53,
+   "n": 52,
    "segment": "found",
-   "weight": 2.2,
-   "kind": "rook_point",
-   "action": "Rook on the canopy points up at the birds, then straight down at the fish, and nods",
-   "camera": "Low on Rook",
+   "weight": 2.0,
+   "kind": "birds_circle",
+   "action": "Morning, from high above: dark frigate birds wheel in a ring over the raft, gold fish flashing under it",
+   "camera": "High overhead",
    "cam": [
     [
      1.0,
@@ -1872,17 +1854,59 @@
    "transition": "cut",
    "sfx": [
     [
-     "tick",
-     0.55
+     "birdcall",
+     0.3
+    ],
+    [
+     "flap",
+     0.6
     ]
    ],
    "hud": null,
    "prm": {}
   },
   {
+   "n": 53,
+   "segment": "found",
+   "weight": 1.4,
+   "kind": "rook_point",
+   "action": "Rook on the canopy points up at the birds, then straight down at the fish, and nods",
+   "camera": "Low on Rook",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "zoom",
+   "sfx": [
+    [
+     "tick",
+     0.55
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "orb": [
+     30,
+     0.3,
+     0.4
+    ]
+   }
+  },
+  {
    "n": 54,
    "segment": "found",
-   "weight": 2.52,
+   "weight": 2.42,
    "kind": "boat_reach",
    "action": "Alongside: the fishermen take him by the arms and lift him out of the raft; Rook steadies the raft, hat off",
    "camera": "Wide two-shot",
@@ -1918,7 +1942,7 @@
   {
    "n": 55,
    "segment": "ashore",
-   "weight": 2.6,
+   "weight": 3.72,
    "kind": "board",
    "action": "Rook's case board: the raft photo, the string from the Canaries to Marie-Galante, 76 DAYS and 1,800 NAUTICAL MILES pinned up",
    "camera": "Flat, slow push",
@@ -1956,7 +1980,7 @@
   {
    "n": 56,
    "segment": "ashore",
-   "weight": 3.13,
+   "weight": 2.0,
    "kind": "jetty_eve",
    "action": "Evening at the island's harbour: thin and bearded, he walks slowly up the jetty, a fisherman's hand under his arm; Rook on a bollard takes his hat off as they pass",
    "camera": "Three-quarter, easing in",
@@ -1987,7 +2011,13 @@
     ]
    ],
    "hud": "THE SAME EVENING",
-   "prm": {}
+   "prm": {
+    "orb": [
+     55,
+     0.35,
+     0.5
+    ]
+   }
   },
   {
    "n": 57,
@@ -2027,7 +2057,13 @@
     ]
    ],
    "hud": "ADRIFT, 1986",
-   "prm": {}
+   "prm": {
+    "orb": [
+     55,
+     0.35,
+     0.5
+    ]
+   }
   },
   {
    "n": 58,
@@ -2059,7 +2095,13 @@
     ]
    ],
    "hud": "CONSULTANT, LIFE OF PI",
-   "prm": {}
+   "prm": {
+    "orb": [
+     75,
+     0.5,
+     1.2
+    ]
+   }
   },
   {
    "n": 59,

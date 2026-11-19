@@ -1351,7 +1351,7 @@ def make_tank(S):
     box(c, '2A3038', -6.25, 6.25, 8.75, 9.25, 0, 1.6)
     box(c, '2A3038', -6.25, 6.25, -1.25, -0.75, 0, 1.6)
     S['tankwater'] = add('plane', '2A8AC0', (0, 4, 1.25), size=1, scale=(11.8, 9.8, 1), parent=c, rough=0.15, emit=0.5)
-    for i, (x, y) in enumerate(((-8, -4), (8, -4), (-8, 11), (8, 11))):                                           # lamps on stands
+    for i, (x, y) in enumerate(((-11, 0.5), (11, 0.5), (-8, 11), (8, 11))):                                       # lamps on stands
         bar(c, '2A2A30', (x, y, 0), (x, y, 5), 0.05)
         add('cylinder', '3A3A40', (x, y, 5.3), rot=(1.0 if y < 0 else -1.0, 0, 0), radius=0.5, depth=0.7, vertices=10, parent=c)
         add('cylinder', 'FFF2D8', (x, y + (0.35 if y < 0 else -0.35), 5.1), rot=(1.0 if y < 0 else -1.0, 0, 0), radius=0.42, depth=0.05, vertices=10, parent=c, emit=8.0)
@@ -1948,17 +1948,20 @@ def film_tank(S, k, t, lt):
 
 def photo_thumb(S, k, t, lt):
     """The thumbnail picture: close on him in the raft, thin and bearded, squinting into a hard sun, the orange canopy
-    behind him; open sea and sky on the left for the words."""
+    behind him and Rook sitting on the far tube, brim low; open sea and sky on the left for the words."""
     ocean(S, 'day', 1.0, 0.5)
-    r = raft_at(S, 1.0, 0, 0, 0.9)
-    m = aboard(S, S['man'], 0.2, -0.1, 0.04, PI * 0.15, P('sit', aR=(1.0, 0.2, 1.2), aL=(0.8, 0.1, 1.0), lean=0.25, head=(-0.15, -0.35)), 'squint')
+    yaw = 0.6
+    r = raft_at(S, 1.0, 0, 0, yaw)
+    m = aboard(S, S['man'], 0.6, -0.45, 0.04, 0.0, P('sit', aR=(1.55, -0.15, 2.45, 0.4), aL=(0.45, 0.1, 1.1), lean=0.1, head=(-0.25, 0.2)), 'squint')
     thin(S, 0.7)
-    aboard(S, S['rook'], -0.5, 0.65, 2.1, -0.6, P('cross', head=(0.1, 0.4)), 'low')
-    S['hat_tip'] = 0.4
     h = head(S, m)
-    key(S, SEA, (h[0] + 3, h[1] - 3, h[2] + 2), h, 1400, 'FFF0DC')
-    S['camfill'].data.energy = 160
-    shoot(S, (0, 0, 0), (h[0] - 1.6, h[1] - 4.2, h[2] - 0.1), (h[0] - 1.25, h[1], h[2] + 0.15), 34)
+    d = (math.sin(yaw), -math.cos(yaw))
+    rv = (math.cos(yaw), math.sin(yaw))
+    cam = (h[0] + 4.2 * d[0] + 0.6 * rv[0], h[1] + 4.2 * d[1] + 0.6 * rv[1], h[2] + 0.1)
+    tgt = (h[0] - 1.1 * rv[0], h[1] - 1.1 * rv[1], h[2] - 0.25)
+    key(S, SEA, (cam[0] + 2 * rv[0], cam[1] + 2 * rv[1], h[2] + 2.5), h, 1300, 'FFF0DC')
+    S['camfill'].data.energy = 120
+    shoot(S, (0, 0, 0), cam, tgt, 34)
 
 
 NEW = (night_alone, rook_deck, shed_build, sail_calm, canary_leave, deck_swamped, rook_hatch, dive_cabin, rook_ducky, kit_spread, still_open,

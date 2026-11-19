@@ -94,14 +94,14 @@ def route_card(cv, c):
     push(cv, c, 0.1, 0.4)
     paper(cv, 150, 60, 1620, 760, h('DCE6E4'))
     land(cv, [(150, 60), (520, 60), (560, 200), (470, 330), (400, 470), (300, 560), (150, 600)])            # the American side
-    land(cv, [(1500, 60), (1770, 60), (1770, 560), (1640, 520), (1560, 420), (1600, 300), (1520, 200)])    # the European side
-    land(cv, [(1530, 120), (1600, 100), (1620, 180), (1560, 210)], h('B8A47A'))                             # England, a rough shape
+    land(cv, [(1620, 60), (1770, 60), (1770, 560), (1660, 520), (1600, 420), (1640, 300), (1612, 200)])    # the European side
+    land(cv, [(1480, 92), (1530, 70), (1566, 118), (1548, 196), (1494, 186)], h('B8A47A'))                 # England, a rough shape
     for x, y in ((1300, 560), (1340, 545), (1375, 565)):                                                   # the Canaries, dots
         cv.drawCircle(x, y, 13, P(h('B8A47A')))
     cv.drawPath(poly([(330, 680), (350, 672), (360, 690), (340, 698)]), P(h('B8A47A')))                     # Antigua, a speck
     k = ease(c.k / 0.75)
-    dotted(cv, [(480, 300), (1000, 150), (1540, 170)], min(1, k * 2.2))
-    dotted(cv, [(1540, 190), (1520, 330), (1340, 540)], min(1, max(0, k * 2.2 - 1.0)))
+    dotted(cv, [(480, 300), (1000, 150), (1480, 150)], min(1, k * 2.2))
+    dotted(cv, [(1500, 205), (1560, 330), (1350, 535)], min(1, max(0, k * 2.2 - 1.0)))
     if k > 0.75:
         u = ease((k - 0.75) / 0.25)
         x1 = lerp(1320, 380, u)
@@ -109,11 +109,11 @@ def route_card(cv, c):
             x = 1320 - 40 * j
             cv.drawLine(x, 560 + (x - 1320) * -0.12, x - 22, 560 + (x - 22 - 1320) * -0.12, P(ORANGE, 8))
     plain(cv, 'AMERICA', 330, 250, 40, INK, 900)
-    plain(cv, 'ENGLAND', 1450, 125, 38, INK, 900)
-    plain(cv, 'CANARY ISLANDS', 1290, 620, 36, INK, 900)
+    plain(cv, 'ENGLAND', 1380, 110, 38, INK, 900)
+    plain(cv, 'CANARY ISLANDS', 1420, 625, 36, INK, 900)
     plain(cv, 'ANTIGUA', 345, 750, 36, INK, 900)
     if c.k > 0.8:
-        x, y = 1130, 584
+        x, y = 1050, 594
         cv.drawLine(x - 22, y - 22, x + 22, y + 22, P(h('D8322A'), 10))
         cv.drawLine(x - 22, y + 22, x + 22, y - 22, P(h('D8322A'), 10))
         plain(cv, 'A WEEK OUT', x, y - 40, 34, h('B02A1E'), 900)
@@ -133,9 +133,9 @@ def drift_card(cv, c):
     for i in range(14):
         cv.drawLine(-740, -330 + 52 * i, 740, -330 + 52 * i, P(h('9AB8D0'), 2, a=0.6))
     cv.drawLine(-640, -390, -640, 370, P(h('D88A8A'), 3, a=0.7))
-    plain(cv, 'WEST', -560, -300, 44, INK, 900)
-    cv.drawLine(-470, -316, -620, -316, P(INK, 6))
-    cv.drawPath(poly([(-620, -334), (-660, -316), (-620, -298)]), P(INK))
+    plain(cv, 'WEST', -540, -300, 44, INK, 900)
+    cv.drawLine(-450, -262, -600, -262, P(INK, 6))
+    cv.drawPath(poly([(-600, -280), (-640, -262), (-600, -244)]), P(INK))
     k = ease(c.k / 0.85)
     n = int(6 + 34 * k)
     for j in range(n):
@@ -146,10 +146,13 @@ def drift_card(cv, c):
             cv.drawLine(x, y + 16, x, y + 40, P(INK, 3))
     cv.drawLine(600 - 22, 60 - 22, 600 + 22, 60 + 22, P(h('D8322A'), 8))
     cv.drawLine(600 - 22, 60 + 22, 600 + 22, 60 - 22, P(h('D8322A'), 8))
-    for i in range(3):                                                    # the three pencils, lashed
-        a = (0.0, 1.05, 2.1)[i]
-        cx, cy = 380, -200
-        cv.drawLine(cx + 120 * math.cos(a), cy + 120 * math.sin(a), cx + 120 * math.cos(a + 2.1), cy + 120 * math.sin(a + 2.1), P(h('F2C030'), 16))
+    cx, cy = 400, -170                                                    # the three pencils, lashed into a triangle
+    pts = [(cx + 130 * math.cos(a), cy + 130 * math.sin(a)) for a in (-math.pi / 2, math.pi / 6, 5 * math.pi / 6)]
+    for i in range(3):
+        (x0, y0), (x1, y1) = pts[i], pts[(i + 1) % 3]
+        cv.drawLine(x0 - 0.12 * (x1 - x0), y0 - 0.12 * (y1 - y0), x1 + 0.12 * (x1 - x0), y1 + 0.12 * (y1 - y0), P(h('F2C030'), 16))
+    for x, y in pts:
+        cv.drawCircle(x, y, 12, P(h('E8E2D0')))
     plain(cv, 'HIS DRIFT, DRAWN, NOT TO SCALE', 0, 330, 34, h('3A3430'), 700)
     cv.restore()
 
@@ -198,11 +201,11 @@ def board(cv, c):
         cv.drawRect(skia.Rect.MakeXYWH(x + 34, y - 30, 330, 56), P(PAPER))
         plain(cv, s_, x + 199, y + 12, 34, INK, 900)
     if c.lt > 0.25:
-        fit(cv, '76 DAYS', 1500, 300, 110, 700, 0xFFFFFFFF)
+        fit(cv, '76 DAYS', 1440, 300, 110, 620, 0xFFFFFFFF)
     if c.lt > 0.6:
-        fit(cv, '1,800 NAUTICAL MILES', 1500, 440, 70, 700, AMBER)
+        fit(cv, '1,800 NAUTICAL MILES', 1440, 440, 70, 620, AMBER)
     if c.lt > 1.0:
-        fit(cv, 'ONE FORK', 1500, 560, 70, 700, 0xFFFFFFFF)
+        fit(cv, 'ONE FORK', 1440, 560, 70, 620, 0xFFFFFFFF)
     cv.restore()
 
 
@@ -268,5 +271,5 @@ def THUMB(cv, c):
     else:
         cv.clear(h('1A6A8E'))
     cv.drawRect(skia.Rect(0, 0, 1280, 720), skia.Paint(Shader=skia.GradientShader.MakeLinear([(700, 0), (0, 0)], [0x00000000, 0xB0000000])))
-    fit(cv, '76 DAYS', 300, 300, 150, 540, 0xFFFFFFFF)
-    fit(cv, 'ADRIFT', 300, 450, 130, 540, AMBER)
+    fit(cv, 'ALONE', 290, 300, 160, 520, 0xFFFFFFFF)
+    fit(cv, '6-FOOT RAFT', 290, 440, 110, 520, AMBER)
