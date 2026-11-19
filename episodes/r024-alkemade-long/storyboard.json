@@ -349,7 +349,7 @@
    "segment": "raid",
    "weight": 1.0,
    "kind": "crew_seven",
-   "action": "Seven men in flying kit by the tail at dusk; Rook walks along the line counting them with a wingtip",
+   "action": "Seven men in flying kit in front of their bomber at dusk; Rook walks along the line counting them with a wingtip",
    "camera": "Low, along the line",
    "cam": [
     [
@@ -1940,7 +1940,7 @@
    "segment": "crew",
    "weight": 1.0,
    "kind": "crew_seven",
-   "action": "Remembered: the seven men by the tail at dusk, standing quiet",
+   "action": "Remembered: the seven men in front of their bomber at dusk, standing quiet",
    "camera": "Further back, still",
    "cam": [
     [
@@ -2005,9 +2005,9 @@
    "hud": "HANOVER WAR CEMETERY",
    "prm": {
     "alt": [
-     70,
-     1.3,
-     -0.2
+     -40,
+     1.1,
+     0.4
     ]
    }
   },
@@ -2079,9 +2079,9 @@
    "n": 62,
    "segment": "after",
    "weight": 1.0,
-   "kind": "hole_up",
-   "action": "Stars through the hole in the pines, snow drifting down",
-   "camera": "Looking up, slower",
+   "kind": "dawn_wood",
+   "action": "The pine wood at dawn, nobody in it: the dent in the snow, the broken boughs, the hole in the trees; the camera rises towards the light",
+   "camera": "Low, rising slowly",
    "cam": [
     [
      1.0,
@@ -2105,14 +2105,7 @@
     ]
    ],
    "hud": "1922 - 1987",
-   "prm": {
-    "alt": [
-     90,
-     1.0,
-     0.0
-    ],
-    "fstop": 0
-   }
+   "prm": {}
   },
   {
    "n": 63,

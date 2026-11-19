@@ -1249,18 +1249,99 @@ STILLS = dict(snow=photo_snow)
 # studio of the 1980s and a plain modern squadron building. New figures: Nicholas before the war and in later life, the six
 # other men of his crew, British prisoners, a guard. All of it is generic: no markings, roundels, flags, insignia, badges,
 # emblems, logos or lettering anywhere, none of the places is a model of the real one, and nobody's likeness is attempted.
+# Building with bpy.ops gets slower with every object already in the scene (the Short alone took over two minutes to build,
+# and this file more than doubles the object count). The same primitives are made here by copying one prototype mesh per
+# shape, which gives identical geometry, materials and bevels in a fraction of the time. The new object is selected and made
+# active, exactly as the operator leaves it, so code that follows an add (shade_smooth) behaves the same.
+from mathutils import Matrix  # noqa: E402
+
+_PROTO, _LAST = {}, [None]
+_ops_add, _ops_empty = K.add, K.empty
+
+
+def _select(o):
+    if _LAST[0] is not None:
+        try:
+            _LAST[0].select_set(False)
+        except (ReferenceError, RuntimeError):
+            pass
+    o.select_set(True)
+    bpy.context.view_layer.objects.active = o
+    _LAST[0] = o
+
+
+def _unit(kind, kw):
+    """The prototype is made at unit size and the mesh scaled to the asked size afterwards, so pines of every height share one."""
+    if kind in ('cube', 'plane'):
+        v = kw.pop('size', 2.0)
+        kw['size'] = 1.0
+        return kw, (v, v, v)
+    if kind == 'ico_sphere':
+        r = kw.pop('radius', 1.0)
+        kw['radius'] = 1.0
+        return kw, (r, r, r)
+    if kind == 'cylinder':
+        r, d = kw.pop('radius', 1.0), kw.pop('depth', 2.0)
+        kw.update(radius=1.0, depth=1.0)
+        return kw, (r, r, d)
+    if kind == 'cone':
+        r1, r2, d = kw.pop('radius1', 1.0), kw.pop('radius2', 0.0), kw.pop('depth', 2.0)
+        if r1 <= 0:
+            kw.update(radius1=r1, radius2=r2, depth=d)
+            return kw, (1.0, 1.0, 1.0)
+        kw.update(radius1=1.0, radius2=round(r2 / r1, 5), depth=1.0)
+        return kw, (r1, r1, d)
+    return kw, (1.0, 1.0, 1.0)
+
+
+def add(kind, col, loc=(0, 0, 0), rot=(0, 0, 0), scale=(1, 1, 1), parent=None, rough=0.9, emit=0.0, alpha=1.0, **kw):
+    kw, sc = _unit(kind, dict(kw))
+    key = (kind, tuple(sorted(kw.items())))
+    if key not in _PROTO:
+        getattr(bpy.ops.mesh, 'primitive_' + kind + '_add')(location=(0, 0, 0), **kw)
+        o = bpy.context.object
+        _PROTO[key] = o.data
+        bpy.data.objects.remove(o)
+    me = _PROTO[key].copy()
+    if sc != (1.0, 1.0, 1.0):
+        me.transform(Matrix.Diagonal((sc[0], sc[1], sc[2], 1.0)))
+    o = bpy.data.objects.new(kind, me)
+    bpy.context.scene.collection.objects.link(o)
+    o.location, o.rotation_euler, o.scale = loc, rot, scale
+    me.materials.append(K.mat(col, rough, emit, alpha))
+    if kind in ('cube', 'cylinder', 'cone') and alpha >= 1 and not emit:
+        K._bevel(o, scale)
+    if parent:
+        o.parent = parent
+    _select(o)
+    return o
+
+
+def empty(loc=(0, 0, 0), parent=None, rot=(0, 0, 0)):
+    o = bpy.data.objects.new('Empty', None)
+    bpy.context.scene.collection.objects.link(o)
+    o.location, o.rotation_euler = loc, rot
+    if parent:
+        o.parent = parent
+    _select(o)
+    return o
+
+
+K.add, K.empty = add, empty      # the rigs and hands in kit3d use the same fast path
+
+
 SETPOS = dict(garden=(0.0, 0.0, 5000.0), field=(600.0, 0.0, 5000.0), stream=(1200.0, 0.0, 5600.0), hosp=(1800.0, 0.0, 5000.0),
               hut=(2400.0, 0.0, 5000.0), camp=(3000.0, 0.0, 5000.0), lane=(3600.0, 0.0, 5000.0), works=(4200.0, 0.0, 5000.0),
               studio=(4800.0, 0.0, 5000.0), bldg=(5400.0, 0.0, 5000.0))
 SKIES.update(
-    dusk=('F0A070', '2E4470', 1.2, 2.2, 'FFC090', (0.8, -0.4, 0.25)),
+    dusk=('F0A070', '2E4470', 1.6, 3.6, 'FFC090', (0.8, -0.5, 0.3)),
     garden=('E8F0E0', 'A8C4D8', 1.4, 3.2, 'FFF0D8', (0.4, -0.6, 0.7)),
     winter=('C8D0DA', '8C9AAE', 1.3, 2.0, 'E8EEF6', (0.3, -0.5, 0.6)),
     spring=('F0F4E0', '8EB4DC', 1.5, 3.4, 'FFF4DC', (0.5, -0.6, 0.65)),
     inside=('101216', '08090C', 0.3, 0.0, 'FFFFFF', (0, 0, 1)))
 CAMFILL.update(garden_wide=220, garden_close=160, field_dusk=260, crew_seven=320, takeoff=600, stream=4000, turret_calm=300, rack_calm=160,
                gunner_face=140, cigarette=420, whistle=520, hospital=200, witnesses=220, camp_famous=200, camp_wire=300, long_march=360,
-               home_may=200, works=240, tv_studio=160, plaque=220)
+               home_may=200, works=240, tv_studio=160, plaque=220, dawn_wood=200)
 HOST |= {'garden_wide', 'field_dusk', 'crew_seven', 'turret_calm', 'rack_calm', 'whistle', 'hospital', 'witnesses', 'camp_famous',
          'long_march', 'home_may', 'tv_studio', 'plaque'}
 CREWC = ('4E5A6E', '56606E', '4A5466', '525C6A', '4C566A', '58627A')
@@ -1382,8 +1463,8 @@ def make_field(r):
         add('cylinder', '15171B', (sx * 1.3, y, 0.5), rot=(0, PI / 2, 0), radius=0.5, depth=0.3, vertices=8, parent=bw)
     for i in range(14):                                                    # far trees on the horizon
         add('ico_sphere', '2A3A2A', (-400 + 60 * i + 20 * rnd(i, 90), 420, 6), scale=(2.2, 1, 1), radius=10, subdivisions=1, parent=r, rough=1.0)
-    sun = light((-30, -60, 30), 0, 'FFB070', 30.0, parent=r)
-    sun.rotation_euler = (1.1, 0, -0.5)
+    sun = light((-20, -50, 40), 0, 'FFB070', kind='SUN', parent=r)
+    sun.rotation_euler = (1.0, 0, -0.6)
     return dict(lights=[sun], sun=sun)
 
 
@@ -1396,7 +1477,8 @@ def make_stream(r):
             for x in (7.0, 14.0):
                 add('ico_sphere', 'FF9A40', (sd * x, -3.2, -0.6), radius=0.35, subdivisions=1, parent=p, emit=12.0)
         ps.append(p)
-    moon = light((0, 0, 200), 0, 'A8C0E8', 400.0, parent=r)
+    moon = light((0, 0, 200), 0, 'A8C0E8', kind='SUN', parent=r)
+    moon.rotation_euler = (0.6, 0.3, 0.0)
     return dict(lights=[moon], moon=moon, planes=ps)
 
 
@@ -1677,11 +1759,11 @@ def garden_close(S, k, t, lt):
     d['sun'].data.energy = 1400
     n = put(S, S['nick'], 'garden', 2.0, 0.6, 0.0, PI / 2 - 0.1)
     up = sm((lt - 1.5) / 0.6)
-    n.apply(P('stand', aR=(1.05, -0.1, 1.0 + 0.15 * math.sin(lt * 6) * (1 - up)), aL=(1.0, -0.1, 1.1), lean=0.3 * (1 - up) + 0.05,
+    n.apply(P('stand', aR=(0.7, -0.1, 0.9 + 0.15 * math.sin(lt * 6) * (1 - up)), aL=(0.65, -0.1, 1.0), lean=0.35 * (1 - up) + 0.05,
               head=(lerp(0.5, -0.15, up), lerp(0.0, 0.5, up))))
     n.face = 'calm' if up < 0.5 else 'warm'
     h = wpos(n.head)
-    shoot(S, (0, 0, 0), (h[0] - 2.4, h[1] - lerp(2.0, 1.6, k), h[2] + 0.1), (h[0] + 0.3, h[1] + 0.2, h[2] - 0.45), 40)
+    shoot(S, (0, 0, 0), (h[0] + 1.9, h[1] - lerp(2.4, 2.0, k), h[2] + 0.15), (h[0] + 0.2, h[1], h[2] - 0.35), 40)
 
 
 # ---------------------------------------------------------------- the airfield
@@ -1689,7 +1771,7 @@ def field_dusk(S, k, t, lt):
     """An airfield at dusk. He walks out towards the parked bomber in his flying kit, carrying his helmet's weight on his shoulders;
     Rook strides beside him and pops his coat collar."""
     d = inside(S, 'field', 'dusk')
-    d['sun'].data.energy = 3
+    d['sun'].data.energy = 2.5
     u = lt * 0.9
     m = put(S, S['man'], 'field', lerp(8.0, 5.5, k), lerp(-26.0, -20.0, k), 0.0, PI * 0.9)
     m.apply(K.walk(t, 1.1))
@@ -1698,32 +1780,32 @@ def field_dusk(S, k, t, lt):
     pop = sm((lt - 0.8) / 0.4) * (1 - sm((lt - 1.8) / 0.4))
     rk.apply(blend(K.walk(t + 0.3, 1.1), P('hat', aL=(0.2, 1.9, 1.6, -1.5)), pop))
     S['rface'] = 'calm'
-    look(S, 'field', (lerp(18.0, 16.0, k), lerp(-40.0, -36.0, k), lerp(3.2, 3.6, k)), (3.0, -10.0, 3.2), 24)
+    look(S, 'field', (lerp(13.0, 11.5, k), lerp(-33.0, -30.0, k), lerp(2.4, 2.6, k)), (lerp(7.0, 5.5, k), -18.0, 2.4), 28)
 
 
 def crew_seven(S, k, t, lt):
     """Seven men in flying kit by the tail of their bomber, at dusk: they wait, talk, one laughs. He stands at the end of the line,
     by his turret. Rook counts them along the line with a wingtip."""
     d = inside(S, 'field', 'dusk')
-    d['sun'].data.energy = 3
+    d['sun'].data.energy = 2.5
     rigs = S['crew'][:3] + [S['man']] + S['crew'][3:]
     for i, rg in enumerate(rigs):
         x = -6.0 + 2.0 * i
-        put(S, rg, 'field', x, 22.0 + 0.4 * rnd(i, 97), 0.0, PI + 0.15 * (rnd(i, 98) - 0.5))
+        put(S, rg, 'field', x, -27.0 + 0.4 * rnd(i, 97), 0.0, 0.15 * (rnd(i, 98) - 0.5))
         rg.apply(P('stand', aR=(0.2 + 0.3 * rnd(i, 99), 0.15, 0.4), head=(0.05, 0.4 * math.sin(lt * 0.8 + i))))
         rg.face = 'warm' if i % 3 == 0 else 'calm'
         talk(rg, lt + i, 3.0, 0.25 if i in (1, 4) else 0.0)
     cnt = min(6, int(lt / 0.45))
-    rk = put(S, S['rook'], 'field', -6.0 + 2.0 * cnt, 26.0, 0.0, PI)
-    rk.apply(P('point', aR=(1.2, 0.1, 0.1), head=(0.2, 0.0)))
+    rk = put(S, S['rook'], 'field', lerp(-7.0, 7.0, sm(lt / 3.0)), -30.0, 0.0, facing((0, -30), (0, -27)))
+    rk.apply(blend(K.walk(t, 1.2), P('point', aR=(1.2, 0.1, 0.1), head=(0.2, 0.0)), 0.6))
     S['rface'] = 'calm'
-    look(S, 'field', (lerp(-2.5, 0.5, k), lerp(9.0, 10.0, k), 2.4), (0.0, 23.0, 1.9), 26)
+    look(S, 'field', (lerp(-3.0, 1.0, k), -39.0, 2.4), (0.0, -27.0, 2.4), 30)
 
 
 def takeoff(S, k, t, lt):
     """Dusk over the airfield: a bomber lifts off the far end of the runway and climbs away, another taxies behind it."""
     d = inside(S, 'field', 'dusk')
-    d['sun'].data.energy = 3
+    d['sun'].data.energy = 2.5
     look(S, 'field', (lerp(-40.0, -46.0, k), -40.0, 3.0), (-120.0, 60.0, 12.0 + 10 * k), 30)
     S['bomber'].location = SP('field', lerp(-60.0, -260.0, k), 60.0, lerp(4.0, 34.0, sm(k * 1.2)))
     S['bomber'].rotation_euler = (lerp(0.0, 0.12, sm(k * 2)), 0.0, PI / 2)
@@ -1733,12 +1815,12 @@ def takeoff(S, k, t, lt):
 def stream(S, k, t, lt):
     """Night: a loose line of bombers flying above the cloud, small engine glows, stars. The camera drifts alongside the nearest."""
     d = inside(S, 'stream', 'night', True)
-    d['moon'].data.energy = 600
+    d['moon'].data.energy = 3.0
     o = SETPOS['stream']
     air(S, o, t, (0, 60, 0), top=-12)
     for i, p in enumerate(d['planes']):
         p.rotation_euler = (0.02 * math.sin(t + i), 0.04 * math.sin(t * 0.7 + i), 0.0)
-    shoot(S, o, (lerp(-60.0, -52.0, k), lerp(-90.0, -70.0, k), lerp(14.0, 12.0, k)), (10.0, 40.0, 0.0), 30)
+    shoot(S, o, (lerp(-62.0, -56.0, k), lerp(-92.0, -84.0, k), lerp(9.0, 8.0, k)), (-20.0, -40.0, 0.0), 32)
 
 
 def turret_calm(S, k, t, lt):
@@ -1761,7 +1843,7 @@ def turret_calm(S, k, t, lt):
     rk.apply(P('sit', aL=(0.9, 0.4, 1.4), aR=(0.9, 0.4, 1.4), head=(0.35, -0.3)))
     S['rface'], S['hat_tip'] = 'low', 0.6
     glow(S, 0, at(SKYO, 0.6, 18.8, 1.0), 900, 0.0)
-    shoot(S, SKYO, (lerp(2.8, 2.2, k), lerp(21.5, 20.6, k), lerp(1.6, 1.3, k)), (0.3, 16.0, 0.7), 30)
+    shoot(S, SKYO, (lerp(3.4, 2.9, k), lerp(23.0, 22.0, k), lerp(1.9, 1.7, k)), (0.6, 15.8, 1.2), 30)
 
 
 def rack_calm(S, k, t, lt):
@@ -1841,7 +1923,7 @@ def whistle(S, k, t, lt):
     S['rface'] = 'shocked' if lt > 0.3 else 'calm'
     S['hat_jump'] = 0.06 * blow
     snowfall(S, WOOD, t, 10, 0, 3.0, 7.0, 1.0)
-    shoot(S, WOOD, (lerp(1.4, 2.0, k), lerp(-6.4, -5.8, k), 1.6), (1.1, 0.0, 1.1), 30)
+    shoot(S, WOOD, (lerp(1.6, 2.0, k), lerp(-4.6, -4.2, k), 1.5), (1.2, 0.1, 1.2), 32)
 
 
 # ---------------------------------------------------------------- hospital, the hut, the camp
@@ -1854,19 +1936,19 @@ def hospital(S, k, t, lt):
     m = put(S, S['man'], 'hosp', -1.2, 0.15, 0.24, 0.0, -0.95)
     m.apply(P('stand', aL=(0.3, 0.2, 0.5), aR=(0.3, 0.2, 0.5), lL=(0.95, 0.0), lR=(0.95, 0.0), head=(0.75, 0.15 * math.sin(lt * 0.6))))
     m.face = 'tired'
-    g = put(S, S['men'][0], 'hosp', 3.2, -2.2, 0.0, facing((3.2, -2.2), (-1.2, 1.0)))
-    g.apply(P('stand', **SIT, aL=(0.75, -0.05, 1.2, 0.8), aR=(0.75, -0.05, 1.2, 0.8), head=(0.1, 0.0)))
+    g = put(S, S['men'][0], 'hosp', -3.6, -0.6, 0.0, facing((-3.6, -0.6), (-1.2, 1.6)))
+    g.apply(P('hips', head=(0.1, 0.2 * math.sin(lt * 0.7))))
     rk = put(S, S['rook'], 'hosp', 2.4, 3.6, 0.0, facing((2.4, 3.6), (0.0, -1.5)))
     rk.apply(blend(P('stand', head=(0.0, 0.6 * math.sin(lt * 0.9))), P('hat'), sm((lt - 1.8) / 0.4)))
     S['rface'] = 'low'
-    look(S, 'hosp', (lerp(1.8, 1.2, k), lerp(-4.6, -4.0, k), lerp(2.9, 2.7, k)), (0.2, 1.6, 1.3), 24)
+    look(S, 'hosp', (lerp(3.6, 3.0, k), lerp(-4.8, -4.2, k), lerp(3.0, 2.8, k)), (0.2, 1.8, 1.4), 26)
 
 
 def witnesses(S, k, t, lt):
     """In a wooden hut, under a hanging lamp: three British prisoners lean over a sheet on the table and sign it one after another,
     while he stands at the end of the table. Rook reads over their shoulders."""
     d = inside(S, 'hut', 'inside')
-    d['lamp'].data.energy, d['fill'].data.energy = 220, 180
+    d['lamp'].data.energy, d['fill'].data.energy = 420, 420
     no_harness(S, False)
     S['band'].hide_render = True
     S['sheet2'].location = SP('hut', 0.0, 0.6, 1.07)
@@ -1875,23 +1957,23 @@ def witnesses(S, k, t, lt):
     for i, rg in enumerate(S['pows']):
         x = -1.0 + 1.0 * i
         lean = 0.55 if i == who else 0.1
-        put(S, rg, 'hut', x, -0.6, 0.0, 0.0)
+        put(S, rg, 'hut', x, 1.9, 0.0, 0.0)
         rg.apply(P('stand', aR=(1.0 + 0.15 * math.sin(lt * 8) if i == who else 0.3, 0.0, 0.6), lean=lean, head=(0.5 if i == who else 0.2, 0.0)))
         rg.face = 'calm'
     m = put(S, S['man'], 'hut', 2.7, 0.8, 0.0, facing((2.7, 0.8), (0.0, 0.6)))
     m.apply(P('stand', head=(0.15, 0.0)))
     m.face = 'warm'
-    rk = put(S, S['rook'], 'hut', lerp(-2.6, -2.2, k), 2.4, 0.0, facing((-2.4, 2.4), (0.0, 0.6)))
+    rk = put(S, S['rook'], 'hut', -2.4, lerp(2.4, 2.2, k), 0.0, facing((-2.4, 2.3), (-0.6, 0.6)))
     rk.apply(P('tap', head=(0.35, 0.0)))
     S['rface'] = 'calm'
-    look(S, 'hut', (lerp(0.6, 0.2, k), lerp(-6.2, -5.4, k), lerp(3.0, 2.8, k)), (0.2, 0.8, 1.3), 26)
+    look(S, 'hut', (lerp(1.2, 0.6, k), lerp(-5.0, -4.4, k), lerp(3.2, 3.0, k)), (0.4, 1.4, 1.8), 28)
 
 
 def camp_famous(S, k, t, lt):
     """Inside the hut, evening, stove glowing: prisoners crowd round him at the table as he tells it again, hands showing the drop.
     Rook sits on the top bunk, legs dangling, listening for once."""
     d = inside(S, 'hut', 'inside')
-    d['lamp'].data.energy, d['fill'].data.energy = 260, 80
+    d['lamp'].data.energy, d['fill'].data.energy = 480, 260
     no_harness(S, False)
     m = put(S, S['man'], 'hut', 0.0, 1.6, 0.0, PI)
     drop = math.sin(lt * 2.0)
@@ -1906,7 +1988,7 @@ def camp_famous(S, k, t, lt):
     rk = put(S, S['rook'], 'hut', -5.2, 0.4, 2.2 - 0.55, facing((-5.2, 0.4), (0.0, 1.0)))
     rk.apply(P('sit', head=(0.2, 0.0)))
     S['rface'] = 'soft'
-    look(S, 'hut', (lerp(2.6, 2.2, k), lerp(-6.0, -5.2, k), lerp(2.4, 2.3, k)), (-0.8, 0.8, 1.6), 24)
+    look(S, 'hut', (lerp(2.2, 1.8, k), lerp(-4.6, -4.0, k), lerp(2.6, 2.5, k)), (-1.0, 0.8, 1.9), 28)
 
 
 def camp_wire(S, k, t, lt):
@@ -1931,11 +2013,11 @@ def long_march(S, k, t, lt):
         put(S, rg, 'camp', 0.5 * math.sin(i * 1.7), y, 0.0, PI)
         rg.apply(blend(K.walk(t + i * 0.37, 0.8), P('stand', head=(0.45, 0.0), aL=(0.4, -0.1, 1.6, 1.2), aR=(0.4, -0.1, 1.6, 1.2)), 0.45))
         rg.face = 'tired'
-    rk = put(S, S['rook'], 'camp', 2.2, -24.0 + 2.2 * lt, 0.0, PI)
+    rk = put(S, S['rook'], 'camp', -2.0, -21.5 + 2.2 * lt, 0.0, PI)
     rk.apply(blend(K.walk(t + 0.2, 0.8), P('cross', head=(0.4, 0.0)), 0.5))
     S['rface'], S['hat_tip'] = 'sad', 0.5
     snowfall(S, SP('camp', 0.0, -18.0 + 2.2 * lt, 0.0), t, 20, 0, 6.0, 7.0, 1.4)
-    look(S, 'camp', (lerp(5.5, 4.5, k), -7.0 + 2.2 * lt, 2.4), (0.6, -22.0 + 2.2 * lt, 1.5), 26)
+    look(S, 'camp', (lerp(5.0, 4.2, k), -12.5 + 2.2 * lt, 2.3), (0.8, -24.0 + 2.2 * lt, 1.8), 30)
 
 
 def home_may(S, k, t, lt):
@@ -1950,12 +2032,13 @@ def home_may(S, k, t, lt):
     pose['aR'] = (2.6, 0.3, 1.9, 0.0)
     m.apply(pose)
     m.face = 'warm'
-    hand = wpos(S['man'].hands[1])
-    S['kitbag'].location = (hand[0] + 0.1, hand[1] + 0.3, hand[2] - 0.1)
+    sh_ = wpos(S['man'].sh[1])
+    S['kitbag'].location = (sh_[0], sh_[1] + 0.15, sh_[2] + 0.28)
+    S['kitbag'].rotation_euler = (PI / 2, 0, m.root.rotation_euler[2])
     rk = put(S, S['rook'], 'lane', 5.6, 4.0, 1.35 - 0.55, PI + 0.5)
     rk.apply(P('sit', head=(0.1, -0.4)))
     S['rface'] = 'soft'
-    look(S, 'lane', (lerp(-3.0, -2.4, k), lerp(-10.0, -8.6, k), 2.0), (2.4, 2.0, 1.7), 26)
+    look(S, 'lane', (lerp(-1.6, -1.2, k), lerp(8.0, 7.2, k), 2.0), (2.4, 1.6, 1.8), 30)
 
 
 # ---------------------------------------------------------------- after the war
@@ -1987,10 +2070,10 @@ def tv_studio(S, k, t, lt):
     ho = put(S, S['pows'][2], 'studio', -1.6, 2.6, 0.45, 0.5)
     ho.apply(P('stand', **SIT, aL=(0.75, -0.05, 1.2, 0.8), aR=(0.75, -0.05, 1.2, 0.8), head=(0.0, -0.3)))
     ho.face = 'wide'
-    rk = put(S, S['rook'], 'studio', 2.0, -6.8, 0.0, facing((2.0, -6.8), (1.6, 2.6)))
+    rk = put(S, S['rook'], 'studio', 2.6, -4.2, 0.0, facing((2.6, -4.2), (1.0, 2.6)))
     rk.apply(P('cross', head=(0.25 * sm((lt - 1.4) / 0.3) * (1 - sm((lt - 1.9) / 0.3)), 0.0)))
     S['rface'] = 'calm'
-    look(S, 'studio', (lerp(-2.8, -2.2, k), lerp(-10.5, -9.6, k), lerp(3.2, 3.0, k)), (0.6, 0.0, 1.6), 26)
+    look(S, 'studio', (lerp(-2.4, -1.8, k), lerp(-7.6, -7.0, k), lerp(2.8, 2.6, k)), (0.8, 0.4, 1.8), 30)
 
 
 def plaque(S, k, t, lt):
@@ -2005,21 +2088,38 @@ def plaque(S, k, t, lt):
     rk.apply(blend(P('reach', aR=(1.6, -0.2, 0.3), head=(0.0, 0.0)), P('stand', aR=(0.9, -0.3, 1.8, 1.0), head=(0.25, 0.0)), sm((lt - 1.0) / 0.5)))
     S['rface'] = 'soft'
     S['hat_off'] = sm((lt - 1.4) / 0.4)
-    look(S, 'bldg', (lerp(-2.0, -1.0, k), lerp(-11.0, -9.4, k), lerp(2.4, 2.2, k)), (2.6, 0.0, 2.2), 26)
+    look(S, 'bldg', (lerp(0.6, 1.2, k), lerp(-7.4, -6.4, k), lerp(2.2, 2.1, k)), (3.6, -0.8, 2.0), 30)
+
+
+def dawn_wood(S, k, t, lt):
+    """The pine wood at dawn, nobody in it: the dent in the snow, the broken boughs, the hole in the trees above. The camera
+    rises slowly towards the light."""
+    sky(S, 'dawn')
+    snowfall(S, WOOD, t, 12, 0, 4.0, 9.0, 0.8)
+    shoot(S, WOOD, (lerp(-3.0, -2.2, k), lerp(-9.0, -8.0, k), lerp(1.2, 3.2, k)), (0.0, 0.0, lerp(1.0, 6.0, k)), 26)
 
 
 def photo_thumb(S, k, t, lt):
-    """The thumbnail picture: the gunner falling on his back through the night, the burning bomber small above him to the left."""
+    """The thumbnail picture: the gunner in the open turret, his face lit orange by the fire behind him, on the right of the
+    frame; the dark night on the left for the words."""
     sky(S, 'night', True)
-    o = FALL
-    air(S, o, 1.0, (0, 0, 0), top=-12)
-    falling(S, o, 1.0, 0.4, 0.0, 'wide')
-    far_bomber(S, at(o, -24, 40, 30), 1.0, 2.6)
-    shoot(S, o, (5.0, -7.0, -1.2), (-1.4, 4.0, 2.4), 30)
+    air(S, SKYO, 1.0, (0, 85, 0), top=-6)
+    b = burning(S, 1.0, 2.2, 6)
+    fire(S, [(0.7, 14.5, 0.2), (-0.7, 14.4, 0.8), (0.1, 14.3, 1.5), (-1.9, 15.2, 0.6), (1.6, 14.6, 1.2)], 1.0, 1.1, (0, 1, 0.7), i0=12, par=b)
+    glow(S, 2, at(SKYO, 0.3, 15.0, 1.0), 2600, 1.0)
+    m = S['man']
+    m.root.parent = b
+    m.place((0, 16.2, -1.55), PI)
+    m.apply(P('sit', aL=(1.1, 0.25, 0.9), aR=(1.2, 0.3, 0.7), lean=0.05, head=(-0.1, 0.45), lift=-0.5))
+    m.face, m.jawv = 'wide', 0.35
+    h = mhead(S)
+    S['lanlamp'].location = (h[0] + 0.6, h[1] + 1.6, h[2] + 0.4)
+    S['lanlamp'].data.energy, S['lanlamp'].data.color = 260, (1.0, 0.62, 0.32)
+    shoot(S, (0, 0, 0), (h[0] + 1.3, h[1] + 4.6, h[2] + 0.9), (h[0] + 2.0, h[1] - 0.6, h[2] - 0.5), 30)
 
 
 NEW = (garden_wide, garden_close, field_dusk, crew_seven, takeoff, stream, turret_calm, rack_calm, gunner_face, cigarette, whistle, hospital,
-       witnesses, camp_famous, camp_wire, long_march, home_may, works, tv_studio, plaque)
+       witnesses, camp_famous, camp_wire, long_march, home_may, works, tv_studio, plaque, dawn_wood)
 SHOTS3D.update({f.__name__: f for f in NEW})
 STILLS.update(thumb=photo_thumb)
 
@@ -2057,4 +2157,7 @@ def _swung(f, name):
 
 for _n in SHORT_KINDS:
     SHOTS3D[_n] = _slowed(SHOTS3D[_n])
+_bf = SHOTS3D['backflip']
+SHOTS3D['backflip'] = lambda S, k, t, lt: _bf(S, k, t, 0.75 * k)    # the drop takes the whole shot, so he stays in the wider frame
+SHOTS3D['backflip'].__name__ = 'backflip'
 SHOTS3D = {name: _swung(f, name) for name, f in SHOTS3D.items()}

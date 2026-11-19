@@ -342,5 +342,6 @@ def THUMB(cv, c):
     else:
         cv.clear(h('0A1428'))
     cv.drawRect(skia.Rect(0, 0, 1280, 720), skia.Paint(Shader=skia.GradientShader.MakeLinear([(720, 0), (0, 0)], [0x00000000, 0xC8000000])))
-    Wd.text_card(cv, '18,000 FT', 330, 270, 120, 0xFFFFFFFF, 0xFF000000)
-    Wd.text_card(cv, 'NO PARACHUTE', 330, 420, 92, AMBER, 0xFF000000)
+    fit(cv, 'NO', 300, 250, 150, 520, 0xFFFFFFFF)
+    fit(cv, 'PARACHUTE', 300, 400, 120, 520, AMBER)
+    fit(cv, '18,000 FT', 300, 530, 90, 520, 0xFFFFFFFF)
