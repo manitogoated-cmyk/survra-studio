@@ -355,14 +355,15 @@
    "world": "wheatbelt farm and fence line, 1930s army truck, minister's office",
    "est_score": 95,
    "long_form_candidate": true,
-   "status": "idea",
+   "status": "in progress",
    "facts": "premise checked on 18 Nov 2026 against the two sources listed (both fetched and read); verify again at authoring. Funny case: keep the comedy on the absurd parts, never on anyone's suffering.",
    "sources": [
     "https://en.wikipedia.org/wiki/Emu_War",
     "https://www.historyhit.com/the-great-emu-war/"
    ],
    "source_notes": "2 Nov to 10 Dec 1932. Kill counts vary widely; the official 986 from 9,860 rounds (exactly 10 per bird) is called highly disputed and likely inflated, so present it as Meredith's claim. 20,000 emus is an estimate. Emu deaths off-screen. Cold open: machine-gun truck bouncing through wheat while emus jog alongside out of range.",
-   "tone": "funny"
+   "tone": "funny",
+   "claimed_at": "2026-11-19T12:49:49Z"
   },
   {
    "case": 41,
