@@ -1,0 +1,27 @@
+{
+  "id": "r024-alkemade-long", "spine": "v2", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9,
+  "segments": [
+    {"scene": "hook", "mood": "hook", "text": "His bomber is on fire, five and a half kilometres up. His parachute is burning. And he jumps anyway."},
+    {"scene": "doubt", "mood": "tense", "text": "No parachute? No chance. Let's go back to the start."},
+    {"scene": "start", "mood": "calm", "text": "Before the war, Nicholas Alkemade works as a market gardener in Loughborough, in England. By {1944|nineteen forty-four} he's twenty-one, and a rear gunner in a Lancaster bomber, with Number {115|one fifteen} Squadron."},
+    {"scene": "turret", "mood": "calm", "text": "His place is the tail: a small turret at the very back of the plane, on his own. It's so cramped there's no room to wear a parachute. His is stowed in the fuselage, just behind the turret doors."},
+    {"scene": "raid", "mood": "tense", "text": "The night of the twenty-fourth of March. More than eight hundred bombers set out for Berlin. Seven men in his crew. On the way home, a strong wind pushes the bombers off their course, over Germany."},
+    {"scene": "attack", "mood": "action", "text": "Close to midnight, a night fighter comes up from below. Its cannon shells tear into the wing and the fuselage. The bomber is burning, and going down."},
+    {"scene": "chute", "mood": "tense", "text": "He turns the turret, opens the doors behind him, and reaches for his parachute. It's already on fire. The flames burn him, and drive him back."},
+    {"scene": "choice", "mood": "sad", "text": "So there are two ways out. Stay, and burn. Or jump, and fall. He said later he wanted it over quick and clean."},
+    {"scene": "jump", "mood": "action", "text": "He swings the turret round to the side, and goes out backwards, into the dark. Eighteen thousand feet up."},
+    {"scene": "fall", "mood": "tense", "text": "He falls head first, and somewhere on the way down, he blacks out."},
+    {"scene": "sums", "mood": "tense", "text": "I did the sums. From that height, nobody walks away. Nobody."},
+    {"scene": "trees", "mood": "wonder", "text": "But below him is a wood of young pine trees, and under them, deep snow. The branches slow him, one after another. The snow takes the rest."},
+    {"scene": "wake", "mood": "wonder", "text": "About three hours later, he opens his eyes. He can see stars, through the hole he's made in the trees. His flying boots are gone. He has burns and cuts, and a twisted knee. Nothing is broken."},
+    {"scene": "smoke", "mood": "calm", "text": "So first, he lights a cigarette. Then he blows his whistle, and waits."},
+    {"scene": "rehook", "mood": "tense", "text": "Local people find him and take him to hospital. He is alive, and he is a prisoner. And this is where the trouble starts."},
+    {"scene": "gestapo", "mood": "tense", "text": "The Gestapo want to know where his parachute is. He tells them. They laugh. No parachute? Then he's a spy, and he's hidden it."},
+    {"scene": "proof", "mood": "tense", "text": "So he tells them: go and look. In the wood, they find his harness, its lifting straps still folded away. In the wreck of his bomber, the ripcord handle is still in its container. His parachute never left the plane."},
+    {"scene": "cert", "mood": "triumph", "text": "Now they believe him. At the camp where captured airmen are questioned, it's put in writing, witnessed by British prisoners: he fell eighteen thousand feet without a parachute. His claim is true in all respects."},
+    {"scene": "camp", "mood": "calm", "text": "Among the prisoners, he's famous: the man who fell without a parachute. In the last winter of the war, he's marched west with the others, through the snow. In May {1945|nineteen forty-five}, he goes home."},
+    {"scene": "crew", "mood": "sad", "text": "Four of his crew never came home: Jack Newman, Edgar Warren, Charles Hilder and John McDonough. They lie in a war cemetery in Hanover. Two more got out, and survived as prisoners."},
+    {"scene": "after", "mood": "calm", "text": "After the war, Nicholas works in the chemical industry, marries, raises a family, and tells his story on British television. He dies in {1987|nineteen eighty-seven}, aged sixty-four. In {2020|twenty twenty}, his old squadron names a building after him."},
+    {"scene": "end", "mood": "end", "text": "Eighteen thousand feet. No parachute. One twisted knee. I said no chance. I was wrong. Case closed."}
+  ]
+}

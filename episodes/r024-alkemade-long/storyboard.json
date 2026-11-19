@@ -1,0 +1,2219 @@
+{
+ "id": "r024-alkemade-long",
+ "hook_text": "NO|PARACHUTE",
+ "shots": [
+  {
+   "n": 1,
+   "segment": "hook",
+   "weight": 0.85,
+   "kind": "bomber_wide",
+   "action": "The burning bomber from behind and above its tail; a small figure rolls out of the rear turret and drops away",
+   "camera": "High behind the tail, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 2,
+   "transition": "cut",
+   "sfx": [
+    [
+     "hit",
+     0.03
+    ],
+    [
+     "whoosh",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 2,
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "chute_burn",
+   "action": "The parachute pack in its rack, already burning; a gloved hand reaches and is driven back",
+   "camera": "Close on the rack",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "crash",
+     0.2
+    ],
+    [
+     "grab",
+     0.6
+    ]
+   ],
+   "hud": "24 MARCH 1944",
+   "prm": {}
+  },
+  {
+   "n": 3,
+   "segment": "hook",
+   "weight": 1.1,
+   "kind": "backflip",
+   "action": "From beside the tail: he lets go and goes out backwards into the dark",
+   "camera": "Beside the tail, tilting down with him",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "whoosh",
+     0.3
+    ]
+   ],
+   "hud": "24 MARCH 1944",
+   "prm": {}
+  },
+  {
+   "n": 4,
+   "segment": "doubt",
+   "weight": 1.0,
+   "kind": "rook_fall",
+   "action": "Rook falling beside him, hat brim down, arms folded: \"No parachute? No chance.\"",
+   "camera": "Three-quarter on Rook, the man and the fire behind",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "zoom",
+   "sfx": [
+    [
+     "wind",
+     0.1
+    ],
+    [
+     "tick",
+     0.7
+    ]
+   ],
+   "hud": "CASE 024",
+   "prm": {}
+  },
+  {
+   "n": 5,
+   "segment": "start",
+   "weight": 1.0,
+   "kind": "garden_wide",
+   "action": "A glasshouse in spring: young Nicholas pricks out seedlings along a bench; Rook leans on a wheelbarrow by the door, arms folded, then taps his beak",
+   "camera": "Wide from the door end, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": "LOUGHBOROUGH, BEFORE THE WAR",
+   "prm": {}
+  },
+  {
+   "n": 6,
+   "segment": "start",
+   "weight": 1.0,
+   "kind": "garden_close",
+   "action": "Close: he firms a seedling into its pot, then looks up and out through the glass",
+   "camera": "Close three-quarter",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.3
+    ]
+   ],
+   "hud": "NICHOLAS ALKEMADE",
+   "prm": {}
+  },
+  {
+   "n": 7,
+   "segment": "start",
+   "weight": 1.1,
+   "kind": "field_dusk",
+   "action": "An airfield at dusk: he walks out in flying kit towards the parked bomber; Rook strides beside him and pops his collar",
+   "camera": "Wide, low, tracking with them",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "wind",
+     0.2
+    ]
+   ],
+   "hud": "115 SQUADRON, RAF",
+   "prm": {}
+  },
+  {
+   "n": 8,
+   "segment": "turret",
+   "weight": 1.0,
+   "kind": "turret_calm",
+   "action": "In the rear turret at night, before anything happens: he scans the dark between his guns; Rook squeezed on the tail behind him, hat brim bent",
+   "camera": "Outside the turret, close",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.1
+    ]
+   ],
+   "hud": "REAR GUNNER, 21",
+   "prm": {}
+  },
+  {
+   "n": 9,
+   "segment": "turret",
+   "weight": 1.1,
+   "kind": "rack_calm",
+   "action": "Inside the fuselage, dim blue: the pack in its rack; Rook steps in, raps it and points from it back towards the turret",
+   "camera": "Low along the fuselage wall",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.45
+    ],
+    [
+     "tick",
+     0.7
+    ]
+   ],
+   "hud": "NO ROOM FOR A PARACHUTE",
+   "prm": {}
+  },
+  {
+   "n": 10,
+   "segment": "turret",
+   "weight": 0.9,
+   "kind": "turret_calm",
+   "action": "The turret from another side: his head turning, the night beyond, Rook hunched behind",
+   "camera": "Wider, from the side",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "alt": [
+     55,
+     1.3,
+     0.6
+    ]
+   }
+  },
+  {
+   "n": 11,
+   "segment": "raid",
+   "weight": 1.0,
+   "kind": "crew_seven",
+   "action": "Seven men in flying kit by the tail at dusk; Rook walks along the line counting them with a wingtip",
+   "camera": "Low, along the line",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.2
+    ],
+    [
+     "tick",
+     0.45
+    ],
+    [
+     "tick",
+     0.7
+    ]
+   ],
+   "hud": "SEVEN CREW",
+   "prm": {}
+  },
+  {
+   "n": 12,
+   "segment": "raid",
+   "weight": 0.9,
+   "kind": "takeoff",
+   "action": "Dusk: a bomber lifts off the far end of the runway and climbs away",
+   "camera": "Wide across the field",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "engine_start",
+     0.1
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 13,
+   "segment": "raid",
+   "weight": 1.1,
+   "kind": "stream",
+   "action": "Night above the cloud: a loose line of bombers, small engine glows, stars",
+   "camera": "Alongside the stream, drifting",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.2
+    ]
+   ],
+   "hud": "800+ BOMBERS: BERLIN",
+   "prm": {}
+  },
+  {
+   "n": 14,
+   "segment": "raid",
+   "weight": 1.0,
+   "kind": "wind_card",
+   "action": "Rook's drawn diagram: the route home as a dotted line, big wind arrows push the bomber shapes south, off the line; marked DIAGRAM",
+   "camera": "Flat card, slow push",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "scratch",
+     0.3
+    ],
+    [
+     "whoosh",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 15,
+   "segment": "attack",
+   "weight": 1.0,
+   "kind": "fighter",
+   "action": "The night fighter under the tail, tracer going up into the wing",
+   "camera": "Below, looking up",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 2,
+   "transition": "cut",
+   "sfx": [
+    [
+     "hit",
+     0.25
+    ],
+    [
+     "hit",
+     0.45
+    ],
+    [
+     "hit",
+     0.6
+    ]
+   ],
+   "hud": "CLOSE TO MIDNIGHT",
+   "prm": {}
+  },
+  {
+   "n": 16,
+   "segment": "attack",
+   "weight": 1.0,
+   "kind": "wing_fire",
+   "action": "The wing catching fire, pieces flying",
+   "camera": "Along the wing",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 2,
+   "transition": "cut",
+   "sfx": [
+    [
+     "crash",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 17,
+   "segment": "attack",
+   "weight": 1.0,
+   "kind": "turret_fire",
+   "action": "The gunner in the open turret frame, fire in the fuselage behind him; he looks back at it",
+   "camera": "Close outside the turret",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "cut",
+   "sfx": [
+    [
+     "crash",
+     0.2
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 18,
+   "segment": "chute",
+   "weight": 1.1,
+   "kind": "chute_burn",
+   "action": "The pack in its rack, burning; the gloved hand goes in and is driven back",
+   "camera": "Lower, closer on the pack",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "grab",
+     0.4
+    ],
+    [
+     "crash",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "alt": [
+     -30,
+     0.85,
+     0.3
+    ]
+   }
+  },
+  {
+   "n": 19,
+   "segment": "chute",
+   "weight": 1.0,
+   "kind": "turret_fire",
+   "action": "Back in the turret: he pulls away from the doors, the fire following",
+   "camera": "From the other side of the turret",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "cut",
+   "sfx": [
+    [
+     "crash",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "alt": [
+     60,
+     1.2,
+     0.4
+    ]
+   }
+  },
+  {
+   "n": 20,
+   "segment": "choice",
+   "weight": 1.2,
+   "kind": "gunner_face",
+   "action": "Close on his face, lit orange: he looks back at the fire, then out at the dark, and closes his eyes",
+   "camera": "Very close, from the side",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "heartbeat",
+     0.2
+    ],
+    [
+     "heartbeat",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 21,
+   "segment": "choice",
+   "weight": 1.0,
+   "kind": "wing_fire",
+   "action": "The burning wing from further out, the bomber dropping",
+   "camera": "Wide off the wingtip",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "alt": [
+     45,
+     1.5,
+     1.0
+    ]
+   }
+  },
+  {
+   "n": 22,
+   "segment": "jump",
+   "weight": 1.1,
+   "kind": "backflip",
+   "action": "He swings the turret aside and goes out backwards into the night",
+   "camera": "Lower, further along the tail",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "whoosh",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "alt": [
+     -35,
+     1.2,
+     -0.5
+    ]
+   }
+  },
+  {
+   "n": 23,
+   "segment": "jump",
+   "weight": 1.0,
+   "kind": "bomber_wide",
+   "action": "From high behind the tail: the small figure dropping away from the burning bomber",
+   "camera": "High and wide",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.2
+    ]
+   ],
+   "hud": "18,000 FEET",
+   "prm": {
+    "alt": [
+     25,
+     1.3,
+     2.0
+    ]
+   }
+  },
+  {
+   "n": 24,
+   "segment": "fall",
+   "weight": 1.0,
+   "kind": "fall_wide",
+   "action": "From above: the small figure falling towards the dark",
+   "camera": "From above, looking down",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.2
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 25,
+   "segment": "fall",
+   "weight": 1.0,
+   "kind": "fall_close",
+   "action": "His face in the fall, eyes closing",
+   "camera": "Close",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 26,
+   "segment": "sums",
+   "weight": 1.0,
+   "kind": "rook_maths",
+   "action": "Rook falling beside him, doing the sums on a notepad",
+   "camera": "On Rook, the man below",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.2
+    ],
+    [
+     "scratch",
+     0.5
+    ]
+   ],
+   "hud": "18,000 FEET",
+   "prm": {}
+  },
+  {
+   "n": 27,
+   "segment": "sums",
+   "weight": 1.0,
+   "kind": "rook_gives_up",
+   "action": "Rook throws the pad away and pulls his brim over his eyes",
+   "camera": "On Rook",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 28,
+   "segment": "trees",
+   "weight": 0.9,
+   "kind": "trees_rush",
+   "action": "The pine tops rushing up",
+   "camera": "Falling with him",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.2
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "fstop": 0
+   }
+  },
+  {
+   "n": 29,
+   "segment": "trees",
+   "weight": 1.0,
+   "kind": "crash_branches",
+   "action": "Through the pines: branches snap and he goes into the drift in a burst of snow",
+   "camera": "Low in the wood",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 2,
+   "transition": "cut",
+   "sfx": [
+    [
+     "crash",
+     0.15
+    ],
+    [
+     "crash",
+     0.4
+    ]
+   ],
+   "hud": "YOUNG PINES",
+   "prm": {}
+  },
+  {
+   "n": 30,
+   "segment": "trees",
+   "weight": 1.1,
+   "kind": "snow_hole",
+   "action": "From above: he lies in a man-sized dent in the snow, broken boughs round him",
+   "camera": "From above",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.3
+    ]
+   ],
+   "hud": "DEEP SNOW",
+   "prm": {}
+  },
+  {
+   "n": 31,
+   "segment": "wake",
+   "weight": 1.1,
+   "kind": "hole_up",
+   "action": "What he sees: a ring of pine tops, a ragged hole, stars; Rook's head comes in over the edge",
+   "camera": "Looking straight up",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": "ABOUT 3 HOURS LATER",
+   "prm": {
+    "fstop": 0
+   }
+  },
+  {
+   "n": 32,
+   "segment": "wake",
+   "weight": 1.1,
+   "kind": "limbs",
+   "action": "He sits up, opens and shuts his hands, pats his legs",
+   "camera": "Close, three-quarter",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.4
+    ]
+   ],
+   "hud": "NO BOOTS",
+   "prm": {}
+  },
+  {
+   "n": 33,
+   "segment": "wake",
+   "weight": 1.0,
+   "kind": "rook_measure",
+   "action": "Rook pushes a stick into the drift, marks the depth, points up at the hole",
+   "camera": "Low beside them",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "tick",
+     0.7
+    ]
+   ],
+   "hud": "DEEP SNOW",
+   "prm": {}
+  },
+  {
+   "n": 34,
+   "segment": "wake",
+   "weight": 1.1,
+   "kind": "knee",
+   "action": "He gets up; one knee gives and he goes back down; Rook flinches",
+   "camera": "Medium, low",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "crash",
+     0.6
+    ]
+   ],
+   "hud": "NOTHING BROKEN",
+   "prm": {}
+  },
+  {
+   "n": 35,
+   "segment": "smoke",
+   "weight": 1.0,
+   "kind": "cigarette",
+   "action": "In the dark under the pines, he lights a cigarette; the ember glows",
+   "camera": "Close on his face",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 36,
+   "segment": "smoke",
+   "weight": 1.0,
+   "kind": "whistle",
+   "action": "He blows his whistle into the dark wood; Rook, crouched beside him, flinches and holds his hat",
+   "camera": "Medium, low",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "shout",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 37,
+   "segment": "rehook",
+   "weight": 1.0,
+   "kind": "lantern",
+   "action": "Two men in caps come through the trees with a lantern and stop when its light finds him",
+   "camera": "Over his shoulder",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "creak",
+     0.4
+    ]
+   ],
+   "hud": "CAPTURED",
+   "prm": {}
+  },
+  {
+   "n": 38,
+   "segment": "rehook",
+   "weight": 1.1,
+   "kind": "hospital",
+   "action": "A hospital bed: he lies propped up with a dressing round his head; a guard in a cap by the door; Rook at the window lowers his brim",
+   "camera": "Wide from the foot of the room",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": "HOSPITAL",
+   "prm": {}
+  },
+  {
+   "n": 39,
+   "segment": "gestapo",
+   "weight": 1.0,
+   "kind": "room_wide",
+   "action": "The room: desk, lamp, the man at the desk, Nicholas opposite",
+   "camera": "Wide",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.3
+    ]
+   ],
+   "hud": "INTERROGATION",
+   "prm": {}
+  },
+  {
+   "n": 40,
+   "segment": "gestapo",
+   "weight": 1.0,
+   "kind": "gestapo_laugh",
+   "action": "The man at the desk throws his head back and laughs",
+   "camera": "Close",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "shout",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 41,
+   "segment": "gestapo",
+   "weight": 1.0,
+   "kind": "spy_point",
+   "action": "The man points at him across the desk",
+   "camera": "Over his shoulder",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 42,
+   "segment": "gestapo",
+   "weight": 1.0,
+   "kind": "spy_card",
+   "action": "A chalk drawing headed WHAT THEY SUSPECTED: a parachute buried in the snow",
+   "camera": "Flat card",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "scratch",
+     0.2
+    ]
+   ],
+   "hud": "SPY?",
+   "prm": {}
+  },
+  {
+   "n": 43,
+   "segment": "proof",
+   "weight": 1.0,
+   "kind": "he_points",
+   "action": "He leans in and points: go and look",
+   "camera": "Close",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ]
+   ],
+   "hud": "GO AND LOOK",
+   "prm": {}
+  },
+  {
+   "n": 44,
+   "segment": "proof",
+   "weight": 1.0,
+   "kind": "search_wood",
+   "action": "Grey daylight: two men wade through the snow towards Rook and the dent",
+   "camera": "Wide, low",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "wind",
+     0.2
+    ]
+   ],
+   "hud": "THE WOOD",
+   "prm": {}
+  },
+  {
+   "n": 45,
+   "segment": "proof",
+   "weight": 1.2,
+   "kind": "harness",
+   "action": "Rook lifts the harness by a strap and turns it over: the lifting straps still folded; he taps his beak",
+   "camera": "Close, rising",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.7
+    ]
+   ],
+   "hud": "STRAPS STILL FOLDED",
+   "prm": {}
+  },
+  {
+   "n": 46,
+   "segment": "proof",
+   "weight": 1.0,
+   "kind": "wreck",
+   "action": "The burnt tail in a snowfield; a man kneels at the open container",
+   "camera": "Wide",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.3
+    ]
+   ],
+   "hud": "THE WRECK",
+   "prm": {}
+  },
+  {
+   "n": 47,
+   "segment": "proof",
+   "weight": 1.3,
+   "kind": "chute_pack",
+   "action": "Inside the container: the pack, charred, never opened, the ripcord handle still in its pocket",
+   "camera": "Close, slow",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": "NEVER OPENED",
+   "prm": {},
+   "hush": true
+  },
+  {
+   "n": 48,
+   "segment": "cert",
+   "weight": 1.1,
+   "kind": "witnesses",
+   "action": "In a wooden hut under a hanging lamp, three British prisoners sign a sheet one after another; he stands at the end of the table; Rook reads over their shoulders",
+   "camera": "Wide across the table",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "scratch",
+     0.2
+    ],
+    [
+     "scratch",
+     0.5
+    ],
+    [
+     "scratch",
+     0.8
+    ]
+   ],
+   "hud": "WITNESSED BY BRITISH PRISONERS",
+   "prm": {}
+  },
+  {
+   "n": 49,
+   "segment": "cert",
+   "weight": 1.0,
+   "kind": "officer_writes",
+   "action": "The sheet written and stamped",
+   "camera": "Close on the desk",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.3
+    ],
+    [
+     "clunk",
+     0.75
+    ]
+   ],
+   "hud": "IN WRITING",
+   "prm": {}
+  },
+  {
+   "n": 50,
+   "segment": "cert",
+   "weight": 1.3,
+   "kind": "cert_card",
+   "action": "The typed sheet: the reported wording, re-set",
+   "camera": "Flat card, slow push",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 51,
+   "segment": "cert",
+   "weight": 0.9,
+   "kind": "man_smile",
+   "action": "He reads it and smiles",
+   "camera": "Close",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": "TRUE IN ALL RESPECTS",
+   "prm": {}
+  },
+  {
+   "n": 52,
+   "segment": "cert",
+   "weight": 1.0,
+   "kind": "rook_hat",
+   "action": "Rook reads it; his hat leaves his head",
+   "camera": "Close on Rook",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "pop",
+     0.5
+    ]
+   ],
+   "hud": "TRUE IN ALL RESPECTS",
+   "prm": {}
+  },
+  {
+   "n": 53,
+   "segment": "camp",
+   "weight": 1.0,
+   "kind": "camp_famous",
+   "action": "Evening in the hut: prisoners crowd round him as he tells it again; Rook on the top bunk listening",
+   "camera": "Wide, low",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": "PRISONER OF WAR",
+   "prm": {}
+  },
+  {
+   "n": 54,
+   "segment": "camp",
+   "weight": 0.9,
+   "kind": "camp_wire",
+   "action": "Snow, the double wire fence, a watchtower, long huts under snow",
+   "camera": "Tracking along the wire",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "wind",
+     0.2
+    ]
+   ],
+   "hud": "WINTER 1945",
+   "prm": {}
+  },
+  {
+   "n": 55,
+   "segment": "camp",
+   "weight": 1.1,
+   "kind": "long_march",
+   "action": "A column of prisoners trudging through snow between pines; he is among them; Rook trudges at the side",
+   "camera": "Tracking alongside",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.3
+    ]
+   ],
+   "hud": "MARCHED WEST",
+   "prm": {}
+  },
+  {
+   "n": 56,
+   "segment": "camp",
+   "weight": 1.1,
+   "kind": "home_may",
+   "action": "A lane in blossom: he walks home with a kitbag and stops at a gate; Rook on the gate says nothing",
+   "camera": "Wide, low",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "tick",
+     0.7
+    ]
+   ],
+   "hud": "HOME: MAY 1945",
+   "prm": {}
+  },
+  {
+   "n": 57,
+   "segment": "crew",
+   "weight": 1.2,
+   "kind": "four_stones",
+   "action": "Four plain headstones; Rook beside them with his hat off and his head down",
+   "camera": "Slow track along the row",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.4
+    ]
+   ],
+   "hud": "4 OF THE 7 CREW DIED",
+   "prm": {}
+  },
+  {
+   "n": 58,
+   "segment": "crew",
+   "weight": 1.0,
+   "kind": "crew_seven",
+   "action": "Remembered: the seven men by the tail at dusk, standing quiet",
+   "camera": "Further back, still",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "alt": [
+     -25,
+     1.4,
+     0.6
+    ]
+   }
+  },
+  {
+   "n": 59,
+   "segment": "crew",
+   "weight": 1.0,
+   "kind": "four_stones",
+   "action": "The four stones from the other end, morning light",
+   "camera": "Low, from the other end",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": "HANOVER WAR CEMETERY",
+   "prm": {
+    "alt": [
+     70,
+     1.3,
+     -0.2
+    ]
+   }
+  },
+  {
+   "n": 60,
+   "segment": "after",
+   "weight": 1.0,
+   "kind": "works",
+   "action": "A chemical works on a grey day: he walks along the pipe run with a clipboard",
+   "camera": "Tracking with him",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "clunk",
+     0.3
+    ]
+   ],
+   "hud": "THE CHEMICAL INDUSTRY",
+   "prm": {}
+  },
+  {
+   "n": 61,
+   "segment": "after",
+   "weight": 1.1,
+   "kind": "tv_studio",
+   "action": "A 1980s studio: older Nicholas in an armchair telling it with his hands; Rook behind the camera, arms folded, one slow nod",
+   "camera": "Wide from the dark side of the studio",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": "ON TELEVISION",
+   "prm": {}
+  },
+  {
+   "n": 62,
+   "segment": "after",
+   "weight": 1.0,
+   "kind": "hole_up",
+   "action": "Stars through the hole in the pines, snow drifting down",
+   "camera": "Looking up, slower",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.4
+    ]
+   ],
+   "hud": "1922 - 1987",
+   "prm": {
+    "alt": [
+     90,
+     1.0,
+     0.0
+    ],
+    "fstop": 0
+   }
+  },
+  {
+   "n": 63,
+   "segment": "after",
+   "weight": 1.1,
+   "kind": "plaque",
+   "action": "A plain squadron building: Rook pulls the orange cover off a small bronze plaque, steps back and takes off his hat",
+   "camera": "Wide, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.35
+    ],
+    [
+     "tick",
+     0.7
+    ]
+   ],
+   "hud": "A BUILDING IN HIS NAME",
+   "prm": {}
+  },
+  {
+   "n": 64,
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "board",
+   "action": "Rook's case board: the photo of the dent in the snow, the string, 18,000 FEET",
+   "camera": "Flat, slow push",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 65,
+   "segment": "end",
+   "weight": 1.2,
+   "kind": "signoff",
+   "action": "Dawn in the pine wood under the hole: Rook puts his hat back on, pulls the brim down, looks up: \"Case closed.\"",
+   "camera": "Low, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.09,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "pop",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "brand": true
+  }
+ ]
+}
