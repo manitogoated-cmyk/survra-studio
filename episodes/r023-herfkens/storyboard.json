@@ -683,7 +683,7 @@
    "segment": "calm",
    "weight": 1.0,
    "kind": "calm_face",
-   "action": "Close on her face at night: eyes closed, breathing slowly and deliberately, the fear going out of it",
+   "action": "Close on her face at night: eyes closed, breathing slowly, the fear going out of it as fireflies drift over her",
    "camera": "Close, still, lit softly",
    "cam": [
     [
@@ -847,7 +847,7 @@
    "segment": "payoff",
    "weight": 1.2,
    "kind": "carry_down",
-   "action": "Rescuers carry her down the slope in a hammock slung from a pole, in the morning light; she turns her head to the sky",
+   "action": "Rescuers carry her down the slope on canvas slung between two sticks, in the morning light; she turns her head to the sky",
    "camera": "Medium, tracking alongside downhill",
    "cam": [
     [
