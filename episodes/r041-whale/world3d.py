@@ -23,8 +23,10 @@ import bmesh
 import bpy
 from mathutils import Vector
 
+from mathutils import Matrix
+
 from engine4 import kit3d as K
-from engine4.kit3d import P, add, blend, empty, lerp, light
+from engine4.kit3d import P, blend, lerp, light
 
 PI = math.pi
 FAR = (0, 0, -30000)
@@ -39,7 +41,7 @@ CAMFILL = {'*': 150, 'blast_close': 60, 'column': 0, 'chunk_lens': 0, 'overhead_
 ROOKC = dict(top='566178', belt='3E4658', lap='6B7690', pants='2A2742', hand='2F2B4D', boot='8A90A6')
 SAND, SAND2, WET, DUNE = 'D9C59C', 'C9B48A', 'B49E78', 'D2BC8E'
 WHALE, BELLY = '596169', '8E9294'
-BLUB = ('D6C8BC', 'BCAEA6', 'E2D6CA', 'A9A19C', '6A7076')
+BLUB = ('F2DCD8', 'E6CCCA', 'F6E6E2', 'DCC4C4', 'EED6D2')
 CARS = ('C9A44A', '3A6A5A', '8A3A2E', 'D8D2C2', '2E4A6E', '6A6E44')
 SKIES = dict(                       # horizon, zenith, strength, sun watts, sun colour, sun direction
     day=('E2EAEE', '6E9CC8', 1.15, 3.4, 'FFF0DA', (0.55, -0.6, 0.5)),
@@ -47,6 +49,78 @@ SKIES = dict(                       # horizon, zenith, strength, sun watts, sun 
     park=('F2E4CC', '86A8C8', 1.1, 3.0, 'FFE6C4', (-0.6, -0.55, 0.42)))
 _KEEP = []
 TB = 0.22                           # the blast, seconds into the first shot
+
+# Building with bpy.ops slows down with every object already in the scene (about 0.1 s per primitive here, over three
+# minutes for this set). Each primitive is made once as a prototype mesh and copied, which gives the same geometry,
+# materials and bevels in a fraction of the time; the new object is selected and made active as the operator leaves it.
+_PROTO, _LAST = {}, [None]
+
+
+def _select(o):
+    if _LAST[0] is not None:
+        try:
+            _LAST[0].select_set(False)
+        except (ReferenceError, RuntimeError):
+            pass
+    o.select_set(True)
+    bpy.context.view_layer.objects.active = o
+    _LAST[0] = o
+
+
+def _unit(kind, kw):
+    if kind in ('cube', 'plane'):
+        v = kw.pop('size', 2.0)
+        kw['size'] = 1.0
+        return kw, (v, v, v)
+    if kind == 'ico_sphere':
+        r = kw.pop('radius', 1.0)
+        kw['radius'] = 1.0
+        return kw, (r, r, r)
+    if kind == 'cylinder':
+        r, d = kw.pop('radius', 1.0), kw.pop('depth', 2.0)
+        kw.update(radius=1.0, depth=1.0)
+        return kw, (r, r, d)
+    if kind == 'cone':
+        r1, r2, d = kw.pop('radius1', 1.0), kw.pop('radius2', 0.0), kw.pop('depth', 2.0)
+        if r1 <= 0:
+            kw.update(radius1=r1, radius2=r2, depth=d)
+            return kw, (1.0, 1.0, 1.0)
+        kw.update(radius1=1.0, radius2=round(r2 / r1, 5), depth=1.0)
+        return kw, (r1, r1, d)
+    return kw, (1.0, 1.0, 1.0)
+
+
+def add(kind, col, loc=(0, 0, 0), rot=(0, 0, 0), scale=(1, 1, 1), parent=None, rough=0.9, emit=0.0, alpha=1.0, **kw):
+    kw, sc = _unit(kind, dict(kw))
+    key = (kind, tuple(sorted(kw.items())))
+    if key not in _PROTO or _PROTO[key].name not in bpy.data.meshes:
+        getattr(bpy.ops.mesh, 'primitive_' + kind + '_add')(location=(0, 0, 0), **kw)
+        o = bpy.context.object
+        _PROTO[key] = o.data
+        bpy.data.objects.remove(o)
+    me = _PROTO[key].copy()
+    if sc != (1.0, 1.0, 1.0):
+        me.transform(Matrix.Diagonal((sc[0], sc[1], sc[2], 1.0)))
+    o = bpy.data.objects.new(kind, me)
+    bpy.context.scene.collection.objects.link(o)
+    o.location, o.rotation_euler, o.scale = loc, rot, scale
+    me.materials.append(K.mat(col, rough, emit, alpha))
+    if kind in ('cube', 'cylinder', 'cone') and alpha >= 1 and not emit:
+        K._bevel(o, scale)
+    if parent:
+        o.parent = parent
+    _select(o)
+    return o
+
+
+def empty(loc=(0, 0, 0), parent=None, rot=(0, 0, 0)):
+    o = bpy.data.objects.new('Empty', None)
+    bpy.context.scene.collection.objects.link(o)
+    o.location, o.rotation_euler = loc, rot
+    if parent:
+        o.parent = parent
+    _select(o)
+    return o
 
 
 def sm(k):
@@ -99,6 +173,21 @@ def lump(col, loc, s, par=None, seed=0, rough=1.0):
     return o
 
 
+def blubber(i, s=(1, 1, 1)):
+    """A lump of whale: pale fat with a cap of grey skin, so it never reads as a rock."""
+    o = lump(BLUB[i % 5], FAR, s, None, i, rough=0.55)
+    add('ico_sphere', ('5E666E', '6A7279')[i % 2], (0.08, 0.05, 0.36), rot=(0.2, 0.1, 0), scale=(1.0, 0.96, 0.66), radius=1, subdivisions=1, parent=o, rough=0.45)
+    return o
+
+
+def puff(col, i):
+    """A soft ball of blown sand (rounder than a lump)."""
+    o = add('ico_sphere', col, FAR, radius=1, subdivisions=2, rough=1.0)
+    for j, v in enumerate(o.data.vertices):
+        v.co = v.co * (0.9 + 0.18 * rnd(j + i * 5, 7))
+    return o
+
+
 # ---------------------------------------------------------------- the ground of the beach set
 def bump(x, y):
     """Small rolls on the dunes only."""
@@ -129,7 +218,7 @@ def field(name, xs, ys, zf, col, par, rough=1.0):
     me = bpy.data.meshes.new(name)
     vs = [(x, y, zf(x, y)) for y in ys for x in xs]
     nx = len(xs)
-    fs = [(j * nx + i, j * nx + i + 1, (j + 1) * nx + i + 1, (j + 1) * nx + i) for j in range(len(ys) - 1) for i in range(nx - 1)]
+    fs = [(j * nx + i, (j + 1) * nx + i, (j + 1) * nx + i + 1, j * nx + i + 1) for j in range(len(ys) - 1) for i in range(nx - 1)]
     me.from_pydata(vs, [], fs)
     me.update()
     o = bpy.data.objects.new(name, me)
@@ -198,11 +287,12 @@ def make_crates(par):
     n = 0
     for row, cnt in enumerate((8, 7, 5)):
         for i in range(cnt):
-            x = -3.6 + i * 1.02 + row * 0.5
+            x = -3.7 + i * 1.06 + row * 0.53
             c = empty((x, -3.35 - 0.05 * row, 0.3 + 0.58 * row), par, (0, 0, 0.04 * (rnd(n, 9) - 0.5)))
-            add('cube', '9A6038', (0, 0, 0), scale=(0.98, 0.72, 0.56), size=1, parent=c, rough=0.95)
-            add('cube', '6E4024', (0, -0.37, 0), scale=(1.0, 0.02, 0.12), size=1, parent=c)
-            add('cube', 'D8C8A4', (0, -0.37, 0.14), scale=(0.38, 0.02, 0.16), size=1, parent=c)                           # blank label
+            add('cube', 'C49A64', (0, 0, 0), scale=(0.94, 0.7, 0.52), size=1, parent=c, rough=0.95)
+            for z in (-0.17, 0.17):
+                add('cube', '8A6034', (0, -0.36, z), scale=(0.96, 0.02, 0.05), size=1, parent=c)                    # slats
+            add('cube', 'EFE6CC', (0, -0.365, 0.0), scale=(0.34, 0.02, 0.2), size=1, parent=c)                           # blank label
             out.append(c)
             n += 1
     return out
@@ -212,10 +302,10 @@ def make_beach(S):
     r = keep(empty(BCH))
     add('cube', SAND, (0, 0, -0.5), scale=(3000, 3000, 1), size=1, parent=r, rough=1.0)
     add('cube', WET, (0, 20, -0.49), scale=(3000, 14, 1), size=1, parent=r, rough=0.6)
-    add('cube', '4A7A8C', (0, 727, -0.3), scale=(3000, 1400, 0.6), size=1, parent=r, rough=0.18)                       # the sea
+    add('cube', '4A7A8C', (0, 727, -0.25), scale=(3000, 1400, 0.6), size=1, parent=r, rough=0.18)                       # the sea
     S['waves'] = [keep(add('cube', ('F2F6F6', 'DCE8EA')[i % 2], (0, 30 + 9 * i, 0.04), scale=(3000, 0.7 + 0.5 * rnd(i, 1), 0.08), size=1, parent=r, rough=0.5))
                   for i in range(6)]
-    field('dunes', list(range(-330, 331, 6)), [-44 - 2.0 * j for j in range(34)], gz, DUNE, r)
+    field('dunes', list(range(-330, 331, 6)), [-44 - 2.0 * j for j in range(34)], lambda x, y: gz(x, y) + 0.03, DUNE, r)
     for i in range(70):                                                                                                     # beach grass
         x = -120 + 240 * rnd(i, 11)
         y = -56 - 44 * rnd(i, 12)
@@ -228,7 +318,7 @@ def make_beach(S):
         if abs(x) < 16 and y > -12:
             x += 24
         add('cylinder', 'B4A898', (x, y, 0.3), rot=(PI / 2, 0, rnd(i, 16) * PI), radius=0.32, depth=4 + 4 * rnd(i, 17), vertices=6, parent=r, rough=1.0)
-    S['log'] = add('cylinder', 'B8AC9C', (6.0, -12.0, 0.42), rot=(0, PI / 2, 0.05), radius=0.42, depth=6.0, vertices=7, parent=r, rough=1.0)
+    S['log'] = add('cylinder', 'B8AC9C', (11.0, -16.0, 0.42), rot=(0, PI / 2, 0.05), radius=0.42, depth=6.0, vertices=7, parent=r, rough=1.0)
     for i in range(28):                                                                                                    # the rock jetty
         lump(('5A5650', '6E6A62', '4A4844')[i % 3], (-150 + 2 * math.sin(i), 10 + 9 * i, 0.6), (3.0, 3.0, 2.0 + rnd(i, 18)), r, i)
     for i in range(9):                                                                                                     # the headland
@@ -258,7 +348,28 @@ def make_beach(S):
     for i in range(34):
         a, d = rnd(i, 22) * 2 * PI, 6 + 30 * rnd(i, 23) ** 1.3
         s = 0.35 + 1.0 * rnd(i, 24)
-        S['litter'].append(lump(BLUB[i % 5], (d * math.cos(a), d * math.sin(a) * 0.8, s * 0.35), (s, s * 0.8, s * 0.45), r, i + 40))
+        o = blubber(i + 40, (s, s * 0.8, s * 0.45))
+        o.parent, o.location, o.rotation_euler = r, (d * math.cos(a), d * math.sin(a) * 0.8, s * 0.3), (0, 0, a)
+        S['litter'].append(o)
+    for i in range(260):                                                                                                  # wind ripples
+        x, y = -70 + 140 * rnd(i, 25), -46 + 64 * rnd(i, 26)
+        if abs(x) < 13 and abs(y) < 4:
+            continue
+        add('cube', ('C8B286', 'E4D2AC', 'BEA87C')[i % 3], (x, y, 0.01), rot=(0, 0, 0.15 * (rnd(i, 27) - 0.5)),
+            scale=(1.5 + 3.5 * rnd(i, 28), 0.14 + 0.1 * rnd(i, 29), 0.03), size=1, parent=r, rough=1.0)
+    for i in range(140):                                                                                                  # pebbles and shells
+        x, y = -50 + 100 * rnd(i, 30), -46 + 62 * rnd(i, 31)
+        add('ico_sphere', ('6E665A', '8A8070', 'F0E6DA', '4E4A44')[i % 4], (x, y, 0.05), scale=(1.0, 0.8, 0.45),
+            radius=0.1 + 0.16 * rnd(i, 32), subdivisions=1, parent=r, rough=0.8)
+    for i in range(90):                                                                                                   # more grass by the crowd
+        x, y = -34 + 68 * rnd(i, 33), -60 - 42 * rnd(i, 34)
+        z = gz(x, y)
+        for b in range(2):
+            add('cone', ('8E9450', '6E7E42')[b], (x + 0.25 * b, y, z + 0.6), rot=(0.3 * (b - 0.5), 0.2, 0), radius1=0.1, radius2=0.0,
+                depth=1.1 + 0.6 * rnd(i, 35 + b), vertices=3, parent=r)
+    for i in range(160):                                                                                                  # gravel in the lot
+        add('cube', ('8A826E', 'C4BCA6', '6E6858')[i % 3], (-30 + 76 * rnd(i, 36), -122 - 38 * rnd(i, 37), 0.06),
+            rot=(0, 0, rnd(i, 38) * 3), scale=(0.25, 0.18, 0.05), size=1, parent=r)
     S['beach'] = r
 
 
@@ -311,8 +422,7 @@ def make_lot(S):
     S['hero'] = car(r, CARS[0], (CARP[0], CARP[1], 0), 0.0, True)
     S['cars'] = [car(r, CARS[i], loc, yaw) for i, (loc, yaw) in enumerate((((-6.5, -137, 0), 0.04), ((18.5, -135.5, 0), -0.03),
                                                                              ((-2, -152, 0), PI + 0.05), ((12, -153, 0), PI), ((-18, -136.5, 0), 0.02)), 1)]
-    S['slab'] = keep(lump('D2C4B8', FAR, (2.2, 1.7, 0.8), None, 99))
-    add('ico_sphere', '6A7076', (0.1, 0.05, 0.55), scale=(0.95, 0.9, 0.45), radius=1, subdivisions=1, parent=S['slab'], rough=0.6)   # skin side up
+    S['slab'] = keep(blubber(99, (2.2, 1.7, 0.8)))
 
 
 # ---------------------------------------------------------------- the bulldozer and the gulls
@@ -370,10 +480,11 @@ def make_show(S):
     for x in range(-15, 16, 5):
         add('cube', 'D8D2C2', (x, 11.9, 3.0), scale=(0.3, 0.2, 4.4), size=1, parent=r)
     add('cube', '5A6A7A', (0, 11.6, 8.3), scale=(37, 1.4, 0.6), size=1, parent=r)                                        # fascia
-    add('cube', 'FAF6EC', (0, 11.4, 6.6), scale=(17, 0.25, 2.3), size=1, parent=r, rough=0.7)                             # banner
+    add('cube', 'FAF6EC', (-2.0, 11.4, 6.0), scale=(10.5, 0.25, 4.0), size=1, parent=r, rough=0.7)                        # banner
     for s in (-1, 1):
-        add('cube', 'B8302A', (s * 8.6, 11.3, 6.6), scale=(0.22, 0.2, 2.3), size=1, parent=r)
-    text3d(r, 'A WHALE OF A DEAL!', (0, 11.22, 6.6), 1.35, 'B8302A', (PI / 2, 0, 0), 0.05)
+        add('cube', 'B8302A', (-2.0 + s * 5.3, 11.3, 6.0), scale=(0.22, 0.2, 4.0), size=1, parent=r)
+    text3d(r, 'A WHALE', (-2.0, 11.22, 6.95), 1.6, 'B8302A', (PI / 2, 0, 0), 0.05)
+    text3d(r, 'OF A DEAL!', (-2.0, 11.22, 5.05), 1.6, 'B8302A', (PI / 2, 0, 0), 0.05)
     S['flags'] = []
     for row, (y0, z0) in enumerate(((11.0, 8.0), (11.0, 7.4))):
         for i in range(26):
@@ -398,6 +509,9 @@ def make_show(S):
     car(r, CARS[3], (-12.0, 2.0, 0), 0.1)
     car(r, CARS[2], (13.0, 2.5, 0), -0.1)
     S['keys'] = keep(add('cube', 'E6E8EA', FAR, scale=(0.08, 0.04, 0.22), size=1, rough=0.15, emit=0.6))
+    for i in range(70):                                                                                                   # oil spots and cracks
+        add('cylinder', ('7E7A72', '8C877E')[i % 2], (-30 + 60 * rnd(i, 39), -26 + 34 * rnd(i, 40), 0.01), scale=(1.0, 0.6, 1.0),
+            radius=0.3 + 0.6 * rnd(i, 41), depth=0.02, vertices=7, parent=r)
     S['show'] = r
 
 
@@ -432,6 +546,12 @@ def make_park(S):
     add('cube', '6A4A30', (-6.5, -2.75, 1.4), scale=(3.2, 0.1, 0.6), size=1, parent=r)
     for x in (-7.8, -5.2):
         add('cube', '3A3A3C', (x, -3.2, 0.45), scale=(0.12, 0.8, 0.9), size=1, parent=r)
+    for i in range(160):                                                                                                  # grass tufts and daisies
+        x, y = -18 + 36 * rnd(i, 42), -16 + 22 * rnd(i, 43)
+        if abs(x) < 2.0:
+            continue
+        add('cone', ('4E7A36', '5E8A3E', 'F4F0E0')[i % 3], (x, y, 0.25), rot=(0.2 * (rnd(i, 44) - 0.5), 0, 0), radius1=0.12, radius2=0.0,
+            depth=0.5, vertices=3, parent=r)
     S['park'] = r
 
 
@@ -469,6 +589,9 @@ CROWD = (('8A6A2E', '3A3A44', 'E4B892', '6A4A30', None), ('3E6A6A', '6A5A44', 'C
 def build():
     sc = bpy.context.scene
     _KEEP.clear()
+    _PROTO.clear()
+    _LAST[0] = None
+    K.add, K.empty = add, empty                 # the rigs and heads in kit3d use the same fast path
     S = {}
     make_beach(S)
     make_lot(S)
@@ -497,10 +620,10 @@ def build():
     add('cylinder', 'D8F0FF', (0, 0, 0), rot=(PI / 2, 0, 0), radius=0.21, depth=0.01, vertices=14, parent=S['mag'], rough=0.05, alpha=0.25)
     add('cylinder', '3A2A1E', (0, 0, -0.42), radius=0.035, depth=0.42, vertices=6, parent=S['mag'])
     S['shell'] = keep(add('cone', 'F4E6DC', FAR, scale=(1.0, 0.35, 1.0), radius1=0.2, radius2=0.03, depth=0.2, vertices=9, rough=0.25, emit=0.6))
-    S['chunks'] = [keep(lump(BLUB[i % 5], FAR, (1, 1, 1), None, i)) for i in range(36)]
-    S['sand'] = [keep(lump(('CDB48A', 'BCA27A', 'DCC8A0')[i % 3], FAR, (1, 1, 1), None, 200 + i)) for i in range(40)]
-    S['puffs'] = [keep(lump('D8C6A0', FAR, (1, 1, 1), None, 300 + i)) for i in range(10)]
-    S['flash'] = keep(add('ico_sphere', 'FFE2A0', FAR, radius=1, subdivisions=2, emit=14.0))
+    S['chunks'] = [keep(blubber(i)) for i in range(36)]
+    S['sand'] = [keep(puff(('EADCC0', 'DCC8A4', 'F4EAD6', 'D0BC94')[i % 4], i)) for i in range(40)]
+    S['puffs'] = [keep(puff('E6D6B6', 300 + i)) for i in range(10)]
+    S['flash'] = keep(add('ico_sphere', 'FFC870', FAR, radius=1, subdivisions=2, emit=5.0))
     S['blamp'] = light(FAR, 0, 'FFC880', kind='POINT')
     S['glint'] = light(FAR, 0, 'FFF4E0', kind='POINT')
     S['suntgt'] = empty()
@@ -552,7 +675,7 @@ def reset(S):
     S['plunger'].location.z = 0.9
     for g in S['gulls']:
         flap(g, 0.2)
-    S.update(rface='calm', hat_tip=0.0, hat_jump=0.0, hat_off=0.0, hat_to=(0.74, -0.14, -1.45), laugh=0.0)
+    S.update(rface='calm', hat_tip=0.0, hat_jump=0.0, hat_off=0.0, hat_to=(0.74, -0.14, -1.45), laugh=0.0, hat_drop=0.0)
     S['cam'].rotation_euler = (0, 0, 0)
 
 
@@ -560,7 +683,7 @@ def intact(S, yes):
     """Before the blast (whale, crates, wire) or after it (hole, rim, chunks on the sand, only the tail left)."""
     for o in S['wbody'] + [c for cr in S['crates'] for c in cr.children] + S['wire']:
         o.hide_render = not yes
-    for o in S['crater'] + S['litter']:
+    for o in S['crater'] + S['litter'] + [c for o in S['litter'] for c in o.children]:
         o.hide_render = yes
     S['whale'].location = (0, 0, 0) if yes else (-1.5, 0.8, -0.3)
 
@@ -580,7 +703,9 @@ def finish(S, t):
     tip, off = S['hat_tip'], sm(S['hat_off'])
     to = S['hat_to']
     r['hat'].rotation_euler = (lerp(-0.2 + tip * 0.38, 0.2, off), lerp(0.07, 1.25, off), 0)
-    r['hat'].location = (lerp(0.0, to[0], off), lerp(0.0, to[1], off), lerp(0.27 + S['hat_jump'] + tip * 0.1, to[2], off))
+    dr = S.get('hat_drop', 0.0)
+    r['hat'].location = (lerp(0.0, to[0], off), lerp(-0.08 * dr, to[1], off), lerp(0.27 + S['hat_jump'] + tip * 0.1 - 0.3 * dr, to[2], off))
+    r['hat'].rotation_euler.x += 0.25 * dr
     talk = S['beak']
     r['jaw'].rotation_euler = (talk * 0.17 + (0.36 if e == 'shocked' else 0.0) + lg * (0.45 + 0.15 * math.sin(t * 26)), 0, 0)
     hd = S['rook'].head.rotation_euler
@@ -642,7 +767,7 @@ def head(rig):
 def surf(S, t):
     for i, o in enumerate(S['waves']):
         u = (t * 0.12 + i / 6) % 1
-        o.location = (0, lerp(64, 22, u), 0.04)
+        o.location = (0, lerp(64, 28, u), 0.09)
         o.scale = (3000, (0.7 + 0.5 * rnd(i, 1)) * (0.4 + 0.6 * math.sin(PI * u)), 0.08)
 
 
@@ -650,11 +775,9 @@ def column(S, u, c=(0, -1, 0), scale=1.0, chunks=True):
     """The blast at time u (s) after the plunger: a flash, a column of sand and whale going up, chunks flung out."""
     if u < 0:
         return
-    if u < 0.25:
-        fs = scale * (2 + 22 * u)
-        S['flash'].location, S['flash'].scale = plus(c, (0, 0, 2 + 6 * u)), (fs, fs, fs * 1.2)
-        S['blamp'].location = plus(c, (0, -6, 6))
-        S['blamp'].data.energy = 4.0e6 * (1 - u / 0.25) * scale
+    if u < 0.12:
+        S['blamp'].location = plus(c, (0, -1.5, 4))
+        S['blamp'].data.energy = 2.5e5 * (1 - u / 0.12) * scale
     g = 22.0
     for i, o in enumerate(S['sand']):
         a = rnd(i, 50) * 2 * PI
@@ -755,7 +878,7 @@ def blast_close(S, k, t, lt):
     d = lt / max(k, 1e-3) if k > 0 else 1.0
     if loop:
         u = sm(k / 0.95)
-        cam(S, (lerp(6.0, 3.4, u), lerp(-16.5, -12.8, u), lerp(2.6, 1.15, u)), (lerp(-2.0, -2.6, u), -1.2, lerp(2.4, 2.1, u)), lerp(26, 24, u))
+        cam(S, (lerp(5.6, 2.8, u), lerp(-15.5, -11.2, u), lerp(2.6, 1.05, u)), (lerp(-2.0, -2.6, u), lerp(-1.2, -1.0, u), lerp(2.4, 2.0, u)), lerp(26, 24, u))
         return
     ub = lt - TB
     if ub > 0:
@@ -764,7 +887,7 @@ def blast_close(S, k, t, lt):
             for c in cr.children:
                 c.hide_render = ub > 0.03
     sh = 0.25 * math.exp(-max(0, ub) * 3) if ub > 0 else 0.0
-    cam(S, (3.4 + sh * math.sin(t * 61), -12.8 - 1.2 * max(0, ub), 1.15 + sh * math.cos(t * 53)), (-2.6, -1.2, 2.1 + 2.5 * sm(ub / 0.6)), 24)
+    cam(S, (2.8 + sh * math.sin(t * 61), -11.2 - 1.2 * max(0, ub), 1.05 + sh * math.cos(t * 53)), (-2.6, -1.0, 2.0 + 2.5 * sm(ub / 0.6)), 24)
 
 
 def column_wide(S, k, t, lt, u0=0.75):
@@ -790,7 +913,7 @@ def chunk_lens(S, k, t, lt):
     o.location = (lerp(-6, 0.6, u), lerp(-36, -67.2, u), lerp(34, 8.6, u ** 1.4))
     s = 1.5
     o.scale = (s, s * 0.8, s * 0.6)
-    o.rotation_euler = (t * 3, t * 2, 0.4)
+    o.rotation_euler = (2.4 + 0.8 * math.sin(t * 2.2), 0.5 * t, 0.4)
     for j in range(1, 8):
         a = (lt * 0.9 + rnd(j, 80)) % 1
         S['chunks'][j].location = (-30 + 60 * rnd(j, 81) + 10 * a, lerp(-30, -110, a), 30 + 12 * rnd(j, 82) - 10 * a * a)
@@ -809,8 +932,8 @@ def rain_crowd(S, k, t, lt):
     sky(S, 'day')
     crowd_on_ridge(S, t, duck=sm(k / 0.4), face='wide')
     rain(S, (0, -68, 0), t, n=14, area=(22, 10), h=22, rate=1.3, ground=gz)
-    splat(S, on(1.5, -65.5), (lt - 0.45) / 0.35, 20, 1.3)
-    cam(S, on(9.0, -59.0, 3.0), on(-0.5, -68.5, 2.2), 28)
+    splat(S, on(-2.6, -66.6), (lt - 0.45) / 0.35, 20, 1.0)
+    cam(S, on(3.6, -62.6, 2.3), on(-1.0, -68.0, 2.0), 24)
 
 
 # ---------------------------------------------------------------- doubt
@@ -840,15 +963,15 @@ def overhead_chunk(S, k, t, lt):
     """Flat on the dune among the grass, looking up: chunks of blubber sail across the sky over everyone's heads."""
     sky(S, 'day')
     for j in range(9):
-        a = (lt * 0.55 + j / 9) % 1
+        a = (lt * 0.7 + j / 9) % 1
         o = S['chunks'][j]
-        o.location = (-20 + 40 * rnd(j, 90) + 6 * a, lerp(-40, -125, a), 22 + 8 * rnd(j, 91) + 18 * math.sin(PI * a) - 12 * a)
-        s = 0.7 + 1.0 * rnd(j, 92)
+        o.location = (lerp(-26, 26, a) + 6 * (rnd(j, 90) - 0.5), -88 - 14 * rnd(j, 91) - 6 * a, gz(0, -88) + 9 + 9 * rnd(j, 93) + 5 * math.sin(PI * a))
+        s = 1.1 + 1.3 * rnd(j, 92)
         o.scale = (s, s * 0.8, s * 0.6)
         o.rotation_euler = (a * 8, a * 5, j)
     for j, rig in enumerate(S['crowd'][:3]):
-        stand(rig, on(-3 + 3.5 * j, -79), PI * 0.1, P('up', aL=(2.4, 0.5, 1.2), aR=(2.4, 0.5, 1.2), head=(-0.6, 0.0)), 'wide')
-    cam(S, on(1.0, -84.0, 0.9), (0, -96, 26), 22, roll=lerp(-0.05, 0.08, k))
+        stand(rig, on(-3.5 + 3.5 * j, -86.5 - 0.8 * j), PI * 0.1 * (j - 1), P('up', aL=(2.4, 0.5, 1.2), aR=(2.4, 0.5, 1.2), head=(-0.6, 0.0)), 'wide')
+    cam(S, on(0.5, -79.5, 1.4), on(0.0, -92.0, 7.5), 20, roll=lerp(-0.05, 0.08, k))
 
 
 def run_cars(S, k, t, lt):
@@ -856,11 +979,11 @@ def run_cars(S, k, t, lt):
     sky(S, 'day')
     for j, rig in enumerate(S['crowd']):
         x = -10 + 4.2 * j
-        y = lerp(-92, -112, (k * 0.8 + 0.12 * rnd(j, 93)) % 1)
+        y = lerp(-104, -129, min(1.0, k * 0.85 + 0.15 * rnd(j, 93)))
         stand(rig, on(x, y), 0.15 * (j - 3), dict(K.walk(t + 0.3 * j, 2.8), lean=0.22, aL=(2.1, 0.6, 1.7), aR=(1.9, 0.6, 1.8)), 'wide')
     rain(S, (0, -108, 0), t, n=12, area=(30, 18), h=26, rate=1.1, ground=gz)
     column(S, 3.4 + lt, (0, -2, 0), 1.0, chunks=False)
-    cam(S, (lerp(22, 19, k), -150, 3.4), (0, -102, 5.5), 30)
+    cam(S, (lerp(11.5, 10.5, k), -143.5, 2.6), (-1.0, -114, 3.0), 32)
 
 
 def rook_duck(S, k, t, lt):
@@ -887,14 +1010,13 @@ def crates(S, k, t, lt):
     sky(S, 'day')
     surf(S, t)
     for j, w in enumerate(S['workers']):
-        u = (k * 0.7 + 0.35 * j) % 1
-        x = lerp(14, 5.5, u) + 1.5 * j
-        stand(w, (x, -6.2 - 1.6 * j, 0), PI / 2 + 0.2, dict(K.walk(t + 0.5 * j, 1.5), aL=(0.9, 0.2, 1.4, 0.3), aR=(0.9, 0.2, 1.4, -0.3)), 'hard')
+        x = lerp(-6.5, -2.2, k) - 2.4 * j
+        stand(w, (x, -5.6 - 1.3 * j, 0), -PI / 2 + 0.25, dict(K.walk(t + 0.5 * j, 1.5), aL=(0.9, 0.2, 1.4, 0.3), aR=(0.9, 0.2, 1.4, -0.3)), 'hard')
         S['carry'][j].hide_render = False
     th = S['thorn']
-    stand(th, (-6.5, -7.2, 0), facing((-6.5, -7.2), (-1, -3.4)), P('stand', aL=(0.9, 0.1, 1.6, 0.6), aR=(0.4, 0.2, 0.6), head=(0.3 - 0.25 * sm((k - 0.5) / 0.3), 0.3)), 'calm')
+    stand(th, (2.2, -7.6, 0), facing((2.2, -7.6), (0, -3.4)) + 0.4, P('stand', aL=(0.55, 0.1, 1.5, 0.6), aR=(0.4, 0.2, 0.6), head=(0.3 - 0.25 * sm((k - 0.5) / 0.3), 0.3)), 'calm')
     S['clip'].hide_render = False
-    cam(S, (lerp(9.5, 8.0, k), lerp(-15.0, -13.5, k), 3.4), (-0.5, -3.4, 1.5), 26)
+    cam(S, (lerp(4.4, 2.2, k), lerp(-16.5, -13.6, k), lerp(3.6, 2.8, k)), (-0.6, -3.6, 1.6), 22)
 
 
 def rook_count(S, k, t, lt):
@@ -916,16 +1038,18 @@ def _gull_shot(S, k, t, lt):
     sky(S, 'day')
     surf(S, t)
     rk = S['rook']
-    rk.place((5.0, -12.25, 0.5), 0.0)
+    rk.place((10.0, -16.25, 0.5), 0.15)
     sh = sm((k - 0.6) / 0.25)
     rk.apply(blend(P('sit', lL=(1.35, 1.5), lR=(1.35, 1.5), head=(0.0, 0.0)), P('shrug', lL=(1.35, 1.5), lR=(1.35, 1.5), lift=-0.5, lean=0.1), sh))
     S['rface'] = 'low' if sh > 0.3 else 'calm'
     g = S['gulls'][0]
-    g['root'].location = (6.9, -12.1, 0.98)
+    g['root'].location = (11.95, -16.1, 1.12)
+    g['root'].scale = (1.7, 1.7, 1.7)
     look = sm((k - 0.1) / 0.2) * (1 - sm((k - 0.45) / 0.15))
     g['root'].rotation_euler = (0, 0, PI / 2 + lerp(0, PI, look) - 0.9 * sm((k - 0.45) / 0.15))
-    flap(g, 0.15 + 0.1 * math.sin(t * 3))
-    cam(S, (5.9, -19.0, 1.7), (5.9, -11.0, 1.9), 30)
+    fl = sm((k - 0.05) / 0.1) * (1 - sm((k - 0.45) / 0.1))
+    flap(g, 0.15 + 0.9 * fl * (0.5 + 0.5 * math.sin(lt * 26)))
+    cam(S, (lerp(14.6, 13.0, k), lerp(-24.0, -21.0, k), lerp(2.4, 1.8, k)), (10.9, -15.4, 1.9), 30)
 
 
 def wire(S, k, t, lt):
@@ -937,7 +1061,7 @@ def wire(S, k, t, lt):
     th.place((-22.3, -42.6, 0), PI - 0.3)
     th.apply(P('stand', lL=(1.5, 2.3), lR=(-0.2, 1.9), lift=-0.75, lean=0.4, aL=(1.0, 0.3, 0.6), aR=(1.0, -0.1, 0.6), head=(0.1, 0.0)))
     th.face = 'hard'
-    cam(S, (lerp(-19.6, -20.2, k), -48.6, lerp(1.4, 1.1, k)), (-22.0, -43.6, 1.2), 30)
+    cam(S, (lerp(-15.0, -19.8, k), lerp(-47.0, -48.8, k), lerp(0.7, 1.2, k)), (lerp(-19.0, -22.0, k), -43.6, 1.1), 28)
 
 
 # ---------------------------------------------------------------- the warning
@@ -950,7 +1074,7 @@ def expert(S, k, t, lt):
     stand(rk, (5.5, -8.6, 0), facing((5.5, -8.6), (0.5, -3.4)), P('cross', head=(0.15, 0.35 * math.sin(lt * 5.5 - 0.6) * sm((k - 0.3) / 0.2))))
     S['rface'] = 'squint'
     S['hat_tip'] = 0.4
-    cam(S, (2.2, -4.6, 2.6), (4.5, -8.4, 2.35), 30)
+    cam(S, (lerp(1.2, 2.4, k), lerp(-4.2, -5.0, k), lerp(2.9, 2.5, k)), (4.5, -8.4, 2.35), 30)
 
 
 def warn_talk(S, k, t, lt):
@@ -965,7 +1089,7 @@ def warn_talk(S, k, t, lt):
     stand(th, (-3.2, -10.4, 0), facing((-3.2, -10.4), (-6.4, -10.0)), blend(P('stand', aL=(0.9, 0.1, 1.6, 0.6)), P('stand', aL=(0.9, 0.1, 1.6, 0.6), aR=(1.0, 0.9, 1.4, -0.6 + 0.5 * math.sin(lt * 12)), head=(0.0, -0.4)), wave), 'calm')
     S['clip'].hide_render = False
     th.jawv = 0.3 * wave * (0.5 + 0.5 * math.sin(lt * 14))
-    cam(S, (lerp(-4.2, -4.6, k), -17.0, 2.7), (-4.8, -9.0, 2.2), 30)
+    cam(S, (lerp(-1.8, -6.6, k), lerp(-16.4, -15.6, k), lerp(3.2, 2.5, k)), (-4.8, -9.6, 2.2), 30)
 
 
 def walk_back(S, k, t, lt):
@@ -973,12 +1097,15 @@ def walk_back(S, k, t, lt):
     the shiny new car in the lot."""
     sky(S, 'day')
     crowd_on_ridge(S, t, face='calm')
-    for rig in S['crowd']:
-        rig.place(rig.root.location, PI)
     wa = S['walt']
-    y = lerp(-80, -94, k)
-    stand(wa, on(-15, y), 0.15, K.walk(t, 1.6), 'hard')
-    cam(S, on(-24, -70, 4.2), on(-13, -108, 2.2), 30)
+    u = min(1.0, k / 0.62)
+    y = lerp(-83, -93.5, sm(u))
+    turn = sm((k - 0.62) / 0.2)
+    if turn <= 0:
+        stand(wa, on(-9, y), 0.05, K.walk(t, 1.6), 'hard')
+    else:
+        stand(wa, on(-9, y), lerp(0.05, PI, turn), blend(P('stand'), P('cross', head=(-0.1, 0)), turn), 'hard')
+    cam(S, (lerp(-9.5, -7.6, k), lerp(-97.0, -100.5, k), lerp(7.0, 7.8, k)), (-6.6, -72.0, 6.9), 28)
 
 
 def rook_eye(S, k, t, lt):
@@ -988,16 +1115,17 @@ def rook_eye(S, k, t, lt):
     rk = S['rook']
     low = sm((k - 0.6) / 0.2)
     stand(rk, on(-6, -82), 0.35 - 0.35 * low, P('stand', lL=(0.5, 0.9), lR=(0.2, 0.7), lift=-0.3, lean=0.25,
-                                                 aR=(lerp(1.75, 0.7, low), -0.2, lerp(1.25, 1.6, low), 0.3), aL=(0.5, 0.2, 0.9), head=(0.0, 0.0)))
+                                                 aR=(lerp(1.35, 0.7, low), -0.3, lerp(1.55, 1.6, low), 0.3), aL=(0.5, 0.2, 0.9), head=(0.0, 0.0)))
     S['rface'] = 'squint' if low < 0.5 else 'low'
     S['hat_tip'] = 0.2
-    hr = wpos(rk.el[1], (0, -0.08, -0.62))
-    S['mag'].location = plus(hr, (0, -0.08, 0.32))
-    S['mag'].rotation_euler = (0.1, 0, 0.35 - 0.35 * low)
+    hd = head(rk)
+    yaw = 0.35 - 0.35 * low
+    S['mag'].location = plus(hd, (lerp(0.15, 0.55, low) * math.cos(yaw) + 0.5 * math.sin(yaw) * (1 - low), -lerp(0.55, 0.35, low), lerp(0.05, -0.75, low)))
+    S['mag'].rotation_euler = (0.0, 0, yaw)
     wa = S['walt']
     stand(wa, on(-15, -96), 0.0, P('cross'), 'hard')
     h = head(rk)
-    cam(S, plus(h, (1.1, -3.8, -0.2)), plus(h, (0.1, 0.0, -0.15)), 32)
+    cam(S, plus(h, (lerp(2.0, 0.8, k), lerp(-5.0, -3.4, k), -0.2)), plus(h, (0.1, 0.0, -0.15)), 32)
 
 
 # ---------------------------------------------------------------- the car
@@ -1005,10 +1133,11 @@ def slab_fall(S, k, t, lt):
     """In the lot: a slab of blubber the size of a tyre tumbles down out of the sky, growing, right over the cars."""
     sky(S, 'day')
     sl = S['slab']
-    u = sm(k * 0.9)
-    sl.location = (CARP[0] + lerp(-14, -1, u), CARP[1] + lerp(28, 1, u), lerp(46, 9, u))
-    sl.rotation_euler = (t * 2.5, t * 1.7, 0.3)
-    cam(S, (CARP[0] - 6.5, CARP[1] - 8.0, 1.6), (CARP[0] - 3, CARP[1] + 6, 20), 22)
+    u = sm(k)
+    sl.location = (CARP[0] + lerp(-5, -1, u), CARP[1] + lerp(7, 0.5, u), lerp(22, 6.5, u))
+    sl.scale = (2.6, 2.0, 0.95)
+    sl.rotation_euler = (2.6 + 0.5 * math.sin(t * 3), 0.4 * math.sin(t * 2), 0.3 + t)
+    cam(S, (CARP[0] - 7.5, CARP[1] - 10.0, 1.3), (CARP[0] - 1.5, CARP[1] + 2, lerp(9, 6, k)), 20)
 
 
 def car_crush(S, k, t, lt):
@@ -1033,10 +1162,10 @@ def car_crush(S, k, t, lt):
             q = min(1.0, (k - hit) / 0.4)
             pf = S['puffs'][j]
             a = j * 1.26
-            ps = 1.2 + 1.5 * q
-            pf.location = (CARP[0] + 4.5 * math.cos(a) * (0.6 + q), CARP[1] + 2.4 * math.sin(a) * (0.6 + q), 0.4 + 0.6 * q)
-            pf.scale = (ps * (1 - 0.6 * q), ps * (1 - 0.6 * q), ps * 0.5)
-    cam(S, (CARP[0] - 10.5, CARP[1] - 11.5, lerp(4.4, 3.8, k)), (CARP[0] - 0.4, CARP[1], 1.6), 26)
+            ps = (0.5 + 0.9 * q) * (1 - 0.7 * q)
+            pf.location = (CARP[0] + 4.8 * math.cos(a) * (0.7 + 0.6 * q), CARP[1] + 2.2 * math.sin(a) * (0.7 + 0.6 * q), 0.3 + 0.5 * q)
+            pf.scale = (ps, ps, ps * 0.6)
+    cam(S, (CARP[0] - 8.0, CARP[1] - 9.0, lerp(3.8, 3.4, k)), (CARP[0] - 0.4, CARP[1], 1.6), 26)
 
 
 def owner_face(S, k, t, lt):
@@ -1051,7 +1180,8 @@ def owner_face(S, k, t, lt):
     wa.jawv = 0.9 * drop
     h = head(wa)
     d = Vector((CARP[0] - loc[0], CARP[1] - loc[1], 0)).normalized()
-    cam(S, plus(h, (d.x * 2.4 - d.y * 0.4, d.y * 2.4 + d.x * 0.4, -0.15)), plus(h, (0, 0, -0.05)), 34)
+    q = lerp(3.4, 2.2, sm(k)) + 0.08 * math.sin(lt * 40) * math.exp(-max(0.0, k - 0.2) * 6) * (k > 0.2)
+    cam(S, plus(h, (d.x * q - d.y * 0.6, d.y * q + d.x * 0.6, lerp(0.3, -0.15, k))), plus(h, (0, 0, -0.05)), 34)
 
 
 def rook_roof(S, k, t, lt):
@@ -1074,7 +1204,7 @@ def rook_roof(S, k, t, lt):
         S['strip'].scale = (L, 0.06, 0.012)
         S['strip'].location = (-L / 2, 0, -0.05)
     h = head(rk)
-    cam(S, plus(h, (2.4, -4.6, -0.6)), plus(h, (-0.9, 0.3, -1.0)), 28)
+    cam(S, plus(h, (lerp(3.6, 1.0, k), lerp(-3.8, -5.0, k), lerp(-0.2, -0.8, k))), plus(h, (-0.9, 0.3, -1.0)), 28)
 
 
 # ---------------------------------------------------------------- the deal
@@ -1086,13 +1216,13 @@ def showroom(S, k, t, lt):
         f.rotation_euler = (PI + 0.35 * math.sin(t * 6 + i * 0.7), 0.2 * math.sin(t * 4 + i), 0)
     sa, wa = S['sales'], S['walt']
     give = sm((k - 0.25) / 0.3)
-    stand(sa, at(SHOW, -4.2, -4.0, 0), facing((-4.2, -4.0), (-2.2, -5.2)), blend(P('stand'), P('stand', aR=(1.2, 0.0, 0.3), head=(0.1, 0.0)), give), 'warm')
+    stand(sa, at(SHOW, -3.4, -4.2, 0), facing((-3.4, -4.2), (-1.4, -5.6)), blend(P('stand'), P('stand', aR=(1.2, 0.0, 0.3), head=(0.1, 0.0)), give), 'warm')
     sa.jawv = 0.4 + 0.4 * math.sin(lt * 15)
-    stand(wa, at(SHOW, -2.2, -5.4, 0), facing((-2.2, -5.4), (-4.2, -4.0)), blend(P('stand'), P('stand', aL=(1.1, 0.0, 0.4), head=(0.1, 0.0)), give), 'warm')
+    stand(wa, at(SHOW, -1.4, -5.6, 0), facing((-1.4, -5.6), (-3.4, -4.2)), blend(P('stand'), P('stand', aL=(1.1, 0.0, 0.4), head=(0.1, 0.0)), give), 'warm')
     hr = wpos(sa.el[1], (0, -0.05, -0.62)) if give < 0.8 else wpos(wa.el[0], (0, -0.05, -0.62))
     S['keys'].location = hr
     S['keys'].rotation_euler = (t * 3, 0.4, t * 2)
-    cam(S, at(SHOW, lerp(6.5, 5.0, k), lerp(-15.5, -13.5, k), 3.1), at(SHOW, -1.0, 2.0, 3.6), 24)
+    cam(S, at(SHOW, lerp(3.4, 0.6, k), lerp(-15.0, -11.6, k), lerp(1.8, 2.6, k)), at(SHOW, -1.8, 1.0, 3.6), 22)
 
 
 def rook_laugh(S, k, t, lt):
@@ -1102,12 +1232,13 @@ def rook_laugh(S, k, t, lt):
     S['slab'].location, S['slab'].rotation_euler = (CARP[0] - 0.8, CARP[1], 2.25), (2.0, 1.4, 0.3)
     rk = S['rook']
     slap = max(0.0, math.sin(lt * 9))
-    stand(rk, (CARP[0] + 1.0, CARP[1] - 3.3, 0), 0.3, P('wash', aR=(1.0 + 0.9 * slap, -0.1, 0.4), aL=(0.6, 0.4, 1.7, 0.4), lean=0.45, head=(-0.25, 0.0)))
+    stand(rk, (CARP[0] + 1.0, CARP[1] - 3.3, 0), 0.3 + PI * 0.12, P('wash', aR=(1.0 + 0.9 * slap, 0.5, 0.4), aL=(0.6, 0.4, 1.7, 0.4), lean=0.72, lL=(0.35, 0.3), lR=(0.35, 0.3), head=(-0.45, 0.0)))
     S['rface'] = 'laugh'
     S['laugh'] = 1.0
-    S['hat_jump'] = 0.12 * slap
+    S['hat_jump'] = 0.2 * slap
+    rk.root.location.z += 0.12 * slap
     h = head(rk)
-    cam(S, plus(h, (2.8, -4.3, -0.4)), plus(h, (-0.6, 0.8, -0.5)), 28)
+    cam(S, plus(h, (4.4, -2.6, 0.1)), plus(h, (-0.4, 0.6, -0.7)), 28)
 
 
 # ---------------------------------------------------------------- the clean-up
@@ -1144,10 +1275,15 @@ def rook_nose(S, k, t, lt):
     """Rook rides on the bulldozer's track guard, one hand pinching his beak, the other fanning the air with his hat."""
     sky(S, 'day')
     intact(S, False)
-    x = lerp(12, 9.5, k)
+    x = lerp(14, 8.5, k)
     dozer_at(S, x, -6)
+    for i, o in enumerate(S['puffs'][:6]):
+        q = (t * 1.2 + i / 6) % 1
+        o.location = (x + 2.2 - 0.8 * q, -6.6 + 0.4 * i, 4.6 + 3.0 * q)
+        s2 = 0.25 + 0.7 * q
+        o.scale = (s2, s2, s2)
     rk = S['rook']
-    stand(rk, wpos(S['dozer'], (0.4, -1.55, 1.12)), -PI / 2 - 0.2,
+    stand(rk, (8.0, -10.6, 0), 0.25,
           P('tap', aL=(1.4, 0.6, 1.2 + 0.5 * math.sin(lt * 10), 0.3), head=(0.1, 0.25)))
     S['rface'] = 'squint'
     S['hat_off'] = 1.0
@@ -1156,7 +1292,7 @@ def rook_nose(S, k, t, lt):
     dr.place(wpos(S['dozer'], (-1.0, 0, 2.2)), -PI / 2)
     dr.apply(P('sit', aL=(1.2, 0.1, 0.9), aR=(1.2, 0.1, 0.9)))
     h = head(rk)
-    cam(S, plus(h, (-1.6, -4.3, -0.3)), plus(h, (0.4, 0.4, -0.4)), 30)
+    cam(S, plus(h, (lerp(2.4, 0.4, k), -5.6, -0.2)), plus(h, (lerp(0.4, -0.6, k), 1.4, -0.4)), 28)
 
 
 def engineer_turn(S, k, t, lt):
@@ -1166,9 +1302,9 @@ def engineer_turn(S, k, t, lt):
     intact(S, False)
     th = S['thorn']
     turn = sm((k - 0.3) / 0.45)
-    stand(th, (-2.0, -9.0, 0), lerp(PI, 0.15, turn), P('stand', aL=(0.9, 0.1, 1.6, 0.6), head=(0.1, 0.0)), 'calm')
+    stand(th, (-2.0, -9.0, 0), lerp(PI, 0.15, turn), P('stand', aL=(0.35, 0.1, 1.2, 0.6), head=(0.1, 0.0)), 'calm')
     S['clip'].hide_render = False
-    cam(S, (lerp(-1.0, -1.4, k), lerp(-16.0, -15.0, k), 2.7), (-2.0, -9.0, 2.2), 30)
+    cam(S, (lerp(0.6, -1.6, k), lerp(-16.0, -13.2, k), lerp(3.2, 2.6, k)), (-2.0, -9.0, 2.3), 30)
 
 
 # ---------------------------------------------------------------- payoff
@@ -1180,11 +1316,11 @@ def engineer(S, k, t, lt):
     th = S['thorn']
     up = sm((k - 0.2) / 0.25)
     nod = 0.18 * math.sin(lt * 7) * sm((k - 0.15) / 0.2)
-    stand(th, (-2.0, -9.0, 0), 0.15, P('stand', aL=(0.9, 0.1, 1.6, 0.6), aR=(lerp(0.2, 1.2, up), 0.25, lerp(0.3, 1.9, up), 0.2), head=(nod, 0.0)), 'proud')
-    th.jawv = 0.25 + 0.25 * math.sin(lt * 14)
+    stand(th, (-2.0, -9.0, 0), 0.15, P('stand', aL=(0.35, 0.1, 1.2, 0.6), aR=(lerp(0.2, 1.0, up), lerp(0.25, 0.4, up), lerp(0.3, 1.25, up), 0.3), head=(nod, 0.0)), 'proud')
+    th.jawv = 0.04
     S['clip'].hide_render = False
     h = head(th)
-    cam(S, plus(h, (0.7, -3.2, -0.2)), plus(h, (0.05, 0.0, -0.25)), 32)
+    cam(S, plus(h, (lerp(1.6, -0.2, k), lerp(-3.8, -3.0, k), lerp(-0.5, -0.1, k))), plus(h, (0.05, 0.0, -0.25)), 32)
 
 
 def rook_stare(S, k, t, lt):
@@ -1195,7 +1331,8 @@ def rook_stare(S, k, t, lt):
     rk = S['rook']
     stand(rk, (3.0, -10.0, 0), 0.2, P('hips', head=(0.05, 0.0)))
     S['rface'] = 'low'
-    S['hat_tip'] = lerp(0.2, 1.35, sm((k - 0.25) / 0.6))
+    S['hat_tip'] = lerp(0.2, 0.9, sm((k - 0.25) / 0.6))
+    S['hat_drop'] = sm((k - 0.3) / 0.55)
     h = head(rk)
     cam(S, plus(h, (0.5, -3.4, -0.35)), plus(h, (0.0, 0.0, -0.1)), 34)
 
@@ -1204,7 +1341,7 @@ def park_sign(S, k, t, lt):
     """Fifty years on: a little park in the pines by the river, rhododendrons round a wooden sign that reads
     EXPLODING WHALE MEMORIAL PARK."""
     sky(S, 'park')
-    cam(S, at(PARK, lerp(3.0, 1.2, k), lerp(-15.5, -10.5, k), lerp(2.0, 2.4, k)), at(PARK, 0, 0, 2.6), 28)
+    cam(S, at(PARK, lerp(4.0, 0.6, k), lerp(-17.5, -9.0, k), lerp(1.2, 2.8, k)), at(PARK, 0, 0, 2.6), 28)
 
 
 def rook_park(S, k, t, lt):
@@ -1212,12 +1349,12 @@ def rook_park(S, k, t, lt):
     sky(S, 'park')
     rk = S['rook']
     bow = sm((k - 0.45) / 0.3) * (1 - sm((k - 0.85) / 0.15))
-    stand(rk, at(PARK, -4.6, -1.4, 0), 0.25, P('stand', aR=(0.9, -0.25, 1.9, 0.6), lean=0.35 * bow, head=(0.1 + 0.3 * bow, 0.0)))
+    stand(rk, at(PARK, -4.0, -2.2, 0), 0.25, P('stand', aR=(0.9, -0.25, 1.9, 0.6), lean=0.35 * bow, head=(0.1 + 0.3 * bow, 0.0)))
     S['hat_off'] = sm(k / 0.3)
     S['hat_to'] = (0.15, -0.55, -1.0)
     S['rface'] = 'soft'
     h = head(rk)
-    cam(S, plus(h, (2.4, -5.4, -0.4)), plus(h, (1.6, 0.6, -0.4)), 28)
+    cam(S, at(PARK, lerp(-1.0, -4.6, k), lerp(-8.6, -8.2, k), lerp(2.2, 2.8, k)), at(PARK, -2.8, -1.0, 2.4), 28)
 
 
 # ---------------------------------------------------------------- end
