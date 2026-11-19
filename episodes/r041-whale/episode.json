@@ -1,7 +1,7 @@
 {
  "id": "r041-whale",
  "format": "short",
- "status": "draft",
+ "status": "approved",
  "synthetic": false,
  "host": "rook",
  "case": 41,
@@ -75,14 +75,14 @@
   "He'd bought it days before, in a sale called: a whale of a deal": "shots 21 and 22 (a dealer's forecourt with a banner A WHALE OF A DEAL!, the same car with a bow, the keys; Rook laughing at the flattened car)",
   "Road crews had to clean up the rest": "shots 23 and 24 (a bulldozer shoving sand over the lumps by the hole; Rook pinching his beak)",
   "And the engineer in charge?": "shot 25 (the hush: he turns to us at the edge of the hole)",
-  "He said it went just exactly right": "shots 26 and 27 (his nod and thumbs-up, label ENGINEER GEORGE THORNTON; Rook's hat brim drops over his eyes)",
+  "He said it went just exactly right": "shots 26 and 27 (he sweeps an arm at the mess, then a nod and a thumbs-up, label GEORGE THORNTON; Rook's hat brim drops over his eyes)",
   "Fifty years later, the town named a park after it: Exploding Whale Memorial Park": "shots 28 and 29 (Rook bows to a wooden sign in the pines; the sign, label FLORENCE, 2020)",
   "Case closed. Because one day in Oregon,": "shots 30 and 31 (Rook pockets a shell at the water's edge; back to the opening frame, the whale still whole)",
   "People ran for their cars": "shots 7 and 8 (people running down the back of the dunes to the lot, label 12 NOV 1970; Rook running, label FLORENCE, OREGON)",
   "One man there knew explosives from the military": "shot 13 (a man in a sports coat at the cases, frowning, shaking his head, label WALTER UMENHOFER)"
  },
  "experiments": {
-  "E1_E2": "spine v2: Rook is already on the dune ridge in shot 5 and doubts it in one line of 1.27 s ('Raining whale? Not a chance.') with the column still climbing behind him; no office. The story runs forward from the blast (the rain, the run for the cars) and steps back only once, for the plan, because the plan is what raises the stakes. Date, place and names are on-screen labels (12 NOV 1970, FLORENCE, OREGON, WALTER UMENHOFER, ENGINEER GEORGE THORNTON).",
+  "E1_E2": "spine v2: Rook is already on the dune ridge in shot 5 and doubts it in one line of 1.27 s ('Raining whale? Not a chance.') with the column still climbing behind him; no office. The story runs forward from the blast (the rain, the run for the cars) and steps back only once, for the plan, because the plan is what raises the stakes. Date, place and names are on-screen labels (12 NOV 1970, FLORENCE, OREGON, WALTER UMENHOFER, GEORGE THORNTON).",
   "E3": "The batch brief's ten Shorts are all made, so this Short is outside it. It opens on the subject close (the dead whale's flank and the stacked cases, low and near) and the blast lands 0.22 s in, rather than on a person's face.",
   "E4": "'Case closed.' ending.",
   "E7": "hook_text THEY BLEW UP / A WHALE.",
@@ -101,5 +101,53 @@
  "authoring": {
   "claimed_at": "2026-11-19T12:50:58Z",
   "run": "scheduled short run, 19 Nov 2026; the first slate idea, case 040, was claimed by a parallel run about a minute earlier, so this run took case 041"
+ },
+ "quality_gate": {
+  "method": "One run, eight review rounds. Rounds 1 to 3: low-res contact sheets of all 31 shots (one frame each) and targeted stills at two moments of every shot. Found and fixed: the sea sitting exactly level with the sand (a black band across every horizon, and half the blasting-machine shot black); the dune mesh built facing down; a driftwood log right in front of the opening camera; the cases reading as a brick wall (now pale wooden cases with slats and blank labels); lumps of blubber reading as rocks (now pale fat with a grey cap of skin); workmen and the engineer out of frame in the cases shot; the crowd too small in the rain shot; the man walking away hidden behind the dune crest; the magnifying glass held above Rook's hat; the clipboard covering the engineer's face and his thumbs-up reading as a head scratch; Rook out of frame at the park; a white flash sphere filling the opening frames (removed; the overlay draws the flash, and the light was cut by four fifths). Round 4: first full rehearsal (216x384, 4 samples, 12 fps, all 3D frames) composited with captions, labels, overlays and sound: the gate failed on six static stretches. Fixed in the film, never in the gate: wind ripples, pebbles, shells, grass and gravel on the ground so moving cameras have something to read, and real camera moves and acting in the gull, wire, warning, walk-back, magnifier, car, forecourt, bulldozer, engineer and park shots. Round 5: second rehearsal, one static stretch left (the engineer close-up), so he now sweeps an arm at the mess before the nod and the bulldozer rolls across behind him; gate PASS. Round 6: eight stills at 720x1280 with production samples (opening, Rook on the ridge, the crushed roof, his face, the engineer, the park, the sign-off, the forecourt): no blown-out or crushed frame, faces read at 270x480. Round 7: the whale rebuilt as one long tapering body (the three overlapping ellipsoids read as boulders) and the opening reframed to show the whole flank with the cases; two narration lines tightened to what two sources say ('People ran', not 'Everyone ran'; 'from the military', not 'from the war'). Round 8: third rehearsal from scratch with the new voice track: local gate PASS: 31 shots, mean 1.35 s, longest 2.15 s, Rook acting in 12 of 31 shots (39%), -14.4 LUFS, peak -1.2 dBFS, voice 17.9 dB over the bed, closest match to any earlier episode 0.65 (shot 18 against r006-wisnierska; the limit is 0.93). Duration 41.7 s. The longest label was shortened afterwards (GEORGE THORNTON); that changes only the overlay. The cloud render runs the real gate at 720x1280 and 60 fps.",
+  "gate_history": "Rehearsal 1 failed on six static stretches (12.0-14.2, 15.8-19.2, 23.7-26.8, 29.7-31.5, 32.0-33.8 and 35.3-39.0 s): flat sand and sky gave moving cameras nothing to read. Rehearsal 2 failed on one (32.2-33.8 s, the engineer close-up). Rehearsal 2 with the fix and rehearsal 3 passed.",
+  "checked": "Every 3D kind in the storyboard exists in world3d.SHOTS3D (checked by script); there are no flat inserts; HOST lists the 12 kinds in which Rook is placed; blast_close is the only kind used twice (first and last shot, for the loop) and no kind repeats back to back. First shot 1.0 s with the hit and boom at 0.2 s of it. The doubt line is 1.27 s and is spoken on the ridge with the column behind Rook. Re-hook (the slab lands on the car of the one man who warned them) starts at 19.6 s of 41.7 s (47%). One hush shot (25). Tail 0.4 s; the last shot settles into the opening framing. On-screen dates, names and figures (CASE 041, 12 NOV 1970, FLORENCE, OREGON, 20 CASES OF DYNAMITE, HALF A TON, WALTER UMENHOFER, KNEW EXPLOSIVES, A QUARTER MILE AWAY, GEORGE THORNTON, FLORENCE, 2020, the banner A WHALE OF A DEAL! and the sign EXPLODING WHALE MEMORIAL PARK) checked against the sources.",
+  "not_met": "Not watched or listened to in real time: the review was 4-frames-per-second sheets of the whole composited rehearsal plus the gate's audio measurements. Loudness range was not measured separately. The three random one-second spot checks at full resolution were done as single full-resolution stills, not full one-second ranges. Labels pop in at 1.6 times their size for their first 0.2 s (engine behaviour), so long labels touch the frame edge for a few frames."
+ },
+ "checklist": {
+  "A_story": "done: score 84/100 with curiosity 10, story 8, payoff 9; spine v2; shown_moments lists every narrated moment",
+  "B_storyboard": "done: every shot has action, expression, camera and sound cue; Rook's mannerisms are hat brim low (5), hat hop (5, 10), magnifier and raised brow (16), beak pinch (20, 24), caw-laugh (22), brim dropping over his eyes (27), hat off to the sign (28) and pocketing a shiny shell (30); detective actions are counting the cases (10) and measuring the slab (20); no neutral poses under action lines",
+  "B2_retention": "done: hook_text set; the first frame is the whale's flank and the cases, close, with the blast 0.2 s in; re-hook at 47%; one hush; tail 0.4 s with the loop",
+  "C_previews": "done at low resolution for every shot at two moments, plus eight stills at 720x1280 with production samples; no blown-out or crushed frame where the story has to be seen; faces read at 270x480; Rook on-model",
+  "D_render": "engine defaults untouched (60 fps, 720x1280, 16 jobs in the workflow); the local rehearsals used low settings only for review",
+  "E_sound": "voice am_fenrir; hook near-silent, music by mood map; every impact cue tied to a visible lump, case or roof; voice 17.9 dB over the bed; loudness range not measured, see quality_gate.not_met",
+  "F_captions": "done: labels fit the frame at rest (the longest shortened); no inserts; on-screen dates, names and figures checked against sources",
+  "G_final": "three rehearsals reviewed as 4 fps sheets of the whole video plus full-resolution stills; local gate PASS on rehearsals 2 (with the fix) and 3; the full-resolution render and the real gate happen in the workflow"
+ },
+ "review": {
+  "notes": [
+   "0.0 to 1.0 s: the whale's grey flank and the stacked cases, hook title THEY BLEW UP / A WHALE.; the beach erupts at 0.2 s",
+   "1.0 to 3.8 s: the column climbing over the beach from behind the crowd; a lump tumbling at the lens; lumps thudding round the ducking crowd",
+   "3.8 to 5.2 s: Rook on the ridge, 'Raining whale? Not a chance.'; a lump lands beside him, his hat hops",
+   "5.2 to 8.7 s: lumps over raised arms; people running down to the lot past the gold car (12 NOV 1970); Rook running, hat clamped (FLORENCE, OREGON)",
+   "8.7 to 14.0 s: the plan: workmen carrying cases, the engineer with his clipboard (20 CASES OF DYNAMITE); Rook counting (HALF A TON); Rook and a gull on a log; the wire and the blasting machine",
+   "14.0 to 19.6 s: the warning: Walter Umenhofer frowning, Rook copying his head shake; he points, the engineer waves him off; he walks back behind everyone; Rook's magnifier",
+   "19.6 to 25.2 s: re-hook: the slab falls, the roof caves in (A QUARTER MILE AWAY); his jaw drops; Rook measures the slab and pinches his beak",
+   "25.2 to 28.4 s: the forecourt banner A WHALE OF A DEAL!, the keys; Rook's caw-laugh at the flattened car",
+   "28.4 to 32.0 s: the bulldozer by the hole; Rook fanning with his hat; hush: the engineer turns to us",
+   "32.0 to 35.3 s: the sweep and the thumbs-up (GEORGE THORNTON); Rook's brim drops over his eyes",
+   "35.3 to 39.0 s: Rook bows, hat to chest, at the park; the sign EXPLODING WHALE MEMORIAL PARK (FLORENCE, 2020)",
+   "39.0 to 41.7 s: Rook pockets a shell at the water's edge, 'Case closed.'; back to the whale and the cases, 'Because one day in Oregon,'"
+  ],
+  "scores_13": {
+   "story": 5,
+   "hook": 4,
+   "character_acting": 3,
+   "animation": 3,
+   "art_direction": 3,
+   "lighting": 3,
+   "camera": 3,
+   "pacing": 4,
+   "editing": 4,
+   "narration": 3,
+   "sound": 3,
+   "captions_graphics": 4,
+   "respect_accuracy": 5
+  },
+  "weakest": "The sand column and the lumps are faceted spheres, so the blast reads stylised and partly like a heap of boulders. The whale is a smooth grey body that leans on the hook title to read as a whale in the first frame. People in the wide shots (the crowd on the ridge, the run to the lot, the forecourt) are small on a phone. The humans are block figures with simple faces. Daylight is flat sun and sky with no dramatic light. Narration and sound were measured, not heard."
  }
 }
