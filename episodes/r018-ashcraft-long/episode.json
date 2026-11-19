@@ -1,7 +1,7 @@
 {
  "id": "r018-ashcraft-long",
  "format": "long",
- "status": "draft",
+ "status": "approved",
  "synthetic": false,
  "host": "rook",
  "case": 18,
@@ -117,5 +117,53 @@
   "tragic_beats": "From the shout (21) to the stern rail (28) and on the line at dawn (59): only soft cues, no Rook lines.",
   "voice": "am_fenrir, speed 1.12, as in the Short."
  },
- "thumbnail": "THUMB in scenes.py on the 3D still 'thumb': the dismasted yacht under her one small sail on a grey sea, her at the wheel, left of centre; the hook '41 DAYS / ALONE' on the right over open sky. True to the story (41 days from the storm to Hilo, alone). Checked at 1280x720: the hook is inside the frame and off the yacht and her."
+ "thumbnail": "THUMB in scenes.py on the 3D still 'thumb': the dismasted yacht under her one small sail on a grey sea, her at the wheel, left of centre; the hook '41 DAYS / ALONE' on the right over open sky. True to the story (41 days from the storm to Hilo, alone). Checked at 1280x720: the hook is inside the frame and off the yacht and her.",
+ "quality_gate": {
+  "method": "One run, five review rounds. Rounds 1 to 3: low-res contact sheets of all 57 3D shots (one frame each) in three parts, plus selected re-renders. Found and fixed: the yacht moored side-on through the quay (now stern-to the quay, sails down alongside); Rook hidden behind the mizzen at Papeete and behind the mainsail on deck; Tami's back to camera at the chart table, the radio and the log (camera moved to the radio side, her turned towards it); Rook's head filling the beacon shot; Rook in front of the tins; Rook hidden behind her at the night helm; the camera behind her head when she hears the shout and at the desk; the Hilo blanket covering her head; the storm cloud reading as black cliffs (lighter, higher, rounder); the alternate angles of the quay, the harbour and the storm deck that hid the characters; the thumbnail hook sitting on the yacht (moved right, over open sky). Round 4: a full-length rehearsal (384x216, 4 samples, 12 fps, every 3D frame, 1,743 frames) composited with captions, labels, overlays, the charts and sound, reviewed as a 4-frames-per-second sheet of the whole video (613 frames). The automated gate failed it on two static stretches (93 to 99 s: the turn west and the sextant close-up; 141 to 144 s: the sloop and the pendant) and the review found the camera swinging into the cabin wall in the pump shot. Fixed with explicit camera orbits on those shots, a whip and a zoom transition, and a near-still camera in the pump shot; the TAHITI label on the charts moved above the caption band. Round 5: the changed shots re-rendered, the composite rebuilt and the gate run again: PASS. 62 shots, mean 2.47 s, longest 3.76 s, Rook acting in 31 of 62 shots (50%), -14.5 LUFS, peak -1.2 dBFS, voice 15.7 dB over the bed, closest match to any earlier episode 0.86 (shot 35 vs r019-adilang-long; the limit is 0.93). Duration 153.4 s. The rehearsal's fingerprint file was not committed; the cloud render runs the real gate at 1280x720 and 60 fps.",
+  "checked": "Every 3D kind in the storyboard exists in world3d.SHOTS3D and the five flat kinds in scenes.SHOTS; HOST lists the 27 kinds in which Rook is placed; no kind is used more than three times and none twice in a row. The first shot is 1.68 s with an impact at 0.03 s. The doubt line is spoken on the wreck. Re-hook at 53.5%. One hush shot (49). On-screen dates, names and figures (PACIFIC OCEAN, 1983; CASE 018; PAPEETE, TAHITI; TAMI OLDHAM, 23; YACHT HAZANA; ABOUT 4,000 MILES; 22 SEPTEMBER 1983; RUNNING FOR 3 DAYS; 12 OCTOBER 1983; HURRICANE RAYMOND; CATEGORY 4; 27 H; ABOUT 9 FEET OF POLE; 2 SHIPS; 1,500 MILES; 19 N; DAY 41; 22 NOVEMBER 1983; HILO, HAWAII; 2002; 2018; 41 DAYS) were checked against the sources. Richard Sharp is never shown; nothing graphic appears (the head wound is one small mark); no flag, name, number or likeness appears on any vessel. The thumbnail was looked at at 1280x720.",
+  "not_met": "The audio was measured, not listened to. Preview stills at 20% and 80% of every shot were not made with preview3d.py: every shot was looked at on contact sheets, then at four frames a second in the rehearsal at low resolution; the cloud render is the first full-resolution, 60 fps pass. The 13-category score was given from stills and rehearsal sheets, not from playback. Kokoro's reading of 'Papeete', 'Hazana', 'Hilo' and 'Oh my God' could not be heard."
+ },
+ "checklist": {
+  "A_story": "done: the Short's score (80/100; curiosity 8, story 9, payoff 8); spine v2; shown_moments lists every narrated moment",
+  "B_storyboard": "done: every shot has action, expression, camera and sound cue; mannerisms: beak tap (7, 15, 42), brim low (4), hat over his eyes (14), hat off (28, 49, 53, 59), hat leaves his head (56); detective actions in the story world (see experiments.rook); no neutral poses under action lines",
+  "B2_retention": "done: hook_text ALONE / AT SEA; first frame is her face in the flooded cabin; re-hook at 53.5%; one hush (49); long-form ends on 'Case closed.' (no loop needed)",
+  "C_previews": "partly: three contact-sheet rounds and a full rehearsal at low resolution; no blown-out or crushed frame where the story has to be seen; Rook on-model; see quality_gate.not_met",
+  "D_render": "engine defaults untouched (60 fps, 1280x720 for long-form, 16 jobs in the workflow); the local rehearsal used low settings only for review",
+  "E_sound": "voice am_fenrir; no drum loop under the sad segments; voice 15.7 dB over the bed; audio not listened to",
+  "F_captions": "done: captions inside the frame; chart text kept out of the caption band and the label corner; every on-screen date, name and number checked against sources",
+  "G_final": "rehearsal reviewed as a 4 fps sheet of the whole video; local gate PASS on the second rehearsal; the full-resolution render and the real gate happen in the workflow"
+ },
+ "review": {
+  "notes": [
+   "0.0 to 5.0 s: her face in the flooded cabin, hook ALONE / AT SEA; up through the hatch; the empty cockpit",
+   "5.0 to 9.4 s: Rook on the stump, 'No chance'; the case file types in",
+   "9.4 to 25 s: Papeete: the harbour, the quay, the crate of tins, the chart ABOUT 4,000 MILES, the ketch at the quay",
+   "25 to 37 s: full sail out of Papeete; easy days; the radio and the chart; running from the wall of cloud",
+   "37 to 53 s: reefing in the rain, the wave, green water; down the companionway, the shout; the roll; the cabin turns over and goes dark",
+   "53 to 66 s: out cold to 27 H; she wakes; the line, the opened ring, the stern rail",
+   "66 to 82 s: dead radio, dead beacon, dead engine; pump, pole, jib, moving",
+   "82 to 89 s: re-hook: the plane flies on; two ships",
+   "89 to 108 s: San Diego struck through, 1,500 MILES; the turn west; the sextant; north to 19, then west",
+   "108 to 120 s: the watch in the bilge; the days; tins, the log, his shirt",
+   "120 to 124 s: hush: night, her head turns to the empty seat",
+   "124 to 140 s: the searchlight, DAY 41, the tow into Hilo; Hilo in the morning; the typewriter, 2002; the book; 2018",
+   "140 to 153 s: the sloop, the pendant; the line at dawn; the board; 'I was wrong'; 'Case closed.'"
+  ],
+  "scores_13": {
+   "story": 4,
+   "hook": 4,
+   "character_acting": 3,
+   "animation": 3,
+   "art_direction": 3,
+   "lighting": 3,
+   "camera": 3,
+   "pacing": 4,
+   "editing": 4,
+   "narration": 3,
+   "sound": 3,
+   "captions_graphics": 4,
+   "respect_accuracy": 5
+  },
+  "weakest": "Faces are often three-quarter or profile in the cabin shots (the chart table sits against the hull). The storm cloud wall is a row of grey blobs. Hilo's island is a flat green slope and she is small there. The pendant is tiny on screen. The ship's searchlight frame flashes white at the cut (the transition). Narration and sound were measured, not heard."
+ }
 }

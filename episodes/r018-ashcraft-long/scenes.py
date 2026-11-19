@@ -178,7 +178,7 @@ def chart_base(cv, c, amount=0.12):
     cv.drawCircle(TAH[0], TAH[1], 13, P(h('5E8A5A')))
     cv.drawCircle(SDG[0], SDG[1], 11, P(INK))
     plain(cv, 'HAWAII', HILO[0] - 40, HILO[1] - 90, 46, INK, 900)
-    plain(cv, 'TAHITI', TAH[0] + 150, TAH[1] + 14, 46, INK, 900)
+    plain(cv, 'TAHITI', TAH[0] + 150, TAH[1] - 24, 46, INK, 900)
     plain(cv, 'SAN DIEGO', SDG[0] - 70, SDG[1] + 70, 42, INK, 900)
     plain(cv, 'DRAWING, POSITIONS APPROXIMATE', 1390, 150, 26, h('5A6E76'), 700)
     pins(cv, ((200, 120), (1720, 120), (200, 920), (1720, 920)))
