@@ -25,8 +25,11 @@ def motes(cv, c):
 
 
 def mist(cv, c):
-    Wd.mist(cv, W, 1100, 500, 0x33F4E8D8, c.t, seed=23, speed=18)
     Wd.particles(cv, W, H, c.t, 18, 0x44FFF0D8, 233, size=(3, 7), drift=(10, -10), wobble=16, twinkle=True)
+
+
+def fireflies(cv, c):
+    Wd.particles(cv, W, H, c.t, 22, 0xCCE8FF90, 235, size=(3, 7), drift=(8, -14), wobble=40, twinkle=True)
 
 
 def closed(cv, c):
@@ -45,4 +48,4 @@ SHOTS = {}
 OVER = dict(crash_ridge=storm, wreck_wide=rain, wing_torn=rain, rook_doubt=rain, rook_hatoff=rain, man_beside=drizzle,
             her_alone=rain, thirst_face=motes, wing_pov=motes, rook_squeeze=motes, elbow_crawl=motes, tuft_pull=motes,
             rook_nod=motes, rain_arrives=storm, tuft_drink=rain, officer_trees=mist, officer_ghost=mist, rook_brim=mist,
-            carry_down=motes, rook_wreck=motes, carry_light=mist, signoff=closed)
+            carry_down=motes, night_wreck=fireflies, calm_face=fireflies, rook_vigil=fireflies, rook_wreck=motes, carry_light=mist, signoff=closed)

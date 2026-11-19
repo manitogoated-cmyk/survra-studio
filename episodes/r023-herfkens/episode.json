@@ -1,11 +1,124 @@
 {
  "id": "r023-herfkens",
  "format": "short",
- "status": "draft",
+ "status": "approved",
  "synthetic": false,
  "host": "rook",
  "case": 23,
- "title": "Sole Survivor: 8 Days Alone Beside the Wreck #shorts",
+ "title": "She Woke Up Under a Seat in the Jungle. 8 Days Later… #shorts",
  "playlist": "Rook's Case Files (Shorts)",
- "spine": "v2"
+ "spine": "v2",
+ "sources": [
+  "https://en.wikipedia.org/wiki/Vietnam_Airlines_Flight_474",
+  "https://nzherald.co.nz/world/the-sole-survivor-of-vietnam-airlines-flight-474-and-her-192-hours-alone-in-the-jungle/HMZVPKVBCAC5AKDUYX4FV4RDFQ",
+  "https://www.irishexaminer.com/lifestyle/people/arid-41124667.html",
+  "https://viewfromthewing.com/sole-survivor-of-vietnam-airlines-flight-474-crash-lived-8-days-in-the-jungle/",
+  "https://www.mamamia.com.au/annette-herfkens/amp/",
+  "https://spacecoastdaily.com/2022/02/sit-down-with-steve-sole-survivor-of-plane-crash-spent-8-days-alone-in-jungle/"
+ ],
+ "authoring": {
+  "claimed_at": "2026-11-19T04:16:00Z",
+  "run": "scheduled short run, 19 Nov 2026; brief order (Short 10 of the batch, slate case 23)"
+ },
+ "description": "Case 023. On 14 November 1992 Vietnam Airlines Flight 474, a Yakovlev Yak-40 flying from Ho Chi Minh City to Nha Trang, came down in bad weather and hit trees on a jungle mountain ridge. Of the 31 people aboard, 30 died. Annette Herfkens woke up with a seat on top of her. Her jaw was broken, a lung had collapsed and her hip was shattered. Her fiancé, Willem van der Pas, had died in the crash, and a man near her who had survived the impact died soon after. She had no water. So she pulled herself on her elbows to the broken wing, took tufts of its insulation, rolled them into balls and let the rain soak them, drinking a sip at a time. Searchers could not find the wreck. She has said she stayed in the moment. On the eighth day a local police officer found her, and rescuers carried her down the mountain. She was the only survivor. She later wrote a memoir, Turbulence.\n\nAnimated reconstruction of a true story. The jungle, the aircraft (a generic three-engine jet, not a copy of the real one), the cabin and every person are generic low-poly reconstructions; no likeness is attempted. Staging details such as where she lay, the hands on the armrest, the colour of the insulation, the officer's uniform, the stretcher and everything Rook does are reconstruction, not record. Sources disagree on some numbers (24 or 25 passengers; whether rescue came on day eight or nine), so the film shows only what they agree on. Narration is a synthetic voice (Kokoro).",
+ "tags": [
+  "Annette Herfkens",
+  "Vietnam Airlines Flight 474",
+  "sole survivor",
+  "plane crash survivor",
+  "jungle survival",
+  "Vietnam 1992",
+  "Turbulence",
+  "survival story",
+  "true story",
+  "animated story",
+  "Rook",
+  "Survra"
+ ],
+ "hashtags": [
+  "#shorts",
+  "#truestory",
+  "#survival"
+ ],
+ "story_score": {
+  "curiosity": 8,
+  "stakes": 9,
+  "freshness": 7,
+  "story": 8,
+  "visual": 8,
+  "audience_fit": 8,
+  "payoff": 7,
+  "packaging": 8,
+  "research": 8,
+  "repeatability": 7,
+  "total": 78
+ },
+ "title_options": [
+  "She Woke Up Under a Seat in the Jungle. 8 Days Later… #shorts",
+  "8 Days Beside the Wreck #shorts",
+  "She Drank Rain From the Plane's Wing #shorts"
+ ],
+ "shown_moments": {
+  "a plane hits a jungle mountain in a storm": "shot 1 (the jet over the canopy in the storm, its wing tearing into the treetops, leaves bursting)",
+  "She wakes up under a seat, jaw broken, one lung collapsed": "shot 2 (her face under the toppled seat, eyes opening, pushing at it); shot 3 (she lowers herself out of the broken fuselage, in pain)",
+  "Hurt like that? No chance.": "shots 4 and 5 (Rook lands on the torn wing in the rain; brim drops)",
+  "Her fiancé died in the crash": "shot 6 (her hand closing round his on the armrest), shot 7 (Rook takes his hat off)",
+  "The one man near her still alive dies soon after": "shot 8 (she reaches to the man lying near her; he does not move; she lowers her hand)",
+  "She has no water. Then she sees the broken wing": "shots 9 to 11 (alone in the rain; squinting in the sun, dry lips; over her shoulder to the wing)",
+  "Its insulation is soft, like a sponge": "shot 12 (Rook squeezes a tuft and it springs back)",
+  "She drags herself to it on her elbows and pulls out tufts": "shots 13 and 14",
+  "When rain comes, they soak it up. She drinks one sip at a time": "shots 16 and 17, label ONE SIP AT A TIME",
+  "But day after day, nobody finds the wreck": "shots 18 and 19 (the ridges from above, label WRECK NOT FOUND; Rook on a treetop sees nothing)",
+  "So she stays in the moment, and finds her calm in the beauty of the jungle": "shots 20 to 22 (night, fireflies, her face at rest, Rook keeping watch)",
+  "On day eight, a police officer finds her. He thinks she's a ghost": "shots 23 to 25, label DAY 8 (the officer stops dead, steps back, shouts; Rook lifts his brim)",
+  "Then rescuers carry her down the mountain": "shot 26 (hush), carried on canvas slung between two sticks",
+  "Thirty people died. She was the only one who lived": "shots 27 and 28, label 30 DIED. 1 LIVED.",
+  "Case closed. It all started when": "shots 29 and 30 (Rook pockets a rivet and tips his hat; the opening shot played back to its first frame)"
+ },
+ "experiments": {
+  "E1_E2": "spine v2: Rook is already on the torn wing in the rain in shots 4 and 5 and doubts it in one line (1.25 s) with the wreck behind him; no office. The story moves forward from the crash; place, date and name are on-screen labels (VIETNAM, NOV 1992; ANNETTE HERFKENS).",
+  "E3": "batch Short 10 (even): wide spectacle first frame, as the brief assigns: the jet over the jungle canopy in the storm.",
+  "E4": "'Case closed.' ending, as the brief assigns (a tragedy; no question forced).",
+  "E7": "hook_text 8 DAYS / BY THE WRECK.",
+  "E8": "tail 0.4 s; the last line ('It all started when') runs into the first ('a plane hits a jungle mountain in a storm'), and the last shot is the opening shot played back to its first frame.",
+  "brief_changes": "The brief's Rook moment (folding a leaf to catch rain) is not in any source; what the sources describe is wing insulation used as a sponge, so Rook's detective action became testing a tuft of the insulation (shot 12) before she uses it. 'The leeches, the heat' and 'hearing searchers' from the brief's spine were dropped: leeches are in only one narrated-level source and nothing supports hearing searchers. Her fiancé's death is handled with Rook's hat off and no jokes from the hook onward.",
+  "rook_action": "Detective action in the story world: squeezes a tuft of the wing's insulation to test it as a sponge (12), points it out on the wing (11), scans the ridges from a treetop (19). Mannerisms: brim drops (5), hat off for the dead (7), beak tap (15), hunched in the rain (16), keeps watch with brim low (22), brim lifted in surprise (25), hat back on (27), pockets a shiny rivet and tips his hat (29)."
+ },
+ "sound_plan": {
+  "first_frame": "An 'impact' at 0.02 s (the wing tearing into the treetops, visible from the first frame), thunder at half the shot.",
+  "music": "The score follows the segment moods: hook, tense for Rook's line, sad for the deaths, tense for thirst, wonder for the insulation, calm for the rain, tense for the re-hook, calm for the nights, triumph for the rescue, end.",
+  "effects": "One or two cues a shot, each tied to something visible: rain, creaks in the cabin, a gasp as she wakes, scratches as she crawls and pulls the fibres, a bloop for the sip, wind over the ridges, jungle ambience at night, a shout from the officer, a pop for the rivet.",
+  "hush": "Shot 26 (she is carried down the mountain): the music drops out before the payoff.",
+  "voice": "Narration ducked over the bed by the engine."
+ },
+ "source_notes": "Six pages were read for this run on 19 Nov 2026 (Wikipedia, NZ Herald reprint of a Vice interview, Irish Examiner 25 Apr 2023, View from the Wing 14 Nov 2022, Mamamia 26 Jul 2019, Space Coast Daily 25 Feb 2022). Every narrated fact is on at least two of them. 14 Nov 1992, Yak-40, Ho Chi Minh City to Nha Trang, bad weather, hit trees on a ridge: Wikipedia, NZ, VFTW, Irish. 31 aboard, 30 died: Wikipedia (25 + 6), Irish and VFTW (25 passengers, six crew); NZ and Mamamia say 24 passengers, so the film narrates only 'thirty people died' and labels 30 DIED. 1 LIVED. (Wikipedia: 30 killed, one survivor). Woke with a seat on top of her: NZ, Irish, VFTW, Mamamia. Broken jaw and collapsed lung: NZ, Irish. Fiance died in the crash: all four first pages. A man near her who survived the impact died soon after: NZ, Irish, VFTW. Insulation from the wing as a sponge for rain: NZ, Irish, VFTW, Mamamia; rolled into balls: Irish, Space Coast Daily. Pulled herself on her elbows: Irish, Mamamia. Wreck not found for eight days: Wikipedia, and all pages give eight days. Stayed in the moment: Irish ('I stayed in the moment'), Space Coast Daily; calm in the beauty of the jungle: Mamamia ('meditating on the beauty of the jungle'), SBS extract of her book. A police officer found her on day eight: NZ, VFTW, Mamamia, Space Coast Daily; he thought she was a ghost: NZ (quoting a 2016 New York Post interview) and VFTW only. Carried down the mountain: Irish (hammock), Mamamia (canvas between two sticks); the film shows the canvas. Conflicts left out of the film: hip fracture count, whether rescue came on day eight or nine, minutes into the flight. No line is put in her mouth. Not used: the helicopter that crashed during the search (seven or eight killed, sources disagree), leeches (one narration-level source).",
+ "quality_gate": {
+  "method": "One run, five review rounds. Rounds 1 to 3: low-res contact sheets of all 30 shots (one frame each). Found and fixed: the scene build too slow to render (forest cut to 75 trees), cameras inside tree trunks (a clearing cut along the jet's path), her back to the camera in four shots (she now faces downhill), the officer walking away from her (turned round), his face hidden by his own hair from a side camera (camera moved in front), her night spot inside the open end of the fuselage (moved downslope), a firefly against the lens, the high ridges set built twice as far away as intended (parenting bug) so the aerial shot was empty, and the opening jet hidden behind the canopy and flying tail first (raised above the crowns, heading fixed, camera moved up). Round 4: a full-length rehearsal (270x480, 6 samples, 8 fps of 3D frames, composited at 30 fps with captions, labels, overlays and sound) reviewed as a 2-frames-per-second sheet; the local gate PASSED. Found and fixed: the dawn mist overlay drawing round blobs (removed), a fern across her mouth in the crawl (plants cleared along her path), the tuft held over Rook's eyes (lowered), a flat cloud in the middle of the aerial shot (clouds moved to the horizon), the stretcher carriers out of frame (camera pulled back). Round 5: those four shots re-rendered and checked as stills. Gate (rehearsal): 30 shots, mean 1.39 s, longest 1.72 s, Rook acting in 12 of 30 shots (40%), -14.7 LUFS, peak -1.3 dBFS, voice 14.5 dB over the bed, closest match to any earlier episode 0.75 (limit 0.93). Duration 41.6 s. The cloud render runs the real gate at 720x1280 and 60 fps.",
+  "checked": "Every kind in the storyboard exists in world3d.SHOTS3D (no flat inserts); HOST lists the 12 kinds in which Rook is placed; crash_ridge is the only kind used twice, not in a row (first and last shot). First shot about 1.4 s with an impact at 0.02 s. Doubt line 1.25 s, spoken on the wing in the rain with the wreck behind. Re-hook ('But day after day, nobody finds the wreck') starts at 24.2 s of 41.6 s (58%). One hush shot (26). Tail 0.4 s; first and last frames compared on the rehearsal sheet (same framing). Labels (CASE 023; VIETNAM, NOV 1992; ANNETTE HERFKENS; ONE SIP AT A TIME; WRECK NOT FOUND; DAY 8; 30 DIED. 1 LIVED.) checked against the sources. No body, blood or injury is shown beyond a bruise; the dead are represented by a still hand and a figure lying with eyes closed. Rook makes no jokes after the hook.",
+  "not_met": "No full-resolution, full-sample render was made locally (the workflow does it); motion was judged at 8 fps of 3D frames. Her eyes-closed face still shows the pupils (the kit's human head has no lids), so 'eyes closed' reads as heavy-lidded. The voice was measured, not listened to."
+ },
+ "checklist": {
+  "A_story": "done: score 78/100 with curiosity 8, story 8, payoff 7; spine v2; shown_moments lists every narrated moment",
+  "B_storyboard": "done: every shot has action, camera and sound cue; Rook's mannerisms: brim drop (5), hat off (7), beak tap (15), brim lifted (25), hat back on (27), rivet pocketed and hat tip (29); detective actions: points at the insulation (11), squeezes a tuft (12), scans the ridges (19)",
+  "B2_retention": "done: hook_text set; first frame is the wide spectacle (even Short in the batch); re-hook at 58%; one hush; tail 0.4 s with the loop, first and last frames compared",
+  "C_previews": "partly: three contact-sheet rounds, a full low-res rehearsal and a final still check; no blown-out or crushed frame where the story has to be seen; Rook on-model; see quality_gate.not_met",
+  "D_render": "engine defaults untouched (60 fps, 720x1280, 16 jobs in the workflow); the local rehearsal used low settings only for review",
+  "E_sound": "voice am_fenrir; voice 14.5 dB over the bed; -14.7 LUFS; no drum under the sad beats (engine mood map)",
+  "F_captions": "done: captions inside the frame; every on-screen date, name and figure checked against the sources",
+  "G_final": "rehearsal reviewed as a 2 fps sheet of the whole video; local gate PASS; the full-resolution render and the real gate happen in the workflow"
+ },
+ "review": {
+  "notes": [
+   "0.0 to 6.1 s: the jet over the jungle canopy in the storm, hook text 8 DAYS / BY THE WRECK; her face under the seat; she lowers herself out of the wreck; Rook lands on the torn wing",
+   "6.1 to 7.5 s: Rook on the wing in the rain: 'Hurt like that? No chance.'",
+   "7.5 to 12.3 s: the hands on the armrest; Rook takes his hat off; she reaches to the man beside her; alone against the root",
+   "12.3 to 15.0 s: sun, dry lips; over her shoulder to the wing, Rook pointing at the insulation",
+   "15.0 to 20.7 s: Rook squeezes a tuft; she crawls on her elbows; pulls tufts; Rook taps his beak and nods",
+   "20.7 to 24.1 s: the rain sweeps in; she sips from the soaked ball",
+   "24.1 to 26.4 s: re-hook: the ridges from above, WRECK NOT FOUND; Rook on a treetop sees nothing",
+   "26.4 to 30.6 s: night, fireflies, her face at rest, Rook keeping watch",
+   "30.6 to 36.5 s: DAY 8, the officer stops dead, steps back and shouts; Rook lifts his brim; she is carried down the mountain (hush)",
+   "36.5 to 41.6 s: Rook by the empty wreck, 30 DIED. 1 LIVED.; the carry party into the light; Case closed, rivet pocketed; back to the opening frame"
+  ]
+ }
 }

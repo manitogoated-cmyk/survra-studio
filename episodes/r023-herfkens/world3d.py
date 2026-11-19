@@ -32,7 +32,7 @@ CAMFILL = {'*': 160, 'crash_ridge': 60, 'seat_pin': 160, 'wreck_wide': 90, 'wing
            'hands_hold': 120, 'rook_hatoff': 240, 'man_beside': 200, 'her_alone': 160, 'thirst_face': 140,
            'wing_pov': 120, 'rook_squeeze': 240, 'elbow_crawl': 200, 'tuft_pull': 120, 'rook_nod': 240,
            'rain_arrives': 120, 'tuft_drink': 180, 'aerial_canopy': 0, 'rook_lookout': 240, 'night_wreck': 200,
-           'calm_face': 220, 'rook_vigil': 280, 'officer_trees': 160, 'officer_ghost': 180, 'rook_brim': 240,
+           'calm_face': 110, 'rook_vigil': 280, 'officer_trees': 160, 'officer_ghost': 180, 'rook_brim': 240,
            'carry_down': 140, 'rook_wreck': 200, 'carry_light': 80, 'signoff': 200}
 ROOKC = dict(top='566178', belt='3E4658', lap='6B7690', pants='2A2742', hand='2F2B4D', boot='8A90A6')
 SKIN, HAIR = 'E6BC9A', '7A5634'
@@ -98,6 +98,7 @@ FUS = (3.4, 3.2)                    # fuselage centre (set-local x, y)
 SPOT = (-0.6, 0.4)                  # where she sits, against a root beside the broken end
 WROOT = (-2.9, -1.4)                # the wing's torn root
 MAN = (1.0, 1.4)                    # the man who survived the impact
+LIE = (-1.4, -1.6)                  # where she lies through the nights
 
 
 def tree(par, i, x, y, big=1.0):
@@ -154,7 +155,8 @@ def make_ridge(S):
         a = 2 * PI * rnd(i, 31)
         d = 3.0 + 18 * rnd(i, 32)
         x, y = 0.5 + d * math.cos(a), 1.5 + d * math.sin(a)
-        if math.hypot(x - SPOT[0], y - SPOT[1]) < 1.8 or math.hypot(x - WROOT[0], y - WROOT[1]) < 2.0 or math.hypot(x - FUS[0], y - FUS[1]) < 4.5:
+        tq = max(0.0, min(1.0, ((x - SPOT[0]) * (WROOT[0] - SPOT[0]) + (y - SPOT[1]) * (WROOT[1] - SPOT[1])) / ((WROOT[0] - SPOT[0]) ** 2 + (WROOT[1] - SPOT[1]) ** 2)))
+        if math.hypot(x - SPOT[0] - tq * (WROOT[0] - SPOT[0]), y - SPOT[1] - tq * (WROOT[1] - SPOT[1])) < 2.2 or math.hypot(x - SPOT[0], y - SPOT[1]) < 1.8 or math.hypot(x - WROOT[0], y - WROOT[1]) < 2.0 or math.hypot(x - FUS[0], y - FUS[1]) < 4.5:
             continue
         S['sway'] += palm(r, i, x, y, 0.6 + 0.8 * rnd(i, 33))
     for i, (x, y) in enumerate(((-8.5, 7.5), (-4.0, 9.0), (-11.0, 4.0), (-14.0, -3.0), (9.5, -6.0), (12.0, 1.0))):       # trees at the clearing's edge
@@ -291,7 +293,7 @@ def make_cabin(S):
 # ---------------------------------------------------------------- the ridges from far above
 def make_range(S):
     r = empty(RANGE)
-    bpy.ops.mesh.primitive_grid_add(x_subdivisions=120, y_subdivisions=120, size=1400, location=RANGE)
+    bpy.ops.mesh.primitive_grid_add(x_subdivisions=120, y_subdivisions=120, size=1400, location=(0, 0, 0))
     gr = bpy.context.object
     gr.parent = r
     co = np.zeros(len(gr.data.vertices) * 3)
@@ -306,11 +308,11 @@ def make_range(S):
     for i in range(60):                                                                                          # tree crowns on the near slopes
         px, py = -160 + 320 * rnd(i, 101), -60 + 260 * rnd(i, 102)
         k = np.argmin((co[:, 0] - px) ** 2 + (co[:, 1] - py) ** 2)
-        add('ico_sphere', LEAF[i % 5], at(RANGE, px, py, co[k, 2] + 2), scale=(1, 1, 0.6), radius=7 + 5 * rnd(i, 103), subdivisions=1, parent=r, rough=0.8)
+        add('ico_sphere', LEAF[i % 5], (px, py, co[k, 2] + 2), scale=(1, 1, 0.6), radius=7 + 5 * rnd(i, 103), subdivisions=1, parent=r, rough=0.8)
     S['lookout_crown'] = keep(add('ico_sphere', LEAF[1], FAR, scale=(1, 1, 0.5), radius=2.2, subdivisions=1, rough=0.8))
     S['clouds'] = []
     for i in range(10):
-        S['clouds'].append(add('ico_sphere', 'F4F6F6', at(RANGE, -200 + 400 * rnd(i, 111), -40 + 300 * rnd(i, 112), 95 + 30 * rnd(i, 113)),
+        S['clouds'].append(add('ico_sphere', 'F4F6F6', (-200 + 400 * rnd(i, 111), 160 + 200 * rnd(i, 112), 95 + 30 * rnd(i, 113)),
                                scale=(2.2, 1.2, 0.6), radius=22 + 14 * rnd(i, 114), subdivisions=2, parent=r, rough=1.0, alpha=0.75))
     S['range'] = r
 
@@ -318,7 +320,7 @@ def make_range(S):
 # ---------------------------------------------------------------- people
 def herfkens_head(head):
     d = K.human_head(SKIN, HAIR)(head)
-    add('ico_sphere', HAIR, (0, 0.14, -0.2), scale=(1.0, 0.6, 1.0), radius=0.3, subdivisions=1, parent=head)        # shoulder-length hair
+    add('ico_sphere', HAIR, (0, 0.18, -0.12), scale=(0.9, 0.55, 0.8), radius=0.3, subdivisions=1, parent=head)        # shoulder-length hair
     add('ico_sphere', '9A6A6A', (0.06, -0.24, -0.2), scale=(1, 0.5, 0.7), radius=0.07, subdivisions=1, parent=head)  # the bruise on her jaw
     return d
 
@@ -539,15 +541,15 @@ def crash_ridge(S, k, t, lt):
     ridge(S, 'storm', t, 1.6)
     lightning(S, u, 2.2, 0.25)
     j = S['jet']
-    p = at(RIDGE, lerp(-34, -6, u / 1.6), lerp(26, 19, u / 1.6), lerp(20.0, 15.5, u / 1.6))
+    p = at(RIDGE, lerp(-30, -4, u / 1.6), lerp(17, 13, u / 1.6), lerp(28.0, 24.0, u / 1.6))
     j.location = p
-    j.rotation_euler = (0.32 + 0.1 * math.sin(u * 5), 0.12, -0.35)
+    j.rotation_euler = (-0.3 + 0.1 * math.sin(u * 5), -0.1, PI - 0.35)
     for i, dbr in enumerate(S['debris']):                                                                        # leaves and branches torn out
         ph = (u * 1.2 + rnd(i, 1)) % 1.0
         dbr.location = (p[0] + 4 + 6 * rnd(i, 2) - 8 * ph * rnd(i, 3), p[1] - 6 + 8 * rnd(i, 4), p[2] - 3 + 6 * ph - 6 * ph * ph + 2 * rnd(i, 5))
         dbr.rotation_euler = (u * 7 * rnd(i, 6), u * 5, u * 3 * rnd(i, 7))
-    key(S, RIDGE, (-30, -10, 30), (p[0], p[1], p[2]), 40000, 'A8C0E0')
-    shoot(S, RIDGE, (lerp(-3.0, -2.6, u / 1.6), lerp(-8.0, -7.4, u / 1.6), 3.0), (lerp(-16, -10, u / 1.6), 20, 15.0), 24, roll=-0.06)
+    key(S, RIDGE, (0, -6, 26), (p[0], p[1], p[2]), 30000, 'B8C8E0')
+    shoot(S, RIDGE, (lerp(6.0, 5.0, u / 1.6), lerp(-9.0, -8.0, u / 1.6), lerp(17.0, 16.0, u / 1.6)), (lerp(-15, -8, u / 1.6), 15, 22.5), 30, roll=-0.08)
 
 
 def seat_pin(S, k, t, lt):
@@ -681,7 +683,7 @@ def wing_pov(S, k, t, lt):
     h = head(S, S['her'])
     w0 = on_wing(0.3, 0.0)
     key(S, (0, 0, 0), (w0[0] + 1, w0[1] - 3, w0[2] + 3), w0, 500, 'FFF0C8')
-    shoot(S, (0, 0, 0), (h[0] + 0.6, h[1] + lerp(1.3, 1.0, k), h[2] + 0.5), (w0[0] - 0.4, w0[1], w0[2] + 0.6), 30)
+    shoot(S, (0, 0, 0), (h[0] + 0.9, h[1] + lerp(2.4, 2.0, k), h[2] + 1.3), (w0[0] - 0.8, w0[1], w0[2] + 0.4), 26)
 
 
 # ---------------------------------------------------------------- sponge
@@ -691,10 +693,10 @@ def rook_squeeze(S, k, t, lt):
     p = on_wing(-0.6, 0.1)
     sq = math.sin(min(lt, 1.2) * 7) * 0.5 + 0.5 if lt > 0.35 else 0.0
     look = sm((lt - 1.0) / 0.3)
-    put(S, S['rook'], 0, 0, 0, -1.2 + 0.9 * look, P('stand', aR=(1.3, -0.2, 1.3, 0.3), aL=(1.2, 0.2, 1.4, 0.3), head=(0.35 - 0.3 * look, 0.0)),
+    put(S, S['rook'], 0, 0, 0, -1.2 + 0.9 * look, P('stand', aR=(1.0, -0.2, 1.0, 0.3), aL=(0.9, 0.2, 1.1, 0.3), head=(0.35 - 0.3 * look, 0.0)),
         'shocked' if look > 0.5 else 'calm', o=p)
     hd = wpos(S['rook'].hands[1])
-    S['tuft'].location = (hd[0], hd[1] - 0.15, hd[2] + 0.05)
+    S['tuft'].location = (hd[0], hd[1] - 0.25, hd[2] - 0.15)
     s = 1.0 - 0.45 * sq
     S['tuft'].scale = (s, s, s)
     S['insul'][5].scale = (0.4, 0.4, 0.4)
@@ -790,7 +792,7 @@ def aerial_canopy(S, k, t, lt):
     S['range'].location = RANGE
     sky(S, 'high')
     for i, c in enumerate(S['clouds']):
-        c.location = at(RANGE, -200 + 400 * rnd(i, 111) + 4 * t, -40 + 300 * rnd(i, 112), 95 + 30 * rnd(i, 113))
+        c.location = (-200 + 400 * rnd(i, 111) + 4 * t, 160 + 200 * rnd(i, 112), 95 + 30 * rnd(i, 113))
     shoot(S, RANGE, (lerp(-40, -20, k), -200, 240), (lerp(0, 15, k), 60, 30), 26, roll=0.04)
 
 
@@ -814,34 +816,33 @@ def rook_lookout(S, k, t, lt):
 def night_wreck(S, k, t, lt):
     """Night: the wreck a dark shape in the trees, fireflies drifting, she lies small by the fuselage."""
     ridge(S, 'night', t, 0.2)
-    lie(S, S['her'], SPOT[0], SPOT[1] - 0.6, 0.1, face='shut')
-    flies(S, t, SPOT[0] + 1, SPOT[1], g(*SPOT) + 0.6)
-    key(S, RIDGE, (-4, -6, 6), (SPOT[0], SPOT[1], 1), 900, '8AA8D8')
+    lie(S, S['her'], LIE[0], LIE[1], 0.1, face='shut')
+    flies(S, t, LIE[0] + 1, LIE[1] + 1, g(*LIE) + 0.6)
+    key(S, RIDGE, (-4, -6, 6), (LIE[0], LIE[1], 1), 900, '8AA8D8')
     shoot(S, RIDGE, (lerp(-5.5, -4.6, k), lerp(-8.0, -7.0, k), lerp(3.0, 2.6, k)), (1.0, 1.8, 1.6), 26)
 
 
 def calm_face(S, k, t, lt):
     """Close on her face at night: eyes closed, breathing slowly and deliberately, the fear going out of it."""
     ridge(S, 'night', t, 0.2)
-    lie(S, S['her'], SPOT[0], SPOT[1] - 0.6, 0.1, face='shut')
+    lie(S, S['her'], LIE[0], LIE[1], 0.1, face='shut')
     br = 0.5 + 0.5 * math.sin(lt * 2.4)
     S['her'].body.scale = (1 + 0.03 * br, 1 + 0.05 * br, 1)
-    flies(S, t, SPOT[0], SPOT[1] - 0.6, g(*SPOT) + 0.8, 6)
     h = head(S, S['her'])
-    key(S, (0, 0, 0), (h[0] - 1, h[1] - 1, h[2] + 2.5), h, 160, '9AB8E8')
+    key(S, (0, 0, 0), (h[0] - 1, h[1] - 1, h[2] + 2.5), h, 220, '7A98D8')
     shoot(S, (0, 0, 0), (h[0] + 0.2, h[1] - lerp(0.9, 0.8, k), h[2] + lerp(1.35, 1.2, k)), (h[0], h[1], h[2]), 40, roll=0.3)
 
 
 def rook_vigil(S, k, t, lt):
     """Rook sits quietly beside her on a root, hat in his lap, keeping watch while she rests."""
     ridge(S, 'night', t, 0.2)
-    lie(S, S['her'], SPOT[0], SPOT[1] - 0.6, 0.1, face='shut')
-    sit(S, S['rook'], SPOT[0] - 1.0, SPOT[1] + 0.6, PI + 0.9, P('sit', aR=(0.7, -0.1, 1.2), aL=(0.7, -0.1, 1.2), head=(0.3, lerp(-0.2, 0.3, k))), 'soft', dz=0.2)
-    S['hat_off'] = 1.0
-    flies(S, t, SPOT[0] - 0.5, SPOT[1], g(*SPOT) + 1.0, 8)
+    lie(S, S['her'], LIE[0], LIE[1], 0.1, face='shut')
+    sit(S, S['rook'], LIE[0] - 1.4, LIE[1] + 1.0, -0.6, P('sit', aR=(0.7, -0.1, 1.2), aL=(0.7, -0.1, 1.2), head=(0.35, lerp(-0.5, -0.2, k))), 'soft', dz=0.2)
+    S['hat_tip'] = 0.5
+    flies(S, t, LIE[0] - 0.5, LIE[1] + 3, g(*LIE) + 1.0, 8)
     h = head(S, S['rook'])
     key(S, (0, 0, 0), (h[0] - 1, h[1] - 3, h[2] + 2), h, 400, '9AB8E8')
-    shoot(S, (0, 0, 0), (h[0] - lerp(2.6, 2.2, k), h[1] - lerp(3.6, 3.1, k), h[2] - 0.2), (h[0] + 0.5, h[1] - 0.3, h[2] - 0.9), 30)
+    shoot(S, (0, 0, 0), (h[0] + lerp(0.6, 0.4, k), h[1] - lerp(5.6, 5.0, k), h[2] + 0.4), (h[0] + 0.8, h[1] + 0.2, h[2] - 1.2), 28)
 
 
 # ---------------------------------------------------------------- found
@@ -851,11 +852,11 @@ def officer_trees(S, k, t, lt):
     u = sm(lt / 0.9)
     x, y = lerp(-6.4, -4.4, u), lerp(6.6, 3.8, u)
     pose = walk(lt) if u < 0.95 else P('stand', aL=(0.6, 0.6, 0.4), aR=(0.6, 0.6, 0.4), lean=-0.15)
-    put(S, S['officer'], x, y, 0.0, -2.3, pose, 'wide' if u > 0.8 else 'calm')
-    lie(S, S['her'], SPOT[0], SPOT[1] - 0.6, 0.1, face='tired')
+    put(S, S['officer'], x, y, 0.0, 0.84, pose, 'wide' if u > 0.8 else 'calm')
+    lie(S, S['her'], LIE[0], LIE[1], 0.1, face='tired')
     h = head(S, S['officer'])
     key(S, (0, 0, 0), (h[0] + 3, h[1] - 2, h[2] + 2), h, 700, 'FFC890')
-    shoot(S, (0, 0, 0), (SPOT[0] + lerp(1.2, 1.0, k), SPOT[1] - lerp(1.6, 1.3, k), g(*SPOT) + 1.0), (h[0], h[1], h[2] - 0.6), 26)
+    shoot(S, (0, 0, 0), (LIE[0] + lerp(1.2, 1.0, k), LIE[1] - lerp(1.6, 1.3, k), g(*LIE) + 1.0), (h[0], h[1], h[2] - 0.6), 26)
 
 
 def walk(lt):
@@ -867,12 +868,12 @@ def officer_ghost(S, k, t, lt):
     ridge(S, 'dawn', t, 0.2)
     back = sm(lt / 0.4)
     pt = sm((lt - 0.5) / 0.3)
-    o = put(S, S['officer'], -4.4 - 0.3 * back, 3.8 + 0.3 * back, 0.0, -2.3,
+    o = put(S, S['officer'], -4.4 - 0.3 * back, 3.8 + 0.3 * back, 0.0, 0.84,
             blend(P('stand', aL=(0.6, 0.6, 0.4), aR=(0.6, 0.6, 0.4), lean=-0.2), P('point', aR=(1.45, 0.6, 0.05), head=(0.0, 0.8)), pt), 'wide')
     o.jawv = 0.7 * pt
     h = head(S, o)
     key(S, (0, 0, 0), (h[0] + 2, h[1] - 2, h[2] + 1), h, 500, 'FFC890')
-    shoot(S, (0, 0, 0), (h[0] + lerp(1.0, 0.8, k), h[1] - lerp(1.9, 1.5, k), h[2] + 0.05), (h[0], h[1], h[2] - 0.05), 38)
+    shoot(S, (0, 0, 0), (h[0] + lerp(1.5, 1.2, k) + 0.4, h[1] - lerp(1.3, 1.1, k) + 0.3, h[2] + 0.05), (h[0], h[1], h[2] - 0.05), 38)
 
 
 def rook_brim(S, k, t, lt):
@@ -912,7 +913,7 @@ def carry_down(S, k, t, lt):
     carry(S, x, y, 0.9, lt)
     p = gp(x, y, 1.6)
     key(S, (0, 0, 0), (p[0] + 3, p[1] - 4, p[2] + 4), p, 1200, 'FFE8C0')
-    shoot(S, (0, 0, 0), (p[0] + 4.2, p[1] - 3.8, p[2] + 0.6), (p[0], p[1], p[2] - 0.3), 26)
+    shoot(S, (0, 0, 0), (p[0] + 5.6, p[1] - 5.2, p[2] + 1.0), (p[0], p[1], p[2] - 0.5), 24)
 
 
 # ---------------------------------------------------------------- the end
