@@ -1,0 +1,13 @@
+{
+  "id": "r040-emuwar", "spine": "v2", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.4,
+  "segments": [
+    {"scene": "hook", "mood": "hook", "text": "a thousand emus, heading for a hidden machine gun. The soldiers wait till they're close, and the gun jams."},
+    {"scene": "doubt", "mood": "tense", "text": "Beaten by birds? No chance."},
+    {"scene": "chase", "mood": "action", "text": "{20,000|Twenty thousand} emus are raiding the wheat. So the major mounts a gun on a truck. The emus outrun it, and the ride's too rough to shoot."},
+    {"scene": "retreat", "mood": "calm", "text": "After six days and bad press, the army pulls out. The major reports they can face machine guns with the invulnerability of tanks."},
+    {"scene": "rehook", "mood": "tense", "text": "Then the farmers ask them back. Round two."},
+    {"scene": "count", "mood": "action", "text": "Four weeks later, he's recalled for good. His count: {986|nine hundred and eighty-six} birds, for {9,860|nine thousand, eight hundred and sixty} rounds."},
+    {"scene": "tidy", "mood": "wonder", "text": "Exactly ten rounds a bird. Suspiciously tidy."},
+    {"scene": "end", "mood": "end", "text": "The farmers asked again. The army said no. So it came down to bounties and fences. Ten a bird, exactly. Do you buy it? I keep picturing"}
+  ]
+}

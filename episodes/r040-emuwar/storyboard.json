@@ -1,0 +1,1120 @@
+{
+ "id": "r040-emuwar",
+ "hook_text": "THE ARMY|VS. EMUS",
+ "shots": [
+  {
+   "n": 1,
+   "segment": "hook",
+   "weight": 0.72,
+   "kind": "dam_mob",
+   "action": "Low in the wheat at the edge of a farm dam: a mob of emus pours over the rise and down the bank towards the water and the lens, necks forward, legs pumping, dust rising; the nearest bird fills the left of the frame, more and more behind it to the horizon. Expression: the lead emu's eye wide and fixed ahead",
+   "camera": "Low, at wheat-head height, slow push in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "cut",
+   "sfx": [
+    [
+     "boom",
+     0.05
+    ],
+    [
+     "scratch",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 2,
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "gun_hide",
+   "action": "Behind a machine gun on its bipod hidden in the wheat: the long barrel and the round pan magazine in the foreground, two soldiers in slouch hats lying flat behind it, the gunner's cheek to the stock; beyond the barrel the emus come down to the dam. Wheat heads sway",
+   "camera": "Low behind the gunner's shoulder, easing forward along the barrel",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "wind",
+     0.0
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 3,
+   "segment": "hook",
+   "weight": 1.15,
+   "kind": "gunner_eyes",
+   "action": "Close on the gunner's face in the wheat, brim pushed back, eyes narrowing, sweat on his brow, jaw tight; the sergeant beside him holds up a flat hand: wait. Emus' legs stride past, out of focus behind them",
+   "camera": "Close, eye level, slow push in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "heartbeat",
+     0.1
+    ],
+    [
+     "tick",
+     0.7
+    ]
+   ],
+   "hud": "4 NOVEMBER 1932",
+   "prm": {}
+  },
+  {
+   "n": 4,
+   "segment": "hook",
+   "weight": 1.3,
+   "kind": "jam",
+   "action": "Close on the gun: two short bursts of muzzle flash, then nothing; the pan magazine stops turning, a puff of grey smoke, the gunner yanks the cocking handle, the sergeant smacks the gun with his palm, both mouths drop open. Out of focus the emus scatter",
+   "camera": "Close, beside the gun, a small jolt on the jam",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 2,
+   "transition": "cut",
+   "sfx": [
+    [
+     "pop",
+     0.15
+    ],
+    [
+     "pop",
+     0.25
+    ],
+    [
+     "clunk",
+     0.45
+    ],
+    [
+     "sputter",
+     0.55
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 5,
+   "segment": "doubt",
+   "weight": 1.0,
+   "kind": "rook_jam",
+   "action": "A crow detective in a long coat and hat is standing in the wheat right beside the jammed gun, emus scattering in every direction behind him. He raps the gun with his knuckles, then turns to us, brim low, unimpressed, and speaks",
+   "camera": "Medium, low, slight push",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "zoom",
+   "sfx": [
+    [
+     "flap",
+     0.1
+    ],
+    [
+     "clunk",
+     0.35
+    ]
+   ],
+   "hud": "CASE 040",
+   "prm": {}
+  },
+  {
+   "n": 6,
+   "segment": "chase",
+   "weight": 1.1,
+   "kind": "wheat_raid",
+   "action": "Wide over the wheatbelt in hard sunlight: emus everywhere in a golden paddock, trampling paths through it; a fence with a gap smashed in it, a homestead with an iron roof and a windmill turning beyond. Small groups of emus stream through the gap",
+   "camera": "High and wide, drifting sideways",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "wind",
+     0.0
+    ],
+    [
+     "flap",
+     0.6
+    ]
+   ],
+   "hud": "W. AUSTRALIA, 1932",
+   "prm": {}
+  },
+  {
+   "n": 7,
+   "segment": "chase",
+   "weight": 0.9,
+   "kind": "wheat_eat",
+   "action": "At ground level in the wheat: three emu heads dip and tug at the wheat ears, stalks bend and snap; behind them at the gate a farmer in a wide hat takes it off and drags a hand down his face. Expression: the farmer's brows up, mouth tight",
+   "camera": "Low, close on the beaks, rack to the farmer",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.3
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 8,
+   "segment": "chase",
+   "weight": 1.15,
+   "kind": "truck_mount",
+   "action": "Beside an army truck on a dirt track: the major in a peaked cap and khaki points at the flatbed while the gunner swings the machine gun up onto a post mount on the back and clamps it down; the major gives one sharp nod",
+   "camera": "Medium, three-quarter, slow arc",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.45
+    ],
+    [
+     "engine_start",
+     0.75
+    ]
+   ],
+   "hud": "MAJOR MEREDITH",
+   "prm": {}
+  },
+  {
+   "n": 9,
+   "segment": "chase",
+   "weight": 1.1,
+   "kind": "truck_chase",
+   "action": "Wide, tracking alongside: the truck lurches down the dirt track through the wheat with the gun on the back, dust pluming behind it; a line of emus runs beside it, then easily pulls ahead and away",
+   "camera": "Wide, tracking with the truck",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "whip",
+   "sfx": [
+    [
+     "engine_start",
+     0.0
+    ],
+    [
+     "whoosh",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 10,
+   "segment": "chase",
+   "weight": 0.8,
+   "kind": "emu_legs",
+   "action": "Low and close: an emu's long scaly legs and three-toed feet pound the dirt beside the truck's spinning front wheel, kicking up clods; the bird draws ahead out of frame",
+   "camera": "Ground level, tracking fast",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 2,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.2
+    ],
+    [
+     "whoosh",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 11,
+   "segment": "chase",
+   "weight": 1.25,
+   "kind": "rook_truck",
+   "action": "On the bouncing flatbed: the gunner hauls at the gun but the barrel jumps all over the sky; the crow detective clings to the mount with one wing, hat bouncing off his head and back; alongside, an emu jogs level with them and turns its head to look at him",
+   "camera": "Close, on the truck bed, bouncing with it",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 3,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.2
+    ],
+    [
+     "clunk",
+     0.5
+    ],
+    [
+     "flap",
+     0.75
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 12,
+   "segment": "retreat",
+   "weight": 0.9,
+   "kind": "press_drop",
+   "action": "Inside an army bell tent: a bundle of newspapers thumps down on a camp table in front of the major; the top paper unfolds to show a big drawn picture of an emu. The major stares at it, moustache drooping",
+   "camera": "Top down, then tilting to his face",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "clunk",
+     0.2
+    ],
+    [
+     "flip",
+     0.5
+    ]
+   ],
+   "hud": "6 DAYS IN",
+   "prm": {}
+  },
+  {
+   "n": 13,
+   "segment": "retreat",
+   "weight": 0.8,
+   "kind": "rook_paper",
+   "action": "The crow detective sits on an ammunition crate in the tent holding the newspaper up; he lowers it slowly so only his eyes show over the top, one brow up",
+   "camera": "Close, eye level",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "flip",
+     0.2
+    ],
+    [
+     "tick",
+     0.7
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 14,
+   "segment": "retreat",
+   "weight": 1.1,
+   "kind": "pack_up",
+   "action": "Evening on the dirt track: the truck drives away into the distance, the gun under a canvas cover; the crow detective sits on the tailgate, legs dangling, brim low; in the middle of the track behind them three emus stand and watch them go",
+   "camera": "Low on the track behind, static then drifting",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "engine_start",
+     0.1
+    ],
+    [
+     "wind",
+     0.4
+    ]
+   ],
+   "hud": "WITHDRAWN",
+   "prm": {}
+  },
+  {
+   "n": 15,
+   "segment": "retreat",
+   "weight": 1.3,
+   "kind": "major_report",
+   "action": "Night in the tent: the major writes his report by the light of a hurricane lamp, pen scratching, then stops and looks up into the distance, eyebrows raised. Moths circle the lamp",
+   "camera": "Medium, low across the table, easing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.2
+    ],
+    [
+     "scratch",
+     0.5
+    ],
+    [
+     "tick",
+     0.8
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 16,
+   "segment": "retreat",
+   "weight": 1.7,
+   "kind": "emu_tank",
+   "action": "In the wheat at dawn, a big emu stands chest out like a tank, shot from very low so it towers; the crow detective walks up, knocks on its side with his knuckles, it doesn't even blink; his hat brim drops over his eyes",
+   "camera": "Very low, wide lens, slow push",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "cut",
+   "sfx": [
+    [
+     "boom",
+     0.1
+    ],
+    [
+     "clunk",
+     0.5
+    ],
+    [
+     "clunk",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 17,
+   "segment": "rehook",
+   "weight": 1.1,
+   "kind": "farmers_ask",
+   "action": "At the tent door in daylight: two farmers in wide hats, hats in their hands, point back at the wheat where emus graze; the major listens with his arms folded; the crow detective leans on the tent pole, looking from them to him",
+   "camera": "Medium wide, eye level",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 18,
+   "segment": "rehook",
+   "weight": 1.0,
+   "kind": "round_two",
+   "action": "The truck roars back down the track towards us, gun uncovered, dust flying; the crow detective stands on the cab roof, one wing pointing forward, coat flapping",
+   "camera": "Low, head on, the truck coming at the lens",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 2,
+   "transition": "whip",
+   "sfx": [
+    [
+     "horn",
+     0.15
+    ],
+    [
+     "engine_start",
+     0.4
+    ]
+   ],
+   "hud": "13 NOVEMBER",
+   "prm": {}
+  },
+  {
+   "n": 19,
+   "segment": "count",
+   "weight": 0.85,
+   "kind": "weeks_sun",
+   "action": "The camp in the paddock from a distance as the days rush by: the sun swings across the sky, shadows of the tent and truck sweep round, emus wander through in little groups and away",
+   "camera": "Wide, locked high, time passing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.2
+    ],
+    [
+     "tick",
+     0.5
+    ],
+    [
+     "tick",
+     0.8
+    ]
+   ],
+   "hud": "4 WEEKS",
+   "prm": {}
+  },
+  {
+   "n": 20,
+   "segment": "count",
+   "weight": 0.95,
+   "kind": "recalled",
+   "action": "Outside the tent: the major reads a telegram, lowers it and lets out a breath; behind him the gunner pulls the canvas cover over the gun; the crow detective reads the telegram over the major's shoulder",
+   "camera": "Medium, over the shoulder",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "flip",
+     0.2
+    ],
+    [
+     "clunk",
+     0.7
+    ]
+   ],
+   "hud": "DECEMBER 1932",
+   "prm": {}
+  },
+  {
+   "n": 21,
+   "segment": "count",
+   "weight": 1.5,
+   "kind": "ledger",
+   "action": "Close on the camp table by lamplight: the major's report book open, his pen moving down a long column of tally marks in neat groups, a sheet of figures beside it",
+   "camera": "Close, top down, slow push",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.15
+    ],
+    [
+     "scratch",
+     0.45
+    ],
+    [
+     "tick",
+     0.75
+    ]
+   ],
+   "hud": "HIS CLAIM",
+   "prm": {}
+  },
+  {
+   "n": 22,
+   "segment": "count",
+   "weight": 1.5,
+   "kind": "casings",
+   "action": "An ammunition box tips over on the table and a heap of brass cartridge cases pours out, glinting in the lamplight, rolling across the table and over the report book",
+   "camera": "Low across the table, slow push",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "crash",
+     0.1
+    ],
+    [
+     "tick",
+     0.4
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "hush": true
+  },
+  {
+   "n": 23,
+   "segment": "tidy",
+   "weight": 1.3,
+   "kind": "rook_tens",
+   "action": "The crow detective at the table slides brass cases into neat rows with a wingtip, ten to a row, counts the last one, and taps his beak",
+   "camera": "Close, three-quarter, tracking his wing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.2
+    ],
+    [
+     "tick",
+     0.4
+    ],
+    [
+     "tick",
+     0.6
+    ],
+    [
+     "tick",
+     0.8
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 24,
+   "segment": "tidy",
+   "weight": 1.1,
+   "kind": "rook_squint",
+   "action": "Close on the crow detective's face in the lamplight: he lifts his hat brim with one finger, raises one brow and narrows his eyes at us",
+   "camera": "Close-up, eye level, push in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "bloop",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 25,
+   "segment": "end",
+   "weight": 1.2,
+   "kind": "asked_no",
+   "action": "A farmer at his gate by the empty dirt track holds a letter, reads it and lowers it, shoulders dropping; out in his wheat, emus graze",
+   "camera": "Medium, low, slow push",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "flip",
+     0.2
+    ],
+    [
+     "wind",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 26,
+   "segment": "end",
+   "weight": 1.2,
+   "kind": "fence_build",
+   "action": "Two farmers put up a tall wire fence along the paddock: one swings a hammer onto a post while the crow detective holds the post steady with both wings, flinching at each blow",
+   "camera": "Medium, three-quarter",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.25
+    ],
+    [
+     "clunk",
+     0.55
+    ],
+    [
+     "clunk",
+     0.85
+    ]
+   ],
+   "hud": "BOUNTIES + FENCES",
+   "prm": {}
+  },
+  {
+   "n": 27,
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "fence_face",
+   "action": "Sunset at the new fence: an emu on the far side and the crow detective on a fence post on this side, face to face through the wire; the emu tilts its head, Rook tilts his",
+   "camera": "Close, side on, both profiles",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 28,
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "board",
+   "action": "Rook's case board, a sheet of corrugated iron: a photograph of the emus at the dam, figures chalked under it: 986 BIRDS, 9,860 ROUNDS, 10 EACH?",
+   "camera": "Flat insert",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "bloop",
+     0.1
+    ],
+    [
+     "clunk",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "still": true
+   }
+  },
+  {
+   "n": 29,
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "rook_question",
+   "action": "Dusk on the fence post: the crow detective flips a brass cartridge case like a coin, catches it, looks at it glint, pockets it and looks straight at us with one brow up",
+   "camera": "Medium close, low, easing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.25
+    ],
+    [
+     "flap",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "brand": true
+  },
+  {
+   "n": 30,
+   "segment": "end",
+   "weight": 0.9,
+   "kind": "dam_mob",
+   "action": "Back to the first picture: the emus pouring down the bank towards the dam and the lens, played back to its first frame",
+   "camera": "The opening framing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "loop": true
+   }
+  }
+ ]
+}

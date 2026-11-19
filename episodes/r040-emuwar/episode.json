@@ -1,0 +1,28 @@
+{
+ "id": "r040-emuwar",
+ "format": "short",
+ "status": "draft",
+ "synthetic": false,
+ "host": "rook",
+ "case": 40,
+ "title": "The Army Brought Machine Guns. The Emus Won. #shorts",
+ "playlist": "Rook's Case Files (Shorts)",
+ "description": "",
+ "tags": [],
+ "hashtags": [
+  "#shorts",
+  "#truestory",
+  "#history"
+ ],
+ "sources": [
+  "https://en.wikipedia.org/wiki/Emu_War",
+  "https://www.historyhit.com/the-great-emu-war/",
+  "https://www.mentalfloss.com/history/when-australia-went-war-its-emus",
+  "https://www.discoverwildlife.com/animal-facts/birds/the-emu-war-of-1932"
+ ],
+ "spine": "v2",
+ "authoring": {
+  "claimed_at": "2026-11-19T12:49:49Z",
+  "run": "scheduled short run, 19 Nov 2026 (retry of an earlier attempt); the batch brief's ten Shorts are all authored, so this run took the first slate idea, case 040"
+ }
+}
