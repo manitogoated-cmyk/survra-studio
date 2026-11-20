@@ -1,0 +1,61 @@
+{
+  "id": "r023-herfkens",
+  "spine": "v2",
+  "voice": "am_fenrir",
+  "speed": 1.12,
+  "gap": 0.14,
+  "lead": 0.1,
+  "tail": 0.4,
+  "segments": [
+    {
+      "scene": "hook",
+      "mood": "hook",
+      "text": "a plane hits a jungle mountain in a storm. She wakes up under a seat, jaw broken, one lung collapsed."
+    },
+    {
+      "scene": "doubt",
+      "mood": "tense",
+      "text": "Hurt like that? No chance."
+    },
+    {
+      "scene": "alone",
+      "mood": "sad",
+      "text": "Her fiancé died in the crash. The one man near her still alive dies soon after."
+    },
+    {
+      "scene": "thirst",
+      "mood": "tense",
+      "text": "She has no water. Then she sees the broken wing."
+    },
+    {
+      "scene": "sponge",
+      "mood": "wonder",
+      "text": "Its insulation is soft, like a sponge. She drags herself to it on her elbows and pulls out tufts."
+    },
+    {
+      "scene": "rain",
+      "mood": "calm",
+      "text": "When rain comes, they soak it up. She drinks one sip at a time."
+    },
+    {
+      "scene": "rehook",
+      "mood": "tense",
+      "text": "But day after day, nobody finds the wreck."
+    },
+    {
+      "scene": "calm",
+      "mood": "calm",
+      "text": "So she stays in the moment, and finds her calm in the beauty of the jungle."
+    },
+    {
+      "scene": "payoff",
+      "mood": "triumph",
+      "text": "On day eight, a police officer finds her. He thinks she's a ghost. Then rescuers carry her down the mountain."
+    },
+    {
+      "scene": "end",
+      "mood": "end",
+      "text": "Thirty people died. She was the only one who lived. Case closed. It all started when"
+    }
+  ]
+}
