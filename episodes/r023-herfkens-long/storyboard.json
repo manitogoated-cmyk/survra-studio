@@ -1,5 +1,5 @@
 {
- "id": "r023-herfkens",
+ "id": "r023-herfkens-long",
  "hook_text": "8 DAYS|BY THE WRECK",
  "shots": [
   {
@@ -7,19 +7,19 @@
    "segment": "hook",
    "weight": 0.9,
    "kind": "crash_ridge",
-   "action": "Storm over a jungle ridge: a small three-engine jet skims in low under the cloud, its wing tears through the treetops, leaves and branches burst, lightning",
-   "camera": "Wide and low from the slope, looking up at the ridge line",
+   "action": "Storm over the ridge: the small jet comes in low under the cloud, its wing tearing into the treetops, leaves and branches bursting out",
+   "camera": "High over the canopy, pushing in, slight roll",
    "cam": [
     [
      1.0,
-     540,
      960,
+     540,
      0
     ],
     [
-     1.08,
-     540,
+     1.07,
      960,
+     536,
      0
     ]
    ],
@@ -41,21 +41,21 @@
   {
    "n": 2,
    "segment": "hook",
-   "weight": 1.05,
+   "weight": 1.0,
    "kind": "seat_pin",
-   "action": "Inside the broken cabin: her face, eyes snapping open, a toppled seat pressing on her, green light and rain through the torn roof; she pushes at it",
-   "camera": "Close, overhead, slowly pushing in",
+   "action": "Inside the broken cabin, from above: her eyes snap open under a toppled seat; she gasps and pushes at it",
+   "camera": "Straight down on her face, easing in",
    "cam": [
     [
      1.0,
-     540,
      960,
+     540,
      0
     ],
     [
-     1.08,
-     540,
+     1.07,
      960,
+     536,
      0
     ]
    ],
@@ -68,30 +68,30 @@
     ],
     [
      "gasp",
-     0.55
+     0.5
     ]
    ],
-   "hud": null,
+   "hud": "VIETNAM, 14 NOV 1992",
    "prm": {}
   },
   {
    "n": 3,
    "segment": "hook",
-   "weight": 1.0,
+   "weight": 1.1,
    "kind": "wreck_wide",
-   "action": "The broken fuselage in the trees on the slope in rain, nose gone; she lowers herself out of the open end, holding her jaw",
-   "camera": "Wide from downhill, drifting up",
+   "action": "The broken fuselage in the trees in the rain, its nose gone; she lowers herself out of the open end, in pain",
+   "camera": "Wide from down the slope, rising a little",
    "cam": [
     [
      1.0,
-     540,
      960,
+     540,
      0
     ],
     [
-     1.08,
-     540,
+     1.07,
      960,
+     536,
      0
     ]
    ],
@@ -107,63 +107,27 @@
      0.6
     ]
    ],
-   "hud": null,
+   "hud": "VIETNAM, 14 NOV 1992",
    "prm": {}
   },
   {
    "n": 4,
-   "segment": "hook",
-   "weight": 1.05,
-   "kind": "wing_torn",
-   "action": "The torn-off wing lying downslope in the ferns, metal bent, yellow insulation hanging from its root; Rook drops onto it out of the rain and folds his wings",
-   "camera": "Low along the wing, pushing in",
-   "cam": [
-    [
-     1.0,
-     540,
-     960,
-     0
-    ],
-    [
-     1.08,
-     540,
-     960,
-     0
-    ]
-   ],
-   "shake": 0,
-   "transition": "cut",
-   "sfx": [
-    [
-     "flap",
-     0.25
-    ],
-    [
-     "clunk",
-     0.55
-    ]
-   ],
-   "hud": null,
-   "prm": {}
-  },
-  {
-   "n": 5,
    "segment": "doubt",
    "weight": 1.0,
    "kind": "rook_doubt",
-   "action": "Rook on the wing in the rain, the wreck behind him; his brim drops over his eyes: 'Hurt like that? No chance.'",
-   "camera": "Close on Rook, three-quarter, wreck in the background",
+   "action": "Rook on the torn wing in the rain, the wreck behind him, arms folded; his brim drops over his eyes: \"No chance.\"",
+   "camera": "Three-quarter on Rook, easing in",
    "cam": [
     [
      1.0,
-     540,
      960,
+     540,
      0
     ],
     [
-     1.08,
-     540,
+     1.07,
      960,
+     536,
      0
     ]
    ],
@@ -173,29 +137,203 @@
     [
      "tick",
      0.15
+    ],
+    [
+     "rain",
+     0.5
     ]
    ],
    "hud": "CASE 023",
    "prm": {}
   },
   {
-   "n": 6,
-   "segment": "alone",
+   "n": 5,
+   "segment": "start",
    "weight": 1.0,
-   "kind": "hands_hold",
-   "action": "Inside the cabin, two hands on a seat's armrest, his still; hers closes round his and holds on",
-   "camera": "Close and low on the hands, soft warm light, slow push",
+   "kind": "desk_trade",
+   "action": "A trading floor in Madrid: she sits between two monitors, telephone at her ear, talking and smiling; Rook leans by the window, arms folded, brim tipping down",
+   "camera": "Three-quarter from the front left, easing in",
    "cam": [
     [
      1.0,
-     540,
      960,
+     540,
      0
     ],
     [
-     1.08,
-     540,
+     1.07,
      960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ]
+   ],
+   "hud": "MADRID",
+   "prm": {}
+  },
+  {
+   "n": 6,
+   "segment": "start",
+   "weight": 1.0,
+   "kind": "pasje_desk",
+   "action": "An office in Vietnam, the ceiling fan turning: Willem on the telephone, laughing, leaning back in his chair",
+   "camera": "Three-quarter from the front right, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.2
+    ]
+   ],
+   "hud": "WILLEM VAN DER PAS",
+   "prm": {}
+  },
+  {
+   "n": 7,
+   "segment": "start",
+   "weight": 0.9,
+   "kind": "desk_trade",
+   "action": "Closer on her at the desk from the other side: she laughs into the telephone, turning in her chair",
+   "camera": "Closer, from the right",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": "13 YEARS TOGETHER",
+   "prm": {
+    "alt": [
+     55,
+     0.62,
+     -0.3
+    ]
+   }
+  },
+  {
+   "n": 8,
+   "segment": "trip",
+   "weight": 1.0,
+   "kind": "apron_wide",
+   "action": "A small airport apron under building cloud: the little jet waits with its rear stairs down; Willem waves by the steps; she crosses the tarmac with her bag; Rook follows and pops his collar",
+   "camera": "Low and wide from the tarmac, drifting",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "engine_start",
+     0.2
+    ],
+    [
+     "wind",
+     0.6
+    ]
+   ],
+   "hud": "NOVEMBER 1992",
+   "prm": {}
+  },
+  {
+   "n": 9,
+   "segment": "trip",
+   "weight": 1.0,
+   "kind": "apron_meet",
+   "action": "Close on the two of them at the foot of the steps: they take each other's hands, both smiling",
+   "camera": "Close two-shot",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "birdcall",
+     0.4
+    ]
+   ],
+   "hud": "NEXT STOP: NHA TRANG",
+   "prm": {}
+  },
+  {
+   "n": 10,
+   "segment": "board",
+   "weight": 1.1,
+   "kind": "apron_stairs",
+   "action": "At the stairs under the tail: she stops, arms tight across herself, shakes her head and steps back; he holds out a hand and talks her round",
+   "camera": "From under the tail, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
      0
     ]
    ],
@@ -205,29 +343,432 @@
     [
      "low",
      0.2
+    ],
+    [
+     "tick",
+     0.6
     ]
    ],
-   "hud": "VIETNAM, NOV 1992",
+   "hud": null,
    "prm": {}
   },
   {
-   "n": 7,
-   "segment": "alone",
-   "weight": 1.0,
-   "kind": "rook_hatoff",
-   "action": "Rook beside the fuselage takes off his hat and holds it to his chest, head bowed, rain on his feathers",
-   "camera": "Medium, eye level, slow drift in",
+   "n": 11,
+   "segment": "board",
+   "weight": 0.9,
+   "kind": "rook_apron",
+   "action": "Rook on the tarmac looks the little jet up and down; his brim drops",
+   "camera": "Close on Rook from the jet's side",
    "cam": [
     [
      1.0,
-     540,
      960,
+     540,
      0
     ],
     [
-     1.08,
-     540,
+     1.07,
      960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 12,
+   "segment": "drop",
+   "weight": 1.0,
+   "kind": "cabin_flight",
+   "action": "Down the aisle of the small jet: the two of them side by side, Rook a row behind across the aisle, arms folded; grey cloud at the windows",
+   "camera": "From the front of the aisle, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "wind",
+     0.1
+    ]
+   ],
+   "hud": "FLIGHT 474",
+   "prm": {}
+  },
+  {
+   "n": 13,
+   "segment": "drop",
+   "weight": 1.0,
+   "kind": "cabin_drop",
+   "action": "The plane drops: he turns to her, eyes wide; she tells him it is only an air pocket",
+   "camera": "Close two-shot, shaking",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 2,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.05
+    ],
+    [
+     "gasp",
+     0.3
+    ]
+   ],
+   "hud": "FLIGHT 474",
+   "prm": {}
+  },
+  {
+   "n": 14,
+   "segment": "drop",
+   "weight": 0.9,
+   "kind": "cabin_flight",
+   "action": "It drops again: the lights flicker, cups and bags leave the floor, Rook's hat jumps off his head",
+   "camera": "Further back and lower, rolling",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 4,
+   "transition": "cut",
+   "sfx": [
+    [
+     "impact",
+     0.05
+    ],
+    [
+     "shout",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "drop": 2,
+    "alt": [
+     -14,
+     0.8,
+     -0.5
+    ]
+   }
+  },
+  {
+   "n": 15,
+   "segment": "drop",
+   "weight": 1.0,
+   "kind": "hands_grab",
+   "action": "Close on the armrest between them: his hand comes down on hers and holds on; the light goes out",
+   "camera": "Close on the hands",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 2,
+   "transition": "cut",
+   "sfx": [
+    [
+     "grab",
+     0.3
+    ],
+    [
+     "low",
+     0.7
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 16,
+   "segment": "wake",
+   "weight": 1.0,
+   "kind": "crash_ridge",
+   "action": "From further round and higher: the jet under the cloud, too low, its wing going into the treetops",
+   "camera": "Higher, from further round",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 2,
+   "transition": "flash",
+   "sfx": [
+    [
+     "thunder",
+     0.1
+    ],
+    [
+     "crash",
+     0.5
+    ]
+   ],
+   "hud": "TOO LOW, IN BAD WEATHER",
+   "prm": {
+    "alt": [
+     25,
+     0.8,
+     3.0
+    ]
+   }
+  },
+  {
+   "n": 17,
+   "segment": "wake",
+   "weight": 1.0,
+   "kind": "belt_empty",
+   "action": "In the broken cabin: an empty seat, its belt lying open, one strap still swinging, rain dripping through the roof",
+   "camera": "Close on the seat, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "creak",
+     0.3
+    ],
+    [
+     "rain",
+     0.5
+    ]
+   ],
+   "hud": "NO SEAT BELT",
+   "prm": {}
+  },
+  {
+   "n": 18,
+   "segment": "wake",
+   "weight": 1.0,
+   "kind": "seat_pin",
+   "action": "From further round: she comes round under the fallen seat and heaves at it",
+   "camera": "From above, further round",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "gasp",
+     0.3
+    ],
+    [
+     "creak",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "alt": [
+     35,
+     1.25,
+     0.3
+    ]
+   }
+  },
+  {
+   "n": 19,
+   "segment": "willem",
+   "weight": 1.15,
+   "kind": "her_looks",
+   "action": "Past the back of a seat: she has pulled herself up in the aisle and looks at the man in it; only the back of his head and one still hand are seen; her face falls",
+   "camera": "Over the seat back, on her face",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 20,
+   "segment": "willem",
+   "weight": 0.85,
+   "kind": "hands_hold",
+   "action": "Close on two hands on the armrest: his is still; hers closes round it and holds on",
+   "camera": "Close on the hands",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 21,
+   "segment": "man",
+   "weight": 1.1,
+   "kind": "trousers",
+   "action": "By the wreck in the rain: the man who lived through the crash sits propped beside his open suitcase and holds out a folded pair of trousers; she reaches and takes them",
+   "camera": "Two-shot from down the slope, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "rain",
+     0.1
+    ],
+    [
+     "scratch",
+     0.5
+    ]
+   ],
+   "hud": "ONE OTHER SURVIVOR",
+   "prm": {}
+  },
+  {
+   "n": 22,
+   "segment": "man",
+   "weight": 1.0,
+   "kind": "man_talks",
+   "action": "Close on the man: grey and tired, but talking; he lifts a hand towards the sky",
+   "camera": "Close three-quarter",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
      0
     ]
    ],
@@ -239,27 +780,27 @@
      0.3
     ]
    ],
-   "hud": null,
+   "hud": "ONE OTHER SURVIVOR",
    "prm": {}
   },
   {
-   "n": 8,
-   "segment": "alone",
+   "n": 23,
+   "segment": "man",
    "weight": 1.0,
    "kind": "man_beside",
-   "action": "Under the wreck's edge she lies propped on one elbow, turned to the man lying near her; she reaches out, he does not move; she lowers her hand",
-   "camera": "Medium from behind her shoulder, slow push",
+   "action": "She reaches out to him; he does not move; she lowers her hand",
+   "camera": "Two-shot from above",
    "cam": [
     [
      1.0,
-     540,
      960,
+     540,
      0
     ],
     [
-     1.08,
-     540,
+     1.07,
      960,
+     536,
      0
     ]
    ],
@@ -275,23 +816,55 @@
    "prm": {}
   },
   {
-   "n": 9,
-   "segment": "alone",
-   "weight": 0.95,
-   "kind": "her_alone",
-   "action": "She sits alone against a root by the fuselage in the rain, knees up, the jungle dark around her",
-   "camera": "Wide-ish, slow pull back to show how alone she is",
+   "n": 24,
+   "segment": "man",
+   "weight": 0.9,
+   "kind": "rook_hatoff",
+   "action": "Rook beside the fuselage in the rain takes off his hat and holds it to his chest, head bowed",
+   "camera": "Low three-quarter",
    "cam": [
     [
      1.0,
-     540,
      960,
+     540,
      0
     ],
     [
-     1.08,
-     540,
+     1.07,
      960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "rain",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 25,
+   "segment": "alone",
+   "weight": 1.1,
+   "kind": "her_alone",
+   "action": "She sits alone against a root by the fuselage in the rain, knees up; the camera pulls back",
+   "camera": "Pulling back",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
      0
     ]
    ],
@@ -307,23 +880,23 @@
    "prm": {}
   },
   {
-   "n": 10,
-   "segment": "thirst",
-   "weight": 1.0,
+   "n": 26,
+   "segment": "alone",
+   "weight": 0.9,
    "kind": "thirst_face",
-   "action": "Sun breaks through the canopy: close on her face, squinting, wiping her dry lips with a fingertip",
-   "camera": "Close, eye level, easing in",
+   "action": "Sun through the canopy: close on her face, squinting, a fingertip at her dry lips",
+   "camera": "Close",
    "cam": [
     [
      1.0,
-     540,
      960,
+     540,
      0
     ],
     [
-     1.08,
-     540,
+     1.07,
      960,
+     536,
      0
     ]
    ],
@@ -335,27 +908,99 @@
      0.3
     ]
    ],
-   "hud": null,
+   "hud": "NO WATER",
    "prm": {}
   },
   {
-   "n": 11,
-   "segment": "thirst",
-   "weight": 1.0,
-   "kind": "wing_pov",
-   "action": "Her view down the slope: the broken wing, its torn root stuffed with pale insulation; Rook on the wing points at it",
-   "camera": "Over her shoulder, rack to the wing",
+   "n": 27,
+   "segment": "rules",
+   "weight": 1.1,
+   "kind": "her_resolve",
+   "action": "Close on her as the rain thins: she wipes her eyes with the back of her hand, then lifts her head and sets her face",
+   "camera": "Close, from her right",
    "cam": [
     [
      1.0,
-     540,
      960,
+     540,
      0
     ],
     [
-     1.08,
-     540,
+     1.07,
      960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.2
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": "RULE ONE: STAY PUT",
+   "prm": {}
+  },
+  {
+   "n": 28,
+   "segment": "rules",
+   "weight": 0.9,
+   "kind": "wing_torn",
+   "action": "Low along the torn wing in the ferns; Rook drops onto it out of the rain and folds his wings",
+   "camera": "Low along the wing",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "flap",
+     0.25
+    ],
+    [
+     "clunk",
+     0.6
+    ]
+   ],
+   "hud": "RULE TWO: DON'T CRY",
+   "prm": {}
+  },
+  {
+   "n": 29,
+   "segment": "sponge",
+   "weight": 0.9,
+   "kind": "wing_pov",
+   "action": "Over her shoulder, down the slope: the broken wing, its torn root stuffed with pale insulation; Rook on the wing points at it",
+   "camera": "Over her shoulder",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
      0
     ]
    ],
@@ -371,23 +1016,23 @@
    "prm": {}
   },
   {
-   "n": 12,
+   "n": 30,
    "segment": "sponge",
    "weight": 1.0,
    "kind": "rook_squeeze",
-   "action": "Rook at the wing root pulls out a tuft of insulation and squeezes it; it springs back; he looks over at her, brows up",
-   "camera": "Close on Rook and the tuft",
+   "action": "Rook at the wing root pulls out a tuft and squeezes it; it springs back; he looks over at her",
+   "camera": "Close on Rook",
    "cam": [
     [
      1.0,
-     540,
      960,
+     540,
      0
     ],
     [
-     1.08,
-     540,
+     1.07,
      960,
+     536,
      0
     ]
    ],
@@ -400,30 +1045,30 @@
     ],
     [
      "pop",
-     0.65
+     0.6
     ]
    ],
    "hud": null,
    "prm": {}
   },
   {
-   "n": 13,
+   "n": 31,
    "segment": "sponge",
    "weight": 1.05,
    "kind": "elbow_crawl",
    "action": "She drags herself on her elbows over roots and leaves toward the wing, legs trailing, face set",
-   "camera": "Low at ground level in front of her, backing away",
+   "camera": "Low, in front of her, backing away",
    "cam": [
     [
      1.0,
-     540,
      960,
+     540,
      0
     ],
     [
-     1.08,
-     540,
+     1.07,
      960,
+     536,
      0
     ]
    ],
@@ -443,23 +1088,23 @@
    "prm": {}
   },
   {
-   "n": 14,
+   "n": 32,
    "segment": "sponge",
-   "weight": 0.95,
+   "weight": 1.0,
    "kind": "tuft_pull",
-   "action": "Close on her hand pulling tufts of insulation out of the torn wing root and rolling them into little balls",
-   "camera": "Macro close, slow push",
+   "action": "Close on her hand pulling tufts out of the torn wing root and rolling them into little balls",
+   "camera": "Close on the hand",
    "cam": [
     [
      1.0,
-     540,
      960,
+     540,
      0
     ],
     [
-     1.08,
-     540,
+     1.07,
      960,
+     536,
      0
     ]
    ],
@@ -469,70 +1114,38 @@
     [
      "scratch",
      0.3
+    ],
+    [
+     "scratch",
+     0.7
     ]
    ],
    "hud": null,
    "prm": {}
   },
   {
-   "n": 15,
-   "segment": "sponge",
-   "weight": 1.0,
-   "kind": "rook_nod",
-   "action": "Rook on the wing taps his beak, then nods slowly at her: she worked it out first",
-   "camera": "Close, low angle, sky behind",
-   "cam": [
-    [
-     1.0,
-     540,
-     960,
-     0
-    ],
-    [
-     1.08,
-     540,
-     960,
-     0
-    ]
-   ],
-   "shake": 0,
-   "transition": "cut",
-   "sfx": [
-    [
-     "tick",
-     0.3
-    ],
-    [
-     "tick",
-     0.45
-    ]
-   ],
-   "hud": null,
-   "prm": {}
-  },
-  {
-   "n": 16,
+   "n": 33,
    "segment": "rain",
    "weight": 1.0,
    "kind": "rain_arrives",
-   "action": "Rain sweeps over the ridge, the trees thrash, Rook hunches on the fuselage roof, she holds the balls of insulation up into the rain",
-   "camera": "Wide, high, slow push",
+   "action": "Rain sweeps over the ridge, the trees thrash; Rook hunches on the fuselage roof; she holds the balls of insulation up into the rain",
+   "camera": "Wide from down the slope",
    "cam": [
     [
      1.0,
-     540,
      960,
+     540,
      0
     ],
     [
-     1.08,
-     540,
+     1.07,
      960,
+     536,
      0
     ]
    ],
    "shake": 0,
-   "transition": "cut",
+   "transition": "whip",
    "sfx": [
     [
      "rain",
@@ -547,23 +1160,23 @@
    "prm": {}
   },
   {
-   "n": 17,
+   "n": 34,
    "segment": "rain",
    "weight": 1.0,
    "kind": "tuft_drink",
    "action": "Close on her face as she lifts a soaked ball to her lips and takes one sip, water dripping",
-   "camera": "Close, eye level, still and steady",
+   "camera": "Close",
    "cam": [
     [
      1.0,
-     540,
      960,
+     540,
      0
     ],
     [
-     1.08,
-     540,
+     1.07,
      960,
+     536,
      0
     ]
    ],
@@ -575,27 +1188,27 @@
      0.5
     ]
    ],
-   "hud": "ONE SIP AT A TIME",
+   "hud": "ONE SIP",
    "prm": {}
   },
   {
-   "n": 18,
-   "segment": "rehook",
-   "weight": 1.0,
-   "kind": "aerial_canopy",
-   "action": "High above: endless green ridges under drifting cloud; no sign of the wreck under the canopy",
-   "camera": "Very high and wide, slow drift",
+   "n": 35,
+   "segment": "rain",
+   "weight": 1.1,
+   "kind": "sip_wait",
+   "action": "At the wing as the day goes: the balls in a row on the metal; she waits beside them, then takes one; Rook, further along the wing, flips a coin to pass the time",
+   "camera": "Three-quarter along the wing, light turning to dusk",
    "cam": [
     [
      1.0,
-     540,
      960,
+     540,
      0
     ],
     [
-     1.08,
-     540,
+     1.07,
      960,
+     536,
      0
     ]
    ],
@@ -603,31 +1216,139 @@
    "transition": "cut",
    "sfx": [
     [
+     "flip",
+     0.2
+    ],
+    [
+     "flip",
+     0.6
+    ]
+   ],
+   "hud": "EVERY TWO HOURS",
+   "prm": {}
+  },
+  {
+   "n": 36,
+   "segment": "jungle",
+   "weight": 0.95,
+   "kind": "swat",
+   "action": "Close: she brushes at her forearm again and again, insects circling, her mouth tight",
+   "camera": "Close on her arms and face",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "buzz",
+     0.1
+    ],
+    [
+     "scratch",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 37,
+   "segment": "jungle",
+   "weight": 1.05,
+   "kind": "move_away",
+   "action": "From up by the torn end of the fuselage, at dusk: she drags herself away from the wreck, down the slope, on her elbows",
+   "camera": "High from beside the wreck, looking down the slope",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.3
+    ],
+    [
+     "jungle",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 38,
+   "segment": "rehook",
+   "weight": 1.0,
+   "kind": "aerial_canopy",
+   "action": "Very high above: endless green ridges under drifting cloud; nothing shows of the wreck under the canopy",
+   "camera": "High aerial, drifting",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "zoom",
+   "sfx": [
+    [
      "wind",
      0.1
     ]
    ],
-   "hud": "WRECK NOT FOUND",
+   "hud": "O KHA MOUNTAIN",
    "prm": {}
   },
   {
-   "n": 19,
+   "n": 39,
    "segment": "rehook",
    "weight": 1.0,
    "kind": "rook_lookout",
-   "action": "Rook on the top of the tallest tree scans the ridges, wing over his eyes; nothing; his shoulders drop",
-   "camera": "Medium on Rook, the ridges behind",
+   "action": "Rook on the top of the tallest tree, a wing over his eyes, scanning the ridges; nothing; his shoulders drop",
+   "camera": "Close on Rook above the canopy",
    "cam": [
     [
      1.0,
-     540,
      960,
+     540,
      0
     ],
     [
-     1.08,
-     540,
+     1.07,
      960,
+     536,
      0
     ]
    ],
@@ -643,27 +1364,27 @@
      0.5
     ]
    ],
-   "hud": null,
+   "hud": "WRECK NOT FOUND",
    "prm": {}
   },
   {
-   "n": 20,
+   "n": 40,
    "segment": "calm",
    "weight": 1.0,
    "kind": "night_wreck",
-   "action": "Night: the wreck a dark shape in the trees, fireflies drifting, she lies small by the fuselage",
-   "camera": "Wide, slow push",
+   "action": "Night: the wreck a dark shape in the trees, fireflies drifting; she lies small on the slope",
+   "camera": "Wide, easing in",
    "cam": [
     [
      1.0,
-     540,
      960,
+     540,
      0
     ],
     [
-     1.08,
-     540,
+     1.07,
      960,
+     536,
      0
     ]
    ],
@@ -679,23 +1400,55 @@
    "prm": {}
   },
   {
-   "n": 21,
+   "n": 41,
    "segment": "calm",
    "weight": 1.0,
-   "kind": "calm_face",
-   "action": "Close on her face at night: eyes closed, breathing slowly, the fear going out of it as fireflies drift over her",
-   "camera": "Close, still, lit softly",
+   "kind": "sky_gap",
+   "action": "Flat on her back, what she sees: the hole the jet cut in the trees, crowns swaying round it, first light, leaves coming slowly down",
+   "camera": "Straight up, turning slowly",
    "cam": [
     [
      1.0,
-     540,
      960,
+     540,
      0
     ],
     [
-     1.08,
-     540,
+     1.07,
      960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "birdcall",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 42,
+   "segment": "fading",
+   "weight": 1.0,
+   "kind": "calm_face",
+   "action": "Close on her face: eyes closed, breathing slowly, the fear gone out of it",
+   "camera": "Close from above, tilted",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
      0
     ]
    ],
@@ -707,27 +1460,27 @@
      0.3
     ]
    ],
-   "hud": null,
+   "hud": "DAY 6",
    "prm": {}
   },
   {
-   "n": 22,
-   "segment": "calm",
+   "n": 43,
+   "segment": "fading",
    "weight": 1.0,
    "kind": "rook_vigil",
-   "action": "Rook sits quietly beside her on a root, hat in his lap, keeping watch while she rests",
-   "camera": "Medium, low, slow drift",
+   "action": "Rook sits beside her on a root, brim low, keeping watch",
+   "camera": "Three-quarter on Rook, she beyond him",
    "cam": [
     [
      1.0,
-     540,
      960,
+     540,
      0
     ],
     [
-     1.08,
-     540,
+     1.07,
      960,
+     536,
      0
     ]
    ],
@@ -743,28 +1496,96 @@
    "prm": {}
   },
   {
-   "n": 23,
-   "segment": "payoff",
-   "weight": 1.0,
-   "kind": "officer_trees",
-   "action": "Dawn mist in the trees: a man in a khaki uniform and cap pushes through the leaves and stops dead",
-   "camera": "Medium from beside the wreck, looking up the slope",
+   "n": 44,
+   "segment": "orange",
+   "weight": 1.15,
+   "kind": "orange_man",
+   "action": "Morning mist: past her, a man in an orange jacket comes out of the trees below, sees her and stops dead; she lifts a hand",
+   "camera": "Low, past her, to the man",
    "cam": [
     [
      1.0,
-     540,
      960,
+     540,
      0
     ],
     [
-     1.08,
-     540,
+     1.07,
      960,
+     536,
      0
     ]
    ],
    "shake": 0,
    "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.2
+    ],
+    [
+     "gasp",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 45,
+   "segment": "orange",
+   "weight": 0.85,
+   "kind": "orange_gone",
+   "action": "Close on the man in orange: he stares, steps back, then turns and goes back into the trees",
+   "camera": "Close on him, letting him go",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 46,
+   "segment": "found",
+   "weight": 1.0,
+   "kind": "officer_trees",
+   "action": "Dawn in the trees: a man in a khaki uniform and cap pushes through the leaves and stops dead",
+   "camera": "Low, from beside her",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
    "sfx": [
     [
      "scratch",
@@ -779,23 +1600,23 @@
    "prm": {}
   },
   {
-   "n": 24,
-   "segment": "payoff",
-   "weight": 0.95,
+   "n": 47,
+   "segment": "found",
+   "weight": 0.9,
    "kind": "officer_ghost",
-   "action": "Close on the officer's face: eyes wide, he steps back, then points and shouts down the hill",
-   "camera": "Close, eye level, quick push in",
+   "action": "Close on the officer: eyes wide, he steps back, then points and shouts down the hill",
+   "camera": "Close",
    "cam": [
     [
      1.0,
-     540,
      960,
+     540,
      0
     ],
     [
-     1.08,
-     540,
+     1.07,
      960,
+     536,
      0
     ]
    ],
@@ -807,27 +1628,27 @@
      0.55
     ]
    ],
-   "hud": null,
+   "hud": "DAY 8",
    "prm": {}
   },
   {
-   "n": 25,
-   "segment": "payoff",
-   "weight": 0.95,
+   "n": 48,
+   "segment": "found",
+   "weight": 0.85,
    "kind": "rook_brim",
    "action": "Rook lifts his brim with one finger, eyes wide, then lets out a breath",
    "camera": "Close on Rook",
    "cam": [
     [
      1.0,
-     540,
      960,
+     540,
      0
     ],
     [
-     1.08,
-     540,
+     1.07,
      960,
+     536,
      0
     ]
    ],
@@ -843,23 +1664,91 @@
    "prm": {}
   },
   {
-   "n": 26,
-   "segment": "payoff",
-   "weight": 1.2,
-   "kind": "carry_down",
-   "action": "Rescuers carry her down the slope on canvas slung between two sticks, in the morning light; she turns her head to the sky",
-   "camera": "Medium, tracking alongside downhill",
+   "n": 49,
+   "segment": "found",
+   "weight": 1.15,
+   "kind": "men_arrive",
+   "action": "Men come down through the trees to the wreck, the officer first, one with a clipboard, one with a dark bundle under his arm; she raises her arm; Rook stands up on the fuselage roof",
+   "camera": "Wide from down the slope",
    "cam": [
     [
      1.0,
-     540,
      960,
+     540,
      0
     ],
     [
-     1.08,
-     540,
+     1.07,
      960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.2
+    ],
+    [
+     "shout",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 50,
+   "segment": "found",
+   "weight": 1.1,
+   "kind": "list_point",
+   "action": "Close on the clipboard: a list of lines; her finger comes in and stops on one of them, and that line lights",
+   "camera": "Close on the list",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.62
+    ]
+   ],
+   "hud": "HER NAME ON THE LIST",
+   "prm": {}
+  },
+  {
+   "n": 51,
+   "segment": "carry",
+   "weight": 1.0,
+   "kind": "carry_down",
+   "action": "Rescuers carry her down the slope on canvas slung between two poles; she turns her head to the sky",
+   "camera": "Three-quarter, tracking",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
      0
     ]
    ],
@@ -876,55 +1765,23 @@
    "hush": true
   },
   {
-   "n": 27,
-   "segment": "end",
-   "weight": 1.0,
-   "kind": "rook_wreck",
-   "action": "Rook alone by the empty fuselage, puts his hat back on and looks at the wreck a long moment",
-   "camera": "Wide-ish, slow pull back",
-   "cam": [
-    [
-     1.0,
-     540,
-     960,
-     0
-    ],
-    [
-     1.08,
-     540,
-     960,
-     0
-    ]
-   ],
-   "shake": 0,
-   "transition": "cut",
-   "sfx": [
-    [
-     "wind",
-     0.3
-    ]
-   ],
-   "hud": "30 DIED. 1 LIVED.",
-   "prm": {}
-  },
-  {
-   "n": 28,
-   "segment": "end",
-   "weight": 1.0,
+   "n": 52,
+   "segment": "carry",
+   "weight": 0.9,
    "kind": "carry_light",
    "action": "The carry party goes down the jungle path into sunlight, small among the giant trees",
-   "camera": "Wide from uphill, slow crane",
+   "camera": "High from behind",
    "cam": [
     [
      1.0,
-     540,
      960,
+     540,
      0
     ],
     [
-     1.08,
-     540,
+     1.07,
      960,
+     536,
      0
     ]
    ],
@@ -940,23 +1797,573 @@
    "prm": {}
   },
   {
-   "n": 29,
-   "segment": "end",
-   "weight": 0.95,
-   "kind": "signoff",
-   "action": "Rook on the wing picks up a loose rivet, turns it in the light, pockets it and tips his hat",
-   "camera": "Medium, slow push",
+   "n": 53,
+   "segment": "carry",
+   "weight": 1.0,
+   "kind": "ward_bed",
+   "action": "A hospital room, daylight in the window: she lies in bed and turns her head; Rook on the chair beside her nods",
+   "camera": "Three-quarter from the foot of the bed",
    "cam": [
     [
      1.0,
-     540,
      960,
+     540,
      0
     ],
     [
-     1.08,
-     540,
+     1.07,
      960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": "SINGAPORE",
+   "prm": {}
+  },
+  {
+   "n": 54,
+   "segment": "home",
+   "weight": 1.0,
+   "kind": "notice_card",
+   "action": "A drawn newspaper column: black-bordered notices, lines only; a stamp comes down across them",
+   "camera": "Flat, slow push",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "low",
+     0.2
+    ],
+    [
+     "hit",
+     0.62
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 55,
+   "segment": "home",
+   "weight": 1.0,
+   "kind": "jaime_phone",
+   "action": "The trading floor: a colleague on his feet at his desk, telephone at his ear, shaking his head, his free hand coming down flat on the desk",
+   "camera": "Three-quarter, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.45
+    ]
+   ],
+   "hud": "JAIME LUPA",
+   "prm": {}
+  },
+  {
+   "n": 56,
+   "segment": "home",
+   "weight": 0.9,
+   "kind": "desk_trade",
+   "action": "Her desk, her chair empty, the monitors still on; Rook stands looking down at it",
+   "camera": "From high on the left",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "empty": true,
+    "alt": [
+     -30,
+     0.9,
+     0.4
+    ]
+   }
+  },
+  {
+   "n": 57,
+   "segment": "funeral",
+   "weight": 1.1,
+   "kind": "funeral_aisle",
+   "action": "A funeral hall in December, from high at the back: two bearers carry her on a stretcher up the aisle, between the mourners, towards a closed coffin under white flowers",
+   "camera": "High at the back, easing down",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.2
+    ]
+   ],
+   "hud": "BREDA, DECEMBER 1992",
+   "prm": {}
+  },
+  {
+   "n": 58,
+   "segment": "funeral",
+   "weight": 1.0,
+   "kind": "funeral_close",
+   "action": "Close on her face on the stretcher, moving past the benches, eyes on what is ahead of her",
+   "camera": "Close from above, moving with her",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.5
+    ]
+   ],
+   "hud": "BREDA, DECEMBER 1992",
+   "prm": {},
+   "hush": true
+  },
+  {
+   "n": 59,
+   "segment": "funeral",
+   "weight": 0.9,
+   "kind": "funeral_rook",
+   "action": "Rook at the back of the hall takes off his hat, holds it to his chest and bows his head",
+   "camera": "Three-quarter on Rook",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 60,
+   "segment": "recover",
+   "weight": 1.1,
+   "kind": "walk_again",
+   "action": "The hospital room at night: she walks, slowly, on a stick, across the floor; fireworks open in the window",
+   "camera": "Wide from the door side",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "pop",
+     0.25
+    ],
+    [
+     "pop",
+     0.6
+    ]
+   ],
+   "hud": "NEW YEAR'S EVE",
+   "prm": {}
+  },
+  {
+   "n": 61,
+   "segment": "recover",
+   "weight": 0.9,
+   "kind": "desk_back",
+   "action": "Back at her desk, typing, her stick leaning against it; she looks up; Rook by the window tips his hat to her",
+   "camera": "Three-quarter from the front right",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": "FEBRUARY 1993",
+   "prm": {}
+  },
+  {
+   "n": 62,
+   "segment": "later",
+   "weight": 1.0,
+   "kind": "family_walk",
+   "action": "A city park in autumn, plain towers beyond the trees: she walks the path with her husband and two children, the small one skipping; Rook on a bench flips his coin",
+   "camera": "Low from ahead of them",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "birdcall",
+     0.2
+    ],
+    [
+     "flip",
+     0.6
+    ]
+   ],
+   "hud": "NEW YORK",
+   "prm": {}
+  },
+  {
+   "n": 63,
+   "segment": "later",
+   "weight": 1.0,
+   "kind": "return_ridge",
+   "action": "She stands on a rock above the green ridges, looking out over them; Rook beside her takes off his hat; she turns her head to him",
+   "camera": "From behind them, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.2
+    ]
+   ],
+   "hud": "2006",
+   "prm": {}
+  },
+  {
+   "n": 64,
+   "segment": "later",
+   "weight": 1.0,
+   "kind": "writing",
+   "action": "Evening at a desk by a tall window: she writes, page after page, the lamp on; then she stops and looks up",
+   "camera": "Three-quarter, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.2
+    ],
+    [
+     "scratch",
+     0.5
+    ]
+   ],
+   "hud": "TURBULENCE, HER MEMOIR",
+   "prm": {}
+  },
+  {
+   "n": 65,
+   "segment": "toll",
+   "weight": 1.0,
+   "kind": "aerial_canopy",
+   "action": "The ridges again from high above, cloud shadow moving over them",
+   "camera": "High aerial from further round",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.2
+    ]
+   ],
+   "hud": "30 DIED ON THE RIDGE",
+   "prm": {
+    "alt": [
+     40,
+     1.1,
+     20.0
+    ]
+   }
+  },
+  {
+   "n": 66,
+   "segment": "toll",
+   "weight": 1.0,
+   "kind": "rook_wreck",
+   "action": "Rook alone by the empty fuselage puts his hat back on and looks at the wreck a long moment",
+   "camera": "Pulling back",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 67,
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "board",
+   "action": "Rook's case board: a photograph of the balls of insulation on the wet wing, a pinned leaf, the case in three lines",
+   "camera": "Flat, slow push",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "tick",
+     0.55
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 68,
+   "segment": "end",
+   "weight": 0.9,
+   "kind": "rook_nod",
+   "action": "Rook on the wing taps his beak, then nods slowly: he was wrong",
+   "camera": "Low three-quarter",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 69,
+   "segment": "end",
+   "weight": 1.1,
+   "kind": "signoff",
+   "action": "Rook on the wing picks up a loose rivet, turns it in the light, pockets it and tips his hat: \"Case closed.\"",
+   "camera": "Three-quarter, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
      0
     ]
    ],
@@ -971,40 +2378,6 @@
    "hud": null,
    "prm": {},
    "brand": true
-  },
-  {
-   "n": 30,
-   "segment": "end",
-   "weight": 0.8,
-   "kind": "crash_ridge",
-   "action": "The opening shot played back to its first frame, so the end runs into the start",
-   "camera": "As the first shot",
-   "cam": [
-    [
-     1.0,
-     540,
-     960,
-     0
-    ],
-    [
-     1.08,
-     540,
-     960,
-     0
-    ]
-   ],
-   "shake": 1,
-   "transition": "flash",
-   "sfx": [
-    [
-     "thunder",
-     0.3
-    ]
-   ],
-   "hud": null,
-   "prm": {
-    "loop": true
-   }
   }
  ]
 }
