@@ -1,6 +1,6 @@
 # Survra production dashboard
 
-Updated 2026-11-20 14:54 UTC by the publish workflow. Daily target: 1 long-form + 4 Shorts. Review mode: **off**. Paused: **no**.
+Updated 2026-11-20 15:57 UTC by the publish workflow. Daily target: 1 long-form + 3 Shorts. Review mode: **off**. Paused: **no**.
 
 A stage shows `done` only when its output file exists; QC shows `done` only after the automated gate passed on the rendered video.
 
@@ -32,7 +32,7 @@ A stage shows `done` only when its output file exists; QC shows `done` only afte
 | r010-yamaguchi | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-15T20:00:00Z | https://youtu.be/z_eLKEkA44M |
 | r011-sullivan-long | long | approved | done | done | done | done | done | done | - | done | done | scheduled 2026-11-16T21:30:00Z | https://youtu.be/2mZTn-vnlCo |
 | r011-sullivan | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-15T23:00:00Z | https://youtu.be/JSVSTR955O8 |
-| r012-jessop | short | approved | done | done | done | done | - | done | n/a | FAIL | - | - | - |
+| r012-jessop | short | approved | done | done | done | done | - | - | n/a | - | - | - | - |
 | r013-bugorski-long | long | ready | done | done | done | done | done | done | - | done | done | private (review) | https://youtu.be/kqmJR2GHWV8 |
 | r013-bugorski | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-16T02:00:00Z | https://youtu.be/jzJp2iU3Ra8 |
 | r014-weathers-long | long | approved | done | done | done | done | done | done | - | done | done | scheduled 2026-11-17T15:00:00Z | https://youtu.be/QlKCFooxAD4 |
@@ -41,9 +41,9 @@ A stage shows `done` only when its output file exists; QC shows `done` only afte
 | r015-hall | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-16T20:00:00Z | https://youtu.be/fw9AFBVXqjE |
 | r016-simpson-long | long | ready | done | done | done | done | done | done | - | done | done | private (review) | https://youtu.be/FY_52abpoyw |
 | r016-simpson | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-16T23:00:00Z | https://youtu.be/6ZLO3VlvIhs |
-| r017-callahan-long | long | approved | done | done | done | done | done | done | done | done | done | scheduled 2026-11-20T19:00:00Z | https://youtu.be/3lvG2h54Qkk |
+| r017-callahan-long | long | approved | done | done | done | done | done | done | - | done | done | scheduled 2026-11-20T19:00:00Z | https://youtu.be/3lvG2h54Qkk |
 | r017-callahan | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-19T17:00:00Z | https://youtu.be/1LSTb4JV9lM |
-| r018-ashcraft-long | long | approved | done | done | done | done | done | done | done | done | done | scheduled 2026-11-21T19:00:00Z | https://youtu.be/RSCqvwbyBjg |
+| r018-ashcraft-long | long | approved | done | done | done | done | done | done | - | done | done | scheduled 2026-11-20T19:00:00Z | https://youtu.be/xkvXpDFS6NQ |
 | r018-ashcraft | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-19T20:00:00Z | https://youtu.be/jvN_MzCVKLw |
 | r019-adilang-long | long | ready | done | done | done | done | done | done | - | done | done | private (review) | https://youtu.be/Bgj4AgfWe7c |
 | r019-adilang | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-17T02:00:00Z | https://youtu.be/5sjV1ZS5mek |
@@ -53,11 +53,12 @@ A stage shows `done` only when its output file exists; QC shows `done` only afte
 | r021-sanjose | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-17T20:00:00Z | https://youtu.be/gQ52iGzsKyk |
 | r022-bakari-long | long | approved | done | done | done | done | done | done | - | done | done | scheduled 2026-11-19T19:00:00Z | https://youtu.be/N9uFblYhP6Q |
 | r022-bakari | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-19T02:00:00Z | https://youtu.be/S6xePThwOs8 |
-| r023-herfkens | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-20T17:00:00Z | https://youtu.be/_BYPnRtbtyE |
-| r024-alkemade-long | long | approved | done | done | done | done | done | done | done | done | done | scheduled 2026-11-22T19:00:00Z | https://youtu.be/YRturPna4UA |
+| r023-herfkens | short | approved | done | done | done | done | done | done | n/a | done | done | public | https://youtu.be/KR0ZYHRx_Ac |
+| r024-alkemade-long | long | approved | done | done | done | done | done | done | - | done | done | scheduled 2026-11-21T19:00:00Z | https://youtu.be/h2laJU6_7gY |
 | r024-alkemade | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-18T20:00:00Z | https://youtu.be/yHkpPAv0qTU |
 | r025-magee | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-20T20:00:00Z | https://youtu.be/_sqOpusbr9Q |
 | r030-sylbaris | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-19T20:00:00Z | https://youtu.be/-eHaYHprOmk |
-| r040-emuwar | short | approved | done | done | done | done | - | done | n/a | FAIL | - | - | - |
+| r040-emuwar | short | approved | done | done | done | done | - | - | n/a | - | - | - | - |
 | r041-whale | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-20T23:00:00Z | https://youtu.be/bzZ6Fkzhsl8 |
+| r042-beaverdrop | short | draft | - | done | - | done | - | - | n/a | - | - | - | - |
 | s001-alvarenga | short | draft | done | done | done | done | done | done | n/a | done | done | private (review) | https://youtu.be/FZZ4SOnRhYU |
