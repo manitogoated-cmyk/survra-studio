@@ -1618,11 +1618,11 @@ def apron_wide(S, k, t, lt):
     h = stand(S, S['her'], 'apron', hx, hy, 0, yw, pose, 'warm')
     hd = hold(S, S['bag'], h, 1, (0, 0, -0.75), (0, 0, yw))
     wv = 0.5 + 0.5 * math.sin(lt * 8)
-    stand(S, S['will'], 'apron', 8.0, 15.2, 0, facing(4.6, -5.6), P('stand', aR=(2.6, 0.5 + 0.3 * wv, 0.4), head=(-0.05, 0.0)), 'warm')
+    stand(S, S['will'], 'apron', 5.6, 13.6, 0, facing(5.6, -3.4), P('stand', aR=(2.6, 0.5 + 0.3 * wv, 0.4), head=(-0.05, 0.0)), 'warm')
     pop = sm((k - 0.3) / 0.15) * (1 - sm((k - 0.6) / 0.15))
     rp = K.walk(lt + 0.4, 1.3)
     rp = blend(rp, P('stand', aL=(0.7, 0.3, 2.4, 0.5), aR=(0.7, 0.3, 2.4, 0.5), lL=rp['lL'], lR=rp['lR']), pop)
-    stand(S, S['rook'], 'apron', hx + 2.6, hy - 2.2, 0, yw, rp, 'low')
+    stand(S, S['rook'], 'apron', hx + 2.6, hy + 1.4, 0, yw, rp, 'low')
     cam(S, 'apron', (lerp(15.4, 14.6, k), lerp(5.6, 6.2, k), 1.9), (6.4, 14.2, 2.7), 28)
 
 
@@ -1710,15 +1710,15 @@ def hands_grab(S, k, t, lt):
         o.location = FAR
     a = SP('flight', 1.19, -2.85, 0.8)
     g_ = sm(lt / 0.7)
-    S['hand_her'].place((a[0] + 0.1, a[1], a[2] + 0.02 * math.sin(lt * 23)), (0.05, 0, 0.1))
+    S['hand_her'].place((a[0] + 0.12, a[1] - 0.05, a[2] + 0.02 * math.sin(lt * 23)), (0.05, 0, 0.25))
     S['hand_her'].grip(lerp(0.15, 0.6, g_))
-    S['hand_him'].place((a[0] - lerp(0.6, 0.02, g_), a[1] + 0.02, a[2] + lerp(0.45, 0.1, g_)), (0.1, 0.25, -0.35))
+    S['hand_him'].place((a[0] - lerp(0.7, 0.16, g_), a[1] + 0.16, a[2] + lerp(0.45, 0.09, g_)), (0.1, 0.25, -0.95))
     S['hand_him'].grip(lerp(0.1, 0.85, g_))
     dark = sm((k - 0.72) / 0.25)
     S['keyl'].data.energy *= (1 - dark)
     S['bg'].inputs[1].default_value *= (1 - 0.95 * dark)
     S['camfill'].data.energy = 120 * (1 - dark)
-    cam(S, 'flight', (lerp(0.6, 0.75, k), lerp(-4.5, -4.2, k), 1.7), (a[0], a[1], a[2] + 0.05), 44, roll=0.06 * math.sin(lt * 8))
+    cam(S, 'flight', (lerp(0.6, 0.75, k), lerp(-4.5, -4.2, k), 1.7), (1.19, -2.85, 0.85), 44, roll=0.06 * math.sin(lt * 8))
 
 
 def cabin_base(S, watts=300):
@@ -1742,8 +1742,8 @@ def belt_empty(S, k, t, lt):
     for i, d in enumerate(S['drips']):
         ph = (t * 1.1 + i / 6) % 1.0
         d.location = at(CABIN, x - 0.5 + 0.25 * i, y - 0.3 + 0.2 * (i % 2), 2.6 - 2.2 * ph)
-    key(S, CABIN, (x - 1.2, y - 2.0, 2.6), (x, y, 0.6), 200, 'C8F0C0')
-    shoot(S, CABIN, (x - lerp(0.7, 0.5, k), y - lerp(1.7, 1.45, k), lerp(1.5, 1.35, k)), (x + 0.1, y - 0.05, 0.62), 36)
+    key(S, CABIN, (x - 1.4, y - 0.8, 2.6), (x, y, 0.6), 260, 'C8F0C0')
+    shoot(S, CABIN, (x - lerp(1.45, 1.25, k), y - lerp(0.75, 0.55, k), lerp(1.75, 1.6, k)), (x + 0.05, y - 0.05, 0.62), 32)
 
 
 def her_looks(S, k, t, lt):
@@ -1816,7 +1816,7 @@ def sip_wait(S, k, t, lt):
     takes one; Rook, further along the wing, flips a coin to pass the time."""
     ridge(S, 'day', t, 0.3, 'dusk', sm(k * 1.1))
     u = sm((k - 0.7) / 0.2)
-    h = put(S, S['her'], WROOT[0] + 1.0, WROOT[1] + 0.7, 0.35, 0.4, P('sit', aR=(lerp(0.7, 1.25, u), 0.0, lerp(1.4, 0.7, u)), aL=(0.7, 0.2, 1.4), head=(0.2, -0.35), lean=-0.1), 'tired')
+    h = put(S, S['her'], WROOT[0] + 1.0, WROOT[1] + 0.7, -0.12, 0.4, P('sit', aR=(lerp(0.7, 1.25, u), 0.0, lerp(1.4, 0.7, u)), aL=(0.7, 0.2, 1.4), lL=(1.5, 0.25), lR=(1.42, 0.1), head=(0.2, -0.35), lean=-0.25), 'tired')
     hd = wpos(h.hands[1])
     for i, b in enumerate(S['balls']):
         p = on_wing(-0.5 - 0.42 * i, -0.75)
@@ -1837,7 +1837,7 @@ def swat(S, k, t, lt):
     """Close: she brushes at her forearm again and again, insects circling, her mouth tight."""
     ridge(S, 'day', t, 0.2)
     br = math.sin(lt * 9)
-    h = her_spot(S, 'pain', P('sit', aL=(1.25, -0.35, 1.7, 0.9), aR=(1.15 + 0.15 * br, -0.45, 1.75 + 0.15 * br, 0.9), lean=-0.2, head=(0.12, 0.3)))
+    h = her_spot(S, 'pain', P('sit', aL=(0.85, -0.35, 1.45, 0.9), aR=(0.8 + 0.12 * br, -0.45, 1.5 + 0.12 * br, 0.9), lean=-0.2, head=(0.22, 0.3)))
     a = wpos(h.hands[0])
     for i, b in enumerate(S['bugs']):
         an = t * (3 + 2 * rnd(i, 811)) + 2 * PI * rnd(i, 812)
@@ -1931,7 +1931,7 @@ def men_arrive(S, k, t, lt):
     put(S, S['rook'], 0, 0, 0, 0.5, blend(P('sit', lean=0.2), P('stand', head=(0.1, 0.4)), sm((lt - 0.4) / 0.5)), 'shocked', o=roof)
     S['hat_jump'] = 0.25 * sm((lt - 0.4) / 0.2) * (1 - sm((lt - 0.9) / 0.3))
     key(S, RIDGE, (2, -8, 7), (-2, 1.5, 1.5), 2400, 'FFE8C0')
-    shoot(S, RIDGE, (lerp(2.6, 2.2, k), lerp(-6.2, -5.6, k), lerp(2.4, 2.8, k)), (-2.0, 1.0, 1.9), 28)
+    shoot(S, RIDGE, (lerp(2.8, 2.4, k), lerp(-6.6, -6.0, k), lerp(2.6, 3.0, k)), (-1.2, 1.6, 2.9), 24)
 
 
 def list_point(S, k, t, lt):
@@ -1956,11 +1956,11 @@ def ward_bed(S, k, t, lt):
     """A hospital room, daylight in the window: she lies in bed, turns her head; Rook on the chair beside her nods."""
     use(S, 'ward', 'ward')['ceil'].hide_render = True
     u = sm((lt - 0.5) / 0.7)
-    stand(S, S['her'], 'ward', -3.4, 0.78, 1.3, 0.0, P('stand', aL=(0.1, 0.3, 0.3), aR=(0.1, 0.3, 0.3), head=(0.15, lerp(-0.1, 0.6, u))), 'tired' if u < 0.6 else 'warm',
-          pitch=-PI / 2)
+    stand(S, S['her'], 'ward', -3.4, 0.95, 1.22, 0.0, P('stand', aL=(0.1, 0.3, 0.3), aR=(0.1, 0.3, 0.3), head=(0.45, lerp(-0.1, 0.6, u))), 'tired' if u < 0.6 else 'warm',
+          pitch=-PI / 2 + 0.3)
     stand(S, S['rook'], 'ward', -1.2, 1.85, 0.05, -0.9, P('sit', aL=(0.7, -0.1, 1.5, 1.0), aR=(0.7, -0.1, 1.5, 1.0), head=(0.2 + 0.2 * math.sin(lt * 3) * u, -0.3), lean=0.2), 'soft')
     lamp(S, 'ward', (-4, -3, 4), (-3, 2.5, 1.5), 700, 'FFF4E8')
-    cam(S, 'ward', (lerp(-5.4, -5.0, k), lerp(-2.0, -1.6, k), 2.9), (-2.6, 2.7, 1.6), 30)
+    cam(S, 'ward', (lerp(-5.2, -4.9, k), lerp(-0.2, 0.2, k), 3.0), (-2.7, 3.0, 1.75), 32)
 
 
 def walk_again(S, k, t, lt):
@@ -2082,7 +2082,7 @@ def family_walk(S, k, t, lt):
     S['rivet'].location, S['rivet'].rotation_euler = (rh[0], rh[1] - 0.12, rh[2] + 0.1 + 2.2 * fl * (1 - fl)), (lt * 14, 0.3, 0)
     S['rivet'].scale = (1.6, 1.6, 1.6)
     lamp(S, 'park', (-6, -6, 6), (2, 0.5, 1.6), 1500, 'FFE8C0')
-    cam(S, 'park', (lerp(-7.6, -7.0, k), lerp(-5.0, -4.4, k), 1.9), (0.6, 0.9, 1.75), 30)
+    cam(S, 'park', (lerp(-7.6, -7.0, k), lerp(-5.0, -4.4, k), 1.9), (0.2, 0.9, 1.75), 36)
 
 
 def return_ridge(S, k, t, lt):
@@ -2121,11 +2121,13 @@ def writing(S, k, t, lt):
 def photo_thumb(S, k, t, lt):
     """The thumbnail picture: she sits against the root in the rain on the right of the frame, knees up, looking out;
     the broken fuselage behind her; the dark trees on the left for the words."""
-    ridge(S, 'rain', t, 0.6)
-    her_spot(S, 'tired', P('sit', aL=(0.9, -0.1, 1.7, 1.0), aR=(0.9, -0.1, 1.7, 1.0), lL=(1.0, 2.1), lR=(1.0, 2.1), lean=0.0, head=(0.0, -0.25)))
+    ridge(S, 'rain', t, 0.6, 'day', 0.45)
+    her_spot(S, 'tired', P('sit', aL=(0.9, -0.1, 1.7, 1.0), aR=(0.9, -0.1, 1.7, 1.0), lL=(1.0, 2.1), lR=(1.0, 2.1), lean=0.0, head=(0.0, -0.35)))
     h = head(S, S['her'])
-    key(S, (0, 0, 0), (h[0] - 2.5, h[1] - 3, h[2] + 2), h, 1100, 'E8F0E8')
-    shoot(S, (0, 0, 0), (h[0] - 1.5, h[1] - 3.4, h[2] + 0.1), (h[0] - 1.55, h[1] + 0.6, h[2] - 0.15), 34)
+    key(S, (0, 0, 0), (h[0] - 2.5, h[1] - 3, h[2] + 2), h, 2600, 'F4F8F0')
+    if 'camfill' in S:
+        S['camfill'].data.energy = 260
+    shoot(S, (0, 0, 0), (h[0] - 1.3, h[1] - 3.9, h[2] + 0.15), (h[0] - 1.25, h[1] + 0.6, h[2] - 0.35), 34)
 
 
 def photo_wing(S, k, t, lt):
