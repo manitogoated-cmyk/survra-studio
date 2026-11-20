@@ -6,7 +6,7 @@
  "host": "rook",
  "case": 30,
  "case_of": "r030-sylbaris",
- "title": "The Prisoner the Volcano Missed: The Full Case of Ludger Sylbaris",
+ "title": "A Volcano Buried His City. His Prison Cell Saved Him: The Full Case of Ludger Sylbaris",
  "playlist": "Rook's Case Files (Full Cases)",
  "spine": "v2",
  "sources": [
@@ -17,10 +17,64 @@
   "https://www.history.com/this-day-in-history/may-8/volcanic-eruption-buries-caribbean-city",
   "https://www.herodote.net/8_mai_1902-evenement-19020508.php",
   "https://www.futura-sciences.com/planete/actualites/volcan-il-y-120-ans-plus-grande-catastrophe-volcanique-xxe-siecle-98374/",
-  "https://hoopermuseum.carleton.ca/cruise/martinique/HIS4C.HTM"
+  "https://hoopermuseum.carleton.ca/cruise/martinique/HIS4C.HTM",
+  "https://en.wikipedia.org/wiki/1902_eruption_of_Mount_Pel%C3%A9e",
+  "https://www.earthmagazine.org/article/benchmarks-may-8-1902-deadly-eruption-mount-pelee/",
+  "https://www.usgs.gov/news/volcano-watch-chronology-a-volcanic-disaster",
+  "https://www.britannica.com/place/Mount-Pelee",
+  "https://en.wikipedia.org/wiki/Louis_Mouttet",
+  "https://en.wikipedia.org/wiki/L%C3%A9on_Comp%C3%A8re-L%C3%A9andre",
+  "https://hhtandn.org/notes/1314/roddam-a-miraculous-escape",
+  "https://www.atlasobscura.com/articles/the-man-who-survived-doomsday",
+  "https://gizmodo.com/the-prison-cell-of-the-man-who-lived-through-doomsday-5524012",
+  "https://www.frontiersin.org/journals/earth-science/articles/10.3389/feart.2020.00279/full"
  ],
  "authoring": {
   "claimed_at": "2026-11-20T21:54:12Z",
   "run": "scheduled long run, 20 Nov 2026 (second long run of the day; r023-herfkens-long is held by another run)"
- }
+ },
+ "description": "Case 030, the full case file. In the spring of 1902 Mount Pelée, the volcano above the port of Saint-Pierre on Martinique, woke up: steam at the summit, tremors, then ash on the streets. Snakes driven off the slopes came into the town, and around fifty people died of their bites. On 5 May a mudflow came down a river valley and buried a factory on the coast with its workers. The town stayed: an election was due on Sunday 11 May, a commission reported on 7 May that Saint-Pierre was in no danger, villagers from the slopes came into town for safety, and the governor came with his wife. In the town jail was Ludger Sylbaris (also recorded as Louis-Auguste Cyparis), held after a fight. For slipping out overnight to a party and coming back in the morning he was put in solitary: a stone cell built partly underground, with no window and one narrow grating in the door. On 8 May, just before eight in the morning, a cloud of burning gas and ash swept down the mountain and over the town in minutes. Ships burned at anchor; one steamer, the Roddam, got away. Around 28,000 people died, the governor and his wife among them. Hot air and ash came through the grating and burned Sylbaris's back, arms and legs, though his clothes did not catch fire; he wet his clothing with his own urine and pushed it into the grating. Days later men from outside the town heard him shouting and dug him out. He was pardoned and toured America with Barnum and Bailey's circus in a copy of his cell, billed as the man who lived through Doomsday. The French geologist Alfred Lacroix studied the eruption and named the cloud a nuée ardente, a glowing cloud; a spine of rock hundreds of metres high grew in the crater and crumbled in 1903. Sylbaris died around 1929 in Panama. Saint-Pierre is a small town today, and his cell still stands in it.\n\nAnimated reconstruction of a true story, made with respect for the people of Saint-Pierre. Nobody who died is shown dying. The town, the quay, the lane, the factory, the commission's room, the carriage, the party, the prison, the cell, the ships, the circus and every person are generic low-poly reconstructions; no building is a model of the real one and no likeness is attempted. The circus bill and the card of dates are drawings made for this film. Staging details such as the fruit stall, the door pulled shut, who sat on the commission, the governor's arrival by carriage, the dancing, the look of the steamer, the shoemaker's workshop, the geologist's notebook and camera, and everything Rook does are reconstruction, not record. Sources disagree on several figures (the dead: 27,000 to 30,000; the mudflow's victims: 23 or about 150; the rescue: the third or the fourth day; the height of the spine: about 270 to 340 metres), so the film says 'around 28,000', gives no number for the mudflow, says 'days' and says 'hundreds of metres'. Narration is a synthetic voice (Kokoro).",
+ "tags": [
+  "Ludger Sylbaris",
+  "Louis-Auguste Cyparis",
+  "Mount Pelée",
+  "Mont Pelée 1902",
+  "Saint-Pierre",
+  "Martinique",
+  "volcano",
+  "eruption",
+  "pyroclastic flow",
+  "nuée ardente",
+  "survivor",
+  "prison cell",
+  "true story",
+  "history",
+  "documentary",
+  "animated story",
+  "Rook",
+  "Survra"
+ ],
+ "hashtags": [
+  "#truestory",
+  "#history",
+  "#volcano"
+ ],
+ "story_score": {
+  "curiosity": 9,
+  "stakes": 9,
+  "freshness": 7,
+  "story": 8,
+  "visual": 9,
+  "audience_fit": 8,
+  "payoff": 9,
+  "packaging": 8,
+  "research": 8,
+  "repeatability": 7,
+  "total": 82
+ },
+ "title_options": [
+  "A Volcano Buried His City. His Prison Cell Saved Him: The Full Case of Ludger Sylbaris",
+  "The Prisoner the Volcano Missed: The Full Case of Ludger Sylbaris",
+  "28,000 Died. The Man in Solitary Lived."
+ ]
 }
