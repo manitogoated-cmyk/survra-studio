@@ -1,0 +1,1101 @@
+{
+ "id": "r042-beaverdrop",
+ "hook_text": "BEAVERS.|BY PARACHUTE.",
+ "shots": [
+  {
+   "n": 1,
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "drop_close",
+   "action": "High over the mountains, close beside a small wooden box falling under a parachute: the canopy above snaps open with a jolt; a beaver's nose and whiskers twitch at a breathing hole (wide-eyed)",
+   "camera": "Low beside the box looking up at the canopy; jolted with the opening",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 2,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.0
+    ],
+    [
+     "hit",
+     0.12
+    ],
+    [
+     "flap",
+     0.2
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 2,
+   "segment": "hook",
+   "weight": 1.1,
+   "kind": "drop_wide",
+   "action": "Wide over the basin: the plane banks away, the box swings under its canopy, more canopies blossoming below it over the green meadow",
+   "camera": "Wide, high, drifting down with the box",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.0
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 3,
+   "segment": "hook",
+   "weight": 0.9,
+   "kind": "hole_close",
+   "action": "Very close on the box wall: the beaver's nose pokes out of a breathing hole and sniffs the wind; the ground turns far below",
+   "camera": "Close, above the hole looking down past it",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.0
+    ],
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 4,
+   "segment": "doubt",
+   "weight": 1.0,
+   "kind": "rook_box_ride",
+   "action": "Rook sits on top of the swinging box, arms crossed, hat brim low, unimpressed, coat flapping; the beaver's nose pokes out under his boots. 'A flying beaver? Please.' His eyes narrow on the last word",
+   "camera": "Medium, front, swinging with the box",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "flap",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 5,
+   "segment": "land",
+   "weight": 1.0,
+   "kind": "meadow_land",
+   "action": "Low in the meadow grass: the box comes down out of the sky and thumps in, bouncing; the canopy sags over behind it",
+   "camera": "Low, at grass level, tilting down with the box",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.1
+    ],
+    [
+     "hit",
+     0.4
+    ],
+    [
+     "clunk",
+     0.42
+    ]
+   ],
+   "hud": "CHAMBERLAIN BASIN, IDAHO",
+   "prm": {}
+  },
+  {
+   "n": 6,
+   "segment": "land",
+   "weight": 1.1,
+   "kind": "box_open",
+   "action": "The box's two halves spring apart and flop onto the grass; the old beaver blinks (wide eyes), shakes himself, and waddles out towards the creek",
+   "camera": "Medium-low, front",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "pop",
+     0.05
+    ],
+    [
+     "clunk",
+     0.12
+    ],
+    [
+     "scratch",
+     0.5
+    ]
+   ],
+   "hud": "AUGUST 1948",
+   "prm": {}
+  },
+  {
+   "n": 7,
+   "segment": "land",
+   "weight": 1.1,
+   "kind": "rook_land",
+   "action": "Rook swoops down beside the open box, lands in a crouch, his hat hops; he straightens and points after the waddling beaver, eyes narrowed",
+   "camera": "Medium, three-quarter",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "flap",
+     0.1
+    ],
+    [
+     "hit",
+     0.35
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 8,
+   "segment": "why",
+   "weight": 1.4,
+   "kind": "town_tree",
+   "action": "A town yard by the lake: a beaver up on his haunches gnaws through the last of a trunk, chips flying; it creaks and the tree topples onto the picket fence; the beaver scoots off wide-eyed",
+   "camera": "Medium, side-on, tilting up with the fall",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.05
+    ],
+    [
+     "creak",
+     0.45
+    ],
+    [
+     "crash",
+     0.85
+    ]
+   ],
+   "hud": "McCALL, PAYETTE LAKE",
+   "prm": {}
+  },
+  {
+   "n": 9,
+   "segment": "why",
+   "weight": 1.1,
+   "kind": "town_flood",
+   "action": "The yard next door lies under a sheet of water behind a stick dam; the owner, hands on hips and scowling, lifts one soaked foot (eyes wide) while a beaver sits up on the lawn chewing",
+   "camera": "Medium-wide, slow drift",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "splash",
+     0.55
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 10,
+   "segment": "why",
+   "weight": 1.1,
+   "kind": "rook_flood",
+   "action": "Rook stands ankle-deep in the flood, lifts a dripping boot and shakes it, then gives the beaver on the dam a flat, squinting look; the beaver stares back",
+   "camera": "Medium, low front",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "splash",
+     0.2
+    ],
+    [
+     "splash",
+     0.7
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 11,
+   "segment": "mules",
+   "weight": 1.1,
+   "kind": "mule_load",
+   "action": "In the corral, Heter (hard-set face) heaves a beaver box up onto the mule's pack saddle; the box jolts as the beavers shift and the mule's ears swivel back",
+   "camera": "Medium-wide, front of the flank",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.45
+    ],
+    [
+     "grab",
+     0.6
+    ]
+   ],
+   "hud": "ELMO HETER, FISH AND GAME",
+   "prm": {}
+  },
+  {
+   "n": 12,
+   "segment": "mules",
+   "weight": 1.1,
+   "kind": "mule_buck",
+   "action": "The mule bucks, back legs kicking, ears flat, the box jolting on its back; Heter (wide eyes) hangs on to the lead rope and is towed off balance",
+   "camera": "Wide, low, side-on, shaking",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 2,
+   "transition": "cut",
+   "sfx": [
+    [
+     "hit",
+     0.15
+    ],
+    [
+     "clunk",
+     0.4
+    ],
+    [
+     "hit",
+     0.65
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 13,
+   "segment": "mules",
+   "weight": 1.0,
+   "kind": "rook_mule",
+   "action": "Rook edges along the rail away from the bucking mule, shocked, then stops and taps his beak, thinking",
+   "camera": "Medium, three-quarter, the mule behind him",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.55
+    ],
+    [
+     "tick",
+     0.7
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 14,
+   "segment": "chutes",
+   "weight": 1.0,
+   "kind": "chute_crate",
+   "action": "At the hangar on the landing field, Heter (proud) hauls a war-surplus parachute out of its pack and it billows up in the wind; the orange windsock streams",
+   "camera": "Medium-wide, low, tilting up with the canopy",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.2
+    ],
+    [
+     "flap",
+     0.5
+    ]
+   ],
+   "hud": "WAR-SURPLUS PARACHUTES",
+   "prm": {}
+  },
+  {
+   "n": 15,
+   "segment": "chutes",
+   "weight": 1.4,
+   "kind": "rook_test",
+   "action": "Rook leans over a closed beaver box with his magnifying glass (squinting), follows the rope to the knot, pokes it, and the box springs open in his face: he recoils, shocked, hat jumping off, the glass flipping away",
+   "camera": "Medium, three-quarter high",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.5
+    ],
+    [
+     "pop",
+     0.62
+    ],
+    [
+     "clunk",
+     0.64
+    ],
+    [
+     "gasp",
+     0.66
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 16,
+   "segment": "test",
+   "weight": 1.0,
+   "kind": "test_drop",
+   "action": "Over the landing field: the plane passes low and a box under a canopy drifts down onto the mown strip",
+   "camera": "Wide, low, tilting down with the box",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.1
+    ],
+    [
+     "flap",
+     0.6
+    ]
+   ],
+   "hud": "TEST PILOT: GERONIMO",
+   "prm": {}
+  },
+  {
+   "n": 17,
+   "segment": "test",
+   "weight": 1.3,
+   "kind": "geronimo_out",
+   "action": "The box pops open; the old grey-muzzled beaver tumbles out and shakes himself off; the handler (smiling) jogs in, scoops him up and carries him back",
+   "camera": "Medium-low, front",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.05
+    ],
+    [
+     "scratch",
+     0.3
+    ],
+    [
+     "grab",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 18,
+   "segment": "test",
+   "weight": 1.0,
+   "kind": "rook_tally",
+   "action": "Rook keeps count on his notepad: tick, tick, tick, a strike through; behind him another box drifts down; his brim sinks",
+   "camera": "Close, over the pad",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.15
+    ],
+    [
+     "scratch",
+     0.35
+    ],
+    [
+     "scratch",
+     0.55
+    ],
+    [
+     "scratch",
+     0.75
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 19,
+   "segment": "rehook",
+   "weight": 1.5,
+   "kind": "geronimo_back",
+   "action": "Geronimo, set down by the open box, waddles back to it by himself, clambers in over the side, settles, and looks up at us, ready to go again",
+   "camera": "Low, close, front",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.2
+    ],
+    [
+     "clunk",
+     0.5
+    ],
+    [
+     "bloop",
+     0.9
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 20,
+   "segment": "rehook",
+   "weight": 0.9,
+   "kind": "rook_jaw",
+   "action": "Rook, close: his beak drops open and his hat lifts clean off his head",
+   "camera": "Close, slow push in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "gasp",
+     0.3
+    ],
+    [
+     "pop",
+     0.32
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 21,
+   "segment": "rehook",
+   "weight": 1.1,
+   "kind": "rook_heter",
+   "action": "Rook and Heter side by side over the box with Geronimo sitting in it: Heter scratches his head (eyes wide), Rook copies him, then both shrug",
+   "camera": "Medium two-shot, front",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 22,
+   "segment": "flight",
+   "weight": 1.0,
+   "kind": "hold",
+   "action": "Inside the plane's hold: a row of beaver boxes strapped along the wall, noses at the breathing holes; the cargo door open on blue sky and mountains",
+   "camera": "Wide, down the length of the hold, vibrating",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.0
+    ],
+    [
+     "creak",
+     0.5
+    ]
+   ],
+   "hud": "76 BEAVERS",
+   "prm": {}
+  },
+  {
+   "n": 23,
+   "segment": "flight",
+   "weight": 1.1,
+   "kind": "rook_hold",
+   "action": "Rook braced in the open cargo door, clamping his hat, coat whipping, peering out (squint, then wide-eyed); a feather tears loose and whirls away",
+   "camera": "Medium, from inside the hold",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.0
+    ],
+    [
+     "flap",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 24,
+   "segment": "flight",
+   "weight": 1.2,
+   "kind": "plane_wide",
+   "action": "Beside the plane over the mountains: one canopy after another blossoms behind it, boxes swinging under them, falling towards the green basin",
+   "camera": "Wide, alongside, slow pan",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.15
+    ],
+    [
+     "whoosh",
+     0.4
+    ],
+    [
+     "whoosh",
+     0.65
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 25,
+   "segment": "landed",
+   "weight": 1.0,
+   "kind": "rook_hush",
+   "action": "Evening in the meadow: open boxes and slack canopies across the grass, beavers waddling off to the creek. Rook stands among them and quietly takes off his hat (soft face)",
+   "camera": "Medium-wide, slow push",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [],
+   "hud": null,
+   "prm": {},
+   "hush": true
+  },
+  {
+   "n": 26,
+   "segment": "payoff",
+   "weight": 1.0,
+   "kind": "dam_wide",
+   "action": "A year later on the creek: a stick dam holds back a pond with a lodge in the middle; a beaver swims across",
+   "camera": "Wide, slow drift along the bank",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "stream",
+     0.0
+    ],
+    [
+     "splash",
+     0.3
+    ]
+   ],
+   "hud": "A YEAR LATER",
+   "prm": {}
+  },
+  {
+   "n": 27,
+   "segment": "payoff",
+   "weight": 1.2,
+   "kind": "lodge",
+   "action": "Geronimo sits up on top of his lodge, three beavers round him on the dam, and slaps the water with his tail",
+   "camera": "Medium, low over the pond",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "splash",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 28,
+   "segment": "payoff",
+   "weight": 1.1,
+   "kind": "rook_dam",
+   "action": "Rook on the dam beside a beaver chewing a stick: he looks at the pond, then lets out a short caw of a laugh",
+   "camera": "Medium, three-quarter",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "caw",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 29,
+   "segment": "end",
+   "weight": 1.6,
+   "kind": "signoff",
+   "action": "By the slack canopy in the meadow: Rook picks a shiny parachute ring out of the grass, turns it so it glints, pockets it and tugs his brim. 'Case closed.'",
+   "camera": "Medium, low front",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "pop",
+     0.75
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "brand": true
+  },
+  {
+   "n": 30,
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "drop_close",
+   "action": "Back to the first picture: the box falling under its open canopy, the beaver's nose at the hole, the camera settling into the opening framing",
+   "camera": "The opening framing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "whoosh",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "loop": true
+   }
+  }
+ ]
+}
