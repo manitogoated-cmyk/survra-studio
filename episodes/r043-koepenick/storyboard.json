@@ -1,0 +1,1126 @@
+{
+ "id": "r043-koepenick",
+ "hook_text": "HE ARRESTED|THE MAYOR",
+ "shots": [
+  {
+   "n": 1,
+   "segment": "hook",
+   "weight": 1.1,
+   "kind": "office_burst",
+   "action": "Close on the mayor at his desk: he has just looked up, eyes wide; two bayonets slide in past the lens and stop at his chest; he jumps to his feet, hands in the air, mouth open",
+   "camera": "Eye level across the desk, pushing in and tilting up with him",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 2,
+   "transition": "cut",
+   "sfx": [
+    [
+     "hit",
+     0.1
+    ],
+    [
+     "clunk",
+     0.22
+    ],
+    [
+     "gasp",
+     0.45
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 2,
+   "segment": "hook",
+   "weight": 0.95,
+   "kind": "boots_in",
+   "action": "Low by the floor: the captain strides in through the double doors (jaw set), six soldiers behind him in two files, boots stamping, bayonets levelled",
+   "camera": "Floor level, looking up at the doorway, rising a little",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.1
+    ],
+    [
+     "clunk",
+     0.45
+    ],
+    [
+     "clunk",
+     0.8
+    ]
+   ],
+   "hud": "KÖPENICK, NEAR BERLIN",
+   "prm": {}
+  },
+  {
+   "n": 3,
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "captain_point",
+   "action": "From the desk, looking up: the captain halts, throws out his arm and points, barking an order (brows down, mouth working); two bayonets flank him",
+   "camera": "Low angle from the desk, swinging round him",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.1
+    ],
+    [
+     "shout",
+     0.3
+    ]
+   ],
+   "hud": "OCTOBER 1906",
+   "prm": {}
+  },
+  {
+   "n": 4,
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "mayor_up",
+   "action": "The mayor behind his desk with his hands up, shaking, looking from one soldier to the other (eyes wide); two soldiers come round the desk and take him by the arms; his hands come down",
+   "camera": "Wide across the office, arcing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.25
+    ],
+    [
+     "hit",
+     0.62
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 5,
+   "segment": "doubt",
+   "weight": 1.0,
+   "kind": "rook_desk",
+   "action": "Rook is already there, sitting on the front of the mayor's desk, arms crossed, hat brim low (unimpressed): 'Arrested for what, exactly?' He glances back at the arrest on the last word; the mayor stands held between the two soldiers behind him",
+   "camera": "Medium on Rook, the arrest in frame behind him",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 6,
+   "segment": "cash",
+   "weight": 1.25,
+   "kind": "treasurer",
+   "action": "Over the captain's shoulder and outstretched glove: the treasurer, trembling (eyes wide behind his glasses), lowers the town's cash box onto the counting table; the open safe behind him; a soldier's bayonet at the edge of frame",
+   "camera": "Over the shoulder, drifting",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "creak",
+     0.15
+    ],
+    [
+     "clunk",
+     0.62
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 7,
+   "segment": "cash",
+   "weight": 1.25,
+   "kind": "cash",
+   "action": "Down on the table: bundles of notes, stacks of gold coins and small sacks; a white-gloved hand sweeps them one after another into a leather bag; the treasurer's hand shakes on the open cash box",
+   "camera": "High, looking down at the table, turning",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.12
+    ],
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "tick",
+     0.48
+    ],
+    [
+     "clunk",
+     0.66
+    ],
+    [
+     "tick",
+     0.84
+    ]
+   ],
+   "hud": "OVER 4,000 MARKS",
+   "prm": {}
+  },
+  {
+   "n": 8,
+   "segment": "cash",
+   "weight": 1.1,
+   "kind": "rook_coins",
+   "action": "Rook at the end of the table, eyes wide at a stack of gold (shiny): his hand creeps out; a bayonet drops across in front of his beak; he pulls the hand back, palms up, brim down (caught)",
+   "camera": "Medium on Rook across the table",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.2
+    ],
+    [
+     "hit",
+     0.42
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 9,
+   "segment": "obey",
+   "weight": 1.1,
+   "kind": "line_up",
+   "action": "In the square, the brick town hall behind: six soldiers in a row with grounded rifles; the captain walks down the line, hands behind his back, and each man stiffens and lifts his chin as he passes (faces set)",
+   "camera": "Low along the line, swinging with the captain",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.2
+    ],
+    [
+     "clunk",
+     0.5
+    ],
+    [
+     "clunk",
+     0.8
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 10,
+   "segment": "obey",
+   "weight": 1.0,
+   "kind": "mayor_march",
+   "action": "From the foot of the steps: the mayor comes down between two soldiers, head bowed (brows knitted), hands behind him; two more stand rigid at the door",
+   "camera": "Low angle up the steps, drifting",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.15
+    ],
+    [
+     "clunk",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 11,
+   "segment": "obey",
+   "weight": 1.1,
+   "kind": "rook_peer",
+   "action": "Rook leans in at the captain's shoulder and prods the silver epaulette with one finger, eyes narrowed (suspicious); the captain stares ahead, then slides a hard look down at him",
+   "camera": "Close two-shot, swinging round",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.25
+    ],
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 12,
+   "segment": "gone",
+   "weight": 1.1,
+   "kind": "walk_out",
+   "action": "Wide on the town hall and its tower: the captain comes down the steps with a leather bag and walks away across the square; the soldiers stay exactly where he left them",
+   "camera": "Wide, low, drifting",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.1
+    ],
+    [
+     "clunk",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 13,
+   "segment": "gone",
+   "weight": 1.0,
+   "kind": "rook_gone",
+   "action": "Rook on the steps between two soldiers who do not move: he looks left, looks right (eyes narrowed), and shrugs",
+   "camera": "Medium, low front, arcing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 14,
+   "segment": "rehook",
+   "weight": 1.15,
+   "kind": "cap_off",
+   "action": "A back alley under a gas lamp: the captain glances over his shoulder and lifts off his cap: a bald old man with a grey moustache; his hard face lets go and almost smiles",
+   "camera": "Close on his face, pushing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "whip",
+   "sfx": [
+    [
+     "whoosh",
+     0.45
+    ],
+    [
+     "tick",
+     0.62
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 15,
+   "segment": "rehook",
+   "weight": 1.25,
+   "kind": "cobbler",
+   "action": "A bare room: the same old man in a leather apron on a stool at a cobbler's bench, hammering a sole on an iron last (tired eyes); he stops and looks up at us",
+   "camera": "Medium, three-quarter, arcing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "hit",
+     0.1
+    ],
+    [
+     "hit",
+     0.32
+    ],
+    [
+     "hit",
+     0.54
+    ]
+   ],
+   "hud": "WILHELM VOIGT, SHOEMAKER",
+   "prm": {}
+  },
+  {
+   "n": 16,
+   "segment": "rehook",
+   "weight": 1.0,
+   "kind": "rook_shoe",
+   "action": "Rook holds one of the old man's boots up by the heel, looks from it to us; his beak drops and his hat hops off his head (shocked); the old man goes on hammering behind him",
+   "camera": "Medium on Rook",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "gasp",
+     0.36
+    ],
+    [
+     "hit",
+     0.7
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 17,
+   "segment": "uniform",
+   "weight": 1.0,
+   "kind": "shop",
+   "action": "A second-hand shop full of old coats: the old man in a shabby jacket, chin in hand, in front of a tailor's dummy wearing a captain's tunic and cap; he nods and points: that one (a small smile)",
+   "camera": "Medium-wide, arcing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": "SECOND-HAND",
+   "prm": {}
+  },
+  {
+   "n": 18,
+   "segment": "uniform",
+   "weight": 0.95,
+   "kind": "rook_mag",
+   "action": "Rook goes over the tunic's brass buttons with his magnifying glass (squinting), a button glinting; then he straightens and taps his beak",
+   "camera": "Close, three-quarter on Rook and the dummy",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.7
+    ],
+    [
+     "tick",
+     0.82
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 19,
+   "segment": "uniform",
+   "weight": 0.95,
+   "kind": "dress",
+   "action": "By the shop mirror: he does up the last button, sets the cap on his head, and draws himself up; the tired face goes hard: a captain",
+   "camera": "Close, swinging round him",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.2
+    ],
+    [
+     "whoosh",
+     0.5
+    ],
+    [
+     "clunk",
+     0.78
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 20,
+   "segment": "uniform",
+   "weight": 1.1,
+   "kind": "halt",
+   "action": "A Berlin street of tall houses and gas lamps: ten soldiers marching in two files; the captain steps into their path with his hand up, giving an order, and they stamp to a halt (eyes front)",
+   "camera": "Over the captain's shoulder, arcing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.15
+    ],
+    [
+     "clunk",
+     0.33
+    ],
+    [
+     "hit",
+     0.52
+    ]
+   ],
+   "hud": "TEN SOLDIERS",
+   "prm": {}
+  },
+  {
+   "n": 21,
+   "segment": "uniform",
+   "weight": 1.1,
+   "kind": "rook_follow",
+   "action": "Marching towards us: the captain out in front, the ten behind him in step, and Rook keeping pace at his elbow, looking him up and down, then turning to us with a shrug",
+   "camera": "Tracking backwards ahead of the column",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.1
+    ],
+    [
+     "clunk",
+     0.4
+    ],
+    [
+     "clunk",
+     0.7
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 22,
+   "segment": "caught",
+   "weight": 1.0,
+   "kind": "caught",
+   "action": "The alley: two policemen in spiked helmets close in from either side and take the old man by the shoulders; he starts (eyes wide), then lifts his hands a little and lets them (tired)",
+   "camera": "Medium-wide, arcing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.2
+    ],
+    [
+     "hit",
+     0.45
+    ]
+   ],
+   "hud": "10 DAYS LATER",
+   "prm": {}
+  },
+  {
+   "n": 23,
+   "segment": "caught",
+   "weight": 1.0,
+   "kind": "rook_cell",
+   "action": "A stone cell with a barred window: the old man on the bunk, head down; Rook sitting beside him, tapping his beak, then looking at him sideways (softer)",
+   "camera": "Medium two-shot, arcing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.05
+    ],
+    [
+     "tick",
+     0.4
+    ],
+    [
+     "tick",
+     0.55
+    ]
+   ],
+   "hud": "4 YEARS",
+   "prm": {}
+  },
+  {
+   "n": 24,
+   "segment": "kaiser",
+   "weight": 1.15,
+   "kind": "kaiser",
+   "action": "A palace study in red and gold: a man in a pale uniform with an upturned moustache lowers his newspaper, shakes with laughter (mouth open, eyes creased), and brings a stamp down on a sheet of paper",
+   "camera": "Medium, three-quarter, arcing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "flip",
+     0.15
+    ],
+    [
+     "clunk",
+     0.84
+    ]
+   ],
+   "hud": "PARDONED, 1908",
+   "prm": {}
+  },
+  {
+   "n": 25,
+   "segment": "kaiser",
+   "weight": 1.0,
+   "kind": "rook_free",
+   "action": "The cell door swings open; Rook, in the corridor, sweeps an arm: after you; the old man steps out and blinks up at the light (eyes wide)",
+   "camera": "Low in the corridor, drifting",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "creak",
+     0.08
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "hush": true
+  },
+  {
+   "n": 26,
+   "segment": "payoff",
+   "weight": 1.1,
+   "kind": "stage",
+   "action": "From the stalls, over hats and heads: red curtains part on a painted town hall, and there he is in the uniform, in the spotlight, saluting the house (pleased with himself); the audience starts to clap",
+   "camera": "From the stalls, rising",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "whoosh",
+     0.1
+    ],
+    [
+     "hit",
+     0.55
+    ]
+   ],
+   "hud": "ON TOUR",
+   "prm": {}
+  },
+  {
+   "n": 27,
+   "segment": "payoff",
+   "weight": 0.9,
+   "kind": "rook_seat",
+   "action": "From the stage: the front row clapping, and Rook in the middle of it, beak wide in a caw of a laugh, clapping too",
+   "camera": "From the stage, on Rook in the front row",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "caw",
+     0.15
+    ],
+    [
+     "caw",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 28,
+   "segment": "payoff",
+   "weight": 1.0,
+   "kind": "rook_wings",
+   "action": "On the boards: the old man sweeps his cap off in a deep bow (smiling) as flowers land round his boots; behind him, by a scenery flat, Rook claps slowly and then touches his brim",
+   "camera": "On stage, three-quarter, arcing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.2
+    ],
+    [
+     "tick",
+     0.45
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 29,
+   "segment": "end",
+   "weight": 1.15,
+   "kind": "signoff",
+   "action": "Rook alone between the half-drawn curtains: he spots a brass button on the boards, picks it up, turns it in the footlights so it glints, pockets it and tugs his brim: 'Case closed.'",
+   "camera": "Medium on Rook, arcing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "clunk",
+     0.75
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "brand": true
+  },
+  {
+   "n": 30,
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "office_burst",
+   "action": "Back in the mayor's office, a moment earlier: the mayor writing at his desk; the camera closes in; he looks up, eyes going wide, and two bayonet tips slide into the edges of the frame: the opening frame",
+   "camera": "From the doorway, closing in to the opening framing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.1
+    ],
+    [
+     "scratch",
+     0.35
+    ],
+    [
+     "clunk",
+     0.8
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "loop": true
+   }
+  }
+ ]
+}
