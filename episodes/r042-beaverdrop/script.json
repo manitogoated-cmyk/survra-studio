@@ -1,0 +1,71 @@
+{
+  "id": "r042-beaverdrop",
+  "spine": "v2",
+  "voice": "am_fenrir",
+  "speed": 1.12,
+  "gap": 0.14,
+  "lead": 0.1,
+  "tail": 0.4,
+  "segments": [
+    {
+      "scene": "hook",
+      "mood": "hook",
+      "text": "a beaver in a wooden box is falling out of a plane, under a parachute."
+    },
+    {
+      "scene": "doubt",
+      "mood": "tense",
+      "text": "A flying beaver? Please."
+    },
+    {
+      "scene": "land",
+      "mood": "action",
+      "text": "The box hits a meadow, pops open, and out he waddles."
+    },
+    {
+      "scene": "why",
+      "mood": "calm",
+      "text": "Back in a lake town, beavers were felling trees and flooding yards. They had to go."
+    },
+    {
+      "scene": "mules",
+      "mood": "tense",
+      "text": "But horses and mules hauling them got, one game man wrote, spooky and quarrelsome."
+    },
+    {
+      "scene": "chutes",
+      "mood": "action",
+      "text": "So: old war parachutes, and a box that springs open when it lands."
+    },
+    {
+      "scene": "test",
+      "mood": "wonder",
+      "text": "The test pilot: an old beaver called Geronimo. Dropped again, and again, and again."
+    },
+    {
+      "scene": "rehook",
+      "mood": "tense",
+      "text": "Until Geronimo started climbing back into the box himself, ready to go again."
+    },
+    {
+      "scene": "flight",
+      "mood": "action",
+      "text": "That August, {76|seventy-six} beavers flew out. Geronimo among the first, with three females."
+    },
+    {
+      "scene": "landed",
+      "mood": "calm",
+      "text": "Seventy-five of them landed safely."
+    },
+    {
+      "scene": "payoff",
+      "mood": "triumph",
+      "text": "A year later: dams, lodges, colonies. And Geronimo had one of his own."
+    },
+    {
+      "scene": "end",
+      "mood": "end",
+      "text": "Case closed. Because in Idaho, in nineteen forty-eight,"
+    }
+  ]
+}
