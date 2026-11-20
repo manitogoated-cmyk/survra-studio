@@ -7,12 +7,12 @@ on:
   workflow_dispatch:
     inputs:
       task:
-        description: "analytics, brand, about (channel description only), release (publish approved review uploads), or repair (retry failed captions/playlist/thumbnail)"
+        description: "analytics, brand, about (channel description only), release (publish approved review uploads), repair (retry failed captions/playlist/thumbnail), or dedupe (keep one copy of anything uploaded twice)"
         type: choice
-        options: [analytics, brand, about, release, repair]
+        options: [analytics, brand, about, release, repair, dedupe]
         default: analytics
       only:
-        description: "release only: episode id to make public now (blank = every approved private upload)"
+        description: "release: episode id to make public now (blank = every approved private upload). dedupe: hide-public to also hide public duplicates"
         required: false
         default: ""
 

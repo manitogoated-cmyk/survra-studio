@@ -5,6 +5,7 @@
   python3 publish/ops.py release     make approved episodes that were uploaded privately for review public
   python3 publish/ops.py analytics   write ANALYTICS.md + plan/learnings.json from real channel numbers (weekly)
   python3 publish/ops.py repair      retry captions, playlist and thumbnail steps that failed after an upload (daily)
+  python3 publish/ops.py dedupe      keep one copy of anything uploaded twice (scheduled duplicates go private; public ones listed unless ONLY=hide-public)
 """
 import datetime as dt
 import json
@@ -187,8 +188,62 @@ def repair():
     return 0
 
 
+def dedupe():
+    """Finds Shorts/videos uploaded more than once (same title) and keeps ONE copy (2026-11-20: queued runs re-uploaded Shorts).
+    Keeps the public copy with the most views (else the earliest scheduled one). Scheduled duplicates that are not public yet are
+    switched to private with the schedule cancelled, so they never go live. Public duplicates are only listed, unless the
+    workflow input only == 'hide-public' (owner's explicit OK), because hiding a public video is a public change.
+    The ledger is pointed at the copy that is kept."""
+    yt = YouTube()
+    channel(yt)
+    hide_public = os.environ.get("ONLY", "").strip() == "hide-public"
+    titles = yt.channel_titles()
+    info = {}
+    ids = list(titles)
+    for i in range(0, len(ids), 50):
+        j = yt._req("GET", "https://www.googleapis.com/youtube/v3/videos", params=dict(part="status,statistics", id=",".join(ids[i:i + 50])))
+        for it in j.get("items", []):
+            info[it["id"]] = it
+    norm = lambda t: " ".join((t or "").lower().replace("#shorts", "").split())
+    groups = {}
+    for vid, t in titles.items():
+        groups.setdefault(norm(t), []).append(vid)
+    lp = os.path.join(ROOT, "publish", "ledger.json")
+    ledger = json.load(open(lp))
+    changed = 0
+    for t, vids in groups.items():
+        if len(vids) < 2:
+            continue
+        st = lambda v: info.get(v, {}).get("status", {})
+        views = lambda v: int(info.get(v, {}).get("statistics", {}).get("viewCount", 0))
+        public = [v for v in vids if st(v).get("privacyStatus") == "public"]
+        sched = sorted([v for v in vids if st(v).get("publishAt") and v not in public], key=lambda v: st(v)["publishAt"])
+        keep = max(public, key=views) if public else (sched[0] if sched else vids[0])
+        print(f"DUPLICATE '{titles[keep][:70]}': keep {keep} ({st(keep).get('privacyStatus')}, {views(keep)} views)")
+        for v in vids:
+            if v == keep:
+                continue
+            s = st(v)
+            if s.get("privacyStatus") == "public" and not hide_public:
+                print(f"   {v} is public too ({views(v)} views): listed only; run with only=hide-public to hide it")
+                continue
+            if s.get("privacyStatus") == "private" and not s.get("publishAt"):
+                print(f"   {v} already private, nothing to do"); continue
+            res = yt.set_privacy(v, "private")
+            print(f"   {v} -> {res.get('privacyStatus')} (was {s.get('privacyStatus')}, publishAt {s.get('publishAt')})"); changed += 1
+            for ep, row in ledger.items():
+                if row.get("video_id") == v:
+                    ks = st(keep)
+                    row.update(video_id=keep, url=f"https://youtu.be/{keep}", privacy=ks.get("privacyStatus"),
+                               publish_at=ks.get("publishAt"), deduped_from=v)
+                    print(f"   ledger {ep} now points at {keep}")
+    json.dump(ledger, open(lp, "w"), indent=2, sort_keys=True)
+    print(f"dedupe: {changed} duplicate(s) switched to private")
+    return 0
+
+
 if __name__ == "__main__":
     try:
-        sys.exit(dict(brand=brand, about=about, analytics=analytics, release=release, repair=repair)[sys.argv[1]]())
+        sys.exit(dict(brand=brand, about=about, analytics=analytics, release=release, repair=repair, dedupe=dedupe)[sys.argv[1]]())
     except AuthExpired as ex:
         print("AUTH EXPIRED:", ex); sys.exit(2)
