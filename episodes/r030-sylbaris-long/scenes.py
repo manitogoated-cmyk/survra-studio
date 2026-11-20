@@ -41,6 +41,8 @@ def fit(cv, s, x, y, size, maxw, color=0xFFFFFFFF, stroke=0xFF000000):
 
 
 def plain(cv, s, x, y, size, color, weight=900, maxw=None, centre=True):
+    if not s:
+        return 0
     f = font(size, weight)
     w = f.measureText(s)
     if maxw and w > maxw:
@@ -188,13 +190,13 @@ def board(cv, c):
     cv.drawCircle(560, 150, 18, P(h('2A2A2E')))
     cv.drawCircle(556, 146, 7, P(h('6A6A70')))
     if c.lt > 0.25:
-        fit(cv, 'LUDGER SYLBARIS', 1400, 300, 96, 820, 0xFFFFFFFF)
+        fit(cv, 'LUDGER SYLBARIS', 1350, 300, 96, 740, 0xFFFFFFFF)
     if c.lt > 0.6:
-        fit(cv, 'PARDONED', 1400, 440, 96, 820, AMBER)
+        fit(cv, 'PARDONED', 1350, 440, 96, 740, AMBER)
     if c.lt > 0.95:
-        fit(cv, 'DIED AROUND 1929', 1400, 580, 84, 820, 0xFFFFFFFF)
+        fit(cv, 'DIED AROUND 1929', 1350, 580, 84, 740, 0xFFFFFFFF)
     if c.lt > 1.3:
-        fit(cv, 'IN PANAMA', 1400, 690, 84, 820, 0xFFFFFFFF)
+        fit(cv, 'IN PANAMA', 1350, 690, 84, 740, 0xFFFFFFFF)
     cv.restore()
     Wd.particles(cv, W, H, c.t, 24, 0x55F4ECDC, 91, size=(2, 5), drift=(12, 20), wobble=20, twinkle=True)
 
@@ -245,7 +247,7 @@ def closed(cv, c):
     if c.lt > 0.45:
         k = min(1, (c.lt - 0.45) / 0.15)
         cv.save()
-        cv.translate(430, 300)
+        cv.translate(1380, 330)
         cv.scale(1.4 - 0.4 * k, 1.4 - 0.4 * k)
         Wd.text_card(cv, 'SURVRA', 0, 0, 130, AMBER, 0xFF000000)
         Wd.text_card(cv, 'CASE 030', 0, 80, 50, 0xFFFFFFFF, 0xFF000000)
@@ -256,8 +258,8 @@ OVER = dict(bay_blast=lightash, cloud_town=embers, jail_yard=embers, cell_face=m
             cloud_rush=embers, slit_glow=embers, rook_brace=embers, shield=embers, sleeve_look=ashfall, rook_listen=ashfall, town_ash=heavyash,
             ruins_street=ashfall, rook_hatoff=ashfall, dark_wait=motes, rescuers=ashfall, shout=motes, dig_out=ashfall, rook_wall=ashfall,
             pardon=ashfall, wall_sneak=stars, circus_ring=motes, rook_crowd=motes, signoff=closed,
-            bay_calm=haze, quay_life=haze, quay_close=haze, quay_ash=ashfall, summit_steam=haze, snake_lane=lightash, snake_close=lightash,
-            mud_valley=spray, mud_after=lightash, hall_report=motes, hall_window=motes, road_in=lightash, gov_arrive=ashfall, party_night=stars,
+            bay_calm=haze, quay_life=haze, quay_close=haze, quay_ash=heavyash, summit_steam=haze, snake_lane=lightash, snake_close=lightash,
+            mud_valley=spray, mud_after=heavyash, hall_report=motes, hall_window=motes, road_in=lightash, gov_arrive=ashfall, party_night=stars,
             rook_room=motes, ships_fire=embers, roddam_away=embers, slit_dark=motes, cloth_slit=embers, edge_house=heavyash, cell_stands=ashfall,
             ring_tell=motes, geologist=lightash, spine_rise=lightash, bay_today=haze, rook_question=haze, led_in=haze, back_gate=haze, door_shut=haze)
 

@@ -23,7 +23,7 @@
      0
     ]
    ],
-   "shake": 1,
+   "shake": 3,
    "transition": "cut",
    "sfx": [
     [
@@ -36,7 +36,12 @@
     ]
    ],
    "hud": null,
-   "prm": {}
+   "prm": {
+    "arc": [
+     10,
+     0.6
+    ]
+   }
   },
   {
    "n": 2,
@@ -108,7 +113,12 @@
     ]
    ],
    "hud": null,
-   "prm": {}
+   "prm": {
+    "arc": [
+     16,
+     0.3
+    ]
+   }
   },
   {
    "n": 4,
@@ -176,7 +186,13 @@
     ]
    ],
    "hud": "CASE 030",
-   "prm": {}
+   "prm": {
+    "alt": [
+     0,
+     0.62,
+     0
+    ]
+   }
   },
   {
    "n": 6,
@@ -571,7 +587,7 @@
      0.3
     ]
    ],
-   "hud": "7 MAY: \"NO DANGER\"",
+   "hud": "THE COMMISSION: NO DANGER",
    "prm": {}
   },
   {
@@ -603,7 +619,7 @@
      0.6
     ]
    ],
-   "hud": "7 MAY: \"NO DANGER\"",
+   "hud": "THE COMMISSION: NO DANGER",
    "prm": {}
   },
   {
@@ -744,7 +760,12 @@
     ]
    ],
    "hud": "LUDGER SYLBARIS",
-   "prm": {}
+   "prm": {
+    "arc": [
+     16,
+     0.3
+    ]
+   }
   },
   {
    "n": 22,
@@ -1426,7 +1447,17 @@
     ]
    ],
    "hud": null,
-   "prm": {}
+   "prm": {
+    "arc": [
+     0,
+     0.0
+    ],
+    "alt": [
+     0,
+     0.8,
+     0
+    ]
+   }
   },
   {
    "n": 41,
@@ -1590,7 +1621,12 @@
     ]
    ],
    "hud": "DAYS PASS",
-   "prm": {}
+   "prm": {
+    "arc": [
+     24,
+     0.3
+    ]
+   }
   },
   {
    "n": 46,
@@ -1769,7 +1805,12 @@
     ]
    ],
    "hud": null,
-   "prm": {}
+   "prm": {
+    "arc": [
+     14,
+     0.2
+    ]
+   }
   },
   {
    "n": 51,
@@ -2050,7 +2091,7 @@
   {
    "n": 59,
    "segment": "science",
-   "weight": 1.5,
+   "weight": 1.3,
    "kind": "spine_rise",
    "action": "At the summit, months later: a spine of dark rock pushes up out of the crater, taller and taller, Rook on the rim holding his hat to see the top. Then its sides break away and it sinks into its own rubble",
    "camera": "Low on the rim, tilting up",
@@ -2068,7 +2109,7 @@
      0
     ]
    ],
-   "shake": 1,
+   "shake": 2,
    "transition": "cut",
    "sfx": [
     [
@@ -2185,7 +2226,12 @@
     ]
    ],
    "hud": "THE CELL STILL STANDS",
-   "prm": {}
+   "prm": {
+    "arc": [
+     16,
+     0.25
+    ]
+   }
   },
   {
    "n": 63,
@@ -2256,7 +2302,11 @@
    ],
    "hud": null,
    "prm": {
-    "after": true
+    "after": true,
+    "arc": [
+     -16,
+     0.3
+    ]
    }
   },
   {
@@ -2289,7 +2339,17 @@
     ]
    ],
    "hud": null,
-   "prm": {},
+   "prm": {
+    "alt": [
+     0,
+     0.45,
+     -0.3
+    ],
+    "arc": [
+     18,
+     0.3
+    ]
+   },
    "brand": true
   }
  ]

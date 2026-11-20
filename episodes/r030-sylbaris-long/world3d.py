@@ -1534,7 +1534,7 @@ def quay_ash(S, k, t, lt):
     put(S, S['rook'], QUAY, -3.0, 7.4, 0, facing((-3.0, 7.4), (-6.5, 10.5)), blend(P('hat', head=(0.0, 0.0)), P('stand', aR=(0.95, 0.05, 1.7, 0.5), head=(0.35, -0.25)), u), 'low')
     S['hat_tip'] = 0.15
     key(S, QUAY, (-8, 12, 5), (-2, 7, 2), 600, 'F0E4D0')
-    shoot(S, QUAY, (lerp(-6.6, -6.0, k), lerp(10.9, 10.3, k), 2.5), (-0.4, 5.9, 2.5), 30)
+    shoot(S, QUAY, (lerp(-8.0, -5.4, k), lerp(12.0, 9.6, k), lerp(3.1, 2.4, k)), (-0.4, 5.9, 2.5), 30)
 
 
 def summit_steam(S, k, t, lt):
@@ -1543,12 +1543,12 @@ def summit_steam(S, k, t, lt):
     sky(S, 'day')
     z = S['gz']['rim']
     zc = S['gz']['rimcam']
-    pose_cloud(S['steam'], (-31, 311, zc + 2.5), (-17, 299, z + 9), 0.6 + 0.35 * k, t, 0.36, 0.16)
+    pose_cloud(S['steam'], (-19.5, 305.5, z + 3.5), (-12, 295, z + 13), 0.45 + 0.5 * k, t * 1.8, 0.36, 0.14)
     put(S, S['rook'], BAY, RIM[0], RIM[1], z, facing(RIM, RIMCAM) + 0.3, blend(P('stand', head=(-0.1, 0.3)), P('tap', head=(-0.05, -0.2)), sm((lt - 0.6) / 0.5)), 'low')
     S['hat_tip'] = 0.2
     h = head(S, S['rook'])
     key(S, (0, 0, 0), (h[0] - 5, h[1] + 3, h[2] + 4), h, 900, 'FFF2DC')
-    shoot(S, (0, 0, 0), (RIMCAM[0] + lerp(-0.8, 0.0, k), RIMCAM[1] + lerp(0.8, 0.0, k), zc + 3.3), (h[0], h[1], h[2] - 0.5), 30)
+    shoot(S, (0, 0, 0), (RIMCAM[0] + lerp(-2.6, 0.4, k), RIMCAM[1] + lerp(1.6, -0.3, k), zc + lerp(3.9, 3.1, k)), (h[0], h[1], h[2] - 0.5), 30)
 
 
 def snake_lane(S, k, t, lt):
@@ -1598,11 +1598,16 @@ def mud_after(S, k, t, lt):
     sky(S, 'ash', 'day', 0.55)
     S['mudbed'].location.z = 6.2
     S['fact'].location.z = -0.4
-    put(S, S['rook'], VALLEY, 12, -8.3, 8.8, facing((12, -8.3), (20, -15)) - 0.6, P('stand', aL=(0.6, -0.2, 2.0, 1.0), head=(lerp(0.15, 0.45, sm(k * 1.4)), 0.55)), 'sad')
-    S['hat_off'] = 1.0
+    off = sm((lt - 0.35) / 0.9)
+    put(S, S['rook'], VALLEY, 12, -8.3, 8.8, facing((12, -8.3), (20, -15)) - 0.6,
+        blend(P('hat', head=(0.05, 0.6)), P('stand', aL=(0.6, -0.2, 2.0, 1.0), head=(lerp(0.15, 0.45, sm(k * 1.4)), 0.55)), off), 'sad')
+    S['hat_off'] = off
     h = head(S, S['rook'])
     key(S, (0, 0, 0), (h[0] + 6, h[1] - 5, h[2] + 3), h, 1200, 'E8E0D4')
-    shoot(S, VALLEY, (lerp(18.6, 17.8, k), lerp(-14.2, -13.4, k), 11.6), (7.5, -1.0, 10.9), 30)
+    a = lerp(-0.34, 0.26, k)
+    r_ = lerp(1.08, 0.82, k)
+    vx, vy = 9.4 * r_, -11.4 * r_
+    shoot(S, VALLEY, (8.0 + vx * math.cos(a) - vy * math.sin(a), -2.0 + vx * math.sin(a) + vy * math.cos(a), lerp(12.2, 11.2, k)), (8.0, -2.0, 11.0), 30)
 
 
 # ---------------------------------------------------------------- the town stays
@@ -1741,8 +1746,8 @@ def roddam_away(S, k, t, lt):
     for i, o in enumerate(S['stsmoke']):
         o.location = (1.2 * math.sin(t + i), 2 + 2.8 * i + 0.6 * math.sin(t * 0.8 + i), 14 + 2.3 * i)
     S['firel'].location, S['firel'].data.energy = at(BAY, 40, -52, 14), 3500
-    key(S, BAY, (x - 16, y - 22, 30), (x, y, 5), 70000, 'FFB888')
-    shoot(S, BAY, (x - 15 - 2 * k, y - 31, lerp(4.5, 6, k)), (x + 2, y + 5, 8.5), 34)
+    key(S, BAY, (x - 10, y - 16, 26), (x, y, 6), 22000, 'FFB888')
+    shoot(S, BAY, (lerp(-63, -61, k), lerp(-176, -174, k), lerp(4.5, 6, k)), (x + 2, y + 5, 8.5), 34)
 
 
 # ---------------------------------------------------------------- in the cell
@@ -1756,6 +1761,7 @@ def slit_dark(S, k, t, lt):
     S['celll'].data.energy = 34 + 16 * f
     m = tput(S, S['man'], CELL, -0.15, -1.45, 0, 0.2, P('stand', aL=(0.3, 0.2, 0.5), aR=(lerp(0.3, 1.3, sm(lt / 1.2)), 0.2, 0.9), head=(lerp(0.1, -0.3, sm(lt / 1.0)), 0.0)), 'calm' if f > 0.5 else 'wide')
     h = head(S, m)
+    key(S, CELL, (0.1, -2.7, 2.2), (h[0] - CELL[0], h[1] - CELL[1], h[2]), 20 + 260 * f, 'DCEBFF' if f > 0.3 else 'B8A898')
     shoot(S, (0, 0, 0), (h[0] - lerp(1.35, 1.1, k), h[1] - 1.3, h[2] - lerp(0.6, 0.4, k)), (h[0] + 0.1, h[1] - 0.45, h[2] - 0.05), 34)
 
 
@@ -1794,7 +1800,7 @@ def cell_stands(S, k, t, lt):
     yard(S, 'ruin')
     put(S, S['rook'], YARD, 0.4, 0.4, 2.42, lerp(-0.6, 0.9, sm(k)), P('hips', head=(0.05, lerp(0.5, -0.5, sm(k)))), 'soft')
     key(S, YARD, (8, -14, 10), (0.4, 0.4, 4), 2500, 'E8E0D4')
-    shoot(S, YARD, (lerp(8.6, 7.0, k), lerp(-13.5, -11.5, k), lerp(7.2, 5.8, k)), (0, 0.4, 3.0), 30)
+    shoot(S, YARD, (lerp(6.4, 5.2, k), lerp(-10.0, -8.4, k), lerp(5.8, 4.9, k)), (0, 0.4, 3.5), 30)
 
 
 def ring_tell(S, k, t, lt):
@@ -1839,9 +1845,9 @@ def spine_rise(S, k, t, lt):
     sky(S, 'ash', 'day', 0.5)
     town(S, True)
     z = S['gz']['rim']
-    up = sm(k / 0.6)
-    fall = sm((k - 0.68) / 0.3)
-    S['spine'].location = at(BAY, 0, 330, 205 - 82 * (1 - up) - 30 * fall)
+    up = sm(k / 0.5)
+    fall = sm((k - 0.6) / 0.32)
+    S['spine'].location = at(BAY, 0, 330, 205 - 62 * (1 - up) - 30 * fall)
     S['spine'].scale = (1 + 0.25 * fall, 1 + 0.25 * fall, 1 - 0.45 * fall)
     S['spine'].rotation_euler = (0.05 * fall, 0.02 * math.sin(t * 20) * (fall > 0) * (fall < 1), 0)
     for i, o in enumerate(S['rocks']):
@@ -1850,13 +1856,14 @@ def spine_rise(S, k, t, lt):
         r_ = 10 + 46 * f * (0.5 + rnd(i, 6))
         o.location = at(BAY, r_ * math.cos(a), 330 + r_ * math.sin(a), 290 - 60 * rnd(i, 7) - 140 * f * f) if f > 0 else FAR
         o.rotation_euler = (t * 3 + i, t * 2, i)
-    pose_cloud(S['steam'], (0, 330, 214), (4, 330, 250), 0.4 + 0.5 * fall, t, 1.0 + 1.6 * fall, 1.2)
-    turn = sm((k - 0.82) / 0.14)
+    pose_cloud(S['steam'], (6, 334, 212), (14, 340, 236), 0.4 + 0.5 * fall, t, 0.5 + 0.5 * fall, 0.45)
+    turn = sm((k - 0.84) / 0.14)
     put(S, S['rook'], BAY, RIM[0], RIM[1], z, facing(RIM, (0, 330)) - 0.6 - 2.3 * turn, blend(P('stand', head=(-0.2, 0.3)), P('hat', head=(-0.5 + 0.5 * turn, 0.35), lean=-0.1), up), 'shocked' if up > 0.4 else 'calm')
     S['hat_tip'] = -0.6 * up * (1 - turn)
     h = head(S, S['rook'])
     key(S, (0, 0, 0), (h[0] - 5, h[1] - 6, h[2] + 2), h, 1400, 'F2EADA')
-    shoot(S, BAY, (SPCAM[0] - lerp(0.0, 0.5, k), SPCAM[1] - lerp(0.0, 0.6, k), S['gz']['spcam'] + 1.5), (RIM[0] + 6, RIM[1] + 7, z + lerp(6.5, 9.5, up)), 34)
+    shoot(S, BAY, (SPCAM[0] - lerp(-0.6, 1.4, k), SPCAM[1] - lerp(-0.6, 1.6, k), S['gz']['spcam'] + lerp(1.2, 2.6, k)), (RIM[0] + 6, RIM[1] + 7, z + lerp(5.0, 10.5, up) - 3.0 * fall), 34,
+          roll=0.012 * math.sin(t * 23) * (1 if 0 < fall < 1 else 0))
 
 
 def bay_today(S, k, t, lt):
@@ -1876,10 +1883,12 @@ def photo_thumb(S, k, t, lt):
     """The thumbnail picture: his face close in the orange strip of light from the slit, on the right of the frame; the dark of
     the cell on the left for the words."""
     cell(S, 'glow')
-    m = put(S, S['man'], CELL, -0.4, -0.2, 0, 0.25, P('sit', head=(-0.3, 0.25), aL=(0.5, 0.3, 1.6, 0.8)), 'wide')
+    S['slitl'].data.energy = 2600
+    S['celll'].data.energy = 220
+    m = put(S, S['man'], CELL, -0.5, 1.5, 0, 0.2, P('sit', head=(-0.3, 0.15), aL=(0.5, 0.3, 1.6, 0.8)), 'wide')
     hh = head(S, m)
-    key(S, CELL, (0.4, -2.6, 2.4), hh, 160, 'FF8A3A')
-    shoot(S, (0, 0, 0), (hh[0] + 0.25, hh[1] - 1.75, hh[2] + 0.05), (hh[0] - 0.62, hh[1], hh[2] - 0.02), 40)
+    key(S, (0, 0, 0), (hh[0] + 1.0, hh[1] - 3.0, hh[2] + 0.6), hh, 900, 'FF8A3A')
+    shoot(S, (0, 0, 0), (hh[0] + 0.5, CELL[1] - 2.35, hh[2] + 0.15), (hh[0] - 0.95, hh[1], hh[2] - 0.1), 40)
 
 
 NEW = (bay_calm, quay_life, quay_close, quay_ash, summit_steam, snake_lane, snake_close, mud_valley, mud_after, hall_report, hall_window,
@@ -1910,6 +1919,31 @@ def _held(f, name):
     return g
 
 
+# The new shots keep their own timing; they get the same slight arc and push so that no frame of them stands still.
+ARCS = dict(bay_calm=(4, 0.1), mud_valley=(5, 0.1), ships_fire=(5, 0.1), roddam_away=(4, 0.06), bay_today=(7, 0.16), spine_rise=(10, 0.1),
+            rook_room=(7, 0.0), slit_dark=(6, 0.0), cloth_slit=(6, 0.0), snake_close=(0, 0.0), mud_after=(0, 0.0), summit_steam=(0, 0.0),
+            cell_stands=(26, 0.12), geologist=(14, 0.16), hall_report=(11, 0.14), ring_tell=(12, 0.16), road_in=(9, 0.14))
+
+
+def _alive(f, name):
+    sign = 1 if sum(map(ord, name)) % 2 else -1
+    d0 = ARCS.get(name, (9, 0.12))
+
+    def g(S, k, t, lt):
+        f(S, k, t, lt)
+        deg, push = S['prm'].get('arc', (sign * d0[0], d0[1]))
+        c, tg = S['camrig'].location, S['camtgt'].location
+        a = math.radians(deg) * (k - 0.5)
+        m = 1 - push * (k - 0.5)
+        dx, dy = c[0] - tg[0], c[1] - tg[1]
+        S['camrig'].location = (tg[0] + (dx * math.cos(a) - dy * math.sin(a)) * m, tg[1] + (dx * math.sin(a) + dy * math.cos(a)) * m, c[2])
+    g.__name__ = name
+    g.__doc__ = f.__doc__
+    return g
+
+
+for _f in NEW:
+    SHOTS3D[_f.__name__] = _alive(_f, _f.__name__)
 _dig0 = SHOTS3D['dig_out']
 
 
