@@ -32,7 +32,8 @@ STR = (1500.0, 3000.0, 0.0)         # a Berlin street
 ALY = (3000.0, 3000.0, 0.0)         # a back alley
 HOST = {'rook_desk', 'rook_coins', 'rook_peer', 'rook_gone', 'rook_shoe', 'rook_mag', 'rook_follow', 'rook_cell',
         'rook_free', 'rook_seat', 'rook_wings', 'signoff'}
-CAMFILL = {'*': 160}
+CAMFILL = {'*': 160, 'rook_gone': 420, 'caught': 340, 'rook_free': 340, 'rook_seat': 300, 'rook_wings': 260, 'rook_cell': 220, 'rook_shoe': 220,
+           'cap_off': 200, 'walk_out': 0, 'stage': 0}
 ROOKC = dict(top='566178', belt='3E4658', lap='6B7690', pants='2A2742', hand='2F2B4D', boot='8A90A6')
 BLUE, BLUE2, RED, BRASS, STEEL = '2A3C6E', '222F58', 'B8322E', 'D8A83A', 'C8CCD6'
 BRICK, STONE, WOOD, WOODD = '8E4232', 'B4A894', '6A4428', '4A2E1E'
@@ -40,7 +41,7 @@ AMB = dict(                         # horizon, zenith, strength, sun watts, sun 
     office=('3A3430', '22262E', 0.35, 0.0, 'FFFFFF', (0, 0, 1)),
     vault=('342C26', '1E1E26', 0.3, 0.0, 'FFFFFF', (0, 0, 1)),
     square=('DCD2C0', '7E90AC', 1.0, 2.6, 'FFE2B8', (-0.45, -0.7, 0.5)),
-    street=('D6CCBC', '8494AE', 1.0, 2.4, 'FFE6C4', (0.5, -0.65, 0.5)),
+    street=('D6CCBC', '8494AE', 1.35, 3.2, 'FFE6C4', (0.5, -0.65, 0.5)),
     alley=('5A5468', '2A2C44', 0.5, 0.0, 'FFFFFF', (0, 0, 1)),
     room=('3A322C', '201E24', 0.32, 0.0, 'FFFFFF', (0, 0, 1)),
     cell=('2C3038', '181A22', 0.3, 0.0, 'FFFFFF', (0, 0, 1)),
@@ -222,7 +223,7 @@ def make_cap(par=None, loc=FAR):
     cyl(RED, (0, 0, 0.05), 0.315, 0.1, r, v=10)
     cyl(BLUE, (0, 0, 0.16), 0.335, 0.14, r, v=10)
     cyl(BLUE, (0, 0, 0.24), 0.37, 0.04, r, v=10)
-    box('15151A', (0, -0.33, 0.02), (0.42, 0.24, 0.03), r, rot=(-0.3, 0, 0), rough=0.3)
+    box('15151A', (0, -0.36, 0.0), (0.42, 0.24, 0.03), r, rot=(0.28, 0, 0), rough=0.3)
     cyl(BRASS, (0, -0.325, 0.1), 0.035, 0.03, r, rot=(PI / 2, 0, 0), v=6, rough=0.3)
     return r
 
@@ -445,7 +446,7 @@ def make_square(S):
             window(r, x, 7.86, z, 1.5, 2.6, glow='FFD890', e=0.9, frame='3A2A22')
     box(STONE, (2, 7.9, 2.9), (4.8, 0.5, 5.8), r)                                                     # the portal
     box('1A161A', (2, 7.62, 2.6), (3.2, 0.2, 5.0), r)
-    add('cone', STONE, (2, 7.9, 6.5), rot=(-PI / 2, 0, 0), radius1=2.6, radius2=2.6, depth=0.5, vertices=3, parent=r)
+    add('cone', STONE, (2, 7.9, 6.9), rot=(PI / 2, 0, 0), radius1=2.6, radius2=2.6, depth=0.5, vertices=3, parent=r)
     for i, (y, h) in enumerate(((7.0, 0.6), (5.8, 0.4), (4.9, 0.2))):                                 # steps
         box('A39C90', (2, y, h / 2), (9.0 + 0.8 * i, 1.3 if i == 0 else 1.0, h), r)
     box('7C3628', (-11.5, 12, 13), (6.5, 7, 26), r, rough=1.0)                                        # the tower
@@ -565,7 +566,10 @@ def make_cobbler(S):
 
 
 def make_shop(S):
-    r = shell(SHP, 12, 9, 6.5, '4E4250', '4A3A30', trim='32262E')
+    r = shell(SHP, 12, 9, 6.5, '4E4250', '4A3A30', trim='32262E', front=True)
+    fw = empty((0.5, -4.45, 3.4), r, (0, 0, PI))                                                       # the shop window, seen from inside
+    window(fw, 0, 0, 0, 4.6, 3.4, glow='C8D4E4', e=2.6, frame='32262E')
+    box('32262E', (4.3, -4.4, 2.2), (1.7, 0.14, 4.4), r)
     cyl(BRASS, (-1.5, 4.0, 4.3), 0.05, 8.6, r, rot=(0, PI / 2, 0), v=6, rough=0.3)                    # a rail of old coats
     for i in range(13):
         if 3 <= i <= 5:
@@ -648,6 +652,8 @@ def make_cell(S):
     S['cellkey'] = light(at(CEL, 1.2, 1.4, 4.6), 420, 'C4D4EC', size=1.6, target=tg)
     light(at(CEL, -2.6, -5.9, 4.0), 420, 'FFB060', kind='POINT')
     light(at(CEL, -2.6, -1.4, 3.6), 160, 'FFB060', size=2.0, target=tg)
+    tg3 = empty((0.6, -4.4, 1.8), r)
+    light(at(CEL, 3.6, -6.2, 4.4), 380, 'FFD0A0', size=2.5, target=tg3)
     S['cell'] = r
 
 
@@ -740,7 +746,7 @@ def make_theatre(S):
         box('2A1A20', (0, y - 0.3, z + 0.1), (17, 2.1, 0.2), r)
         for i in range(9):
             x = -7.2 + 1.8 * i + (0.5 if row % 2 else 0)
-            box('7E1A20', (x, y + 0.5, z + 1.0), (1.3, 0.2, 1.6), r, rough=1.0)                       # seat back
+            box('7E1A20', (x, y - 0.6, z + 1.0), (1.3, 0.2, 1.6), r, rough=1.0)                       # seat back
             if row == 0 and i == 4:
                 S['seat'] = (x, y, z)
                 continue
@@ -820,8 +826,8 @@ def make_cast(S):
 def make_props(S):
     S['frifle'] = [make_rifle(), make_rifle()]
     make_money(S)
-    S['glove'] = K.Hand('ECECEC', BLUE, 1.5)
-    S['thand'] = K.Hand('E2B696', 'E8E2D4', 1.5)
+    S['glove'] = K.Hand('ECECEC', BLUE, 1.1)
+    S['thand'] = K.Hand('E2B696', 'E8E2D4', 1.1)
     for h in (S['glove'], S['thand']):
         h.root.location = FAR
         keep(h.root)
@@ -829,7 +835,7 @@ def make_props(S):
     cyl('6A4A2E', (0, 0, 0.22), 0.03, 0.5, r, v=6)
     box('3A3E46', (0, -0.04, 0.48), (0.09, 0.26, 0.1), r, rough=0.4)
     S['bootb'] = make_boot('3A2A20', 1.15)
-    S['boot2'] = make_boot('2A2420', 1.15)
+    S['boot2'] = make_boot('A8743E', 1.25)
     S['mag'] = r = keep(empty(FAR))
     add('torus', BRASS, (0, 0, 0), rot=(PI / 2, 0, 0), major_radius=0.22, minor_radius=0.03, major_segments=14, minor_segments=4, parent=r, rough=0.3)
     cyl('D8F0FF', (0, 0, 0), 0.21, 0.01, r, rot=(PI / 2, 0, 0), v=14, rough=0.05, alpha=0.25)
@@ -1056,7 +1062,7 @@ def office_burst(S, k, t, lt):
         scratch = 0.05 * math.sin(lt * 14) * (1 - sm((k - 0.6) / 0.1))
         pose = blend(dict(writing, aR=(0.95 + scratch, -0.2, 1.3, 0.3)), looked, (k - 0.7) / 0.26)
         fc = 'wide' if k > 0.84 else 'calm'
-        cp = mix((1.9, -6.4, 3.7), (0.0, -3.4, 2.3), sm(k / 0.9))
+        cp = mix((1.1, -5.3, 3.5), (0.0, -3.4, 2.3), sm(k / 0.9))
         slide = [1.2 * (1 - sm((k - 0.8) / 0.2))] * 2
         thrust = [0.0, 0.0]
         show = k > 0.8
@@ -1084,8 +1090,8 @@ def boots_in(S, k, t, lt):
     cp = S['capt']
     stand(cp, at(OFF, 0, cy, 0), PI, step(t, 1.8, head=(-0.1, 0.0)) if k < 0.9 else P('stand', head=(-0.1, 0.0)), 'hard')
     for i in range(6):
-        soldier(S, i, at(OFF, (-1.15, 1.15)[i % 2], cy - 1.5 - 1.7 * (i // 2), 0), PI, 'aim', t, walking=k < 0.9)
-    cam(S, at(OFF, 2.5, 1.0, 0.5), at(OFF, 0.0, -3.4, 1.9), 22)
+        soldier(S, i, at(OFF, (-1.3, 1.3)[i % 2], cy - 1.5 - 1.7 * (i // 2), 0), PI, 'slope', t, walking=k < 0.9)
+    cam(S, at(OFF, 3.1, -0.9, 0.5), at(OFF, 0.0, -3.6, 1.9), 22)
     orbit(S, k, 16, 0.25, 0.3)
 
 
@@ -1153,7 +1159,11 @@ def table_money(S, gone=0.0, order=None):
     S['bag'].rotation_euler = (0, 0, 0.25)
     cur = None
     for j, (o, p) in enumerate(items):
-        k0 = 0.06 + 0.8 * j / len(items)
+        if j >= 13:
+            o.location = at(TRE, *p)
+            continue
+        jj = j - 6 if j >= 6 else j + 7                                   # coins first, then the notes
+        k0 = 0.04 + 0.84 * jj / 13
         u = (gone - k0) / 0.12
         if u >= 1:
             continue
@@ -1180,9 +1190,9 @@ def treasurer(S, k, t, lt):
     S['cashbox'].location.z += 0.02 * math.sin(lt * 33) * (1 - u)
     table_money(S, 0.0)
     cp = S['capt']
-    stand(cp, at(TRE, -1.3, -2.6, 0), PI + 0.2, P('stand', aR=(1.1, 0.2, 0.25), head=(-0.05, 0.0)), 'hard')
-    soldier(S, 0, at(TRE, 3.9, -1.7, 0), facing((3.9, -1.7), (1.3, 1.55)), 'aim', t)
-    cam(S, at(TRE, -3.0, -5.7, 3.0), at(TRE, 0.7, 0.8, 2.0), 32)
+    stand(cp, at(TRE, 0.3, -3.0, 0), PI - 0.2, P('stand', aL=(1.1, 0.2, 0.25), head=(-0.05, 0.0)), 'hard')
+    soldier(S, 0, at(TRE, 3.6, -0.6, 0), facing((3.6, -0.6), (1.3, 1.55)), 'aim', t)
+    cam(S, at(TRE, 1.5, -6.2, 3.0), at(TRE, 0.6, 0.8, 2.0), 32)
     orbit(S, k, 18, 0.2, 0.0)
 
 
@@ -1190,18 +1200,18 @@ def cash(S, k, t, lt):
     """Down on the table: note bundles, coin stacks and sacks, and a white glove sweeping them, one after another,
     into a leather bag; the treasurer's hand trembles on the open cash box."""
     amb(S, 'vault')
-    S['cashbox'].location = at(TRE, 1.15, 0.2, 1.275)
+    S['cashbox'].location = at(TRE, 0.75, 0.75, 1.275)
     S['cashlid'].rotation_euler = (-1.9, 0, 0)
     cur = table_money(S, k)
     g = S['glove']
     rest = at(TRE, -0.6, -1.5, 1.6)
-    gp = plus(cur, (0.1, -0.5, 0.16)) if cur else rest
+    gp = plus(cur, (0.05, -0.42, 0.14)) if cur else rest
     g.place(gp, (0.2, 0, PI))
     g.grip(0.55 if cur else 0.2)
     th = S['thand']
-    th.place(at(TRE, 1.2 + 0.02 * math.sin(lt * 31), 1.05, 1.62 + 0.02 * math.sin(lt * 37)), (0.25, 0, 0.1))
+    th.place(at(TRE, 0.75 + 0.02 * math.sin(lt * 31), 1.45, 1.75 + 0.02 * math.sin(lt * 37)), (0.3, 0, 0.1))
     th.grip(0.3)
-    cam(S, at(TRE, 0.4, -3.1, 3.8), at(TRE, -0.3, -0.35, 1.3), 34)
+    cam(S, at(TRE, -0.6, -2.7, 3.5), at(TRE, -0.6, -0.3, 1.3), 26)
     orbit(S, k, 22, 0.2, 0.0)
 
 
@@ -1241,13 +1251,13 @@ def line_up(S, k, t, lt):
     """In the square: six soldiers in a row, rifles grounded; the captain walks down the line with his hands behind
     his back, and each man stiffens and lifts his chin as he passes."""
     amb(S, 'square')
-    cx = lerp(-4.5, 10.0, k)
+    cx = lerp(9.0, -4.0, k)
     cp = S['capt']
-    stand(cp, at(EXT, cx, 0.5, 0), PI / 2, step(t, 1.5, aL=(-0.5, 0.1, 0.9, 1.2), aR=(-0.5, 0.1, 0.9, 1.2), head=(-0.1, 0.55), lean=-0.03), 'hard')
+    stand(cp, at(EXT, cx, 0.5, 0), -PI / 2, step(t, 1.5, aL=(-0.5, 0.1, 0.9, 1.2), aR=(-0.5, 0.1, 0.9, 1.2), head=(-0.1, -0.5), lean=-0.03), 'hard')
     for i in range(6):
         sx = -3.0 + 2.0 * i
-        sn = sm((cx - (sx - 1.2)) / 0.5)
-        pulse = sn * (1 - sm((cx - sx - 0.4) / 0.8))
+        sn = sm(((sx + 1.2) - cx) / 0.5)
+        pulse = sn * (1 - sm((sx - 0.4 - cx) / 0.8))
         soldier(S, i, at(EXT, sx, 2.4, 0.08 * pulse), 0.0, 'attn', t, head=(-0.22 * sn, 0.0), lean=-0.05 * sn)
     cam(S, at(EXT, -6.2, -2.4, 1.8), at(EXT, 3.6, 2.2, 2.4), 30)
     orbit(S, k, 14, 0.2, 0.0)
@@ -1315,7 +1325,7 @@ def rook_gone(S, k, t, lt):
     S['hat_tip'] = 0.35 * sh
     for i, s in enumerate((-1, 1)):
         soldier(S, i, at(EXT, 2 + s * 2.4, 7.0, 0.6), 0.0, 'attn', t, head=(-0.15, 0.0))
-    cam(S, at(EXT, 2.6, 0.9, 1.7), at(EXT, 2.0, 5.8, 2.95), 34)
+    cam(S, at(EXT, 2.7, 0.2, 1.7), at(EXT, 2.0, 5.8, 2.95), 30)
     orbit(S, k, 18, 0.22, 0.0)
 
 
@@ -1326,12 +1336,12 @@ def cap_off(S, k, t, lt):
     amb(S, 'alley')
     cp = S['capt']
     glance = 0.6 * math.sin(min(1.0, k / 0.3) * 2 * PI)
-    grab = sm((k - 0.26) / 0.14)
-    off_ = sm((k - 0.44) / 0.2)
+    grab = sm((k - 0.22) / 0.12)
+    off_ = sm((k - 0.36) / 0.16)
     pose = blend(P('stand', head=(0.0, glance)), P('hat', head=(0.05, 0.0)), grab)
     if off_ > 0:
-        pose = blend(pose, P('stand', aR=(0.85, 0.15, 1.5, 0.5), head=(0.08, 0.0), lean=0.06), off_)
-    stand(cp, at(ALY, 0.0, 0.5, 0), 0.12, pose, 'hard' if k < 0.62 else 'warm')
+        pose = blend(pose, P('stand', aR=(0.35, 0.35, 0.7, 0.3), head=(0.08, 0.0), lean=0.06), off_)
+    stand(cp, at(ALY, 0.0, 0.5, 0), 0.12, pose, 'hard' if k < 0.56 else 'warm')
     if off_ > 0:
         cap_to(cp, mix(cap_top(cp), plus(hand(cp, 1), (0.0, -0.12, 0.05)), off_), 0.6 * off_)
     h = head(cp)
@@ -1351,9 +1361,9 @@ def cobbler(S, k, t, lt):
     hp = hand(vg, 1)
     S['hammer'].location = hp
     S['hammer'].rotation_euler = (-1.1 + 0.9 * sw, 0, 0)
-    S['bootb'].location = at(COB, -0.1, 0.12, 1.97)
+    S['bootb'].location = at(COB, -0.1, 0.0, 1.62)
     S['bootb'].rotation_euler = (PI, 0, 0)
-    cam(S, at(COB, -2.3, -3.3, 2.15), at(COB, 0.0, 0.9, 1.6), 32)
+    cam(S, at(COB, -2.3, -3.2, 2.9), at(COB, 0.0, 0.9, 1.7), 32)
     orbit(S, k, 22, 0.25, 0.0)
 
 
@@ -1365,18 +1375,18 @@ def rook_shoe(S, k, t, lt):
     stand(vg, at(COB, 0.0, 1.5, 0.0), 0.0, P('sit', aL=(0.95, -0.12, 1.0, 0.4), aR=(0.8 + 0.55 * sw, 0.05, 1.75 - 0.6 * sw, 0.2), lean=0.3, head=(0.4, 0.0)), 'tired')
     S['hammer'].location = hand(vg, 1)
     S['hammer'].rotation_euler = (-1.1 + 0.9 * sw, 0, 0)
-    S['bootb'].location = at(COB, -0.1, 0.12, 1.97)
+    S['bootb'].location = at(COB, -0.1, 0.0, 1.62)
     S['bootb'].rotation_euler = (PI, 0, 0)
     rk = S['rook']
     shock = sm((k - 0.35) / 0.14)
-    stand(rk, at(COB, 2.2, -1.0, 0), -0.3, blend(P('stand', aR=(1.5, 0.1, 1.3, 0.3), head=(0.1, 0.45)),
-                                                P('stand', aR=(1.35, 0.3, 1.0, 0.3), aL=(0.4, 0.5, 0.4), lean=-0.14, head=(-0.08, 0.0)), shock))
+    stand(rk, at(COB, 2.2, -1.0, 0), -0.3, blend(P('stand', aR=(1.35, 1.0, 0.6, 0.0), head=(0.0, -0.5)),
+                                                P('stand', aR=(1.25, 1.1, 0.5, 0.0), aL=(0.4, 0.5, 0.4), lean=-0.14, head=(-0.08, 0.0)), shock))
     S['boot2'].location = plus(hand(rk, 1), (0.0, 0.0, 0.0))
-    S['boot2'].rotation_euler = (0.3, 0.2, -0.6)
+    S['boot2'].rotation_euler = (0.3, 0.2, 1.2)
     S['rface'] = 'shocked' if shock > 0.4 else 'squint'
     S['hat_jump'] = 0.65 * shock * (1 - sm((k - 0.8) / 0.18))
     h = head(rk)
-    cam(S, plus(h, (-1.3, -3.6, -0.1)), plus(h, (-0.25, 0.0, -0.25)), 34)
+    cam(S, plus(h, (-1.2, -4.6, -0.1)), plus(h, (0.1, 0.0, -0.3)), 32)
     orbit(S, k, 18, 0.22, 0.0)
 
 
@@ -1388,13 +1398,13 @@ def shop(S, k, t, lt):
     vg = S['voigt']
     for o in S['apron']:
         o.hide_render = True
-    v0 = at(SHP, 0.5, -0.3, 0)
+    v0 = at(SHP, 1.0, -0.5, 0)
     d0 = at(SHP, -1.3, 1.6, 0)
     u = sm((k - 0.55) / 0.2)
     stand(vg, v0, facing(v0, d0), blend(P('think', head=(0.1 + 0.08 * math.sin(lt * 3), 0.1)), P('point', aR=(1.25, 0.0, 0.2), head=(0.12 * math.sin(lt * 12) * u, 0.0)), u),
           'calm' if u < 0.5 else 'warm')
-    cam(S, at(SHP, -4.3, -2.9, 2.5), at(SHP, -0.4, 0.8, 2.25), 30)
-    orbit(S, k, 20, 0.22, 0.0)
+    cam(S, at(SHP, -3.84, 1.75, 2.6), at(SHP, 0.6, -0.3, 2.25), 27)
+    orbit(S, k, 8, 0.2, 0.0)
 
 
 def rook_mag(S, k, t, lt):
@@ -1448,7 +1458,7 @@ def halt(S, k, t, lt):
     stamp = sm((k - 0.5) / 0.06) * (1 - sm((k - 0.58) / 0.1))
     for i in range(10):
         soldier(S, i, at(STR, x0 - 1.7 * (i // 2), 0.55 + 1.5 * (i % 2), 0.1 * stamp), PI / 2, 'slope', t, walking=u < 1, head=(-0.1 * (u >= 1), 0.0))
-    cam(S, at(STR, 4.6, -3.0, 2.5), at(STR, -1.6, 1.3, 2.25), 28)
+    cam(S, at(STR, 4.0, -2.3, 2.4), at(STR, -1.1, 1.3, 2.25), 30)
     orbit(S, k, 15, 0.2, 0.0)
 
 
@@ -1462,8 +1472,8 @@ def rook_follow(S, k, t, lt):
     for i in range(10):
         soldier(S, i, at(STR, bx + 4.0 - 1.7 * (i // 2), 0.55 + 1.5 * (i % 2), 0), PI / 2, 'slope', t, walking=True)
     rk = S['rook']
-    sh = sm((k - 0.55) / 0.18)
-    w = step(t + 0.2, 1.7, head=(lerp(-0.1, 0.0, sh), lerp(0.7, -0.5, sh)))
+    sh = sm((k - 0.4) / 0.18)
+    w = step(t + 0.2, 1.7, head=(lerp(-0.1, 0.0, sh), lerp(0.3, -0.55, sh)))
     stand(rk, at(STR, bx + 5.7, -0.5, 0), PI / 2, blend(w, dict(w, aL=P('shrug')['aL'], aR=P('shrug')['aR']), sh))
     S['rface'] = 'squint' if sh < 0.5 else 'low'
     S['hat_tip'] = 0.3
@@ -1486,7 +1496,7 @@ def caught(S, k, t, lt):
         p = mix(at(ALY, 1.0 + s * 5.5, 0.1, 0), at(ALY, 1.0 + s * 1.2, 0.75, 0), u)
         arm = (1.3, -0.25, 0.4) if u > 0.9 else (0.6, 0.1, 0.8)
         stand(S['pol'][i], p, facing(p, v0), step(t + 0.3 * i, 1.8, **{('aR' if s < 0 else 'aL'): arm}) if u < 0.98 else P('stand', **{('aR' if s < 0 else 'aL'): arm}), 'hard')
-    cam(S, at(ALY, -1.3, -5.9, 2.5), at(ALY, 1.0, 0.5, 2.25), 30)
+    cam(S, at(ALY, -0.6, -4.3, 2.5), at(ALY, 1.0, 0.6, 2.3), 30)
     orbit(S, k, 20, 0.22, 0.0)
 
 
@@ -1497,14 +1507,14 @@ def rook_cell(S, k, t, lt):
     vg = S['voigt']
     for o in S['apron']:
         o.hide_render = True
-    stand(vg, at(CEL, -0.95, 1.7, 0.31), 0.0, P('sit', head=(0.5, 0.0), lean=0.38), 'tired')
+    stand(vg, at(CEL, -0.72, 1.7, 0.31), 0.0, P('sit', head=(0.5, 0.0), lean=0.38), 'tired')
     rk = S['rook']
     look = sm((k - 0.45) / 0.2)
-    stand(rk, at(CEL, 0.95, 1.7, 0.31), 0.0, P('sit', aR=(1.25, -0.25, 2.2 + 0.12 * math.sin(lt * 13), 0.6), aL=(0.7, -0.1, 1.5, 1.0), lean=0.15,
+    stand(rk, at(CEL, 0.72, 1.7, 0.31), 0.0, P('sit', aR=(1.25, -0.25, 2.2 + 0.12 * math.sin(lt * 13), 0.6), aL=(0.7, -0.1, 1.5, 1.0), lean=0.15,
                                               head=(0.1, 0.6 * look)))
     S['rface'] = 'low' if look < 0.5 else 'soft'
     S['hat_tip'] = 0.3
-    cam(S, at(CEL, 0.5, -2.1, 1.95), at(CEL, 0.0, 1.7, 1.95), 30)
+    cam(S, at(CEL, 0.3, -2.7, 2.0), at(CEL, 0.0, 1.7, 1.95), 26)
     orbit(S, k, 22, 0.22, 0.0)
 
 
@@ -1521,13 +1531,13 @@ def kaiser(S, k, t, lt):
     pose = P('sit', aL=(1.15 - 0.35 * low, -0.2, 1.3 + 0.3 * low, 0.6), aR=(1.15 - 0.35 * low, -0.2, 1.3 + 0.3 * low, 0.6), lean=0.12 + shake, head=(-0.1 * lg + 0.1 * low, 0.0))
     if st > 0:
         pose = blend(pose, P('sit', aL=(0.8, -0.2, 1.6, 0.6), aR=(lerp(1.5, 0.95, bang), 0.0, lerp(1.9, 1.15, bang)), lean=0.25, head=(0.3, 0.0)), st)
-    stand(ks, at(PAL, 0.0, 2.5, 0.0), 0.0, pose, 'warm' if low > 0.5 else 'calm', jaw=chat(t, lg > 0.3))
-    S['paper'].location = mix(at(PAL, 0.0, 1.55, 2.1), at(PAL, -1.3, 0.75, 1.36), max(low * 0.55, st))
-    S['paper'].rotation_euler = (lerp(-0.25, -PI / 2 + 0.02, max(low * 0.55, st)), 0, 0.3 * st)
+    stand(ks, at(PAL, 0.0, 2.35, 0.3), 0.0, pose, 'warm' if low > 0.5 else 'calm', jaw=chat(t, lg > 0.3))
+    S['paper'].location = mix(at(PAL, 0.0, 1.5, 2.15), at(PAL, -1.3, 0.75, 1.36), low)
+    S['paper'].rotation_euler = (lerp(-0.25, -PI / 2 + 0.02, low), 0, 0.3 * low)
     S['pardon'].location = at(PAL, 0.55, 0.5, 1.345)
     S['pardon'].rotation_euler = (0, 0, 0.08)
     S['stamp'].location = plus(hand(ks, 1), (0, -0.05, -0.12)) if st > 0.3 else at(PAL, 1.5, 0.4, 1.34)
-    cam(S, at(PAL, -2.0, -3.5, 2.35), at(PAL, 0.0, 1.9, 2.05), 32)
+    cam(S, at(PAL, -1.3, -1.5, 2.75), at(PAL, 0.0, 2.2, 2.4), 32)
     orbit(S, k, 20, 0.22, 0.0)
 
 
@@ -1539,19 +1549,19 @@ def rook_free(S, k, t, lt):
     for o in S['apron']:
         o.hide_render = True
     op = sm((k - 0.05) / 0.4)
-    S['celldoor'].rotation_euler = (0, 0, -1.85 * op)
-    y = lerp(-1.3, -4.6, sm((k - 0.3) / 0.55))
+    S['celldoor'].rotation_euler = (0, 0, 1.7 * op)
+    y = lerp(-1.3, -4.3, sm((k - 0.3) / 0.55))
     walking = 0.3 < k < 0.85
-    stand(vg, at(CEL, 1.75, y, 0), 0.25, step(t, 1.2, head=(-0.1, 0.0)) if walking else P('stand', head=(lerp(0.2, -0.2, sm((k - 0.85) / 0.1)), 0.0)),
+    stand(vg, at(CEL, 1.5, y, 0), 0.1, step(t, 1.2, head=(-0.1, 0.0)) if walking else P('stand', head=(lerp(0.2, -0.2, sm((k - 0.85) / 0.1)), 0.0)),
           'tired' if k < 0.5 else 'wide')
     rk = S['rook']
     bow = sm((k - 0.2) / 0.25)
-    r0 = at(CEL, -1.5, -5.2, 0)
-    stand(rk, r0, PI / 2 - 0.5, blend(P('stand'), P('stand', aR=(0.55, 1.0, 0.35), aL=(0.2, 0.2, 0.3), lean=0.28, head=(0.12, 0.3)), bow))
+    r0 = at(CEL, -0.35, -3.75, 0)
+    stand(rk, r0, PI / 2 - 0.9, blend(P('stand'), P('stand', aR=(0.55, 1.0, 0.35), aL=(0.2, 0.2, 0.3), lean=0.28, head=(0.12, 0.3)), bow))
     S['rface'] = 'soft'
     S['hat_tip'] = 0.35 * bow
-    cam(S, at(CEL, 3.9, -6.4, 2.0), at(CEL, 0.6, -4.2, 2.2), 26)
-    orbit(S, k, 16, 0.2, 0.0)
+    cam(S, at(CEL, 0.7, -6.7, 1.9), at(CEL, 0.7, -3.0, 2.3), 22)
+    orbit(S, k, 9, 0.1, 0.0)
 
 
 # ---------------------------------------------------------------- the stage
@@ -1578,7 +1588,7 @@ def stage(S, k, t, lt):
     cp = S['capt']
     u = sm((k - 0.5) / 0.15)
     stand(cp, at(THE, 0.0, 5.0, 1.2), 0.0, blend(P('stand', head=(-0.05, 0.0)), P('hat', lean=-0.06, head=(-0.1, 0.0)), u), 'warm')
-    cam(S, at(THE, 1.6, -8.0, 2.5), at(THE, 0.0, 4.4, 3.7), 28)
+    cam(S, at(THE, 0.9, -4.3, 2.9), at(THE, 0.0, 4.8, 3.3), 30)
     orbit(S, k, 12, 0.2, 0.0)
 
 
@@ -1586,7 +1596,7 @@ def rook_seat(S, k, t, lt):
     """From the stage: the front row clapping, and Rook in the middle of it, beak open in a caw of a laugh, clapping too."""
     amb(S, 'stage')
     curtains(S, 1.0)
-    S['house'].data.energy = 900
+    S['house'].data.energy = 1800
     crowd(S, t, 1.0)
     rk = S['rook']
     sx, sy, sz = S['seat']
@@ -1624,10 +1634,10 @@ def rook_wings(S, k, t, lt):
     rk = S['rook']
     tip = sm((k - 0.66) / 0.16)
     c = max(0.0, math.sin(lt * 5.5))
-    stand(rk, at(THE, 4.3, 7.0, 1.2), 0.75, blend(P('stand', aL=(1.0, -0.3 + 0.2 * c, 1.3, 0.5), aR=(1.0, -0.3 + 0.2 * c, 1.3, 0.5), head=(0.05, -0.3)), P('hat'), tip))
+    stand(rk, at(THE, 1.4, 7.7, 1.2), 0.55, blend(P('stand', aL=(1.0, -0.3 + 0.2 * c, 1.3, 0.5), aR=(1.0, -0.3 + 0.2 * c, 1.3, 0.5), head=(0.05, -0.3)), P('hat'), tip))
     S['rface'] = 'soft'
     S['hat_tip'] = 0.5 * tip
-    cam(S, at(THE, -4.4, 1.9, 2.6), at(THE, 1.9, 5.6, 2.7), 30)
+    cam(S, at(THE, -3.6, 1.7, 2.6), at(THE, 1.6, 6.0, 2.7), 28)
     orbit(S, k, 18, 0.2, 0.0)
 
 
