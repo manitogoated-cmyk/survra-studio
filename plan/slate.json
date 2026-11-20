@@ -416,14 +416,15 @@
    "world": "1906 Berlin street, train, Koepenick town hall, mayor's office",
    "est_score": 91,
    "long_form_candidate": true,
-   "status": "idea",
+   "status": "in progress",
    "facts": "premise checked on 18 Nov 2026 against the two sources listed (both fetched and read); verify again at authoring. Funny case: keep the comedy on the absurd parts, never on anyone's suffering.",
    "sources": [
     "https://en.wikipedia.org/wiki/Captain_of_K%C3%B6penick",
     "https://www.history.com/this-day-in-history/october-16/a-shoemaker-leads-german-soldiers-in-a-robbery"
    ],
    "source_notes": "16 Oct (some say 17). Sum about 4,000 or exactly 4,002.37 marks. Signed the receipt with his old prison warden's name. Caught 10 days later; pardoned by the Kaiser, whose amusement is only 'reported'. Nobody hurt.",
-   "tone": "funny"
+   "tone": "funny",
+   "claimed_at": "2026-11-20T18:21:19Z"
   },
   {
    "case": 44,
