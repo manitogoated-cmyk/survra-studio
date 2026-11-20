@@ -1,7 +1,7 @@
 {
   "id": "r042-beaverdrop",
   "format": "short",
-  "status": "draft",
+  "status": "approved",
   "synthetic": false,
   "host": "rook",
   "case": 42,
@@ -66,5 +66,79 @@
     "Idaho's Beavers Arrived by Parachute #shorts"
   ],
   "spine": "v2",
-  "source_notes": "Read for this run on 20 Nov 2026 through a fetch tool, all seven pages loaded: Boise State Public Radio (Samantha Wright, 14 Jan 2015); Wikipedia 'Beaver drop'; Smithsonian Magazine Smart News; National Geographic (Lucy Sherriff, 16 Sep 2021); HeraldNet (Post Register, Rob Thornberry, 19 Dec 2014); East Idaho News (Idaho Statesman, Nicole Blanchard, 18 Dec 2023); Smithsonian Air & Space 'Beavers On Parachutes' (quoting Heter's 1950 paper). Every narrated fact and label is on at least two of them. 1948 and Idaho Fish and Game, Elmo Heter: all seven. Beavers clashing with people round McCall and Payette Lake, felling trees and flooding yards with their dams: Wikipedia, National Geographic, BSPR, East Idaho News. Destination Chamberlain Basin: BSPR, Wikipedia, Smithsonian, National Geographic, East Idaho News (an AP story of Sept 1948 quoted by East Idaho News also mentions the Lochsa-Selway area; the label follows the majority). Heter's 'spooky and quarrelsome' about horses and mules: BSPR, National Geographic, HeraldNet, East Idaho News, Air & Space (exact words). War-surplus parachutes: BSPR, Wikipedia, Smithsonian, National Geographic, Air & Space. A box that held together in the air and opened on landing: all seven (details of the fastening differ: elastic bands, rope binding, tension bands; the animation shows a rope binding and hinged halves, as National Geographic and Wikipedia describe). Geronimo, an old male, dropped again and again on a landing field: BSPR, National Geographic, HeraldNet, Air & Space, East Idaho News. He crawled back into his box ready to go again: Heter's words quoted by BSPR, National Geographic, HeraldNet and Air & Space; East Idaho News quotes a 1948 Statesman column ('actually crawled back in the box'). 76 dropped, 75 survived: all seven. Geronimo among the first, with three young females: National Geographic ('priority reservation on the first ship'), Smithsonian ('one of the first'), BSPR, HeraldNet, Air & Space. August 1948 (first drop 14 August): Wikipedia, National Geographic, East Idaho News; Air & Space speaks of the 1948 fall season, so the narration says 'That year' for the 76 and only the first landing carries the AUGUST 1948 label. A year later dams, lodges ('houses') and colonies on the way: Heter's 1949 observations quoted by HeraldNet and Wikipedia; Air & Space says each group had settled when checked the next season; Geronimo's colony 'very well established' (Air & Space) and 'soon created a colony' (BSPR). Not used: the cost figures ($30 for four beavers vs $7 a beaver, unreconciled), the drop height (500 to 800 ft, one Wikipedia sentence disagrees), the plane type (Beechcraft twin; drawn as a generic unmarked twin), the 2015 rediscovery of the film. The one beaver that died climbed out of its box in the air and fell (National Geographic, Air & Space, HeraldNet, Wikipedia): it is not shown; the narration says 75 landed safely and Rook takes his hat off. Staging liberties, all illustrative: the beaver in the opening box is drawn as Geronimo (he flew among the first); a beaver's nose shows at a breathing hole (the real holes were about an inch across); the corral, the field crew and people's looks are invented; Rook is fictional."
+  "source_notes": "Read for this run on 20 Nov 2026 through a fetch tool, all seven pages loaded: Boise State Public Radio (Samantha Wright, 14 Jan 2015); Wikipedia 'Beaver drop'; Smithsonian Magazine Smart News; National Geographic (Lucy Sherriff, 16 Sep 2021); HeraldNet (Post Register, Rob Thornberry, 19 Dec 2014); East Idaho News (Idaho Statesman, Nicole Blanchard, 18 Dec 2023); Smithsonian Air & Space 'Beavers On Parachutes' (quoting Heter's 1950 paper). Every narrated fact and label is on at least two of them. 1948 and Idaho Fish and Game, Elmo Heter: all seven. Beavers clashing with people round McCall and Payette Lake, felling trees and flooding yards with their dams: Wikipedia, National Geographic, BSPR, East Idaho News. Destination Chamberlain Basin: BSPR, Wikipedia, Smithsonian, National Geographic, East Idaho News (an AP story of Sept 1948 quoted by East Idaho News also mentions the Lochsa-Selway area; the label follows the majority). Heter's 'spooky and quarrelsome' about horses and mules: BSPR, National Geographic, HeraldNet, East Idaho News, Air & Space (exact words). War-surplus parachutes: BSPR, Wikipedia, Smithsonian, National Geographic, Air & Space. A box that held together in the air and opened on landing: all seven (details of the fastening differ: elastic bands, rope binding, tension bands; the animation shows a rope binding and hinged halves, as National Geographic and Wikipedia describe). Geronimo, an old male, dropped again and again on a landing field: BSPR, National Geographic, HeraldNet, Air & Space, East Idaho News. He crawled back into his box ready to go again: Heter's words quoted by BSPR, National Geographic, HeraldNet and Air & Space; East Idaho News quotes a 1948 Statesman column ('actually crawled back in the box'). 76 dropped, 75 survived: all seven. Geronimo among the first, with three young females: National Geographic ('priority reservation on the first ship'), Smithsonian ('one of the first'), BSPR, HeraldNet, Air & Space. August 1948 (first drop 14 August): Wikipedia, National Geographic, East Idaho News; Air & Space speaks of the 1948 fall season, so the narration says 'That year' for the 76 and only the first landing carries the AUGUST 1948 label. A year later dams, lodges ('houses') and colonies on the way: Heter's 1949 observations quoted by HeraldNet and Wikipedia; Air & Space says each group had settled when checked the next season; Geronimo's colony 'very well established' (Air & Space) and 'soon created a colony' (BSPR). Not used: the cost figures ($30 for four beavers vs $7 a beaver, unreconciled), the drop height (500 to 800 ft, one Wikipedia sentence disagrees), the plane type (Beechcraft twin; drawn as a generic unmarked twin), the 2015 rediscovery of the film. The one beaver that died climbed out of its box in the air and fell (National Geographic, Air & Space, HeraldNet, Wikipedia): it is not shown; the narration says 75 landed safely and Rook takes his hat off. Staging liberties, all illustrative: the beaver in the opening box is drawn as Geronimo (he flew among the first); a beaver's nose shows at a breathing hole (the real holes were about an inch across); the corral, the field crew and people's looks are invented; Rook is fictional.",
+  "shown_moments": {
+    "a beaver in a wooden box is falling out of a plane, under a parachute": "shot 1 (beside the box, the canopy snaps taut, the nose at a breathing hole); shot 2 (the plane banking away over the basin, canopies below); shot 3 (the nose and whiskers at the hole, the ground far below)",
+    "A flying beaver? Please.": "shot 4 (Rook sitting on the falling box, arms crossed, brim low, the nose under his boots)",
+    "The box hits a meadow, pops open, and out he waddles": "shots 5 to 7 (the thump into the grass; the halves spring apart and he waddles out; Rook lands and points after him)",
+    "beavers were felling trees and flooding yards": "shots 8 to 10 (a beaver gnaws through a trunk and it falls on a fence; a lawn under water behind a stick dam, the owner scowling; Rook ankle-deep, shaking his boot)",
+    "horses and mules hauling them got ... spooky and quarrelsome": "shots 11 to 13 (Heter loads a box on the mule, its ears go back; the mule bucks and tows him; Rook backs off and taps his beak)",
+    "old war parachutes, and a box that springs open when it lands": "shots 14 and 15 (Heter hauls a canopy out of its pack; Rook pokes the rope and the box springs open in his face)",
+    "an old beaver called Geronimo. Dropped again, and again, and again": "shots 16 to 18 (a test drop onto the field; Geronimo tumbles out and is carried back; Rook's tally)",
+    "Geronimo started climbing back into the box himself, ready to go again": "shots 19 to 21 (he waddles back and climbs in; Rook's jaw drops and hat lifts; Rook and Heter shrug)",
+    "That year, 76 beavers flew out. Geronimo among the first, with three females": "shots 22 to 24 (the hold full of boxes, label 76 BEAVERS; Rook in the open door; canopies blossoming behind the plane)",
+    "Seventy-five of them landed safely": "shot 25 (evening in the meadow, open boxes and canopies, beavers heading for the creek; Rook takes his hat off)",
+    "A year later: dams, lodges, colonies. And Geronimo had one of his own": "shots 26 to 28 (the dam and lodge, label A YEAR LATER; Geronimo on his lodge slapping his tail, three beavers round him; Rook's caw-laugh)",
+    "Case closed. Because in Idaho, in nineteen forty-eight,": "shots 29 and 30 (Rook pockets a parachute ring; back to the opening framing)"
+  },
+  "experiments": {
+    "E1_E2": "spine v2: Rook is already on the falling box in shot 4 and doubts it in one line of 1.5 s ('A flying beaver? Please.') with the drop still in frame; no office. The story runs forward from the drop to the landing, then steps back once (why the beavers were moved, the mules, the parachutes, Geronimo's tests) because that is where the comedy and the re-hook are, and returns forward with the flights. Place, date and names are labels (CHAMBERLAIN BASIN, IDAHO; AUGUST 1948; McCALL, PAYETTE LAKE; ELMO HETER, FISH AND GAME; TEST PILOT: GERONIMO).",
+    "E3": "The batch brief's Shorts are all made, so this Short is outside it. It opens on the subject close (the box under its canopy with the nose at the hole), the canopy snapping taut 0.15 s in.",
+    "E4": "'Case closed.' ending.",
+    "E7": "hook_text BEAVERS. / BY PARACHUTE.",
+    "E8": "tail 0.4 s; the last line ('Because in Idaho, in nineteen forty-eight,') runs into the first ('a beaver in a wooden box is falling out of a plane...'); the last shot swings back into the opening framing and the canopy luffs back to the half-open state of the first frame."
+  },
+  "sound_plan": {
+    "first_frame": "Near-silence under the hook title, a whoosh, then a 'hit' at 0.15 s as the canopy snaps taut and the box jolts (the gate needs an impact in the first second; here it is the story's own sound), and a flap.",
+    "music": "The engine's score follows the segment moods: hook, tense for Rook's line, action for the landing, calm for the town, tense for the mules, action for the parachutes, wonder for Geronimo's tests, tense for the re-hook, action for the flights, calm for the hush, triumph for the payoff, end.",
+    "effects": "One to four cues a shot, each tied to something visible: wind in the air, a hit and clunk on landing, a pop and clunk as the box springs open, scratching for gnawing, a creak and crash for the tree, splashes in the flood and the pond, clunks and hits for the bucking mule, ticks for Rook's beak taps, scratches for the tally, a gasp as the box opens in his face, whooshes for each canopy, a caw for Rook's laugh.",
+    "hush": "Shot 25 (Rook takes his hat off among the open boxes at dusk): the music drops out for 'Seventy-five of them landed safely.'",
+    "voice": "Narration is ducked over the bed by the engine; measured in the local rehearsal, not listened to."
+  },
+  "checklist": {
+    "A_story": "done: score 84/100 with curiosity 10, story 8, payoff 8; facts checked against seven pages; spine v2; shown_moments lists every narrated moment",
+    "B_storyboard": "done: every shot has action, expression, camera and sound cue; Rook's mannerisms are hat brim low (4, 18), hat jumping off (7, 15, 20), beak tap (13), feather shed (23), caw-laugh (28), hat off for the hush (25) and pocketing the shiny parachute ring (29); detective actions are the magnifier on the box's knot (15) and the tally of drops (18); no neutral poses under action lines",
+    "B2_retention": "done: hook_text set; the first frame is the box under its canopy, close, with the nose at the hole; re-hook at 57% (he climbs back in); one hush (shot 25); tail 0.4 s with a matched loop",
+    "C_previews": "done: one still per shot over three sheet rounds, every shot at k=0.2 and 0.8, both ends of every added camera move, and five stills at 720x1280 with production samples; no blown-out or crushed frame where the story has to be seen; faces read at 270x480; Rook on-model",
+    "D_render": "engine defaults untouched (60 fps, 720x1280, 16 jobs in the workflow); local rehearsals used 12 fps, 360x640, 6 samples for review only",
+    "E_sound": "voice am_fenrir; hook near-silent, music by mood map; every impact cue tied to something visible; voice 16.4 dB over the bed; loudness -14.6 LUFS, peak -1.2 dBFS; loudness range not measured",
+    "F_captions": "done: labels fit the frame at rest; no inserts; on-screen dates, names and figures checked against sources",
+    "G_final": "three rehearsals; the last reviewed as a 4 fps sheet of the whole video plus full-resolution stills; local gate PASS on rehearsal 3; the full-resolution render and the real gate run in the workflow"
+  },
+  "quality_gate": {
+    "method": "One run, six review rounds. Round 1: low-res contact sheet of all 30 shots: the basin's mountains rose to about 1 km and walled off the sun and sky, and the town shots were placed with set-local coordinates so they were filmed inside the basin; both fixed. Round 2: sheet again: Heter facing away while unpacking the chute, Rook's face lost under his hat on the dam, Rook standing on top of the flood water with no beaver in frame, the beavers too big for the box (a scale that was never applied), the hush too dark; all fixed. Round 3: every shot previewed at k=0.2 and 0.8: closer cameras on the landing and the bucking mule, the swimming beaver was under the pond surface. Round 4: first rehearsal (12 fps, 360x640): local gate FAIL on nine static stretches; per-shot motion measured, a real camera orbit and push added to 21 weak shots; ends of each move previewed (the hold camera left the fuselage, the notepad covered Rook's face: fixed). Round 5: second rehearsal: two static stretches left (the plane-wide and the ending); the plane shot given a larger move, the sign-off a move, and the loop shot now swings back into the opening framing while the canopy luffs to the first frame's half-open state. Round 6: third rehearsal (changed shots re-rendered): local gate PASS: 30 shots, mean 1.52 s, longest 2.26 s, Rook acting in 12 of 30 shots (40%), -14.6 LUFS, peak -1.2 dBFS, voice 16.4 dB over the bed, closest match to any earlier episode 0.83 (shot 24 against r022-bakari; the limit is 0.93). Reviewed as a 4 fps sheet of the whole video; afterwards the hold shot's camera was kept inside the fuselage for its first quarter-second (a dolly replaces the push), which only adds movement. Duration about 45.5 s. The cloud render runs the real gate at 720x1280 and 60 fps.",
+    "not_met": "Loudness range was not measured locally; the soundtrack was measured, not listened to."
+  },
+  "review": {
+    "notes": [
+      "0.0 to 3.8 s: the box under its canopy, close, nose at the hole, hook title BEAVERS. / BY PARACHUTE.; the canopy snaps taut at 0.15 s; wide over the basin with more canopies; the nose and whiskers close",
+      "3.8 to 5.4 s: Rook sitting on the falling box, arms crossed: 'A flying beaver? Please.'",
+      "5.4 to 8.5 s: the box thumps into the meadow (CHAMBERLAIN BASIN, IDAHO), springs open (AUGUST 1948), the beaver waddles out, Rook lands and points",
+      "8.5 to 13.1 s: the gnawed tree falls on the fence (McCALL, PAYETTE LAKE); the flooded lawn; Rook ankle-deep with a beaver beside him",
+      "13.1 to 17.7 s: Heter loads the mule (ELMO HETER, FISH AND GAME); the mule bucks; Rook backs off and taps his beak",
+      "17.7 to 21.6 s: the war-surplus canopy billows (WAR-SURPLUS PARACHUTES); Rook's magnifier, the box springs open in his face, hat and glass flying",
+      "21.6 to 26.3 s: the test drop (TEST PILOT: GERONIMO); Geronimo tumbles out and is carried back; Rook's tally",
+      "26.3 to 30.7 s: re-hook: Geronimo climbs back into the box; Rook's jaw drops; Rook and Heter shrug",
+      "30.7 to 35.8 s: the hold (76 BEAVERS); Rook in the open door; canopies blossoming behind the plane",
+      "35.8 to 37.7 s: hush: dusk in the meadow, open boxes, Rook takes his hat off: 'Seventy-five of them landed safely.'",
+      "37.7 to 42.0 s: the dam and lodge (A YEAR LATER); Geronimo on his lodge slaps his tail; Rook's caw-laugh",
+      "42.0 to 45.5 s: Rook pockets a parachute ring, 'Case closed.'; back to the box under its canopy, 'Because in Idaho, in nineteen forty-eight,'"
+    ],
+    "scores_13": {
+      "story": 5,
+      "hook": 4,
+      "character_acting": 3,
+      "animation": 3,
+      "art_direction": 3,
+      "lighting": 3,
+      "camera": 4,
+      "pacing": 4,
+      "editing": 4,
+      "narration": 3,
+      "sound": 3,
+      "captions_graphics": 4,
+      "respect_accuracy": 5
+    },
+    "weakest": "Humans and the mule are block figures with simple faces; the bucking mule reads more stiff than wild. The beaver's nose shows through a breathing hole drawn larger than the real one-inch holes. In the cargo-door shot Rook is seen mostly from the side and behind. The hush is at dusk and Rook is small in it. Narration and sound were measured, not heard."
+  }
 }

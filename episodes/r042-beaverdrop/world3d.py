@@ -837,21 +837,29 @@ def peek(S, bx, b, t, out=0.25, yaw_box=0.0):
 
 # ---------------------------------------------------------------- hook: the drop
 def drop_close(S, k, t, lt):
-    """Right beside the falling box: the canopy above snaps open with a jolt, a beaver's nose and eyes at a breathing
-    hole, the mountains and the meadow far below. First shot; the loop's last shot returns to this framing."""
+    """Right beside the falling box: the half-open canopy above snaps taut with a jolt, a beaver's nose at a breathing
+    hole, the mountains far below. First shot. As the loop's last shot the camera swings back into this framing while
+    the canopy luffs back to half-open, so the last frame matches the first."""
     sky(S, 'high')
     loop = S['prm'].get('loop')
-    jolt = 0.0 if loop else max(0.0, lt - 0.15)
-    infl = 1.0 if loop else sm(jolt / 0.25) * (1 + 0.12 * math.sin(jolt * 30) * math.exp(-jolt * 6))
-    bxp = (DROP0[0], DROP0[1], DROP0[2] - (2.0 * lt if loop else (1.2 * lt + 0.8 * (1 - math.exp(-jolt * 8)))))
+    if loop:
+        u = sm(k / 0.95)
+        infl = 1.0 - 0.45 * sm((k - 0.45) / 0.5)
+        bxp = (DROP0[0], DROP0[1], DROP0[2] + 1.5 * (1 - u))
+        sway = 0.12 * math.sin(t * 2.2) * (1 - u)
+        off = (lerp(5.6, 2.5, u), lerp(-5.8, -3.4, u), lerp(1.2, 0.0, u))
+    else:
+        jolt = max(0.0, lt - 0.15)
+        infl = lerp(0.55, 1.0, sm(jolt / 0.2)) * (1 + 0.1 * math.sin(jolt * 30) * math.exp(-jolt * 6))
+        bxp = (DROP0[0], DROP0[1], DROP0[2] - 1.2 * lt - 0.8 * (1 - math.exp(-jolt * 8)))
+        sway = 0.25 * math.exp(-jolt * 4) * math.sin(jolt * 12)
+        off = (2.5, -3.4, -0.5 + 0.5 * math.exp(-jolt * 5))
     bx = S['box']
     bx['root'].location = bxp
-    sway = 0.12 * math.sin(t * 2.2) + (0.0 if loop else 0.25 * math.exp(-jolt * 4) * math.sin(jolt * 12))
     bx['root'].rotation_euler = (0, sway * 0.6, 0.3)
-    chute_pose(S['chute'], bxp, sway * 0.4, max(0.05, infl), 0.3)
+    chute_pose(S['chute'], bxp, sway * 0.4, infl, 0.3)
     peek(S, bx, S['geronimo'], t, yaw_box=0.3)
-    c = plus(bxp, (2.5, -3.4, -0.5 + (0 if loop else 0.5 * math.exp(-jolt * 5))))
-    cam(S, c, plus(bxp, (0.0, 0.0, 2.3)), 22)
+    cam(S, plus(bxp, off), plus(bxp, (0.0, 0.0, 2.3)), 22)
 
 
 def drop_wide(S, k, t, lt):
@@ -1283,8 +1291,8 @@ def hold(S, k, t, lt):
         bx, _ = S['holdboxes'][i if i < 3 else 3]
         peek(S, bx, b, t + i)
     shake = 0.02 * math.sin(t * 23)
-    cam(S, at(HOLD, lerp(6.2, 5.4, k), -1.7, 2.0 + shake), at(HOLD, -3.0, 0.7, 0.9), 22, roll=0.03 * math.sin(t * 1.5))
-    move(S, k, 4, 0.35, 0)
+    cam(S, at(HOLD, lerp(6.2, 3.8, k), -1.7, 2.0 + shake), at(HOLD, -3.0, 0.7, 0.9), 22, roll=0.03 * math.sin(t * 1.5))
+    move(S, k, 4, 0.0, 0)
 
 
 def rook_hold(S, k, t, lt):
@@ -1314,7 +1322,7 @@ def plane_wide(S, k, t, lt):
     """From beside the plane over the mountains: canopies blossom one after another behind it, boxes swinging under
     them, falling towards the green basin."""
     sky(S, 'high')
-    pl = (lerp(-40, 40, k), 0.0, 220.0)
+    pl = (lerp(-60, 60, k), 0.0, 220.0)
     plane_at(S, pl, 0.0, -0.08, t)
     for i, (ch, bx) in enumerate(zip(S['chutes'], S['boxes'])):
         age = lt + 0.55 * (4 - i) - 0.2
@@ -1327,7 +1335,7 @@ def plane_wide(S, k, t, lt):
         bx['root'].rotation_euler = (0, 0.1 * math.sin(t * 2 + i), i)
         chute_pose(ch, p, 0.1 * math.sin(t * 2 + i), sm(age / 0.4), i)
     cam(S, (pl[0] + 14.0, -32.0, pl[2] + 3.0), (pl[0] - 6.0, -1.0, pl[2] - 6.0), 24)
-    move(S, k, 35, 0.3, 0)
+    move(S, k, 70, 0.45, 4.0)
 
 
 # ---------------------------------------------------------------- landed: the hush
@@ -1427,6 +1435,7 @@ def signoff(S, k, t, lt):
     S['glint'].data.energy = 260 * show_
     h = head(rk)
     cam(S, plus(h, (0.6, -4.8, -0.7)), plus(h, (0.0, 0.0, -0.5)), 30)
+    move(S, k, 45, 0.35, 0.0)
 
 
 SHOTS3D = {'drop_close': drop_close, 'drop_wide': drop_wide, 'hole_close': hole_close, 'rook_box_ride': rook_box_ride,
