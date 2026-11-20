@@ -1,0 +1,26 @@
+{
+ "id": "r030-sylbaris-long",
+ "format": "long",
+ "status": "draft",
+ "synthetic": false,
+ "host": "rook",
+ "case": 30,
+ "case_of": "r030-sylbaris",
+ "title": "The Prisoner the Volcano Missed: The Full Case of Ludger Sylbaris",
+ "playlist": "Rook's Case Files (Full Cases)",
+ "spine": "v2",
+ "sources": [
+  "https://en.wikipedia.org/wiki/Ludger_Sylbaris",
+  "https://www.atlasobscura.com/places/the-prison-cell-of-ludger-sylbaris-saint-pierre-martinique",
+  "https://www.amusingplanet.com/2018/11/how-solitary-confinement-saved-ludger.html",
+  "https://volcanoes.sdsu.edu/Pelee.html",
+  "https://www.history.com/this-day-in-history/may-8/volcanic-eruption-buries-caribbean-city",
+  "https://www.herodote.net/8_mai_1902-evenement-19020508.php",
+  "https://www.futura-sciences.com/planete/actualites/volcan-il-y-120-ans-plus-grande-catastrophe-volcanique-xxe-siecle-98374/",
+  "https://hoopermuseum.carleton.ca/cruise/martinique/HIS4C.HTM"
+ ],
+ "authoring": {
+  "claimed_at": "2026-11-20T21:54:12Z",
+  "run": "scheduled long run, 20 Nov 2026 (second long run of the day; r023-herfkens-long is held by another run)"
+ }
+}
