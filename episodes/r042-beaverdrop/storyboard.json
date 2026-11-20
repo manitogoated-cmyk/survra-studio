@@ -903,7 +903,7 @@
    "segment": "landed",
    "weight": 1.0,
    "kind": "rook_hush",
-   "action": "Evening in the meadow: open boxes and slack canopies across the grass, beavers waddling off to the creek. Rook stands among them and quietly takes off his hat (soft face)",
+   "action": "Evening in the meadow: open boxes and slack canopies across the grass, beavers waddling off to the creek. Rook stands among them and quietly takes off his hat (soft face); a breeze stirs the slack canopies",
    "camera": "Medium-wide, slow push",
    "cam": [
     [
@@ -921,7 +921,16 @@
    ],
    "shake": 0,
    "transition": "cut",
-   "sfx": [],
+   "sfx": [
+    [
+     "wind",
+     0.0
+    ],
+    [
+     "flap",
+     0.4
+    ]
+   ],
    "hud": null,
    "prm": {},
    "hush": true

@@ -30,8 +30,8 @@ HOLD = (0.0, 5000.0, 400.0)         # the cargo hold, high over its own patch of
 LAND = (4.0, -2.0)                  # where the hero box lands in the meadow
 HOST = {'rook_box_ride', 'rook_land', 'rook_flood', 'rook_mule', 'rook_test', 'rook_tally', 'rook_jaw', 'rook_heter',
         'rook_hold', 'rook_hush', 'rook_dam', 'signoff'}
-CAMFILL = {'*': 140, 'drop_close': 90, 'drop_wide': 0, 'plane_wide': 0, 'test_drop': 40, 'rook_box_ride': 160,
-           'rook_hold': 260, 'hold': 240, 'rook_hush': 200, 'signoff': 200, 'rook_jaw': 180}
+CAMFILL = {'*': 140, 'dam_wide': 60, 'lodge': 120, 'drop_close': 90, 'drop_wide': 0, 'plane_wide': 0, 'test_drop': 40, 'rook_box_ride': 160,
+           'rook_hold': 260, 'hold': 240, 'rook_hush': 300, 'signoff': 200, 'rook_jaw': 180}
 ROOKC = dict(top='566178', belt='3E4658', lap='6B7690', pants='2A2742', hand='2F2B4D', boot='8A90A6')
 FUR, FUR2, BELLY = '6A4630', '5A3C2A', '8A6448'
 WOOD, WOOD2, ROPE = 'B08A5A', '96744A', 'D8C8A0'
@@ -42,7 +42,7 @@ SKIES = dict(                       # horizon, zenith, strength, sun watts, sun 
     meadow=('F0E4CC', '6A98CC', 1.05, 3.4, 'FFE6C0', (0.45, -0.6, 0.55)),
     town=('E6EAEA', '7AA0C8', 1.1, 3.0, 'FFF0DC', (-0.4, -0.6, 0.6)),
     field=('F4E8D2', '7AA2CC', 1.15, 3.2, 'FFEAD0', (0.6, -0.5, 0.5)),
-    dusk=('F2A868', '3A4E7A', 0.75, 1.6, 'FFB070', (0.75, -0.45, 0.16)),
+    dusk=('F2A868', '4A5E8A', 1.0, 2.6, 'FFB070', (0.75, -0.45, 0.16)),
     year=('EEE8D0', '78A4CC', 1.1, 3.3, 'FFEFD2', (-0.5, -0.6, 0.55)))
 _KEEP = []
 
@@ -206,8 +206,8 @@ def dome(col, r, h, par=None, seg=12, col2=None):
 def bz(x, y):
     """Ground height of the basin: a flat meadow round the origin, a creek bed, forested slopes rising to peaks."""
     r = math.hypot(x, y * 1.15)
-    base = 0.0 if r < 70 else ((r - 70) ** 1.25) * 0.22
-    ridges = 0.0 if r < 90 else min(1.0, (r - 90) / 120) * (24 * math.sin(x * 0.011 + 1.1) * math.cos(y * 0.013) + 14 * math.sin(x * 0.027 - y * 0.019))
+    base = 0.0 if r < 70 else ((r - 70) ** 1.1) * 0.12
+    ridges = 0.0 if r < 90 else min(1.0, (r - 90) / 120) * (18 * math.sin(x * 0.011 + 1.1) * math.cos(y * 0.013) + 10 * math.sin(x * 0.027 - y * 0.019))
     roll = 0.25 * math.sin(x * 0.17 + y * 0.09) + 0.2 * math.sin(x * 0.07 - y * 0.21) if r < 70 else 0.0
     return base + max(0.0, ridges) + roll
 
@@ -219,7 +219,7 @@ def creek_x(y):
 def make_basin(S):
     r = keep(empty(BAS))
     xs = list(range(-900, 901, 30))
-    field('slopes', xs, xs, lambda x, y: bz(x, y) - 0.05, '3E5A34', r)
+    field('slopes', xs, xs, lambda x, y: bz(x, y) - 0.05, '5A7A40', r)
     field('meadow', list(range(-80, 81, 4)), list(range(-80, 81, 4)), lambda x, y: bz(x, y) + 0.02 if math.hypot(x, y * 1.15) < 74 else bz(x, y) - 2.0, MEADOW, r)
     for i in range(46):                                                                                      # the creek
         y = -90 + 4 * i
@@ -358,6 +358,7 @@ def bv(b, loc, yaw=0.0, t=0.0, walk=0.0, rear=0.0, chew=0.0, nod=0.0, turn=0.0, 
     s = b['s']
     b['root'].location = loc
     b['root'].rotation_euler = (pitch, roll, yaw)
+    b['root'].scale = (s, s, s)
     ph = t * 2 * PI * 2.4
     bob = walk * 0.05 * abs(math.sin(ph))
     b['body'].location = (0, 0.42, 0.34 + bob + 0.12 * rear)
@@ -643,9 +644,9 @@ def build():
     S['chute2'] = make_chute()
     S['chutes'] = [make_chute(s=0.8) for _ in range(5)]
     S['boxes'] = [make_box() for _ in range(5)]
-    S['geronimo'] = make_beaver(FUR, 'B8A894', 1.0)                      # an old beaver: a grey muzzle
-    S['beavers'] = [make_beaver(c, m, s) for c, m, s in (('7A5236', '9A7A5A', 0.9), ('5E4030', '8A6A50', 0.88), ('6E4A34', '9A7A5E', 0.86),
-                                                          (FUR2, '8A6A50', 0.95))]
+    S['geronimo'] = make_beaver(FUR, 'B8A894', 0.82)                      # an old beaver: a grey muzzle
+    S['beavers'] = [make_beaver(c, m, s) for c, m, s in (('7A5236', '9A7A5A', 0.76), ('5E4030', '8A6A50', 0.74), ('6E4A34', '9A7A5E', 0.72),
+                                                          (FUR2, '8A6A50', 0.8))]
     S['all_beavers'] = [S['geronimo']] + S['beavers']
     S['rook'] = K.Rig(ROOKC, K.rook_head, coat=True)
     S['heter'] = he = K.Rig(dict(top='B8A47A', pants='5A5A3A', hand='E2B08C', boot='3A2A1E', fore='B8A47A'), heter_head)
@@ -807,6 +808,17 @@ def hand_of(rig, i=1):
     return wpos(rig.el[i], (0, -0.08, -0.62))
 
 
+def move(S, k, yaw=25.0, push=0.15, rise=0.0):
+    """A real camera move on top of the shot's framing: orbit round the look-at point by `yaw` degrees over the shot,
+    push in by `push` of the distance and rise by `rise`. Shots that read as held frames get one (the gate's motion check)."""
+    c, tg = S['camrig'].location, S['camtgt'].location
+    a = math.radians(yaw) * (k - 0.5)
+    dx, dy = c[0] - tg[0], c[1] - tg[1]
+    m = 1.0 + push * (0.5 - k)
+    S['camrig'].location = (tg[0] + (dx * math.cos(a) - dy * math.sin(a)) * m, tg[1] + (dx * math.sin(a) + dy * math.cos(a)) * m,
+                            tg[2] + (c[2] - tg[2]) * m + rise * (k - 0.5))
+
+
 DROP0 = (-60.0, 30.0, 180.0)        # where the hero box is when the hook starts
 
 
@@ -818,7 +830,7 @@ def drop_pos(u):
 
 def peek(S, bx, b, t, out=0.25, yaw_box=0.0):
     """A beaver inside the box with his nose at a breathing hole (the box's -Y wall)."""
-    p = wpos(bx['root'], (-0.17, 0.15, 0.08))
+    p = wpos(bx['root'], (-0.17, 0.05, 0.08))
     bv(b, p, yaw_box, t, nod=0.04 * math.sin(t * 3), turn=0.05 * math.sin(t * 2.3), tail=1.3, wide=0.6)
     b['root'].scale = (0.45, 0.45, 0.45)
 
@@ -858,6 +870,7 @@ def drop_wide(S, k, t, lt):
         bx['root'].rotation_euler = (0, 0.1 * math.sin(t * 2 + i), i)
         chute_pose(ch, p, 0.1 * math.sin(t * 2 + i), 1.0, i)
     cam(S, (DROP0[0] - 24, DROP0[1] - 36, DROP0[2] + 14 - 3 * k), (DROP0[0] + 8, DROP0[1] + 4, DROP0[2] - 30), 26)
+    move(S, k, 30, 0.3, 0)
 
 
 def hole_close(S, k, t, lt):
@@ -900,6 +913,7 @@ def rook_box_ride(S, k, t, lt):
     S['hat_tip'] = 0.85 if k < 0.62 else 0.4
     h = head(rk)
     cam(S, plus(h, (0.9 * math.sin(0.3) - 1.0, -4.6, -0.9)), plus(h, (0.0, 0.0, -0.75)), 28, roll=-0.4 * sway)
+    move(S, k, 30, 0.2, 0)
 
 
 # ---------------------------------------------------------------- land
@@ -921,7 +935,7 @@ def meadow_land(S, k, t, lt):
         bx['root'].location = plus(g, (0, 0, bounce))
         bx['root'].rotation_euler = (0, 0.04 * math.exp(-v * 6) * math.sin(v * 20), 0.3)
         flat_chute(S['chute'], g, 0.3 + PI, sm(v / 0.8))
-    cam(S, on(LAND[0] - 2.4, LAND[1] - 7.5, 0.55), plus(g, (0.5, 0, 2.2 + 1.8 * (1 - sm(k / 0.5)))), 22)
+    cam(S, on(LAND[0] - 1.8, LAND[1] - 5.2, 0.6), plus(g, (0.4, 0, 1.6 + 2.0 * (1 - sm(k / 0.5)))), 22)
 
 
 def box_open_shot(S, k, t, lt):
@@ -941,6 +955,7 @@ def box_open_shot(S, k, t, lt):
     shake = 0.25 * math.sin(lt * 30) * (sm((k - 0.2) / 0.05) - sm((k - 0.33) / 0.05))
     bv(b, p, lerp(yaw, -1.02, w) + shake, t, walk=w, nod=-0.1, turn=0.3 * (1 - w) * math.sin(t * 3), wide=0.8 * (1 - w))
     cam(S, plus(g, (-1.0, -6.4, 1.6)), plus(g, (-0.9, -0.6, 0.45)), 26)
+    move(S, k, 22, 0.3, 0)
 
 
 def rook_land(S, k, t, lt):
@@ -967,6 +982,7 @@ def rook_land(S, k, t, lt):
     bv(b, plus(g, (-2.4 - 2.0 * k, -2.4 - 1.2 * k, 0.06)), -1.03, t, walk=1.0)
     h = head(rk)
     cam(S, plus(g, (4.6, -6.8, 2.0)), plus(g, (0.6, -1.4, 1.6)), 26)
+    move(S, k, 35, 0.2, 0)
 
 
 # ---------------------------------------------------------------- why: the lake town
@@ -995,7 +1011,7 @@ def town_flood(S, k, t, lt):
     """The yard next door under a sheet of water behind a stick dam; the owner in his slippers stands at the edge,
     hands on hips, and the water creeps over his toes."""
     sky(S, 'town')
-    fy = S['flood'].location
+    fy = wpos(S['flood'])
     S['floodwater'].location.z = 0.05 + 0.06 * k
     tw = S['towny']
     p = (fy[0] - 2.0, fy[1] - 5.4, 0.0)
@@ -1006,25 +1022,27 @@ def town_flood(S, k, t, lt):
     b = S['beavers'][0]
     bv(b, (fy[0] + 1.5, fy[1] - 5.6, 0.1), -1.4, t, walk=0.0, rear=0.8, chew=0.3, turn=0.3 * math.sin(t * 2))
     cam(S, (fy[0] + 5.0 - 1.2 * k, fy[1] - 13.0, 2.6), (fy[0] - 0.2, fy[1] - 3.6, 1.4), 26)
+    move(S, k, 40, 0.3, 0)
 
 
 def rook_flood(S, k, t, lt):
     """Rook ankle-deep in the flooded lawn lifts one dripping boot, shakes it, and gives the beaver on the stick dam a
     flat look; the beaver looks back."""
     sky(S, 'town')
-    fy = S['flood'].location
+    fy = wpos(S['flood'])
     S['floodwater'].location.z = 0.12
     rk = S['rook']
     lift = sm((k - 0.15) / 0.2) * (1 - sm((k - 0.75) / 0.15))
     pose = P('hips', lR=(0.9 * lift, 1.4 * lift), head=(0.35 * lift, -0.4 * sm((k - 0.6) / 0.15)), lean=-0.05)
-    stand(rk, (fy[0] + 0.5, fy[1] - 2.0, -0.05), 0.3, pose)
+    stand(rk, (fy[0] + 0.5, fy[1] - 2.0, -0.32), 0.3, pose)
     rk.root.rotation_euler = (0, 0, 0.3 + 0.03 * math.sin(lt * 30) * lift)
     S['rface'] = 'squint'
     S['hat_tip'] = 0.55
     b = S['beavers'][0]
-    bv(b, (fy[0] - 2.6, fy[1] - 5.2, 0.55), -0.9, t, rear=0.7, nod=-0.1, turn=0.2 * math.sin(t * 1.5))
+    bv(b, (fy[0] - 1.6, fy[1] - 3.4, -0.05), 0.5, t, rear=0.7, nod=-0.1, turn=0.2 * math.sin(t * 1.5))
     h = head(rk)
     cam(S, plus(h, (-1.8, -5.6, -1.0)), plus(h, (-1.0, -0.8, -1.2)), 26)
+    move(S, k, 45, 0.3, 0)
 
 
 # ---------------------------------------------------------------- mules
@@ -1032,7 +1050,7 @@ def mule_load(S, k, t, lt):
     """In the corral: Heter heaves a beaver box up onto the mule's pack saddle; the box jolts as the beavers inside
     shift, and the mule's ears swivel back."""
     sky(S, 'town')
-    co = S['corral'].location
+    co = wpos(S['corral'])
     mule_pose(S, (co[0], co[1], 0), -PI / 2 + 0.2, t, buck=0.0, ears=sm((k - 0.45) / 0.2))
     mb = S['mulebox']
     up = sm(k / 0.45)
@@ -1048,13 +1066,14 @@ def mule_load(S, k, t, lt):
     jolt = 0.12 * math.sin(lt * 26) * (sm((k - 0.55) / 0.05) - sm((k - 0.75) / 0.1))
     mb['root'].rotation_euler.y += jolt
     cam(S, (co[0] + 2.0, co[1] - 9.5, 3.0), (co[0] - 0.3, co[1] - 0.6, 3.0), 26)
+    move(S, k, 40, 0.3, 0)
 
 
 def mule_buck(S, k, t, lt):
     """The mule bucks, back legs kicking, ears flat, the box on its back jolting; Heter hangs on to the lead rope and
     gets towed off his feet."""
     sky(S, 'town')
-    co = S['corral'].location
+    co = wpos(S['corral'])
     b = sm(k / 0.15)
     mule_pose(S, (co[0] + 1.5 * math.sin(lt * 3), co[1], 0), -PI / 2 + 0.2 + 0.25 * math.sin(lt * 4), t, buck=b, ears=1.0)
     mb = S['mulebox']
@@ -1063,13 +1082,13 @@ def mule_buck(S, k, t, lt):
     hp = (co[0] - 5.0 + 0.8 * math.sin(lt * 3), co[1] - 1.5, 0)
     stand(he, hp, -PI / 2 - 0.3, P('reach', aR=(1.5, 0.2, 0.2), aL=(1.4, -0.1, 0.4), lean=-0.35, lL=(0.6, 0.2), lR=(-0.3, 0.1), head=(0.0, 0.2)), 'wide')
     span(S['lead'], hand_of(he, 1), wpos(S['mule']['head'], (0, -1.3, -0.5)), 0.05)
-    cam(S, (co[0] + 1.0, co[1] - 13.0, 2.4), (co[0] - 0.6, co[1], 2.6), 24)
+    cam(S, (co[0] - 0.5, co[1] - 9.6, 2.4), (co[0] - 1.6, co[1], 2.6), 24)
 
 
 def rook_mule(S, k, t, lt):
     """Rook, wary, edges along the corral rail away from the bucking mule and taps his beak, thinking."""
     sky(S, 'town')
-    co = S['corral'].location
+    co = wpos(S['corral'])
     mule_pose(S, (co[0] + 2.0, co[1] + 1.0, 0), -PI / 2 + 0.4, t, buck=0.7, ears=1.0)
     rk = S['rook']
     x = lerp(co[0] - 4.0, co[0] - 6.0, sm(k / 0.4))
@@ -1079,6 +1098,7 @@ def rook_mule(S, k, t, lt):
     S['hat_tip'] = 0.2 if k < 0.45 else 0.5
     h = head(rk)
     cam(S, plus(h, (-1.2, -6.4, -0.8)), plus(h, (1.6, 0.6, -0.9)), 24)
+    move(S, k, 30, 0.2, 0)
 
 
 # ---------------------------------------------------------------- chutes
@@ -1087,7 +1107,7 @@ def chute_crate(S, k, t, lt):
     sky(S, 'field')
     he = S['heter']
     p = at(FLD, 2.0, 8.6, 0)
-    stand(he, p, PI + 0.6, blend(P('reach', aR=(1.2, 0.2, 0.4), aL=(1.0, -0.2, 0.6)), P('up', aL=(2.4, 0.4, 0.3), aR=(2.6, 0.2, 0.2)), sm(k / 0.6)), 'proud')
+    stand(he, p, facing((2.0, 8.6), (5.6, 3.2)), blend(P('reach', aR=(1.2, 0.2, 0.4), aL=(1.0, -0.2, 0.6)), P('up', aL=(2.4, 0.4, 0.3), aR=(2.6, 0.2, 0.2)), sm(k / 0.6)), 'proud')
     ch = S['chute2']
     infl = sm((k - 0.15) / 0.6)
     ch['root'].location = at(FLD, 1.0, 11.4, 0.4 + 2.0 * infl)
@@ -1097,7 +1117,8 @@ def chute_crate(S, k, t, lt):
     for l in ch['lines']:
         l.hide_render = infl < 0.4
     S['sock'].rotation_euler = (PI / 2 + 0.1 * math.sin(t * 3), 0, 0.15 * math.sin(t * 2))
-    cam(S, at(FLD, 7.4, 1.6, 2.2), at(FLD, 1.6, 10.2, 2.6 + 1.5 * infl), 24)
+    cam(S, at(FLD, 5.6, 3.2, 1.8), at(FLD, 1.4, 10.0, 2.6 + 1.4 * infl), 24)
+    move(S, k, 25, 0.2, 0)
 
 
 def rook_test(S, k, t, lt):
@@ -1124,6 +1145,7 @@ def rook_test(S, k, t, lt):
         S['mag'].rotation_euler = (lt * 9, 0.5, 0)
     h = head(rk)
     cam(S, plus(g, (2.6, -5.4, 2.2)), plus(g, (0.0, -1.0, 1.4)), 26)
+    move(S, k, 30, 0.2, 0)
 
 
 # ---------------------------------------------------------------- test: Geronimo
@@ -1164,6 +1186,7 @@ def geronimo_out(S, k, t, lt):
         hpos = wpos(hd.body, (0, -0.55, 0.55))
         bv(b, (hpos[0], hpos[1], lerp(g[2] + 0.05, hpos[2] - 0.5, v)), hd.root.rotation_euler.z, t, rear=0.9 * v, tail=-0.2, nod=-0.2)
     cam(S, plus(g, (1.4, -7.4, 1.4)), plus(g, (-0.8, -0.6, 0.8)), 26)
+    move(S, k, 35, 0.25, 0)
 
 
 def rook_tally(S, k, t, lt):
@@ -1172,15 +1195,16 @@ def rook_tally(S, k, t, lt):
     sky(S, 'field')
     rk = S['rook']
     p = at(FLD, 10.0, -3.0, 0.0)
-    pose = P('stand', aL=(1.2, -0.1, 1.5, 0.6), aR=(1.1, -0.25, 1.4 + 0.35 * abs(math.sin(lt * 9)), 0.5), head=(0.35, 0.0))
+    pose = P('stand', aL=(0.75, -0.1, 1.2, 0.6), aR=(0.75, -0.25, 1.1 + 0.35 * abs(math.sin(lt * 9)), 0.5), head=(0.45, 0.0))
     if k > 0.75:
-        pose = blend(pose, P('stand', aL=(1.2, -0.1, 1.5, 0.6), aR=(0.4, 0.2, 0.3), head=(-0.15, 0.5)), sm((k - 0.75) / 0.15))
+        pose = blend(pose, P('stand', aL=(0.75, -0.1, 1.2, 0.6), aR=(0.4, 0.2, 0.3), head=(-0.15, 0.5)), sm((k - 0.75) / 0.15))
     stand(rk, p, 0.6, pose)
     S['rface'] = 'squint' if k < 0.75 else 'low'
     S['hat_tip'] = 0.3
     pad = S['pad']
-    pad.location = plus(hand_of(rk, 0), (0.15, -0.25, 0.25))
-    pad.rotation_euler = (0.5, 0, 0.6)
+    pad.location = plus(hand_of(rk, 0), (0.1, -0.15, 0.05))
+    pad.scale = (0.7, 0.7, 0.7)
+    pad.rotation_euler = (0.9, 0, 0.6)
     n = min(5, int(k * 6.5) + 1)
     for i, m in enumerate(S['marks']):
         m.hide_render = i >= n
@@ -1190,6 +1214,7 @@ def rook_tally(S, k, t, lt):
     chute_pose(S['chute2'], q, 0.08 * math.sin(t * 3), 1.0, 0.0)
     h = head(rk)
     cam(S, plus(h, (-1.0, -3.4, 0.0)), plus(h, (0.0, 0.0, -0.9)), 26)
+    move(S, k, 45, 0.3, 0)
 
 
 # ---------------------------------------------------------------- rehook: he climbs back in
@@ -1207,7 +1232,8 @@ def geronimo_back(S, k, t, lt):
     p = plus(g, (lerp(-3.2, 0.0, sm(k / 0.5)), lerp(-1.8, 0.0, sm(k / 0.5)), 0.05 + 0.25 * sm((k - 0.42) / 0.12)))
     yaw = facing((-3.2, -1.8), (0, 0)) if k < 0.5 else lerp(facing((-3.2, -1.8), (0, 0)), 0.0, sm((k - 0.5) / 0.2))
     bv(b, p, yaw, t, walk=w, rear=0.35 * sm((k - 0.6) / 0.15), nod=-0.25 * sm((k - 0.6) / 0.15), wide=0.3, tail=0.3 * sm((k - 0.8) / 0.1))
-    cam(S, plus(g, (0.6, -4.4, 1.2)), plus(g, (-0.6, -0.5, 0.45)), 28)
+    cam(S, plus(g, (0.9, -5.6, 1.5)), plus(g, (-0.7, -0.5, 0.5)), 28)
+    move(S, k, 45, 0.3, 0)
 
 
 def rook_jaw(S, k, t, lt):
@@ -1241,6 +1267,7 @@ def rook_heter(S, k, t, lt):
     stand(rk, plus(g, (1.8, -2.4, 0)), -0.5, blend(P('stand', aL=(1.4, -0.3, 2.3, 0.4), head=(0.15, -0.2)), P('shrug'), sh))
     S['rface'] = 'squint'
     cam(S, plus(g, (0.0, -9.0, 2.4)), plus(g, (0.0, -1.6, 1.9)), 28)
+    move(S, k, 50, 0.35, 0)
 
 
 # ---------------------------------------------------------------- flight
@@ -1257,6 +1284,7 @@ def hold(S, k, t, lt):
         peek(S, bx, b, t + i)
     shake = 0.02 * math.sin(t * 23)
     cam(S, at(HOLD, lerp(6.2, 5.4, k), -1.7, 2.0 + shake), at(HOLD, -3.0, 0.7, 0.9), 22, roll=0.03 * math.sin(t * 1.5))
+    move(S, k, 4, 0.35, 0)
 
 
 def rook_hold(S, k, t, lt):
@@ -1278,7 +1306,8 @@ def rook_hold(S, k, t, lt):
         u = (k - 0.45) / 0.55
         f.location = plus(head(rk), (0.6 * u, -3.0 * u, 0.4 - 1.2 * u * u))
         f.rotation_euler = (u * 14, u * 9, u * 5)
-    cam(S, at(HOLD, 2.6, 1.6, 2.2), at(HOLD, -0.4, -1.6, 1.8), 22)
+    cam(S, at(HOLD, 3.4, -0.6, 2.0), at(HOLD, -0.6, -1.5, 1.9), 24)
+    move(S, k, 40, 0.3, 0)
 
 
 def plane_wide(S, k, t, lt):
@@ -1298,6 +1327,7 @@ def plane_wide(S, k, t, lt):
         bx['root'].rotation_euler = (0, 0.1 * math.sin(t * 2 + i), i)
         chute_pose(ch, p, 0.1 * math.sin(t * 2 + i), sm(age / 0.4), i)
     cam(S, (pl[0] + 14.0, -32.0, pl[2] + 3.0), (pl[0] - 6.0, -1.0, pl[2] - 6.0), 24)
+    move(S, k, 35, 0.3, 0)
 
 
 # ---------------------------------------------------------------- landed: the hush
@@ -1318,7 +1348,8 @@ def rook_hush(S, k, t, lt):
     stand(rk, rp, 0.2, P('stand', aR=(0.9, -0.25, 1.9, 0.6), head=(0.25, 0.0)))
     S['hat_off'] = sm((k - 0.2) / 0.35)
     S['rface'] = 'soft'
-    cam(S, plus(rp, (lerp(3.0, 2.2, k), -8.4, 1.6)), plus(rp, (-2.0, 6.0, 1.6)), 26)
+    cam(S, plus(rp, (lerp(2.6, 1.8, k), -6.4, 1.2)), plus(rp, (-1.6, 5.0, 1.8)), 26)
+    move(S, k, 40, 0.3, 0)
 
 
 # ---------------------------------------------------------------- payoff: a year later
@@ -1328,8 +1359,9 @@ def dam_wide(S, k, t, lt):
     sky(S, 'year')
     d = S['dam'].location
     b = S['beavers'][1]
-    bv(b, at(d, lerp(-5, 2, k), 5.0, -0.1), -PI / 2, t, nod=-0.1)
+    bv(b, at(d, lerp(-5, 2, k), 5.0, 0.02), -PI / 2, t, nod=-0.1)
     cam(S, at(d, lerp(-7.0, -5.0, k), -14.0, 3.2), at(d, 0.5, 3.0, 0.8), 24)
+    move(S, k, 45, 0.35, 2.0)
 
 
 def lodge(S, k, t, lt):
@@ -1343,7 +1375,10 @@ def lodge(S, k, t, lt):
     d = S['dam'].location
     for i, bb in enumerate(S['beavers'][:3]):
         bv(bb, at(d, -4.0 + 3.0 * i, -1.0, 1.0), 0.3 * (i - 1) - 0.2, t + i, chew=0.6 if i == 1 else 0.0, rear=0.4 if i == 2 else 0.0)
-    cam(S, (L[0] - 2.0, L[1] - 13.0, L[2] + 3.4), (L[0] - 1.0, L[1] - 4.0, L[2] + 1.6), 28)
+    sw = S['beavers'][3]
+    bv(sw, (L[0] + lerp(5.0, -8.0, k), L[1] - 3.5, L[2] + 0.02), PI / 2, t, nod=-0.1)
+    cam(S, (L[0] - 6.0, L[1] - 17.0, L[2] + 4.0), (L[0] - 1.6, L[1] - 4.0, L[2] + 1.4), 26)
+    move(S, k, 55, 0.4, 2.0)
 
 
 def rook_dam(S, k, t, lt):
@@ -1354,13 +1389,14 @@ def rook_dam(S, k, t, lt):
     rk = S['rook']
     p = at(d, 1.2, -1.4, 0.9)
     lg = sm((k - 0.45) / 0.15)
-    stand(rk, p, 0.4, blend(P('hips', head=(0.1, -0.5)), P('stand', aL=(0.3, 0.5, 0.6), aR=(0.3, 0.5, 0.6), lean=-0.15, head=(-0.25, 0.0)), lg))
+    stand(rk, p, -0.25, blend(P('hips', head=(0.1, 0.0)), P('stand', aL=(0.3, 0.5, 0.6), aR=(0.3, 0.5, 0.6), lean=-0.15, head=(-0.25, 0.0)), lg))
     S['laugh'] = lg * (1 - sm((k - 0.85) / 0.1))
     S['rface'] = 'laugh' if lg > 0.3 else 'squint'
     b = S['beavers'][2]
     bv(b, at(d, -0.6, -1.6, 0.9), 0.9, t, rear=0.8, chew=1.0)
     h = head(rk)
     cam(S, plus(h, (-2.2, -5.0, -0.8)), plus(h, (-0.8, 0.0, -0.9)), 26)
+    move(S, k, 50, 0.35, 0)
 
 
 # ---------------------------------------------------------------- end
