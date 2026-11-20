@@ -1,0 +1,30 @@
+{
+  "id": "r030-sylbaris-long", "spine": "v2", "voice": "am_fenrir", "speed": 1.12, "gap": 0.14, "lead": 0.1, "tail": 0.9,
+  "segments": [
+    {"scene": "hook", "mood": "hook", "text": "A burning cloud rolls off the mountain and buries a whole city. One of the few who live is locked in a cell."},
+    {"scene": "doubt", "mood": "tense", "text": "Locked in? He can't even run. No chance. Let's go back to the start."},
+    {"scene": "town", "mood": "calm", "text": "Saint-Pierre, on the island of Martinique, in the spring of {1902|nineteen oh two}. A port of red roofs, with ships at anchor, and a green volcano behind it: Mount Pelée."},
+    {"scene": "signs", "mood": "tense", "text": "In April, the mountain wakes up. Steam at the summit. Tremors. Then ash, falling on the streets."},
+    {"scene": "snakes", "mood": "tense", "text": "Snakes come down off the slopes and into the town. Around fifty people die of their bites."},
+    {"scene": "mud", "mood": "action", "text": "On the fifth of May, a wall of mud comes down a river valley and buries a factory by the sea, with its workers inside."},
+    {"scene": "stay", "mood": "tense", "text": "And still, the town stays. There's an election on Sunday. A commission reports that Saint-Pierre is in no danger. People from the villages on the slopes come into town, to be safe. Even the governor comes, with his wife."},
+    {"scene": "man", "mood": "calm", "text": "In the town jail sits Ludger Sylbaris. He's in for a fight. One night he slips out, goes to a party, and comes back in the morning."},
+    {"scene": "solitary", "mood": "tense", "text": "For that, he gets solitary. A stone cell, half underground. No window. One narrow slit in the door."},
+    {"scene": "rooktest", "mood": "calm", "text": "I checked the walls. Thick. I checked the slit. Tiny. The worst room in town."},
+    {"scene": "morning", "mood": "tense", "text": "Then comes the eighth of May. Just before eight in the morning, the mountain lets go."},
+    {"scene": "cloud", "mood": "action", "text": "Not lava. A cloud of burning gas and ash, racing downhill at hundreds of kilometres an hour. It's over the town in minutes. In the harbour, ships burn at anchor. Only one steamer, the Roddam, gets away."},
+    {"scene": "slit", "mood": "action", "text": "In the cell, the light in the slit goes dark. Then hot air and ash blast through it."},
+    {"scene": "burns", "mood": "tense", "text": "His back, his arms, his legs burn. But his clothes don't catch fire."},
+    {"scene": "cloth", "mood": "tense", "text": "He has no water. So he wets his clothes the only way he can, and jams them into the slit."},
+    {"scene": "quiet", "mood": "sad", "text": "Then it's over. And outside, everything is quiet."},
+    {"scene": "city", "mood": "sad", "text": "Around {28,000|twenty-eight thousand} people died that morning. The governor and his wife were among them. Almost nobody in the town lived. A shoemaker, at its edge, was one."},
+    {"scene": "wait", "mood": "tense", "text": "In the cell, he waits in the dark, burned and alone. Days pass."},
+    {"scene": "found", "mood": "triumph", "text": "Then he hears voices. He shouts. Men from outside the town follow the sound, and dig him out."},
+    {"scene": "turn", "mood": "wonder", "text": "And here's the turn. The cell built to punish him is the only reason he's alive. I said no chance. I hadn't counted on the walls."},
+    {"scene": "pardon", "mood": "wonder", "text": "He's pardoned. And then, a circus calls."},
+    {"scene": "circus", "mood": "wonder", "text": "Barnum and Bailey's circus takes him across America. He stands in a copy of his cell, and tells the crowds his story: the man who lived through Doomsday."},
+    {"scene": "science", "mood": "calm", "text": "On the island, a French geologist, Alfred Lacroix, studies what happened, and gives the cloud a name: {nuée ardente|nway ar-dont}, a glowing cloud. In the crater, a spine of rock rises, hundreds of metres high, and then crumbles."},
+    {"scene": "later", "mood": "calm", "text": "Ludger Sylbaris died around {1929|nineteen twenty-nine}, in Panama. Saint-Pierre is a small town now. And in it, his cell still stands."},
+    {"scene": "end", "mood": "end", "text": "A whole city, gone in minutes. One man, saved by the worst room in it. Luck, or those walls? I say both. Case closed."}
+  ]
+}
