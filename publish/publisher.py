@@ -55,6 +55,8 @@ def qc(e):
 
 
 def plan(cfg, ledger):
+    for k, v in remote_ledger().items():                         # a queued run must not re-render what the last run uploaded
+        ledger.setdefault(k, v)
     todo = [e["id"] for e in episodes() if e.get("status") in ("ready", "approved") and e["id"] not in ledger]
     return todo[: cfg.get("max_uploads_per_run", 6)]
 
@@ -98,15 +100,35 @@ def description(e):
     return d
 
 
+def remote_ledger():
+    """The newest ledger on origin/main. A run that sat in the queue checked out an older commit, so its own ledger can miss
+    uploads made by the run before it (that is how Shorts got uploaded twice, 2026-11-19/20)."""
+    import subprocess
+    try:
+        subprocess.run(["git", "fetch", "-q", "origin", "main"], cwd=ROOT, check=True, capture_output=True, timeout=120)
+        r = subprocess.run(["git", "show", "origin/main:publish/ledger.json"], cwd=ROOT, check=True, capture_output=True, text=True)
+        return json.loads(r.stdout)
+    except Exception as ex:                                      # no git / no network: fall back to the local ledger
+        log("remote ledger unavailable:", str(ex)[:200]); return {}
+
+
+norm_title = lambda t: " ".join((t or "").lower().replace("#shorts", "").split())
+
+
 def upload(cfg, ledger, only=None):
     yt = YouTube(); ch = yt.my_channel()
     if ch["id"] != cfg["channel_id"]:
         log("REFUSING: token belongs to", ch["snippet"]["title"], "not the Survra channel"); return 3
     log("channel OK:", ch["snippet"]["title"])
+    for k, v in remote_ledger().items():                         # never lose or redo another run's uploads
+        ledger.setdefault(k, v)
+    on_channel = {norm_title(t): vid for vid, t in yt.channel_titles().items()}
     done, failures = 0, []
     hashes = {v.get("sha256") for v in ledger.values()}
     for e in episodes():
         if (only and e["id"] != only) or e["id"] in ledger or e.get("status") not in ("ready", "approved"): continue
+        if norm_title(e.get("title")) in on_channel:              # last guard: the same title is already on the channel
+            log("skip", e["id"], "- already on the channel as", on_channel[norm_title(e.get("title"))]); continue
         if done >= cfg.get("max_uploads_per_run", 6): break
         if not os.path.exists(mp4(e)) or qc(e).get("pass") is not True:
             log("skip", e["id"], "- not rendered or QC not passed:", json.dumps(qc(e).get("fails", "no render"))[:300])

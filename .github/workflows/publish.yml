@@ -28,14 +28,20 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       ids: ${{ steps.p.outputs.ids }}
+      sha: ${{ steps.p.outputs.sha }}
     steps:
+      # A queued run must work from the NEWEST main, not the commit it was triggered on: the run before it may have
+      # uploaded episodes since (2026-11-19/20 the stale ledger re-uploaded Shorts). Every later job uses this same commit.
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - id: p
         env:
           ONLY: ${{ inputs.only }}
         run: |
           if [ -n "$ONLY" ]; then ids=$(python3 publish/publisher.py plan --only "$ONLY"); else ids=$(python3 publish/publisher.py plan); fi
           echo "ids=$ids" >> "$GITHUB_OUTPUT"; echo "queue: $ids"
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
   voice:
     # Rook's narration + phoneme timings, made once so every frame job lip-syncs to the same audio.
@@ -49,6 +55,8 @@ jobs:
         id: ${{ fromJson(needs.plan.outputs.ids) }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.plan.outputs.sha }}
       - run: sudo apt-get update -q && sudo apt-get install -y -q ffmpeg fonts-inter libegl1 libgl1 libfontconfig1
       - uses: actions/setup-python@v5
         with:
@@ -92,6 +100,8 @@ jobs:
         part: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]   # 60 fps since 2026-11-15: 4x the frames of the old 15 fps
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.plan.outputs.sha }}
       - id: has
         env:
           EP: ${{ matrix.id }}
@@ -137,6 +147,8 @@ jobs:
         id: ${{ fromJson(needs.plan.outputs.ids) }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.plan.outputs.sha }}
       - run: sudo apt-get update -q && sudo apt-get install -y -q ffmpeg fonts-inter libegl1 libgl1 libfontconfig1
       - uses: actions/setup-python@v5
         with:
@@ -206,6 +218,8 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - uses: actions/setup-python@v5
         with:
           python-version: "3.13"

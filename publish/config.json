@@ -4,9 +4,8 @@
  "timezone": "America/New_York",
  "short_slots_local": [
   "12:00",
-  "15:00",
-  "18:00",
-  "21:00"
+  "16:00",
+  "20:00"
  ],
  "long_slots_local": [
   "14:00"
@@ -16,7 +15,8 @@
  "category_id": 1,
  "channel_id": "UC3Muz7ZHeeYDYTRt9riw6CA",
  "daily_target": {
-  "short": 4,
+  "short": 3,
   "long": 1
- }
+ },
+ "daily_target_note": "Owner 2026-11-20: 3 NEW Shorts a day (was 4 slots). Duplicate guard: remote ledger + channel title check before every upload."
 }

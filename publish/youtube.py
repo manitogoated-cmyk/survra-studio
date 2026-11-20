@@ -95,6 +95,22 @@ class YouTube:
         j = self._req("GET", f"{API}/search", params=dict(part="snippet", forMine="true", type="video", maxResults=min(n, 50)))
         return [dict(id=i["id"]["videoId"], title=i["snippet"]["title"]) for i in j.get("items", [])]
 
+    def channel_titles(self, pages=4):
+        """Titles of the channel's newest uploads, private and scheduled ones included (uploads playlist, 1 unit per page).
+        Used as the last duplicate guard before every upload (2026-11-20: queued runs re-uploaded Shorts)."""
+        ch = self._req("GET", f"{API}/channels", params=dict(part="contentDetails", mine="true"))["items"][0]
+        pl = ch["contentDetails"]["relatedPlaylists"]["uploads"]
+        out, token = {}, None
+        for _ in range(pages):
+            p = dict(part="snippet", playlistId=pl, maxResults=50)
+            if token: p["pageToken"] = token
+            j = self._req("GET", f"{API}/playlistItems", params=p)
+            for i in j.get("items", []):
+                out[i["snippet"]["resourceId"]["videoId"]] = i["snippet"]["title"]
+            token = j.get("nextPageToken")
+            if not token: break
+        return out
+
     # ---- writes -----------------------------------------------------------
     def upload(self, path, meta, log=print):
         """Resumable upload. meta keys: title, description, tags, category,
