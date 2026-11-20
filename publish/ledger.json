@@ -466,14 +466,14 @@
     "format": "long",
     "playlist": "Rook's Case Files (Full Cases)",
     "privacy": "private",
-    "publish_at": "2026-11-20T19:00:00Z",
+    "publish_at": "2026-11-22T19:00:00Z",
     "review": false,
-    "sha256": "13200ef1f1c357f38c6d24c1395b8a95a3db21d177a71df4719e2c2e86ffa42e",
+    "sha256": "f63200327c4a54463c1b7aeb9c6d43e27c7e2ab3bf2377d30e25a51888508602",
     "thumbnail": "failed: thumbnail -> 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The authenticated user doesn't have permissions to upload and set custom video thumbnails.\",\n ",
     "title": "His Boat Sank Mid-Atlantic. He Lived 76 Days on a Rubber Raft: The Full Case",
-    "uploaded_at": "2026-11-20T14:54:05Z",
-    "url": "https://youtu.be/3lvG2h54Qkk",
-    "video_id": "3lvG2h54Qkk"
+    "uploaded_at": "2026-11-20T21:21:30Z",
+    "url": "https://youtu.be/9mJP98r4BCQ",
+    "video_id": "9mJP98r4BCQ"
   },
   "r018-ashcraft": {
     "captions": "ok",
@@ -658,13 +658,13 @@
     "format": "short",
     "playlist": "Rook's Case Files (Shorts)",
     "privacy": "private",
-    "publish_at": "2026-11-20T20:00:00Z",
+    "publish_at": "2026-11-20T23:00:00Z",
     "review": false,
-    "sha256": "bc071201ce2e2f7fa13fcfe4e4dbc4b605034101273f61ca845a6f7b6b8f8d27",
+    "sha256": "04a6a1a73f0665c9993853271c510cb1b7891e8081abbd8c4605dbc83338cf3d",
     "title": "He Fell 22,000 Feet Through a Train Station's Glass Roof #shorts",
-    "uploaded_at": "2026-11-20T14:54:29Z",
-    "url": "https://youtu.be/_sqOpusbr9Q",
-    "video_id": "_sqOpusbr9Q"
+    "uploaded_at": "2026-11-20T21:21:34Z",
+    "url": "https://youtu.be/u82Im02uFyw",
+    "video_id": "u82Im02uFyw"
   },
   "r030-sylbaris": {
     "captions": "ok",
@@ -684,13 +684,13 @@
     "format": "short",
     "playlist": "Rook's Case Files (Shorts)",
     "privacy": "private",
-    "publish_at": "2026-11-20T23:00:00Z",
+    "publish_at": "2026-11-21T02:00:00Z",
     "review": false,
-    "sha256": "43933566146758fe19f0eedf52ff7eca5cc65827aa88c3c1859658ea1cd37e29",
+    "sha256": "16e58b06ce53e8805edc54471208704ec5e5941de448c2a720ac3248b93d28e4",
     "title": "Oregon Blew Up a Dead Whale. It Rained Blubber. #shorts",
-    "uploaded_at": "2026-11-20T14:54:32Z",
-    "url": "https://youtu.be/bzZ6Fkzhsl8",
-    "video_id": "bzZ6Fkzhsl8"
+    "uploaded_at": "2026-11-20T21:21:39Z",
+    "url": "https://youtu.be/TiWvWaMDnlY",
+    "video_id": "TiWvWaMDnlY"
   },
   "s001-alvarenga": {
     "privacy": "private",
