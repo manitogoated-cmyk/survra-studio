@@ -1,61 +1,141 @@
 {
-  "id": "r023-herfkens",
+  "id": "r023-herfkens-long",
   "spine": "v2",
   "voice": "am_fenrir",
   "speed": 1.12,
   "gap": 0.14,
   "lead": 0.1,
-  "tail": 0.4,
+  "tail": 0.9,
   "segments": [
     {
       "scene": "hook",
       "mood": "hook",
-      "text": "a plane hits a jungle mountain in a storm. She wakes up under a seat, jaw broken, one lung collapsed."
+      "text": "A small jet hits a jungle mountain in a storm. Thirty-one people on board. One of them wakes up in the wreck, under a seat, with her jaw broken and one lung collapsed."
     },
     {
       "scene": "doubt",
       "mood": "tense",
-      "text": "Hurt like that? No chance."
+      "text": "Hurt like that, alone up there? No chance. Let's go back to the start."
+    },
+    {
+      "scene": "start",
+      "mood": "calm",
+      "text": "Annette Herfkens is Dutch, a trader at a bank in Madrid. Her fiancé, Willem van der Pas, works for a bank in Vietnam. She calls him Pasje. They've been together thirteen years."
+    },
+    {
+      "scene": "trip",
+      "mood": "calm",
+      "text": "November {1992|nineteen ninety-two}. She flies out to see him, and he has planned a few days by the sea, in Nha Trang."
+    },
+    {
+      "scene": "board",
+      "mood": "tense",
+      "text": "But the plane is small, and she's claustrophobic. She doesn't want to get on. He tells her it's only twenty minutes."
+    },
+    {
+      "scene": "drop",
+      "mood": "action",
+      "text": "It isn't. Well into the flight, the plane drops. He looks at her, frightened. An air pocket, she tells him. Then it drops again. He grabs her hand. And everything goes black."
+    },
+    {
+      "scene": "wake",
+      "mood": "tense",
+      "text": "In bad weather, the jet had come down too low, and hit the trees on a ridge. She wasn't wearing a seat belt. She wakes with a seat on top of her."
+    },
+    {
+      "scene": "willem",
+      "mood": "sad",
+      "text": "Willem is still in his seat. He is dead. She has said there was a smile on his face."
+    },
+    {
+      "scene": "man",
+      "mood": "sad",
+      "text": "One other passenger is alive: a Vietnamese businessman. Her skirt is gone, so he gives her a pair of trousers from his suitcase. He tells her rescuers will come. Before long, he dies too."
     },
     {
       "scene": "alone",
       "mood": "sad",
-      "text": "Her fiancé died in the crash. The one man near her still alive dies soon after."
+      "text": "Now she's alone on a mountain. Her hip is shattered. And she has no water."
     },
     {
-      "scene": "thirst",
+      "scene": "rules",
       "mood": "tense",
-      "text": "She has no water. Then she sees the broken wing."
+      "text": "So she decides to stay put and wait. And she refuses to think about Pasje. Crying would only make her weaker."
     },
     {
       "scene": "sponge",
       "mood": "wonder",
-      "text": "Its insulation is soft, like a sponge. She drags herself to it on her elbows and pulls out tufts."
+      "text": "Then she sees the broken wing. Its insulation is soft, like a sponge. I squeezed it myself. She drags herself to it on her elbows, pulls out tufts, and rolls them into balls."
     },
     {
       "scene": "rain",
       "mood": "calm",
-      "text": "When rain comes, they soak it up. She drinks one sip at a time."
+      "text": "When rain comes, they soak it up. She allows herself one sip every two hours. Rainwater is all she has."
+    },
+    {
+      "scene": "jungle",
+      "mood": "tense",
+      "text": "The jungle moves in. Leeches. Insects. And the smell of the wreck. She drags herself away from it."
     },
     {
       "scene": "rehook",
       "mood": "tense",
-      "text": "But day after day, nobody finds the wreck."
+      "text": "And nobody comes. The wreck lies on a mountain called O Kha, and day after day, nobody finds it."
     },
     {
       "scene": "calm",
       "mood": "calm",
-      "text": "So she stays in the moment, and finds her calm in the beauty of the jungle."
+      "text": "So she stays in the moment, she has said, and finds her calm in the beauty of the jungle."
     },
     {
-      "scene": "payoff",
+      "scene": "fading",
+      "mood": "wonder",
+      "text": "After nearly a week, she feels herself slipping away. She has described that feeling as beautiful."
+    },
+    {
+      "scene": "orange",
+      "mood": "tense",
+      "text": "Then a man in orange appears among the trees. He looks at her. And he goes away again."
+    },
+    {
+      "scene": "found",
       "mood": "triumph",
-      "text": "On day eight, a police officer finds her. He thinks she's a ghost. Then rescuers carry her down the mountain."
+      "text": "On day eight, men climb up to the wreck: a police officer, who she has said took her for a ghost, and others carrying body bags and a passenger list. She points to her own name."
+    },
+    {
+      "scene": "carry",
+      "mood": "triumph",
+      "text": "They carry her down the mountain in a sling of canvas. She is taken to hospital, in Singapore."
+    },
+    {
+      "scene": "home",
+      "mood": "calm",
+      "text": "Back home, her family already believed she was dead. Death notices had been published. One colleague, Jaime Lupa, had refused to believe it."
+    },
+    {
+      "scene": "funeral",
+      "mood": "sad",
+      "text": "In December, in the Dutch town of Breda, she goes to Willem's funeral, on a stretcher. She has compared it to a bride being taken down the aisle, to meet her groom."
+    },
+    {
+      "scene": "recover",
+      "mood": "calm",
+      "text": "By New Year's Eve she is walking. By February she's back at work."
+    },
+    {
+      "scene": "later",
+      "mood": "calm",
+      "text": "She marries Jaime, moves to New York, and raises two children, Joosje and Max. In {2006|two thousand and six} she goes back to that mountain. And she writes it all down, in a book called Turbulence."
+    },
+    {
+      "scene": "toll",
+      "mood": "sad",
+      "text": "Thirty people died on that ridge. A helicopter sent out for the wreck crashed too, and more lives were lost."
     },
     {
       "scene": "end",
       "mood": "end",
-      "text": "Thirty people died. She was the only one who lived. Case closed. It all started when"
+      "text": "One person lived. Eight days, on rainwater, and one rule: stay in the moment. I said no chance. I was wrong. Case closed."
     }
   ]
 }
