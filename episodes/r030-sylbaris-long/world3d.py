@@ -917,9 +917,9 @@ QUAY, LANE, VALLEY, HALL, FETE, EDGE = ((3500.0, 3500.0, 0.0), (-3500.0, 3500.0,
 SKIES.update(haze=('D8C8A8', '8A9AA8', 1.1, 2.4, 'FFE8C8', (0.5, -0.5, 0.6)),
              room=('2A2622', '14120F', 0.5, 0.0, 'FFFFFF', (0, 0, 1)),
              fete=('1C2A48', '060A16', 0.6, 0.5, 'A8C0F0', (-0.4, 0.3, 0.85)))
-CAMFILL.update(bay_calm=0, quay_life=120, quay_close=160, quay_ash=160, summit_steam=220, snake_lane=200, snake_close=120, mud_valley=0,
+CAMFILL.update(wall_sneak=800, dark_wait=120, bay_calm=0, quay_life=120, quay_close=160, quay_ash=160, summit_steam=220, snake_lane=200, snake_close=120, mud_valley=0,
                mud_after=260, hall_report=260, hall_window=300, road_in=220, gov_arrive=200, party_night=420, rook_room=160, ships_fire=0,
-               roddam_away=0, slit_dark=60, cloth_slit=90, edge_house=220, cell_stands=300, ring_tell=200, geologist=260, spine_rise=260,
+               roddam_away=0, slit_dark=130, cloth_slit=90, edge_house=220, cell_stands=300, ring_tell=200, geologist=260, spine_rise=260,
                bay_today=0)
 HOST |= {'quay_life', 'quay_close', 'quay_ash', 'summit_steam', 'snake_lane', 'mud_after', 'hall_window', 'road_in', 'party_night',
          'rook_room', 'cell_stands', 'geologist', 'spine_rise'}
@@ -1034,7 +1034,7 @@ def make_quay(r, S):
         qc(r, '6A4A2C', (x, y, 0.55), 0.46, 1.1, 10)
         for z in (0.2, 0.9):
             qc(r, '2A2A2E', (x, y, z), 0.48, 0.07, 10, rough=0.4)
-    for (x, y, s) in ((0.9, 10.2, 0.9), (12, 11.5, 1.2), (12.9, 12.2, 0.8), (-12, 3.2, 1.0)):
+    for (x, y, s) in ((1.9, 7.9, 0.9), (0.9, 10.2, 0.9), (12, 11.5, 1.2), (12.9, 12.2, 0.8), (-12, 3.2, 1.0)):
         qb(r, ('8A6A44', '7A5A38')[int(x) % 2], x - s / 2, x + s / 2, y - s / 2, y + s / 2, 0, s)
     # a market stall: poles, a striped awning, a table of fruit
     for sx in (2.2, 6.2):
@@ -1151,9 +1151,9 @@ def make_valley(r, S):
     qc(r, '5A2E22', (-2, 14, 26.3), 1.9, 1.0, 10)
     for i in range(40):
         qb(r, ('6A9A3A', '5A8A32')[i % 2], 34 + 1.6 * (i % 20), 34.6 + 1.6 * (i % 20), 6 + 26 * (i // 20), 28 + 26 * (i // 20), 0, 1.6 + 0.5 * rnd(i, 3), rough=1.0)
-    S['mudbed'] = qb(r, '5A4630', -64, 64, -24, 420, 0.0, 1.0, rough=1.0)
+    S['mudbed'] = qb(r, '8A6E4A', -64, 64, -24, 420, 0.0, 1.0, rough=0.6)
     S['mudbed'].location.z = -80
-    qs(r, '6E675E', (12, -8, 0.4), 3.2, (1.2, 1, 0.55), rough=1.0)
+    qs(r, '6E675E', (12, -8, 0.4), 4.4, (1.7, 1.5, 1.95), rough=1.0)
     for i in range(7):
         qs(r, '6E675E', (-40 + 90 * rnd(i, 5), -14 + 8 * rnd(i, 6), 0.2), 0.8 + rnd(i, 7), (1, 1, 0.6), rough=1.0)
     return dict(lights=[])
@@ -1196,8 +1196,8 @@ def make_hall(r, S):
     # outside the window: roofs below, the mountain, a column of smoke
     for i in range(12):
         qb(r, ('A8442E', '94402C', 'B85A36')[i % 3], -30 + 7 * i, -24 + 7 * i, 14 + 9 * rnd(i, 3), 22 + 9 * rnd(i, 3), -6, -1.0 + 2.0 * rnd(i, 4))
-    qcone(r, '4A5640', (30, 330, 70), 220, 20, 170, 11, rough=1.0)
-    S['hsmoke'] = [qs(r, ('8A847C', '9A948C', '7A746C')[i % 3], (30 + 3 * i, 330, 160 + 14 * i), 12 + 4.5 * i, rough=1.0) for i in range(8)]
+    qcone(r, '4A5640', (22, 700, 55), 320, 22, 150, 11, rough=1.0)
+    S['hsmoke'] = [qs(r, ('8A847C', '9A948C', '7A746C')[i % 3], (22, 700, 140), 14 + 5 * i, rough=1.0) for i in range(8)]
     lamp = K.light(at(HALL, -1.0, -3.5, 5.6), 0, 'FFE8C8', size=5.0)
     lamp.rotation_euler = (0.5, 0, 0)
     lamp.parent = r
@@ -1342,7 +1342,7 @@ def make_extras(S):
     S['fires'] = []
     for n in range(2):
         f = keep(qempty(None, FAR))
-        fl = [qs(f, ('FF8A2A', 'FFB040', 'E8501E')[i % 3], (0, 0, 0), 1.0, emit=7.0) for i in range(9)]
+        fl = [qs(f, ('FF8A2A', 'FFB040', 'E8501E')[i % 3], (0, 0, 0), 1.0, emit=0.8) for i in range(9)]
         sm_ = [qs(f, ('3A3632', '4A4640')[i % 2], (0, 0, 0), 1.0, rough=1.0) for i in range(7)]
         S['fires'].append((f, fl, sm_))
     S['firel'] = keep(K.light(FAR, 0, 'FF8A3A', size=6.0))
@@ -1401,7 +1401,7 @@ def build():
         S['sets'][name] = d
     make_extras(S)
     bpy.context.view_layer.update()
-    S['gz'] = {n: ground(S, x, y) for n, (x, y) in dict(rim=RIM, rimcam=RIMCAM, road0=(104, 101), road1=(98, 92), roadr=(101.5, 93)).items()}
+    S['gz'] = {n: ground(S, x, y) for n, (x, y) in dict(rim=RIM, rimcam=RIMCAM, spcam=SPCAM, road0=(104, 101), road1=(98, 92), roadr=(105.1, 97.1)).items()}
     reset(S)
     return S
 
@@ -1462,7 +1462,7 @@ def fire(S, n, pos, t, size=1.0):
         o.scale = (s, s, s)
 
 
-RIM, RIMCAM = (-25.0, 304.0), (-20.0, 297.6)
+RIM, RIMCAM, SPCAM = (-25.0, 304.0), (-27.6, 309.2), (-28.4, 300.0)
 COINARM = dict(aR=(0.75, 0.1, 1.5, 0.2), aL=(0.35, -0.05, 1.6, 1.2))
 
 
@@ -1473,13 +1473,13 @@ def bay_calm(S, k, t, lt):
     dawn = S['prm'].get('dawn')
     sky(S, 'dawn' if dawn else 'day')
     if dawn:
-        pose_cloud(S['steam'], SUMMIT, (14, 330, 330), 0.7 + 0.2 * k, t, 1.5, 0.9)
+        pose_cloud(S['steam'], (0, 330, 150), (22, 330, 300), 0.9 + 0.1 * k, t, 1.9, 0.6)
     for i, s_ in enumerate(S['ships']):
         s_.rotation_euler.y = 0.035 * math.sin(t * 0.9 + i)
     if dawn:
         shoot(S, BAY, (lerp(96, 80, k), lerp(-126, -112, k), lerp(9, 12, k)), (0, 110, 62), 30)
     else:
-        shoot(S, BAY, (lerp(-150, -118, k), lerp(-118, -104, k), lerp(18, 25, k)), (10, 70, 40), 30)
+        shoot(S, BAY, (lerp(-120, -96, k), lerp(-150, -132, k), lerp(16, 22, k)), (0, 90, 48), 30)
 
 
 def quay_life(S, k, t, lt):
@@ -1513,7 +1513,7 @@ def quay_close(S, k, t, lt):
     a, b = wpos(sel.hands[1]), wpos(buy.hands[1])
     g = sm((lt - 1.3) / 0.5)
     S['fruit'].location = (lerp(a[0], b[0], g), lerp(a[1], b[1], g), lerp(a[2], b[2], g) + 0.14)
-    rk = put(S, S['rook'], QUAY, 0.9, 10.2, 0.9, PI / 2 - 0.25, P('sit', head=(0.1, lerp(0.0, -0.45, u)), lean=0.1, **COINARM), 'calm')
+    rk = put(S, S['rook'], QUAY, 1.9, 7.9, 0.9, PI / 2 + 0.1, P('sit', head=(0.1, lerp(0.0, -0.45, u)), lean=0.1, **COINARM), 'calm')
     coinflip(S, rk, t, 0.9)
     key(S, QUAY, (8, 5, 5), (3, 10.5, 2), 500, 'FFF2DC')
     shoot(S, QUAY, (lerp(8.6, 7.8, k), lerp(7.4, 7.9, k), 2.5), (3.0, 10.9, 2.35), 34)
@@ -1542,12 +1542,13 @@ def summit_steam(S, k, t, lt):
     looks down past us at the town far below."""
     sky(S, 'day')
     z = S['gz']['rim']
-    pose_cloud(S['steam'], (-13, 316, z + 3), (-30, 300, z + 22), 0.55 + 0.4 * k, t, 0.42, 0.22)
-    put(S, S['rook'], BAY, RIM[0], RIM[1], z, facing(RIM, RIMCAM) + 0.35, blend(P('stand', head=(0.2, 0.3)), P('tap', head=(0.25, -0.25)), sm((lt - 0.6) / 0.5)), 'low')
+    zc = S['gz']['rimcam']
+    pose_cloud(S['steam'], (-31, 311, zc + 2.5), (-17, 299, z + 9), 0.6 + 0.35 * k, t, 0.36, 0.16)
+    put(S, S['rook'], BAY, RIM[0], RIM[1], z, facing(RIM, RIMCAM) + 0.3, blend(P('stand', head=(-0.1, 0.3)), P('tap', head=(-0.05, -0.2)), sm((lt - 0.6) / 0.5)), 'low')
     S['hat_tip'] = 0.2
     h = head(S, S['rook'])
-    key(S, (0, 0, 0), (h[0] + 3, h[1] - 6, h[2] + 3), h, 700, 'FFF2DC')
-    shoot(S, BAY, (lerp(RIMCAM[0] + 1.0, RIMCAM[0], k), lerp(RIMCAM[1] - 1.2, RIMCAM[1], k), S['gz']['rimcam'] + 2.6), (RIM[0] - 0.6, RIM[1] + 0.6, z + 2.7), 28)
+    key(S, (0, 0, 0), (h[0] - 5, h[1] + 3, h[2] + 4), h, 900, 'FFF2DC')
+    shoot(S, (0, 0, 0), (RIMCAM[0] + lerp(-0.8, 0.0, k), RIMCAM[1] + lerp(0.8, 0.0, k), zc + 3.3), (h[0], h[1], h[2] - 0.5), 30)
 
 
 def snake_lane(S, k, t, lt):
@@ -1572,12 +1573,13 @@ def snake_close(S, k, t, lt):
     """Low on the cobbles: a snake slides along the foot of a wall and past a doorstep, and the door is pulled shut from inside."""
     use(S, 'lane')
     sky(S, 'day', 'ash', 0.5)
-    snake(S, 0, -2.5, lerp(-1.6, -5.6, k), 0.0, t, 0.22)
-    snake(S, 1, -0.6, lerp(3.0, -1.0, k), 0.15, t, 0.3)
+    sy = lerp(-2.4, -5.4, k)
+    snake(S, 0, -2.45, sy, 0.0, t, 0.2)
+    snake(S, 1, -1.0, lerp(1.5, -2.5, k), 0.15, t, 0.3)
     snake(S, 2, 40, 40, 0, t)
     S['ldoor'].rotation_euler = (0, 0, 1.25 * (1 - sm(lt / 0.7)))
     key(S, LANE, (2, -8, 3), (-2.5, -4, 0.5), 500, 'F0E4D0')
-    shoot(S, LANE, (lerp(0.9, 0.5, k), lerp(-7.2, -7.6, k), 0.4), (-2.9, lerp(-3.4, -4.4, k), 0.75), 30)
+    shoot(S, LANE, (-1.35, sy - 2.3, 0.34), (-2.6, sy + 0.9, 0.3), 34)
 
 
 def mud_valley(S, k, t, lt):
@@ -1585,23 +1587,22 @@ def mud_valley(S, k, t, lt):
     the valley floor towards it."""
     use(S, 'valley')
     sky(S, 'day', 'ash', 0.6)
-    pose_cloud(S['mud'], at(VALLEY, 0, 330, 40), at(VALLEY, -8, 4, 4), 0.2 + 0.8 * sm(k), t, 0.62, 0.42)
-    shoot(S, VALLEY, (lerp(50, 44, k), lerp(-40, -34, k), lerp(17, 14, k)), (-4, 36, 9), 30)
+    pose_cloud(S['mud'], at(VALLEY, 0, 300, 30), at(VALLEY, -8, 2, 3), 0.3 + 0.7 * sm(k), t, 1.0, 0.5)
+    shoot(S, VALLEY, (lerp(22, 16, k), lerp(-56, -48, k), lerp(15, 12, k)), (-4, 60, 12), 30)
 
 
 def mud_after(S, k, t, lt):
     """Afterwards: brown mud lies across the valley mouth, and only the chimney and a roof ridge stand out of it. Rook stands on
     a rock at the edge with his hat off."""
     use(S, 'valley')
-    sky(S, 'ash')
-    S['mudbed'].location.z = 7.3
-    S['fact'].location.z = -1.2
-    pose_cloud(S['mud'], at(VALLEY, 0, 120, 4), at(VALLEY, -6, -6, 5), 1.0, t * 0.15, 0.4, 0.5)
-    put(S, S['rook'], VALLEY, 12, -8, 9.0, facing((12, -8), (-2, 14)) + 2.0, P('stand', aL=(0.6, -0.2, 2.0, 1.0), head=(lerp(0.15, 0.45, sm(k * 1.4)), -0.75)), 'sad')
+    sky(S, 'ash', 'day', 0.55)
+    S['mudbed'].location.z = 6.2
+    S['fact'].location.z = -0.4
+    put(S, S['rook'], VALLEY, 12, -8.3, 8.8, facing((12, -8.3), (20, -15)) - 0.6, P('stand', aL=(0.6, -0.2, 2.0, 1.0), head=(lerp(0.15, 0.45, sm(k * 1.4)), 0.55)), 'sad')
     S['hat_off'] = 1.0
     h = head(S, S['rook'])
-    key(S, (0, 0, 0), (h[0] + 5, h[1] - 6, h[2] + 3), h, 900, 'E8E0D4')
-    shoot(S, VALLEY, (lerp(19.5, 18.5, k), lerp(-14.5, -13.5, k), 11.6), (3.5, 6, 12.6), 30)
+    key(S, (0, 0, 0), (h[0] + 6, h[1] - 5, h[2] + 3), h, 1200, 'E8E0D4')
+    shoot(S, VALLEY, (lerp(18.6, 17.8, k), lerp(-14.2, -13.4, k), 11.6), (7.5, -1.0, 10.9), 30)
 
 
 # ---------------------------------------------------------------- the town stays
@@ -1612,7 +1613,7 @@ def hall_report(S, k, t, lt):
     sky(S, 'day', 'ash', 0.5)
     d['lights'][0].data.energy = 900
     for i, o in enumerate(S['hsmoke']):
-        o.location = (30 + 3 * i + 2 * math.sin(t * 0.5 + i), 330, 160 + 14 * i + 2 * math.sin(t * 0.7 + i))
+        o.location = (22 + 9 * i + 3 * math.sin(t * 0.5 + i), 700, 138 + 15 * i + 3 * math.sin(t * 0.7 + i))
     g0, g1 = S['gents']
     rd = tput(S, g0, HALL, 0.0, 3.3, 0, 0.0, P('stand', aR=(1.25, 0.25, 1.0, 0.3), aL=(0.4, 0.2, 1.2, 0.6), head=(0.15 + 0.05 * math.sin(lt * 3), 0.0)), 'calm',
               0.35 * abs(math.sin(lt * 6)))
@@ -1621,7 +1622,7 @@ def hall_report(S, k, t, lt):
     hd = wpos(rd.hands[1])
     S['paper'].location = (hd[0], hd[1] - 0.12, hd[2] + 0.3)
     S['paper'].rotation_euler = (0.25, 0, 0.1)
-    shoot(S, HALL, (lerp(-2.6, -1.8, k), lerp(-6.6, -5.6, k), 2.7), (0.6, 3.0, 2.75), 30)
+    shoot(S, HALL, (lerp(-1.2, -0.7, k), lerp(-3.6, -2.9, k), 2.5), (0.7, 3.2, 2.75), 30)
 
 
 def hall_window(S, k, t, lt):
@@ -1631,14 +1632,14 @@ def hall_window(S, k, t, lt):
     sky(S, 'day', 'ash', 0.5)
     d['lights'][0].data.energy = 900
     for i, o in enumerate(S['hsmoke']):
-        o.location = (30 + 3 * i + 2 * math.sin(t * 0.5 + i), 330, 160 + 14 * i + 2 * math.sin(t * 0.7 + i))
+        o.location = (22 + 9 * i + 3 * math.sin(t * 0.5 + i), 700, 138 + 15 * i + 3 * math.sin(t * 0.7 + i))
     tput(S, S['gents'][1], HALL, -1.7, 3.2, 0.36, 0.1, P('sit', head=(0.4, 0.3)), 'calm')
     tput(S, S['official'], HALL, 1.7, 3.2, 0.36, -0.1, P('sit', head=(0.45, -0.2)), 'calm')
     u = sm((lt - 0.7) / 0.45)
     put(S, S['rook'], HALL, 3.7, 3.9, 0, 0.45, blend(P('cross', head=(0.1, 0.45)), P('stand', aR=(0.3, 1.5, 2.3, -0.4), aL=(0.5, -0.05, 1.7, 1.3), head=(0.05, 0.0)), u), 'low')
     S['hat_tip'] = 0.4
     key(S, HALL, (0, -2, 4), (3.7, 3.9, 2.5), 500, 'FFE8C8')
-    shoot(S, HALL, (lerp(0.2, 0.9, k), lerp(-1.9, -1.0, k), 2.7), (3.1, 4.4, 3.0), 32)
+    shoot(S, HALL, (lerp(2.0, 2.4, k), lerp(-1.2, -0.5, k), 2.6), (3.6, 4.3, 2.9), 32)
 
 
 def road_in(S, k, t, lt):
@@ -1648,17 +1649,17 @@ def road_in(S, k, t, lt):
     g = S['gz']
     dx, dy = -0.55, -0.83
     for i, rig in enumerate((S['towns'][3], S['towns'][0], S['towns'][4], S['crew'][1])):
-        f = lerp(0.0, 1.0, k) * 0.75 + 0.22 * i
+        f = 0.2 + 0.6 * k + 0.2 * i
         x, y = 104.5 + dx * 11 * f + 1.4 * (i % 2), 102.5 + dy * 11 * f
         tput(S, rig, BAY, x, y, lerp(g['road0'], g['road1'], f) + 0.02, facing((0, 0), (dx, dy)), dict(K.walk(t + 0.37 * i, 0.9), aL=(2.7, 0.3, 0.5)), 'tired')
         hp_ = wpos(rig.head)
         S['bundles'][i].location = (hp_[0], hp_[1], hp_[2] + 0.62)
     u = sm((lt - 0.8) / 0.6)
-    rx, ry = lerp(100.2, 102.2, k), lerp(91.0, 94.0, k)
-    put(S, S['rook'], BAY, rx, ry, g['roadr'] + 0.02, facing((0, 0), (0.55, 0.83)) + 0.9 * u, K.walk(t, 1.0) if u < 0.3 else P('stand', head=(0.0, 0.75)), 'low')
+    rx, ry = lerp(104.6, 105.6, k), lerp(96.0, 98.2, k)
+    put(S, S['rook'], BAY, rx, ry, g['roadr'] + 0.02, facing((0, 0), (0.55, 0.83)) + 0.5 * u, K.walk(t, 1.0) if u < 0.3 else P('cross', head=(0.0, 0.85)), 'low')
     S['hat_tip'] = 0.3
     key(S, BAY, (110, 100, 9), (102, 94, 3), 1200, 'FFF2DC')
-    shoot(S, BAY, (lerp(108.5, 107.5, k), lerp(103.0, 101.5, k), g['road0'] + 3.3), (97.0, 84.0, g['road1'] + 3.2), 30)
+    shoot(S, BAY, (lerp(109.5, 108.7, k), lerp(104.6, 103.4, k), g['road0'] + 3.0), (98.5, 87.0, g['road1'] + 3.0), 30)
 
 
 def gov_arrive(S, k, t, lt):
@@ -1673,8 +1674,8 @@ def gov_arrive(S, k, t, lt):
     for i, l in enumerate(S['hlegs']):
         l.rotation_euler = (0.12 * math.sin(t * 2 + i * 1.7), 0, 0)
     u = sm((lt - 0.3) / 1.0)
-    tput(S, S['official'], QUAY, -1.6, 6.9, 0, facing((-1.6, 6.9), (-2.6, 8.0)) + 0.9, P('stand', aL=(1.2, 0.5, 0.4), head=(0.05, -0.5)), 'calm')
-    tput(S, S['towns'][5], QUAY, lerp(-3.2, -2.5, u), lerp(8.2, 7.7, u), lerp(0.55, 0.0, u), facing((-3, 8), (1, 4)), P('stand', aR=(1.0, 0.4, 0.5), head=(0.1, 0.2)), 'warm')
+    tput(S, S['official'], QUAY, -0.9, 6.5, 0, facing((-0.9, 6.5), (-2.6, 8.0)) + 0.9, P('stand', aL=(1.2, 0.5, 0.4), head=(0.05, -0.5)), 'calm')
+    tput(S, S['towns'][5], QUAY, lerp(-3.2, -2.5, u), lerp(8.2, 7.5, u), lerp(0.55, 0.0, u), facing((-3, 8), (1, 4)), P('stand', aR=(1.0, 0.4, 0.5), head=(0.1, 0.2)), 'warm')
     tput(S, S['guard'], QUAY, 0.8, 8.6, 0, -PI / 2 - 0.2, blend(P('stand'), P('hat', aR=(0.3, 1.7, 2.1, -1.3), head=(0.0, 0.0)), sm(lt / 0.5)), 'hard')
     key(S, QUAY, (4, 1, 5), (-2, 7.5, 2), 700, 'F0E4D0')
     shoot(S, QUAY, (lerp(4.6, 3.8, k), lerp(2.6, 3.2, k), 2.2), (-2.2, 8.0, 2.75), 30)
@@ -1695,10 +1696,10 @@ def party_night(S, k, t, lt):
     tput(S, S['towns'][0], FETE, -2.8, 2.6 + 0.2 * b, 0, 0.6 + 0.3 * b2, dance(1, 2), 'warm')
     tput(S, S['towns'][4], FETE, -1.5, 3.4 - 0.2 * b, 0, -0.9 - 0.3 * b2, dance(-1, 3), 'warm')
     tput(S, S['towns'][2], FETE, -6.9, 4.1, 0.38, -PI / 2 - 0.5, P('sit', aL=(1.0 + 0.35 * b, 0.1, 1.0), aR=(1.0 - 0.35 * b, 0.1, 1.0), head=(0.2, 0.3 * b2)), 'warm')
-    rk = put(S, S['rook'], FETE, 4.6, -3.6, 0, 0.3, P('stand', head=(0.08, lerp(0.5, -0.3, sm(k))), lean=-0.07, **COINARM), 'low')
+    rk = put(S, S['rook'], FETE, 5.5, -3.4, 0, 0.3, P('stand', head=(0.08, lerp(0.5, -0.3, sm(k))), lean=-0.07, **COINARM), 'low')
     S['hat_tip'] = 0.45
     coinflip(S, rk, t, 0.9)
-    key(S, FETE, (6, -8, 4), (4.6, -3.6, 2.2), 380, 'FFC890')
+    key(S, FETE, (7, -8, 4), (5.5, -3.4, 2.2), 380, 'FFC890')
     shoot(S, FETE, (lerp(6.4, 5.6, k), lerp(-8.6, -8.0, k), 2.5), (1.2, 0.2, 2.5), 30)
 
 
@@ -1723,7 +1724,7 @@ def ships_fire(S, k, t, lt):
     S['ships'][1].rotation_euler.y = -0.14 * sm(k)
     fire(S, 0, at(BAY, 40, -45, 5), t, 1.0)
     fire(S, 1, at(BAY, -20, -62, 5), t + 3, 0.9)
-    S['firel'].location, S['firel'].data.energy = at(BAY, 44, -52, 12), 40000
+    S['firel'].location, S['firel'].data.energy = at(BAY, 46, -56, 12), 3500
     shoot(S, BAY, (lerp(66, 60, k), lerp(-84, -78, k), lerp(3.0, 4.2, k)), (34, -44, 9.5), 30, roll=0.03 * math.sin(t * 2.2))
 
 
@@ -1739,8 +1740,9 @@ def roddam_away(S, k, t, lt):
     S['steamer'].rotation_euler = (0.03 * math.sin(t * 1.1), 0.05 * math.sin(t * 0.8), -0.38)
     for i, o in enumerate(S['stsmoke']):
         o.location = (1.2 * math.sin(t + i), 2 + 2.8 * i + 0.6 * math.sin(t * 0.8 + i), 14 + 2.3 * i)
-    S['firel'].location, S['firel'].data.energy = at(BAY, x + 10, y + 40, 20), 60000
-    shoot(S, BAY, (lerp(-68, -66, k), lerp(-196, -200, k), lerp(5, 6.5, k)), (x + 4, y + 10, 9), 34)
+    S['firel'].location, S['firel'].data.energy = at(BAY, 40, -52, 14), 3500
+    key(S, BAY, (x - 16, y - 22, 30), (x, y, 5), 70000, 'FFB888')
+    shoot(S, BAY, (x - 15 - 2 * k, y - 31, lerp(4.5, 6, k)), (x + 2, y + 5, 8.5), 34)
 
 
 # ---------------------------------------------------------------- in the cell
@@ -1748,13 +1750,13 @@ def slit_dark(S, k, t, lt):
     """Inside the cell, low and close: he stands at the door with the strip of daylight from the slit across his face. The strip
     goes grey, then dark. He looks up at it."""
     cell(S, 'day')
-    f = 1 - sm(lt / 1.6)
+    f = 1 - sm(k * 1.15)
     S['outside'].data.materials[0] = K.mat('DCEBFF' if f > 0.3 else '6A5A52', 0.9, emit=round(0.3 + 3.2 * f, 1))
     S['slitl'].data.energy = 60 + 840 * f
-    S['celll'].data.energy = 14 + 26 * f
+    S['celll'].data.energy = 34 + 16 * f
     m = tput(S, S['man'], CELL, -0.15, -1.45, 0, 0.2, P('stand', aL=(0.3, 0.2, 0.5), aR=(lerp(0.3, 1.3, sm(lt / 1.2)), 0.2, 0.9), head=(lerp(0.1, -0.3, sm(lt / 1.0)), 0.0)), 'calm' if f > 0.5 else 'wide')
     h = head(S, m)
-    shoot(S, (0, 0, 0), (h[0] - lerp(1.7, 1.3, k), h[1] - 1.0, h[2] - lerp(0.9, 0.6, k)), (h[0] + 0.15, h[1] - 0.5, h[2] - 0.05), 34)
+    shoot(S, (0, 0, 0), (h[0] - lerp(1.35, 1.1, k), h[1] - 1.3, h[2] - lerp(0.6, 0.4, k)), (h[0] + 0.1, h[1] - 0.45, h[2] - 0.05), 34)
 
 
 def cloth_slit(S, k, t, lt):
@@ -1792,7 +1794,7 @@ def cell_stands(S, k, t, lt):
     yard(S, 'ruin')
     put(S, S['rook'], YARD, 0.4, 0.4, 2.42, lerp(-0.6, 0.9, sm(k)), P('hips', head=(0.05, lerp(0.5, -0.5, sm(k)))), 'soft')
     key(S, YARD, (8, -14, 10), (0.4, 0.4, 4), 2500, 'E8E0D4')
-    shoot(S, YARD, (lerp(10.5, 8.5, k), lerp(-17, -14.5, k), lerp(8.5, 6.8, k)), (0, 0.5, 2.4), 30)
+    shoot(S, YARD, (lerp(8.6, 7.0, k), lerp(-13.5, -11.5, k), lerp(7.2, 5.8, k)), (0, 0.4, 3.0), 30)
 
 
 def ring_tell(S, k, t, lt):
@@ -1818,7 +1820,7 @@ def geologist(S, k, t, lt):
     for s_ in S['ships']:
         s_.location.z = -40
     S['mound'].location = at(BAY, 140, 50, -0.4)
-    S['tripod'].location = at(BAY, 137.6, 51.6, 2.55)
+    S['tripod'].location = at(BAY, 141.9, 48.9, 2.5)
     S['tripod'].rotation_euler = (0, 0, 2.4)
     w = math.sin(lt * 9)
     g = tput(S, S['geo'], BAY, 140.3, 50.2, 2.7, facing((140.3, 50.2), (0, 330)) - 1.0, P('stand', aL=(0.9, 0.0, 1.5, 0.6), aR=(0.9, -0.1 + 0.03 * w, 1.75, 0.8), head=(0.42, 0.0)), 'calm')
@@ -1826,7 +1828,7 @@ def geologist(S, k, t, lt):
     S['book'].location = (hd[0], hd[1], hd[2] + 0.16)
     S['book'].rotation_euler = (1.1, 0, g.root.rotation_euler[2])
     u = sm((lt - 1.0) / 0.5)
-    put(S, S['rook'], BAY, 141.9, 51.1, 2.55, facing((141.9, 51.1), (140.3, 50.2)) - 0.5, blend(P('stand', head=(0.4, 0.5)), P('tap', head=(0.3, 0.45)), u), 'calm')
+    put(S, S['rook'], BAY, 138.9, 51.4, 2.55, facing((138.9, 51.4), (140.3, 50.2)) - 0.9, blend(P('stand', head=(0.4, 0.7)), P('tap', head=(0.3, 0.6)), u), 'calm')
     key(S, BAY, (148, 56, 9), (140.5, 50.5, 4.5), 1600, 'F2EADA')
     shoot(S, BAY, (lerp(146.6, 145.8, k), lerp(57.4, 56.6, k), 5.0), (140.9, 50.6, 5.0), 34)
 
@@ -1849,11 +1851,12 @@ def spine_rise(S, k, t, lt):
         o.location = at(BAY, r_ * math.cos(a), 330 + r_ * math.sin(a), 290 - 60 * rnd(i, 7) - 140 * f * f) if f > 0 else FAR
         o.rotation_euler = (t * 3 + i, t * 2, i)
     pose_cloud(S['steam'], (0, 330, 214), (4, 330, 250), 0.4 + 0.5 * fall, t, 1.0 + 1.6 * fall, 1.2)
-    put(S, S['rook'], BAY, RIM[0], RIM[1], z, facing(RIM, (0, 330)) - 0.5, blend(P('stand', head=(-0.2, 0.3)), P('hat', head=(-0.55, 0.35), lean=-0.12), up), 'shocked' if up > 0.4 else 'calm')
-    S['hat_tip'] = -0.6 * up
+    turn = sm((k - 0.82) / 0.14)
+    put(S, S['rook'], BAY, RIM[0], RIM[1], z, facing(RIM, (0, 330)) - 0.6 - 2.3 * turn, blend(P('stand', head=(-0.2, 0.3)), P('hat', head=(-0.5 + 0.5 * turn, 0.35), lean=-0.1), up), 'shocked' if up > 0.4 else 'calm')
+    S['hat_tip'] = -0.6 * up * (1 - turn)
     h = head(S, S['rook'])
-    key(S, (0, 0, 0), (h[0] - 3, h[1] - 6, h[2] + 2), h, 900, 'F2EADA')
-    shoot(S, BAY, (RIM[0] - lerp(6.5, 7.5, k), RIM[1] - lerp(6.0, 7.5, k), z + lerp(1.6, 1.3, k)), (RIM[0] + 8, RIM[1] + 10, z + lerp(9, 16, up)), 24)
+    key(S, (0, 0, 0), (h[0] - 5, h[1] - 6, h[2] + 2), h, 1400, 'F2EADA')
+    shoot(S, BAY, (SPCAM[0] - lerp(0.0, 0.5, k), SPCAM[1] - lerp(0.0, 0.6, k), S['gz']['spcam'] + 1.5), (RIM[0] + 6, RIM[1] + 7, z + lerp(6.5, 9.5, up)), 34)
 
 
 def bay_today(S, k, t, lt):
@@ -1907,5 +1910,17 @@ def _held(f, name):
     return g
 
 
+_dig0 = SHOTS3D['dig_out']
+
+
+def dig_out(S, k, t, lt):
+    """The Short's rescue, re-staged for the wide frame: Rook is not up on the roof (out of a 16:9 frame from down in the pit)
+    but sitting on the edge of the pit beside the men, hat in his hand."""
+    _dig0(S, k, t, lt)
+    put(S, S['rook'], YARD, 2.95, -4.7, -0.38, -PI / 2 - 0.25, P('sit', aL=(0.6, -0.2, 2.0, 1.0), head=(0.3, 0.35)), 'soft')
+    S['hat_off'] = 1.0
+
+
+SHOTS3D['dig_out'] = dig_out
 for _n in SHORT_KINDS:
     SHOTS3D[_n] = _held(SHOTS3D[_n], _n)
