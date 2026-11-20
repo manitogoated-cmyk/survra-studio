@@ -1,0 +1,66 @@
+{
+  "id": "r043-koepenick",
+  "spine": "v2",
+  "voice": "am_fenrir",
+  "speed": 1.12,
+  "gap": 0.14,
+  "lead": 0.1,
+  "tail": 0.4,
+  "segments": [
+    {
+      "scene": "hook",
+      "mood": "hook",
+      "text": "a captain marches ten soldiers into a town hall, and arrests the mayor."
+    },
+    {
+      "scene": "doubt",
+      "mood": "tense",
+      "text": "Arrested for what, exactly?"
+    },
+    {
+      "scene": "cash",
+      "mood": "action",
+      "text": "Then he orders the treasurer to hand over the town's cash: over {4,000|four thousand} marks."
+    },
+    {
+      "scene": "obey",
+      "mood": "tense",
+      "text": "The soldiers obey. The mayor obeys. Everyone obeys the uniform."
+    },
+    {
+      "scene": "gone",
+      "mood": "calm",
+      "text": "Then the captain walks out with the money, and simply vanishes."
+    },
+    {
+      "scene": "rehook",
+      "mood": "tense",
+      "text": "Except, there is no captain. The man in the uniform is an out-of-work shoemaker with a prison record."
+    },
+    {
+      "scene": "uniform",
+      "mood": "wonder",
+      "text": "The uniform? Second-hand, from a shop. The soldiers? Ten men who happened to be passing, ordered to follow him."
+    },
+    {
+      "scene": "caught",
+      "mood": "action",
+      "text": "Ten days later, the police catch him. The sentence: four years in prison."
+    },
+    {
+      "scene": "kaiser",
+      "mood": "calm",
+      "text": "But after less than two, the Kaiser himself, reportedly amused, pardons him."
+    },
+    {
+      "scene": "payoff",
+      "mood": "triumph",
+      "text": "And the shoemaker? He goes on tour, playing the captain on stage."
+    },
+    {
+      "scene": "end",
+      "mood": "end",
+      "text": "Case closed. Because near Berlin, in nineteen oh six,"
+    }
+  ]
+}

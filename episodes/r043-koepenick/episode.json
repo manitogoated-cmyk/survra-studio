@@ -1,0 +1,17 @@
+{
+  "id": "r043-koepenick",
+  "format": "short",
+  "status": "draft",
+  "synthetic": false,
+  "host": "rook",
+  "case": 43,
+  "title": "A Shoemaker Bought a Uniform and Arrested a Mayor #shorts",
+  "playlist": "Rook's Case Files (Shorts)",
+  "authoring": {"claimed_at": "2026-11-20T18:24:00Z", "run": "scheduled short run, 20 Nov 2026; first slate idea (case 043)"},
+  "sources": [
+    "https://en.wikipedia.org/wiki/Wilhelm_Voigt",
+    "https://hoaxes.org/archive/permalink/the_captain_of_koepenick",
+    "https://www.historynet.com/captain-of-kopenick/"
+  ],
+  "spine": "v2"
+}
