@@ -47,7 +47,7 @@
    "segment": "hook",
    "weight": 0.95,
    "kind": "boots_in",
-   "action": "Low by the floor: the captain strides in through the double doors (jaw set), six soldiers behind him in two files, boots stamping, bayonets levelled",
+   "action": "Low by the floor: the captain strides in through the double doors (jaw set), six soldiers behind him in two files, boots stamping, rifles on their shoulders, bayonets up",
    "camera": "Floor level, looking up at the doorway, rising a little",
    "cam": [
     [
@@ -79,7 +79,7 @@
      0.8
     ]
    ],
-   "hud": "KÖPENICK, NEAR BERLIN",
+   "hud": null,
    "prm": {}
   },
   {
@@ -115,7 +115,7 @@
      0.3
     ]
    ],
-   "hud": "OCTOBER 1906",
+   "hud": "KÖPENICK, NEAR BERLIN",
    "prm": {}
   },
   {
@@ -151,7 +151,7 @@
      0.62
     ]
    ],
-   "hud": null,
+   "hud": "OCTOBER 1906",
    "prm": {}
   },
   {
@@ -303,7 +303,7 @@
      0.42
     ]
    ],
-   "hud": null,
+   "hud": "OVER 4,000 MARKS",
    "prm": {}
   },
   {
@@ -311,7 +311,7 @@
    "segment": "obey",
    "weight": 1.1,
    "kind": "line_up",
-   "action": "In the square, the brick town hall behind: six soldiers in a row with grounded rifles; the captain walks down the line, hands behind his back, and each man stiffens and lifts his chin as he passes (faces set)",
+   "action": "In the square, the brick town hall behind: six soldiers in a row with grounded rifles; the captain walks down the line towards us, hands behind his back, and each man stiffens and lifts his chin as he passes (faces set)",
    "camera": "Low along the line, swinging with the captain",
    "cam": [
     [
@@ -601,7 +601,7 @@
   {
    "n": 17,
    "segment": "uniform",
-   "weight": 1.0,
+   "weight": 1.05,
    "kind": "shop",
    "action": "A second-hand shop full of old coats: the old man in a shabby jacket, chin in hand, in front of a tailor's dummy wearing a captain's tunic and cap; he nods and points: that one (a small smile)",
    "camera": "Medium-wide, arcing",
@@ -669,7 +669,7 @@
   {
    "n": 19,
    "segment": "uniform",
-   "weight": 0.95,
+   "weight": 0.9,
    "kind": "dress",
    "action": "By the shop mirror: he does up the last button, sets the cap on his head, and draws himself up; the tired face goes hard: a captain",
    "camera": "Close, swinging round him",
@@ -709,7 +709,7 @@
   {
    "n": 20,
    "segment": "uniform",
-   "weight": 1.1,
+   "weight": 1.75,
    "kind": "halt",
    "action": "A Berlin street of tall houses and gas lamps: ten soldiers marching in two files; the captain steps into their path with his hand up, giving an order, and they stamp to a halt (eyes front)",
    "camera": "Over the captain's shoulder, arcing",
@@ -749,7 +749,7 @@
   {
    "n": 21,
    "segment": "uniform",
-   "weight": 1.1,
+   "weight": 1.75,
    "kind": "rook_follow",
    "action": "Marching towards us: the captain out in front, the ten behind him in step, and Rook keeping pace at his elbow, looking him up and down, then turning to us with a shrug",
    "camera": "Tracking backwards ahead of the column",
@@ -865,7 +865,7 @@
   {
    "n": 24,
    "segment": "kaiser",
-   "weight": 1.15,
+   "weight": 1.6,
    "kind": "kaiser",
    "action": "A palace study in red and gold: a man in a pale uniform with an upturned moustache lowers his newspaper, shakes with laughter (mouth open, eyes creased), and brings a stamp down on a sheet of paper",
    "camera": "Medium, three-quarter, arcing",

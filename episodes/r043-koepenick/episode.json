@@ -1,17 +1,140 @@
 {
   "id": "r043-koepenick",
   "format": "short",
-  "status": "draft",
+  "status": "approved",
   "synthetic": false,
   "host": "rook",
   "case": 43,
   "title": "A Shoemaker Bought a Uniform and Arrested a Mayor #shorts",
   "playlist": "Rook's Case Files (Shorts)",
-  "authoring": {"claimed_at": "2026-11-20T18:24:00Z", "run": "scheduled short run, 20 Nov 2026; first slate idea (case 043)"},
+  "authoring": {
+    "claimed_at": "2026-11-20T18:24:00Z",
+    "run": "scheduled short run, 20 Nov 2026; first slate idea (case 043)"
+  },
+  "description": "Case 043. In October 1906 a man in a Prussian captain's uniform stopped ten passing soldiers, ordered them to follow him, and led them to the town hall of Köpenick, near Berlin. There he had the mayor and the treasurer arrested, had over 4,000 marks handed over from the town treasury, walked out with the money and vanished. The soldiers had obeyed him without question; so had everyone else. There was no captain. He was Wilhelm Voigt, an out-of-work shoemaker with a prison record, and the uniform was second-hand, from a shop. He was caught ten days later and sentenced to four years in prison. After less than two, Kaiser Wilhelm II pardoned him (the Kaiser is reported to have been amused by the affair), and Voigt went on tour, playing the Captain of Köpenick on stage. Rook didn't believe it either.\n\nAnimated reconstruction of a true story. The rooms, streets, uniforms and everyone in them are generic low-poly shapes with no real insignia, crests or logos, and nobody's likeness is attempted. Staging details such as the look of the office, the treasury, the shop, the alley, the cell, the palace study and the theatre, and where people stood, are illustrative. Narrated with a synthetic voice (Kokoro).\n\nSources: Wikipedia, 'Wilhelm Voigt'; Museum of Hoaxes, 'The Captain of Köpenick'; HistoryNet, 'Captain of Köpenick' (Military History, October 2006).",
+  "tags": [
+    "Captain of Köpenick",
+    "Hauptmann von Köpenick",
+    "Wilhelm Voigt",
+    "Köpenick",
+    "Berlin 1906",
+    "1906",
+    "fake captain",
+    "impostor",
+    "famous hoaxes",
+    "German history",
+    "Kaiser Wilhelm II",
+    "funny true story",
+    "true story",
+    "history",
+    "weird history",
+    "animated story",
+    "Rook",
+    "Survra"
+  ],
+  "hashtags": [
+    "#shorts",
+    "#truestory",
+    "#history"
+  ],
   "sources": [
     "https://en.wikipedia.org/wiki/Wilhelm_Voigt",
     "https://hoaxes.org/archive/permalink/the_captain_of_koepenick",
     "https://www.historynet.com/captain-of-kopenick/"
   ],
-  "spine": "v2"
+  "story_score": {
+    "curiosity": 10,
+    "stakes": 6,
+    "freshness": 8,
+    "story": 9,
+    "visual": 8,
+    "audience_fit": 9,
+    "payoff": 9,
+    "packaging": 9,
+    "research": 8,
+    "repeatability": 8,
+    "total": 84
+  },
+  "title_options": [
+    "A Shoemaker Bought a Uniform and Arrested a Mayor #shorts",
+    "He Put On a Used Uniform. Ten Soldiers Obeyed. #shorts",
+    "The Fake Captain Who Robbed a Town Hall #shorts",
+    "Everyone Obeyed the Uniform. Nobody Checked the Man. #shorts",
+    "The Captain Who Was Really a Shoemaker #shorts"
+  ],
+  "spine": "v2",
+  "source_notes": "Read for this run on 20 Nov 2026 through a fetch tool, three pages loaded: Wikipedia 'Wilhelm Voigt' (the article carries a 'needs additional citations' tag); Museum of Hoaxes, 'The Captain of Köpenick' (Alex Boese); HistoryNet, 'Captain of Köpenick' (Verner Markussen, Military History, October 2006). The two links on the slate (Wikipedia 'Captain of Köpenick' and History.com) could not be opened in this run: the fetch tool asked for a permission nobody was there to give, so they were not used. Every narrated fact and label is on at least two of the three pages read. October 1906: all three (16 October: Wikipedia and Museum of Hoaxes). A shoemaker: all three; out of work: Museum of Hoaxes ('out-of-work'), HistoryNet (could not get work without papers). A prison record: Wikipedia (sentences adding up to 25 years, released February 1906) and HistoryNet ('short stints of prison'); the two disagree on how much, so the narration says only 'a prison record'. A second-hand captain's uniform from a shop: all three (Wikipedia: parts from different shops). Ten soldiers: Wikipedia (four grenadiers stopped near a barracks, a sergeant sent away, six more from a shooting range) and HistoryNet (a platoon of ten that passed and saluted); Museum of Hoaxes says a company 'marching past'. The narration says 'ten men who happened to be passing, ordered to follow him'; the animation shows them as one group of ten in a street, which simplifies Wikipedia's two groups. Köpenick town hall, near Berlin; the mayor and the treasurer arrested: all three (on a pretext of corruption or embezzlement; the pretext is not narrated). Over 4,000 marks from the town treasury: Wikipedia (4,002 marks 37 pfennigs) and HistoryNet ('more than 4,000'); Museum of Hoaxes says 4,000. Handed over on his order: HistoryNet; Wikipedia says he took it against a receipt. He left with the money and disappeared: all three. Caught ten days later: Wikipedia (26 October) and HistoryNet; Museum of Hoaxes says nine days; the label follows the two that agree with the dates. Sentenced to four years: all three. Pardoned by the Kaiser after less than two years: Museum of Hoaxes ('less than two years') and Wikipedia (pardoned 16 August 1908, 20 months served); HistoryNet says only 'soon granted a free pardon'. The Kaiser's amusement is reported, not established: Wikipedia ('claims that even the Kaiser was amused'), HistoryNet ('is reported to have laughed out loud'); the narration says 'reportedly amused' and no words are put in his mouth. Went on tour playing the captain on stage: Museum of Hoaxes (re-enacting his stunt on the stage), Wikipedia (variety shows, small theatres, a play about his exploit), HistoryNet (toured with circuses as the Captain of Köpenick). Not used because only one page read gives them: the train ride to Köpenick, the receipt signed with his old prison warden's name, the carriages to Berlin, the order to stand guard for half an hour, the passport motive, the former cellmate's tip, the statue. Staging liberties, all illustrative: the hook shows bayonets levelled at the mayor in his office and the mayor putting his hands up (the sources say he was arrested by the soldiers, not how); the treasury, safe and cash box; the captain inspecting a line of soldiers and the soldiers left standing at the town hall; the removal of the cap in an alley; the cobbler's room; the arrest by two policemen in an alley; the palace study, the newspaper and the stamp; the theatre, its audience and the flowers; Rook is fictional. The man shown pardoning him is a generic figure with an upturned moustache, not a likeness.",
+  "shown_moments": {
+    "a captain marches ten soldiers into a town hall, and arrests the mayor": "shot 1 (the mayor at his desk looks up, two bayonets come in past the lens, he jumps up with his hands in the air); shot 2 (the captain strides in through the doors with soldiers behind him); shot 3 (he points and gives the order); shot 4 (two soldiers take the mayor by the arms)",
+    "Arrested for what, exactly?": "shot 5 (Rook sitting on the mayor's desk, arms crossed, brim low, the arrest behind him)",
+    "he orders the treasurer to hand over the town's cash: over 4,000 marks": "shots 6 to 8 (the treasurer sets the cash box down in front of the captain; a white glove sweeps notes and coins off the table, label OVER 4,000 MARKS; Rook reaches for the gold and a bayonet drops across his beak)",
+    "The soldiers obey. The mayor obeys. Everyone obeys the uniform.": "shots 9 to 11 (soldiers stiffen as the captain walks down the line; the mayor is marched down the steps; Rook prods the captain's epaulette)",
+    "the captain walks out with the money, and simply vanishes": "shots 12 and 13 (he comes down the steps with a leather bag and walks out of frame past the soldiers; Rook looks left and right on the steps and shrugs)",
+    "there is no captain. The man in the uniform is an out-of-work shoemaker with a prison record": "shots 14 to 16 (the cap comes off: a bald old man; the same man at a cobbler's bench, label WILHELM VOIGT, SHOEMAKER; Rook with a boot in his hand, beak open, hat hopping)",
+    "The uniform? Second-hand, from a shop": "shots 17 to 19 (the old man in front of the tunic on a tailor's dummy, label SECOND-HAND; Rook's magnifying glass on its buttons; he puts on the cap by the mirror and draws himself up)",
+    "The soldiers? Ten men who happened to be passing, ordered to follow him": "shots 20 and 21 (ten soldiers march up, he raises a hand and they halt, label TEN SOLDIERS; they march off behind him with Rook at his elbow)",
+    "Ten days later, the police catch him. The sentence: four years in prison": "shots 22 and 23 (two policemen take him by the shoulders, label 10 DAYS LATER; the cell, Rook beside him on the bunk, label 4 YEARS)",
+    "the Kaiser himself, reportedly amused, pardons him": "shots 24 and 25 (a man in a pale uniform lowers a newspaper, laughs and stamps a paper, label PARDONED, 1908; the cell door opens and the old man walks out past Rook)",
+    "He goes on tour, playing the captain on stage": "shots 26 to 28 (the curtains part on him saluting in the uniform, label ON TOUR; Rook laughing and clapping in the front row; his bow among thrown flowers)",
+    "Case closed. Because near Berlin, in nineteen oh six,": "shots 29 and 30 (Rook pockets a brass button; back to the mayor at his desk and the opening frame)"
+  },
+  "experiments": {
+    "E1_E2": "spine v2: Rook is already in the office in shot 5, sitting on the mayor's desk, and doubts it in one line of 1.3 s ('Arrested for what, exactly?') with the arrest still in frame; no cutaway to his office. The story runs forward from the arrest to the money and the walk-out, then turns once at the re-hook (who the captain really was and how he did it) and goes forward again to the arrest, the pardon and the stage. Place, date and names are labels (KÖPENICK, NEAR BERLIN; OCTOBER 1906; WILHELM VOIGT, SHOEMAKER).",
+    "E3": "The batch brief's Shorts are all made, so this Short is outside it. It opens on a person close-up: the mayor at his desk, eyes wide, with bayonets arriving 0.1 s in.",
+    "E4": "'Case closed.' ending.",
+    "E7": "hook_text HE ARRESTED / THE MAYOR.",
+    "E8": "tail 0.4 s; the last line ('Because near Berlin, in nineteen oh six,') runs into the first ('a captain marches ten soldiers into a town hall...'); the last shot closes in on the mayor at his desk and ends on the opening shot's first frame (checked: first and last frames of the rehearsal side by side)."
+  },
+  "sound_plan": {
+    "first_frame": "Near-silence under the hook title, then a 'hit' at 0.1 s as the bayonets come in (the gate needs an impact in the first second; here it is the story's own sound), a clunk and a gasp.",
+    "music": "The engine's score follows the segment moods: hook, tense for Rook's line, action for the cash, tense for the obedience, calm for the walk-out, tense for the re-hook, wonder for the shop and the street, action for the arrest, calm for the pardon (with the hush), triumph for the stage, end.",
+    "effects": "One to five cues a shot, each tied to something visible: boot stamps (clunk) for marching and halting, a shout for the order, ticks for notes and coins, a hit when the bayonet drops in front of Rook, hammer hits at the cobbler's bench, a gasp for Rook's shock, a creak for the cell door, a clunk for the stamp, caws for Rook's laugh.",
+    "hush": "Shot 25 (the cell door opens and the old man walks out): the music drops out under 'reportedly amused, pardons him.'",
+    "voice": "Narration is ducked over the bed by the engine; measured in the local rehearsal, not listened to."
+  },
+  "checklist": {
+    "A_story": "done: score 84/100 with curiosity 10, story 9, payoff 9; facts checked against three pages; spine v2; shown_moments lists every narrated moment",
+    "B_storyboard": "done: every shot has action, expression, camera and sound cue; Rook's mannerisms are hat brim low (5, 8, 13), hat hopping off (16), beak tap (18, 23), caw-laugh (27), touching his brim (28) and pocketing the shiny brass button (29), plus the crow's weakness for shiny things (8); detective actions are prodding the epaulette (11) and the magnifying glass on the tunic's buttons (18); no neutral poses under action lines",
+    "B2_retention": "done: hook_text set; the first frame is the mayor close at his desk and the bayonets are in frame 0.1 s later; re-hook from 39% to 51% (there is no captain: a shoemaker); one hush (shot 25); tail 0.4 s with a matched loop",
+    "C_previews": "done: one still per shot over two sheet rounds, every shot at k=0.2 and 0.8, and five stills at 720x1280 with production samples; no blown-out or crushed frame where the story has to be seen; faces read at 270x480; Rook on-model",
+    "D_render": "engine defaults untouched (60 fps, 720x1280, 16 jobs in the workflow); the local rehearsal used 12 fps, 360x640, 6 samples for review only",
+    "E_sound": "voice am_fenrir; hook near-silent, music by mood map; every impact cue tied to something visible; voice 18.0 dB over the bed; loudness -14.6 LUFS, peak -1.3 dBFS; loudness range 2.4 LU is under the 4 LU item, see not_met",
+    "F_captions": "done: labels fit the frame at rest (the first label was moved off the hook title after the rehearsal); no inserts; on-screen dates, names and figures checked against sources",
+    "G_final": "one full rehearsal reviewed as a 4 fps sheet of the whole video plus full-resolution stills; local gate PASS; the full-resolution render and the real gate run in the workflow"
+  },
+  "quality_gate": {
+    "method": "One run, five review rounds. Round 1: low-res contact sheet of all 30 shots: the floor-level camera sat inside the desk, the captain hid the treasurer, the cap's visor pointed up, the portal's pediment was upside down, the theatre's seat backs were in front of the sitters, the cap and the boot covered faces, the release and the arrest were too dark; all fixed. Round 2: sheet again: the cash shot was mostly empty table, the dummy was out of frame in the shop, the Kaiser was hidden behind his paper and desk, the open cell door hid the old man, Rook was hidden behind the bowing captain; all fixed. Round 3: every shot previewed at k=0.2 and 0.8: the captain walked down the line with his back to us (turned round), rifles crossed his face in the doorway (rifles on shoulders), the opening of the loop shot started inside the door wall, the cell release was reframed. Round 4: full rehearsal (12 fps, 360x640): local gate PASS: 30 shots, mean 1.50 s, longest 2.70 s, Rook acting in 12 of 30 shots (40%), -14.6 LUFS, peak -1.3 dBFS, voice 18.0 dB over the bed, closest match to any earlier episode 0.61 (shot 7 against r023-herfkens; the limit is 0.93). Reviewed as a 4 fps sheet of the whole video. Round 5: the first place label overlapped the hook title (moved one shot later) and the captain was too small in the walk-out (camera moved in, that shot re-rendered); recomposited, local gate PASS again with the same figures; first and last frames compared side by side for the loop. Duration 44.9 s. The cloud render runs the real gate at 720x1280 and 60 fps.",
+    "not_met": "Loudness range measured 2.4 LU against the checklist's 4 LU (the narration alone measures 1.7 LU and runs almost wall to wall, so this comes from the engine's mix and the format, not from this episode; earlier approved episodes record the same). The soundtrack was measured, not listened to. One full local rehearsal instead of a watch-through at full resolution."
+  },
+  "review": {
+    "notes": [
+      "0.0 to 4.0 s: the mayor close at his desk, hook title HE ARRESTED / THE MAYOR; bayonets in at 0.1 s, hands up; the captain strides in; he points (KÖPENICK, NEAR BERLIN); soldiers take the mayor's arms (OCTOBER 1906)",
+      "4.0 to 5.4 s: Rook on the desk, arms crossed: 'Arrested for what, exactly?'",
+      "5.4 to 10.3 s: the treasurer sets down the cash box; the glove sweeps notes and coins (OVER 4,000 MARKS); Rook reaches for the gold, a bayonet drops across his beak",
+      "10.3 to 14.6 s: the captain walks down the line of soldiers; the mayor is marched down the steps; Rook prods the epaulette",
+      "14.6 to 17.5 s: the captain leaves with the bag past the soldiers; Rook looks left and right and shrugs",
+      "17.5 to 23.0 s: re-hook: the cap comes off in the alley; the cobbler's bench (WILHELM VOIGT, SHOEMAKER); Rook with the boot, hat hopping",
+      "23.0 to 29.4 s: the dummy in the shop (SECOND-HAND); Rook's magnifying glass; the cap goes on by the mirror; the halt in the street (TEN SOLDIERS); the march with Rook at his elbow",
+      "29.4 to 33.6 s: two policemen take him (10 DAYS LATER); the cell with Rook beside him (4 YEARS)",
+      "33.6 to 38.0 s: the laugh and the stamp (PARDONED, 1908); hush: the cell door opens, he walks out past Rook",
+      "38.0 to 41.6 s: the curtains part, he salutes (ON TOUR); Rook's caw-laugh in the front row; the bow and the flowers",
+      "41.6 to 44.9 s: Rook pockets a brass button, 'Case closed.'; back to the mayor at his desk, 'Because near Berlin, in nineteen oh six,'"
+    ],
+    "scores_13": {
+      "story": 5,
+      "hook": 4,
+      "character_acting": 3,
+      "animation": 3,
+      "art_direction": 3,
+      "lighting": 3,
+      "camera": 4,
+      "pacing": 4,
+      "editing": 4,
+      "narration": 3,
+      "sound": 3,
+      "captions_graphics": 4,
+      "respect_accuracy": 5
+    },
+    "weakest": "Humans are block figures with simple faces. In the walk-out the captain is small and the caption sits over him for a moment. The interiors have no ceilings, so the top of some frames is black. In the cash shot the glove's arm reads as a plain blue bar and the treasurer's hand is unclear. The man who pardons him is small behind his desk for the first half-second while the newspaper is up. Rook is cut by the left edge for part of his line on the desk. Narration and sound were measured, not heard."
+  }
 }

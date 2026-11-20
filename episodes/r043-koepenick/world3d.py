@@ -1302,7 +1302,7 @@ def walk_out(S, k, t, lt):
     """Wide on the town hall: the captain comes down the steps with a leather bag and walks off across the square,
     past soldiers who stay exactly where he left them."""
     amb(S, 'square')
-    a, b = (2.0, 6.7), (6.6, -6.5)
+    a, b = (2.0, 6.7), (4.6, -4.2)
     p = mix(a, b, k)
     cp = S['capt']
     stand(cp, at(EXT, p[0], p[1], stepz(p[1])), facing(a, b), step(t, 1.6, aL=(0.1, 0.12, 0.25), head=(-0.08, 0.0)), 'hard')
@@ -1310,7 +1310,7 @@ def walk_out(S, k, t, lt):
     S['bag'].rotation_euler = (0, 0, facing(a, b) + PI / 2)
     for i, (x, y) in enumerate(((-0.6, 7.0), (4.6, 7.0), (-2.4, 3.6), (6.4, 3.6))):
         soldier(S, i, at(EXT, x, y, stepz(y) if abs(x - 2) < 4 else 0), 0.0, 'attn', t)
-    cam(S, at(EXT, -2.5, -12.5, 1.7), at(EXT, 1.8, 4.0, 6.4), 24)
+    cam(S, at(EXT, -0.6, -8.6, 1.6), at(EXT, 2.6, 3.2, 5.2), 24)
     orbit(S, k, 10, 0.12, 0.0)
 
 

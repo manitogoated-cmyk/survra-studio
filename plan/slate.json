@@ -416,13 +416,14 @@
    "world": "1906 Berlin street, train, Koepenick town hall, mayor's office",
    "est_score": 91,
    "long_form_candidate": true,
-   "status": "in progress",
+   "status": "authored",
    "facts": "premise checked on 18 Nov 2026 against the two sources listed (both fetched and read); verify again at authoring. Funny case: keep the comedy on the absurd parts, never on anyone's suffering.",
    "sources": [
-    "https://en.wikipedia.org/wiki/Captain_of_K%C3%B6penick",
-    "https://www.history.com/this-day-in-history/october-16/a-shoemaker-leads-german-soldiers-in-a-robbery"
+    "https://en.wikipedia.org/wiki/Wilhelm_Voigt",
+    "https://hoaxes.org/archive/permalink/the_captain_of_koepenick",
+    "https://www.historynet.com/captain-of-kopenick/"
    ],
-   "source_notes": "16 Oct (some say 17). Sum about 4,000 or exactly 4,002.37 marks. Signed the receipt with his old prison warden's name. Caught 10 days later; pardoned by the Kaiser, whose amusement is only 'reported'. Nobody hurt.",
+   "source_notes": "Authored 20 Nov 2026 as r043-koepenick from three pages read (Wikipedia 'Wilhelm Voigt', Museum of Hoaxes, HistoryNet). October 1906; over 4,000 marks; caught ten days later (one page says nine); four years, pardoned after less than two; the Kaiser's amusement is only reported. Nobody hurt.",
    "tone": "funny",
    "claimed_at": "2026-11-20T18:21:19Z"
   },
