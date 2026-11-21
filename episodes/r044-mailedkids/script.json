@@ -1,0 +1,22 @@
+{
+  "id": "r044-mailedkids",
+  "spine": "v2",
+  "voice": "am_fenrir",
+  "speed": 1.12,
+  "gap": 0.14,
+  "lead": 0.1,
+  "tail": 0.4,
+  "segments": [
+    {"scene": "hook", "mood": "hook", "text": "a five-year-old girl is weighed at the post office, stamped, and mailed."},
+    {"scene": "doubt", "mood": "tense", "text": "You can't post a child."},
+    {"scene": "stamps", "mood": "action", "text": "Her parents just did. {53|Fifty-three} cents in stamps, on her coat: cheaper than a train ticket."},
+    {"scene": "weight", "mood": "tense", "text": "She weighs forty-eight and a half pounds. The parcel limit is fifty."},
+    {"scene": "train", "mood": "wonder", "text": "So she rides the mail train, {73|seventy-three} miles across Idaho, in the mail car."},
+    {"scene": "rehook", "mood": "tense", "text": "And she isn't the first. A year earlier, in Ohio, a baby boy went by post: {15|fifteen} cents, insured for {$50|fifty dollars}."},
+    {"scene": "nosack", "mood": "calm", "text": "Nobody rides in a sack, though. The mail clerk travelling with her is her mother's cousin."},
+    {"scene": "delivered", "mood": "wonder", "text": "He walks her to her grandmother's door. Delivered."},
+    {"scene": "ban", "mood": "calm", "text": "Then the Post Office bans it: no more humans in the mail."},
+    {"scene": "payoff", "mood": "triumph", "text": "And the next year, parents post their kids anyway."},
+    {"scene": "end", "mood": "end", "text": "Case closed. Because in Idaho, in nineteen fourteen,"}
+  ]
+}

@@ -1,0 +1,1098 @@
+{
+ "id": "r044-mailedkids",
+ "hook_text": "MAILED|WITH STAMPS",
+ "shots": [
+  {
+   "n": 1,
+   "segment": "hook",
+   "weight": 0.9,
+   "kind": "scale_girl",
+   "action": "Close on May, five, hopping onto the platform scale with a row of stamps on her coat (grinning, mouth open); the platform clunks, the needle behind her jumps; the clerk's hand comes in from the right with one more stamp",
+   "camera": "Eye level on her face, pushing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 2,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.1
+    ],
+    [
+     "hit",
+     0.14
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 2,
+   "segment": "hook",
+   "weight": 1.0,
+   "kind": "dial",
+   "action": "From behind and below her bobble hat, looking up at the big dial: the needle swings round, overshoots, wobbles and settles just under the red mark; she tips her head back to watch (eyes wide)",
+   "camera": "Low angle up at the dial, swinging round and rising",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.1
+    ],
+    [
+     "tick",
+     0.5
+    ],
+    [
+     "tick",
+     0.75
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 3,
+   "segment": "hook",
+   "weight": 1.1,
+   "kind": "stamp_on",
+   "action": "Close on her coat: a hand presses one more stamp on beside the others and thumps it flat; she looks down at it and beams",
+   "camera": "Close, arcing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "hit",
+     0.4
+    ],
+    [
+     "tick",
+     0.75
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 4,
+   "segment": "doubt",
+   "weight": 1.0,
+   "kind": "rook_counter",
+   "action": "Rook is already there, leaning on the counter with his arms crossed and his hat brim low (unimpressed): 'You can't post a child.' He jerks his head at her on the last word; behind him she waves at him from the scale",
+   "camera": "Medium on Rook, the girl on the scale in frame behind him",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 5,
+   "segment": "stamps",
+   "weight": 1.0,
+   "kind": "parents",
+   "action": "Her father counts coins out onto the counter one by one (head down), her mother beside him with her hands clasped (smiling); the clerk slides the stamps across",
+   "camera": "From the end of the counter, swinging round",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.15
+    ],
+    [
+     "tick",
+     0.4
+    ],
+    [
+     "tick",
+     0.65
+    ],
+    [
+     "tick",
+     0.9
+    ]
+   ],
+   "hud": "GRANGEVILLE, IDAHO",
+   "prm": {}
+  },
+  {
+   "n": 6,
+   "segment": "stamps",
+   "weight": 1.0,
+   "kind": "coat_close",
+   "action": "Low in front of May: she tugs her coat straight with both hands and lifts her chin, proud of her row of stamps (big smile)",
+   "camera": "Low and close, arcing and rising",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.3
+    ]
+   ],
+   "hud": "53 CENTS IN STAMPS",
+   "prm": {}
+  },
+  {
+   "n": 7,
+   "segment": "stamps",
+   "weight": 1.05,
+   "kind": "rook_ticket",
+   "action": "Rook by the window holds up a railway ticket in one hand and a stamp in the other, looks from one to the other (squinting), then lets the ticket drop and tips his brim",
+   "camera": "Medium close on Rook, arcing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "flip",
+     0.2
+    ],
+    [
+     "whoosh",
+     0.68
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 8,
+   "segment": "weight",
+   "weight": 1.0,
+   "kind": "rook_scale",
+   "action": "Rook's detective moment: up on his toes by the scale with his magnifying glass on the dial, reading the needle (squinting); May looks up at him (eyes wide)",
+   "camera": "From the front of the scale, arcing and closing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "creak",
+     0.6
+    ]
+   ],
+   "hud": "48½ POUNDS",
+   "prm": {}
+  },
+  {
+   "n": 9,
+   "segment": "weight",
+   "weight": 0.95,
+   "kind": "weigh_wide",
+   "action": "The whole post office: the girl bouncing on the scale, the clerk reading the dial and writing it down, her father with his hands on his hips, her mother watching",
+   "camera": "Wide, arcing across the room",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.3
+    ],
+    [
+     "scratch",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 10,
+   "segment": "weight",
+   "weight": 1.0,
+   "kind": "limit",
+   "action": "Very close on the dial: the needle trembles a hair under the red limit mark; a finger taps the mark twice",
+   "camera": "Close on the dial, arcing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.22
+    ],
+    [
+     "tick",
+     0.66
+    ]
+   ],
+   "hud": "PARCEL LIMIT: 50 LB",
+   "prm": {}
+  },
+  {
+   "n": 11,
+   "segment": "train",
+   "weight": 1.0,
+   "kind": "train_wide",
+   "action": "The mail train comes through the snowy hills towards us, smoke streaming back past the pines and telegraph poles",
+   "camera": "Wide, the camera dropping back and rising as the engine arrives",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "horn",
+     0.1
+    ],
+    [
+     "engine_start",
+     0.4
+    ]
+   ],
+   "hud": "19 FEBRUARY 1914",
+   "prm": {}
+  },
+  {
+   "n": 12,
+   "segment": "train",
+   "weight": 0.8,
+   "kind": "wheels",
+   "action": "Low beside the rails: the red driving wheels and the rod pounding round",
+   "camera": "Low tracking shot beside the wheels",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.15
+    ],
+    [
+     "clunk",
+     0.45
+    ],
+    [
+     "clunk",
+     0.75
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 13,
+   "segment": "train",
+   "weight": 1.1,
+   "kind": "car_inside",
+   "action": "Inside the mail car: May sits on a mail sack swinging her legs (smiling), her little suitcase beside her; the clerk flicks letters into the case and glances round at her; daylight flashes in the open door, the lamp swings",
+   "camera": "Wide across the car, arcing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "flip",
+     0.3
+    ],
+    [
+     "flip",
+     0.6
+    ]
+   ],
+   "hud": "73 MILES",
+   "prm": {}
+  },
+  {
+   "n": 14,
+   "segment": "train",
+   "weight": 1.0,
+   "kind": "rook_sack",
+   "action": "Rook rides as a parcel too: he pops up out of a mail sack beside her with a tag tied to his hat, arms crossed, brim low (unimpressed); she laughs at him",
+   "camera": "Medium on Rook and May, arcing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "pop",
+     0.12
+    ],
+    [
+     "flap",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 15,
+   "segment": "rehook",
+   "weight": 1.0,
+   "kind": "baby_bundle",
+   "action": "Close on a baby in a blanket in a mail carrier's arms, a stamp on the blanket; the carrier looks down at him (smiling) and rocks him",
+   "camera": "Close on the bundle, arcing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ]
+   ],
+   "hud": "OHIO, 1913",
+   "prm": {}
+  },
+  {
+   "n": 16,
+   "segment": "rehook",
+   "weight": 1.0,
+   "kind": "rook_hatjump",
+   "action": "Rook by a farm mailbox sees the carrier walk past with the baby: his beak drops, his hat hops off his head and a feather comes loose (shocked)",
+   "camera": "Medium on Rook, the carrier passing behind",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "gasp",
+     0.2
+    ],
+    [
+     "flap",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 17,
+   "segment": "rehook",
+   "weight": 1.0,
+   "kind": "carrier_lane",
+   "action": "Dusk: the carrier walks up the lane along the white fence towards the lit farmhouse, the baby in his arms",
+   "camera": "Wide and low from the lane, rising",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.1
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 18,
+   "segment": "rehook",
+   "weight": 1.0,
+   "kind": "rook_follow",
+   "action": "Rook trots beside the carrier, craning over his arm at the baby, tapping his beak (soft eyes)",
+   "camera": "Tracking ahead of them",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 19,
+   "segment": "rehook",
+   "weight": 1.1,
+   "kind": "ohio_door",
+   "action": "The farmhouse porch: the door swings open, the grandmother throws up her hands (eyes wide, mouth open) and the carrier holds the baby out to her",
+   "camera": "Medium wide on the porch, arcing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "creak",
+     0.1
+    ],
+    [
+     "gasp",
+     0.35
+    ]
+   ],
+   "hud": "15 CENTS, INSURED FOR $50",
+   "prm": {}
+  },
+  {
+   "n": 20,
+   "segment": "nosack",
+   "weight": 1.05,
+   "kind": "rook_sackcheck",
+   "action": "Rook tests it: he holds a mail sack upside down and shakes it; only letters fall out; he peers into the empty sack (squinting); May laughs",
+   "camera": "Medium wide in the mail car, arcing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "flap",
+     0.15
+    ],
+    [
+     "flip",
+     0.3
+    ],
+    [
+     "flip",
+     0.45
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 21,
+   "segment": "nosack",
+   "weight": 1.0,
+   "kind": "cousin",
+   "action": "The mail clerk crouches in front of May on her sack and does up the top of her coat (kind smile); she beams at him",
+   "camera": "Medium two-shot, arcing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.4
+    ]
+   ],
+   "hud": "LEONARD MOCHEL, MAIL CLERK",
+   "prm": {}
+  },
+  {
+   "n": 22,
+   "segment": "nosack",
+   "weight": 1.0,
+   "kind": "car_window",
+   "action": "At the open door: May holds on and watches the hills go by (eyes wide), the clerk's hand on her shoulder, Rook beside them holding his hat on in the wind",
+   "camera": "Medium wide from inside the car, arcing, rocking",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.1
+    ],
+    [
+     "clunk",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 23,
+   "segment": "delivered",
+   "weight": 1.4,
+   "kind": "door",
+   "action": "Snowy morning: the clerk walks May up the path with her suitcase; the door flies open, her grandmother comes out with her arms wide (delighted) and May runs up the last step into them",
+   "camera": "Wide from the path, swinging round and closing in on the door",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "creak",
+     0.38
+    ],
+    [
+     "gasp",
+     0.5
+    ],
+    [
+     "hit",
+     0.8
+    ]
+   ],
+   "hud": "LEWISTON, IDAHO",
+   "prm": {}
+  },
+  {
+   "n": 24,
+   "segment": "delivered",
+   "weight": 1.0,
+   "kind": "rook_delivered",
+   "action": "Rook at the foot of the steps watches the hug in the doorway, touches his hat brim and turns back to us (soft eyes)",
+   "camera": "Medium on Rook, the doorway behind him",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 25,
+   "segment": "ban",
+   "weight": 1.05,
+   "kind": "ban_desk",
+   "action": "An office: a bald official in a dark suit scowls, lifts a rubber stamp high and slams it down on an order; a red mark is left on the paper; the frame jolts",
+   "camera": "High three-quarter on the desk, swinging round and closing in",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.4
+    ],
+    [
+     "hit",
+     0.55
+    ]
+   ],
+   "hud": "BANNED",
+   "prm": {}
+  },
+  {
+   "n": 26,
+   "segment": "ban",
+   "weight": 1.0,
+   "kind": "rook_notice",
+   "action": "Back in the post office: Rook reads the new notice pinned to the board, tapping his beak, then looks round at us with his brim low",
+   "camera": "Over the room towards the board, arcing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.2
+    ],
+    [
+     "tick",
+     0.42
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "hush": true
+  },
+  {
+   "n": 27,
+   "segment": "payoff",
+   "weight": 1.05,
+   "kind": "anyway_counter",
+   "action": "The same counter a year on: a mother pushes a small boy with a stamped tag on his coat up to it (he grins); the clerk glances at the notice on the wall, back at the boy, and shrugs",
+   "camera": "From the far end of the counter, arcing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.3
+    ],
+    [
+     "whoosh",
+     0.7
+    ]
+   ],
+   "hud": "1915",
+   "prm": {}
+  },
+  {
+   "n": 28,
+   "segment": "payoff",
+   "weight": 1.0,
+   "kind": "rook_laugh",
+   "action": "Rook, elbow on the counter, watches the clerk stamp the boy's tag, throws his head back and caws with laughter",
+   "camera": "Medium on Rook, the stamping behind him",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "hit",
+     0.2
+    ],
+    [
+     "caw",
+     0.4
+    ],
+    [
+     "caw",
+     0.7
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 29,
+   "segment": "end",
+   "weight": 1.15,
+   "kind": "signoff",
+   "action": "Rook alone by the empty scale: he lifts a small brass weight off its shelf, turns it so it glints, pockets it and tugs his brim: 'Case closed.'",
+   "camera": "Medium on Rook, arcing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "clunk",
+     0.75
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "brand": true
+  },
+  {
+   "n": 30,
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "scale_girl",
+   "action": "Back at the scale, a moment earlier: May stands on the platform with her stamps on, looking off to the side; the camera closes in from across the room to the opening frame",
+   "camera": "From across the post office, closing in to the opening framing",
+   "cam": [
+    [
+     1.0,
+     540,
+     960,
+     0
+    ],
+    [
+     1.08,
+     540,
+     960,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "creak",
+     0.3
+    ],
+    [
+     "tick",
+     0.7
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "loop": true
+   }
+  }
+ ]
+}
