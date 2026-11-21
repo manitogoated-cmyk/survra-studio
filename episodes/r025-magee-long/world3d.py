@@ -1986,7 +1986,7 @@ def fall_close(S, k, t, lt):
     """Close on him from above as he falls on his back, out cold: eyes shut, arms drifting up, the mask blown loose, the
     cloud far below him coming up."""
     sky(S, 'high')
-    clouds(S, FALLZ, t, vz=30, depth=-46, spread=150)
+    clouds(S, FALLZ, t, vz=12, depth=-70, spread=150)
     m = S['man']
     put(m, at(FALLZ, 0, 0, 0), 0.25 * math.sin(lt * 0.9), -PI / 2 + 0.12 * math.sin(lt * 1.3), 0.15 * math.sin(lt * 1.1), limp(t))
     m.face = 'shut'
@@ -2205,7 +2205,7 @@ def hangar_walk(S, k, t, lt):
     c = S['cub']
     c.location, c.rotation_euler = at(HOME, 0, 0, 0.0), (-0.125, 0, 0.55)
     o = S['old']
-    p0, p1 = (8.6, -7.4), (3.9, -3.3)
+    p0, p1 = (6.4, -5.6), (3.9, -3.3)
     u = sm(k / 0.62)
     p = (lerp(p0[0], p1[0], u), lerp(p0[1], p1[1], u))
     touch = sm((k - 0.62) / 0.2)
@@ -2317,6 +2317,10 @@ def _alive(f, name):
         m = 1 - push * (k - 0.5)
         dx, dy, dz = c[0] - tg[0], c[1] - tg[1], c[2] - tg[2]
         S['camrig'].location = (tg[0] + (dx * math.cos(a) - dy * math.sin(a)) * m, tg[1] + (dx * math.sin(a) + dy * math.cos(a)) * m, tg[2] + dz * m)
+        cl = Vector(S['camrig'].location)
+        for o in S['clouds']:                                  # no cloud ever swallows the lens
+            if (Vector(o.location) - cl).length < max(o.scale) + 6:
+                o.location.z -= 400
     g.__name__ = name
     g.__doc__ = f.__doc__
     return g
