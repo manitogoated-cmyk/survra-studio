@@ -1,0 +1,2170 @@
+{
+ "id": "r025-magee-long",
+ "hook_text": "NO PARACHUTE|4 MILES UP",
+ "shots": [
+  {
+   "n": 1,
+   "segment": "hook",
+   "weight": 0.9,
+   "kind": "bomber_down",
+   "action": "High over the cloud: the bomber rolls over and goes down, an engine burning, smoke trailing; a tiny figure falls away from it",
+   "camera": "Wide from below and ahead, pushing in hard, slight roll",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "cut",
+   "sfx": [
+    [
+     "hit",
+     0.02
+    ],
+    [
+     "low",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "arc": [
+     10,
+     0.34
+    ]
+   }
+  },
+  {
+   "n": 2,
+   "segment": "hook",
+   "weight": 0.9,
+   "kind": "fall_wide",
+   "action": "From above: one limp figure turning slowly in open sky, no parachute, cloud far below and the coast beyond",
+   "camera": "Straight down on him, sinking towards him, rolling",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.1
+    ],
+    [
+     "whoosh",
+     0.6
+    ]
+   ],
+   "hud": "NO PARACHUTE",
+   "prm": {}
+  },
+  {
+   "n": 3,
+   "segment": "hook",
+   "weight": 1.1,
+   "kind": "roof_rush",
+   "action": "Straight down at the arched glass roof of the station among the town roofs, rushing up",
+   "camera": "Vertical dive, spinning",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "whip",
+   "sfx": [
+    [
+     "whoosh",
+     0.1
+    ],
+    [
+     "wind",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 4,
+   "segment": "doubt",
+   "weight": 1.0,
+   "kind": "rook_ridge",
+   "action": "Rook on the iron ridge of the station roof looks up at a tiny falling figure, then at us; his brim drops: no chance",
+   "camera": "Three-quarter on Rook from roof level, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "zoom",
+   "sfx": [
+    [
+     "tick",
+     0.2
+    ],
+    [
+     "flap",
+     0.7
+    ]
+   ],
+   "hud": "CASE 025",
+   "prm": {}
+  },
+  {
+   "n": 5,
+   "segment": "start",
+   "weight": 1.0,
+   "kind": "field_dawn",
+   "action": "An airfield in England at dawn: the bomber parked on its hardstand; the gunner walks out to it. Rook on a fuel drum flips a coin and turns to watch",
+   "camera": "Low and wide, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "birdcall",
+     0.2
+    ],
+    [
+     "flip",
+     0.6
+    ]
+   ],
+   "hud": "ALAN MAGEE",
+   "prm": {}
+  },
+  {
+   "n": 6,
+   "segment": "start",
+   "weight": 1.0,
+   "kind": "turret_under",
+   "action": "Under the belly of the bomber: the ball turret just above the grass. The gunner kneels and slaps its side; Rook bends to look at how small it is",
+   "camera": "Low from the side, level with the ball, tracking a little",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.3
+    ],
+    [
+     "clunk",
+     0.55
+    ]
+   ],
+   "hud": "BALL TURRET GUNNER",
+   "prm": {}
+  },
+  {
+   "n": 7,
+   "segment": "start",
+   "weight": 0.9,
+   "kind": "turret_side",
+   "action": "Inside the ball, from beside him: curled between the two guns, knees up, the round window and flak-spotted sky in front of him",
+   "camera": "Inside the turret, very close, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "creak",
+     0.2
+    ],
+    [
+     "low",
+     0.6
+    ]
+   ],
+   "hud": "BALL TURRET GUNNER",
+   "prm": {}
+  },
+  {
+   "n": 8,
+   "segment": "turret",
+   "weight": 1.1,
+   "kind": "rook_measure",
+   "action": "Rook holds his wings apart across the ball, keeps them that far apart, turns to a parachute pack on the grass: the two will not go in together. He shrugs",
+   "camera": "Three-quarter on Rook, the ball behind him",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.25
+    ],
+    [
+     "flap",
+     0.7
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 9,
+   "segment": "turret",
+   "weight": 0.9,
+   "kind": "pack_hook",
+   "action": "Inside the fuselage: his parachute pack, whole, hangs on its hook. He pats it and turns away towards the hatch",
+   "camera": "From across the fuselage, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.3
+    ],
+    [
+     "scratch",
+     0.7
+    ]
+   ],
+   "hud": "HIS PARACHUTE",
+   "prm": {}
+  },
+  {
+   "n": 10,
+   "segment": "mission",
+   "weight": 1.0,
+   "kind": "map",
+   "action": "Rook's chalk map on iron: England, the Channel, Brittany; a dotted line runs out over the sea and down to a ringed harbour",
+   "camera": "Flat, slow push",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.2
+    ],
+    [
+     "scratch",
+     0.5
+    ]
+   ],
+   "hud": "3 JANUARY 1943",
+   "prm": {}
+  },
+  {
+   "n": 11,
+   "segment": "mission",
+   "weight": 0.8,
+   "kind": "formation",
+   "action": "The formation in daylight over cloud, the sky around it clean for now",
+   "camera": "Wide from the side, drifting",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.2
+    ],
+    [
+     "wind",
+     0.6
+    ]
+   ],
+   "hud": "HIS 7TH MISSION",
+   "prm": {
+    "alt": [
+     -50,
+     1.15,
+     6
+    ]
+   }
+  },
+  {
+   "n": 12,
+   "segment": "mission",
+   "weight": 1.2,
+   "kind": "nose_fly",
+   "action": "Close on the bomber's nose and cockpit from ahead, the others strung out behind; no name or picture is painted on it",
+   "camera": "From ahead and to one side, sliding in towards the nose",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.15
+    ],
+    [
+     "wind",
+     0.6
+    ]
+   ],
+   "hud": "SNAP! CRACKLE! POP!",
+   "prm": {}
+  },
+  {
+   "n": 13,
+   "segment": "mission",
+   "weight": 1.1,
+   "kind": "pens",
+   "action": "From above the bombers: the harbour of Saint-Nazaire, the long concrete block of the U-boat pens on the basin, the town round it, flak coming up",
+   "camera": "High, looking down and ahead over the formation",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.1
+    ],
+    [
+     "boom",
+     0.55
+    ],
+    [
+     "boom",
+     0.85
+    ]
+   ],
+   "hud": "SAINT-NAZAIRE, FRANCE",
+   "prm": {}
+  },
+  {
+   "n": 14,
+   "segment": "flak",
+   "weight": 0.9,
+   "kind": "flak_hit",
+   "action": "Under the belly: a burst right beside the ball turret; the plane jolts and fragments fly",
+   "camera": "Close under the fuselage",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "flash",
+   "sfx": [
+    [
+     "hit",
+     0.3
+    ],
+    [
+     "crash",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 15,
+   "segment": "flak",
+   "weight": 0.8,
+   "kind": "turret_close",
+   "action": "Through the round window: the gunner flinches as the glass cracks across; he is hit",
+   "camera": "Close on his face through the window",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "cut",
+   "sfx": [
+    [
+     "crash",
+     0.1
+    ],
+    [
+     "gasp",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 16,
+   "segment": "flak",
+   "weight": 1.3,
+   "kind": "turret_climb",
+   "action": "Inside the fuselage: he hauls himself up out of the turret hatch in the floor, smoke drifting past",
+   "camera": "From along the floor, rising with him",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "clunk",
+     0.2
+    ],
+    [
+     "scratch",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 17,
+   "segment": "chute",
+   "weight": 1.1,
+   "kind": "chute_find",
+   "action": "He pulls the pack off its hook; it falls open and the silk drops out in rags. Behind him Rook's hat jumps",
+   "camera": "Two-shot from down the fuselage",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.3
+    ],
+    [
+     "gasp",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 18,
+   "segment": "chute",
+   "weight": 0.8,
+   "kind": "chute_rags",
+   "action": "The pack, torn open, silk hanging out of it in strips, daylight through the holes in the skin",
+   "camera": "Close on the pack, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.3
+    ]
+   ],
+   "hud": "NO PARACHUTE",
+   "prm": {}
+  },
+  {
+   "n": 19,
+   "segment": "chute",
+   "weight": 1.3,
+   "kind": "rook_silk",
+   "action": "Rook holds a strip of the silk to the light, pokes a wingtip through a hole in it, taps his beak: useless",
+   "camera": "Close three-quarter on Rook",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "tick",
+     0.75
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 20,
+   "segment": "wing",
+   "weight": 1.0,
+   "kind": "wing_hit",
+   "action": "The second hit: a burst on the right wing; the outer part breaks away and tumbles back, fire along the stub, the bomber drops that side",
+   "camera": "From above and behind the right wing",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "flash",
+   "sfx": [
+    [
+     "boom",
+     0.22
+    ],
+    [
+     "crash",
+     0.35
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 21,
+   "segment": "wing",
+   "weight": 1.0,
+   "kind": "spin_down",
+   "action": "The bomber going down in a flat spin, fire on the stub of the wing, its smoke winding up behind it",
+   "camera": "Wide from the side, falling with it",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.1
+    ],
+    [
+     "whoosh",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 22,
+   "segment": "blackout",
+   "weight": 1.0,
+   "kind": "fuse_spin",
+   "action": "Inside the spinning fuselage: the floor tilts, fire at the far end; he drags himself forward on hands and knees",
+   "camera": "Low along the floor, the horizon rolling",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "cut",
+   "sfx": [
+    [
+     "creak",
+     0.2
+    ],
+    [
+     "heartbeat",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 23,
+   "segment": "blackout",
+   "weight": 1.0,
+   "kind": "gasp_dim",
+   "action": "He sways, mask hanging loose, gropes for a rib; his eyes drift shut and he slumps",
+   "camera": "Close, rolling",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "gasp",
+     0.2
+    ],
+    [
+     "heartbeat",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 24,
+   "segment": "blackout",
+   "weight": 1.0,
+   "kind": "thrown_clear",
+   "action": "The broken waist of the bomber: a limp figure is flung out among scraps of metal as the plane rolls away",
+   "camera": "From beside the waist",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "whip",
+   "sfx": [
+    [
+     "crash",
+     0.15
+    ],
+    [
+     "whoosh",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 25,
+   "segment": "fall",
+   "weight": 0.9,
+   "kind": "fall_close",
+   "action": "Close from above as he falls on his back, out cold: eyes shut, arms drifting up, cloud far below",
+   "camera": "Above his face, sinking with him, turning slowly",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.1
+    ],
+    [
+     "heartbeat",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 26,
+   "segment": "fall",
+   "weight": 0.8,
+   "kind": "fall_wide",
+   "action": "The small figure alone in the sky, turning",
+   "camera": "High and wide, from the other side",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.3
+    ]
+   ],
+   "hud": "HOW FAR?",
+   "prm": {
+    "alt": [
+     120,
+     1.5,
+     8
+    ]
+   }
+  },
+  {
+   "n": 27,
+   "segment": "fall",
+   "weight": 1.4,
+   "kind": "heights",
+   "action": "Rook's chalk scale on iron: a tall rule, two marks on it, one for the bomb group's report and one for the later tellings, and under them one line",
+   "camera": "Flat, slow push",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.25
+    ],
+    [
+     "tick",
+     0.5
+    ],
+    [
+     "tick",
+     0.8
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 28,
+   "segment": "fall",
+   "weight": 1.0,
+   "kind": "rook_dive",
+   "action": "Rook dives beside him, one wingtip clamping his hat on, looking across at the man and then down",
+   "camera": "Close on Rook, the man beyond",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.2
+    ],
+    [
+     "flap",
+     0.6
+    ]
+   ],
+   "hud": "ABOUT 4 MILES",
+   "prm": {}
+  },
+  {
+   "n": 29,
+   "segment": "rehook",
+   "weight": 1.0,
+   "kind": "town_below",
+   "action": "Straight down past his boots: the town, the harbour, and the long glass roof of the station growing",
+   "camera": "Vertical, turning",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "zoom",
+   "sfx": [
+    [
+     "wind",
+     0.2
+    ],
+    [
+     "low",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 30,
+   "segment": "rehook",
+   "weight": 1.0,
+   "kind": "station_out",
+   "action": "Outside the station, from the tracks: the open end of the long hall, its arched roof of glass and iron, steam inside; high above it a very small figure",
+   "camera": "Low on the tracks, easing in and up",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "horn",
+     0.25
+    ],
+    [
+     "wind",
+     0.7
+    ]
+   ],
+   "hud": "SAINT-NAZAIRE STATION",
+   "prm": {}
+  },
+  {
+   "n": 31,
+   "segment": "rehook",
+   "weight": 1.0,
+   "kind": "rook_look",
+   "action": "On the roof: Rook looks up, his hat jumps off his head, and he backs off down the glass, wings up",
+   "camera": "Three-quarter on Rook from roof level",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "flap",
+     0.3
+    ],
+    [
+     "gasp",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 32,
+   "segment": "land",
+   "weight": 1.0,
+   "kind": "smash",
+   "action": "From the platform, straight up at the roof: a section of glass bursts inward as he comes through",
+   "camera": "Looking straight up, tilted",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "flash",
+   "sfx": [
+    [
+     "crash",
+     0.22
+    ],
+    [
+     "hit",
+     0.3
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 33,
+   "segment": "land",
+   "weight": 1.0,
+   "kind": "shards",
+   "action": "Glass pours down through the light; Rook at the platform edge has both wings over his head, peeking out",
+   "camera": "Low along the platform",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 1,
+   "transition": "cut",
+   "sfx": [
+    [
+     "crash",
+     0.1
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 34,
+   "segment": "where",
+   "weight": 0.8,
+   "kind": "hole_up",
+   "action": "Quiet: straight up at the ragged hole in the roof, iron ribs round it, daylight pouring through, a last few glints falling",
+   "camera": "Looking straight up, turning slowly",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "hush": true
+  },
+  {
+   "n": 35,
+   "segment": "where",
+   "weight": 1.0,
+   "kind": "rook_shard",
+   "action": "Rook picks a shard off the floor, turns it in the light, and looks up at the hole",
+   "camera": "Low three-quarter on Rook",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "scratch",
+     0.6
+    ]
+   ],
+   "hud": "THE FLOOR?",
+   "prm": {}
+  },
+  {
+   "n": 36,
+   "segment": "where",
+   "weight": 1.1,
+   "kind": "girders",
+   "action": "Up at the hole from the platform: Rook crouches on the roof at its edge, points down at the floor, then along at the steel ribs, then turns up one wing: which?",
+   "camera": "From the platform, looking up at him against the sky",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.25
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": "OR THE GIRDERS?",
+   "prm": {}
+  },
+  {
+   "n": 37,
+   "segment": "where",
+   "weight": 1.1,
+   "kind": "found",
+   "action": "Men in plain greatcoats run in and kneel beside him among the glass; his hand moves. Rook stands back, hat to his chest",
+   "camera": "Low along the track bed, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "shout",
+     0.2
+    ],
+    [
+     "gasp",
+     0.7
+    ]
+   ],
+   "hud": "ALIVE",
+   "prm": {}
+  },
+  {
+   "n": 38,
+   "segment": "injuries",
+   "weight": 1.0,
+   "kind": "stretcher",
+   "action": "Two of the men carry him on a stretcher along the platform, past the locomotive, dust still in the light",
+   "camera": "From the next platform, tracking",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.3
+    ],
+    [
+     "low",
+     0.7
+    ]
+   ],
+   "hud": "28 SHRAPNEL WOUNDS",
+   "prm": {}
+  },
+  {
+   "n": 39,
+   "segment": "injuries",
+   "weight": 1.1,
+   "kind": "bed_leg",
+   "action": "Night in a hospital room, from above the foot of the bed: he lies still under the lamp, one leg in plaster slung from a frame, his arm bound across his chest",
+   "camera": "High over the foot of the bed, sinking",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.3
+    ]
+   ],
+   "hud": "A BROKEN LEG AND ANKLE",
+   "prm": {}
+  },
+  {
+   "n": 40,
+   "segment": "injuries",
+   "weight": 1.0,
+   "kind": "arm_close",
+   "action": "Close on him asleep, the bound right arm across the blanket, his face turned to the lamp",
+   "camera": "Close from the bedside, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "heartbeat",
+     0.3
+    ]
+   ],
+   "hud": "HIS RIGHT ARM",
+   "prm": {}
+  },
+  {
+   "n": 41,
+   "segment": "doctor",
+   "weight": 1.0,
+   "kind": "doctor",
+   "action": "The same room by day: a doctor in a white coat bends over him, then straightens",
+   "camera": "From the foot of the bed, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ]
+   ],
+   "hud": "A GERMAN DOCTOR",
+   "prm": {}
+  },
+  {
+   "n": 42,
+   "segment": "doctor",
+   "weight": 1.2,
+   "kind": "doc_talk",
+   "action": "The doctor talks: a hand on his own chest, then a finger towards the bound arm. The gunner has turned his head on the pillow to listen",
+   "camera": "Across the bed, on the doctor, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.2
+    ],
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 43,
+   "segment": "doctor",
+   "weight": 0.9,
+   "kind": "rook_bed",
+   "action": "Rook at the foot of the bed lifts his brim, looks at the man and gives one slow nod",
+   "camera": "Close three-quarter on Rook",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 44,
+   "segment": "doctor",
+   "weight": 1.1,
+   "kind": "arm_wrap",
+   "action": "The doctor bends over the arm and winds a bandage round it, turn after turn. Rook leans in to watch the hands",
+   "camera": "Over the bed, on the hands",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "scratch",
+     0.2
+    ],
+    [
+     "scratch",
+     0.6
+    ]
+   ],
+   "hud": "SAVING THE ARM",
+   "prm": {}
+  },
+  {
+   "n": 45,
+   "segment": "arm",
+   "weight": 1.1,
+   "kind": "bed_sit",
+   "action": "Weeks on, daylight: he sits up against the pillow and lifts the mended arm, opening and closing the hand. Rook copies him with one wing and nods",
+   "camera": "From the foot of the bed, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "pop",
+     0.7
+    ]
+   ],
+   "hud": "HE KEPT THE ARM",
+   "prm": {}
+  },
+  {
+   "n": 46,
+   "segment": "arm",
+   "weight": 0.9,
+   "kind": "doctor",
+   "action": "The doctor at the bedside straightens, nods once and steps back: no name was ever given",
+   "camera": "From the window side, wider",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": "NAME UNKNOWN",
+   "prm": {
+    "alt": [
+     55,
+     1.25,
+     0.6
+    ],
+    "noleg": true
+   }
+  },
+  {
+   "n": 47,
+   "segment": "crew",
+   "weight": 1.0,
+   "kind": "crewcard",
+   "action": "Ten chalk marks on iron for the ten men aboard; three are ringed; a line is drawn under the other seven",
+   "camera": "Flat, slow push",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.2
+    ],
+    [
+     "low",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 48,
+   "segment": "camp",
+   "weight": 1.0,
+   "kind": "camp_three",
+   "action": "Snow and wire: the three survivors stand together inside the fence, the gunner in the middle with his arm in a sling, the long hut behind them",
+   "camera": "Along the wire from outside, tracking in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.2
+    ],
+    [
+     "low",
+     0.7
+    ]
+   ],
+   "hud": "STALAG 17B",
+   "prm": {}
+  },
+  {
+   "n": 49,
+   "segment": "camp",
+   "weight": 0.9,
+   "kind": "camp",
+   "action": "The gunner at the wire in the falling snow; Rook perched on a fence post beside him leans towards him",
+   "camera": "Tracking along the fence and in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.3
+    ]
+   ],
+   "hud": "STALAG 17B",
+   "prm": {}
+  },
+  {
+   "n": 50,
+   "segment": "camp",
+   "weight": 1.2,
+   "kind": "gate_open",
+   "action": "Spring: the snow is gone and the gate in the wire swings open. He walks out through it, the other two behind him. Rook on the gatepost lifts his hat as they pass",
+   "camera": "From outside the gate, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "creak",
+     0.15
+    ],
+    [
+     "flip",
+     0.4
+    ],
+    [
+     "birdcall",
+     0.7
+    ]
+   ],
+   "hud": "MAY 1945",
+   "prm": {}
+  },
+  {
+   "n": 51,
+   "segment": "home",
+   "weight": 1.0,
+   "kind": "medals",
+   "action": "An open case on a table under a lamp: a heart-shaped medal on a purple ribbon, a round bronze one on a blue ribbon. Rook's wing creeps towards the shine, stops, and goes behind his back",
+   "camera": "Over the table, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.3
+    ],
+    [
+     "pop",
+     0.65
+    ]
+   ],
+   "hud": "PURPLE HEART, AIR MEDAL",
+   "prm": {}
+  },
+  {
+   "n": 52,
+   "segment": "home",
+   "weight": 1.0,
+   "kind": "hangar_walk",
+   "action": "A grass airfield at home, late sun: a small yellow aeroplane outside its hangar. An older man walks up and lays his hand on the wing strut. Rook sits out on the wing, legs swinging",
+   "camera": "Low and wide, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "birdcall",
+     0.2
+    ],
+    [
+     "clunk",
+     0.75
+    ]
+   ],
+   "hud": "A PILOT'S LICENCE",
+   "prm": {}
+  },
+  {
+   "n": 53,
+   "segment": "home",
+   "weight": 1.1,
+   "kind": "cub_fly",
+   "action": "The yellow aeroplane in the air, banking over a quilt of fields in low sun, the older man at the controls looking out and down",
+   "camera": "Air to air, from ahead and to one side",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "engine_start",
+     0.05
+    ],
+    [
+     "wind",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 54,
+   "segment": "memorial",
+   "weight": 1.0,
+   "kind": "memorial",
+   "action": "A quiet town square: a plain stone memorial with a wreath at its foot; Rook beside it takes his hat to his chest",
+   "camera": "Wide, moving in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.3
+    ]
+   ],
+   "hud": "50 YEARS ON",
+   "prm": {}
+  },
+  {
+   "n": 55,
+   "segment": "memorial",
+   "weight": 1.1,
+   "kind": "mem_visit",
+   "action": "Past the edge of the stone: the older man and his wife stand in front of it. He looks up at it for a long moment; she takes his arm. Rook stands apart, hat in his hand",
+   "camera": "From beside the stone, on their faces",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.2
+    ],
+    [
+     "tick",
+     0.7
+    ]
+   ],
+   "hud": "ALAN AND HELEN MAGEE",
+   "prm": {}
+  },
+  {
+   "n": 56,
+   "segment": "memorial",
+   "weight": 0.9,
+   "kind": "wreath",
+   "action": "Close on the wreath at the foot of the stone; Rook, crouched beside it, lays one more flower on it",
+   "camera": "Low and close",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 57,
+   "segment": "last",
+   "weight": 1.0,
+   "kind": "memorial",
+   "action": "The stone alone in the square, from the other side, the light going",
+   "camera": "Wide, from the far side, drifting",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.3
+    ],
+    [
+     "low",
+     0.7
+    ]
+   ],
+   "hud": "ALAN MAGEE, 1919 TO 2003",
+   "prm": {
+    "alt": [
+     -70,
+     1.35,
+     1.2
+    ],
+    "arc": [
+     14,
+     0.1
+    ]
+   }
+  },
+  {
+   "n": 58,
+   "segment": "end",
+   "weight": 1.0,
+   "kind": "board",
+   "action": "Rook's case board: a photograph of the hole in the station roof behind a cracked pane, and the case in three lines",
+   "camera": "Flat, slow push",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.25
+    ],
+    [
+     "tick",
+     0.5
+    ],
+    [
+     "tick",
+     0.75
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 59,
+   "segment": "end",
+   "weight": 1.1,
+   "kind": "rook_verdict",
+   "action": "Dusk on the station roof beside the hole: Rook looks down through it, then at us, pushes his brim up with one wingtip so his eyes show, and nods: he was wrong",
+   "camera": "Three-quarter on Rook, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.4
+    ],
+    [
+     "flap",
+     0.8
+    ]
+   ],
+   "hud": null,
+   "prm": {}
+  },
+  {
+   "n": 60,
+   "segment": "end",
+   "weight": 1.1,
+   "kind": "signoff",
+   "action": "Under the hole in the station roof: Rook puts his hat back on, holds up the glass shard so it glints, and pockets it: case closed",
+   "camera": "Low three-quarter, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "pop",
+     0.6
+    ]
+   ],
+   "hud": null,
+   "prm": {},
+   "brand": true
+  }
+ ]
+}
