@@ -106,7 +106,7 @@ def map(cv, c):
     chalk(cv, ENGLAND, close=True)
     chalk(cv, FRANCE)
     plain(cv, 'ENGLAND', 760, 300, 60, CHALK, 900)
-    plain(cv, 'FRANCE', 1420, 760, 60, CHALK, 900)
+    plain(cv, 'FRANCE', 1480, 690, 60, CHALK, 900)
     route = [START, (700, 380), (470, 520), (400, 660), (520, 800), (760, 880), TARGET]
     n = 46
     shown = int(n * ease(c.lt / 1.9))
@@ -119,7 +119,7 @@ def map(cv, c):
         g = ease((c.lt - 1.7) / 0.25)
         cv.drawCircle(TARGET[0], TARGET[1], 12, P(ORANGE))
         cv.drawCircle(TARGET[0], TARGET[1], 30 + 26 * (1 - g), P(ORANGE, 8))
-        fit(cv, 'SAINT-NAZAIRE', 1330, 900, 76, 620, AMBER)
+        fit(cv, 'SAINT-NAZAIRE', 1340, 820, 72, 600, AMBER)
     cv.restore()
     motes(cv, c)
 
@@ -162,17 +162,17 @@ def heights(cv, c):
     if c.lt > 0.25:
         g = ease((c.lt - 0.25) / 0.2)
         cv.drawLine(x0, y20, x0 + 150 * g, y20, P(AMBER, 8))
-        plain(cv, 'THE GROUP\'S REPORT', x0 + 190, y20 + 64, 44, CHALK, 900, centre=False)
-        fit(cv, 'ABOUT 20,000 FEET', x0 + 190 + 330, y20 + 150, 82, 660, AMBER)
+        plain(cv, 'THE GROUP\'S REPORT', x0 + 190, y20 + 150, 44, CHALK, 900, centre=False)
+        fit(cv, 'ABOUT 20,000 FEET', x0 + 190 + 330, y20 + 236, 82, 660, AMBER)
     if c.lt > 1.0:
         g = ease((c.lt - 1.0) / 0.2)
         cv.drawLine(x0, y22, x0 + 150 * g, y22, P(GLASS, 8))
-        plain(cv, 'LATER TELLINGS', x0 + 880, y22 + 20, 44, CHALK, 900, centre=False)
-        fit(cv, '22,000 FEET', x0 + 880 + 260, y22 + 104, 82, 520, GLASS)
+        plain(cv, 'LATER TELLINGS', x0 + 720, y22 + 20, 44, CHALK, 900, centre=False)
+        fit(cv, '22,000 FEET', x0 + 720 + 240, y22 + 104, 82, 480, GLASS)
     if c.lt > 1.9:
         g = ease((c.lt - 1.9) / 0.25)
         cv.save()
-        cv.translate(1240, 640)
+        cv.translate(1240, 690)
         cv.scale(1.25 - 0.25 * g, 1.25 - 0.25 * g)
         Wd.text_card(cv, 'ABOUT 4 MILES', 0, 0, 132, 0xFFFFFFFF, 0xFF000000)
         cv.restore()
@@ -202,13 +202,13 @@ def crewcard(cv, c):
     cv.save()
     push(cv, c, 0.16, 0.5)
     cv.translate(60 - 120 * c.k, 0)                    # a slow drift along the row, so the card never stands still
-    fit(cv, 'TEN MEN ABOARD', 960, 190, 92, 1300, 0xFFFFFFFF)
+    fit(cv, 'TEN MEN ABOARD', 960, 150, 88, 1300, 0xFFFFFFFF)
     xs = [330 + 140 * i for i in range(10)]
     lived = (2, 5, 9)
     for i, x in enumerate(xs):
         if c.lt < 0.12 + 0.07 * i:
             continue
-        y = 470
+        y = 390
         col = CHALK
         cv.drawCircle(x, y - 84, 26, P(col, 8))
         cv.drawLine(x, y - 58, x, y + 40, P(col, 8))
@@ -218,14 +218,14 @@ def crewcard(cv, c):
     if c.lt > 1.1:
         g = ease((c.lt - 1.1) / 0.3)
         for i in lived:
-            cv.drawArc(skia.Rect.MakeXYWH(xs[i] - 66, 340, 132, 270), -90, 360 * g, False, P(ORANGE, 9))
-        fit(cv, 'THREE LIVED', 960, 730, 84, 900, AMBER)
+            cv.drawArc(skia.Rect.MakeXYWH(xs[i] - 66, 260, 132, 270), -90, 360 * g, False, P(ORANGE, 9))
+        fit(cv, 'THREE LIVED', 960, 640, 80, 900, AMBER)
     if c.lt > 2.0:
         g = ease((c.lt - 2.0) / 0.3)
         for i in range(10):
             if i not in lived:
-                cv.drawLine(xs[i] - 48, 618, xs[i] - 48 + 96 * g, 618, P(CHALK, 7))
-        fit(cv, 'SEVEN DID NOT COME HOME', 960, 838, 70, 1300, 0xFFFFFFFF)
+                cv.drawLine(xs[i] - 48, 538, xs[i] - 48 + 96 * g, 538, P(CHALK, 7))
+        fit(cv, 'SEVEN DID NOT COME HOME', 960, 750, 66, 1300, 0xFFFFFFFF)
     cv.restore()
     Wd.particles(cv, W, H, c.t, 70, 0x66F4ECDC, 95, size=(2, 6), drift=(40, 30), wobble=30, twinkle=True)
 
