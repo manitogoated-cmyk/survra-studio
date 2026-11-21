@@ -5,12 +5,13 @@
  "synthetic": false,
  "host": "rook",
  "case": 25,
- "title": "The Gunner Who Fell 22,000 Feet Through a Station Roof | Full Case File",
+ "title": "He Fell 4 Miles With No Parachute, Through a Glass Roof: The Full Case of Alan Magee",
  "playlist": "Rook's Case Files (Full Cases)",
- "description": "Case 025. On 3 January 1943 the B-17 \"Snap! Crackle! Pop!\" of the 303rd Bomb Group's 360th Bomb Squadron was hit by flak in a daylight raid on the German U-boat base at Saint-Nazaire in occupied France. Its ball turret gunner, Staff Sergeant Alan Magee, climbed out of his damaged turret into the fuselage and found that his parachute had been torn apart by the flak. Short of oxygen, he blacked out and was thrown clear of the aircraft. He fell about 22,000 feet (some 6.7 km) and crashed through the glass roof of the Saint-Nazaire railway station, which broke his fall. He was found alive with 28 shrapnel wounds, broken bones and a badly injured arm, was treated by a German military doctor, and spent the rest of the war as a prisoner until he was liberated in May 1945. Seven of the ten men on board were killed. In 1993, fifty years on, the people of Saint-Nazaire put up a memorial to Alan Magee and his crew. He died in December 2003. Rook didn't believe it either.\n\nAnimated reconstruction of a true story, made with respect for the seven men of the crew who died. The aircraft are generic low-poly shapes with no markings, numbers, names or insignia; the men in the station wear plain greatcoats and caps with no badges or symbols; the memorial stone carries no text; nobody's likeness is attempted. Staging details such as the look of the turret, the fuselage, the station, the hospital room and the camp fence, the way he leaves the plane, where he lay, who carried him, the wreath and everything Rook does are reconstruction, not record. Narration is a synthetic voice (Kokoro).",
+ "description": "Case 025, the full case file. Alan Magee, from New Jersey, joined the US Army Air Forces after Pearl Harbor and became a ball turret gunner: the man in the steel and glass ball under the belly of a B-17, a space so cramped that there was no room to wear a parachute in it. On 3 January 1943, on his seventh mission, his bomber, the B-17F \"Snap! Crackle! Pop!\" of the 303rd Bomb Group's 360th Bomb Squadron (named by a pilot who had worked for the cereal company), flew in daylight to the German U-boat base at Saint-Nazaire in occupied France. Flak wrecked his turret and wounded him. He climbed out into the fuselage and found his parachute torn to rags. A second hit took off part of the right wing; the bomber caught fire and went into a spin. Short of oxygen, Magee blacked out and was thrown clear. He fell about four miles (the bomb group's own report says about 20,000 feet, later accounts 22,000) and went through the glass roof of the Saint-Nazaire railway station, which took some of the speed out of him. Accounts differ on whether he was found on the station floor or caught in the steel girders of the roof; they agree that he was alive. He had 28 shrapnel wounds, a broken leg and ankle, a punctured lung and a right arm that was nearly lost. By his own later account, the German military doctor who treated him told him that they were enemies but that he was a doctor first and would do his best to save the arm. He did; Magee recovered fully and never learned the doctor's name. Seven of the ten men on board were killed. The three survivors were held as prisoners of war at Stalag 17B; Magee was freed in May 1945. He received the Purple Heart and the Air Medal, later earned a pilot's licence and worked in aviation. Fifty years after the raid the people of Saint-Nazaire put up a memorial to the crew, and Alan Magee and his wife Helen travelled to France to see it. He died in Texas in December 2003, aged 84. Rook didn't believe it either.\n\nAnimated reconstruction of a true story, made with respect for the seven men of the crew who died. No one is shown dying and no wound is shown. The aircraft are generic low-poly shapes with no markings, numbers, names or nose art; the men in the station and the camp wear plain coats and caps with no badges or symbols; the medals are plain shapes with no portrait or lettering; the memorial stone carries no text; the map is a chalk sketch, not a chart; nobody's likeness is attempted. Nothing anyone said is quoted: the doctor's words are given only as Magee later reported them, in indirect speech. Staging details such as the airfield, the look of the turret, the fuselage, the harbour, the station, the hospital room, the camp and its gate, the table with the medals, the small aeroplane and the grass airfield, the square, who stood where, and everything Rook does are reconstruction, not record. Narration is a synthetic voice (Kokoro).",
  "tags": [
   "Alan Magee",
   "fell without a parachute",
+  "no parachute",
   "B-17",
   "Snap Crackle Pop",
   "ball turret gunner",
@@ -20,11 +21,14 @@
   "1943",
   "World War II",
   "WW2",
+  "Stalag 17B",
   "survival",
   "true story",
   "survival story",
   "history",
-  "animated story",
+  "animated documentary",
+  "3D animation",
+  "full case",
   "Rook",
   "Survra"
  ],
@@ -37,7 +41,14 @@
   "https://en.wikipedia.org/wiki/Alan_Magee",
   "https://www.americanairmuseum.com/aircraft/534",
   "https://fly.historicwings.com/2013/01/the-miracle-of-st-nazaire/",
-  "https://vintageaviationnews.com/warbird-articles/the-gunner-who-fell-from-the-skywithout-a-parachute-the-story-of-sgt-alan-e-magee.html"
+  "https://vintageaviationnews.com/warbird-articles/the-gunner-who-fell-from-the-skywithout-a-parachute-the-story-of-sgt-alan-e-magee.html",
+  "https://www.303rdbg.com/magee.html",
+  "https://www.wearethemighty.com/history/alan-magee-22000-feet-no-parachute/",
+  "https://controltowers.co.uk/alan-eugene-magee-ww2-gunner-who-fell/",
+  "https://www.americanairmuseum.com/person/240910",
+  "https://b17flyingfortress.de/en/b17/41-24620-snap-crackle-pop/",
+  "https://check-six.com/Crash_Sites/FreeFall1943.htm",
+  "https://www.warhistoryonline.com/instant-articles/airman-who-jumped-from-stricken.html"
  ],
  "story_score": {
   "curiosity": 9,
@@ -66,5 +77,17 @@
   "claimed_at": "2026-11-21T08:48:28Z",
   "run": "scheduled long run, 21 Nov 2026"
  },
- "case_of": "r025-magee"
+ "case_of": "r025-magee",
+ "title_options": [
+  "He Fell 4 Miles With No Parachute, Through a Glass Roof: The Full Case of Alan Magee",
+  "No Parachute, 4 Miles, One Glass Roof: The Alan Magee Case",
+  "The Gunner Who Fell Out of a B-17 and Lived (The Full Case)",
+  "Shot Down, No Parachute, Saved by a Station Roof and an Enemy Doctor",
+  "He Fell Out of the Sky in 1943. Then He Learned to Fly."
+ ],
+ "thumbnail": {
+  "hook": "NO / PARACHUTE / 4 MILES",
+  "still": "world3d.STILLS['thumb']: the gunner falling on his back on the right of the frame, the station's glass roof far below on the left",
+  "concepts": "A (used): the falling gunner over the glass roof, words on the left. B: Rook on the roof beside the hole at dusk with I WAS WRONG. C: the torn parachute pack with NO PARACHUTE."
+ }
 }

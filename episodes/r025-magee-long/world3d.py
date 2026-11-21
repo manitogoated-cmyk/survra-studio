@@ -1438,7 +1438,7 @@ def make_base(r, S):
     qb(r, '7E7E78', -500, 500, -78, -56, 0.0, 0.04, rough=1.0)                    # perimeter track
     for i in range(26):                                                            # worn patches and tufts
         qb(r, ('6E8A52', '56703E', '7A8E58')[i % 3], -200 + 400 * rnd(i, 201), -190 + 400 * rnd(i, 201) + 30 * rnd(i, 202),
-           -200 + 400 * rnd(i, 203), -170 + 400 * rnd(i, 203) + 30 * rnd(i, 204), 0.0, 0.03, rough=1.0)
+           -200 + 400 * rnd(i, 203), -170 + 400 * rnd(i, 203) + 30 * rnd(i, 204), 0.0, 0.02 + 0.002 * i, rough=1.0)
     b = qe(r, (0, 0, 3.9), (-0.13, 0, 0))                                          # the bomber, tail down on its wheels
     bomber_body(b)
     for s in (-1, 1):
@@ -1463,7 +1463,7 @@ def make_base(r, S):
         hh = 9 + 7 * rnd(i, 206)
         qc(r, '4A3A2A', (x, 120 + 8 * rnd(i, 207), hh * 0.25), 0.5, hh * 0.5, 6)
         qs(r, ('3E5A36', '34502E', '4A6A3E')[i % 3], (x, 120 + 8 * rnd(i, 207), hh * 0.75), hh * 0.42, (1, 1, 1.2), rough=1.0)
-    for i, (x, y) in enumerate(((7.95, -29.1), (9.3, -29.6), (8.7, -28.0))):
+    for i, (x, y) in enumerate(((7.4, -30.3), (6.1, -29.9), (6.9, -29.0))):
         qc(r, ('7A3A2A', '5E6240', '6A6A64')[i], (x, y, 0.85), 0.6, 1.7, 10, rough=0.6)
         qc(r, '2A2C2E', (x, y, 1.705), 0.56, 0.02, 10)
     qbar(r, 'D8D8D0', (46, -30, 0), (46, -30, 9), 0.2)
@@ -1497,7 +1497,7 @@ def make_port(r, S):
     for i in range(60):                                                             # fields behind the town
         x = -2900 + 1300 * rnd(i, 216)
         y = -2800 + 5600 * rnd(i, 217)
-        qb(r, ('5E7044', '7A7A50', '4E6038', '8A7E5A')[i % 4], x - 90 - 120 * rnd(i, 218), x + 90, y - 80 - 120 * rnd(i, 219), y + 80, 1.0, 1.2, rough=1.0)
+        qb(r, ('5E7044', '7A7A50', '4E6038', '8A7E5A')[i % 4], x - 90 - 120 * rnd(i, 218), x + 90, y - 80 - 120 * rnd(i, 219), y + 80, 0.9, 1.1 + 0.004 * i, rough=1.0)
     qb(r, '3A3C40', -1500, -560, 236, 244, 1.0, 1.6)                                # the railway, and the station's long roof
     qb(r, 'BFE2EE', -570, -500, 222, 258, 1.0, 14.0, rough=0.1, emit=0.5)
     for i in range(8):
@@ -1521,7 +1521,7 @@ def make_home(r, S):
         if abs(x) < 190 and abs(y) < 130:
             continue
         qb(r, ('D8B45A', '6E9048', '9A7A4A', 'C8C27A', '7EA050')[i % 5], x - 80 - 170 * rnd(i, 223), x + 80 + 100 * rnd(i, 224),
-           y - 70 - 160 * rnd(i, 225), y + 70 + 90 * rnd(i, 226), 0.0, 0.06 + 0.02 * (i % 3), rough=1.0)
+           y - 70 - 160 * rnd(i, 225), y + 70 + 90 * rnd(i, 226), 0.0, 0.05 + 0.004 * i, rough=1.0)
     qb(r, '98B060', -260, 260, -52, -28, 0.0, 0.05, rough=1.0)                     # the mown strip
     h = qe(r, (-30, 26, 0))                                                         # the hangar
     qb(h, 'B8B0A0', -13, 13, -9, 9, 0, 7.5, rough=1.0)
@@ -1734,6 +1734,9 @@ def build():
         d.update(root=root, all=list(root.children_recursive))
         S['sets'][name] = d
     make_extras(S)
+    for i, o in enumerate(S['land'].children):               # the Short's field patches overlap at one height: black where they cross
+        if abs(o.location.z - 1.0) < 1e-6:
+            o.location.z = 1.0 + 0.5 * i
     bpy.context.view_layer.update()
     reset(S)
     return S
@@ -1755,6 +1758,9 @@ def reset(S):
         o.hide_render = False
     S['cubdisc'].hide_render = True
     S['winl'].data.color = K.hexc('DDE8F4')[:3]
+    S['pack'].parent = S['fuse']
+    S['pack'].location, S['pack'].rotation_euler = (2.15, -1.8, 1.65), (0, 0, 0)
+    S['blanket'].location, S['blanket'].scale = (0, 0.4, 1.38), (2.15, 2.9, 0.22)
     for lf in S['gleaf']:
         lf.rotation_euler = (0, 0, 0)
 
@@ -1788,12 +1794,12 @@ def field_dawn(S, k, t, lt):
         S['others'][i].location = at(BASE, x, y, 3.3)
         S['others'][i].rotation_euler = (-0.13, 0, yw)
     m = S['man']
-    p0, p1 = (15.2, -20.5), (8.4, -13.6)
+    p0, p1 = (17.5, -25.0), (10.5, -16.5)
     p = (lerp(p0[0], p1[0], k), lerp(p0[1], p1[1], k))
     stand(m, at(BASE, p[0], p[1], 0), facing(p0, p1), K.walk(t, 1.3), 'calm')
     rk = S['rook']
     turn = sm((k - 0.35) / 0.3)
-    rk.place(at(BASE, 7.95, -29.1, 1.72 - 0.55), facing((7.95, -29.1), (17.0, -36.0)) - 0.25)
+    rk.place(at(BASE, 7.4, -30.3, 1.72 - 0.55), facing((7.4, -30.3), (17.0, -36.0)) - 0.25)
     rk.apply(P('sit', lL=(1.3, 1.8), lR=(1.2, 1.7), aR=(0.9, 0.1, 1.5), aL=(0.4, 0.3, 1.2), head=(0.05, -0.9 * turn)))
     S['hat_tip'] = 0.5 * (1 - turn)
     coin(S, wpos(rk.hands[1]), lt)
@@ -1848,7 +1854,7 @@ def turret_side(S, k, t, lt):
     S['flamp'][0].data.energy = 260 * max(0.0, math.sin(t * 7.0)) ** 6
     m = in_turret(S, 0.25 * max(0.0, math.sin(t * 7.0)) ** 6, 0.5 * math.sin(lt * 1.6))
     m.face = 'hard'
-    cam(S, at(TUR, 1.38, lerp(0.75, 0.55, k), 0.42), at(TUR, -0.1, -0.55, 0.12), 20)
+    cam(S, at(TUR, lerp(1.2, 1.05, k), lerp(-1.0, -1.15, k), 0.55), at(TUR, 0.0, -0.3, 0.15), 22)
 
 
 def pack_hook(S, k, t, lt):
@@ -1861,10 +1867,10 @@ def pack_hook(S, k, t, lt):
     m = S['man']
     up = bump(k, 0.0, 0.5, 0.2)
     turn = sm((k - 0.55) / 0.3)
-    yw = facing((0.95, -1.75), (2.4, -1.8))
-    stand(m, at(FUS, 0.95, -1.75 + 0.5 * turn, 0), yw - 1.7 * turn,
-          blend(P('stand', head=(-0.1, 0.0)), P('stand', aR=(1.9, 0.1, 0.5), aL=(0.3, 0.2, 0.4), head=(-0.25, 0.0)), up), 'calm')
-    shoot(S, FUS, (lerp(-1.7, -1.3, k), -4.9, 2.0), (1.5, -1.6, 1.75), 28)
+    yw = facing((1.0, -0.5), (2.2, -1.7))
+    stand(m, at(FUS, 1.0 - 0.5 * turn, -0.5 + 0.9 * turn, 0), yw + 2.0 * turn,
+          blend(P('stand', head=(-0.1, 0.0)), P('stand', aL=(1.9, 0.1, 0.5), aR=(0.3, 0.2, 0.4), head=(-0.25, 0.0)), up), 'calm')
+    shoot(S, FUS, (lerp(-1.5, -1.1, k), -4.4, 2.0), (1.7, -1.3, 1.75), 28)
 
 
 # ---------------------------------------------------------------- the raid
@@ -1927,7 +1933,7 @@ def wing_hit(S, k, t, lt):
         wb.rotation_euler = (5 * u, 7 * u, 2 * u)
         fire(S, [plus(stub, (0.5 * j, 0.9 * j, 0.25 * j)) for j in range(4)], t, 1.2, (0.2, 1, 0.45))
         S['flamp'][1].location, S['flamp'][1].data.energy = stub, 14000
-        smoke_trail(S, stub, (0.1, 1.0, 0.4), t, n=10, gap=2.4, size=1.2)
+        smoke_trail(S, stub, (0.1, 1.0, 0.4), t, n=10, gap=2.0, size=0.7)
         debris(S, tip, u * 1.6, n=10, r=7.0, h=1.5, g=5.0, dirx=-1.0)
     shoot(S, SKYO, (-33.0, lerp(25.0, 21.0, k), lerp(15.0, 12.0, k)), (-11.0, -2.0, -1.0 - 2.0 * v), 30, roll=-0.1 * v)
 
@@ -2004,9 +2010,9 @@ def station_out(S, k, t, lt):
         o.scale = (s, s, s * 0.8)
     m = S['man']
     m.root.scale = (2.2, 2.2, 2.2)
-    m.place(at(STA, -3.0, 6.0, lerp(74, 58, k)), 0.5 * t, -1.6, 0.4 * math.sin(t))
+    m.place(at(STA, -1.0, -6.0, lerp(46, 36, k)), 0.5 * t, -1.6, 0.4 * math.sin(t))
     m.apply(limp(t))
-    cam(S, at(STA, lerp(-13.0, -10.0, k), lerp(-74.0, -66.0, k), 2.4), at(STA, 0.0, -24.0, lerp(13.0, 11.0, k)), 26)
+    cam(S, at(STA, lerp(-8.0, -6.5, k), lerp(-53.0, -47.0, k), 2.2), at(STA, 0.0, -24.0, lerp(12.0, 10.5, k)), 26)
 
 
 def girders(S, k, t, lt):
@@ -2028,7 +2034,7 @@ def girders(S, k, t, lt):
     pose = blend(pose, dict(pose, aR=_arm4((0.6, 0.8, 1.6, -0.9)), aL=_arm4((0.6, 0.8, 1.6, -0.9)), head=(0.45, 0.0)), c_)
     stand(rk, at(STA, 4.3, 0.4, 12.5), facing((4.3, 0.4), (0.0, -0.4)), pose)
     S['rface'] = 'calm' if c_ < 0.5 else 'low'
-    cam(S, at(STA, lerp(-3.0, -2.2, k), -3.6, 6.2), at(STA, 2.6, 0.2, 12.5), 26)
+    cam(S, at(STA, lerp(-0.6, 0.0, k), -2.6, 8.6), at(STA, 3.3, 0.2, 12.9), 30)
 
 
 def _arm4(v):
@@ -2048,6 +2054,7 @@ def ward(S, night=False, leg=True):
     xshow(S, 'hosp')
     if leg:
         xshow(S, 'leg')
+    S['blanket'].location, S['blanket'].scale = (0, 0.4, 1.5), (2.15, 2.9, 0.52)      # deep enough to cover his boots
 
 
 def bed_leg(S, k, t, lt):
@@ -2064,7 +2071,7 @@ def arm_close(S, k, t, lt):
     S['bulb'].data.energy = 220
     m = in_bed(S, 'shut')
     m.jawv = 0.1 + 0.08 * math.sin(lt * 1.9)
-    cam(S, at(HOS, lerp(2.3, 1.9, k), lerp(0.6, 1.0, k), 2.9), at(HOS, 0.15, 2.3, 1.55), 36)
+    cam(S, at(HOS, lerp(2.1, 1.7, k), lerp(1.5, 1.9, k), 3.7), at(HOS, 0.1, 2.5, 1.55), 36)
 
 
 def doc_talk(S, k, t, lt):
@@ -2079,7 +2086,7 @@ def doc_talk(S, k, t, lt):
     stand(d, at(HOS, -1.8, 1.5, 0), facing((-1.8, 1.5), (0.0, 2.4)),
           P('stand', aR=(0.8 * g1 + 1.0 * g2, 0.05 - 0.25 * g1, 1.9 * g1 + 0.25 * g2, 0.6 * g1), aL=(0.3, 0.1, 0.5), lean=0.22 + 0.1 * g2, head=(0.25, 0.0)), 'calm')
     d.jawv = (0.25 + 0.3 * abs(math.sin(lt * 8.5))) * (1 if k < 0.9 else 0.2)
-    cam(S, at(HOS, 3.0, lerp(-1.2, -0.5, k), 2.75), at(HOS, -0.9, 1.9, 2.35), 30)
+    cam(S, at(HOS, 1.9, lerp(0.7, 1.1, k), 3.4), at(HOS, -1.0, 2.1, 2.3), 34)
 
 
 def arm_wrap(S, k, t, lt):
@@ -2117,11 +2124,11 @@ def bed_sit(S, k, t, lt):
     rk = S['rook']
     g = sm((k - 0.45) / 0.25)
     nod = max(0.0, math.sin((k - 0.8) / 0.2 * PI)) if k > 0.8 else 0.0
-    stand(rk, at(HOS, 2.0, 0.7, 0), facing((2.0, 0.7), (0.0, 2.4)),
-          blend(P('stand', head=(0.1, 0.0)), P('stand', aL=(1.4, 0.35, 1.0 + 0.4 * math.sin(lt * 4.5)), head=(0.05 + 0.35 * nod, 0.0)), g))
+    stand(rk, at(HOS, 2.1, 2.3, 0), facing((2.1, 2.3), (0.0, 2.4)) + 0.5,
+          blend(P('stand', head=(0.1, 0.0)), P('stand', aL=(1.4, 0.35, 1.0 + 0.4 * math.sin(lt * 4.5)), head=(0.05 + 0.35 * nod, 0.3)), g))
     S['rface'] = 'soft'
     S['hat_tip'] = -0.2
-    cam(S, at(HOS, lerp(2.9, 2.3, k), lerp(-3.8, -3.2, k), 3.0), at(HOS, 0.7, 1.7, 2.45), 30)
+    cam(S, at(HOS, lerp(1.6, 1.2, k), lerp(-3.2, -2.6, k), 3.0), at(HOS, 0.9, 2.3, 2.5), 30)
 
 
 # ---------------------------------------------------------------- the camp
@@ -2155,9 +2162,9 @@ def gate_open(S, k, t, lt):
     S['gleaf'][1].rotation_euler = (0, 0, 1.35 * u)
     v = sm((k - 0.15) / 0.85)
     m = S['man']
-    stand(m, at(CMP, GX + 0.1, lerp(-7.5, 2.6, v), 0), PI, K.walk(t, 1.3), 'warm')
+    stand(m, at(CMP, GX + 0.1, lerp(-5.0, 3.2, v), 0), PI, K.walk(t, 1.3), 'warm')
     for j, rig in enumerate(S['men']):
-        stand(rig, at(CMP, GX + (-1.2, 1.3)[j], lerp(-11.0 - j, -1.6 - j, v), 0), PI, K.walk(t + 0.4 * j, 1.3), 'calm')
+        stand(rig, at(CMP, GX + (-1.2, 1.3)[j], lerp(-8.5 - j, -0.6 - j, v), 0), PI, K.walk(t + 0.4 * j, 1.3), 'calm')
     rk = S['rook']
     lift = sm((k - 0.55) / 0.2)
     rk.place(at(CMP, GX - 2.7, 0.0, 4.5 - 0.55), PI + 0.5)
@@ -2167,7 +2174,7 @@ def gate_open(S, k, t, lt):
     S['rface'] = 'soft'
     if lift < 0.3:
         coin(S, wpos(rk.hands[1]), lt)
-    cam(S, at(CMP, GX + lerp(4.6, 3.4, k), lerp(12.0, 9.6, k), 2.0), at(CMP, GX - 0.5, -0.8, 2.7), 28)
+    cam(S, at(CMP, GX + lerp(3.6, 2.8, k), lerp(8.6, 7.2, k), 2.0), at(CMP, GX - 0.7, -0.5, 2.9), 28)
 
 
 # ---------------------------------------------------------------- home
@@ -2209,7 +2216,7 @@ def hangar_walk(S, k, t, lt):
     rk.place(plus(seat, (0, 0, -0.55)), 0.55 - 0.3)
     rk.apply(P('sit', lL=(1.2 + 0.25 * sw, 1.6), lR=(1.2 - 0.25 * sw, 1.6), aL=(0.3, 0.4, 0.6), aR=(0.3, 0.4, 0.6), head=(0.3, 0.5 * sm((k - 0.3) / 0.3)), lean=0.1))
     S['rface'] = 'soft'
-    cam(S, at(HOME, lerp(11.5, 9.5, k), lerp(-11.5, -9.5, k), 1.8), at(HOME, 2.0, -1.2, 2.5), 28)
+    cam(S, at(HOME, lerp(9.6, 8.2, k), lerp(-9.4, -8.0, k), 1.8), at(HOME, 2.2, -1.4, 2.5), 28)
 
 
 def cub_fly(S, k, t, lt):
@@ -2239,15 +2246,15 @@ def mem_visit(S, k, t, lt):
     sky(S, 'square')
     o, w = S['old'], S['wife']
     look = sm((k - 0.5) / 0.3)
-    stand(o, at(MEM, -0.75, -3.2, 0), PI + 0.1, P('stand', aL=(0.1, 0.15, 0.3), aR=(0.15, 0.15, 0.4), head=(-0.3 + 0.2 * look, 0.0)), 'sad')
-    stand(w, at(MEM, 0.2, -3.35, 0), PI - 0.1, P('stand', aL=(0.5 * look, -0.15, 1.3 * look, 0.9 * look), aR=(0.1, 0.15, 0.3), head=(-0.15 + 0.15 * look, 0.45 * look)), 'warm' if look > 0.5 else 'sad')
-    for j, (rig, p) in enumerate(zip(S['men'], ((-4.8, -7.4), (-2.4, -8.6)))):
+    stand(o, at(MEM, 0.4, -4.0, 0), PI - 0.1, P('stand', aL=(0.1, 0.15, 0.3), aR=(0.15, 0.15, 0.4), head=(-0.3 + 0.2 * look, 0.0)), 'sad')
+    stand(w, at(MEM, 1.35, -4.15, 0), PI - 0.25, P('stand', aL=(0.5 * look, -0.15, 1.3 * look, 0.9 * look), aR=(0.1, 0.15, 0.3), head=(-0.15 + 0.15 * look, 0.45 * look)), 'warm' if look > 0.5 else 'sad')
+    for j, (rig, p) in enumerate(zip(S['men'], ((-0.8, -8.6), (2.6, -9.2)))):
         stand(rig, at(MEM, p[0], p[1], 0), facing(p, (0, 0)), P('stand', aL=(0.3, -0.1, 1.2, 0.9), aR=(0.3, -0.1, 1.2, 0.9), head=(0.15, 0.0)), 'sad')
     rk = S['rook']
-    stand(rk, at(MEM, 2.9, -3.9, 0), facing((2.9, -3.9), (0, 0)) + 0.3, P('stand', aR=(0.9, -0.25, 1.9, 0.6), head=(0.45, 0.2)))
+    stand(rk, at(MEM, 4.0, -3.1, 0), facing((4.0, -3.1), (0, 0)) + 0.3, P('stand', aR=(0.9, -0.25, 1.9, 0.6), head=(0.45, 0.2)))
     S['hat_off'], S['hat_to'] = 1.0, (0.15, -0.55, -1.0)
     S['rface'] = 'sad'
-    cam(S, at(MEM, lerp(3.9, 3.1, k), lerp(2.3, 1.9, k), 3.3), at(MEM, 0.1, -3.3, 2.55), 30)
+    cam(S, at(MEM, lerp(3.7, 3.0, k), lerp(2.2, 1.8, k), 3.7), at(MEM, 1.0, -3.9, 2.6), 30)
 
 
 def rook_verdict(S, k, t, lt):
@@ -2279,7 +2286,7 @@ def photo_thumb(S, k, t, lt):
     put(m, at(STA, 5.0, -6.0, 96.0), 2.3, -PI / 2 + 0.25, 0.2, limp(0.7))
     m.face = 'shut'
     h = head(m)
-    cam(S, plus(h, (-2.6, -1.6, 4.6)), at(STA, -4.0, 6.0, 0.0), 30, roll=0.5)
+    cam(S, plus(h, (-1.7, -0.5, 5.4)), at(STA, -10.0, 5.0, 0.0), 30)
     S['camfill'].data.energy = 900
 
 
@@ -2304,6 +2311,7 @@ def _alive(f, name):
     def g(S, k, t, lt):
         f(S, k, t, lt)
         deg, push = S['prm'].get('arc', (sign * d0[0], d0[1]))
+        S['camtgt'].location.z -= S['prm'].get('drop', 0.0)      # the Short framed some shots for a tall frame: look lower
         c, tg = S['camrig'].location, S['camtgt'].location
         a = math.radians(deg) * (k - 0.5)
         m = 1 - push * (k - 0.5)
@@ -2318,6 +2326,7 @@ def _warded(f):
     def g(S, k, t, lt):
         f(S, k, t, lt)
         xshow(S, 'hosp')
+        S['blanket'].location, S['blanket'].scale = (0, 0.4, 1.5), (2.15, 2.9, 0.52)
         if not S['prm'].get('noleg'):
             xshow(S, 'leg')
     g.__doc__ = f.__doc__
