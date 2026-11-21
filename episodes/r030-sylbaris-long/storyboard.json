@@ -38,8 +38,8 @@
    "hud": null,
    "prm": {
     "arc": [
-     10,
-     0.6
+     12,
+     0.75
     ]
    }
   },
@@ -1590,7 +1590,7 @@
   {
    "n": 45,
    "segment": "wait",
-   "weight": 1.0,
+   "weight": 1.25,
    "kind": "dark_wait",
    "action": "He sits against the wall in the near-dark, arms across his knees, while the light in the slit goes from grey to night to dawn",
    "camera": "High in the corner, still",
@@ -1623,13 +1623,51 @@
    "hud": "DAYS PASS",
    "prm": {
     "arc": [
-     24,
-     0.3
+     30,
+     0.35
     ]
    }
   },
   {
    "n": 46,
+   "segment": "wait",
+   "weight": 0.9,
+   "kind": "slit_close",
+   "action": "The slit from inside again: the strip of light between the bars, dust turning in it, nothing moving outside",
+   "camera": "Inside, from the other side, drifting",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.08,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.3
+    ]
+   ],
+   "hud": "DAYS PASS",
+   "prm": {
+    "alt": [
+     -55,
+     0.8,
+     0.2
+    ]
+   }
+  },
+  {
+   "n": 47,
    "segment": "found",
    "weight": 1.0,
    "kind": "rescuers",
@@ -1667,7 +1705,7 @@
    }
   },
   {
-   "n": 47,
+   "n": 48,
    "segment": "found",
    "weight": 1.0,
    "kind": "shout",
@@ -1703,7 +1741,7 @@
    "prm": {}
   },
   {
-   "n": 48,
+   "n": 49,
    "segment": "found",
    "weight": 1.3,
    "kind": "dig_out",
@@ -1740,9 +1778,9 @@
    "hush": true
   },
   {
-   "n": 49,
+   "n": 50,
    "segment": "turn",
-   "weight": 1.0,
+   "weight": 0.8,
    "kind": "cell_stands",
    "action": "From above the ruined prison: walls down, ash over everything, and in the middle the squat stone cell, whole. Rook stands on its roof and turns right round, looking",
    "camera": "High, circling down",
@@ -1769,10 +1807,15 @@
     ]
    ],
    "hud": "THE CELL",
-   "prm": {}
+   "prm": {
+    "arc": [
+     40,
+     0.2
+    ]
+   }
   },
   {
-   "n": 50,
+   "n": 51,
    "segment": "turn",
    "weight": 1.2,
    "kind": "rook_wall",
@@ -1813,7 +1856,7 @@
    }
   },
   {
-   "n": 51,
+   "n": 52,
    "segment": "pardon",
    "weight": 1.0,
    "kind": "pardon",
@@ -1845,7 +1888,7 @@
    "prm": {}
   },
   {
-   "n": 52,
+   "n": 53,
    "segment": "circus",
    "weight": 1.0,
    "kind": "poster",
@@ -1877,7 +1920,7 @@
    "prm": {}
   },
   {
-   "n": 53,
+   "n": 54,
    "segment": "circus",
    "weight": 1.0,
    "kind": "circus_ring",
@@ -1909,7 +1952,7 @@
    "prm": {}
   },
   {
-   "n": 54,
+   "n": 55,
    "segment": "circus",
    "weight": 1.1,
    "kind": "ring_tell",
@@ -1941,7 +1984,7 @@
    "prm": {}
   },
   {
-   "n": 55,
+   "n": 56,
    "segment": "circus",
    "weight": 0.9,
    "kind": "rook_crowd",
@@ -1977,7 +2020,7 @@
    "prm": {}
   },
   {
-   "n": 56,
+   "n": 57,
    "segment": "science",
    "weight": 1.1,
    "kind": "geologist",
@@ -2013,7 +2056,7 @@
    "prm": {}
   },
   {
-   "n": 57,
+   "n": 58,
    "segment": "science",
    "weight": 1.0,
    "kind": "cloud_town",
@@ -2051,7 +2094,7 @@
    }
   },
   {
-   "n": 58,
+   "n": 59,
    "segment": "science",
    "weight": 0.8,
    "kind": "geologist",
@@ -2089,7 +2132,7 @@
    }
   },
   {
-   "n": 59,
+   "n": 60,
    "segment": "science",
    "weight": 1.3,
    "kind": "spine_rise",
@@ -2125,7 +2168,7 @@
    "prm": {}
   },
   {
-   "n": 60,
+   "n": 61,
    "segment": "later",
    "weight": 1.0,
    "kind": "board",
@@ -2161,7 +2204,7 @@
    "prm": {}
   },
   {
-   "n": 61,
+   "n": 62,
    "segment": "later",
    "weight": 1.0,
    "kind": "bay_today",
@@ -2197,7 +2240,7 @@
    "prm": {}
   },
   {
-   "n": 62,
+   "n": 63,
    "segment": "later",
    "weight": 1.0,
    "kind": "rook_question",
@@ -2234,7 +2277,7 @@
    }
   },
   {
-   "n": 63,
+   "n": 64,
    "segment": "end",
    "weight": 0.9,
    "kind": "cloud_rush",
@@ -2272,7 +2315,7 @@
    }
   },
   {
-   "n": 64,
+   "n": 65,
    "segment": "end",
    "weight": 0.9,
    "kind": "cell_face",
@@ -2310,7 +2353,7 @@
    }
   },
   {
-   "n": 65,
+   "n": 66,
    "segment": "end",
    "weight": 1.4,
    "kind": "signoff",
