@@ -437,7 +437,8 @@
    "world": "1914 Idaho post office, railway mail car, grandparents' porch",
    "est_score": 90,
    "long_form_candidate": true,
-   "status": "idea",
+   "status": "in progress",
+   "claimed_at": "2026-11-21T18:22:15Z",
    "facts": "premise checked on 18 Nov 2026 against the two sources listed (both fetched and read); verify again at authoring. Funny case: keep the comedy on the absurd parts, never on anyone's suffering.",
    "sources": [
     "https://www.history.com/articles/mailing-children-post-office",
