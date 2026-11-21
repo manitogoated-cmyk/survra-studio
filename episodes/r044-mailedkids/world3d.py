@@ -717,7 +717,7 @@ def scale_girl(S, k, t, lt):
     loop = S['prm'].get('loop')
     ka = 0.0 if loop else k
     crouch = math.sin(sm((k - 0.55) / 0.3) * PI) * 0.12 if loop else 0.0
-    hop = 0.45 * sm((k - 0.8) / 0.2) if loop else 0.45 * max(0.0, 1 - k / 0.1) ** 2
+    hop = 0.45 * sm((k - 0.75) / 0.18) if loop else 0.45 * max(0.0, 1 - k / 0.1) ** 2
     land = 0.0 if loop else math.exp(-max(0.0, k - 0.1) * 9) * math.sin(max(0.0, k - 0.1) * 40) * 0.06
     m = may_on_scale(S, t, P('stand', aL=(0.1, 0.5 - 0.3 * sm(ka / 0.2), 0.3), aR=(0.1, 0.5 - 0.3 * sm(ka / 0.2), 0.3), head=(-0.15, 0.25 - 0.3 * sm(ka)),
                                  lift=-crouch, lL=(crouch * 2, crouch * 4), lR=(crouch * 2, crouch * 4)), 'happy', 0.08, hop + land)
@@ -1156,7 +1156,7 @@ def ban_desk(S, k, t, lt):
     if k >= hit:
         S['inkmark'].location = plus(pa, (0, -0.25, 0.022))
     S['cam'].rotation_euler = (0, 0, 0.03 * math.exp(-max(0, k - hit) * 14) * math.sin((k - hit) * 80) if k > hit else 0)
-    cam(S, at(BAN, -1.0, -0.7, 2.95), at(BAN, 0.4, 2.6, 2.55), 30)
+    cam(S, at(BAN, -1.0, -0.7, 3.2), at(BAN, 0.4, 2.7, 2.1), 37)
     orbit(S, k, 26, 0.3, -0.4)
 
 

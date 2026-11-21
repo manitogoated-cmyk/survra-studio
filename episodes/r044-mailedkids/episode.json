@@ -1,15 +1,145 @@
 {
   "id": "r044-mailedkids",
   "format": "short",
-  "status": "draft",
+  "status": "approved",
   "synthetic": false,
   "host": "rook",
   "case": 44,
   "title": "Parents Once Mailed Their Kids. With Stamps. #shorts",
   "playlist": "Rook's Case Files (Shorts)",
+  "authoring": {
+    "claimed_at": "2026-11-21T18:27:00Z",
+    "run": "scheduled short run, 21 Nov 2026; first slate idea (case 044)"
+  },
+  "description": "Case 044. On 19 February 1914, in Grangeville, Idaho, the parents of five-year-old May Pierstorff sent her to her grandmother by parcel post. She weighed 48 and a half pounds, just under the 50-pound parcel limit; the postage was 53 cents in stamps, cheaper than a train ticket. She rode the mail train 73 miles to Lewiston in the mail car, in the care of the railway mail clerk on duty, Leonard Mochel, who was her mother's cousin, and he took her to her grandmother's door. She was not the first: in January 1913, weeks after parcel post began, an Ohio couple had their baby son carried about a mile to his grandmother by the rural mail carrier, for 15 cents in stamps, insured for 50 dollars. No child was put in a sack or a box: they travelled with postal workers the families knew and trusted. The Post Office then barred its workers from accepting people as mail, and at least two more children were mailed in 1915 all the same. Rook didn't believe it either.\n\nAnimated reconstruction of a true story. The post office, the mail car, the train, the farm, the house and the office, and everyone in them, are generic low-poly shapes; nobody's likeness is attempted and no real stamp, seal, uniform badge or logo is shown. Where people stood and what the rooms looked like is illustrative. Narrated with a synthetic voice (Kokoro).\n\nSources: Smithsonian National Postal Museum, 'Precious Packages: America's Parcel Post Service'; Smithsonian Magazine, 'A Brief History of Children Sent Through the Mail' (2016); History.com, 'When People Used the Postal Service to Mail Their Children'; Mystic Stamp Company, 'Parents Mail Children Through Parcel Post'; Lewiston Tribune, 'Mailing Miss May' (2 October 2000).",
+  "tags": [
+    "mailing children",
+    "parcel post",
+    "May Pierstorff",
+    "Charlotte May Pierstorff",
+    "Mailing May",
+    "Grangeville Idaho",
+    "Lewiston Idaho",
+    "1914",
+    "US Post Office",
+    "postal history",
+    "railway mail",
+    "weird history",
+    "American history",
+    "funny true story",
+    "true story",
+    "history",
+    "animated story",
+    "Rook",
+    "Survra"
+  ],
+  "hashtags": [
+    "#shorts",
+    "#truestory",
+    "#history"
+  ],
   "sources": [
     "https://postalmuseum.si.edu/exhibition/reaching-rural-america-past-exhibits/precious-packages-americas-parcel-post-service",
     "https://www.smithsonianmag.com/smart-news/brief-history-children-sent-through-mail-180959372/",
-    "https://www.history.com/articles/mailing-children-post-office"
-  ]
+    "https://www.history.com/articles/mailing-children-post-office",
+    "https://info.mysticstamp.com/wp-content/uploads/02-19-1914-Mailing-Children.pdf",
+    "https://lmtribune.com/northwest/mailing-miss-may-a-little-girl-and-a-railroad-became-famous-togetherd163b3e9",
+    "https://en.wikipedia.org/wiki/Charlotte_May_Pierstorff",
+    "https://news.usps.com/2016/06/22/tots-in-transit",
+    "https://todayinhistory.blog/tag/mailing-babies/"
+  ],
+  "story_score": {
+    "curiosity": 10,
+    "stakes": 5,
+    "freshness": 8,
+    "story": 8,
+    "visual": 8,
+    "audience_fit": 9,
+    "payoff": 8,
+    "packaging": 10,
+    "research": 9,
+    "repeatability": 8,
+    "total": 83
+  },
+  "title_options": [
+    "Parents Once Mailed Their Kids. With Stamps. #shorts",
+    "A 5-Year-Old Was Mailed to Grandma for 53 Cents #shorts",
+    "She Weighed 48 Pounds. The Parcel Limit Was 50. #shorts",
+    "The Girl Who Went by Parcel Post #shorts",
+    "It Was Cheaper to Mail Her Than Buy a Ticket #shorts"
+  ],
+  "spine": "v2",
+  "source_notes": "Read for this run on 21 Nov 2026 through a fetch agent; nine pages opened: the National Postal Museum exhibition page, Smithsonian Magazine (2016), History.com, Wikipedia 'Charlotte May Pierstorff', the Lewiston Tribune article of 2 Oct 2000 (which quotes the mail clerk Leonard Mochel's own written account), USPS Link 'Tots in transit' (2016), a Mystic Stamp Company history sheet, a LogicallyFacts fact-check and a history blog (used only as a second page for two figures). Every narrated fact and on-screen label is on at least two pages. Five years old: born 12 May 1908 (Wikipedia), 'three months short of six' (Postal Museum), 5 (Lewiston Tribune, Mystic); Smithsonian Magazine says four and History.com 'nearly six'; the narration follows the birth date. Weighed at the post office and mailed on 19 February 1914 from Grangeville to Lewiston, Idaho: Postal Museum, Smithsonian Magazine, Wikipedia. 53 cents in stamps: Postal Museum, History.com, USPS, Mystic; Wikipedia says 32 cents and Mochel remembered a fifty-cent piece; the narration follows the four that agree. Stamps on her coat: Postal Museum, History.com, Wikipedia, Mystic; Mochel remembered them on her small suitcase (Lewiston Tribune); the animation shows them on the coat and gives her a suitcase as well. Cheaper than a train ticket: Smithsonian Magazine, History.com, Wikipedia, Postal Museum. 48 and a half pounds and the 50-pound limit: Postal Museum ('just short of the 50 pound limit') and the history blog; Wikipedia gives 48.5 pounds; Mochel wrote forty-seven. 73 miles: Smithsonian Magazine, History.com, USPS, Mystic. Rode in the train's mail car: Postal Museum, Wikipedia, Lewiston Tribune. The clerk travelling with her was Leonard Mochel, her mother's cousin: Wikipedia, Lewiston Tribune; Postal Museum names him as the clerk on duty; Smithsonian Magazine says her mother's cousin, a railway mail clerk. He delivered her to her grandmother's house: Postal Museum, Wikipedia, Lewiston Tribune. Nobody rode in a sack: Smithsonian Magazine ('wasn't unceremoniously shoved into a canvas sack'), History.com (children were not handed to strangers; the well-known mailbag photographs were staged). The Ohio baby, a year earlier (January 1913), 15 cents, insured for 50 dollars, carried by the rural carrier to his grandmother: Smithsonian Magazine, History.com, USPS, Mystic (the family name is spelled Beagle, Beague or Beauge, and the distance is 'about a mile' or 'a few miles', so neither is narrated). The Post Office banned it: History.com and Mystic (Postmaster General Burleson barred postal workers from accepting humans as mail, after the Pierstorff story), Wikipedia (regulations changed to prohibit shipping humans); Smithsonian Magazine dates a first ruling to June 1913, so no date is narrated and the label says only BANNED. Mailed anyway the next year: History.com and Mystic (a six-year-old sent 720 miles from Florida to Virginia in 1915; three-year-old Maud Smith in Kentucky, August 1915). The narration says 'parents post their kids'; in the 1915 cases the senders were a mother and a pair of grandparents. Not used because the pages disagree or only one gives them: the price of the train ticket, the 'chicken rate' story (Smithsonian Magazine says chicks were not mailable until 1918), the conductor's reaction, the clerk's reprimand, how many children in all. Staging liberties, all illustrative: May is shown weighed on a platform scale with a big dial and the clerk's hand pressing a stamp on (the sources say she was weighed and stamped, not on what or by whom); her parents at the counter together; the look of the post office, mail car, train, lane, farmhouse, house and office; May on a mail sack and at the open car door; the clerk doing up her coat; the grandmothers' reactions; a single official stamping the order; the boy at the counter in 1915 stands for the later cases and is not a likeness of either child; Rook, his sack, his magnifying glass and the brass weight are fictional.",
+  "shown_moments": {
+    "a five-year-old girl is weighed at the post office, stamped, and mailed": "shot 1 (May hops onto the platform scale, stamps on her coat, a hand arriving with one more); shot 2 (the needle swings round the dial above her); shot 3 (the hand presses the stamp onto her coat)",
+    "You can't post a child.": "shot 4 (Rook leaning on the counter, arms crossed, brim low, the girl on the scale behind him)",
+    "Her parents just did. 53 cents in stamps, on her coat: cheaper than a train ticket": "shot 5 (her father counts coins onto the counter, her mother beside him); shot 6 (May straightens her coat, label 53 CENTS IN STAMPS); shot 7 (Rook compares a ticket and a stamp and drops the ticket)",
+    "She weighs forty-eight and a half pounds. The parcel limit is fifty": "shot 8 (Rook's magnifying glass on the dial, label 48½ POUNDS); shot 9 (the clerk reads the dial and writes); shot 10 (the needle a hair under the red mark, a finger tapping it, label PARCEL LIMIT: 50 LB)",
+    "she rides the mail train, 73 miles across Idaho, in the mail car": "shots 11 and 12 (the train in the snowy hills, label 19 FEBRUARY 1914; the driving wheels); shot 13 (May on a mail sack in the mail car, the clerk sorting, label 73 MILES); shot 14 (Rook in a sack beside her)",
+    "she isn't the first. A year earlier, in Ohio, a baby boy went by post: 15 cents, insured for 50 dollars": "shots 15 to 19 (the baby in the carrier's arms with a stamp on the blanket, label OHIO, 1913; Rook's hat hops; the carrier in the lane; Rook craning at the baby; the grandmother at the farmhouse door, label 15 CENTS, INSURED FOR $50)",
+    "Nobody rides in a sack, though. The mail clerk travelling with her is her mother's cousin": "shot 20 (Rook shakes a sack out: only letters); shot 21 (the clerk does up her coat, label LEONARD MOCHEL, CLERK); shot 22 (the three of them at the open door)",
+    "He walks her to her grandmother's door. Delivered": "shot 23 (the walk up the path, the door opens, the hug, label LEWISTON, IDAHO); shot 24 (Rook touches his brim)",
+    "the Post Office bans it: no more humans in the mail": "shot 25 (the official slams a rubber stamp on an order, label BANNED); shot 26 (Rook reads the notice on the board)",
+    "the next year, parents post their kids anyway": "shot 27 (a boy with a stamped tag at the counter, the clerk looks at the notice and shrugs, label 1915); shot 28 (Rook caws with laughter as the tag is stamped)",
+    "Case closed. Because in Idaho, in nineteen fourteen,": "shot 29 (Rook pockets a brass weight); shot 30 (back to May at the scale and the opening frame)"
+  },
+  "experiments": {
+    "E1_E2": "spine v2: Rook is already in the post office in shot 4 and doubts it in one line of 1.3 s with the girl still on the scale behind him; the story runs forward from the scale to the train and the door; date, places and the clerk's name are labels.",
+    "E3": "outside the batch brief (all its Shorts are made); opens on a person close-up: May's face on the scale.",
+    "E4": "'Case closed.' ending.",
+    "E7": "hook_text MAILED / WITH STAMPS.",
+    "E8": "tail 0.4 s; the last line ('Because in Idaho, in nineteen fourteen,') runs into the first ('a five-year-old girl is weighed at the post office...'); the last shot closes in on May and ends on the opening shot's first frame."
+  },
+  "sound_plan": {
+    "first_frame": "Near-silence under the hook title, then a clunk and a hit at 0.1 s as she lands on the scale platform (the gate's first-second impact is the story's own sound).",
+    "music": "The engine's score follows the segment moods: hook, tense for Rook's line, action for the stamps, tense for the weight, wonder for the train, tense for the re-hook, calm for the mail car, wonder for the door, calm for the ban (with the hush), triumph for the payoff, end.",
+    "effects": "One to four cues a shot, each tied to something visible: ticks for the needle, coins and the tapping finger, a hit for the stamp pressed on and for the rubber stamp, a horn and engine for the train, clunks for the wheels, flips for letters, a gasp for Rook's shock and the grandmother, creaks for the doors, caws for Rook's laugh.",
+    "hush": "Shot 26 (Rook reads the notice): the music drops out under 'no more humans in the mail', the breath before the payoff.",
+    "voice": "Narration is ducked over the bed by the engine; measured in the local rehearsal, not listened to."
+  },
+  "checklist": {
+    "A_story": "done: score 83/100 with curiosity 10, story 8, payoff 8; facts checked against nine opened pages; spine v2; shown_moments lists every narrated moment",
+    "B_storyboard": "done: every shot has action, expression, camera and sound cue; Rook's mannerisms are hat brim low (4, 7, 14, 26), hat hopping off and a feather shed (16), beak tap (18, 26), caw-laugh (28), touching his brim (24, 29) and pocketing the shiny brass weight (29); detective actions are the magnifying glass on the dial (8) and shaking out the mail sack (20); no neutral poses under action lines",
+    "B2_retention": "done: hook_text set; the first frame is May close on the scale and she lands 0.1 s in; re-hook from 44% to 61% (she isn't the first: the Ohio baby); one hush (shot 26); tail 0.4 s with a matched loop",
+    "C_previews": "done: one still per shot, then every shot at k=0.2 and 0.8 at 270x480 (phone size) over rounds 2 to 4, and six stills at 720x1280 with production samples; no blown-out or crushed frame where the story has to be seen; faces read at 270x480; Rook on-model",
+    "D_render": "engine defaults untouched (60 fps, 720x1280, 16 jobs in the workflow); the local rehearsal used 12 fps, 360x640, 6 samples for review only",
+    "E_sound": "voice am_fenrir; hook near-silent, music by mood map; every impact cue tied to something visible; voice 16.5 dB over the bed; loudness -14.7 LUFS, peak -1.3 dBFS; loudness range 2.5 LU is under the 4 LU item, see not_met",
+    "F_captions": "done: labels fit the frame at rest (the clerk's name label was shortened after the rehearsal showed it cut off at both sides); no inserts; on-screen dates, names and figures checked against sources",
+    "G_final": "one full rehearsal reviewed as a 3 fps sheet of the whole video plus full-resolution stills; local gate PASS twice; the full-resolution render and the real gate run in the workflow"
+  },
+  "quality_gate": {
+    "method": "One run, six review rounds. Round 1: low-res contact sheet of all 30 shots: a stray hand prop lay on the floor, the stamping arm crossed May's face and pointed the wrong way, May had adult proportions and a mouth that read as a scream, the parents had their backs to us, the ticket covered Rook's face, a pine stood in front of the train, Rook hid the carrier and the hug, the official was sunk in his desk, the dial hid Rook at the notice; all fixed. Round 2: every shot at k=0.2 and 0.8: the tapping finger was out of frame, a prop bug turned the passing poles into slabs, the satchel hid the carrier, the farmhouse wall was washed out, the mail-car shot split its two people to the frame edges; fixed. Round 3: changed shots again: May's smile still read as a frown (smile corners and cheeks added), the room had no front wall behind the parents (front wall, door and window built), Rook kept his back to us at the notice; fixed. Round 4: changed shots again; the passing poles read as bars (one pole now). Round 5: full rehearsal (12 fps, 360x640): local gate PASS: 30 shots, mean 1.38 s, longest 1.81 s, Rook acting in 12 of 30 shots (40%), -14.7 LUFS, peak -1.3 dBFS, voice 16.5 dB over the bed, closest match to any earlier episode 0.66 (shot 2 against m001-wow-signal; the limit is 0.93). Reviewed as a 3 fps sheet of the whole video: the clerk's name label overflowed (shortened), the official was small and under the caption (reframed twice), the loop's last frame sat a little low (hop finishes earlier). Round 6: the two changed shots re-rendered, recomposited, local gate PASS again with the same figures; first and last frames compared side by side for the loop; six stills at 720x1280 and production samples checked for artefacts. Duration 41.4 s. The final reframing of the ban shot (camera only) was checked on three stills, not in a further rehearsal. The cloud render runs the real gate at 720x1280 and 60 fps.",
+    "not_met": "Loudness range measured 2.5 LU against the checklist's 4 LU (the narration runs almost wall to wall; this comes from the engine's mix and the format, and earlier approved episodes record the same). The soundtrack was measured, not listened to. One full local rehearsal at low resolution instead of a watch-through at full resolution; the local gate at 12 fps is only an approximation of the cloud gate's static-stretch check."
+  },
+  "review": {
+    "notes": [
+      "0.0 to 3.7 s: May close on the scale, hook title MAILED / WITH STAMPS; she lands at 0.1 s, a hand arrives with a stamp; the needle swings round the dial; the stamp is pressed on her coat",
+      "3.7 to 5.0 s: Rook leaning on the counter, arms crossed: 'You can't post a child.'; May waves from the scale",
+      "5.0 to 9.9 s: her father counts coins (GRANGEVILLE, IDAHO); May straightens her coat (53 CENTS IN STAMPS); Rook weighs a ticket against a stamp and drops the ticket",
+      "9.9 to 13.6 s: Rook's magnifying glass on the dial (48½ POUNDS); the clerk writes it down; a finger taps the red mark (PARCEL LIMIT: 50 LB)",
+      "13.6 to 18.3 s: the train in the snow (19 FEBRUARY 1914); the wheels; May on a mail sack (73 MILES); Rook pops up out of a sack",
+      "18.3 to 25.4 s: re-hook: the baby in the carrier's arms (OHIO, 1913); Rook's hat hops; the lane at dusk; Rook cranes at the baby; the grandmother at the door (15 CENTS, INSURED FOR $50)",
+      "25.4 to 30.1 s: Rook shakes a sack out, only letters; the clerk does up her coat (LEONARD MOCHEL, CLERK); the three at the open door",
+      "30.1 to 32.6 s: the walk up the path, the door, the hug (LEWISTON, IDAHO); Rook touches his brim",
+      "32.6 to 35.5 s: the official slams the stamp (BANNED); hush: Rook reads the notice",
+      "35.5 to 38.0 s: a boy with a tag at the counter, the clerk shrugs (1915); Rook's caw-laugh",
+      "38.0 to 41.4 s: Rook pockets a brass weight, 'Case closed.'; back across the room to May on the scale, 'Because in Idaho, in nineteen fourteen,'"
+    ],
+    "scores_13": {
+      "story": 4,
+      "hook": 4,
+      "character_acting": 3,
+      "animation": 3,
+      "art_direction": 3,
+      "lighting": 3,
+      "camera": 4,
+      "pacing": 4,
+      "editing": 4,
+      "narration": 3,
+      "sound": 3,
+      "captions_graphics": 4,
+      "respect_accuracy": 5
+    },
+    "weakest": "Humans are block figures with simple faces; May's smile is three small boxes and two cheeks. The clerk's stamping hand is a floating hand-and-sleeve prop, not his rigged arm. In the 1915 counter shot the boy has his back or side to us for most of it and his mother is half out of frame, so the tag on his coat is hardly seen. Rook's face is hidden by the sack at the end of the sack test and he has his back to us for the first half of the notice shot. The wide weighing shot and the mail-car wide are geography shots with small figures. Narration and sound were measured, not heard."
+  }
 }
