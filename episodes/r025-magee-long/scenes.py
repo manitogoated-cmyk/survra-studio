@@ -200,7 +200,8 @@ def crewcard(cv, c):
     the other seven. No names, no faces."""
     iron(cv)
     cv.save()
-    push(cv, c, 0.06, 0.2)
+    push(cv, c, 0.16, 0.5)
+    cv.translate(60 - 120 * c.k, 0)                    # a slow drift along the row, so the card never stands still
     fit(cv, 'TEN MEN ABOARD', 960, 190, 92, 1300, 0xFFFFFFFF)
     xs = [330 + 140 * i for i in range(10)]
     lived = (2, 5, 9)
@@ -226,7 +227,7 @@ def crewcard(cv, c):
                 cv.drawLine(xs[i] - 48, 618, xs[i] - 48 + 96 * g, 618, P(CHALK, 7))
         fit(cv, 'SEVEN DID NOT COME HOME', 960, 838, 70, 1300, 0xFFFFFFFF)
     cv.restore()
-    Wd.particles(cv, W, H, c.t, 22, 0x44F4ECDC, 95, size=(2, 4), drift=(8, 14), wobble=16, twinkle=True)
+    Wd.particles(cv, W, H, c.t, 70, 0x66F4ECDC, 95, size=(2, 6), drift=(40, 30), wobble=30, twinkle=True)
 
 
 # ---------------------------------------------------------------- Rook's board

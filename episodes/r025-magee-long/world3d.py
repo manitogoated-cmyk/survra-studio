@@ -2300,8 +2300,9 @@ STILLS = dict(hole=photo_hole, thumb=photo_thumb)
 # prm "arc": [degrees, push] sets the move for one use of a shot.
 ARCS = dict(bomber_down=(8, 0.3), roof_rush=(0, 0.0), town_below=(0, 0.0), fall_wide=(0, 0.25), smash=(4, 0.0), hole_up=(0, 0.0),
             formation=(5, 0.12), pens=(0, 0.0), spin_down=(0, 0.0), cub_fly=(0, 0.0), turret_side=(0, 0.0), turret_close=(0, 0.0),
-            fall_close=(0, 0.0), nose_fly=(0, 0.0), wing_hit=(0, 0.0), fuse_spin=(0, 0.0), station_out=(3, 0.05), girders=(6, 0.08),
-            medals=(6, 0.1), bed_leg=(8, 0.1), arm_close=(8, 0.12), field_dawn=(4, 0.06))
+            fall_close=(0, 0.0), nose_fly=(16, 0.3), wing_hit=(0, 0.0), fuse_spin=(0, 0.0), station_out=(3, 0.05), girders=(6, 0.08),
+            medals=(6, 0.1), bed_leg=(8, 0.1), arm_close=(8, 0.12), field_dawn=(4, 0.06), turret_under=(18, 0.3), hangar_walk=(16, 0.28),
+            mem_visit=(16, 0.28), doc_talk=(12, 0.2), bed_sit=(12, 0.2), camp_three=(6, 0.2), gate_open=(10, 0.2), rook_measure=(14, 0.25))
 
 
 def _alive(f, name):

@@ -38,8 +38,8 @@
    "hud": null,
    "prm": {
     "arc": [
-     10,
-     0.34
+     18,
+     0.6
     ]
    }
   },
@@ -124,7 +124,7 @@
   {
    "n": 4,
    "segment": "doubt",
-   "weight": 1.0,
+   "weight": 1.2,
    "kind": "rook_ridge",
    "action": "Rook on the iron ridge of the station roof looks up at a tiny falling figure, then at us; his brim drops: no chance",
    "camera": "Three-quarter on Rook from roof level, easing in",
@@ -160,11 +160,53 @@
      0,
      0.72,
      0
+    ],
+    "arc": [
+     24,
+     0.35
     ]
    }
   },
   {
    "n": 5,
+   "segment": "doubt",
+   "weight": 0.7,
+   "kind": "fall_wide",
+   "action": "Back up in the sky: the small figure, still falling, before we go back to how he got there",
+   "camera": "High, from another side, turning",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.3
+    ]
+   ],
+   "hud": "CASE 025",
+   "prm": {
+    "alt": [
+     200,
+     0.8,
+     4
+    ]
+   }
+  },
+  {
+   "n": 6,
    "segment": "start",
    "weight": 1.0,
    "kind": "field_dawn",
@@ -200,7 +242,7 @@
    "prm": {}
   },
   {
-   "n": 6,
+   "n": 7,
    "segment": "start",
    "weight": 1.0,
    "kind": "turret_under",
@@ -236,7 +278,7 @@
    "prm": {}
   },
   {
-   "n": 7,
+   "n": 8,
    "segment": "start",
    "weight": 0.9,
    "kind": "turret_side",
@@ -272,7 +314,7 @@
    "prm": {}
   },
   {
-   "n": 8,
+   "n": 9,
    "segment": "turret",
    "weight": 1.1,
    "kind": "rook_measure",
@@ -308,7 +350,7 @@
    "prm": {}
   },
   {
-   "n": 9,
+   "n": 10,
    "segment": "turret",
    "weight": 0.9,
    "kind": "pack_hook",
@@ -344,7 +386,7 @@
    "prm": {}
   },
   {
-   "n": 10,
+   "n": 11,
    "segment": "mission",
    "weight": 1.0,
    "kind": "map",
@@ -380,7 +422,7 @@
    "prm": {}
   },
   {
-   "n": 11,
+   "n": 12,
    "segment": "mission",
    "weight": 0.8,
    "kind": "formation",
@@ -422,7 +464,7 @@
    }
   },
   {
-   "n": 12,
+   "n": 13,
    "segment": "mission",
    "weight": 1.2,
    "kind": "nose_fly",
@@ -458,7 +500,7 @@
    "prm": {}
   },
   {
-   "n": 13,
+   "n": 14,
    "segment": "mission",
    "weight": 1.1,
    "kind": "pens",
@@ -487,18 +529,14 @@
     ],
     [
      "boom",
-     0.55
-    ],
-    [
-     "boom",
-     0.85
+     0.6
     ]
    ],
    "hud": "SAINT-NAZAIRE, FRANCE",
    "prm": {}
   },
   {
-   "n": 14,
+   "n": 15,
    "segment": "flak",
    "weight": 0.9,
    "kind": "flak_hit",
@@ -524,17 +562,13 @@
     [
      "hit",
      0.3
-    ],
-    [
-     "crash",
-     0.4
     ]
    ],
    "hud": null,
    "prm": {}
   },
   {
-   "n": 15,
+   "n": 16,
    "segment": "flak",
    "weight": 0.8,
    "kind": "turret_close",
@@ -570,7 +604,7 @@
    "prm": {}
   },
   {
-   "n": 16,
+   "n": 17,
    "segment": "flak",
    "weight": 1.3,
    "kind": "turret_climb",
@@ -606,7 +640,7 @@
    "prm": {}
   },
   {
-   "n": 17,
+   "n": 18,
    "segment": "chute",
    "weight": 1.1,
    "kind": "chute_find",
@@ -642,7 +676,7 @@
    "prm": {}
   },
   {
-   "n": 18,
+   "n": 19,
    "segment": "chute",
    "weight": 0.8,
    "kind": "chute_rags",
@@ -674,7 +708,7 @@
    "prm": {}
   },
   {
-   "n": 19,
+   "n": 20,
    "segment": "chute",
    "weight": 1.3,
    "kind": "rook_silk",
@@ -710,7 +744,7 @@
    "prm": {}
   },
   {
-   "n": 20,
+   "n": 21,
    "segment": "wing",
    "weight": 1.0,
    "kind": "wing_hit",
@@ -736,17 +770,13 @@
     [
      "boom",
      0.22
-    ],
-    [
-     "crash",
-     0.35
     ]
    ],
    "hud": null,
    "prm": {}
   },
   {
-   "n": 21,
+   "n": 22,
    "segment": "wing",
    "weight": 1.0,
    "kind": "spin_down",
@@ -782,7 +812,7 @@
    "prm": {}
   },
   {
-   "n": 22,
+   "n": 23,
    "segment": "blackout",
    "weight": 1.0,
    "kind": "fuse_spin",
@@ -818,7 +848,7 @@
    "prm": {}
   },
   {
-   "n": 23,
+   "n": 24,
    "segment": "blackout",
    "weight": 1.0,
    "kind": "gasp_dim",
@@ -854,7 +884,7 @@
    "prm": {}
   },
   {
-   "n": 24,
+   "n": 25,
    "segment": "blackout",
    "weight": 1.0,
    "kind": "thrown_clear",
@@ -878,19 +908,15 @@
    "transition": "whip",
    "sfx": [
     [
-     "crash",
-     0.15
-    ],
-    [
      "whoosh",
-     0.5
+     0.3
     ]
    ],
    "hud": null,
    "prm": {}
   },
   {
-   "n": 25,
+   "n": 26,
    "segment": "fall",
    "weight": 0.9,
    "kind": "fall_close",
@@ -926,7 +952,7 @@
    "prm": {}
   },
   {
-   "n": 26,
+   "n": 27,
    "segment": "fall",
    "weight": 0.8,
    "kind": "fall_wide",
@@ -964,7 +990,7 @@
    }
   },
   {
-   "n": 27,
+   "n": 28,
    "segment": "fall",
    "weight": 1.4,
    "kind": "heights",
@@ -993,10 +1019,6 @@
     ],
     [
      "tick",
-     0.5
-    ],
-    [
-     "tick",
      0.8
     ]
    ],
@@ -1004,7 +1026,7 @@
    "prm": {}
   },
   {
-   "n": 28,
+   "n": 29,
    "segment": "fall",
    "weight": 1.0,
    "kind": "rook_dive",
@@ -1040,7 +1062,7 @@
    "prm": {}
   },
   {
-   "n": 29,
+   "n": 30,
    "segment": "rehook",
    "weight": 1.0,
    "kind": "town_below",
@@ -1076,7 +1098,7 @@
    "prm": {}
   },
   {
-   "n": 30,
+   "n": 31,
    "segment": "rehook",
    "weight": 1.0,
    "kind": "station_out",
@@ -1112,7 +1134,7 @@
    "prm": {}
   },
   {
-   "n": 31,
+   "n": 32,
    "segment": "rehook",
    "weight": 1.0,
    "kind": "rook_look",
@@ -1148,7 +1170,7 @@
    "prm": {}
   },
   {
-   "n": 32,
+   "n": 33,
    "segment": "land",
    "weight": 1.0,
    "kind": "smash",
@@ -1174,17 +1196,13 @@
     [
      "crash",
      0.22
-    ],
-    [
-     "hit",
-     0.3
     ]
    ],
    "hud": null,
    "prm": {}
   },
   {
-   "n": 33,
+   "n": 34,
    "segment": "land",
    "weight": 1.0,
    "kind": "shards",
@@ -1220,7 +1238,7 @@
    "prm": {}
   },
   {
-   "n": 34,
+   "n": 35,
    "segment": "where",
    "weight": 0.8,
    "kind": "hole_up",
@@ -1253,7 +1271,7 @@
    "hush": true
   },
   {
-   "n": 35,
+   "n": 36,
    "segment": "where",
    "weight": 1.0,
    "kind": "rook_shard",
@@ -1291,7 +1309,7 @@
    }
   },
   {
-   "n": 36,
+   "n": 37,
    "segment": "where",
    "weight": 1.1,
    "kind": "girders",
@@ -1327,7 +1345,7 @@
    "prm": {}
   },
   {
-   "n": 37,
+   "n": 38,
    "segment": "where",
    "weight": 1.1,
    "kind": "found",
@@ -1363,7 +1381,7 @@
    "prm": {}
   },
   {
-   "n": 38,
+   "n": 39,
    "segment": "injuries",
    "weight": 1.0,
    "kind": "stretcher",
@@ -1399,7 +1417,7 @@
    "prm": {}
   },
   {
-   "n": 39,
+   "n": 40,
    "segment": "injuries",
    "weight": 1.1,
    "kind": "bed_leg",
@@ -1431,7 +1449,7 @@
    "prm": {}
   },
   {
-   "n": 40,
+   "n": 41,
    "segment": "injuries",
    "weight": 1.0,
    "kind": "arm_close",
@@ -1463,7 +1481,7 @@
    "prm": {}
   },
   {
-   "n": 41,
+   "n": 42,
    "segment": "doctor",
    "weight": 1.0,
    "kind": "doctor",
@@ -1495,7 +1513,7 @@
    "prm": {}
   },
   {
-   "n": 42,
+   "n": 43,
    "segment": "doctor",
    "weight": 1.2,
    "kind": "doc_talk",
@@ -1531,7 +1549,7 @@
    "prm": {}
   },
   {
-   "n": 43,
+   "n": 44,
    "segment": "doctor",
    "weight": 0.9,
    "kind": "rook_bed",
@@ -1563,7 +1581,7 @@
    "prm": {}
   },
   {
-   "n": 44,
+   "n": 45,
    "segment": "doctor",
    "weight": 1.1,
    "kind": "arm_wrap",
@@ -1599,7 +1617,7 @@
    "prm": {}
   },
   {
-   "n": 45,
+   "n": 46,
    "segment": "arm",
    "weight": 1.1,
    "kind": "bed_sit",
@@ -1635,7 +1653,7 @@
    "prm": {}
   },
   {
-   "n": 46,
+   "n": 47,
    "segment": "arm",
    "weight": 0.9,
    "kind": "doctor",
@@ -1674,7 +1692,7 @@
    }
   },
   {
-   "n": 47,
+   "n": 48,
    "segment": "crew",
    "weight": 1.0,
    "kind": "crewcard",
@@ -1710,7 +1728,7 @@
    "prm": {}
   },
   {
-   "n": 48,
+   "n": 49,
    "segment": "camp",
    "weight": 1.0,
    "kind": "camp_three",
@@ -1746,7 +1764,7 @@
    "prm": {}
   },
   {
-   "n": 49,
+   "n": 50,
    "segment": "camp",
    "weight": 0.9,
    "kind": "camp",
@@ -1778,7 +1796,7 @@
    "prm": {}
   },
   {
-   "n": 50,
+   "n": 51,
    "segment": "camp",
    "weight": 1.2,
    "kind": "gate_open",
@@ -1806,10 +1824,6 @@
      0.15
     ],
     [
-     "flip",
-     0.4
-    ],
-    [
      "birdcall",
      0.7
     ]
@@ -1818,7 +1832,7 @@
    "prm": {}
   },
   {
-   "n": 51,
+   "n": 52,
    "segment": "home",
    "weight": 1.0,
    "kind": "medals",
@@ -1854,7 +1868,7 @@
    "prm": {}
   },
   {
-   "n": 52,
+   "n": 53,
    "segment": "home",
    "weight": 1.0,
    "kind": "hangar_walk",
@@ -1890,7 +1904,7 @@
    "prm": {}
   },
   {
-   "n": 53,
+   "n": 54,
    "segment": "home",
    "weight": 1.1,
    "kind": "cub_fly",
@@ -1911,7 +1925,7 @@
     ]
    ],
    "shake": 0,
-   "transition": "cut",
+   "transition": "whip",
    "sfx": [
     [
      "engine_start",
@@ -1923,10 +1937,15 @@
     ]
    ],
    "hud": null,
-   "prm": {}
+   "prm": {
+    "arc": [
+     30,
+     0.25
+    ]
+   }
   },
   {
-   "n": 54,
+   "n": 55,
    "segment": "memorial",
    "weight": 1.0,
    "kind": "memorial",
@@ -1958,7 +1977,7 @@
    "prm": {}
   },
   {
-   "n": 55,
+   "n": 56,
    "segment": "memorial",
    "weight": 1.1,
    "kind": "mem_visit",
@@ -1994,7 +2013,7 @@
    "prm": {}
   },
   {
-   "n": 56,
+   "n": 57,
    "segment": "memorial",
    "weight": 0.9,
    "kind": "wreath",
@@ -2026,7 +2045,7 @@
    "prm": {}
   },
   {
-   "n": 57,
+   "n": 58,
    "segment": "last",
    "weight": 1.0,
    "kind": "memorial",
@@ -2072,7 +2091,7 @@
    }
   },
   {
-   "n": 58,
+   "n": 59,
    "segment": "end",
    "weight": 1.0,
    "kind": "board",
@@ -2112,7 +2131,7 @@
    "prm": {}
   },
   {
-   "n": 59,
+   "n": 60,
    "segment": "end",
    "weight": 1.1,
    "kind": "rook_verdict",
@@ -2148,7 +2167,7 @@
    "prm": {}
   },
   {
-   "n": 60,
+   "n": 61,
    "segment": "end",
    "weight": 1.1,
    "kind": "signoff",
