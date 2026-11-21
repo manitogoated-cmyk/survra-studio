@@ -200,9 +200,9 @@ def crewcard(cv, c):
     the other seven. No names, no faces."""
     iron(cv)
     cv.save()
-    push(cv, c, 0.16, 0.5)
+    push(cv, c, 0.07, 0.5)
     cv.translate(60 - 120 * c.k, 0)                    # a slow drift along the row, so the card never stands still
-    fit(cv, 'TEN MEN ABOARD', 960, 150, 88, 1300, 0xFFFFFFFF)
+    fit(cv, 'TEN MEN ABOARD', 960, 180, 88, 1300, 0xFFFFFFFF)
     xs = [330 + 140 * i for i in range(10)]
     lived = (2, 5, 9)
     for i, x in enumerate(xs):

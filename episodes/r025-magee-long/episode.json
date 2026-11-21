@@ -1,7 +1,7 @@
 {
  "id": "r025-magee-long",
  "format": "long",
- "status": "draft",
+ "status": "ready",
  "synthetic": false,
  "host": "rook",
  "case": 25,
@@ -65,12 +65,12 @@
  },
  "spine": "v2",
  "sound_plan": {
-  "first_frame": "One 'hit' at 0.04 of the first shot as the flak burst outside the turret window (the gate needs an impact in the first second; here it is a story sound), then a crash as the glass cracks.",
-  "music": "The engine's score follows the segment moods: hook, tense for Rook's line, action for the flak, tense for the fall and the re-hook, action for the smash, wonder for the finding, triumph for the doctor, sad for the memorial. No drum loop under the sad segment.",
-  "effects": "One to three cues a shot, each tied to something visible: hits and crashes for flak, clunks for the hatch and the jolt, whooshes for the fall, ticks for the shard and the glass, heartbeats when he blacks out.",
-  "hush": "Shot 19 (looking up at the hole in the roof): the music drops out for the breath before 'They find him in the station, alive.'",
-  "tragic_beats": "Shots 26 and 27 carry one tick each; there is no joke after the landing.",
-  "voice": "Narration is ducked over the bed by the engine; measured in the local rehearsal, not listened to."
+  "first_frame": "A 'hit' at 0.02 of shot 1 as the bomber rolls over burning, the camera rolling in with it.",
+  "music": "The score follows the segment moods: hook, tense, wonder for the airfield, tense for the turret and the flight out, action for the flak, the wing and the landing, tense for the fall and the re-hook, wonder for the finding, sad for the injuries, the crew and the memorial (no drums), wonder for the doctor and home, triumph for the arm, calm for the last line, end.",
+  "effects": "One or two cues a shot, each tied to something visible; stacked hit-and-crash pairs were thinned after rehearsal 1.",
+  "hush": "Shot 37 (straight up at the hole in the roof): the music drops out before 'Where he ends up, the accounts don't agree.'",
+  "tragic_beats": "The crew card and the memorial carry one or two soft cues each.",
+  "voice": "am_fenrir at 1.12. Several 'calm' segments were set to 'wonder' or 'tense' after rehearsal 2: the quiet segments made the normaliser lift the whole mix until the true peak reached -0.8 dBFS. Measured, not listened to."
  },
  "source_notes": "The Short's four pages (Wikipedia, the American Air Museum page for B-17 41-24620, Historic Wings, Vintage Aviation News) were read through a fetch tool on 19 Nov 2026 and cover the raid, the turret, the torn parachute, the blackout, the fall, the glass roof, the 28 wounds, the German doctor, the captivity, the seven dead and the memorial; see the Short's source_notes. For the long version, on 21 Nov 2026, NO PAGE COULD BE OPENED: every host was outside this session's network allowlist, so the added facts were checked only against web-search extracts of the pages listed in sources, and each is used only where the extracts of at least two sites agree. That is why this episode ships as 'ready' (private) and not 'approved'. Added facts and where the extracts support them. From New Jersey, born 1919: Wikipedia (born 13 January 1919, Plainfield, New Jersey) and the American Air Museum person page; the narration says only 'from New Jersey'. Joined up right after Pearl Harbor: two accounts in the extracts (one of them We Are The Mighty). Ball turret too cramped for a parachute: two accounts ('no room for the gunner's parachute'; 'there wasn't room for a normal back-pack parachute inside the turret'); one account instead says the chute he was wearing was ruined, so the narration says only that there was no room to wear one in the ball and that his 'waits up in the fuselage', which is where Wikipedia and Historic Wings have him find it. Seventh mission: Wikipedia and several retellings; the 303rd Bomb Group Association counts it as the group's ninth mission, which is a different count. Aircraft name and its origin: Capt. Jacob Fredericks, who had worked for the Kellogg company, named it (303rd Bomb Group Association and b17flyingfortress.de); the narration says 'named by a pilot who used to work for the cereal company' and names nobody; no nose art is drawn. Turret wrecked by flak and Magee wounded: Wikipedia and We Are The Mighty. Second hit took off part of the right wing, fire, spin: at least two accounts in the extracts; the 303rd's own summary is 'a direct flak hit, went into a spin and blew up'; one retelling blames fighters, which is not used. Blacked out from lack of oxygen and thrown clear: as in the Short. Height: the 303rd's mission narrative says about 20,000 feet (Control Towers; Historic Wings 'more than 20,000 feet'); Wikipedia, the American Air Museum and most retellings say 22,000; Wikipedia also says 'over 4 miles'. The narration gives both figures and 'call it four miles' (20,000 feet is 3.8 miles, 22,000 is 4.2). The speed of the fall is single-sourced and not used. Where he was found: on the station floor (Wikipedia) or caught in the steel girders of the roof (Historic Wings and one more account in the extracts); the narration gives both and decides nothing. Injuries: 28 shrapnel wounds, right leg and ankle broken, lung punctured, right arm nearly severed (two accounts; one adds kidney, nose, eye and teeth, not used); nothing is shown. The doctor: by Magee's own later account, reported on Wikipedia and in two retellings, the German doctor told him they were enemies but that he was a doctor first and would do his best to save the arm; it is narrated only as indirect speech attributed to Magee, never as a quotation, and no line of it is put on screen. Arm saved, full recovery, doctor's name never learned: two accounts. Seven of ten killed, three survivors: as in the Short; the two other survivors are not named and how they left the aircraft is not shown (the extracts do not say). Stalag 17B: two accounts ('Stalag 17B', 'Stalag Luft 17B'); liberated May 1945: Wikipedia and Vintage Aviation News. Purple Heart and Air Medal: Wikipedia and one retelling. Pilot's licence and work in aviation after the war: two sites in the extracts (Wikipedia: a pilot's licence and a range of jobs in the airline industry; We Are The Mighty: a pilot's licence and work in the aviation industry); his retirement and where he lived afterwards are not used (not confirmed twice). Memorial: put up by the people of Saint-Nazaire for the 50th anniversary (Wikipedia, 3 January 1993); Magee and his wife Helen travelled to France for a dedication ceremony, which the 303rd Bomb Group Association dates 23 September 1995 and Vintage Aviation News 23 September 1993 'or 1995'. A B-17 history site and the 303rd's page both have Magee and his wife Helen visiting Saint-Nazaire in late September 1995 for the dedication of a stele and plaque near the bomber's crash site. Because the dates and perhaps the monuments differ, the narration says 'fifty years after the raid' for the memorial, gives no date for the visit, and the labels give none either. The film keeps the Short's staging of a plain stone in a town square, which is reconstruction: the real stele is reported to stand near the crash site. Death: 20 December 2003, San Angelo, Texas, aged 84 (Wikipedia and two more). Kept out because single-sourced, disputed or a quotation: anything Magee or anyone else is quoted as saying, his height, the names of the other crew, the navigator's injuries, the crash site, the size and wording of the memorial, his retirement, the television test of the fall. On-screen labels use only facts from the list above. Staging that is not fact: the airfield and the walk to the bomber, Rook measuring the turret, the pack on its hook, the look of the harbour and the pens, the piece of wing and the spin as drawn, the crawl in the fuselage, the station from outside, Rook on the roof, the hospital room, the plaster cast and the bandaging, the three men at the wire, the gate, the table with the medals (plain shapes, no portrait or lettering), the yellow aeroplane and the grass airfield, who stood where at the memorial, and everything Rook does.",
  "authoring": {
@@ -89,5 +89,83 @@
   "hook": "NO / PARACHUTE / 4 MILES",
   "still": "world3d.STILLS['thumb']: the gunner falling on his back on the right of the frame, the station's glass roof far below on the left",
   "concepts": "A (used): the falling gunner over the glass roof, words on the left. B: Rook on the roof beside the hole at dusk with I WAS WRONG. C: the torn parachute pack with NO PARACHUTE."
+ },
+ "shown_moments": {
+  "a gunner falls out of a burning bomber, no parachute": "shots 1 and 2 (the bomber rolling over on fire, a figure falling away; the figure alone over the cloud)",
+  "a railway station with a glass roof": "shot 3 (straight down at the glass roof)",
+  "No chance": "shots 4 and 5 (Rook on the roof ridge, brim drops; the figure still falling)",
+  "from New Jersey, ball turret gunner, B-17": "shots 6 to 9 (the airfield at dawn, the ball under the belly, the bomber, him curled in the ball)",
+  "no room to wear a parachute; his waits in the fuselage": "shots 10 and 11 (Rook measures the ball against a pack; the pack whole on its hook)",
+  "3 January 1943, seventh mission, the bomber's name, Saint-Nazaire": "shots 12 to 16 (chalk map, formation, the ball in the air, the nose with no name painted, the harbour and the pens from above)",
+  "flak wrecks his turret, he hauls himself out": "shots 17 to 19",
+  "his parachute torn to rags; I checked it myself": "shots 20 to 22 (the pack falls open; the rags; Rook pokes a wingtip through a hole in the silk)",
+  "a second hit takes off part of the right wing; fire; spin": "shots 23 and 24",
+  "he blacks out and is thrown clear": "shots 25 to 27",
+  "how far: 20,000 or 22,000 feet, about four miles": "shots 28 to 31 (his face as he falls; the figure in the sky; the chalk scale with both figures; Rook diving beside him)",
+  "the station, glass on an iron frame": "shots 32 to 34",
+  "he goes straight through it": "shots 35 and 36",
+  "the floor or the girders; he is alive": "shots 37 to 40 (the hush under the hole; Rook and the shard; Rook at the hole pointing down, then along the ribs; men kneel by him and his hand moves)",
+  "the injuries": "shots 41 to 43 (stretcher; the bed with a leg in plaster; the bound arm). No wound is shown.",
+  "the German doctor": "shots 44 to 47 (the doctor at the bed; talking, hand on chest, pointing to the arm; Rook's nod; the bandaging). His words are not put on screen.",
+  "he keeps the arm; the name is never learned": "shots 48 and 49",
+  "ten aboard, three lived, seven did not come home": "shot 50 (ten chalk figures, three ringed). No one is shown dying.",
+  "Stalag 17B until May 1945": "shots 51 to 53 (three men at the wire in snow; him at the wire with Rook; the gate opens in spring)",
+  "Purple Heart, Air Medal, a pilot's licence, aeroplanes": "shots 54 to 57 (two plain medals; the small aeroplane and the hangar; him flying it; his hand on the strut)",
+  "the memorial; he and Helen come back": "shots 58 to 61",
+  "died 2003, aged 84": "shot 62 (the stone alone, label ALAN MAGEE, 1919 TO 2003)",
+  "I was wrong. Case closed.": "shots 63 to 65 (the board; Rook lifts his brim on the roof at dusk; he pockets the glass shard)"
+ },
+ "experiments": {
+  "spine": "v2 for long-form: cold open on the fall and the glass roof; Rook doubts it in the scene, on the station roof (no office); then back to the start, as the reference long does. Dates, names and figures are labels.",
+  "learnings_applied": "plan/learnings.json asks long-form for a shorter setup and a stronger mid-video reversal: the setup (airfield to the target) is 30 s of 164 s; the re-hook ('this is where it stops making sense') is at 46%; a second turn follows (the enemy doctor who saves the arm), and a third (the man who fell out of the sky learns to fly).",
+  "rook_action": "Detective actions in the story world: he measures the ball turret with his wings against a parachute pack (10), tests the torn silk with a wingtip (22), picks up a shard and looks up at the hole (38), and weighs the two accounts at the hole, floor or girders (39). Mannerisms: brim low (4, 7), coin flip (6, 53), hat hop (20, 34), beak tap (22), hat clamped in the dive (31), lifting the brim (46, 64), wing creeping towards the shiny medals and going behind his back (54), hat off at the finding and the memorial (40, 58 to 61), pocketing the shard (65). No joke from the landing to the camp gate, and none at the memorial.",
+  "ending": "'Case closed.' after Rook says he was wrong."
+ },
+ "quality_gate": {
+  "method": "One run: two contact-sheet rounds, then three full-length rehearsals whose frames were the third and later review rounds. Round 1: low-res 16:9 contact sheet of every 3D shot (640x360, one frame each). Found and fixed: the parachute pack left floating where an earlier shot had put it (the Short never restored it; it is now put back on its hook before every shot); a white frame (camera inside a wall on the second use of the doctor shot); black rectangles on the fields seen from the air (the Short's field patches overlap at one height; they are now at slightly different heights, and the new sets were built the same way); the gunner's boots poking through the blanket; Rook over the bomber on the airfield; the gunner's back to us in the turret; the pack hidden behind him; the station too far off; Rook cut by the bottom of the frame with the shard; Rook tiny at the hole; the doctor tiny behind the bed; Rook blocking the gunner sitting up; the men tiny at the gate; the couple hidden behind the wreath. Round 2: re-renders of the 22 changed shots and the stills: Rook off the left edge of the airfield, the doctor still small, the couple still behind the wreath, the thumbnail still without the gunner in frame; all re-staged. Rehearsals: every 3D frame at 480x270, 4 samples, 6 fps, composited at 1920x1080 and 30 fps with captions, labels, overlays, inserts and sound; the 3D frames reviewed as 2-frames-per-second strips, the composite as tiles. Rehearsal 1 frames: a cloud passing through the lens twice (white frames), the older man walking in right past the lens; fixed. Composite: three insert cards ran into the caption band or off the right edge; moved. Rehearsal 3 composite: the crew card's title pushed off the top and Rook's hat filling the second view of the couple; both fixed and checked as stills, not re-rehearsed. Thumbnail composed and looked at twice.",
+  "gate_history": "Rehearsal 1 FAILED the local gate: six static stretches (Rook on the ridge, under the belly, the nose in flight, the crew card, the hangar and the flight, the couple at the stone), a slow first second, true peak -0.8 dBFS. Fixed in the film, never in the gate: stronger arcs and pushes, the doubt beat cut in two, the crew card drifting, fewer stacked sound cues. Rehearsal 2 FAILED: two static stretches (under the belly, the couple), first second 1.53 (minimum 2.0), true peak -0.8. Fixed: four more cuts so that no low-motion shot runs 3.5 s, the opening shot rolls in, the couple walk up to the stone, narration moods evened out. Rehearsal 3 PASSED: 65 shots, mean 2.53 s, longest 3.71 s, first second 2.31, lowest cut-free 3.5 s window 1.02 (minimum 0.8), Rook acting in 28 of 65 shots (43%), -14.6 LUFS, peak -1.2 dBFS, voice 14.9 dB over the bed, closest match to any earlier episode 0.82 (the yellow aeroplane against a shot in r018-ashcraft-long; the limit is 0.93). Duration 164.3 s. The cloud render runs the real gate at 1280x720 and 60 fps.",
+  "checked": "Every kind in the storyboard exists in world3d.SHOTS3D or scenes.SHOTS (the compositor refuses to run otherwise); HOST lists the kinds in which Rook is placed; no kind is used more than three times and none twice in a row; first shot 2.0 s with an impact sound at 0.02. Re-hook at 75 s of 164 s (46%). One hush shot (37). On-screen names, dates and figures checked against the source notes: ALAN MAGEE, BALL TURRET GUNNER, A B-17, 3 JANUARY 1943, HIS 7TH MISSION, SNAP! CRACKLE! POP!, SAINT-NAZAIRE, ABOUT 20,000 FEET, 22,000 FEET, ABOUT 4 MILES, 28 SHRAPNEL WOUNDS, A BROKEN LEG AND ANKLE, A GERMAN DOCTOR, STALAG 17B, MAY 1945, PURPLE HEART, AIR MEDAL, A PILOT'S LICENCE, ALAN AND HELEN MAGEE, 1919 TO 2003, TEN MEN ABOARD, THREE LIVED. No quotation is on screen. No death or wound is shown, nothing graphic appears, and no flag, emblem, insignia, marking, nose art, inscription or likeness appears anywhere.",
+  "not_met": "No source page could be opened in this run (all hosts outside the network allowlist): the added facts rest on web-search extracts of two or more sites each, which is why the status is 'ready' (private) and not 'approved'. The audio was measured, not listened to; Kokoro's reading of 'Saint-Nazaire', 'Stalag' and 'Snap! Crackle! Pop!' could not be heard. The true peak passed at -1.2 dBFS against a limit of -1.0, and two rehearsals before it failed at -0.8: the margin is thin. Several cuts between similar skies or the two memorial views measure just under the gate's cut threshold at rehearsal resolution; the shots around them are short and moving, but the 60 fps render is the real test. The last two fixes (crew card title, second view of the couple) were checked as stills only. No frame was rendered at full resolution and production samples in this run. engine4/preview3d.py and the Animation Quality Director skill were not used; the 13-category score is from stills and strips, not playback."
+ },
+ "checklist": {
+  "A_story": "done: the Short scored 81/100 (curiosity 9, story 8, payoff 7) and the long keeps its spine; shown_moments lists every narrated moment",
+  "B_storyboard": "done: every shot has action, camera and sound cue; Rook's mannerisms and detective actions are in experiments.rook_action",
+  "B2_retention": "done: hook_text NO PARACHUTE / 4 MILES UP; first frame is the burning bomber with the figure falling away; re-hook at 46%; one hush; long-form has no loop (tail 0.9 s)",
+  "C_previews": "partly: two contact-sheet rounds and three full low-res rehearsals reviewed as stills; no full-resolution frame; see quality_gate.not_met",
+  "D_render": "engine defaults untouched (60 fps, 1280x720 for long, parallel jobs in the workflow); the local rehearsals used low settings only for review",
+  "E_sound": "voice am_fenrir; no drum loop under the sad segments; voice 14.9 dB over the bed; peak -1.2 dBFS; not listened to",
+  "F_captions": "done: insert cards moved clear of the caption band and the frame edges; labels checked against sources",
+  "G_final": "rehearsal 3 passed the local gate; the full-resolution render and the real gate happen in the workflow; uploads private ('ready')"
+ },
+ "review": {
+  "notes": [
+   "0 to 8 s: the bomber rolls over burning, NO PARACHUTE / 4 MILES UP; the figure over the cloud; down at the glass roof",
+   "8 to 12 s: Rook on the roof ridge, brim drops: no chance; the figure still falling",
+   "12 to 28 s: the airfield at dawn, the ball under the belly, him curled inside; Rook measures the ball against a pack; the pack on its hook",
+   "28 to 42 s: chalk map, formation, the ball in the air, the nose, the harbour and the pens",
+   "42 to 60 s: flak at the turret, the cracked window, he climbs out; the pack in rags, Rook tests the silk; the wing goes, the spin",
+   "60 to 75 s: the crawl, the blackout, thrown clear; his face as he falls; the two heights; Rook diving",
+   "75 to 87 s: the town below, the station from the tracks, Rook's hat jumps; the roof bursts, glass pours down",
+   "87 to 104 s: the hush under the hole; the shard; floor or girders; they find him alive; stretcher, the bed, the arm",
+   "104 to 124 s: the doctor, talking; Rook's nod; the bandage; he sits up and works the hand; the crew card",
+   "124 to 144 s: three at the wire, the gate opens; the medals; the yellow aeroplane, the flight",
+   "144 to 164 s: the memorial, Alan and Helen, the wreath; the stone alone; the board; Rook lifts his brim: I was wrong; case closed"
+  ],
+  "scores_13": {
+   "story": 4,
+   "hook": 4,
+   "character_acting": 3,
+   "animation": 3,
+   "art_direction": 3,
+   "lighting": 3,
+   "camera": 3,
+   "pacing": 4,
+   "editing": 3,
+   "narration": 3,
+   "sound": 3,
+   "captions_graphics": 3,
+   "respect_accuracy": 4
+  },
+  "weakest": "The figure over the cloud is very small in a wide frame. The harbour from above is a sketch and the bombers over it read small. The hospital shots are crowded by the plaster cast in the foreground. The chalk map is crude. Flak bursts are faceted black shapes. Narration and sound were measured, not heard, and the added facts were not checked against opened pages."
  }
 }
