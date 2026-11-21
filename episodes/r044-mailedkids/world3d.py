@@ -22,7 +22,7 @@ BAN = (5000.0, 0.0, 0.0)            # an office of the Post Office Department
 HOST = {'rook_counter', 'rook_ticket', 'rook_scale', 'rook_sack', 'rook_hatjump', 'rook_follow', 'rook_sackcheck', 'car_window',
         'rook_delivered', 'rook_notice', 'rook_laugh', 'signoff'}
 CAMFILL = {'*': 170, 'train_wide': 0, 'wheels': 60, 'car_inside': 260, 'rook_sack': 280, 'rook_sackcheck': 280, 'cousin': 260,
-           'car_window': 240, 'baby_bundle': 200, 'rook_hatjump': 320, 'rook_follow': 380, 'carrier_lane': 300, 'ohio_door': 300,
+           'car_window': 240, 'baby_bundle': 200, 'rook_hatjump': 420, 'rook_follow': 520, 'carrier_lane': 700, 'ohio_door': 160,
            'door': 320, 'rook_delivered': 300, 'ban_desk': 240, 'rook_notice': 220}
 ROOKC = dict(top='566178', belt='3E4658', lap='6B7690', pants='2A2742', hand='2F2B4D', boot='8A90A6')
 OAK, OAKD, PLANK, PLASTER, BRASS, IRON, SNOW, CANVAS = '8A5A30', '5A3A20', '9A7448', 'D8CDB4', 'D8A83A', '34363E', 'E8EEF4', 'C9B88E'
@@ -31,7 +31,7 @@ AMB = dict(                         # horizon, zenith, strength, sun watts, sun 
     post=('5A4A3A', '2A2630', 0.4, 0.0, 'FFFFFF', (0, 0, 1)),
     car=('4A4038', '26242C', 0.4, 0.0, 'FFFFFF', (0, 0, 1)),
     rail=('F2DCC8', '6E9AD0', 1.1, 3.4, 'FFE8C8', (-0.5, -0.6, 0.45)),
-    ohio=('F0A060', '3A3E78', 0.7, 2.0, 'FF9A50', (-0.8, -0.3, 0.2)),
+    ohio=('F0A060', '3A3E78', 1.0, 3.2, 'FF9A50', (-0.6, -0.6, 0.25)),
     lew=('CFE0F4', '6E90C8', 1.0, 2.6, 'FFF0DC', (0.5, -0.7, 0.5)),
     ban=('4A4038', '26222C', 0.4, 0.0, 'FFFFFF', (0, 0, 1)))
 _KEEP = []
@@ -108,12 +108,16 @@ def room(o, w, d, h, wall, floor, ceil='3A3028', front=False):
         box(wall, at(o, 0, -d / 2, h / 2), (w, 0.2, h))
 
 
-def head_of(skin, hair, hat=None, tache=None, bun=False, braids=None, bald=False, glasses=False, beard=None):
+def head_of(skin, hair, hat=None, tache=None, bun=False, braids=None, bald=False, glasses=False, beard=None, smile=False):
     def fn(head):
         d = K.human_head(skin, skin if bald else hair)(head)
         if bald:
             for s in (-1, 1):
                 ball(hair, (s * 0.24, 0.08, 0.02), 0.16, head, scale=(0.5, 0.9, 0.8))
+        if smile:                                                     # upturned corners and round cheeks
+            for s in (-1, 1):
+                box('2A1218', (s * 0.105, -0.012, 0.005), (0.035, 0.03, 0.075), d['jaw'], rot=(0, s * 0.5, 0))
+                ball('F0A090', (s * 0.2, -0.2, -0.05), 0.07, head)
         if tache:
             for s in (-1, 1):
                 box(tache, (s * 0.085, -0.3, -0.065), (0.17, 0.06, 0.06), head, rot=(0, s * 0.3, s * 0.25))
@@ -162,6 +166,16 @@ def person(S, name, cols, headfn, scale=1.0, skirt=None):
 def make_post(S):
     o = POST
     room(o, 13, 10, 6.2, PLASTER, PLANK)
+    box(PLANK, at(o, 0, -6.0, -0.1), (13, 2.0, 0.2))
+    box('3A3028', at(o, 0, -6.0, 6.3), (13, 2.0, 0.2))
+    box(PLASTER, at(o, 0, -7.0, 3.1), (13, 0.2, 6.2))
+    for s in (-1, 1):
+        box(PLASTER, at(o, s * 6.5, -6.0, 3.1), (0.2, 2.0, 6.2))
+    box(OAKD, at(o, 3.2, -6.86, 2.0), (2.2, 0.1, 4.0))                 # the street door
+    box('BFE0FF', at(o, 3.2, -6.8, 3.0), (1.4, 0.06, 1.2), emit=2.2)
+    box('BFE0FF', at(o, -1.6, -6.86, 3.3), (3.0, 0.06, 2.4), emit=2.4)
+    box(OAKD, at(o, -1.6, -6.82, 3.3), (3.2, 0.1, 0.12))
+    box(OAKD, at(o, -1.6, -6.82, 3.3), (0.12, 0.1, 2.6))
     box(OAK, at(o, 2.6, 1.5, 0.95), (7.4, 0.9, 1.9))                 # the counter
     box(OAKD, at(o, 2.6, 1.45, 1.94), (7.7, 1.2, 0.1))
     for i in range(4):
@@ -220,7 +234,7 @@ def make_post(S):
 def make_car(S):
     o = CAR
     room(o, 13, 5.4, 5.0, '7A5A3A', '6A4A2C', ceil='5A4030')
-    for i in range(14):                                               # tongue-and-groove boards
+    for i in (0, 1, 2, 6, 7, 8, 9, 10, 11, 12, 13):                   # tongue-and-groove boards
         box('5E4428', at(o, -6.0 + i * 0.93, 2.58, 2.5), (0.05, 0.04, 5.0))
     for ix in range(6):                                               # the letter case
         for iz in range(5):
@@ -237,8 +251,7 @@ def make_car(S):
         box(OAKD, at(o, -2.6 + s * 1.38, 2.52, 2.5), (0.16, 0.14, 3.9))
     box(OAKD, at(o, -2.6, 2.52, 4.4), (2.9, 0.14, 0.16))
     box('8A6A44', at(o, -4.7, 2.5, 2.5), (1.4, 0.1, 3.7))
-    S['poles'] = [keep(box('5A6A80', FAR, (0.16, 0.03, 3.6), emit=0.3)) for _ in range(3)]
-    S['hillsC'] = [keep(cone('9FB8D8', FAR, 1.6, 0.0, 1.6, rot=(0, 0, 0), v=4, emit=0.5)) for _ in range(3)]
+    S['poles'] = [keep(box('5A6A80', FAR, (0.14, 0.03, 3.6), emit=0.3)) for _ in range(1)]
     light(at(o, -2.6, 1.6, 3.2), 700, 'D8E8FF', size=2.4, target=K.empty(at(o, -1.5, -0.5, 1.0)))
     S['carlamp'] = K.empty(at(o, 1.0, 0.0, 4.9))
     cyl(IRON, (0, 0, -0.4), 0.025, 0.8, S['carlamp'])
@@ -254,7 +267,7 @@ def make_car(S):
     S['seat_at'] = at(o, -1.2, 0.3, 0.0)
     ball(CANVAS, at(o, -1.2, 0.75, 0.55), 0.85, scale=(1.1, 0.9, 0.7))          # the sack she sits on
     for i in range(4):
-        box(('B08A58', 'A47A48')[i % 2], at(o, -3.3 + 0.8 * (i % 2), -1.2 + 0.2 * i, 0.4 + 0.75 * (i // 2)), (0.9, 0.8, 0.75), rot=(0, 0, 0.3 * i))
+        box(('B08A58', 'A47A48')[i % 2], at(o, -5.9 + 0.8 * (i % 2), -1.5 + 0.2 * i, 0.4 + 0.75 * (i // 2)), (0.9, 0.8, 0.75), rot=(0, 0, 0.3 * i))
 
 
 def make_rail(S):
@@ -280,7 +293,7 @@ def make_rail(S):
         cone('2E5A46', at(o, x, y, 1.0 + h / 2), 1.2 + 0.4 * rnd(i, 8), 0.0, h, v=6)
         cone(SNOW, at(o, x, y, 1.0 + h * 0.86), 0.5, 0.0, h * 0.34, v=6)
     for i in range(10):
-        x, y = -60 + 120 * rnd(i, 11), -6 - 10 * rnd(i, 12)
+        x, y = -90 + 60 * rnd(i, 11), -6 - 10 * rnd(i, 12)
         cone('2E5A46', at(o, x, y, 2.2), 1.3, 0.0, 4.4, v=6)
     tr = S['train'] = keep(K.empty(FAR))                              # origin on the rails under the engine's cab
     cyl('22252C', (3.4, 0, 2.3), 1.05, 5.6, tr, rot=(0, PI / 2, 0), v=12, rough=0.5)        # boiler
@@ -341,7 +354,7 @@ def make_ohio(S):
     box('7A2E22', (0.7, 0, 1.45), (1.4, 0.1, 2.9), S['odoor'])
     for s in (-1, 1):
         box('FFD080', at(o, hx + s * 2.9, hy - 0.03, 3.2), (1.3, 0.06, 1.6), emit=4.0)
-    light(at(o, hx, hy - 3.0, 3.2), 500, 'FFC070', size=2.0, target=K.empty(at(o, hx, hy - 0.5, 2.0)))
+    light(at(o, hx, hy - 3.0, 3.2), 160, 'FFC070', size=2.0, target=K.empty(at(o, hx, hy - 0.5, 2.0)))
     box(OAKD, at(o, -9, 7, 3.0), (0.5, 0.5, 6.0))                     # a bare tree
     for i in range(7):
         a = i * 0.9
@@ -414,7 +427,7 @@ def make_ban(S):
     cyl(BRASS, at(o, 2.3, 1.7, 2.3), 0.05, 0.9, rough=0.3)            # a desk lamp
     cone('2E7A4A', at(o, 2.3, 1.7, 2.85), 0.5, 0.12, 0.34, v=10)
     ball('FFE8B0', at(o, 2.3, 1.7, 2.72), 0.13, emit=7.0)
-    S['paper_at'] = at(o, 0.3, 0.7, 1.87)
+    S['paper_at'] = at(o, 0.55, 1.95, 1.87)
     box('F2EAD6', S['paper_at'], (1.5, 1.1, 0.03))
     for i in range(4):
         box('3A3430', plus(S['paper_at'], (0, 0.35 - i * 0.16, 0.02)), (1.1 - 0.2 * rnd(i, 9), 0.05, 0.01))
@@ -424,7 +437,8 @@ def make_ban(S):
 def make_cast(S):
     S['humans'] = []
     S['rook'] = K.Rig(ROOKC, K.rook_head, coat=True)
-    m = person(S, 'may', dict(top=MAYCOAT, pants='3A3A4A', hand='E8B890', boot='5A3A28'), head_of('E8B890', '7A4A22', hat='bonnet', braids=STAMP1), 0.62, skirt=MAYCOAT)
+    m = person(S, 'may', dict(top=MAYCOAT, pants='3A3A4A', hand='E8B890', boot='5A3A28'), head_of('E8B890', '7A4A22', hat='bonnet', braids=STAMP1, smile=True), 0.62, skirt=MAYCOAT)
+    m.head.scale = (1.32, 1.32, 1.32)
     S['stamps'] = []
     for i, (x, z, c) in enumerate(((-0.14, 0.82, STAMP1), (0.0, 0.82, STAMP2), (0.14, 0.82, STAMP1), (-0.07, 0.64, STAMP2), (0.07, 0.64, '4A9A5A'))):
         st = K.empty((x, -0.375, z), m.body, (0.07, 0, 0))
@@ -440,14 +454,15 @@ def make_cast(S):
     for i in range(4):
         ball(BRASS, (0, -0.35, 0.3 + i * 0.2), 0.035, S['mochel'].body, rough=0.3)
     person(S, 'carrier', dict(top='6A7078', pants='5A6068', hand='D8A078', boot='2A2420'), head_of('D8A078', '8A8A8A', hat='cap', tache='8A8A8A'))
-    box('8A5A30', (-0.42, 0.0, 0.2), (0.3, 0.7, 0.8), S['carrier'].body)                   # his mail satchel
+    box('8A5A30', (-0.4, 0.0, 0.15), (0.22, 0.5, 0.55), S['carrier'].body)                   # his mail satchel
     box('5A3A20', (0, 0, 0.75), (0.9, 0.08, 0.1), S['carrier'].body, rot=(0, 0.7, 0))
     person(S, 'gran', dict(top='6A5A7A', pants='4A4458', hand='E8C0A0', boot='2A2420'), head_of('E8C0A0', 'D8D8DC', bun=True, glasses=True), 0.92, skirt='4A4458')
     box('F2EAD6', (0, -0.3, 0.2), (0.5, 0.06, 0.7), S['gran'].body)                        # an apron
     person(S, 'gran2', dict(top='8A5A3A', pants='5A4030', hand='E0B090', boot='2A2420'), head_of('E0B090', 'B8B0A8', bun=True), 0.95, skirt='5A4030')
     person(S, 'boss', dict(top='2A2A32', pants='2A2A32', hand='E0A880', boot='1A1A20'), head_of('E0A880', 'B0B0B0', bald=True, glasses=True, tache='B0B0B0'))
     box('F2EAD6', (0, -0.3, 0.75), (0.2, 0.06, 0.4), S['boss'].body)
-    person(S, 'kid2', dict(top='B8862E', pants='4A3A2A', hand='D8A078', boot='2A2420'), head_of('D8A078', '2A1E16', hat='flat'), 0.58)
+    person(S, 'kid2', dict(top='B8862E', pants='4A3A2A', hand='D8A078', boot='2A2420'), head_of('D8A078', '2A1E16', hat='flat', smile=True), 0.58)
+    S['kid2'].head.scale = (1.3, 1.3, 1.3)
     box('F2E2B8', (0.0, -0.37, 0.7), (0.26, 0.012, 0.17), S['kid2'].body)
     box(STAMP1, (-0.06, -0.38, 0.72), (0.08, 0.012, 0.1), S['kid2'].body, emit=0.3)
     person(S, 'mum2', dict(top='3A5A6A', pants='3A5A6A', hand='D8A078', boot='2A2420'), head_of('D8A078', '2A1E16', bun=True), skirt='3A5A6A')
@@ -456,8 +471,9 @@ def make_cast(S):
 
 
 def make_props(S):
-    S['hand'] = K.Hand('E0A880', 'E8E0D0', 0.9)
-    keep(S['hand'].root).location = FAR
+    S['hand'] = K.Hand('E0A880', 'E8E0D0', 0.62)
+    S['hand'].root.location = FAR
+    keep(S['hand'].root)
     S['hstamp'] = keep(K.empty(FAR))
     box('F4EEDC', (0, 0, 0), (0.16, 0.014, 0.19), S['hstamp'])
     box(STAMP2, (0, -0.008, 0), (0.12, 0.014, 0.15), S['hstamp'], emit=0.3)
@@ -586,8 +602,8 @@ def finish(S, t):
             s = (-1, 1)[i]
             br.location.z = 0.125 + (0.05 if f in ('wide', 'happy') else -0.022 if f == 'hard' else 0.0)
             br.rotation_euler = (0, s * 0.12 + (s * 0.34 if f == 'wide' else s * -0.42 if f == 'hard' else 0.0), 0)
-        x['mouth'].scale = (0.22 if f in ('warm', 'happy') else 0.13, 0.03, 0.035 + 0.15 * rig.jawv + (0.05 if f == 'wide' else 0.06 if f == 'happy' else 0))
-        x['mouth'].location.z = -0.02 - 0.05 * rig.jawv
+        x['mouth'].scale = (0.17 if f in ('warm', 'happy') else 0.13, 0.03, (0.035 + 0.05 * rig.jawv) if f in ('warm', 'happy') else 0.035 + 0.13 * rig.jawv + (0.05 if f == 'wide' else 0))
+        x['mouth'].location.z = -0.02 - 0.03 * rig.jawv
 
 
 # ---------------------------------------------------------------- helpers for the shots
@@ -670,12 +686,7 @@ def sway(S, t, amt=1.0):
     S['cam'].rotation_euler = (0, 0, 0.018 * amt * math.sin(t * 2.9 + 0.5))
     for i, p in enumerate(S['poles']):
         x = ((t * 9.0 + i * 1.3) % 3.4) - 1.7
-        p.location = at(CAR, -2.6 - x * 0.72, 2.59, 2.5)
-        p.scale = (1, 1, 1) if abs(x) < 1.6 else (0, 0, 0)
-    for i, h in enumerate(S['hillsC']):
-        x = ((t * 1.6 + i * 1.7) % 5.0) - 2.5
-        h.location = at(CAR, -2.6 - x * 0.5, 2.6, 1.4 + 0.3 * i)
-        h.scale = (1, 0.02, 1) if abs(x) < 1.0 else (0, 0, 0)
+        p.location = at(CAR, -2.6 - x * 0.8, 2.59, 2.5)
 
 
 def train_at(S, x, t, speed=14.0):
@@ -704,26 +715,30 @@ def scale_girl(S, k, t, lt):
     hand comes in from the right with one more stamp. With prm "loop" the camera closes in on the moment before."""
     amb(S, 'post')
     loop = S['prm'].get('loop')
-    hop = 0.0 if loop else 0.45 * max(0.0, 1 - k / 0.1) ** 2
+    ka = 0.0 if loop else k
+    crouch = math.sin(sm((k - 0.55) / 0.3) * PI) * 0.12 if loop else 0.0
+    hop = 0.45 * sm((k - 0.8) / 0.2) if loop else 0.45 * max(0.0, 1 - k / 0.1) ** 2
     land = 0.0 if loop else math.exp(-max(0.0, k - 0.1) * 9) * math.sin(max(0.0, k - 0.1) * 40) * 0.06
-    m = may_on_scale(S, t, P('stand', aL=(0.1, 0.5 - 0.3 * sm(k / 0.2), 0.3), aR=(0.1, 0.5 - 0.3 * sm(k / 0.2), 0.3), head=(-0.15, 0.25 - 0.3 * sm(k))),
-                     'happy', 0.08, hop + land)
+    m = may_on_scale(S, t, P('stand', aL=(0.1, 0.5 - 0.3 * sm(ka / 0.2), 0.3), aR=(0.1, 0.5 - 0.3 * sm(ka / 0.2), 0.3), head=(-0.15, 0.25 - 0.3 * sm(ka)),
+                                 lift=-crouch, lL=(crouch * 2, crouch * 4), lR=(crouch * 2, crouch * 4)), 'happy', 0.08, hop + land)
     m.jawv = 0.5
     needle(S, 0.0 if loop else max(0.0, (k - 0.1) / 0.9), wob=0.5)
     clerk_behind(S, t, P('stand', aL=(0.5, 0.2, 1.5), aR=(0.7, 0.1, 1.3), head=(0.2, 0.5)), 'calm', 0.3)
     h = head(m)
     reach = 0.0 if loop else sm((k - 0.35) / 0.45)
-    S['hand'].place(mix(plus(h, (2.2, -0.9, -0.3)), plus(h, (0.52, -0.5, -0.5)), reach), (0.0, 0.0, PI / 2 - 0.15))
+    S['hand'].place(mix(plus(h, (2.2, -0.9, -0.3)), plus(h, (0.62, -0.42, -0.62)), reach), (0.0, 0.0, -PI / 2 + 0.15))
     S['hand'].grip(0.55)
     hl = S['hand'].root.location
-    S['hstamp'].location = (hl[0] - 0.32, hl[1] - 0.02, hl[2] - 0.04)
+    S['hstamp'].location = (hl[0] - 0.24, hl[1] - 0.04, hl[2] - 0.03)
     S['hstamp'].rotation_euler = (0.1, 0, 0.3)
-    c0, l0 = plus(h, (-0.5, -3.4, 0.25)), plus(h, (0.12, 0, -0.08))
+    c0, l0 = plus(h, (-0.4, -2.5, 0.2)), plus(h, (0.12, 0, -0.1))
     if loop:
-        kk = sm(k)
-        cam(S, mix(plus(h, (2.6, -7.5, 1.6)), c0, kk), mix(plus(h, (0.6, 0, 0.6)), l0, kk), lerp(26, 36, kk))
+        kk = sm(k / 0.8)
+        hb = plus(S['scale_at'], (0, 0, h[2] - m.root.location[2]))
+        c0, l0 = plus(hb, (-0.4, -2.5, 0.2 + hop)), plus(hb, (0.12, 0, -0.1 + hop))
+        cam(S, mix(plus(hb, (2.6, -7.5, 1.6)), c0, kk), mix(plus(hb, (0.6, 0, 0.6)), l0, kk), lerp(26, 36, kk))
     else:
-        cam(S, mix(c0, plus(h, (-0.2, -2.7, 0.3)), sm(k)), mix(l0, plus(h, (0.2, 0, -0.12)), sm(k)), 36)
+        cam(S, mix(c0, plus(h, (-0.15, -1.9, 0.2)), sm(k)), mix(l0, plus(h, (0.2, 0, -0.18)), sm(k)), 36)
 
 
 def dial(S, k, t, lt):
@@ -746,14 +761,14 @@ def stamp_on(S, k, t, lt):
     press = sm(k / 0.4)
     thump = 0.12 * math.exp(-max(0, k - 0.4) * 10) * math.sin(max(0, k - 0.4) * 30)
     S['stamps'][4].scale = (1, 1, 1) if k > 0.38 else (0, 0, 0)
-    hp = mix(plus(st, (1.3, -1.0, 0.5)), plus(st, (0.36, -0.1 - thump, 0.02)), press)
+    hp = mix(plus(st, (1.3, -0.8, -0.3)), plus(st, (0.25, -0.08 - thump, -0.02)), press)
     if k > 0.7:
-        hp = mix(hp, plus(st, (1.8, -0.8, 0.4)), sm((k - 0.7) / 0.3))
-    S['hand'].place(hp, (0.25, 0.0, PI / 2 - 0.1))
+        hp = mix(hp, plus(st, (1.6, -0.6, -0.4)), sm((k - 0.7) / 0.3))
+    S['hand'].place(hp, (0.0, 0.0, -PI / 2 + 0.2))
     S['hand'].grip(0.25)
     if k <= 0.38:
-        S['hstamp'].location = (hp[0] - 0.36, hp[1] - 0.02, hp[2] - 0.02)
-    cam(S, plus(st, (-0.35, -2.1, 0.45)), plus(st, (0.05, 0, 0.22)), 40)
+        S['hstamp'].location = (hp[0] - 0.25, hp[1] - 0.03, hp[2] + 0.02)
+    cam(S, plus(st, (-0.35, -2.0, 0.5)), plus(st, (0.05, 0, 0.3)), 40)
     orbit(S, k, 16, 0.25, 0.0)
 
 
@@ -770,7 +785,7 @@ def rook_counter(S, k, t, lt):
     needle(S, 1.0)
     clerk_behind(S, t, P('stand', aL=(0.6, 0.1, 1.2), aR=(0.9, 0.0, 1.6), head=(0.3, 0.2)), 'calm', 2.4)
     h = head(rk)
-    cam(S, plus(h, (0.3, -4.6, -0.2)), plus(h, (-0.75, 0.0, -0.45)), 32)
+    cam(S, plus(h, (0.2, -5.2, -0.2)), plus(h, (-1.0, 0.0, -0.5)), 30)
     orbit(S, k, 16, 0.22, 0.0)
 
 
@@ -778,9 +793,9 @@ def parents(S, k, t, lt):
     """Her father counts coins out onto the counter one by one, her mother beside him; the clerk slides stamps across."""
     amb(S, 'post')
     fl = at(POST, 2.3, 0.45, 0)
-    stand(S['father'], fl, PI, P('stand', aR=(1.0 + 0.12 * math.sin(lt * 10), 0.0, 0.9), aL=(0.2, 0.1, 0.3), head=(0.35, 0.0), lean=0.12), 'calm')
+    stand(S['father'], fl, PI, P('stand', aR=(1.0 + 0.12 * math.sin(lt * 10), 0.0, 0.9), aL=(0.2, 0.1, 0.3), head=(0.15, 0.0), lean=0.1), 'calm')
     stand(S['mother'], at(POST, 3.6, 0.3, 0), PI - 0.25, P('stand', aL=(0.7, -0.1, 1.5, 0.8), aR=(0.7, -0.1, 1.5, 0.8), head=(0.2, 0.3)), 'warm')
-    clerk_behind(S, t, P('stand', aR=(1.0, 0.0, 0.8), aL=(0.5, 0.1, 1.2), head=(0.4, 0.0), lean=0.15), 'calm', 2.6)
+    clerk_behind(S, t, P('stand', aR=(1.0, 0.0, 0.8), aL=(0.5, 0.1, 1.2), head=(0.4, 0.0), lean=0.15), 'calm', 3.3)
     n = int(min(6, k * 7.5))
     for i, c in enumerate(S['coins']):
         if i < n:
@@ -791,8 +806,8 @@ def parents(S, k, t, lt):
     S['rstamp'].rotation_euler = (PI / 2, 0, 0.2)
     may_on_scale(S, t, None, 'happy', -0.4)
     needle(S, 1.0)
-    cam(S, at(POST, 5.3, -1.6, 3.4), at(POST, 2.4, 1.3, 2.2), 30)
-    orbit(S, k, -20, 0.25, -0.3)
+    cam(S, at(POST, 0.9, 3.9, 2.95), at(POST, 2.8, 0.5, 2.5), 26)
+    orbit(S, k, 18, 0.2, -0.3)
 
 
 def coat_close(S, k, t, lt):
@@ -817,7 +832,7 @@ def rook_ticket(S, k, t, lt):
     look = math.sin(lt * 4.5) * (1 - sm((k - 0.6) / 0.2))
     drop = sm((k - 0.62) / 0.3)
     loc = at(POST, -3.9, -2.2, 0)
-    stand(rk, loc, 0.35, P('stand', aR=(1.5, 0.35, 1.0, 0.2), aL=(1.5 - 0.9 * drop, 0.35, 1.0, 0.2), head=(0.0, 0.45 * look)))
+    stand(rk, loc, 0.35, P('stand', aR=(0.75, 0.7, 1.35, 0.0), aL=(0.75 - 0.5 * drop, 0.7, 1.35, 0.0), head=(0.1, 0.5 * look)))
     S['rface'] = 'squint' if k < 0.6 else 'low'
     S['hat_tip'] = 0.3 * drop
     S['rstamp'].location = plus(hand(rk, 1), (0, -0.08, 0.14))
@@ -836,16 +851,16 @@ def rook_scale(S, k, t, lt):
     amb(S, 'post')
     rk = S['rook']
     d = S['dial_at']
-    loc = at(POST, -1.45, 0.75, 0)
+    loc = at(POST, -1.2, 0.35, 0)
     up = sm(k / 0.3)
-    stand(rk, loc, facing(loc, d) , P('stand', aR=(2.3 * up + 0.3, 0.1, 0.5), aL=(0.3, 0.1, 0.8), head=(-0.45 * up, 0.0), lift=0.12 * up, lL=(0, 0), lean=-0.05))
+    stand(rk, loc, facing(loc, d) * 0.45, P('stand', aR=(2.3 * up + 0.3, 0.1, 0.5), aL=(0.3, 0.1, 0.8), head=(-0.45 * up, 0.0), lift=0.12 * up, lL=(0, 0), lean=-0.05))
     S['rface'] = 'squint'
     hr = hand(rk, 1)
-    S['glass'].location = plus(hr, (-0.15, -0.05, 0.5))
+    S['glass'].location = plus(hr, (-0.25, -0.05, 0.3))
     S['glass'].rotation_euler = (0, 0.25 + 0.1 * math.sin(lt * 3), 0.5)
     may_on_scale(S, t, P('stand', aL=(0.0, 0.3, 0.2), aR=(0.0, 0.3, 0.2), head=(-0.45, -0.6)), 'wide', 0.2)
     needle(S, 1.0, 1.72 + 0.03 * math.sin(lt * 7))
-    cam(S, plus(d, (1.0, -4.6, -1.3)), plus(d, (0.35, 0, -0.75)), 34)
+    cam(S, plus(d, (-0.9, -5.0, -1.2)), plus(d, (0.6, 0, -0.8)), 32)
     orbit(S, k, 24, 0.28, 0.4)
 
 
@@ -857,9 +872,9 @@ def weigh_wide(S, k, t, lt):
     needle(S, 1.0, 1.72 + 0.04 * math.sin(lt * 8))
     cl = at(POST, -0.9, 0.9, 0)
     stand(S['clerk'], cl, facing(cl, S['dial_at']), P('stand', aR=(1.0, 0.1, 1.6 + 0.2 * math.sin(lt * 14)), aL=(0.9, 0.0, 1.5), head=(-0.3 + 0.5 * sm((k - 0.5) / 0.2), 0.0)), 'calm')
-    stand(S['father'], at(POST, 1.6, -0.6, 0), 2.2, P('hips'), 'calm')
-    stand(S['mother'], at(POST, 2.7, -0.2, 0), 2.4, P('stand', aL=(0.7, -0.1, 1.5, 0.8), aR=(0.7, -0.1, 1.5, 0.8)), 'warm')
-    cam(S, at(POST, 1.8, -6.6, 3.0), at(POST, -1.4, 1.0, 2.3), 26)
+    stand(S['father'], at(POST, 0.7, -0.3, 0), 2.2, P('hips'), 'calm')
+    stand(S['mother'], at(POST, 1.7, 0.2, 0), 2.4, P('stand', aL=(0.7, -0.1, 1.5, 0.8), aR=(0.7, -0.1, 1.5, 0.8)), 'warm')
+    cam(S, at(POST, 1.0, -5.0, 2.8), at(POST, -1.2, 1.0, 2.3), 28)
     orbit(S, k, 26, 0.3, 0.5)
 
 
@@ -872,11 +887,11 @@ def limit(S, k, t, lt):
     a = 2.0
     tip = plus(d, (0.66 * math.sin(a), -0.12, 0.66 * math.cos(a)))
     tap = abs(math.sin(lt * 7))
-    S['hand'].place(plus(tip, (0.55 + 0.1 * tap, -0.1, -0.25 - 0.08 * tap)), (0.3, 0.9, PI / 2))
+    S['hand'].place(plus(tip, (0.25 + 0.06 * tap, -0.12, -0.03 - 0.03 * tap)), (0.0, 0.5, -PI / 2))
     S['hand'].grip(0.75)
     S['hand'].f[0][0].rotation_euler = (0, 0, 0)
     S['hand'].f[0][1].rotation_euler = (0, 0, 0)
-    cam(S, plus(d, (-0.5, -2.3, -0.2)), plus(d, (0.2, 0, 0.0)), 42)
+    cam(S, plus(d, (-0.3, -2.4, -0.25)), plus(d, (0.5, 0, -0.12)), 42)
     orbit(S, k, 18, 0.25, 0.0)
 
 
@@ -884,9 +899,9 @@ def limit(S, k, t, lt):
 def train_wide(S, k, t, lt):
     """The mail train comes round through the snowy hills towards us, smoke streaming back, pines and poles going by."""
     amb(S, 'rail')
-    x = lerp(-34, 4, k)
+    x = lerp(-22, 6, k)
     train_at(S, x, t)
-    cam(S, at(RAIL, 16 - 5 * k, -13, 2.2 + 1.5 * k), at(RAIL, x - 2, 0, 3.4), 24)
+    cam(S, at(RAIL, 15 - 4 * k, -8.5, 1.8 + 1.6 * k), at(RAIL, x + 1, 0, 3.2), 24)
 
 
 def wheels(S, k, t, lt):
@@ -919,8 +934,8 @@ def car_inside(S, k, t, lt):
     may_seat(S, t)
     S['case'].location = at(CAR, 0.1, 0.0, 0.2)
     S['case'].rotation_euler = (0, 0, 0.3)
-    sorter(S, t, look=-0.5 * sm((k - 0.5) / 0.3))
-    cam(S, at(CAR, 0.8, -6.4, 2.6), at(CAR, 0.6, 0.6, 2.0), 24)
+    sorter(S, t, 2.1, look=-0.5 * sm((k - 0.5) / 0.3))
+    cam(S, at(CAR, 0.5, -5.2, 2.5), at(CAR, 0.45, 0.8, 1.9), 28)
     orbit(S, k, -22, 0.25, 0.0)
 
 
@@ -956,8 +971,8 @@ def rook_sackcheck(S, k, t, lt):
     S['rface'] = 'squint' if peer > 0.5 else 'calm'
     hl, hr = hand(rk, 0), hand(rk, 1)
     mid = mix(hl, hr, 0.5)
-    S['sack'].location = plus(mid, (0, -0.1, -0.1 + 0.08 * shake))
-    S['sack'].rotation_euler = (-1.5 * peer, 0.12 * shake, 0)
+    S['sack'].location = plus(mid, (0, -0.1, 0.05 + 0.5 * peer + 0.08 * shake))
+    S['sack'].rotation_euler = (-0.5 * peer, 0.12 * shake, 0)
     for i, l in enumerate(S['letters']):
         a = max(0.0, lt * 1.3 - 0.08 * i)
         z = mid[2] - 0.2 - 4.5 * a * a
@@ -994,10 +1009,10 @@ def car_window(S, k, t, lt):
     m = stand(S['may'], plus(dz, (-0.2, 0, 0)), PI + 0.2, P('stand', aR=(1.9 + 0.2 * math.sin(lt * 8), 0.3, 0.3), aL=(0.3, 0.2, 0.3), head=(-0.2, 0.5 * math.sin(lt * 1.8))), 'wide')
     stand(S['mochel'], plus(dz, (0.75, -0.55, 0)), PI - 0.3, P('stand', aL=(0.8, 0.3, 0.9), aR=(0.2, 0.1, 0.3), head=(0.25, -0.3)), 'warm')
     rk = S['rook']
-    stand(rk, plus(dz, (-1.5, -0.7, 0)), 0.9, P('hat', head=(0.0, -0.5 + 0.2 * math.sin(lt * 2)), lean=-0.1))
+    stand(rk, plus(dz, (-1.25, -0.5, 0)), 0.8, P('hat', head=(0.0, -0.5 + 0.2 * math.sin(lt * 2)), lean=-0.1))
     S['rface'], S['hat_tip'] = 'calm', 0.2 + 0.2 * abs(math.sin(lt * 6))
     S['hat_jump'] = 0.03 * abs(math.sin(lt * 11))
-    cam(S, plus(dz, (0.6, -5.0, 2.6)), plus(dz, (-0.4, 0, 1.8)), 30)
+    cam(S, plus(dz, (0.4, -4.6, 2.5)), plus(dz, (-0.3, 0, 1.9)), 30)
     orbit(S, k, -24, 0.25, 0.0)
 
 
@@ -1020,20 +1035,20 @@ def rook_hatjump(S, k, t, lt):
     a feather comes loose."""
     amb(S, 'ohio')
     rk = S['rook']
-    loc = at(OHIO, -4.3, -2.6, 0)
-    cx = lerp(-2.6, 0.8, k)
+    loc = at(OHIO, -1.4, -2.8, 0)
+    cx = lerp(-2.4, 1.2, k)
     cl = at(OHIO, cx, 0.2, 0)
     c = stand(S['carrier'], cl, PI / 2, step(t, 1.5, head=(0.2, 0.0), **CRADLE), 'warm')
     carry_baby(S, c, cl, PI / 2, 0.02 * math.sin(t * 9))
     shock = sm((k - 0.15) / 0.15)
-    stand(rk, loc, facing(loc, cl) * 0.6, blend(P('stand'), P('scream', head=(-0.1, 0.25)), shock))
+    stand(rk, loc, 0.45, blend(P('stand', head=(0.0, 0.5)), P('scream', head=(-0.1, 0.35)), shock))
     S['rface'] = 'shocked' if shock > 0.3 else 'calm'
     S['hat_jump'] = 0.5 * math.sin(min(1.0, max(0.0, (k - 0.15) / 0.5)) * PI)
     h = head(rk)
     f = max(0.0, k - 0.3)
     S['feather'].location = plus(h, (0.5 + 0.3 * math.sin(f * 14), -0.2, 0.2 - 1.6 * f))
     S['feather'].rotation_euler = (f * 6, 0.5, f * 9)
-    cam(S, plus(h, (-0.6, -4.2, -0.2)), plus(h, (0.55, 0, -0.1)), 32)
+    cam(S, plus(h, (-0.2, -4.4, -0.3)), plus(h, (0.3, 0, -0.1)), 30)
     orbit(S, k, 18, 0.22, 0.0)
 
 
@@ -1044,7 +1059,7 @@ def carrier_lane(S, k, t, lt):
     cl = at(OHIO, cx, 0.3, 0)
     c = stand(S['carrier'], cl, PI / 2 + 0.2, step(t, 1.5, head=(0.15, 0.0), **CRADLE), 'warm')
     carry_baby(S, c, cl, PI / 2 + 0.2, 0.02 * math.sin(t * 9))
-    cam(S, at(OHIO, -7.5, -6.0, 1.6), at(OHIO, cx + 2.0, 2.0, 2.6), 26)
+    cam(S, at(OHIO, cx - 3.2, -4.6, 1.5), at(OHIO, cx + 1.6, 1.6, 2.5), 26)
     orbit(S, k, 12, 0.2, 1.2)
 
 
@@ -1056,10 +1071,10 @@ def rook_follow(S, k, t, lt):
     c = stand(S['carrier'], cl, PI / 2, step(t, 1.5, head=(0.3, -0.3), **CRADLE), 'warm')
     carry_baby(S, c, cl, PI / 2, 0.02 * math.sin(t * 9))
     rk = S['rook']
-    rl = at(OHIO, cx + 0.9, -1.25, 0)
-    stand(rk, rl, PI / 2 - 0.9, step(t + 0.3, 1.9, aR=(1.25, -0.25, 2.2, 0.6), lean=0.3, head=(0.3, 0.2)))
+    rl = at(OHIO, cx - 1.35, -0.7, 0)
+    stand(rk, rl, PI / 2 - 0.55, step(t + 0.3, 1.9, aR=(1.25, -0.25, 2.2, 0.6), lean=0.3, head=(0.3, 0.2)))
     S['rface'] = 'soft'
-    cam(S, at(OHIO, cx + 4.6, -4.6, 2.2), at(OHIO, cx + 0.5, -0.4, 2.2), 32)
+    cam(S, at(OHIO, cx + 3.6, -4.6, 2.3), at(OHIO, cx - 0.4, -0.3, 2.25), 32)
     orbit(S, k, -14, 0.15, 0.0)
 
 
@@ -1070,12 +1085,13 @@ def ohio_door(S, k, t, lt):
     op = sm(k / 0.3)
     S['odoor'].rotation_euler = (0, 0, 1.7 * op)
     give = sm((k - 0.4) / 0.4)
-    cl = plus(d, (-0.5, -1.25, -0.6))
-    c = stand(S['carrier'], cl, PI - 0.4, P('stand', aL=(0.75 + 0.5 * give, -0.2, 1.5 - 0.9 * give, 0.9), aR=(0.75 + 0.5 * give, -0.2, 1.5 - 0.9 * give, 0.9), head=(0.1, 0.0)), 'warm')
-    S['baby'].location = plus(off(cl, PI - 0.4, (0.05, -0.52 - 0.45 * give, 1.95 + 0.1 * give)), (0, 0, 0))
-    S['baby'].rotation_euler = (0.1, 0, PI - 0.4 + PI)
-    g = stand(S['gran2'], plus(d, (0.2, 0.75 - 0.6 * op, 0)), -0.3, blend(P('stand'), P('scream', head=(0.1, 0.0)), sm((k - 0.25) / 0.2)), 'wide', 0.7)
-    cam(S, plus(d, (-2.6, -6.2, 1.9)), plus(d, (-0.1, 0, 1.7)), 32)
+    cl = plus(d, (1.15, -0.1, 0))
+    cy = facing(cl, plus(d, (-0.2, 0.6, 0)))
+    c = stand(S['carrier'], cl, cy, P('stand', aL=(0.75 + 0.5 * give, -0.2, 1.5 - 0.9 * give, 0.9), aR=(0.75 + 0.5 * give, -0.2, 1.5 - 0.9 * give, 0.9), head=(0.1, 0.0)), 'warm')
+    S['baby'].location = off(cl, cy, (0.05, -0.52 - 0.4 * give, 1.95 + 0.1 * give))
+    S['baby'].rotation_euler = (0.1, 0, cy + PI)
+    g = stand(S['gran2'], plus(d, (-0.25, 1.5 - 0.9 * op, 0)), 0.35, blend(P('stand'), P('scream', head=(0.1, 0.0)), sm((k - 0.25) / 0.2)), 'wide', 0.7)
+    cam(S, plus(d, (-2.4, -5.6, 1.7)), plus(d, (0.35, 0.2, 1.75)), 32)
     orbit(S, k, 22, 0.25, 0.0)
 
 
@@ -1089,16 +1105,16 @@ def door(S, k, t, lt):
     op = sm((k - 0.35) / 0.25)
     hug = sm((k - 0.6) / 0.3)
     S['ldoor'].rotation_euler = (0, 0, 1.8 * op)
-    ml = mix(plus(d, (-0.9, -4.6, -0.7)), plus(d, (-0.3, -1.5, 0)), wk)
+    ml = mix(plus(d, (-0.3, -4.4, -0.7)), plus(d, (-0.3, -1.5, 0)), wk)
     ml = mix(ml, plus(d, (0.05, -0.75, 0)), hug)
     ml = (ml[0], ml[1], d[2] - 0.7 + 0.7 * sm((wk - 0.45) / 0.3))
     stand(S['may'], ml, PI + 0.1, step(t, 2.4, aR=(1.3 + 1.2 * hug, 0.4, 0.3), aL=(0.3 + 2.2 * hug, 0.4, 0.3), head=(-0.3, 0.0)) if hug < 0.95 else P('up'), 'happy', 0.6)
-    cl = mix(plus(d, (0.5, -5.0, -0.7)), plus(d, (1.2, -2.6, -0.7)), wk)
+    cl = mix(plus(d, (1.4, -5.0, -0.7)), plus(d, (2.1, -3.0, -0.7)), wk)
     stand(S['mochel'], cl, PI - 0.15, step(t, 1.5, aL=(0.9 * (1 - hug), 0.5, 0.4)) if wk < 0.98 else P('hips'), 'warm')
     S['case'].location = plus(hand(S['mochel'], 1), (0, 0, -0.35))
     S['case'].rotation_euler = (0, 0, PI / 2 - 0.15)
     stand(S['gran'], plus(d, (0.1, 1.0 - 1.0 * op, 0)), 0.0, blend(P('stand'), P('stand', aL=(1.2, 0.9, 0.5), aR=(1.2, 0.9, 0.5), lean=0.25, head=(0.3, 0.0)), sm((k - 0.4) / 0.25)), 'happy', 0.7)
-    cam(S, plus(d, (3.4, -9.0, 1.3)), plus(d, (0.1, -1.0, 1.5)), 30)
+    cam(S, plus(d, (2.4, -8.0, 1.3)), plus(d, (0.2, -0.8, 1.4)), 32)
     orbit(S, k, -24, 0.35, 0.6)
 
 
@@ -1112,12 +1128,12 @@ def rook_delivered(S, k, t, lt):
     stand(S['may'], plus(d, (0.05, -0.7, 0)), PI, P('up', aL=(2.0, 0.5, 0.6), aR=(2.0, 0.5, 0.6), lift=0.05 * abs(math.sin(lt * 7))), 'happy')
     stand(S['mochel'], plus(d, (1.9, -2.6, -0.7)), PI - 0.5, P('hips'), 'warm')
     rk = S['rook']
-    rl = plus(d, (-1.5, -3.6, -0.7))
-    turn = sm((k - 0.45) / 0.3)
+    rl = plus(d, (-2.2, -3.5, -0.7))
+    turn = sm((k - 0.3) / 0.3)
     stand(rk, rl, lerp(2.6, 0.3, turn), blend(P('stand', head=(-0.1, 0.0)), P('hat', head=(0.1, 0.0)), sm((k - 0.3) / 0.3)))
     S['rface'], S['hat_tip'] = 'soft', 0.3 * turn
     h = head(rk)
-    cam(S, plus(h, (-1.3, -4.4, -0.3)), plus(h, (0.7, 0.6, -0.1)), 30)
+    cam(S, plus(h, (-0.2, -4.6, -0.4)), plus(h, (1.0, 0.6, -0.25)), 30)
     orbit(S, k, 20, 0.2, 0.0)
 
 
@@ -1127,7 +1143,7 @@ def ban_desk(S, k, t, lt):
     high and brings it down on an order; the red mark is left on the paper."""
     amb(S, 'ban')
     b = S['boss']
-    loc = at(BAN, 0.3, 2.3, 0)
+    loc = at(BAN, 0.3, 3.05, 0)
     hit = 0.55
     up = sm(k / 0.4)
     dn = sm((k - 0.45) / (hit - 0.45))
@@ -1140,7 +1156,7 @@ def ban_desk(S, k, t, lt):
     if k >= hit:
         S['inkmark'].location = plus(pa, (0, -0.25, 0.022))
     S['cam'].rotation_euler = (0, 0, 0.03 * math.exp(-max(0, k - hit) * 14) * math.sin((k - hit) * 80) if k > hit else 0)
-    cam(S, at(BAN, -1.7, -4.4, 3.6), at(BAN, 0.3, 1.2, 2.4), 30)
+    cam(S, at(BAN, -1.0, -0.7, 2.95), at(BAN, 0.4, 2.6, 2.55), 30)
     orbit(S, k, 26, 0.3, -0.4)
 
 
@@ -1148,14 +1164,14 @@ def rook_notice(S, k, t, lt):
     """Back in the post office: Rook reads the new notice pinned to the board, taps his beak, and looks round at us."""
     amb(S, 'post')
     rk = S['rook']
-    loc = at(POST, -3.3, 3.2, 0)
-    turn = sm((k - 0.55) / 0.3)
+    loc = at(POST, -3.5, 3.4, 0)
+    turn = sm((k - 0.4) / 0.3)
     tapk = 0.25 * abs(math.sin(lt * 7)) * (1 - turn)
-    stand(rk, loc, lerp(PI - 0.5, 0.5, turn), P('tap', aR=(1.25 + tapk, -0.25, 2.2, 0.6), head=(-0.2 * (1 - turn), 0.0)))
+    stand(rk, loc, lerp(PI + 0.3, -0.45, turn), P('tap', aR=(1.25 + tapk, -0.25, 2.2, 0.6), head=(-0.2 * (1 - turn), 0.0)))
     S['rface'] = 'squint' if turn < 0.5 else 'low'
     S['hat_tip'] = 0.4 * turn
     clerk_behind(S, t, None, 'calm', 2.0)
-    cam(S, at(POST, -1.3, -1.6, 3.2), at(POST, -3.6, 4.0, 3.0), 30)
+    cam(S, at(POST, -5.0, 0.4, 2.8), at(POST, -3.6, 4.2, 2.7), 30)
     orbit(S, k, -22, 0.25, 0.0)
 
 
@@ -1165,23 +1181,24 @@ def anyway_counter(S, k, t, lt):
     amb(S, 'post')
     push = sm(k / 0.4)
     kl = at(POST, 1.4, lerp(-0.9, 0.5, push), 0)
-    stand(S['kid2'], kl, PI + 0.2, step(t, 2.0, head=(-0.3, 0.0)) if push < 0.98 else P('stand', head=(-0.4, 0.0), aL=(0.0, 0.3, 0.2), aR=(0.0, 0.3, 0.2)), 'happy')
-    stand(S['mum2'], plus(kl, (0.3, -1.1, 0)), PI + 0.1, P('stand', aR=(1.0, 0.0, 0.5), aL=(1.0, 0.0, 0.5), lean=0.15, head=(0.2, 0.0)), 'warm', 0.4)
+    tk = sm((k - 0.6) / 0.25)
+    stand(S['kid2'], kl, lerp(2.3, 0.5, tk), step(t, 2.0, head=(-0.3, 0.0)) if push < 0.98 else P('stand', head=(-0.3 + 0.2 * tk, 0.0), aL=(0.0, 0.3, 0.2), aR=(0.0, 0.3, 0.2)), 'happy')
+    stand(S['mum2'], plus(kl, (0.95, -0.55, 0)), 2.3, P('stand', aR=(1.0, 0.0, 0.5), aL=(1.0, 0.0, 0.5), lean=0.15, head=(0.2, 0.0)), 'warm', 0.4)
     look = sm((k - 0.3) / 0.15) * (1 - sm((k - 0.55) / 0.15))
     sh = sm((k - 0.65) / 0.2)
     clerk_behind(S, t, blend(P('stand', aL=(0.6, 0.1, 1.2), aR=(0.6, 0.1, 1.2), head=(0.2, 1.0 * look)), P('shrug', head=(0.2, 0.0)), sh), 'calm', 1.6)
-    cam(S, at(POST, 5.6, -3.0, 3.0), at(POST, 1.4, 1.2, 2.2), 28)
-    orbit(S, k, 22, 0.28, 0.0)
+    cam(S, at(POST, -0.3, -2.3, 1.9), at(POST, 1.6, 1.0, 1.75), 27)
+    orbit(S, k, -20, 0.25, 0.0)
 
 
 def rook_laugh(S, k, t, lt):
     """Rook, with his elbow on the counter, watches the clerk stamp the boy's tag, throws his head back and caws."""
     amb(S, 'post')
-    kl = at(POST, 1.4, 0.5, 0)
+    kl = at(POST, 2.0, 0.5, 0)
     stand(S['kid2'], kl, PI + 0.6, P('stand', head=(-0.3, 0.4), aL=(0.0, 0.3, 0.2), aR=(0.0, 0.3, 0.2), lift=0.04 * abs(math.sin(lt * 8))), 'happy')
     stand(S['mum2'], plus(kl, (0.6, -1.3, 0)), PI + 0.2, P('stand', aL=(0.7, -0.1, 1.5, 0.8), aR=(0.7, -0.1, 1.5, 0.8)), 'warm')
     thump = abs(math.sin(lt * 6))
-    clerk_behind(S, t, P('stand', aR=(1.1 - 0.3 * thump, 0.0, 0.8 + 0.5 * thump), aL=(0.6, 0.1, 1.2), lean=0.25, head=(0.4, 0.0)), 'warm', 1.5)
+    clerk_behind(S, t, P('stand', aR=(1.1 - 0.3 * thump, 0.0, 0.8 + 0.5 * thump), aL=(0.6, 0.1, 1.2), lean=0.1, head=(0.3, 0.0)), 'warm', 2.0)
     rk = S['rook']
     lg = sm((k - 0.25) / 0.2)
     stand(rk, at(POST, 3.9, 0.35, 0), 0.75, P('stand', aL=(0.9, 0.5, 1.6, 0.4), aR=(0.3 + 0.5 * lg, 0.5 * lg, 1.2 * lg), lean=-0.12 * lg, head=(-0.3 * lg, -0.3 * (1 - lg))))
