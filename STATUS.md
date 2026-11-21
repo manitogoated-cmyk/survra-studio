@@ -1,6 +1,6 @@
 # Survra production dashboard
 
-Updated 2026-11-21 01:42 UTC by the publish workflow. Daily target: 1 long-form + 3 Shorts. Review mode: **off**. Paused: **no**.
+Updated 2026-11-21 14:29 UTC by the publish workflow. Daily target: 1 long-form + 3 Shorts. Review mode: **off**. Paused: **no**.
 
 A stage shows `done` only when its output file exists; QC shows `done` only after the automated gate passed on the rendered video.
 
@@ -53,12 +53,13 @@ A stage shows `done` only when its output file exists; QC shows `done` only afte
 | r021-sanjose | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-17T20:00:00Z | https://youtu.be/gQ52iGzsKyk |
 | r022-bakari-long | long | approved | done | done | done | done | done | done | - | done | done | scheduled 2026-11-19T19:00:00Z | https://youtu.be/N9uFblYhP6Q |
 | r022-bakari | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-19T02:00:00Z | https://youtu.be/S6xePThwOs8 |
-| r023-herfkens-long | long | approved | done | done | done | done | - | - | - | - | - | - | - |
+| r023-herfkens-long | long | approved | done | done | done | done | - | done | done | done | - | - | - |
 | r023-herfkens | short | approved | done | done | done | done | done | done | n/a | done | done | public | https://youtu.be/KR0ZYHRx_Ac |
 | r024-alkemade-long | long | approved | done | done | done | done | done | done | - | done | done | scheduled 2026-11-21T19:00:00Z | https://youtu.be/h2laJU6_7gY |
 | r024-alkemade | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-18T20:00:00Z | https://youtu.be/yHkpPAv0qTU |
+| r025-magee-long | long | ready | done | done | done | done | - | - | - | - | - | - | - |
 | r025-magee | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-20T23:00:00Z | https://youtu.be/u82Im02uFyw |
-| r030-sylbaris-long | long | ready | done | done | done | done | - | - | - | - | - | - | - |
+| r030-sylbaris-long | long | ready | done | done | done | done | - | done | done | done | - | - | - |
 | r030-sylbaris | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-19T20:00:00Z | https://youtu.be/-eHaYHprOmk |
 | r040-emuwar | short | approved | done | done | done | done | - | done | n/a | FAIL | - | - | - |
 | r041-whale | short | approved | done | done | done | done | done | done | n/a | done | done | scheduled 2026-11-21T02:00:00Z | https://youtu.be/TiWvWaMDnlY |
