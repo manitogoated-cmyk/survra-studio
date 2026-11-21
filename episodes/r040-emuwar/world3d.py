@@ -1382,20 +1382,29 @@ def rook_squint(S, k, t, lt):
 
 # ---------------------------------------------------------------- the end
 def asked_no(S, k, t, lt):
-    """The farmer at his gate by the empty track reads a letter, lowers it, shoulders dropping; out in his wheat behind him the emus graze."""
+    """The farmer at his gate reads the army's letter: close on the paper and his face, then the camera cranes back and up
+    as the letter drops to his side and his shoulders fall; he looks round at his wheat, where emus stroll past the gate."""
     sky(S, 'day')
-    drop = sm((lt - 0.7) / 0.5)
+    drop = sm((lt - 0.45) / 0.4)
+    turn = sm((lt - 0.95) / 0.35)
+    scan = 0.12 * math.sin(lt * 9) * (1 - drop)
     f = put(S, S['farmer'], FIELD, GATE[0] + 0.4, GATE[1] - 1.2, 0, 0.25,
-            P('stand', aL=(lerp(0.95, 0.3, drop), 0.1, lerp(1.1, 0.4, drop)), aR=(lerp(0.95, 0.2, drop), 0.1, lerp(1.1, 0.3, drop)), head=(lerp(0.45, 0.3, drop), 0.0), lean=0.1 * drop, lift=-0.04 * drop), 'sad')
+            P('stand', aL=(lerp(0.95, 0.15, drop), 0.1, lerp(1.1, 0.25, drop)), aR=(lerp(0.95, 0.1, drop), 0.1, lerp(1.1, 0.2, drop)),
+              head=(lerp(0.45, 0.2, drop), scan + 1.0 * turn), lean=0.12 * drop, lift=-0.05 * drop), 'sad')
     hl, hr = wpos(f.hands[0]), wpos(f.hands[1])
-    S['telegram'].location = ((hl[0] + hr[0]) / 2, (hl[1] + hr[1]) / 2 - 0.1, (hl[2] + hr[2]) / 2 + 0.12)
-    S['telegram'].rotation_euler = (0.7 + 0.7 * drop, 0, 0.25)
+    S['telegram'].location = (lerp((hl[0] + hr[0]) / 2, hl[0], drop), lerp((hl[1] + hr[1]) / 2 - 0.1, hl[1] - 0.05, drop), lerp((hl[2] + hr[2]) / 2 + 0.12, hl[2] - 0.15, drop))
+    S['telegram'].rotation_euler = (0.7 + 0.85 * drop, 0.5 * drop * math.sin(lt * 7), 0.25)
     for n, (x, y) in enumerate(((-75.0, 3.0), (-66.0, 4.0), (-71.0, 8.0), (-63.0, 1.0))):
         e = S['emus'][n]
         e.place(at(FIELD, x, y, 0), rnd(n, 9) * 6.28)
         e.pose(0.0, 0.0, dip=0.7 + 0.25 * math.sin(t * 3 + n))
+    for n, (x0, y, v) in enumerate(((-75.0, -6.6, 4.2), (-78.0, -5.4, 3.8), (-62.5, -4.6, -3.4))):      # emus strolling past the gate, unbothered
+        e = S['emus'][4 + n]
+        e.place(at(FIELD, x0 + v * lt, y, 0), facing((0, 0), (v, 0)))
+        e.pose(gait(t, 3.0, rnd(n, 5)), 0.55, look=0.3 * math.sin(t * 2 + n))
     key(S, FIELD, (-66, -16, 5), (GATE[0], GATE[1] - 1, 2.4), 700)
-    shoot(S, FIELD, (lerp(-67.8, -68.1, k), lerp(-15.0, -14.3, k), 2.4), (GATE[0] + 0.2, GATE[1] + 0.5, 2.5), 30)
+    p = 0.8 * k + 0.2 * sm(k)                                   # the crane never eases to a stop: the cut takes it mid-move
+    shoot(S, FIELD, (lerp(-69.0, -66.0, p), lerp(-11.3, -14.3, p), lerp(2.2, 3.9, p)), (lerp(GATE[0] + 0.4, GATE[0] + 0.8, p), GATE[1] - 0.6, lerp(2.3, 2.3, p)), 30)
 
 
 def fence_build(S, k, t, lt):

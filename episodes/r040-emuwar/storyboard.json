@@ -904,8 +904,8 @@
    "segment": "end",
    "weight": 1.2,
    "kind": "asked_no",
-   "action": "A farmer at his gate by the empty dirt track holds a letter, reads it and lowers it, shoulders dropping; out in his wheat, emus graze",
-   "camera": "Medium, low, slow push",
+   "action": "Close on a farmer at his gate reading the army's letter, eyes moving along the lines; the letter drops to his side and his shoulders fall as the camera cranes back and up over the dirt track; behind him emus stroll past the gate through his wheat, and more graze further out. Expression: brows up, mouth tight",
+   "camera": "Starts close on the letter and his face, cranes back and up without stopping",
    "cam": [
     [
      1.0,
