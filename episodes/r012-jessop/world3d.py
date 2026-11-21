@@ -1044,20 +1044,23 @@ def oly_limp(S, k, t, lt):
 
 
 # ---------------------------------------------------------------- 1912: the ice
-def ice_night(S, t, y=0.0, z=0.0, pitch=0.0, x=7.5):
-    A = env(S, 'ice', NIGHT, sun=0.9, sunc='A8C0FF', sdir=(0.35, -0.55, 0.7), fk=1.2)
+def ice_night(S, t, y=0.0, z=0.0, pitch=0.0, x=7.5, sun=0.9, fk=1.2, skyk=1.0, seac='0A1A2A', sdir=(0.35, -0.55, 0.7)):
+    A = env(S, 'ice', NIGHT, sun=sun, sunc='A8C0FF', sdir=sdir, fk=fk, skyk=skyk)
     Sp = ship(S, A, x=x, y=y, z=z, pitch=pitch, lit=1.0)
-    sea(S, A, 0, -120, 1100, t, amp=0.45, col='0A1A2A')
+    sea(S, A, 0, -120, 1100, t, amp=0.45, col=seac)
     return A, Sp
 
 
 def tit_night(S, k, t, lt):
-    A, Sp = ice_night(S, t, y=lerp(-30, -62, k))
+    # lit like a clear starlit night (cold key on the side the camera sees, brighter sky and sea; the sea stays flat
+    # calm) and swept fast, rising past the iceberg: at the old light level and camera speed the cloud render was almost
+    # black and read as a still (QC gate, static stretch 16.7 s to 18.2 s)
+    A, Sp = ice_night(S, t, y=lerp(-26, -84, k), sun=8.0, fk=6.0, skyk=3.6, seac='2A5C8A', sdir=(-0.55, -0.6, 0.45))
     funnel_smoke(S, Sp, t)
     for i in range(4):
         u = (t * 0.9 + i * 0.25) % 1
         puff(S, i, Sp((1 if i % 2 else -1) * (2 + 6 * u), -125 + 20 * u, 0.5), 1.6 + 2.6 * u, 0.4)
-    cam(S, A(lerp(-22, -8, k), lerp(-262, -228, k), lerp(2.5, 9.0, k)), A(lerp(12, 8, k), lerp(-185, -150, k), 16), 28, fcol='A8C0FF')
+    cam(S, A(lerp(-56, 10, k), lerp(-262, -232, k), lerp(1.6, 24.0, k)), A(lerp(18, 7, k), lerp(-186, -158, k), lerp(10, 22, k)), 28, fcol='A8C0FF')
 
 
 def berg_scrape(S, k, t, lt):
@@ -1176,12 +1179,14 @@ def aegean(S, t, y=0.0, pitch=0.0, z=0.0, cy=0.0):
 
 
 def brit_wide(S, k, t, lt):
-    A, Sp = aegean(S, t, y=lerp(30, 0, k))
+    # a crane move from high above the foredeck down to the waterline off the bow while the ship comes on: the old
+    # slow drift read as a still (QC gate, static stretch 24.2 s to 25.7 s)
+    A, Sp = aegean(S, t, y=lerp(26, -18, k))
     funnel_smoke(S, Sp, t)
     for i in range(4):
         u = (t * 0.8 + i * 0.25) % 1
         puff(S, i, Sp((1 if i % 2 else -1) * (2 + 7 * u), -124 + 22 * u, 0.6), 2.0 + 3 * u, 0.4)
-    cam(S, A(lerp(84, 34, k), lerp(-250, -196, k), lerp(70, 12, k)), A(0, lerp(-30, -70, k), 18), 32)
+    cam(S, A(lerp(70, -40, k), lerp(-128, -192, k), lerp(150, 4.0, k)), A(0, lerp(-40, -112, k), lerp(10, 26, k)), 28)
 
 
 def mine_hit(S, k, t, lt):
