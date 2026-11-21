@@ -250,6 +250,44 @@
   },
   {
    "n": 8,
+   "segment": "start",
+   "weight": 0.8,
+   "kind": "pasje_desk",
+   "action": "Closer on Willem from the other side: he laughs, the fan turning above him",
+   "camera": "Closer, from the left",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "whoosh",
+     0.3
+    ]
+   ],
+   "hud": "13 YEARS TOGETHER",
+   "prm": {
+    "alt": [
+     -50,
+     0.6,
+     -0.2
+    ]
+   }
+  },
+  {
+   "n": 9,
    "segment": "trip",
    "weight": 1.0,
    "kind": "apron_wide",
@@ -285,7 +323,7 @@
    "prm": {}
   },
   {
-   "n": 9,
+   "n": 10,
    "segment": "trip",
    "weight": 1.0,
    "kind": "apron_meet",
@@ -317,7 +355,7 @@
    "prm": {}
   },
   {
-   "n": 10,
+   "n": 11,
    "segment": "board",
    "weight": 1.1,
    "kind": "apron_stairs",
@@ -353,7 +391,7 @@
    "prm": {}
   },
   {
-   "n": 11,
+   "n": 12,
    "segment": "board",
    "weight": 0.9,
    "kind": "rook_apron",
@@ -385,7 +423,7 @@
    "prm": {}
   },
   {
-   "n": 12,
+   "n": 13,
    "segment": "drop",
    "weight": 1.0,
    "kind": "cabin_flight",
@@ -417,7 +455,7 @@
    "prm": {}
   },
   {
-   "n": 13,
+   "n": 14,
    "segment": "drop",
    "weight": 1.0,
    "kind": "cabin_drop",
@@ -453,7 +491,7 @@
    "prm": {}
   },
   {
-   "n": 14,
+   "n": 15,
    "segment": "drop",
    "weight": 0.9,
    "kind": "cabin_flight",
@@ -496,7 +534,7 @@
    }
   },
   {
-   "n": 15,
+   "n": 16,
    "segment": "drop",
    "weight": 1.0,
    "kind": "hands_grab",
@@ -532,7 +570,7 @@
    "prm": {}
   },
   {
-   "n": 16,
+   "n": 17,
    "segment": "wake",
    "weight": 1.0,
    "kind": "crash_ridge",
@@ -574,7 +612,7 @@
    }
   },
   {
-   "n": 17,
+   "n": 18,
    "segment": "wake",
    "weight": 1.0,
    "kind": "belt_empty",
@@ -610,7 +648,7 @@
    "prm": {}
   },
   {
-   "n": 18,
+   "n": 19,
    "segment": "wake",
    "weight": 1.0,
    "kind": "seat_pin",
@@ -652,7 +690,7 @@
    }
   },
   {
-   "n": 19,
+   "n": 20,
    "segment": "willem",
    "weight": 1.15,
    "kind": "her_looks",
@@ -684,7 +722,7 @@
    "prm": {}
   },
   {
-   "n": 20,
+   "n": 21,
    "segment": "willem",
    "weight": 0.85,
    "kind": "hands_hold",
@@ -716,9 +754,43 @@
    "prm": {}
   },
   {
-   "n": 21,
+   "n": 22,
    "segment": "man",
-   "weight": 1.1,
+   "weight": 0.7,
+   "kind": "man_talks",
+   "action": "Close on a man propped against the fuselage in the rain: grey and tired, but alive, and talking",
+   "camera": "Close three-quarter",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "rain",
+     0.3
+    ]
+   ],
+   "hud": "ONE OTHER SURVIVOR",
+   "prm": {
+    "quiet": true
+   }
+  },
+  {
+   "n": 23,
+   "segment": "man",
+   "weight": 1.4,
    "kind": "trousers",
    "action": "By the wreck in the rain: the man who lived through the crash sits propped beside his open suitcase and holds out a folded pair of trousers; she reaches and takes them",
    "camera": "Two-shot from down the slope, easing in",
@@ -752,12 +824,12 @@
    "prm": {}
   },
   {
-   "n": 22,
+   "n": 24,
    "segment": "man",
-   "weight": 1.0,
+   "weight": 0.7,
    "kind": "man_talks",
-   "action": "Close on the man: grey and tired, but talking; he lifts a hand towards the sky",
-   "camera": "Close three-quarter",
+   "action": "From the other side: he lifts a hand towards the sky as he talks: they will come",
+   "camera": "Close, from his other side",
    "cam": [
     [
      1.0,
@@ -776,17 +848,23 @@
    "transition": "cut",
    "sfx": [
     [
-     "rain",
-     0.3
+     "tick",
+     0.5
     ]
    ],
-   "hud": "ONE OTHER SURVIVOR",
-   "prm": {}
+   "hud": null,
+   "prm": {
+    "alt": [
+     60,
+     1.15,
+     0.2
+    ]
+   }
   },
   {
-   "n": 23,
+   "n": 25,
    "segment": "man",
-   "weight": 1.0,
+   "weight": 0.9,
    "kind": "man_beside",
    "action": "She reaches out to him; he does not move; she lowers her hand",
    "camera": "Two-shot from above",
@@ -816,9 +894,9 @@
    "prm": {}
   },
   {
-   "n": 24,
+   "n": 26,
    "segment": "man",
-   "weight": 0.9,
+   "weight": 0.6,
    "kind": "rook_hatoff",
    "action": "Rook beside the fuselage in the rain takes off his hat and holds it to his chest, head bowed",
    "camera": "Low three-quarter",
@@ -848,7 +926,7 @@
    "prm": {}
   },
   {
-   "n": 25,
+   "n": 27,
    "segment": "alone",
    "weight": 1.1,
    "kind": "her_alone",
@@ -880,7 +958,7 @@
    "prm": {}
   },
   {
-   "n": 26,
+   "n": 28,
    "segment": "alone",
    "weight": 0.9,
    "kind": "thirst_face",
@@ -912,7 +990,7 @@
    "prm": {}
   },
   {
-   "n": 27,
+   "n": 29,
    "segment": "rules",
    "weight": 1.1,
    "kind": "her_resolve",
@@ -948,7 +1026,7 @@
    "prm": {}
   },
   {
-   "n": 28,
+   "n": 30,
    "segment": "rules",
    "weight": 0.9,
    "kind": "wing_torn",
@@ -984,7 +1062,7 @@
    "prm": {}
   },
   {
-   "n": 29,
+   "n": 31,
    "segment": "sponge",
    "weight": 0.9,
    "kind": "wing_pov",
@@ -1016,7 +1094,7 @@
    "prm": {}
   },
   {
-   "n": 30,
+   "n": 32,
    "segment": "sponge",
    "weight": 1.0,
    "kind": "rook_squeeze",
@@ -1052,7 +1130,7 @@
    "prm": {}
   },
   {
-   "n": 31,
+   "n": 33,
    "segment": "sponge",
    "weight": 1.05,
    "kind": "elbow_crawl",
@@ -1088,7 +1166,7 @@
    "prm": {}
   },
   {
-   "n": 32,
+   "n": 34,
    "segment": "sponge",
    "weight": 1.0,
    "kind": "tuft_pull",
@@ -1124,7 +1202,7 @@
    "prm": {}
   },
   {
-   "n": 33,
+   "n": 35,
    "segment": "rain",
    "weight": 1.0,
    "kind": "rain_arrives",
@@ -1160,7 +1238,7 @@
    "prm": {}
   },
   {
-   "n": 34,
+   "n": 36,
    "segment": "rain",
    "weight": 1.0,
    "kind": "tuft_drink",
@@ -1192,7 +1270,7 @@
    "prm": {}
   },
   {
-   "n": 35,
+   "n": 37,
    "segment": "rain",
    "weight": 1.1,
    "kind": "sip_wait",
@@ -1228,7 +1306,7 @@
    "prm": {}
   },
   {
-   "n": 36,
+   "n": 38,
    "segment": "jungle",
    "weight": 0.95,
    "kind": "swat",
@@ -1264,7 +1342,7 @@
    "prm": {}
   },
   {
-   "n": 37,
+   "n": 39,
    "segment": "jungle",
    "weight": 1.05,
    "kind": "move_away",
@@ -1300,7 +1378,7 @@
    "prm": {}
   },
   {
-   "n": 38,
+   "n": 40,
    "segment": "rehook",
    "weight": 1.0,
    "kind": "aerial_canopy",
@@ -1329,10 +1407,16 @@
     ]
    ],
    "hud": "O KHA MOUNTAIN",
-   "prm": {}
+   "prm": {
+    "orb": [
+     14,
+     0.35,
+     -25
+    ]
+   }
   },
   {
-   "n": 39,
+   "n": 41,
    "segment": "rehook",
    "weight": 1.0,
    "kind": "rook_lookout",
@@ -1353,7 +1437,7 @@
     ]
    ],
    "shake": 0,
-   "transition": "cut",
+   "transition": "whip",
    "sfx": [
     [
      "flap",
@@ -1368,7 +1452,7 @@
    "prm": {}
   },
   {
-   "n": 40,
+   "n": 42,
    "segment": "calm",
    "weight": 1.0,
    "kind": "night_wreck",
@@ -1400,7 +1484,7 @@
    "prm": {}
   },
   {
-   "n": 41,
+   "n": 43,
    "segment": "calm",
    "weight": 1.0,
    "kind": "sky_gap",
@@ -1432,7 +1516,7 @@
    "prm": {}
   },
   {
-   "n": 42,
+   "n": 44,
    "segment": "fading",
    "weight": 1.0,
    "kind": "calm_face",
@@ -1464,7 +1548,7 @@
    "prm": {}
   },
   {
-   "n": 43,
+   "n": 45,
    "segment": "fading",
    "weight": 1.0,
    "kind": "rook_vigil",
@@ -1496,7 +1580,7 @@
    "prm": {}
   },
   {
-   "n": 44,
+   "n": 46,
    "segment": "orange",
    "weight": 1.15,
    "kind": "orange_man",
@@ -1532,7 +1616,7 @@
    "prm": {}
   },
   {
-   "n": 45,
+   "n": 47,
    "segment": "orange",
    "weight": 0.85,
    "kind": "orange_gone",
@@ -1564,7 +1648,7 @@
    "prm": {}
   },
   {
-   "n": 46,
+   "n": 48,
    "segment": "found",
    "weight": 1.0,
    "kind": "officer_trees",
@@ -1600,7 +1684,7 @@
    "prm": {}
   },
   {
-   "n": 47,
+   "n": 49,
    "segment": "found",
    "weight": 0.9,
    "kind": "officer_ghost",
@@ -1632,7 +1716,7 @@
    "prm": {}
   },
   {
-   "n": 48,
+   "n": 50,
    "segment": "found",
    "weight": 0.85,
    "kind": "rook_brim",
@@ -1664,7 +1748,7 @@
    "prm": {}
   },
   {
-   "n": 49,
+   "n": 51,
    "segment": "found",
    "weight": 1.15,
    "kind": "men_arrive",
@@ -1700,7 +1784,7 @@
    "prm": {}
   },
   {
-   "n": 50,
+   "n": 52,
    "segment": "found",
    "weight": 1.1,
    "kind": "list_point",
@@ -1732,7 +1816,7 @@
    "prm": {}
   },
   {
-   "n": 51,
+   "n": 53,
    "segment": "carry",
    "weight": 1.0,
    "kind": "carry_down",
@@ -1765,7 +1849,7 @@
    "hush": true
   },
   {
-   "n": 52,
+   "n": 54,
    "segment": "carry",
    "weight": 0.9,
    "kind": "carry_light",
@@ -1797,7 +1881,7 @@
    "prm": {}
   },
   {
-   "n": 53,
+   "n": 55,
    "segment": "carry",
    "weight": 1.0,
    "kind": "ward_bed",
@@ -1829,7 +1913,46 @@
    "prm": {}
   },
   {
-   "n": 54,
+   "n": 56,
+   "segment": "home",
+   "weight": 0.9,
+   "kind": "desk_trade",
+   "action": "Her desk, her chair empty, the monitors still on; Rook stands looking down at it",
+   "camera": "From high on the left",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "flash",
+   "sfx": [
+    [
+     "low",
+     0.4
+    ]
+   ],
+   "hud": null,
+   "prm": {
+    "empty": true,
+    "alt": [
+     -30,
+     0.9,
+     0.4
+    ]
+   }
+  },
+  {
+   "n": 57,
    "segment": "home",
    "weight": 1.0,
    "kind": "notice_card",
@@ -1850,7 +1973,7 @@
     ]
    ],
    "shake": 0,
-   "transition": "flash",
+   "transition": "cut",
    "sfx": [
     [
      "low",
@@ -1865,7 +1988,7 @@
    "prm": {}
   },
   {
-   "n": 55,
+   "n": 58,
    "segment": "home",
    "weight": 1.0,
    "kind": "jaime_phone",
@@ -1897,46 +2020,7 @@
    "prm": {}
   },
   {
-   "n": 56,
-   "segment": "home",
-   "weight": 0.9,
-   "kind": "desk_trade",
-   "action": "Her desk, her chair empty, the monitors still on; Rook stands looking down at it",
-   "camera": "From high on the left",
-   "cam": [
-    [
-     1.0,
-     960,
-     540,
-     0
-    ],
-    [
-     1.07,
-     960,
-     536,
-     0
-    ]
-   ],
-   "shake": 0,
-   "transition": "cut",
-   "sfx": [
-    [
-     "low",
-     0.4
-    ]
-   ],
-   "hud": null,
-   "prm": {
-    "empty": true,
-    "alt": [
-     -30,
-     0.9,
-     0.4
-    ]
-   }
-  },
-  {
-   "n": 57,
+   "n": 59,
    "segment": "funeral",
    "weight": 1.1,
    "kind": "funeral_aisle",
@@ -1968,7 +2052,7 @@
    "prm": {}
   },
   {
-   "n": 58,
+   "n": 60,
    "segment": "funeral",
    "weight": 1.0,
    "kind": "funeral_close",
@@ -2001,7 +2085,7 @@
    "hush": true
   },
   {
-   "n": 59,
+   "n": 61,
    "segment": "funeral",
    "weight": 0.9,
    "kind": "funeral_rook",
@@ -2033,7 +2117,7 @@
    "prm": {}
   },
   {
-   "n": 60,
+   "n": 62,
    "segment": "recover",
    "weight": 1.1,
    "kind": "walk_again",
@@ -2069,7 +2153,7 @@
    "prm": {}
   },
   {
-   "n": 61,
+   "n": 63,
    "segment": "recover",
    "weight": 0.9,
    "kind": "desk_back",
@@ -2105,7 +2189,7 @@
    "prm": {}
   },
   {
-   "n": 62,
+   "n": 64,
    "segment": "later",
    "weight": 1.0,
    "kind": "family_walk",
@@ -2141,7 +2225,7 @@
    "prm": {}
   },
   {
-   "n": 63,
+   "n": 65,
    "segment": "later",
    "weight": 1.0,
    "kind": "return_ridge",
@@ -2173,7 +2257,41 @@
    "prm": {}
   },
   {
-   "n": 64,
+   "n": 66,
+   "segment": "later",
+   "weight": 0.8,
+   "kind": "sky_gap",
+   "action": "The same gap in the trees, years on, in full daylight: crowns swaying, leaves coming down",
+   "camera": "Straight up, turning slowly",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "birdcall",
+     0.3
+    ]
+   ],
+   "hud": "2006",
+   "prm": {
+    "day": true
+   }
+  },
+  {
+   "n": 67,
    "segment": "later",
    "weight": 1.0,
    "kind": "writing",
@@ -2209,7 +2327,7 @@
    "prm": {}
   },
   {
-   "n": 65,
+   "n": 68,
    "segment": "toll",
    "weight": 1.0,
    "kind": "aerial_canopy",
@@ -2243,11 +2361,16 @@
      40,
      1.1,
      20.0
+    ],
+    "orb": [
+     -14,
+     0.35,
+     -25
     ]
    }
   },
   {
-   "n": 66,
+   "n": 69,
    "segment": "toll",
    "weight": 1.0,
    "kind": "rook_wreck",
@@ -2279,7 +2402,7 @@
    "prm": {}
   },
   {
-   "n": 67,
+   "n": 70,
    "segment": "end",
    "weight": 1.0,
    "kind": "board",
@@ -2315,7 +2438,7 @@
    "prm": {}
   },
   {
-   "n": 68,
+   "n": 71,
    "segment": "end",
    "weight": 0.9,
    "kind": "rook_nod",
@@ -2347,7 +2470,7 @@
    "prm": {}
   },
   {
-   "n": 69,
+   "n": 72,
    "segment": "end",
    "weight": 1.1,
    "kind": "signoff",

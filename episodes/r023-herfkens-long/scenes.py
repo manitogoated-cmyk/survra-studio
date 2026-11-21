@@ -167,11 +167,11 @@ def board(cv, c):
     cv.drawCircle(600, 130, 22, P(ORANGE))
     cv.drawCircle(600, 130, 22, P(INK, 5))
     if c.lt > 0.25:
-        fit(cv, '8 DAYS', 1430, 320, 120, 760, 0xFFFFFFFF)
+        fit(cv, '8 DAYS', 1340, 320, 120, 620, 0xFFFFFFFF)
     if c.lt > 0.5:
-        fit(cv, 'RAINWATER ONLY', 1430, 470, 84, 760, AMBER)
+        fit(cv, 'RAINWATER ONLY', 1340, 470, 84, 620, AMBER)
     if c.lt > 0.75:
-        fit(cv, 'ONE SURVIVOR', 1430, 610, 84, 760, 0xFFFFFFFF)
+        fit(cv, 'ONE SURVIVOR', 1340, 610, 84, 620, 0xFFFFFFFF)
     if c.lt > 1.1:
         q = 1.5 - 0.5 * ease((c.lt - 1.1) / 0.12)
         cv.save()

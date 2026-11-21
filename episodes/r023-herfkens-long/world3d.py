@@ -1790,7 +1790,7 @@ def man_talks(S, k, t, lt):
     """Close on the man: grey, tired, but talking, and he lifts a hand towards the sky: they will come."""
     ridge(S, 'rain', t, 0.6)
     m, h = man_pair(S, 0.0, 'tired')
-    u = sm((lt - 0.6) / 0.6)
+    u = 0.0 if S['prm'].get('quiet') else sm((lt - 0.6) / 0.6)
     m.apply(P('sit', aL=(lerp(0.5, 2.1, u), 0.35, lerp(1.0, 0.25, u)), aR=(0.5, 0.15, 1.5), lean=-0.25, lL=(1.3, 0.9), lR=(1.25, 0.7), head=(lerp(0.15, -0.1, u), -0.3)))
     talk(m, lt, 6.0, 0.35)
     hp = head(S, m)
@@ -1864,7 +1864,7 @@ def move_away(S, k, t, lt):
 def sky_gap(S, k, t, lt):
     """Flat on her back, what she sees: the hole the jet cut in the trees, crowns swaying round it, first light, leaves
     coming slowly down."""
-    ridge(S, 'dawn', t, 1.2)
+    ridge(S, 'day' if S['prm'].get('day') else 'dawn', t, 1.2)
     c = gp(LIE[0], LIE[1], 0.7)
     for i, d in enumerate(S['debris']):
         ph = (t * (0.1 + 0.08 * rnd(i, 821)) + rnd(i, 822)) % 1.0
@@ -2154,7 +2154,10 @@ STILLS.update(thumb=photo_thumb, wing=photo_wing)
 # whole shot, and every shot (old and new) also drifts a few degrees round its own subject and eases in, so a held frame
 # keeps moving. prm "orb": [degrees, dolly, rise] sets the drift for one shot.
 SHORT_KINDS = set(SHOTS3D) - {f.__name__ for f in NEW}
-DRIFT = dict(aerial_canopy=2.0, sky_gap=0.0, hands_grab=3.0, list_point=4.0, belt_empty=5.0, cabin_flight=3.0, cabin_drop=3.0, crash_ridge=3.0)
+DRIFT = dict(aerial_canopy=12.0, sky_gap=0.0, hands_grab=3.0, list_point=4.0, belt_empty=14.0, cabin_flight=3.0, cabin_drop=3.0, crash_ridge=3.0, rook_lookout=22.0,
+             night_wreck=18.0, rook_vigil=18.0, calm_face=16.0, apron_meet=18.0, jaime_phone=18.0, funeral_rook=18.0, wing_pov=16.0, desk_trade=16.0,
+             pasje_desk=20.0, ward_bed=16.0, rook_apron=16.0, writing=20.0, man_beside=16.0, apron_stairs=14.0, seat_pin=12.0, move_away=14.0,
+             desk_back=14.0, funeral_aisle=10.0, rook_wreck=12.0, her_looks=12.0)
 
 
 def _stretched(f):
@@ -2171,7 +2174,7 @@ def _drifting(f, name):
     def fn(S, k, t, lt):
         f(S, k, t, lt)
         o = S['prm'].get('orb')
-        deg, dolly, rise = (list(o) + [0, 0])[:3] if o else (sign * rate, 0.06, 0.0)
+        deg, dolly, rise = (list(o) + [0, 0])[:3] if o else (sign * rate, 0.06 + 0.008 * rate, 0.0)
         c, tg = S['camrig'].location, S['camtgt'].location
         a = math.radians(deg) * (k - 0.5)
         m = 1 - dolly * (k - 0.5)
