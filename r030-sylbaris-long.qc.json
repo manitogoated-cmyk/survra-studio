@@ -1,0 +1,32 @@
+{
+ "pass": true,
+ "fails": [],
+ "warnings": [],
+ "notes": [
+  "66 shots, mean 2.53s, longest 4.64s",
+  "motion: mean frame change 2.32, 83 hard cuts detected",
+  "audio: -14.6 LUFS, peak -1.1 dBFS, voice 16.1 dB over bed",
+  "host: acts in 27/66 shots (41%)",
+  "originality: closest match to any earlier episode 0.84 (shot 15 vs r017-callahan-long)"
+ ],
+ "rules": {
+  "first_shot_max": 4.0,
+  "hook_impact_by": 1.0,
+  "shot_max": 7.0,
+  "shot_mean_max": 3.8,
+  "kind_max_uses": 4,
+  "static_window": 3.5,
+  "static_motion_min": 0.8,
+  "cut_diff": 28.0,
+  "first_second_motion_min": 2.0,
+  "repeat_corr": 0.97,
+  "repeat_pairs_max": 3,
+  "lufs": -14.0,
+  "lufs_tol": 1.5,
+  "tp_max": -1.0,
+  "voice_over_bed_db": 9.0,
+  "dead_air_s": 1.5,
+  "dead_air_db": -45.0
+ },
+ "format": "long"
+}
