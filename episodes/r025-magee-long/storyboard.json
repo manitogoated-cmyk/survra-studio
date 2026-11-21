@@ -40,7 +40,8 @@
     "arc": [
      18,
      0.6
-    ]
+    ],
+    "whirl": 1.1
    }
   },
   {
@@ -280,6 +281,45 @@
   {
    "n": 8,
    "segment": "start",
+   "weight": 0.8,
+   "kind": "field_dawn",
+   "action": "The bomber on its hardstand from the other side, the dawn behind it; Rook on his drum looks it over, nose to tail",
+   "camera": "Wide from the far side, drifting",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "wind",
+     0.3
+    ]
+   ],
+   "hud": "A B-17",
+   "prm": {
+    "alt": [
+     -58,
+     0.62,
+     1.2
+    ],
+    "from": 0.55
+   }
+  },
+  {
+   "n": 9,
+   "segment": "start",
    "weight": 0.9,
    "kind": "turret_side",
    "action": "Inside the ball, from beside him: curled between the two guns, knees up, the round window and flak-spotted sky in front of him",
@@ -314,7 +354,7 @@
    "prm": {}
   },
   {
-   "n": 9,
+   "n": 10,
    "segment": "turret",
    "weight": 1.1,
    "kind": "rook_measure",
@@ -350,7 +390,7 @@
    "prm": {}
   },
   {
-   "n": 10,
+   "n": 11,
    "segment": "turret",
    "weight": 0.9,
    "kind": "pack_hook",
@@ -386,7 +426,7 @@
    "prm": {}
   },
   {
-   "n": 11,
+   "n": 12,
    "segment": "mission",
    "weight": 1.0,
    "kind": "map",
@@ -422,7 +462,7 @@
    "prm": {}
   },
   {
-   "n": 12,
+   "n": 13,
    "segment": "mission",
    "weight": 0.8,
    "kind": "formation",
@@ -464,7 +504,45 @@
    }
   },
   {
-   "n": 13,
+   "n": 14,
+   "segment": "mission",
+   "weight": 0.8,
+   "kind": "turret_side",
+   "action": "In the ball again, in the air now: he swings his head to scan the sky through the round window",
+   "camera": "Inside the turret, from lower and further round",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "creak",
+     0.4
+    ]
+   ],
+   "hud": "HIS 7TH MISSION",
+   "prm": {
+    "alt": [
+     -28,
+     1.0,
+     -0.25
+    ]
+   }
+  },
+  {
+   "n": 15,
    "segment": "mission",
    "weight": 1.2,
    "kind": "nose_fly",
@@ -500,7 +578,7 @@
    "prm": {}
   },
   {
-   "n": 14,
+   "n": 16,
    "segment": "mission",
    "weight": 1.1,
    "kind": "pens",
@@ -536,7 +614,7 @@
    "prm": {}
   },
   {
-   "n": 15,
+   "n": 17,
    "segment": "flak",
    "weight": 0.9,
    "kind": "flak_hit",
@@ -568,7 +646,7 @@
    "prm": {}
   },
   {
-   "n": 16,
+   "n": 18,
    "segment": "flak",
    "weight": 0.8,
    "kind": "turret_close",
@@ -604,7 +682,7 @@
    "prm": {}
   },
   {
-   "n": 17,
+   "n": 19,
    "segment": "flak",
    "weight": 1.3,
    "kind": "turret_climb",
@@ -640,7 +718,7 @@
    "prm": {}
   },
   {
-   "n": 18,
+   "n": 20,
    "segment": "chute",
    "weight": 1.1,
    "kind": "chute_find",
@@ -676,7 +754,7 @@
    "prm": {}
   },
   {
-   "n": 19,
+   "n": 21,
    "segment": "chute",
    "weight": 0.8,
    "kind": "chute_rags",
@@ -708,7 +786,7 @@
    "prm": {}
   },
   {
-   "n": 20,
+   "n": 22,
    "segment": "chute",
    "weight": 1.3,
    "kind": "rook_silk",
@@ -744,7 +822,7 @@
    "prm": {}
   },
   {
-   "n": 21,
+   "n": 23,
    "segment": "wing",
    "weight": 1.0,
    "kind": "wing_hit",
@@ -776,7 +854,7 @@
    "prm": {}
   },
   {
-   "n": 22,
+   "n": 24,
    "segment": "wing",
    "weight": 1.0,
    "kind": "spin_down",
@@ -812,7 +890,7 @@
    "prm": {}
   },
   {
-   "n": 23,
+   "n": 25,
    "segment": "blackout",
    "weight": 1.0,
    "kind": "fuse_spin",
@@ -848,7 +926,7 @@
    "prm": {}
   },
   {
-   "n": 24,
+   "n": 26,
    "segment": "blackout",
    "weight": 1.0,
    "kind": "gasp_dim",
@@ -884,7 +962,7 @@
    "prm": {}
   },
   {
-   "n": 25,
+   "n": 27,
    "segment": "blackout",
    "weight": 1.0,
    "kind": "thrown_clear",
@@ -916,7 +994,7 @@
    "prm": {}
   },
   {
-   "n": 26,
+   "n": 28,
    "segment": "fall",
    "weight": 0.9,
    "kind": "fall_close",
@@ -952,7 +1030,7 @@
    "prm": {}
   },
   {
-   "n": 27,
+   "n": 29,
    "segment": "fall",
    "weight": 0.8,
    "kind": "fall_wide",
@@ -990,7 +1068,7 @@
    }
   },
   {
-   "n": 28,
+   "n": 30,
    "segment": "fall",
    "weight": 1.4,
    "kind": "heights",
@@ -1026,7 +1104,7 @@
    "prm": {}
   },
   {
-   "n": 29,
+   "n": 31,
    "segment": "fall",
    "weight": 1.0,
    "kind": "rook_dive",
@@ -1062,7 +1140,7 @@
    "prm": {}
   },
   {
-   "n": 30,
+   "n": 32,
    "segment": "rehook",
    "weight": 1.0,
    "kind": "town_below",
@@ -1098,7 +1176,7 @@
    "prm": {}
   },
   {
-   "n": 31,
+   "n": 33,
    "segment": "rehook",
    "weight": 1.0,
    "kind": "station_out",
@@ -1134,7 +1212,7 @@
    "prm": {}
   },
   {
-   "n": 32,
+   "n": 34,
    "segment": "rehook",
    "weight": 1.0,
    "kind": "rook_look",
@@ -1170,7 +1248,7 @@
    "prm": {}
   },
   {
-   "n": 33,
+   "n": 35,
    "segment": "land",
    "weight": 1.0,
    "kind": "smash",
@@ -1202,7 +1280,7 @@
    "prm": {}
   },
   {
-   "n": 34,
+   "n": 36,
    "segment": "land",
    "weight": 1.0,
    "kind": "shards",
@@ -1238,7 +1316,7 @@
    "prm": {}
   },
   {
-   "n": 35,
+   "n": 37,
    "segment": "where",
    "weight": 0.8,
    "kind": "hole_up",
@@ -1271,7 +1349,7 @@
    "hush": true
   },
   {
-   "n": 36,
+   "n": 38,
    "segment": "where",
    "weight": 1.0,
    "kind": "rook_shard",
@@ -1309,7 +1387,7 @@
    }
   },
   {
-   "n": 37,
+   "n": 39,
    "segment": "where",
    "weight": 1.1,
    "kind": "girders",
@@ -1345,7 +1423,7 @@
    "prm": {}
   },
   {
-   "n": 38,
+   "n": 40,
    "segment": "where",
    "weight": 1.1,
    "kind": "found",
@@ -1381,7 +1459,7 @@
    "prm": {}
   },
   {
-   "n": 39,
+   "n": 41,
    "segment": "injuries",
    "weight": 1.0,
    "kind": "stretcher",
@@ -1417,7 +1495,7 @@
    "prm": {}
   },
   {
-   "n": 40,
+   "n": 42,
    "segment": "injuries",
    "weight": 1.1,
    "kind": "bed_leg",
@@ -1449,7 +1527,7 @@
    "prm": {}
   },
   {
-   "n": 41,
+   "n": 43,
    "segment": "injuries",
    "weight": 1.0,
    "kind": "arm_close",
@@ -1481,7 +1559,7 @@
    "prm": {}
   },
   {
-   "n": 42,
+   "n": 44,
    "segment": "doctor",
    "weight": 1.0,
    "kind": "doctor",
@@ -1513,7 +1591,7 @@
    "prm": {}
   },
   {
-   "n": 43,
+   "n": 45,
    "segment": "doctor",
    "weight": 1.2,
    "kind": "doc_talk",
@@ -1549,7 +1627,7 @@
    "prm": {}
   },
   {
-   "n": 44,
+   "n": 46,
    "segment": "doctor",
    "weight": 0.9,
    "kind": "rook_bed",
@@ -1581,7 +1659,7 @@
    "prm": {}
   },
   {
-   "n": 45,
+   "n": 47,
    "segment": "doctor",
    "weight": 1.1,
    "kind": "arm_wrap",
@@ -1617,7 +1695,7 @@
    "prm": {}
   },
   {
-   "n": 46,
+   "n": 48,
    "segment": "arm",
    "weight": 1.1,
    "kind": "bed_sit",
@@ -1653,7 +1731,7 @@
    "prm": {}
   },
   {
-   "n": 47,
+   "n": 49,
    "segment": "arm",
    "weight": 0.9,
    "kind": "doctor",
@@ -1692,7 +1770,7 @@
    }
   },
   {
-   "n": 48,
+   "n": 50,
    "segment": "crew",
    "weight": 1.0,
    "kind": "crewcard",
@@ -1728,7 +1806,7 @@
    "prm": {}
   },
   {
-   "n": 49,
+   "n": 51,
    "segment": "camp",
    "weight": 1.0,
    "kind": "camp_three",
@@ -1764,7 +1842,7 @@
    "prm": {}
   },
   {
-   "n": 50,
+   "n": 52,
    "segment": "camp",
    "weight": 0.9,
    "kind": "camp",
@@ -1796,7 +1874,7 @@
    "prm": {}
   },
   {
-   "n": 51,
+   "n": 53,
    "segment": "camp",
    "weight": 1.2,
    "kind": "gate_open",
@@ -1832,7 +1910,7 @@
    "prm": {}
   },
   {
-   "n": 52,
+   "n": 54,
    "segment": "home",
    "weight": 1.0,
    "kind": "medals",
@@ -1868,7 +1946,7 @@
    "prm": {}
   },
   {
-   "n": 53,
+   "n": 55,
    "segment": "home",
    "weight": 1.0,
    "kind": "hangar_walk",
@@ -1904,7 +1982,7 @@
    "prm": {}
   },
   {
-   "n": 54,
+   "n": 56,
    "segment": "home",
    "weight": 1.1,
    "kind": "cub_fly",
@@ -1945,7 +2023,46 @@
    }
   },
   {
-   "n": 55,
+   "n": 57,
+   "segment": "home",
+   "weight": 0.8,
+   "kind": "hangar_walk",
+   "action": "The same field from the other side of the aeroplane: his hand on the strut, Rook above him on the wing, the hangar behind",
+   "camera": "From the other wingtip, easing in",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "tick",
+     0.5
+    ]
+   ],
+   "hud": "A PILOT'S LICENCE",
+   "prm": {
+    "alt": [
+     75,
+     0.8,
+     0.5
+    ],
+    "from": 0.7
+   }
+  },
+  {
+   "n": 58,
    "segment": "memorial",
    "weight": 1.0,
    "kind": "memorial",
@@ -1977,7 +2094,7 @@
    "prm": {}
   },
   {
-   "n": 56,
+   "n": 59,
    "segment": "memorial",
    "weight": 1.1,
    "kind": "mem_visit",
@@ -2013,7 +2130,7 @@
    "prm": {}
   },
   {
-   "n": 57,
+   "n": 60,
    "segment": "memorial",
    "weight": 0.9,
    "kind": "wreath",
@@ -2045,7 +2162,46 @@
    "prm": {}
   },
   {
-   "n": 58,
+   "n": 61,
+   "segment": "memorial",
+   "weight": 0.9,
+   "kind": "mem_visit",
+   "action": "The two of them from further round, still, in front of the stone; the others keep back",
+   "camera": "From further round, closer",
+   "cam": [
+    [
+     1.0,
+     960,
+     540,
+     0
+    ],
+    [
+     1.07,
+     960,
+     536,
+     0
+    ]
+   ],
+   "shake": 0,
+   "transition": "cut",
+   "sfx": [
+    [
+     "low",
+     0.4
+    ]
+   ],
+   "hud": "ALAN AND HELEN MAGEE",
+   "prm": {
+    "alt": [
+     -40,
+     0.8,
+     -0.3
+    ],
+    "from": 0.6
+   }
+  },
+  {
+   "n": 62,
    "segment": "last",
    "weight": 1.0,
    "kind": "memorial",
@@ -2091,7 +2247,7 @@
    }
   },
   {
-   "n": 59,
+   "n": 63,
    "segment": "end",
    "weight": 1.0,
    "kind": "board",
@@ -2131,7 +2287,7 @@
    "prm": {}
   },
   {
-   "n": 60,
+   "n": 64,
    "segment": "end",
    "weight": 1.1,
    "kind": "rook_verdict",
@@ -2167,7 +2323,7 @@
    "prm": {}
   },
   {
-   "n": 61,
+   "n": 65,
    "segment": "end",
    "weight": 1.1,
    "kind": "signoff",

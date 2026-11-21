@@ -2246,8 +2246,11 @@ def mem_visit(S, k, t, lt):
     sky(S, 'square')
     o, w = S['old'], S['wife']
     look = sm((k - 0.5) / 0.3)
-    stand(o, at(MEM, 0.4, -4.0, 0), PI - 0.1, P('stand', aL=(0.1, 0.15, 0.3), aR=(0.15, 0.15, 0.4), head=(-0.3 + 0.2 * look, 0.0)), 'sad')
-    stand(w, at(MEM, 1.35, -4.15, 0), PI - 0.25, P('stand', aL=(0.5 * look, -0.15, 1.3 * look, 0.9 * look), aR=(0.1, 0.15, 0.3), head=(-0.15 + 0.15 * look, 0.45 * look)), 'warm' if look > 0.5 else 'sad')
+    come = sm(k / 0.42)                                        # they walk up to it together, and stop
+    oy = lerp(-7.4, -4.0, come)
+    stand(o, at(MEM, 0.4, oy, 0), PI - 0.1, blend(K.walk(t, 1.1), P('stand', aL=(0.1, 0.15, 0.3), aR=(0.15, 0.15, 0.4), head=(-0.3 + 0.2 * look, 0.0)), come), 'sad')
+    stand(w, at(MEM, 1.35, oy - 0.15, 0), PI - 0.25, blend(K.walk(t + 0.3, 1.1), P('stand', aL=(0.5 * look, -0.15, 1.3 * look, 0.9 * look), aR=(0.1, 0.15, 0.3), head=(-0.15 + 0.15 * look, 0.45 * look)), come),
+          'warm' if look > 0.5 else 'sad')
     for j, (rig, p) in enumerate(zip(S['men'], ((-0.8, -8.6), (2.6, -9.2)))):
         stand(rig, at(MEM, p[0], p[1], 0), facing(p, (0, 0)), P('stand', aL=(0.3, -0.1, 1.2, 0.9), aR=(0.3, -0.1, 1.2, 0.9), head=(0.15, 0.0)), 'sad')
     rk = S['rook']
@@ -2310,7 +2313,8 @@ def _alive(f, name):
     d0 = ARCS.get(name, (8, 0.12))
 
     def g(S, k, t, lt):
-        f(S, k, t, lt)
+        fr = S['prm'].get('from', 0.0)                         # a second use of a shot picks its action up part-way through
+        f(S, fr + (1 - fr) * k, t, lt)
         deg, push = S['prm'].get('arc', (sign * d0[0], d0[1]))
         S['camtgt'].location.z -= S['prm'].get('drop', 0.0)      # the Short framed some shots for a tall frame: look lower
         c, tg = S['camrig'].location, S['camtgt'].location
@@ -2318,6 +2322,7 @@ def _alive(f, name):
         m = 1 - push * (k - 0.5)
         dx, dy, dz = c[0] - tg[0], c[1] - tg[1], c[2] - tg[2]
         S['camrig'].location = (tg[0] + (dx * math.cos(a) - dy * math.sin(a)) * m, tg[1] + (dx * math.sin(a) + dy * math.cos(a)) * m, tg[2] + dz * m)
+        S['cam'].rotation_euler.z += S['prm'].get('whirl', 0.0) * (1 - k) ** 2      # a roll that settles: the opening
         cl = Vector(S['camrig'].location)
         for o in S['clouds']:                                  # no cloud ever swallows the lens
             if (Vector(o.location) - cl).length < max(o.scale) + 6:
