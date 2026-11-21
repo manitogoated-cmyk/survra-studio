@@ -1463,7 +1463,7 @@ def make_base(r, S):
         hh = 9 + 7 * rnd(i, 206)
         qc(r, '4A3A2A', (x, 120 + 8 * rnd(i, 207), hh * 0.25), 0.5, hh * 0.5, 6)
         qs(r, ('3E5A36', '34502E', '4A6A3E')[i % 3], (x, 120 + 8 * rnd(i, 207), hh * 0.75), hh * 0.42, (1, 1, 1.2), rough=1.0)
-    for i, (x, y) in enumerate(((7.4, -30.3), (6.1, -29.9), (6.9, -29.0))):
+    for i, (x, y) in enumerate(((8.4, -29.3), (7.1, -28.9), (7.9, -28.0))):
         qc(r, ('7A3A2A', '5E6240', '6A6A64')[i], (x, y, 0.85), 0.6, 1.7, 10, rough=0.6)
         qc(r, '2A2C2E', (x, y, 1.705), 0.56, 0.02, 10)
     qbar(r, 'D8D8D0', (46, -30, 0), (46, -30, 9), 0.2)
@@ -1799,7 +1799,7 @@ def field_dawn(S, k, t, lt):
     stand(m, at(BASE, p[0], p[1], 0), facing(p0, p1), K.walk(t, 1.3), 'calm')
     rk = S['rook']
     turn = sm((k - 0.35) / 0.3)
-    rk.place(at(BASE, 7.4, -30.3, 1.72 - 0.55), facing((7.4, -30.3), (17.0, -36.0)) - 0.25)
+    rk.place(at(BASE, 8.4, -29.3, 1.72 - 0.55), facing((8.4, -29.3), (17.0, -36.0)) - 0.25)
     rk.apply(P('sit', lL=(1.3, 1.8), lR=(1.2, 1.7), aR=(0.9, 0.1, 1.5), aL=(0.4, 0.3, 1.2), head=(0.05, -0.9 * turn)))
     S['hat_tip'] = 0.5 * (1 - turn)
     coin(S, wpos(rk.hands[1]), lt)
@@ -2283,10 +2283,10 @@ def photo_thumb(S, k, t, lt):
     sky(S, 'low')
     S['hlamp'].data.energy = 2500
     m = S['man']
-    put(m, at(STA, 5.0, -6.0, 96.0), 2.3, -PI / 2 + 0.25, 0.2, limp(0.7))
+    put(m, at(STA, 5.0, -6.0, 96.0), 4.7, -PI / 2 + 0.25, 0.2, limp(0.7))
     m.face = 'shut'
     h = head(m)
-    cam(S, plus(h, (-1.7, -0.5, 5.4)), at(STA, -10.0, 5.0, 0.0), 30)
+    cam(S, plus(h, (-0.9, -0.95, 4.3)), at(STA, -10.0, 5.0, 0.0), 30)
     S['camfill'].data.energy = 900
 
 
